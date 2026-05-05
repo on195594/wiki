@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-01 | Total pages: 59
+> Last updated: 2026-05-05 | Total pages: 61
 
 ## Entities
 
@@ -53,6 +53,8 @@
 
 ## Queries
 - [[gstack-project-execution-lane-validation-case]] — 用真实小项目验证 gstack 5-skill lane 的闭环价值：从 intake、review 到 QA，确认它能把模糊想法压成可推进的 kickoff artifact
+- [[hermes-project-dev-office-hours-review]] — Hermes 项目开发环境的 office-hours 审查：识别 `~/.hermes` 中项目代码、状态、脚本、cron 与文档混杂的问题
+- [[hermes-project-dev-migration-plan-eng-review]] — Hermes 项目开发迁移计划 eng review：将具备独立边界的内容迁移到项目目录，恢复项目级执行单元
 - [[hermes-layer-routing-edge-cases]] — Hermes 层间路由的边界误判案例：当两个层都像能放时，如何按职责而不是重要性裁决
 - [[hermes-layer-routing-sample-cases]] — Hermes 层间路由的样板案例：用真实场景判断什么该进 wiki、memory、skill、cron、MCP 或 session
 - [[hermes-optimization-sample-case]] — 用当前知识库操作流回放最近优化 Hermes 的全过程，展示如何把对话收敛成长期资产
