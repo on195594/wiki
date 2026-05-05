@@ -127,6 +127,6 @@ Detailed closeout: [[hermes-harness-profile-validation-final-closeout]].
 - [[hermes-context-layer-operating-rules]]
 - [[hermes-context-engineering-design-priorities]]
 - [[codex-agent-workflow-layering]]
-- [[gemini-summary]]
+- `gemini-summary` skill（摘要 workflow overlay 参考，不是 wiki 页面）
 - [[index]]
 - [[log]]
