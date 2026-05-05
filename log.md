@@ -1,0 +1,415 @@
+# Wiki Log
+
+> Chronological record of wiki actions.
+> Format: `## [YYYY-MM-DD] action | subject`
+
+## [2026-04-16] create | Wiki initialized
+- Path: `/home/lin/wiki`
+- Created core structure: `raw/`, `entities/`, `concepts/`, `comparisons/`, `queries/`, `_meta/`
+- Created: `SCHEMA.md`, `index.md`, `log.md`
+- Seeded: `concepts/hermes-knowledge-architecture.md`, `concepts/wiki-ingestion-workflow.md`
+
+## [2026-04-16] update | Hermes knowledge architecture
+- Updated: `concepts/hermes-knowledge-architecture.md`
+- Updated: `index.md`
+- Captured the overall Hermes knowledge-base architecture, including runtime layers, wiki filesystem layers, and write-back loop.
+
+## [2026-04-16] create | Hermes memory skills wiki boundaries
+- Created: `concepts/hermes-memory-skills-wiki-boundaries.md`
+- Updated: `concepts/hermes-knowledge-architecture.md`
+- Updated: `index.md`
+- Defined the routing rules and decision checklist for what belongs in memory, skills, wiki, or only sessions.
+
+## [2026-04-16] create | Hermes retrieval priority and answer path
+- Created: `concepts/hermes-retrieval-priority-and-answer-path.md`
+- Updated: `concepts/hermes-knowledge-architecture.md`
+- Updated: `concepts/wiki-ingestion-workflow.md`
+- Updated: `index.md`
+- Documented the default retrieval order and answer path: wiki first, then memory, skills, sessions, raw/external, and finally write-back.
+
+## [2026-04-16] create | Hermes wiki page writing standards
+- Created: `concepts/hermes-wiki-page-writing-standards.md`
+- Updated: `concepts/wiki-ingestion-workflow.md`
+- Updated: `index.md`
+- Defined page-level writing rules for filename, frontmatter, structure, wikilinks, update policy, and quality checks.
+
+## [2026-04-16] create | Hermes wiki lint and health check standards
+- Created: `concepts/hermes-wiki-lint-and-health-check-standards.md`
+- Updated: `concepts/hermes-wiki-page-writing-standards.md`
+- Updated: `concepts/hermes-retrieval-priority-and-answer-path.md`
+- Updated: `index.md`
+- Defined health-check scope, core lint checks, severity levels, pass criteria, and report format for the wiki.
+
+## [2026-04-16] lint | Hermes wiki health check
+- Scope: `index.md`, `log.md`, `SCHEMA.md`, `entities/`, `concepts/`, `comparisons/`, `queries/`
+- Result: P0=0, P1=1, P2=1, total actionable issues=2
+- P1: `concepts/wiki-ingestion-workflow.md` is missing a `## Summary` section
+- P2: `concepts/hermes-wiki-page-writing-standards.md` exceeds the 200-line guideline at 228 lines
+- No broken wikilinks, no orphan pages, no missing index entries, no frontmatter issues, and no tag taxonomy violations
+
+## [2026-04-16] update | Hermes wiki lint fixes
+- Backups: `wiki-ingestion-workflow.md.bak.20260416_085140`, `hermes-wiki-page-writing-standards.md.bak.20260416_085140`
+- Updated: `concepts/wiki-ingestion-workflow.md`
+- Updated: `concepts/hermes-wiki-page-writing-standards.md`
+- Fixed the missing `## Summary` section in `wiki-ingestion-workflow.md`
+- Compressed `hermes-wiki-page-writing-standards.md` from 228 lines to 164 lines
+
+## [2026-04-16] lint | Hermes wiki health check (post-fix)
+- Result: P0=0, P1=0, P2=0, total actionable issues=0
+- Pass: true
+- No broken wikilinks, no orphan pages, no missing index entries, no frontmatter issues, no tag violations, no page-size violations, and no schema-drift findings
+
+## [2026-04-16] ingest | AriXZone on Dijkstra and AI programming
+- Captured raw source: `raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md`
+- Created: `concepts/dijkstra-ai-programming-formalization.md`
+- Updated: `index.md`
+- Extracted the public X post and compiled its argument into a reusable concept page about formalization, natural language limits, and AI coding workflow.
+
+## [2026-04-16] ingest | Dijkstra EWD667 dual-source comparison
+- Captured raw source: `raw/articles/dijkstra-ewd667-natural-language-programming-1978.md`
+- Created: `comparisons/dijkstra-ewd667-vs-ai-programming-article.md`
+- Created: `concepts/hermes-ai-workflow-formalization-principles.md`
+- Updated: `concepts/dijkstra-ai-programming-formalization.md`
+- Updated: `index.md`
+- Compared EWD667 with the 2026 AriXZone article, then translated the shared conclusions into concrete Hermes workflow principles.
+
+## [2026-04-16] update | Hermes knowledge base operating flow
+- Created: `concepts/hermes-knowledge-base-operating-flow.md`
+- Updated: `concepts/hermes-ai-workflow-formalization-principles.md`
+- Updated: `concepts/wiki-ingestion-workflow.md`
+- Updated: `index.md`
+- Compressed the current knowledge-base process into one end-to-end flow: intake, classify, capture, compile, retrieve, maintain.
+
+## [2026-04-16] query | Hermes optimization sample case
+- Captured raw source: `raw/transcripts/hermes-optimization-sample-case-2026-04.md`
+- Created: `queries/hermes-optimization-sample-case.md`
+- Updated: `concepts/hermes-knowledge-base-operating-flow.md`
+- Updated: `index.md`
+- Re-ran the recent Hermes optimization journey through the operating flow and turned it into a reusable sample case.
+
+## [2026-04-16] ingest | yibie on CompanyOS and LifeOS
+- Captured raw source: `raw/articles/yibie-companyos-lifeos-filesystem-philosophy-2026-02-12.md`
+- Created: `concepts/companyos-to-lifeos-filesystem-philosophy.md`
+- Updated: `index.md`
+- Extracted the X longform article and compiled it into a reusable concept page about filesystem-as-state, shared namespace, governance-by-permissions, and LifeOS.
+
+## [2026-04-16] ingest | DtDt666 on ordinary investor investing system
+- Captured raw source: `raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md`
+- Created: `concepts/ordinary-investor-investment-system.md`
+- Updated: `index.md`
+- Compiled the X image-based longform article into a reusable concept page about investing systems, behavior, asset allocation, rebalancing, and avoiding buy-high-sell-low patterns.
+
+## [2026-04-16] ingest | Google SRE on Gemini CLI incident response
+- Captured raw source: `raw/articles/google-sre-gemini-cli-outages-2026-01-22.md`
+- Created: `concepts/google-sre-gemini-cli-incident-response.md`
+- Updated: `index.md`
+- Compiled the Google Cloud blog article into a reusable concept page about mitigate-first incident response, constrained tool execution, MCP-based integration, and AI as a production copilot.
+
+## [2026-04-16] comparison | Hermes vs Google SRE agentic incident response
+- Created: `comparisons/hermes-vs-google-sre-agentic-incident-response.md`
+- Updated: `index.md`
+- Compared Google’s incident-focused Gemini CLI workflow with Hermes’s current general-purpose agent substrate, highlighting shared architecture, safety differences, and the missing incident-specific packaging layer.
+
+## [2026-04-16] ingest | TDS on context engineering beyond RAG
+- Captured raw source: `raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md`
+- Created: `concepts/llm-context-engineering-layer.md`
+- Backups: `index.md.bak.20260416_162455`, `log.md.bak.20260416_162455`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page on context engineering as the layer that manages memory, compression, re-ranking, and token budget between retrieval and prompt assembly.
+
+## [2026-04-16] concept | Hermes context engineering design priorities
+- Created: `concepts/hermes-context-engineering-design-priorities.md`
+- Backups: `index.md.bak.20260416_163018`, `log.md.bak.20260416_163018`
+- Updated: `index.md`
+- Converted the external context-engineering article into Hermes-specific design priorities, with a concrete implementation order: budget control, ranking, compression, then history decay.
+
+## [2026-04-17] ingest | XDA on Claude Code practical workflow tips
+- Captured raw source: `raw/articles/xda-claude-code-practical-tips-2026-04-13.md`
+- Created: `concepts/claude-code-practical-workflow-tips.md`
+- Backups: `index.md.bak.20260417_104004`, `log.md.bak.20260417_104004`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page about side-question workflows, browser verification loops, task automation, multi-directory scope, and cross-device Claude Code usage.
+
+## [2026-04-17] ingest | GVM on money as tool and investment-vs-consumption
+- Captured raw source: `raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md`
+- Created: `concepts/money-as-tool-and-investment-vs-consumption-framework.md`
+- Backups: `index.md.bak.20260417_120501`, `log.md.bak.20260417_120501`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page about using money as a freedom tool, distinguishing good leverage from speculative leverage, and separating investment from pure consumption.
+
+## [2026-04-17] ingest | OpenAI Codex best practices
+- Captured raw source: `raw/articles/openai-codex-best-practices-2026-04-17.md`
+- Created: `concepts/codex-agent-workflow-layering.md`
+- Backups: `index.md.bak.20260417_161100`, `log.md.bak.20260417_161100`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page on agent workflow layering: prompt and planning for the current task, `AGENTS.md` for durable repo rules, skills for repeatable methods, MCP for external live context, and automation for scheduling stable workflows.
+
+## [2026-04-17] interpret | Codex workflow layering for Hermes
+- Created: `concepts/hermes-agent-workflow-layering-and-adoption-order.md`
+- Backups: `index.md.bak.20260417_161543`, `log.md.bak.20260417_161543`, `concepts/codex-agent-workflow-layering.md.bak.20260417_161543`
+- Updated: `concepts/codex-agent-workflow-layering.md`
+- Updated: `index.md`
+- Translated the neutral Codex workflow article into Hermes-native layer mapping: instruction layer, task framing, durable knowledge, skills, MCP/tools, verification, and cron-based scheduling.
+
+## [2026-04-17] create | Hermes layer routing decision checklist
+- Created: `concepts/hermes-layer-routing-decision-checklist.md`
+- Backups: `index.md.bak.20260417_162351`, `log.md.bak.20260417_162351`
+- Updated: `index.md`
+- Wrote an executable routing checklist for deciding what belongs in wiki, memory, skill, cron, or MCP, explicitly calibrated against Hermes official docs for memory, skills, cron, and MCP while treating wiki as a local knowledge-layer convention.
+
+## [2026-04-17] create | Hermes layer routing sample cases
+- Created: `queries/hermes-layer-routing-sample-cases.md`
+- Backups: `index.md.bak.20260417_165402`, `log.md.bak.20260417_165402`
+- Updated: `index.md`
+- Added 15 concrete routing examples showing when real Hermes inputs belong in wiki, memory, skill, cron, MCP, or only the current session, using Hermes official docs as the calibration baseline.
+
+## [2026-04-17] create | Hermes layer routing edge cases
+- Created: `queries/hermes-layer-routing-edge-cases.md`
+- Backups: `index.md.bak.20260417_170159`, `log.md.bak.20260417_170159`
+- Updated: `index.md`
+- Added edge-case arbitration examples for `skill + cron`, `memory vs wiki`, `MCP vs skill`, `session vs long-term layers`, and other ambiguous routing cases, still calibrated against Hermes official docs.
+
+## [2026-04-17] ingest | Leontraveller investment notes
+- Captured raw sources: `raw/articles/leontraveller-investment-notes-1-2026-04-17.md`, `raw/articles/leontraveller-investment-notes-2-2026-04-17.md`
+- Created: `concepts/leontraveller-trading-and-investment-system.md`
+- Backups: `index.md.bak.20260417_193314`, `log.md.bak.20260417_193314`
+- Updated: `index.md`
+- Compiled the two-part article into a reusable concept page about trend following, risk control, anti-average-down discipline, and avoiding complex yield or leverage traps.
+
+## [2026-04-17] create | Personal investment operating rules
+- Created: `concepts/personal-investment-operating-rules.md`
+- Created: `comparisons/leontraveller-vs-ordinary-investor-investment-system.md`
+- Backups: `index.md.bak.20260417_193739`, `log.md.bak.20260417_193739`
+- Updated: `index.md`
+- Combined the long-term ordinary-investor framework with Leontraveller’s active-trading discipline into one practical operating-rules page and one comparison page.
+
+## [2026-04-17] create | How I should use these two investment frameworks
+- Created: `queries/how-i-should-use-these-two-investment-frameworks.md`
+- Backups: `index.md.bak.20260417_194153`, `log.md.bak.20260417_194153`
+- Updated: `index.md`
+- Added a decision-card style query page showing how to separate long-term allocation logic from active-trading logic in daily use.
+
+## [2026-04-17] create | My investment pre-trade checklist
+- Created: `queries/my-investment-pre-trade-checklist.md`
+- Backups: `index.md.bak.20260417_195031`, `log.md.bak.20260417_195031`
+- Updated: `index.md`
+- Added a pre-trade checklist page focused on capital-layer classification, action classification, exit planning, and emotional red flags before placing any order.
+
+## [2026-04-17] create | When I should not trade
+- Created: `queries/when-i-should-not-trade.md`
+- Backups: `index.md.bak.20260417_195452`, `log.md.bak.20260417_195452`
+- Updated: `index.md`
+- Added a stop-trading query page covering average-down temptation, missing exit plans, wrong-capital usage, emotional activation, vague actions, and complex products without clear thesis.
+
+## [2026-04-17] create | How I should review a losing position
+- Created: `queries/how-i-should-review-a-losing-position.md`
+- Backups: `index.md.bak.20260417_202104`, `log.md.bak.20260417_202104`
+- Updated: `index.md`
+- Added a losing-position review page focused on separating normal losses from broken thesis, and separating true rebalancing from emotional averaging down.
+
+## [2026-04-17] create | How I should scale into and out of a position
+- Created: `queries/how-i-should-scale-into-and-out-of-a-position.md`
+- Backups: `index.md.bak.20260417_202813`, `log.md.bak.20260417_202813`
+- Updated: `index.md`
+- Added a position-scaling page focused on distinguishing valid staged execution from disguised averaging down, hesitation, or anxiety-driven trimming.
+
+## [2026-04-17] create | How I should size a position
+- Created: `queries/how-i-should-size-a-position.md`
+- Backups: `index.md.bak.20260417_204320`, `log.md.bak.20260417_204320`
+- Updated: `index.md`
+- Added a position-sizing page focused on risk budget, over-sizing signals, conviction discipline, concentration risk, and when to deliberately size smaller.
+
+## [2026-04-17] create | How I should handle a winning position
+- Created: `queries/how-i-should-handle-a-winning-position.md`
+- Backups: `index.md.bak.20260417_204957`, `log.md.bak.20260417_204957`
+- Updated: `index.md`
+- Added a winning-position management page focused on separating true risk management from profit anxiety, and balancing let-profit-run discipline with planned exits.
+
+## [2026-04-17] create | How I should decide between doing nothing and taking action
+- Created: `queries/how-i-should-decide-between-doing-nothing-and-taking-action.md`
+- Backups: `index.md.bak.20260417_205225`, `log.md.bak.20260417_205225`
+- Updated: `index.md`
+- Added a waiting-discipline page focused on distinguishing rule-based patience from hesitation, fear of missing out, and action-for-relief behavior.
+
+## [2026-04-17] create | How I should build a post-trade review loop
+- Created: `queries/how-i-should-build-a-post-trade-review-loop.md`
+- Backups: `index.md.bak.20260417_205734`, `log.md.bak.20260417_205734`
+- Updated: `index.md`
+- Added a post-trade review page focused on process-vs-outcome review, identifying the main error type, and converting review into one concrete rule adjustment for the next cycle.
+
+## [2026-04-17] create | How I should detect repeat mistakes in my trading
+- Created: `queries/how-i-should-detect-repeat-mistakes-in-my-trading.md`
+- Backups: `index.md.bak.20260417_210104`, `log.md.bak.20260417_210104`
+- Updated: `index.md`
+- Added a repeat-mistake detection page focused on distinguishing isolated events from recurring behavior patterns, separating process bugs from system bugs, and only promoting actionable repeated errors into hard rules.
+
+## [2026-04-17] create | How I should convert trading lessons into hard rules
+- Created: `queries/how-i-should-convert-trading-lessons-into-hard-rules.md`
+- Backups: `index.md.bak.20260417_210325`, `log.md.bak.20260417_210325`
+- Updated: `index.md`
+- Added a hard-rule conversion page focused on deciding which lessons deserve rule status, how concrete rules should be written, and how to avoid bloated, non-executable rule sets.
+
+## [2026-04-17] create | How I should keep my trading system small and executable
+- Created: `queries/how-i-should-keep-my-trading-system-small-and-executable.md`
+- Backups: `index.md.bak.20260417_221854`, `log.md.bak.20260417_221854`
+- Updated: `index.md`
+- Added a rule-governance page focused on keeping the trading system small, separating core rules from supporting notes, and pruning or compressing rules that no longer improve execution.
+
+## [2026-04-21] concept | Hermes LifeOS executable architecture
+- Backups: `index.md.bak.20260421_184215`, `log.md.bak.20260421_184215`
+- Created: `concepts/hermes-lifeos-executable-architecture.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Converted the LifeOS-vs-profile conclusion into a strict Hermes layering contract, rollout plan, profile policy, and boundary matrix for executable adoption.
+
+## [2026-04-21] concept | LifeOS Phase 1 domain map
+- Backups: `index.md.bak.20260421_184650`, `log.md.bak.20260421_184650`
+- Created: `concepts/lifeos-overview.md`
+- Created: `concepts/family-education-operating-model.md`
+- Created: `concepts/personal-finance-and-education-fund-model.md`
+- Created: `concepts/work-and-career-operating-model.md`
+- Created: `concepts/personal-growth-operating-model.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Built the first LifeOS domain map so family education, finance/education fund, work/career, and personal growth now exist as formal wiki domains under one overview page.
+
+## [2026-04-21] concept | LifeOS domain map closes the governance layer
+- Backups: `lifeos-overview.md.bak.20260421_194012`, `index.md.bak.20260421_194012`, `log.md.bak.20260421_194012`
+- Created: `concepts/system-governance-operating-model.md`
+- Updated: `concepts/lifeos-overview.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Added the missing system-governance domain so the LifeOS top-level map now covers family, finance, work, growth, and Hermes self-governance as a complete first-class domain set.
+
+## [2026-04-21] create | LifeOS decision interface pages
+- Backups: `index.md.bak.20260421_194554`, `log.md.bak.20260421_194554`
+- Created: `queries/family-education-decision-interfaces.md`
+- Created: `queries/personal-finance-and-education-fund-decision-interfaces.md`
+- Created: `queries/work-and-career-decision-interfaces.md`
+- Created: `queries/personal-growth-decision-interfaces.md`
+- Created: `queries/system-governance-decision-interfaces.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Turned the five first-class LifeOS domains into reusable decision-interface pages so later skills can be extracted from stable question structures instead of ad hoc chat prompts.
+
+## [2026-04-21] create | Hermes LifeOS profile topology
+- Backups: `index.md.bak.20260421_200908`, `log.md.bak.20260421_200908`
+- Runtime: created profile `lab` via `hermes profile create lab --clone`
+- Created: `concepts/hermes-lifeos-profile-topology.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Formalized the current profile topology as `default` for the main brain and `lab` for experimental isolation, while explicitly deferring `work/public` until real separation needs appear.
+
+## [2026-04-21] rollback | Light revert to mainline LifeOS
+- Backups: `index.md.bak.20260421_211958`, `log.md.bak.20260421_211958`, `concepts/hermes-lifeos-profile-topology.md.bak.20260421_211958`, `queries/*.bak.20260421_211958`
+- Deleted profile: `lab`
+- Deleted: `concepts/hermes-lifeos-profile-topology.md`
+- Deleted: `queries/family-education-decision-interfaces.md`
+- Deleted: `queries/personal-finance-and-education-fund-decision-interfaces.md`
+- Deleted: `queries/work-and-career-decision-interfaces.md`
+- Deleted: `queries/personal-growth-decision-interfaces.md`
+- Deleted: `queries/system-governance-decision-interfaces.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Kept the executable architecture page and LifeOS domain map, while removing the experimental profile layer and the early decision-interface layer.
+
+## [2026-04-22] create | Hermes memory governance notes
+- Backups: `index.md.bak.20260422_193622`, `log.md.bak.20260422_193622`
+- Created: `concepts/hermes-memory-governance-notes.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Promoted the reusable governance rules discovered during USER.md and MEMORY.md cleanup into a formal wiki page so the long-form reasoning lives in wiki instead of staying compressed into memory.
+
+## [2026-04-22] create | Hermes health dashboard
+- Backups: `index.md.bak.20260422_195608`, `log.md.bak.20260422_195608`
+- Created: `operations/hermes-health-dashboard.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Added the ops page for the weekly governance pipeline and recorded the baseline runtime status plus the new weekly health cron job.
+
+## [2026-04-22] update | Browser login fallback documented
+- Backups: `hermes-health-dashboard.md.bak.20260422_203914`, `log.md.bak.20260422_203914`
+- Updated: `operations/hermes-health-dashboard.md`
+- Linked the new `browser-login-form-fallback` skill pattern from the ops page so browser login/session work has a documented low-risk fallback path when refs are unstable.
+
+## [2026-04-23] create | Gstack project execution lane
+- Backups: `index.md.bak.20260423_185423`, `log.md.bak.20260423_185423`
+- Created: `concepts/gstack-project-execution-lane.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Added a Hermes-native gstack execution lane page that turns the five most practical gstack skills into one default project progression path from idea framing through plan review, implementation review, and QA.
+
+## [2026-04-23] create | Gstack project execution lane validation case
+- Backups: `index.md.bak.20260423_193820`, `log.md.bak.20260423_193820`
+- Created: `queries/gstack-project-execution-lane-validation-case.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Recorded a full closed-loop validation of the gstack 5-skill lane using a real Hermes kickoff project, capturing what each stage contributed and where the current intake tool still has boundaries.
+
+## [2026-04-29] create | Hermes context layer operating rules
+- Backups: `index.md.bak.20260429_140339`, `log.md.bak.20260429_140339`
+- Created: `concepts/hermes-context-layer-operating-rules.md`
+- Updated: `index.md`
+- Updated: `log.md`
+- Converted the context-engineering article's Hermes-specific implications into an executable layer contract covering session, memory, skill, wiki, project state, cron/log, MCP, and subagent boundaries.
+
+## [2026-04-30] ingest | Machine Learning Mastery on context engineering for AI agents
+- Captured raw source: `raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md`
+- Backups: `concepts/hermes-context-layer-operating-rules.md.bak.20260430_092935`, `log.md.bak.20260430_092935`
+- Updated: `concepts/hermes-context-layer-operating-rules.md`
+- Added the source-backed principles from Machine Learning Mastery to the existing Hermes context layer operating rules page instead of creating a near-duplicate concept page.
+
+## [2026-04-30] update | Integrate Machine Learning Mastery context engineering source
+- Backups: `concepts/hermes-context-layer-operating-rules.md.bak.20260430_093348`, `raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md.bak.20260430_093348`, `log.md.bak.20260430_093348`
+- Updated: `concepts/hermes-context-layer-operating-rules.md`
+- Updated: `raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md`
+- Folded the article-specific principles into the existing Summary, Goal, and Core principles sections, then added a backlink from the raw source to the compiled concept page.
+
+## [2026-04-30] ingest | Ahrefs content engineering with Claude Code
+- Captured raw source: `raw/articles/ahrefs-content-engineering-claude-code-2026-04-28.md`
+- Created: `concepts/agentic-content-pipeline-design-patterns.md`
+- Backups: `index.md.bak.20260430_125203`, `log.md.bak.20260430_125203`
+- Updated: `index.md`
+- Compiled Ryan Law's Ahrefs article into a reusable design-pattern page for agentic content pipelines: expert workflow decomposition, skill-file chains, MCP/data sources, intermediate artifacts, human review, and automation boundaries.
+
+## [2026-04-30] ingest | LangChain model-specific harness profiles for Deep Agents
+- Captured raw source: `raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md`
+- Created: `concepts/hermes-model-specific-harness-profiles.md`
+- Created: `queries/hermes-system-model-specific-harness-optimization-plan.md`
+- Backups: `index.md.bak.20260430_210714`, `log.md.bak.20260430_210714`
+- Updated: `index.md`
+- Compiled the LangChain Deep Agents article into a Hermes-native model-specific harness principle, then drafted a conservative Hermes optimization plan: keep default stable, build overlay registry, validate with small evals, patch narrow skills before considering runtime profiles or cron.
+
+## [2026-04-30] plan | Hermes harness profile validation detailed plan
+- Created: `queries/hermes-harness-profile-validation-detailed-plan.md`
+- Backups: `index.md.bak.20260430_213142`, `log.md.bak.20260430_213142`
+- Updated: `index.md`
+- Expanded the earlier model-specific harness optimization note into a full implementation-grade validation plan covering project bootstrap, overlay registry, prompts, fixtures, scoring rubric, experiment records, promotion gates, and rollback rules.
+
+## [2026-04-30] closeout | Hermes harness profile validation final conclusion
+- Created: `queries/hermes-harness-profile-validation-final-closeout.md`
+- Backups: `concepts/hermes-model-specific-harness-profiles.md.bak.20260430_224728`, `index.md.bak.20260430_224728`, `log.md.bak.20260430_224728`
+- Updated: `concepts/hermes-model-specific-harness-profiles.md`
+- Updated: `index.md`
+- Recorded the final project conclusion: promote only the narrow `writing-plans` and `requesting-code-review` skill patches; do not promote article summary, coding/config, runtime profile, Hermes core, SOUL, cron, or memory changes from this validation project.
+
+## [2026-04-30] ingest | Real Python on AI coding agent workflow types
+- Captured raw source: `raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md`
+- Created: `concepts/ai-coding-agent-workflow-types.md`
+- Backups: `index.md.bak.20260430_234650`, `log.md.bak.20260430_234650`
+- Updated: `index.md`
+- Compiled Real Python’s four-mode taxonomy into a reusable concept page for choosing between IDE, terminal, PR, and cloud-style coding-agent workflows.
+
+## [2026-05-01] ingest | Pydantic AI typed agent boundaries
+- Backups: `index.md.bak.20260501_085531`, `log.md.bak.20260501_085531`
+- Captured raw source: `raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md`
+- Created: `concepts/typed-ai-agent-boundaries.md`
+- Updated: `index.md`
+- Compiled the Pydantic AI article into a reusable concept about reducing AI programming uncertainty through structured outputs, typed tool boundaries, and dependency injection.
+
+## [2026-05-01] create | Hermes AI coding typed-boundary best practice
+- Backups: `index.md.bak.20260501_090053`, `log.md.bak.20260501_090053`, `typed-ai-agent-boundaries.md.bak.20260501_090053`
+- Created: `queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md`
+- Updated: `concepts/typed-ai-agent-boundaries.md`
+- Updated: `index.md`
+- Converted the Pydantic AI typed-boundary concept into a Hermes-native AI coding best-practice page: contract first, execution-lane selection, typed outputs, narrow tools, explicit dependency context, and layered verification.

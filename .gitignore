@@ -1,0 +1,14 @@
+# Local/generated backups
+*.bak.*
+
+# Obsidian local workspace state
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
