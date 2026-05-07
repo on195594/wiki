@@ -1,0 +1,158 @@
+---
+title: Subagent Orchestration Patterns
+created: 2026-05-07
+updated: 2026-05-07
+type: concept
+tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md]
+status: stable
+---
+
+# Subagent Orchestration Patterns
+
+## Summary
+
+Subagent orchestration should be chosen by lifecycle complexity, not by how impressive the architecture sounds. The useful ladder is: one-shot subagent calls, parallel fan-out, persistent agent pools, and direct agent teams. Hermes should default to the simplest mode that gives isolation and verifiable output, then only move up the ladder when the task has real concurrency or stateful-collaboration needs.
+
+This page synthesizes Phil Schmid's 2026 article `[[philschmid-subagent-patterns-2026-05-05]]` into Hermes operating knowledge. It complements `[[hermes-context-layer-operating-rules]]`, which says when to use subagents, and `[[ai-coding-agent-workflow-types]]`, which classifies external coding-agent interaction modes.
+
+## Core pattern
+
+The core question is: **how much lifecycle control does the main agent need over its subagents?**
+
+- If the subtask is independent and returns one result, use an inline subagent call.
+- If several independent subtasks can run at once, use fan-out and gather results.
+- If a specialist needs memory across multiple exchanges, use a persistent agent pool.
+- If coordination itself exceeds what the main agent can manage, only then consider an agent team with direct inter-agent messaging.
+
+Each step increases infrastructure burden, context risk, observability difficulty, and required model capability.
+
+## Four orchestration modes
+
+### 1. Inline tool: subagent as one function call
+
+The main agent calls a subagent the same way it calls a normal tool. The subagent receives a bounded task, runs in its own context, and returns one result.
+
+Use for:
+- code review
+- source extraction
+- file analysis
+- focused research
+- test generation
+- independent verification
+
+Hermes mapping:
+- `delegate_task` in ordinary single-task mode mostly belongs here.
+- The parent agent keeps the goal, constraints, decision authority, and verification responsibility.
+- The subagent should return conclusions, evidence, paths/URLs/commands, and risks — not a full transcript.
+
+Failure mode:
+- No mid-task correction. If the subagent misunderstands, the parent only learns when the result returns.
+
+### 2. Fan-out: spawn independent agents and wait for results
+
+The main agent separates dispatch from collection. It spawns multiple independent workers, continues other work if useful, then gathers results.
+
+Use for:
+- parallel source collection
+- independent code review angles
+- comparing alternatives
+- sharded audits
+- multi-file or multi-module inspections with low coupling
+
+Hermes mapping:
+- Batch `delegate_task` calls are the practical current form.
+- The parent must synthesize and verify results instead of forwarding subagent self-reports as facts.
+- This is useful only when tasks are genuinely independent enough to justify coordination overhead.
+
+Failure mode:
+- Premature fan-out creates duplicate work and inconsistent assumptions. The parent must pass enough shared context to each worker.
+
+### 3. Agent pool: persistent workers with messages
+
+The main agent keeps long-lived specialist agents and sends multiple messages over time. Workers retain conversation state and can be asked to revise, fact-check, or continue from prior context.
+
+Use only when:
+- the specialist's accumulated context materially improves the result
+- the task spans multiple rounds
+- restarting a fresh subagent would repeatedly lose important state
+
+Hermes mapping:
+- This is not the default Hermes mode today.
+- If implemented, it needs explicit lifecycle controls: list, status, max turns, timeout, kill, saved state, and cleanup.
+- It should be validated in a project-local workflow before becoming a skill or cron pattern.
+
+Failure mode:
+- Resource leaks, stale context, forgotten cleanup, and confusing multiple worker histories.
+
+### 4. Teams: agents talk directly to each other
+
+The main agent defines roles and lets agents coordinate with each other through direct messages or a shared mailbox. The main agent becomes a supervisor instead of a step-by-step coordinator.
+
+Use only when:
+- coordination logic is too large for one parent agent
+- subteams need to negotiate or exchange discoveries directly
+- the system has strong observability and conflict controls
+
+Hermes mapping:
+- This should remain experimental for Hermes unless there is a validated project proving value.
+- It requires cycle detection, deadlock timeouts, conflict handling, and clear reporting contracts.
+- It is not appropriate as a default Telegram workflow because the user needs concise, verifiable results.
+
+Failure mode:
+- Agents can deadlock, talk past each other, edit the same files, or hide important state inside inter-agent conversations.
+
+## Hermes adoption order
+
+Hermes should use this adoption order:
+
+1. **Inline subagent by default** for bounded independent work.
+2. **Fan-out** only when parallelism or independent perspectives are real.
+3. **Agent pool** only after a project-local validation proves persistent context improves outcomes more than it adds risk.
+4. **Teams** only as a deliberate experiment with observability, timeout, conflict, and rollback controls.
+
+This matches the existing Hermes bias: prefer narrow skills, project-local validation, visible artifacts, and verifiable outputs before promoting a workflow into default behavior.
+
+## Operating rules
+
+- Start with the smallest orchestration mode that can work.
+- Do not use persistent agents when a fresh subagent can return a verifiable result.
+- Do not use fan-out for dependent tasks; split dependencies first or keep the parent in sequence control.
+- Treat subagent outputs as claims until the parent verifies paths, URLs, command results, or tests.
+- Require explicit cleanup for anything persistent.
+- Do not promote agent-pool or team patterns into cron or default skills without a real validation project.
+- Keep direct agent-to-agent communication out of core workflows until deadlock, conflict, and audit controls exist.
+
+## What uncertainty this solves
+
+This page reduces one specific uncertainty: when a task feels complex, should Hermes add more agents or improve decomposition?
+
+The answer is usually decomposition first. More agents help only when they isolate context, run independent work in parallel, or preserve specialist state that would otherwise be expensive to rebuild.
+
+It does not solve:
+- correctness of subagent findings
+- prompt quality
+- tool permission safety
+- file conflict resolution
+- latency and cost control
+- model capability limits
+
+Those still require verification gates, project-local tests, and parent-agent synthesis.
+
+## What this adds to the existing wiki
+
+- Extends `[[hermes-context-layer-operating-rules]]` from “when to use subagents” to “which subagent lifecycle mode to use”.
+- Complements `[[ai-coding-agent-workflow-types]]` by describing internal orchestration topology rather than external user interaction mode.
+- Gives a conservative Hermes rule: `delegate_task` is primarily an inline/fan-out mechanism today; agent pools and teams need validation before adoption.
+
+## Related
+
+- [[philschmid-subagent-patterns-2026-05-05]]
+- [[hermes-context-layer-operating-rules]]
+- [[ai-coding-agent-workflow-types]]
+- [[hermes-agent-workflow-layering-and-adoption-order]]
+- [[hermes-layer-routing-decision-checklist]]
+- [[agent-self-validation-loops]]
+- [[wiki-ingestion-workflow]]
+- [[index]]
+- [[log]]

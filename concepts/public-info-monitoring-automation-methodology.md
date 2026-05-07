@@ -1,0 +1,328 @@
+---
+title: Public Info Monitoring Automation Methodology
+created: 2026-05-06
+updated: 2026-05-07
+type: concept
+tags: [monitoring, automation, public-info, cron, telegram, hermes, workflow]
+sources: [project:/home/lin/.hermes/projects/amazon-price-watch, skill:public-info-monitoring-automation]
+status: stable
+---
+
+# Public Info Monitoring Automation Methodology
+
+## 定位
+
+这是一套用于个人自动化的通用方法：定期观察公开信息源，只在发生有意义的变化时提醒，并保留可审计状态。
+
+第一套已验证样板是本机项目：
+
+- 项目：`/home/lin/.hermes/projects/amazon-price-watch`
+- 样板场景：Amazon Global Store 中国站商品降价监控
+- 项目复盘：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-amazon-price-watch-retrospective.md`
+- Hermes 计划：`/home/lin/.hermes/projects/amazon-price-watch/docs/plans/2026-05-06-hermes-monitoring-methodology-promotion-plan.md`
+
+## 适用场景
+
+适合：
+
+- 商品价格、库存、补货、优惠变化
+- 学校、政策、社区、机构公告
+- 竞品网页、定价页、功能页变化
+- 内容站新增文章、索引、排名变化
+- 投资产品公告、费率、规则变更
+- 本地系统状态、证书、备份、磁盘、服务健康
+
+不适合直接套用：
+
+- 需要登录、cookie、账号态或个人隐私数据的页面
+- 需要绕过 CAPTCHA、反爬或访问控制的目标
+- 高频、大规模爬取
+- 自动交易、自动购买、自动提交表单等外部状态变更
+
+## 标准流程
+
+```text
+目标识别 → 信息源建模 → 采集 → 结构化快照 → 状态保存 → 变化判断 → 通知 → 健康检查 → 复盘 → 推广
+```
+
+## 1. 先定义“值得提醒”的变化
+
+在写采集代码之前，先写清楚：
+
+```text
+监控对象：
+信息源：
+采集字段：
+提醒条件：
+不提醒条件：
+异常提醒条件：
+频率：
+通知渠道：
+人工处理动作：
+```
+
+Amazon 样板：
+
+```text
+监控对象：globalstore.amazon.cn 商品
+信息源：公开商品详情页
+采集字段：标题、价格、币种、可用性、抓取状态
+提醒条件：当前价格低于上一次成功抓取价格
+不提醒条件：价格不变、涨价
+异常提醒条件：抓取失败、价格不可观测、健康检查异常
+频率：每日低频
+通知渠道：Hermes Telegram
+人工处理动作：用户自行决定是否购买；系统不自动下单
+```
+
+## 2. 信息源建模
+
+每个新监控源都先建模，不直接写选择器。
+
+项目内推荐文件：
+
+```text
+docs/source-analysis/<source>.md
+```
+
+最低要回答：
+
+- URL 是否稳定？
+- 是否需要登录？
+- 是否可能 CAPTCHA/block？
+- 字段在 HTML、JS、API、RSS 还是页面渲染后出现？
+- 哪个页面区域语义上拥有这个字段？
+- 哪些附近文本/数字是误导项？
+- 失败时返回什么状态？
+- 需要哪些 fixture？
+
+## 3. 先 fixture，后 live scrape
+
+不要把一次 live scrape 成功当成稳定性证明。
+
+推荐顺序：
+
+1. 保存公开、非个人化的正常页面 fixture。
+2. 保存缺字段、不可用、block/CAPTCHA 等异常 fixture。
+3. 写 parser 测试。
+4. parser 测试通过后再接 Playwright 或 HTTP adapter。
+5. live 失败时保存 debug 证据到 ignored 本地目录。
+
+关键规则：
+
+- 不从整页随便取第一个数字。
+- 不用全页关键词判断状态。
+- 找不到可信区域时返回 `unknown` 或明确失败。
+- 新 markup 变体要变成 fixture + regression test。
+
+## 4. 项目最小架构
+
+```text
+monitoring-project/
+  AGENTS.md
+  README.md
+  config/
+    watchlist.example.json
+    watchlist.json          # local only, ignored
+  data/                     # local only, ignored
+    snapshots.jsonl
+    latest.json
+    runs/
+    debug/
+  docs/
+    plans/
+    methodology/
+    source-analysis/
+  src/<package>/
+    models.py
+    config.py
+    scraper.py              # or collector.py
+    parser.py
+    storage.py
+    diff.py                 # or policy.py
+    notify.py
+    health.py
+    cli.py
+  tests/
+    fixtures/
+    test_parser.py
+    test_storage.py
+    test_diff.py
+    test_notify.py
+    test_health.py
+```
+
+分层原则：
+
+- `parser`：纯解析，不访问网络。
+- `scraper/collector`：外部采集 adapter。
+- `diff/policy`：纯变化判断，不读写文件、不发通知。
+- `notify`：只格式化确定性文本，不调用 Telegram。
+- `storage`：状态读写，JSONL 为审计历史，latest 为索引。
+- `health`：判断运行是否可信。
+- `cli`：stdout/exit-code 合约边界。
+
+## 5. 状态保存
+
+MVP 默认：
+
+- `snapshots.jsonl`：append-only 历史，审计和恢复来源。
+- `latest.json`：每个对象的最新状态索引。
+- `runs/*.json`：每次运行报告。
+
+规则：
+
+- 金额等精确数值不要用 float，JSON 中保存字符串。
+- `latest.json` 不能替代历史。
+- 写 latest 要原子替换，避免中断造成半截 JSON。
+- 缺失或损坏状态要显式 unhealthy，不要静默重置。
+- 如果 latest 是失败快照，diff 仍应能从历史找回上一次成功基线。
+
+## 6. 变化判断
+
+变化判断独立于采集和通知。
+
+价格类样板策略：
+
+```text
+if current.status != ok:
+    operational alert
+elif current.price < previous_successful.price:
+    price drop alert
+else:
+    record only
+```
+
+通用策略可以是：
+
+- 降价提醒
+- 阈值提醒
+- 新增内容提醒
+- 删除/消失提醒
+- 状态恢复提醒
+- 连续失败提醒
+- stale data 提醒
+
+每个策略都要明确 repeat 行为，避免同一状态每天重复打扰。
+
+## 7. 通知设计
+
+通知是稀缺资源，默认低噪音。
+
+规则：
+
+- 只提醒用户批准的信号。
+- record-only 返回空字符串。
+- 业务提醒和运行异常提醒分开。
+- 多条提醒保持稳定排序和稳定分隔符。
+- 通知文本要能行动，但不要塞 debug 日志。
+
+Hermes cron 友好的 stdout 合约：
+
+```text
+空 stdout：不通知
+非空 stdout：可投递给 Telegram
+exit 0：本轮完成，包括有业务/运行提醒的完成
+非 0 exit：运行失败，由调度层告警
+```
+
+## 8. Hermes runtime 模式
+
+Hermes 在这个方法中承担三类角色：
+
+- 构建期：用工具、浏览器、Playwright、测试帮助建模和修复。
+- 运行期：用 cron 调度，用 Telegram gateway 投递。
+- 沉淀期：用 skills/wiki/memory/session search 管理可复用知识。
+
+日常运行不依赖 LLM 临场判断，应该由固定 worker 执行。
+
+推荐 Hermes cron no-agent wrapper：
+
+```bash
+cd /path/to/project
+scripts/project-uv run <worker> run --config config/watchlist.json
+scripts/project-uv run <worker> health --config config/watchlist.json --max-age-hours 30
+```
+
+注意：
+
+- wrapper 放在 `~/.hermes/scripts/`。
+- cron 注册相对脚本路径。
+- wrapper 先手动运行通过，再创建 cron job。
+- 不在项目核心代码里调用 Telegram。
+- 不在 wrapper 内递归创建 cron job。
+
+## 9. 健康检查
+
+每个监控项目必须有健康检查。
+
+最低检查：
+
+- config 存在且非空；
+- latest state 存在；
+- configured objects 都有 latest；
+- latest successful observation 未过期；
+- latest observation 不是 block/captcha/network_error/parse_error；
+- 最近 run report 不是 all-failed；
+- 状态 JSON/JSONL 可读。
+
+健康时静默，异常时输出可行动文本。
+
+## 10. 知识沉淀路径
+
+按 Hermes 官方机制和本机约定，分层沉淀：
+
+- 项目 docs：保存具体事实、证据、source-analysis、复盘。
+- wiki：保存人类可读的方法论、决策说明、样板案例索引。
+- skill：保存未来 agent 可执行的流程、坑位、验证 gate。
+- skill references/templates：保存长 checklist、案例、模板。
+- memory：只保存稳定环境事实，不保存步骤。
+- cron：只保存具体 schedule，不保存方法论。
+
+推广 gate：
+
+1. 真实场景跑通。
+2. 至少有一次失败案例被 fixture/test 固化。
+3. 有 run/health/stdout 合约。
+4. 能区分通用方法和站点特例。
+5. 项目 gate 通过。
+6. 才考虑进入 wiki/skill/template。
+
+## Amazon 样板带来的关键教训
+
+- 页面上的价格必须限定语义区域，不能取页面第一个 `¥`。
+- `Decimal("0.00")` 可能是合法值，fallback 用 `is None`。
+- 失败快照不能抹掉上一次成功价格基线。
+- health 不能静默通过缺状态。
+- `scripts/project-uv` 能避免 Hermes 外层 venv 警告污染 stdout。
+- 项目核心不依赖 Hermes；Hermes 是 runtime 和知识层。
+
+## 新监控项目启动 checklist
+
+- [ ] 写清楚提醒条件和不提醒条件。
+- [ ] 写 `docs/source-analysis/<source>.md`。
+- [ ] 捕获正常和异常 fixture。
+- [ ] 写 parser 测试。
+- [ ] 写 typed snapshot model。
+- [ ] 实现采集 adapter。
+- [ ] 实现 append-only snapshots 和 latest。
+- [ ] 实现 pure diff/policy。
+- [ ] 实现 deterministic notify formatter。
+- [ ] 实现 quiet-when-healthy health command。
+- [ ] 跑 full gates。
+- [ ] 手动 dry-run 和 real run。
+- [ ] wrapper 手动通过后再 schedule。
+- [ ] 完成 retrospective 后再推广到 wiki/skill/template。
+
+## Related
+
+- [[wiki-ingestion-workflow]]
+- [[hermes-context-layer-operating-rules]]
+- [[hermes-layer-routing-decision-checklist]]
+
+## 相关链接
+
+- Amazon Price Watch 项目：`/home/lin/.hermes/projects/amazon-price-watch`
+- 项目方法论：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-monitoring-automation-workflow-methodology.md`
+- 项目复盘：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-amazon-price-watch-retrospective.md`
+- 推广计划：`/home/lin/.hermes/projects/amazon-price-watch/docs/plans/2026-05-06-hermes-monitoring-methodology-promotion-plan.md`

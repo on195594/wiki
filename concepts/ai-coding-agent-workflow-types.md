@@ -1,7 +1,7 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-04-30
+updated: 2026-05-07
 type: concept
 tags: [agent, ai-coding, workflow, ide, terminal, pull-request, cloud, governance]
 sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md]
@@ -155,6 +155,8 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 - 对 PR review 类任务，应把目标限定为 review / comment / risk finding，不应默认直接改本地工作区。
 - 对 cron，应只承接已经稳定的 workflow；这与 cloud agent 的高自主性类似，都要求边界清楚、失败代价可控、输出可审查。
 
+内部编排层见 `[[subagent-orchestration-patterns]]`：本页按用户与执行环境的交互方式分类；subagent 编排页按主 agent 对 worker 生命周期的控制方式分类。两者应组合使用，避免把“远程/后台执行”误等同于“需要复杂多智能体团队”。
+
 ## Anti-patterns
 
 - 用 IDE agent 做大型跨仓修改，却不给完整上下文。
@@ -176,6 +178,7 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 - [[claude-code-practical-workflow-tips]]
 - [[gstack-project-execution-lane]]
 - [[hermes-layer-routing-decision-checklist]]
+- [[subagent-orchestration-patterns]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

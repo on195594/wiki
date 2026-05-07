@@ -1,10 +1,10 @@
 ---
 title: Claude Code Practical Workflow Tips
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-05-06
 type: concept
 tags: [claude-code, agent, workflow, automation, browser]
-sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md]
+sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
 status: stable
 ---
 
@@ -40,7 +40,18 @@ status: stable
 - 能给 Claude 真实验证环境，就不要只给文字反馈
 - 能让它自己看到错误，就不要靠你转述错误
 
-### 3. Repeated prompts should become loops or schedules
+### 3. Self-validation needs explicit baselines or feedback tools
+Towards Data Science 的自我验证案例把“让 Claude 自己看结果”进一步形式化：给 Claude 一个可验证目标，例如旧实现输出、测试命令、设计截图或浏览器反馈面，然后要求它实现、运行、比较、修正，直到通过或报告无法消除的差异。
+
+关键补充：
+- 后端/数据处理任务：用旧流程输出或 golden fixture 作为等价性基准
+- 前端/UI 任务：用浏览器、截图、DOM/console 作为视觉反馈面
+- LLM pipeline：不要要求字节级一致，而要定义结构、关键事实和业务语义的一致性
+- 失败不收敛时：Claude 应报告差异和歧义，而不是无限重试
+
+这条原则已经单独沉淀为 [[agent-self-validation-loops]]。
+
+### 4. Repeated prompts should become loops or schedules
 如果一个 prompt 需要反复人工重跑，它就已经接近自动化候选项了。
 
 `/loop` 适合：
@@ -58,7 +69,7 @@ status: stable
 - 输入模式是否稳定
 - 结果是否主要是筛选、整理、转发、汇报
 
-### 4. Claude needs the right filesystem scope upfront
+### 5. Claude needs the right filesystem scope upfront
 `--add-dir` 的本质不是少点几次授权，而是让 Claude 在开始时就拿到更完整的问题边界。
 
 适合：
@@ -70,7 +81,7 @@ status: stable
 - agent 的表现常常不是输在能力，而是输在视野太窄
 - 工作目录权限模型，本质上也是上下文工程的一部分
 
-### 5. Claude Code is a portable agent, not just a terminal tool
+### 6. Claude Code is a portable agent, not just a terminal tool
 移动端、`/teleport`、`/remote-control` 和 Dispatch 共同说明：Claude Code 更像一个可跨设备延续的工作代理，而不是只能坐在桌前用的 CLI。
 
 这意味着它更适合：
@@ -81,9 +92,10 @@ status: stable
 ## Distilled operating rules
 1. 临时追问优先用不会打断主任务的机制
 2. 任何可视化产物，都优先给 Claude 验证环境
-3. 重复 prompt 尽快升级成 loop 或 schedule
-4. 跨项目任务一开始就给足目录访问范围
-5. 把 Claude Code 当 agent workflow 使用，而不是单轮代码生成器
+3. 复杂实现任务要同时给 baseline、测试命令或可观察反馈面
+4. 重复 prompt 尽快升级成 loop 或 schedule
+5. 跨项目任务一开始就给足目录访问范围
+6. 把 Claude Code 当 agent workflow 使用，而不是单轮代码生成器
 
 ## What this changes in practice
 对工程和 agent 使用者来说，这篇文章的真正价值在于把关注点从“prompt 技巧”转向“工作流设计”：
@@ -98,6 +110,7 @@ status: stable
 - 浏览器验证闭环主要对 Web 类任务收益最高，对纯后端或纯文本任务不一定同等重要。
 
 ## Related
+- [[agent-self-validation-loops]]
 - [[wiki-ingestion-workflow]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-context-engineering-design-priorities]]

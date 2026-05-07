@@ -2,11 +2,12 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-05 | Total pages: 61
+> Last updated: 2026-05-07 | Total pages: 64
 
 ## Entities
 
 ## Concepts
+- [[agent-self-validation-loops]] — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件，把 coding agent 任务变成可验证迭代回路
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
 - [[agentic-content-pipeline-design-patterns]] — Agentic 内容生产 pipeline 的设计模式：专家流程、skill files、MCP 数据源、中间产物、人工审核与可调试迭代
 - [[claude-code-practical-workflow-tips]] — Claude Code 的实用工作流要点：侧边提问、浏览器验证、自动循环、多目录访问与跨设备延续
@@ -37,7 +38,9 @@
 - [[ordinary-investor-investment-system]] — 普通人投资方法论：先搭建长期系统，再谈标的、仓位与执行
 - [[personal-finance-and-education-fund-model]] — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，让教育基金按目标导向独立建模
 - [[personal-growth-operating-model]] — 个人成长域的 operating model：把成长作为职业升级、家庭沟通与判断质量的底层引擎
+- [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
+- [[subagent-orchestration-patterns]] — Subagent 编排模式：按生命周期复杂度选择 inline tool、fan-out、agent pool 或 team，避免多智能体过度设计
 - [[typed-ai-agent-boundaries]] — 用 Pydantic AI 的 structured output、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
 - [[personal-investment-operating-rules]] — 个人投资操作守则：核心仓做配置，进攻仓做趋势，先保护本金再争取收益
 - [[wiki-ingestion-workflow]] — 把外部信息编译进知识库的标准入库流程

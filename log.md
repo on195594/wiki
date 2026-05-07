@@ -413,3 +413,23 @@
 - Updated: `concepts/typed-ai-agent-boundaries.md`
 - Updated: `index.md`
 - Converted the Pydantic AI typed-boundary concept into a Hermes-native AI coding best-practice page: contract first, execution-lane selection, typed outputs, narrow tools, explicit dependency context, and layered verification.
+
+## [2026-05-06] ingest | Agent self-validation loops
+- Captured raw source: `raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md`
+- Created: `concepts/agent-self-validation-loops.md`
+- Updated: `concepts/claude-code-practical-workflow-tips.md`
+- Updated: `index.md`
+- Converted the Towards Data Science Claude Code self-validation article into a reusable agent engineering pattern: baseline/fixture targets, tool feedback channels, iterative validation loops, equivalence rules, and stop conditions.
+
+## [2026-05-07] ingest | Subagent orchestration patterns
+- Captured raw source: `raw/articles/philschmid-subagent-patterns-2026-05-05.md`
+- Created: `concepts/subagent-orchestration-patterns.md`
+- Updated: `concepts/hermes-context-layer-operating-rules.md`
+- Updated: `concepts/ai-coding-agent-workflow-types.md`
+- Updated: `index.md`
+- Ingested Phil Schmid's four subagent lifecycle patterns and translated them into a conservative Hermes adoption rule: default to inline `delegate_task`, use fan-out for genuinely independent work, and keep agent pools/teams behind validation gates.
+
+## [2026-05-07] organize | Public info monitoring automation methodology
+- Moved root-level draft `公开信息监控自动化方法论.md` into `concepts/public-info-monitoring-automation-methodology.md`
+- Updated: `index.md`
+- Preserved the Amazon Price Watch case as the validated sample and normalized the page as a formal concept with frontmatter and related links.

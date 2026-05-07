@@ -1,7 +1,7 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-04-30
+updated: 2026-05-07
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
@@ -170,6 +170,8 @@ subagent 返回：
 
 判定句：如果子任务可以独立完成并只需要返回结论，就用 subagent 隔离。
 
+生命周期复杂度规则见 `[[subagent-orchestration-patterns]]`：默认把 subagent 当作一次性 inline tool；只有在任务真正独立且并发有收益时才 fan-out；agent pool 和 team 模式需要项目级验证、清理机制和可观测性后再考虑。
+
 ## One-screen routing checklist
 遇到新信息、新方法或新需求时，按顺序问：
 
@@ -241,6 +243,7 @@ Machine Learning Mastery 文章的处理结果：
 - [[llm-context-engineering-layer]]
 - [[hermes-lifeos-executable-architecture]]
 - [[hermes-layer-routing-decision-checklist]]
+- [[subagent-orchestration-patterns]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-knowledge-architecture]]
 - [[index]]
