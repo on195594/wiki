@@ -1,0 +1,188 @@
+---
+title: Agent Orchestration Production Tradeoffs
+created: 2026-05-07
+updated: 2026-05-07
+type: concept
+tags: [agent, multi-agent, orchestration, architecture, benchmark, hermes, workflow, governance]
+sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
+status: stable
+---
+
+# Agent Orchestration Production Tradeoffs
+
+## Summary
+
+Agent orchestration should be selected by the workload's dominant constraint: cost/scale, latency, balanced production control, or high-stakes accuracy. The reusable rule is: start with the least complex pattern that can meet the workload, add hierarchy only when routing and selective escalation matter, and add reflexive verification only when error cost is high enough to justify extra latency and cost.
+
+This page synthesizes AlphaSignal's 2026 article `[[alphasignal-agent-orchestration-patterns-2026-05-05]]` and connects it with `[[subagent-orchestration-patterns]]`, `[[agent-self-validation-loops]]`, and `[[hermes-context-layer-operating-rules]]`.
+
+## Core pattern
+
+The durable engineering question is not "how many agents can I add?" but **which production constraint should govern the orchestration topology?**
+
+- If cost, determinism, and throughput dominate, prefer a sequential pipeline.
+- If latency dominates and subtasks are independent, use fan-out with a deliberate merge contract.
+- If production work needs routing, confidence handling, retries, and model escalation, use a supervisor-worker structure.
+- If mistakes are unacceptable and volume is low, add a reflexive self-correction loop with explicit stop conditions.
+
+The same specialist agents can be connected in different ways; the architecture is the state-sharing, communication, verification, and recovery design around them.
+
+## Four production orchestration patterns
+
+### 1. Sequential pipeline: cost and scale first
+
+Agents run in a fixed chain. Each step consumes the accumulated output from previous steps and passes its result downstream.
+
+Use when:
+- the process is simple and ordered
+- budget is strict
+- throughput and predictability matter more than peak accuracy
+- the workload is large enough that coordination overhead becomes dangerous
+
+Strengths:
+- deterministic execution path
+- predictable latency
+- cheap and stable at large scale
+- easiest to audit step by step
+
+Failure modes:
+- token use grows as context accumulates
+- early mistakes propagate downstream
+- no natural correction point unless one is deliberately inserted
+
+Hermes interpretation: this maps to ordinary tool/skill pipelines and should remain the default for stable cron, extraction, cleanup, and low-risk repeated work.
+
+### 2. Parallel fan-out with merge: latency first
+
+A router sends independent subtasks to workers concurrently, then a merge step reconciles outputs.
+
+Use when:
+- subtasks are genuinely independent
+- latency matters more than total token cost
+- partial failure can be isolated
+- the merge criteria are explicit enough to resolve conflicts
+
+Strengths:
+- fastest wall-clock path when branches are independent
+- isolates failures across branches
+- useful for parallel source collection, independent review angles, or sharded audits
+
+Failure modes:
+- duplicate context increases token cost
+- workers may return conflicting or assumption-mismatched outputs
+- the merge agent may not have enough evidence to decide which output is correct
+
+Hermes interpretation: batch `delegate_task` fan-out is valuable for independent research/review, but parent synthesis and verification are mandatory. Subagent self-reports are claims, not facts.
+
+### 3. Hierarchical supervisor-worker: balanced production default
+
+A supervisor plans the task, assigns work to specialists, receives outputs and confidence signals, then retries, reroutes, or escalates weak results.
+
+Use when:
+- task types vary
+- some subtasks deserve cheaper models/tools and others need stronger handling
+- confidence scoring, retries, or escalation materially improve reliability
+- accuracy matters but fully reflexive loops are too expensive
+
+Strengths:
+- balances accuracy, cost, latency, and operational control
+- gives workers only the context they need
+- supports model/tool routing and selective escalation
+- can add retries without making every task reflexive
+
+Failure modes:
+- supervisor routing becomes a single point of failure
+- message contracts must be tight or workers return unusable outputs
+- debugging is harder than a linear pipeline because the execution path is conditional
+
+Hermes interpretation: this is the right shape for non-trivial project execution lanes: parent agent owns the goal, decomposition, and final verification; workers stay narrow; promotion requires project-local evidence.
+
+### 4. Reflexive self-correcting loop: high-stakes accuracy first
+
+A generator produces an output, a verifier critiques it, and the generator revises until the output passes or an iteration limit is reached.
+
+Use when:
+- error cost is high
+- volume is low enough to afford repeated passes
+- the evaluator has a concrete check, baseline, test, or rubric
+- ambiguity has stop conditions instead of infinite revision
+
+Strengths:
+- best path for catching mistakes before delivery
+- makes verification explicit
+- improves reliability for high-risk tasks
+
+Failure modes:
+- highest cost and latency
+- queueing delays and timeouts at scale
+- over-revision can make ambiguous outputs less stable
+- without hard checks, the loop becomes aesthetic rewriting rather than validation
+
+Hermes interpretation: this maps to `[[agent-self-validation-loops]]`, code review gates, browser/test verification, and promotion audits. It should not become the default for low-risk bulk work.
+
+## Benchmark claims to preserve
+
+AlphaSignal cites an NYU benchmark by Siddhant and Yukta Kulkarni that evaluated four orchestration architectures across 10,000 documents / SEC filings and five models: GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, Llama 3 70B, and Mixtral 8x22B.
+
+Reported article-level claims:
+- Reflexive self-correcting loop achieved the highest accuracy: 0.943 F1 with Claude 3.5 Sonnet.
+- Hierarchical supervisor-worker reached 0.929 F1, about 98.5% of the reflexive score, while costing 60.7% as much as the reflexive system.
+- Parallel fan-out was fastest when latency mattered most.
+- Sequential pipeline was cheapest and most stable at large scale, especially around 100,000 documents/tasks per day.
+- Reflexive loops can degrade beyond about 25,000 tasks/day because correction rounds create queueing delays, timeouts, and cut-short iterations.
+
+Treat these as source-backed directional claims, not as universal constants. The operating rule matters more than the exact numbers: orchestration patterns trade off differently under scale, cost, latency, and risk.
+
+## Hermes mapping
+
+### Wiki
+
+This page becomes the production trade-off layer for orchestration choice. `[[subagent-orchestration-patterns]]` answers lifecycle-control questions; this page answers workload-constraint questions.
+
+### Skills
+
+Skills should not promote "multi-agent" as a default behavior. A skill should specify whether it needs sequential execution, fan-out, supervisor-worker decomposition, or reflexive review, and why.
+
+### Project validation
+
+New orchestration patterns should be validated in project-local lanes before promotion. The validation should measure not only output quality, but also latency, cost, failure recovery, and whether verification artifacts remain inspectable.
+
+### Cron/runtime
+
+Cron jobs should default to sequential or narrow pipeline designs. Fan-out or reflexive loops are justified only when missed changes, wrong alerts, or high-risk outputs make the overhead worthwhile.
+
+## Operating rules for future Hermes workflows
+
+- Choose orchestration by dominant constraint, not by architectural ambition.
+- Start sequential unless independence, routing, or verification risk proves otherwise.
+- Use fan-out only when branches are independent and the merge contract is explicit.
+- Use supervisor-worker when routing, confidence, retry, or model/tool escalation are real requirements.
+- Use reflexive loops only for low-volume, high-stakes tasks with concrete checks and stop conditions.
+- Keep the parent agent responsible for synthesis and final verification.
+- Measure latency/cost/failure behavior before promoting a complex pattern into a default skill, cron, or runtime behavior.
+
+## What this adds to the existing wiki
+
+- Adds a production optimization axis to `[[subagent-orchestration-patterns]]`, which currently focuses on subagent lifecycle complexity.
+- Connects `[[agent-self-validation-loops]]` to the narrower case where reflexive verification is worth its cost.
+- Reinforces `[[hermes-ai-workflow-formalization-principles]]`: reliable AI workflows need explicit structure, validation, and stop conditions, not just stronger models.
+- Gives `[[public-info-monitoring-automation-methodology]]` a useful constraint: monitoring jobs should stay sequential/narrow unless fan-out or verification reduces real alert risk.
+
+## Limits
+
+- The article is a secondary write-up of benchmark results, not the benchmark paper itself.
+- The benchmark task type was document/SEC filing extraction; the exact numbers may not transfer to coding, research, wiki ingestion, or Telegram workflows.
+- Cost and latency depend heavily on model pricing, context size, retries, tool latency, and implementation details.
+- Hermes should treat this as a decision framework, then validate locally before changing defaults.
+
+## Related
+
+- [[alphasignal-agent-orchestration-patterns-2026-05-05]]
+- [[subagent-orchestration-patterns]]
+- [[agent-self-validation-loops]]
+- [[hermes-context-layer-operating-rules]]
+- [[hermes-ai-workflow-formalization-principles]]
+- [[ai-coding-agent-workflow-types]]
+- [[public-info-monitoring-automation-methodology]]
+- [[index]]
+- [[log]]

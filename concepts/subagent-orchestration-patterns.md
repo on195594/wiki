@@ -4,7 +4,7 @@ created: 2026-05-07
 updated: 2026-05-07
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
 status: stable
 ---
 
@@ -14,7 +14,7 @@ status: stable
 
 Subagent orchestration should be chosen by lifecycle complexity, not by how impressive the architecture sounds. The useful ladder is: one-shot subagent calls, parallel fan-out, persistent agent pools, and direct agent teams. Hermes should default to the simplest mode that gives isolation and verifiable output, then only move up the ladder when the task has real concurrency or stateful-collaboration needs.
 
-This page synthesizes Phil Schmid's 2026 article `[[philschmid-subagent-patterns-2026-05-05]]` into Hermes operating knowledge. It complements `[[hermes-context-layer-operating-rules]]`, which says when to use subagents, and `[[ai-coding-agent-workflow-types]]`, which classifies external coding-agent interaction modes.
+This page synthesizes Phil Schmid's 2026 article `[[philschmid-subagent-patterns-2026-05-05]]` into Hermes operating knowledge, and is complemented by AlphaSignal's benchmark-oriented trade-off page `[[agent-orchestration-production-tradeoffs]]`. It complements `[[hermes-context-layer-operating-rules]]`, which says when to use subagents, and `[[ai-coding-agent-workflow-types]]`, which classifies external coding-agent interaction modes.
 
 ## Core pattern
 
@@ -102,6 +102,15 @@ Hermes mapping:
 Failure mode:
 - Agents can deadlock, talk past each other, edit the same files, or hide important state inside inter-agent conversations.
 
+## Production trade-off layer
+
+AlphaSignal's `[[agent-orchestration-production-tradeoffs]]` adds a second axis to this page. The Phil Schmid taxonomy asks how much lifecycle control the parent needs over subagents; the AlphaSignal taxonomy asks which production constraint dominates: cost/scale, latency, balanced control, or high-stakes accuracy.
+
+Combined rule:
+- Pick lifecycle mode from this page: inline, fan-out, pool, or team.
+- Pick production topology from `[[agent-orchestration-production-tradeoffs]]`: sequential, fan-out, supervisor-worker, or reflexive loop.
+- Only adopt the more complex option when the workload has measured need for parallelism, routing/escalation, persistent state, or verification.
+
 ## Hermes adoption order
 
 Hermes should use this adoption order:
@@ -161,6 +170,8 @@ Closeout: [[gsearch-knowledge-validation-closeout]]
 ## Related
 
 - [[philschmid-subagent-patterns-2026-05-05]]
+- [[alphasignal-agent-orchestration-patterns-2026-05-05]]
+- [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-layer-operating-rules]]
 - [[ai-coding-agent-workflow-types]]
 - [[hermes-agent-workflow-layering-and-adoption-order]]
