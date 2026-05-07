@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-07 | Total pages: 64
+> Last updated: 2026-05-07 | Total pages: 65
 
 ## Entities
 
@@ -55,6 +55,7 @@
 - [[leontraveller-vs-ordinary-investor-investment-system]] — 对照两套投资框架：长期配置制度 vs 主动交易纪律
 
 ## Queries
+- [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
 - [[gstack-project-execution-lane-validation-case]] — 用真实小项目验证 gstack 5-skill lane 的闭环价值：从 intake、review 到 QA，确认它能把模糊想法压成可推进的 kickoff artifact
 - [[hermes-project-dev-office-hours-review]] — Hermes 项目开发环境的 office-hours 审查：识别 `~/.hermes` 中项目代码、状态、脚本、cron 与文档混杂的问题
 - [[hermes-project-dev-migration-plan-eng-review]] — Hermes 项目开发迁移计划 eng review：将具备独立边界的内容迁移到项目目录，恢复项目级执行单元

@@ -433,3 +433,10 @@
 - Moved root-level draft `公开信息监控自动化方法论.md` into `concepts/public-info-monitoring-automation-methodology.md`
 - Updated: `index.md`
 - Preserved the Amazon Price Watch case as the validated sample and normalized the page as a formal concept with frontmatter and related links.
+
+## [2026-05-07] closeout | GSearch knowledge validation
+- Backups: `index.md.bak.20260507_160902`, `log.md.bak.20260507_160902`, `concepts/subagent-orchestration-patterns.md.bak.20260507_160902`
+- Created: `queries/gsearch-knowledge-validation-closeout.md`
+- Updated: `concepts/subagent-orchestration-patterns.md`
+- Updated: `index.md`
+- Captured the GSearch validation project as a completed knowledge-validation loop: project-local evidence lane succeeded, inline subagent review remains default, fan-out is reserved for promotion/source-risk cases, and live Telegram `/gsearch` remains unpromoted pending separate approval.

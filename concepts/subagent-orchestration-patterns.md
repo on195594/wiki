@@ -145,6 +145,19 @@ Those still require verification gates, project-local tests, and parent-agent sy
 - Complements `[[ai-coding-agent-workflow-types]]` by describing internal orchestration topology rather than external user interaction mode.
 - Gives a conservative Hermes rule: `delegate_task` is primarily an inline/fan-out mechanism today; agent pools and teams need validation before adoption.
 
+## Validation outcome: GSearch project
+
+The project `hermes-gemini-google-search-workflow` validated this page's conservative adoption rule in a real Hermes-adjacent workflow.
+
+Outcome:
+
+- Inline subagent review should remain the default for ordinary saved search artifacts.
+- Fan-out review can improve source/synthesis separation, but only justifies its cost for promotion/ADR evidence or high source-quality risk.
+- Agent pools, teams, and persistent reviewer routing were not justified by the experiment.
+- The project closed as a knowledge-validation success, while live Telegram `/gsearch` remains unpromoted pending a separate narrow-scope promotion package.
+
+Closeout: [[gsearch-knowledge-validation-closeout]]
+
 ## Related
 
 - [[philschmid-subagent-patterns-2026-05-05]]
