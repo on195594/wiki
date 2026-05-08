@@ -448,3 +448,14 @@
 - Updated: `concepts/subagent-orchestration-patterns.md`
 - Updated: `index.md`
 - Compiled AlphaSignal's four production orchestration patterns into a reusable decision framework: sequential for cost/scale, fan-out for latency, supervisor-worker for balanced production control, and reflexive loops only for low-volume high-stakes accuracy.
+
+## [2026-05-08] closeout | Investment Watch final project knowledge
+- Backups: `_backups/investment-watch-final-closeout-20260508_204319/`
+- Created: `queries/investment-watch-final-closeout.md`
+- Updated: `index.md`
+- Captured the Investment Watch project as a locally validated typed, contract-backed, read-only investment observation system; runtime, cron, skill, memory, strategy, and data-repair promotion remain deferred pending separate approval.
+
+## [2026-05-08] validation | Investment Watch public monitoring methodology outcome
+- Backups: `_backups/investment-watch-concept-validation-20260508_204715/`
+- Updated: `concepts/public-info-monitoring-automation-methodology.md`
+- Added a short validation outcome linking [[investment-watch-final-closeout]] to the public-info monitoring methodology: higher-risk personal decision-support monitors need project-local boundaries, typed contracts, read-only/warning-only outputs, phase closeouts, and explicit non-promotion gates.

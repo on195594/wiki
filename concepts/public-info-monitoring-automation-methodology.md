@@ -1,10 +1,10 @@
 ---
 title: Public Info Monitoring Automation Methodology
 created: 2026-05-06
-updated: 2026-05-07
+updated: 2026-05-08
 type: concept
 tags: [monitoring, automation, public-info, cron, telegram, hermes, workflow]
-sources: [project:/home/lin/.hermes/projects/amazon-price-watch, skill:public-info-monitoring-automation]
+sources: [project:/home/lin/.hermes/projects/amazon-price-watch, project:/home/lin/.hermes/projects/investment-watch, skill:public-info-monitoring-automation]
 status: stable
 ---
 
@@ -296,6 +296,25 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 - health 不能静默通过缺状态。
 - `scripts/project-uv` 能避免 Hermes 外层 venv 警告污染 stdout。
 - 项目核心不依赖 Hermes；Hermes 是 runtime 和知识层。
+
+## Investment Watch 验证结果
+
+`investment-watch` 验证了本方法论在更高风险的个人决策支持场景中也成立，但必须增加更强的边界：typed contracts、read-only / warning-only 报告层、phase closeout，以及明确的 non-closure。
+
+验证入口：[[investment-watch-final-closeout]]
+
+可复用结论：
+
+- 先把工作流收敛成项目，而不是把业务逻辑散落在 Hermes runtime 或脚本目录。
+- 对会影响决策理解的输出，先建立 structured / typed contract，再扩展报告。
+- `read-only` 和 `warning-only` 不是措辞装饰，必须用测试、输出文案和 closeout 同时钉住边界。
+- 项目验证完成不等于 runtime、cron、skill 或 memory 推广；推广必须单独批准。
+
+不推广的内容：
+
+- 不把 `investment-watch` 的投资规则、基金配置、阈值、目标权重或风险判断推广为通用投资建议。
+- 不把 risk guardrails、strategic rebalance、post-signal review 或 data lifecycle audit 直接变成自动动作。
+- 不把项目 phase 日志、行情、持仓或一次性 smoke 结果写入 memory。
 
 ## 新监控项目启动 checklist
 
