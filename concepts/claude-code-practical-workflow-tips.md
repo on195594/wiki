@@ -1,10 +1,10 @@
 ---
 title: Claude Code Practical Workflow Tips
 created: 2026-04-17
-updated: 2026-05-06
+updated: 2026-05-09
 type: concept
 tags: [claude-code, agent, workflow, automation, browser]
-sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
+sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
 status: stable
 ---
 
@@ -89,6 +89,18 @@ Towards Data Science 的自我验证案例把“让 Claude 自己看结果”进
 - 远程触发或检查工作流
 - 在不同设备间延续同一个任务状态
 
+### 7. Token saving is context-budget management
+Analytics Vidhya 的 Claude Code token-saving 清单把另一个维度补齐：Claude Code 的成本和稳定性不只取决于工作流是否能验证，还取决于上下文预算是否被治理。
+
+关键规则：
+- 切换任务时清理旧上下文
+- 长任务中只压缩保留目标、已改文件、失败测试和下一步
+- 全局 `CLAUDE.md` 保持短小，模块规则下沉到 path-scoped rules 或 skills
+- 不把完整 terminal / MCP / test log 输出直接交给模型
+- prompt 中明确起始文件、禁止全仓扫描、给出验证目标
+
+这条原则已单独沉淀为 [[ai-coding-assistant-context-budget-management]]。
+
 ## Distilled operating rules
 1. 临时追问优先用不会打断主任务的机制
 2. 任何可视化产物，都优先给 Claude 验证环境
@@ -96,6 +108,7 @@ Towards Data Science 的自我验证案例把“让 Claude 自己看结果”进
 4. 重复 prompt 尽快升级成 loop 或 schedule
 5. 跨项目任务一开始就给足目录访问范围
 6. 把 Claude Code 当 agent workflow 使用，而不是单轮代码生成器
+7. 把上下文窗口当作预算资源，限制历史、日志、工具输出和无关文件进入模型
 
 ## What this changes in practice
 对工程和 agent 使用者来说，这篇文章的真正价值在于把关注点从“prompt 技巧”转向“工作流设计”：
@@ -110,6 +123,7 @@ Towards Data Science 的自我验证案例把“让 Claude 自己看结果”进
 - 浏览器验证闭环主要对 Web 类任务收益最高，对纯后端或纯文本任务不一定同等重要。
 
 ## Related
+- [[ai-coding-assistant-context-budget-management]]
 - [[agent-self-validation-loops]]
 - [[wiki-ingestion-workflow]]
 - [[hermes-ai-workflow-formalization-principles]]

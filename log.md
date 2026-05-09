@@ -459,3 +459,11 @@
 - Backups: `_backups/investment-watch-concept-validation-20260508_204715/`
 - Updated: `concepts/public-info-monitoring-automation-methodology.md`
 - Added a short validation outcome linking [[investment-watch-final-closeout]] to the public-info monitoring methodology: higher-risk personal decision-support monitors need project-local boundaries, typed contracts, read-only/warning-only outputs, phase closeouts, and explicit non-promotion gates.
+
+
+## [2026-05-09] ingest | Analytics Vidhya on Claude Code token saving
+- Captured raw source: `raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md`
+- Created: `concepts/ai-coding-assistant-context-budget-management.md`
+- Updated: `concepts/claude-code-practical-workflow-tips.md`
+- Backups: `index.md.bak.20260509_124115`, `log.md.bak.20260509_124115`, `claude-code-practical-workflow-tips.md.bak.20260509_124115`
+- Compiled the article into a reusable concept about context-budget management for AI coding assistants: session boundaries, layered instructions, capped tool output, explicit file scope, subagent isolation, and version-gated tool settings.
