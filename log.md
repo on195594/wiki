@@ -506,3 +506,9 @@
 - Created: `concepts/agent-development-lifecycle.md`
 - Updated: `index.md`
 - Compiled LangChain's lifecycle model into a Hermes-native concept: Build → Test → Deploy → Monitor, with Govern as a cross-cutting layer for cost, tool permissions, context/assets, traceability, and controlled promotion. No memory, skill, cron, runtime, or gateway changes were made.
+
+## [2026-05-11] validate | Agent development lifecycle project mapping
+- Updated: `concepts/agent-development-lifecycle.md`
+- Evidence project: `/home/lin/.hermes/projects/amazon-price-watch`
+- Evidence record: `docs/reviews/2026-05-11-agent-development-lifecycle-checklist.md`
+- Recorded the first project-level validation outcome for the lifecycle concept: a low-risk live worker maps cleanly to Build → Test → Deploy → Monitor with Govern as the cross-cutting boundary. This does not authorize runtime, cron, skill, memory, or methodology promotion.

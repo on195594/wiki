@@ -105,17 +105,31 @@ Hermes 映射：
 - 不要把 Monitor 理解成“保存全部聊天记录”；应保存足以定位失败和构造 eval 的 trace-like evidence。
 - 不要把 Govern 理解成重流程审批；治理的目标是低风险快速迭代。
 
-## Validation and promotion path
-当前建议：先作为 wiki concept 保留，不改 memory、skill、cron 或 runtime。
+## Validation outcome
+2026-05-11 首次项目级映射已完成，样例项目为本地 live worker `amazon-price-watch`。
 
-后续若要转成 Hermes 操作实践，应先在一个真实小项目或 Hermes-adjacent 项目中验证 lifecycle checklist：
+证据路径：`/home/lin/.hermes/projects/amazon-price-watch/docs/reviews/2026-05-11-agent-development-lifecycle-checklist.md`。
+
+结论：`agent-development-lifecycle` 可作为项目检查表框架使用，能把一个低风险、确定性 worker 映射到 `Build → Test → Deploy → Monitor`，并把 `Govern` 作为跨阶段边界记录：
+- Build：README、AGENTS、source-analysis、methodology、typed CLI worker 和 runtime adapter 边界清楚
+- Test：pytest、ruff、format、ty、diff check 与既有 review records 构成证据
+- Deploy：已有 Hermes no-agent cron wrapper/job 的历史验证证据，但本次未改变 runtime
+- Monitor：health、run reports、stdout contract 和 silent-when-healthy 语义可检查
+- Govern：不登录、不绕 CAPTCHA、不自动购买、不提交本地 watchlist/data/debug，且 runtime/cron/skill/wiki/memory 推广均需单独批准
+
+边界：这是项目级概念验证，不是 runtime、cron、skill、memory 或 wiki 方法论推广授权。项目证据留在 `amazon-price-watch`；本页只保存概念验证结果和检索入口。
+
+## Validation and promotion path
+当前状态：wiki concept 已完成首次项目级验证，但仍不改 memory、skill、cron 或 runtime。
+
+后续若要转成 Hermes 操作实践，应继续在真实小项目或 Hermes-adjacent 项目中验证 lifecycle checklist：
 1. Build artifact 是否明确？
 2. Test/eval 是否存在？
 3. Deploy 边界是否可回滚？
 4. Monitor/trace/log 是否能定位失败？
 5. Govern 权限、成本、人工审批和资产复用是否明确？
 
-只有当该 checklist 在 1–2 个真实项目中证明有用，再考虑 patch 现有 skills 或新增窄职责 `agent-lifecycle-review` skill。
+只有当该 checklist 在更多真实项目中证明可复用，再考虑 patch 现有 skills 或新增窄职责 `agent-lifecycle-review` skill；任何 active-layer 变更都需要单独决策、备份、回滚和用户批准。
 
 ## Related
 - [[langchain-agent-development-lifecycle-2026-05-09]]
