@@ -482,3 +482,9 @@
 - Created: `queries/hermes-agent-experience-consolidation-capability-assessment.md`
 - Updated: `index.md`
 - Compiled the VentureBeat/Anthropic Dreaming article into a reusable concept about agent experience consolidation loops, and recorded a Hermes capability assessment: current Hermes has memory, skills, session search, curator, cron, delegation, and goal/judge primitives, but full Auto Dream or `/dreaming` is not verified as native in the local v0.13.0 checkout.
+
+## [2026-05-11] audit | Draft query inventory
+- Created: `_meta/draft-query-inventory.md`
+- Reviewed the eight unindexed `queries/` draft pages left out of `index.md`.
+- Decision: no index promotion. Keep `project-kickoff-education-fund-weekly-page-v2.md` as the education-fund weekly-page resumption candidate; treat the older education-fund drafts, skill-install review drafts, and weekly-health enhancement drafts as superseded/generated kickoff drafts.
+- No draft query pages were deleted or edited.
