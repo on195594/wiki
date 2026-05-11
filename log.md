@@ -495,3 +495,8 @@
 - Created: `_meta/wiki-health-check-runbook.md`
 - Third-party review: Gemini CLI `gemini-2.5-flash` in read-only plan mode; no blocking findings. Accepted review fixes added exit-code semantics, detailed git status, notes semantics, and formal-page H1 exclusions.
 - Verification: script JSON output passed with P0=0, P1=0, P2=8 known draft query pages; Markdown output path tested; no active Hermes runtime, memory, skill, cron, MCP, or gateway changes.
+
+## [2026-05-11] ingest | InfoWorld on AI coding upstream skills
+- Captured raw source: `raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md`
+- Updated: `concepts/dijkstra-ai-programming-formalization.md`
+- Kept this as a source-backed supplement rather than a new concept page, because the article reinforces existing AI programming formalization principles: prompt/context quality, AI output verification, and preserving independent technical judgment.

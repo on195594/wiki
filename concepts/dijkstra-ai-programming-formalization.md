@@ -1,10 +1,10 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-05-11
 type: concept
 tags: [llm, workflow, research, note]
-sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md]
+sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md]
 status: stable
 ---
 
@@ -57,6 +57,14 @@ status: stable
 - TDD、CI/CD、接口定义在 AI 时代更重要，而不是更不重要
 - AI 最适合降低形式化生产成本，而不是替代形式化本身
 
+## AI coding shifts skill upstream
+InfoWorld 的文章 `[[infoworld-ai-coding-three-skills-2026-04-16]]` 补充了同一原则的工程表述：当 AI 接管更多代码生成后，开发者的能力重心会从“直接敲代码”上移到三件事：
+- 把需求、架构、接口、异常、性能和资源约束表达成高质量上下文
+- 审查和验证 AI 输出，而不是相信模型自称正确
+- 保持对代码和系统复杂性的独立判断，避免长期依赖生成器形成认知负债
+
+这不是和“形式化约束仍是核心”相冲突，而是它的实践后果：prompt/context 可以作为意图入口，但真正承担工程可靠性的仍然是 spec、测试、接口、review 和可回滚验证。
+
 ## Why it matters for Hermes
 这篇文章的观点和 `[[hermes-knowledge-architecture]]` 很一致：
 - 长期知识不能只停留在聊天层
@@ -72,6 +80,7 @@ AI 没有让形式化消失，而是让形式化变得更便宜。
 
 ## Related
 - [[dijkstra-ewd667-vs-ai-programming-article]]
+- [[infoworld-ai-coding-three-skills-2026-04-16]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-retrieval-priority-and-answer-path]]
