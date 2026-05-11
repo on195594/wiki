@@ -488,3 +488,10 @@
 - Reviewed the eight unindexed `queries/` draft pages left out of `index.md`.
 - Decision: no index promotion. Keep `project-kickoff-education-fund-weekly-page-v2.md` as the education-fund weekly-page resumption candidate; treat the older education-fund drafts, skill-install review drafts, and weekly-health enhancement drafts as superseded/generated kickoff drafts.
 - No draft query pages were deleted or edited.
+
+## [2026-05-11] tooling | Wiki health check automation
+- Created: `_meta/wiki-health-check-automation-plan.md`
+- Created: `_meta/scripts/wiki_health_check.py`
+- Created: `_meta/wiki-health-check-runbook.md`
+- Third-party review: Gemini CLI `gemini-2.5-flash` in read-only plan mode; no blocking findings. Accepted review fixes added exit-code semantics, detailed git status, notes semantics, and formal-page H1 exclusions.
+- Verification: script JSON output passed with P0=0, P1=0, P2=8 known draft query pages; Markdown output path tested; no active Hermes runtime, memory, skill, cron, MCP, or gateway changes.
