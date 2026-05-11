@@ -467,3 +467,10 @@
 - Updated: `concepts/claude-code-practical-workflow-tips.md`
 - Backups: `index.md.bak.20260509_124115`, `log.md.bak.20260509_124115`, `claude-code-practical-workflow-tips.md.bak.20260509_124115`
 - Compiled the article into a reusable concept about context-budget management for AI coding assistants: session boundaries, layered instructions, capped tool output, explicit file scope, subagent isolation, and version-gated tool settings.
+
+## [2026-05-11] ingest | Progressive knowledge system growth
+- Backups: `index.md.bak.20260511_160407`, `log.md.bak.20260511_160407`
+- Captured raw source: `raw/articles/makeuseof-obsidian-perfect-vault-one-thing-2026-05-08.md`
+- Created: `concepts/progressive-knowledge-system-growth.md`
+- Updated: `index.md`
+- Compiled the MakeUseOf Obsidian article into a reusable knowledge-system principle: use real problems to produce content first, then let structure, links, plugins, and automation grow from repeated friction.

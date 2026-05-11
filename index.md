@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-09 | Total pages: 68
+> Last updated: 2026-05-11 | Total pages: 69
 
 ## Entities
 
@@ -40,6 +40,7 @@
 - [[ordinary-investor-investment-system]] — 普通人投资方法论：先搭建长期系统，再谈标的、仓位与执行
 - [[personal-finance-and-education-fund-model]] — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，让教育基金按目标导向独立建模
 - [[personal-growth-operating-model]] — 个人成长域的 operating model：把成长作为职业升级、家庭沟通与判断质量的底层引擎
+- [[progressive-knowledge-system-growth]] — 知识系统的渐进式生长原则：先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长
 - [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
 - [[subagent-orchestration-patterns]] — Subagent 编排模式：按生命周期复杂度选择 inline tool、fan-out、agent pool 或 team，避免多智能体过度设计
