@@ -500,3 +500,9 @@
 - Captured raw source: `raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md`
 - Updated: `concepts/dijkstra-ai-programming-formalization.md`
 - Kept this as a source-backed supplement rather than a new concept page, because the article reinforces existing AI programming formalization principles: prompt/context quality, AI output verification, and preserving independent technical judgment.
+
+## [2026-05-11] ingest | LangChain agent development lifecycle
+- Captured raw source: `raw/articles/langchain-agent-development-lifecycle-2026-05-09.md`
+- Created: `concepts/agent-development-lifecycle.md`
+- Updated: `index.md`
+- Compiled LangChain's lifecycle model into a Hermes-native concept: Build → Test → Deploy → Monitor, with Govern as a cross-cutting layer for cost, tool permissions, context/assets, traceability, and controlled promotion. No memory, skill, cron, runtime, or gateway changes were made.
