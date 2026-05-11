@@ -474,3 +474,11 @@
 - Created: `concepts/progressive-knowledge-system-growth.md`
 - Updated: `index.md`
 - Compiled the MakeUseOf Obsidian article into a reusable knowledge-system principle: use real problems to produce content first, then let structure, links, plugins, and automation grow from repeated friction.
+
+## [2026-05-11] ingest | Anthropic Dreaming and agent experience consolidation
+- Backups: `_backups/anthropic-dreaming-ingestion-20260511_175218/`
+- Captured raw source: `raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md`
+- Created: `concepts/agent-experience-consolidation-loops.md`
+- Created: `queries/hermes-agent-experience-consolidation-capability-assessment.md`
+- Updated: `index.md`
+- Compiled the VentureBeat/Anthropic Dreaming article into a reusable concept about agent experience consolidation loops, and recorded a Hermes capability assessment: current Hermes has memory, skills, session search, curator, cron, delegation, and goal/judge primitives, but full Auto Dream or `/dreaming` is not verified as native in the local v0.13.0 checkout.

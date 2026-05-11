@@ -2,11 +2,12 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-11 | Total pages: 69
+> Last updated: 2026-05-11 | Total pages: 71
 
 ## Entities
 
 ## Concepts
+- [[agent-experience-consolidation-loops]] — Agent 经验固化闭环：从历史任务、失败、成功路径和用户纠正中提取可复用经验，并按 memory/skill/wiki/closeout/evaluator/cron 分层路由
 - [[agent-orchestration-production-tradeoffs]] — Agent 编排的生产取舍：按成本/规模、延迟、平衡控制或高风险准确率选择 sequential、fan-out、supervisor-worker 或 reflexive loop
 - [[agent-self-validation-loops]] — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件，把 coding agent 任务变成可验证迭代回路
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
@@ -60,6 +61,7 @@
 ## Queries
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
+- [[hermes-agent-experience-consolidation-capability-assessment]] — Hermes 对 Anthropic Dreaming/Outcomes/多 agent 能力的本地能力映射：当前具备 primitives，可组合实现经验固化闭环，但完整 Auto Dream/`/dreaming` 仍未证实为本机原生能力
 - [[gstack-project-execution-lane-validation-case]] — 用真实小项目验证 gstack 5-skill lane 的闭环价值：从 intake、review 到 QA，确认它能把模糊想法压成可推进的 kickoff artifact
 - [[hermes-project-dev-office-hours-review]] — Hermes 项目开发环境的 office-hours 审查：识别 `~/.hermes` 中项目代码、状态、脚本、cron 与文档混杂的问题
 - [[hermes-project-dev-migration-plan-eng-review]] — Hermes 项目开发迁移计划 eng review：将具备独立边界的内容迁移到项目目录，恢复项目级执行单元
