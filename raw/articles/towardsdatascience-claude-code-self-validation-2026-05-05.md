@@ -8,7 +8,7 @@ published_at: 2026-05-05T15:00:00+00:00
 captured_at: 2026-05-06 11:09:06 +0800
 status: raw
 tags: [claude-code, coding-agent, self-validation, workflow, mcp, browser]
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260506-105713-How-to-Make-Claude-Code-Validate-its-own-Work-—-https-towardsdatascience.com-how-114388-566422908-summary.md
+summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260513-133845-How-to-Make-Claude-Code-Validate-its-own-Work-Towards-Data-Science-389451-994746960-summary.md
 ---
 
 # How to Make Claude Code Validate its own Work

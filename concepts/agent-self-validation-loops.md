@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-05-06
+updated: 2026-05-13
 type: concept
 tags: [agent, coding-agent, validation, claude-code, mcp, browser, workflow, hermes]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
@@ -112,6 +112,27 @@ Hermes 的默认工作方式已经要求“工具优先、验证后再声明完�
 5. LLM pipeline 重构要比较语义等价，不要假装随机输出能字节级一致。
 6. 任何“完成”都应附带验证证据：命令、日志、截图、文件路径或差异说明。
 7. 如果无法验证，agent 应停止并报告限制，而不是继续猜。
+
+## Prompt template
+适合直接放进 coding-agent 任务描述：
+
+```text
+完成实现后不要直接声明完成。请先运行约定验证命令，读取输出；如果失败，基于错误继续修改并重跑验证。循环直到验证通过，或遇到无法自行解决的歧义/权限/环境问题。
+
+最终回复必须包含：
+- 改了什么
+- 运行了哪些验证命令或浏览器检查
+- 验证结果证据
+- 仍未解决的限制或需要我决策的问题
+
+如果连续 3 轮验证仍不收敛，请停止修改，汇报每轮失败证据和你判断的根因，不要继续猜。
+```
+
+UI/Web 任务追加：
+
+```text
+启动本地服务后，用浏览器访问目标页面，检查 console/DOM/截图；将实际页面与设计稿或目标描述对比，修复可确认差异。无法从截图/DOM 判断的设计取舍要列为待确认问题。
+```
 
 ## What this adds to the existing wiki
 已有 [[claude-code-practical-workflow-tips]] 覆盖 Claude Code 的使用入口和浏览器验证价值；[[agentic-content-pipeline-design-patterns]] 覆盖生产级 agent pipeline 的中间产物与人工审核；[[hermes-ai-workflow-formalization-principles]] 覆盖自然语言到形式化约束的路线。
