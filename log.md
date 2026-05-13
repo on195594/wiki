@@ -536,3 +536,12 @@
 - Audit before round 2: declared=37, undeclared_unique=77, undeclared_instances=126.
 - Audit after round 2: declared=43, undeclared_unique=61, undeclared_instances=91, duplicate_tag_files=0.
 - Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` passed.
+
+## [2026-05-13] governance | Wiki tag taxonomy round 3 decisions
+- Updated `SCHEMA.md` with semantic decision tags: `lifeos` under Domain tags and `harness` under Facet tags.
+- Decision: `lifeos` is a stable cross-domain LifeOS subject with a central overview page, so it belongs in taxonomy.
+- Decision: `harness` is a stable Hermes/agent execution-environment facet and should stay distinct from `model-profiles`.
+- Deferred: `gstack` remains unchanged because the main concept page is still `status: draft`; `kickoff` remains unchanged because it marks generated draft query pages. If a later draft-query cleanup handles `kickoff`, also handle `project-kickoff`.
+- Audit before round 3: declared=43, undeclared_unique=61, undeclared_instances=91.
+- Audit after round 3: declared=45, undeclared_unique=59, undeclared_instances=78, duplicate_tag_files=0.
+- Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` and `git diff --stat` passed.

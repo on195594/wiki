@@ -76,6 +76,7 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - deployment
 - lifecycle
 - optimization
+- lifeos
 
 **Facet tags** describe a cross-cutting angle, method, tool mode, or evaluation lens that can apply across multiple subject areas:
 
@@ -88,6 +89,7 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - verification
 - operating-model
 - model-profiles
+- harness
 
 Rules:
 - If a tag appears on 3+ pages, consider adding it to this taxonomy.
