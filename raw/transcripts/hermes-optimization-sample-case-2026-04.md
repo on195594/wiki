@@ -1,6 +1,7 @@
 ---
 title: Hermes optimization sample case (April 2026)
 source_type: transcript_summary
+source_url: unavailable-local-session-summary
 captured_at: 2026-04-16
 status: raw
 ---

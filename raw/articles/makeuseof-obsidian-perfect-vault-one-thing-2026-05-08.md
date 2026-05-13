@@ -2,6 +2,7 @@
 title: I stopped trying to build the perfect Obsidian vault and started using it for one thing instead
 source: MakeUseOf
 url: https://www.makeuseof.com/stopped-building-perfect-obsidian-vault-use-it-for-one-thing/
+source_url: https://www.makeuseof.com/stopped-building-perfect-obsidian-vault-use-it-for-one-thing/
 published: 2026-05-08
 extracted: 2026-05-11
 status: raw-source

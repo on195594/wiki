@@ -6,6 +6,7 @@ source_url: https://www.langchain.com/blog/the-agent-development-lifecycle
 published: 2026-05-09T17:00:54Z
 captured: 2026-05-11
 type: raw-source
+status: raw
 tags: [agent, lifecycle, langchain, evaluation, deployment, monitoring, governance]
 extraction: direct web_extract returned a generated summary/truncated context; full article markdown fetched through Jina Reader.
 ---

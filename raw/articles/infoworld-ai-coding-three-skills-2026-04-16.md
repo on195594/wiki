@@ -7,6 +7,7 @@ original_url: https://share.google/48vtwnZtpcYvWsGw7
 published: 2026-04-16T19:48:44-07:00
 captured: 2026-05-11
 type: raw-source
+status: raw
 tags: [ai-coding, prompt-engineering, software-engineering, verification]
 extraction: share.google resolved to canonical InfoWorld article; full article text fetched through Jina Reader.
 ---
