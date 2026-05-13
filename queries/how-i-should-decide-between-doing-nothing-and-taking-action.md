@@ -3,7 +3,7 @@ title: How I Should Decide Between Doing Nothing and Taking Action
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, decision, patience, execution]
+tags: [investment, decision, patience, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-size-a-position.md, concepts/personal-investment-operating-rules.md]
 status: stable
 ---

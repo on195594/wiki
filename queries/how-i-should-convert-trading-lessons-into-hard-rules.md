@@ -3,7 +3,7 @@ title: How I Should Convert Trading Lessons into Hard Rules
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, rules, process]
+tags: [investment, trading, governance, workflow]
 sources: [queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, concepts/personal-investment-operating-rules.md]
 status: stable
 ---

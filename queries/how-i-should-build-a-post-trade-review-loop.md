@@ -3,7 +3,7 @@ title: How I Should Build a Post-Trade Review Loop
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, review, process]
+tags: [investment, trading, validation, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-review-a-losing-position.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-decide-between-doing-nothing-and-taking-action.md, concepts/personal-investment-operating-rules.md]
 status: stable
 ---

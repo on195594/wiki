@@ -3,7 +3,7 @@ title: How I Should Handle a Winning Position
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, winners, execution]
+tags: [investment, trading, winners, workflow]
 sources: [queries/how-i-should-size-a-position.md, queries/how-i-should-scale-into-and-out-of-a-position.md, queries/when-i-should-not-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md]
 status: stable
 ---

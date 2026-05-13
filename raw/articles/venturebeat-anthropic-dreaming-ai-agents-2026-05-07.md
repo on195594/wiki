@@ -2,7 +2,7 @@
 title: Anthropic introduces dreaming, a system that lets AI agents learn from their own mistakes
 created: 2026-05-11
 type: raw-source
-tags: [agent, ai-agent, dreaming, memory, evaluation, multi-agent, anthropic, hermes]
+tags: [agent, dreaming, memory, evaluation, multi-agent, anthropic, hermes]
 source_url: https://venturebeat.com/technology/anthropic-introduces-dreaming-a-system-that-lets-ai-agents-learn-from-their-own-mistakes
 publisher: VentureBeat
 published: 2026-05-07

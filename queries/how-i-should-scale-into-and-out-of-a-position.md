@@ -3,7 +3,7 @@ title: How I Should Scale Into and Out of a Position
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, position-sizing, execution]
+tags: [investment, trading, position-sizing, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
 ---

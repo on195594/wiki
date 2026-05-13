@@ -3,7 +3,7 @@ title: Hermes System Model-Specific Harness Optimization Plan
 created: 2026-04-30
 updated: 2026-04-30
 type: query
-tags: [hermes, optimization, model-profiles, harness, plan, validation]
+tags: [hermes, optimization, model-profiles, harness, workflow, validation]
 sources: [concepts/hermes-model-specific-harness-profiles.md, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, docs:hermes-agent]
 status: draft
 ---

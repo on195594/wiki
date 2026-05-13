@@ -3,7 +3,7 @@ title: Building AI Agents in Python with Pydantic AI
 created: 2026-05-01
 updated: 2026-05-01
 type: raw-source
-tags: [ai-agent, pydantic, structured-output, python, uncertainty]
+tags: [agent, pydantic, structured-output, python, uncertainty]
 source_url: https://machinelearningmastery.com/building-ai-agents-in-python-with-pydantic-ai/
 source_title: Building AI Agents in Python with Pydantic AI
 publisher: Machine Learning Mastery

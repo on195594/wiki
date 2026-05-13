@@ -71,6 +71,11 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - cron
 - browser
 - context-engineering
+- architecture
+- risk-control
+- deployment
+- lifecycle
+- optimization
 
 **Facet tags** describe a cross-cutting angle, method, tool mode, or evaluation lens that can apply across multiple subject areas:
 
@@ -82,6 +87,7 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - evaluation
 - verification
 - operating-model
+- model-profiles
 
 Rules:
 - If a tag appears on 3+ pages, consider adding it to this taxonomy.

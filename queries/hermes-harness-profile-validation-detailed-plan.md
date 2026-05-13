@@ -3,7 +3,7 @@ title: Hermes Harness Profile Validation Detailed Plan
 created: 2026-04-30
 updated: 2026-04-30
 type: query
-tags: [hermes, optimization, harness, model-profiles, validation, plan]
+tags: [hermes, optimization, harness, model-profiles, validation, workflow]
 sources: [queries/hermes-system-model-specific-harness-optimization-plan.md, concepts/hermes-model-specific-harness-profiles.md, docs:hermes-agent, skill:writing-plans, skill:hermes-project-and-extension-management]
 status: draft
 ---

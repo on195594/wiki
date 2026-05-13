@@ -3,7 +3,7 @@ title: How I Should Detect Repeat Mistakes in My Trading
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, review, pattern-detection]
+tags: [investment, trading, validation, pattern-detection]
 sources: [queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md]
 status: stable
 ---

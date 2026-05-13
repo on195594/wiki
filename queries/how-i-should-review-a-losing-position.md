@@ -3,7 +3,7 @@ title: How I Should Review a Losing Position
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, review, loss-management]
+tags: [investment, trading, validation, loss-management]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
 ---

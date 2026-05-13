@@ -3,7 +3,7 @@ title: Agent Self-Validation Loops
 created: 2026-05-06
 updated: 2026-05-13
 type: concept
-tags: [agent, coding-agent, validation, claude-code, mcp, browser, workflow, hermes]
+tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow, hermes]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
 status: stable
 ---

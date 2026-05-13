@@ -6,7 +6,7 @@ source_url: https://ahrefs.com/blog/how-i-do-content-engineering-with-claude-cod
 published_at: 2026-04-28T13:00:56+00:00
 captured_at: 2026-04-30 12:51:54 +0800
 status: raw
-tags: [claude-code, content-engineering, agent-workflow, skill-files, seo, mcp]
+tags: [claude-code, content-engineering, agent, workflow, skill-files, seo, mcp]
 ---
 
 # How I Do Content Engineering with Claude Code

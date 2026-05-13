@@ -2,7 +2,7 @@
 title: Four Agent Orchestration Patterns You Should Know About
 created: 2026-05-07
 type: raw-source
-tags: [agent, multi-agent, orchestration, architecture, benchmark, hermes, workflow]
+tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow]
 source_url: https://alphasignalai.substack.com/p/four-agent-orchestration-patterns
 original_url: https://share.google/h2kqzaUHDH95MUWc4
 publisher: AlphaSignal

@@ -528,3 +528,11 @@
 - Audit after schema update: declared=37, undeclared_unique=77, undeclared_instances=128.
 - Audit after alias normalization: declared=37, undeclared_unique=77, undeclared_instances=126, duplicate_tag_files=0.
 - Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` passed.
+
+## [2026-05-13] governance | Wiki tag taxonomy round 2
+- Updated `SCHEMA.md` with stable recurring tags: `architecture`, `risk-control`, `deployment`, `lifecycle`, `optimization`, `model-profiles`.
+- Normalized conservative aliases in frontmatter only: `ai-agent` → `agent`; `coding-agent` / `agent-workflow` → `ai-coding` or `agent` + `workflow`; `review` → `validation`; `process` / `execution` / `plan` → `workflow`; `rules` → `governance`; `benchmark` → `evaluation`.
+- Left ambiguous tags such as `lifeos`, `kickoff`, `gstack`, `harness`, `pydantic`, `structured-output`, and `typed-boundary` unchanged.
+- Audit before round 2: declared=37, undeclared_unique=77, undeclared_instances=126.
+- Audit after round 2: declared=43, undeclared_unique=61, undeclared_instances=91, duplicate_tag_files=0.
+- Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` passed.
