@@ -519,3 +519,12 @@
 - Updated: `concepts/hermes-ai-workflow-formalization-principles.md`
 - Patched skill: `subagent-driven-development`
 - Compiled the TDS article into the existing AI workflow formalization thread: for durable multi-session, multi-agent, or collaborative work, repo-local specs and validation records should be the source of truth rather than chat history. No memory, new skill, cron, runtime, MCP, wrapper, or Hermes core changes were made.
+
+## [2026-05-13] governance | Wiki tag taxonomy
+- Added reproducible audit script: `_meta/scripts/wiki_tag_audit.py`
+- Updated: `SCHEMA.md` tag taxonomy into Core / Domain / Facet groups.
+- Normalized first-pass formal-page aliases: `ai-agent` → `agent` in `concepts/typed-ai-agent-boundaries.md`; `benchmark` → `evaluation` in `concepts/agent-orchestration-production-tradeoffs.md`.
+- Audit before: declared=18, undeclared_unique=96, undeclared_instances=246.
+- Audit after schema update: declared=37, undeclared_unique=77, undeclared_instances=128.
+- Audit after alias normalization: declared=37, undeclared_unique=77, undeclared_instances=126, duplicate_tag_files=0.
+- Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` passed.

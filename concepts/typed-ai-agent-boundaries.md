@@ -3,7 +3,7 @@ title: Typed AI Agent Boundaries
 created: 2026-05-01
 updated: 2026-05-01
 type: concept
-tags: [ai-agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
+tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
 status: stable
 ---
