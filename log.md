@@ -512,3 +512,10 @@
 - Evidence project: `/home/lin/.hermes/projects/amazon-price-watch`
 - Evidence record: `docs/reviews/2026-05-11-agent-development-lifecycle-checklist.md`
 - Recorded the first project-level validation outcome for the lifecycle concept: a low-risk live worker maps cleanly to Build → Test → Deploy → Monitor with Govern as the cross-cutting boundary. This does not authorize runtime, cron, skill, memory, or methodology promotion.
+
+## [2026-05-13] ingest | TDS on spec-driven development
+- Captured raw source: `raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md`
+- Updated: `concepts/dijkstra-ai-programming-formalization.md`
+- Updated: `concepts/hermes-ai-workflow-formalization-principles.md`
+- Patched skill: `subagent-driven-development`
+- Compiled the TDS article into the existing AI workflow formalization thread: for durable multi-session, multi-agent, or collaborative work, repo-local specs and validation records should be the source of truth rather than chat history. No memory, new skill, cron, runtime, MCP, wrapper, or Hermes core changes were made.

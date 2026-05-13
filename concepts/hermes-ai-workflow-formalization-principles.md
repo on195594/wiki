@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-05-13
 type: concept
 tags: [hermes, llm, workflow, decision, note]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
 status: stable
 ---
 
@@ -33,6 +33,15 @@ Hermes 不应把对话本身当作最终控制面，而应不断把模糊意图�
 实践含义：
 - 能落文件就别只停留在对话里
 - 能拆成小页面、小技能、小检查项就不要做成大杂烩
+
+## Principle 2.5: durable projects need a spec source of truth
+`[[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]` 对 Hermes 的补充是：当工作跨多轮会话、多 agent 或多人协作时，聊天历史不能承担 source of truth。真正稳定的控制面应该是项目内 docs/spec 文件、计划、验收标准和验证记录。
+
+实践含义：
+- durable agent/project work should use docs/spec files as the source of truth, not chat history
+- 需求或实现过程中发现约束变化时，先更新 spec，再调整实现和测试
+- 临时聊天指令不能成为唯一决策记录
+- 具体 spec 目录形态参考 `writing-plans` skill 的 “Spec-driven development for agentic projects”，不要在 wiki concept 里重复维护文件清单
 
 ## Principle 3: formal artifacts are the real memory of work
 真正可靠的长期资产不是聊天记录，而是形式化产物：
@@ -101,6 +110,7 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 ## Related
 - [[dijkstra-ai-programming-formalization]]
 - [[dijkstra-ewd667-vs-ai-programming-article]]
+- [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-knowledge-base-operating-flow]]
 - [[hermes-memory-skills-wiki-boundaries]]

@@ -1,10 +1,10 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-05-11
+updated: 2026-05-13
 type: concept
 tags: [llm, workflow, research, note]
-sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md]
+sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
 status: stable
 ---
 
@@ -50,6 +50,14 @@ status: stable
 - 形式化产物负责高强度验证
 - AI 负责把两者连接起来
 
+## Spec as the durable source of truth (2026 evidence)
+`[[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]` 补充了这个方向的更具体工程证据：当项目跨多轮会话、多 agent 或多人协作时，spec / roadmap / validation 文档应成为持久 source of truth，而不是聊天历史。
+
+这带来三条实践判断：
+- spec / roadmap / validation documents are the durable source of truth across sessions and agents, not chat history
+- implementation discoveries should update the spec first, then rework implementation and tests
+- agent speed amplifies spec debt because ambiguous requirements propagate faster and wider than with manual coding
+
 ## Practical implication
 对 AI 编程工作流的直接启示是：
 - 不要把提示词当成完整规格
@@ -81,6 +89,7 @@ AI 没有让形式化消失，而是让形式化变得更便宜。
 ## Related
 - [[dijkstra-ewd667-vs-ai-programming-article]]
 - [[infoworld-ai-coding-three-skills-2026-04-16]]
+- [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-retrieval-priority-and-answer-path]]
