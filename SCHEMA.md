@@ -34,14 +34,16 @@ status: draft | stable
 ```
 
 ## Tag Taxonomy
+
+Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before using it on pages.
+
+**Core tags** describe broad, cross-wiki categories:
+
 - hermes
 - knowledge-base
 - agent
 - llm
 - mcp
-- devops
-- linux
-- networking
 - automation
 - workflow
 - tool
@@ -50,10 +52,42 @@ status: draft | stable
 - research
 - comparison
 - decision
-- product
 - note
 
-规则：新增 tag 前先更新本节，再在页面里使用。
+**Domain tags** name the main subject area of a page:
+
+- devops
+- linux
+- networking
+- product
+- investment
+- trading
+- governance
+- validation
+- project
+- monitoring
+- memory
+- skills
+- cron
+- browser
+- context-engineering
+
+**Facet tags** describe a cross-cutting angle, method, tool mode, or evaluation lens that can apply across multiple subject areas:
+
+- ai-coding
+- claude-code
+- multi-agent
+- subagent
+- orchestration
+- evaluation
+- verification
+- operating-model
+
+Rules:
+- If a tag appears on 3+ pages, consider adding it to this taxonomy.
+- If a tag appears on 1-2 pages, prefer an existing broader tag unless the narrow tag has clear future retrieval value.
+- If two tags mean the same thing, keep one canonical spelling and replace the other.
+- Reserved but currently unused tags are allowed when they match stable future page areas, e.g. `devops`, `linux`, `networking`, `product`.
 
 ## Page Thresholds
 - 某个主题在 2 个以上来源重复出现，或在单个来源中足够核心时，创建独立页面
