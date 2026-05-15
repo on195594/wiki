@@ -545,3 +545,9 @@
 - Audit before round 3: declared=43, undeclared_unique=61, undeclared_instances=91.
 - Audit after round 3: declared=45, undeclared_unique=59, undeclared_instances=78, duplicate_tag_files=0.
 - Validation: wiki health pass=true, P0=0, P1=0, P2=8 known draft query pages; `git diff --check` and `git diff --stat` passed.
+
+## [2026-05-15] ingest | TDS on production AI Agent evaluation framework
+- Captured raw source: `raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md`
+- Created: `concepts/production-ai-agent-evaluation-framework.md`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page about evaluating production AI Agents across retrieval, generation, agent behavior, and production operations. Preserved source thresholds only as directional benchmarks, not mandatory standards. No memory, skill, cron, runtime, MCP, wrapper, or Hermes core changes were made.
