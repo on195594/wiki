@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-15 | Total pages: 73
+> Last updated: 2026-05-15 | Total pages: 74
 
 ## Entities
 
@@ -28,6 +28,7 @@
 - [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径
 - [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、wiki 文件结构、检索与回写闭环
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
+- [[hermes-skill-refactoring-methodology]] — Hermes active skill 重构方法论：以窄职责、前置安全边界、reference 分层、父验证和独立审查闭环优化 `test-driven-development`
 - [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的可执行架构：default profile 为主脑，wiki/memory/skills/cron/MCP/profiles 严格分层并按边界推进
 - [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：什么进 wiki、memory、skill、cron、MCP，按官方定义和本地知识层分开判断
 - [[hermes-memory-governance-notes]] — 一次实际 memory 减脂后沉淀出的治理规则：什么该继续留在 memory，什么该迁移到 wiki、skill 或 session

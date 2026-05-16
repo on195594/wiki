@@ -551,3 +551,14 @@
 - Created: `concepts/production-ai-agent-evaluation-framework.md`
 - Updated: `index.md`
 - Compiled the article into a reusable concept page about evaluating production AI Agents across retrieval, generation, agent behavior, and production operations. Preserved source thresholds only as directional benchmarks, not mandatory standards. No memory, skill, cron, runtime, MCP, wrapper, or Hermes core changes were made.
+
+## [2026-05-15] governance | Draft query cleanup
+- Deleted eight unindexed `queries/` draft pages previously reported as `known_unindexed_draft_query`.
+- Updated: `_meta/draft-query-inventory.md`
+- Decision: user requested full cleanup with no retained draft query pages; deleted drafts were not promoted to `index.md` and were not archived.
+- Validation target: wiki health check should report P0=0, P1=0, P2=0 after cleanup.
+
+## [2026-05-15] concept | Hermes skill refactoring methodology
+- Created: `concepts/hermes-skill-refactoring-methodology.md`
+- Updated: `index.md`
+- Compiled the `test-driven-development` skill optimization into a reusable Hermes active-skill refactoring methodology: narrow default entry, front-loaded safety boundaries, reference routing with trigger terms, parent verification for delegated work, and independent review closeout.
