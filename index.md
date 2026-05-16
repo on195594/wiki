@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-15 | Total pages: 74
+> Last updated: 2026-05-16 | Total pages: 75
 
 ## Entities
 
@@ -39,6 +39,7 @@
 - [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查
 - [[lifeos-overview]] — LifeOS 总览页：定义人生操作系统的一级领域、系统层次和 Hermes 在其中的执行内核角色
 - [[llm-context-engineering-layer]] — Context engineering 作为 RAG 与 prompt 之间的中间层：管理 memory、compression、re-ranking 与 token budget
+- [[llm-summary-identification-step]] — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
 - [[leontraveller-trading-and-investment-system]] — Leontraveller 的交易系统观：不抄底、不和市场争辩，转向顺势、止损、控回撤与简单可执行规则
 - [[money-as-tool-and-investment-vs-consumption-framework]] — 财富决策框架：把钱当作工具，区分资产投资、自我投资与纯消费
 - [[ordinary-investor-investment-system]] — 普通人投资方法论：先搭建长期系统，再谈标的、仓位与执行

@@ -30,6 +30,10 @@ type: entity | concept | comparison | query | summary
 tags: [tag1, tag2]
 sources: [raw/articles/source-name.md]
 status: draft | stable
+
+# Raw-source files under raw/ may use:
+type: raw-source
+status: raw
 ---
 ```
 

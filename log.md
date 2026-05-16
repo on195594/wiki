@@ -562,3 +562,11 @@
 - Created: `concepts/hermes-skill-refactoring-methodology.md`
 - Updated: `index.md`
 - Compiled the `test-driven-development` skill optimization into a reusable Hermes active-skill refactoring methodology: narrow default entry, front-loaded safety boundaries, reference routing with trigger terms, parent verification for delegated work, and independent review closeout.
+
+## [2026-05-16] ingest | TDS on LLM summary identification step
+- Captured raw source: `raw/articles/towardsdatascience-llm-summarizers-identification-step-2026-05-10.md`
+- Created: `concepts/llm-summary-identification-step.md`
+- Updated: `index.md`
+- Cross-linked: `concepts/production-ai-agent-evaluation-framework.md`, `concepts/hermes-ai-workflow-formalization-principles.md`
+- Compiled the article into a reusable concept page about treating summaries as evidence-backed claim objects: identify source support before generation, require support categories and evidence pointers, and constrain review stages to weakening/deletion/insufficient-evidence operations. Source fixture numbers were preserved only as directional observations, not mandatory thresholds.
+- Follow-up patch after Claude review: documented raw-source frontmatter in `SCHEMA.md`, normalized the Gemini output path to `~/.hermes/...`, removed duplicate source URL and obvious DOM sharing/footer noise from the raw article, and unwrapped Summary wikilinks in the concept page.

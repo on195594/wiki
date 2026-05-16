@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-05-15
+updated: 2026-05-16
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md]
@@ -158,6 +158,7 @@ status: stable
 - `[[agent-self-validation-loops]]` 关注单个任务如何通过目标、反馈、迭代完成自我验证。
 - `[[agent-development-lifecycle]]` 关注 Build → Test → Deploy → Monitor 的生命周期。
 - `[[agent-orchestration-production-tradeoffs]]` 关注不同 Agent 编排模式在成本、延迟、准确性和规模之间的取舍。
+- `[[llm-summary-identification-step]]` 补充摘要/分析类输出在生成前应先判定 claim 是否被来源支持。
 - 本页补充生产级 eval 指标层：如何观察和量化一个 Agent 系统是否可靠。
 
 ## Related
@@ -165,6 +166,7 @@ status: stable
 - [[agent-self-validation-loops]]
 - [[agent-development-lifecycle]]
 - [[agent-orchestration-production-tradeoffs]]
+- [[llm-summary-identification-step]]
 - [[typed-ai-agent-boundaries]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[index]]

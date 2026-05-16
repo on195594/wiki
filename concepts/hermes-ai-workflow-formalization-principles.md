@@ -1,7 +1,7 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-05-13
+updated: 2026-05-16
 type: concept
 tags: [hermes, llm, workflow, decision, note]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
@@ -111,6 +111,7 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 - [[dijkstra-ai-programming-formalization]]
 - [[dijkstra-ewd667-vs-ai-programming-article]]
 - [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]
+- [[llm-summary-identification-step]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-knowledge-base-operating-flow]]
 - [[hermes-memory-skills-wiki-boundaries]]
