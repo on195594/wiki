@@ -161,6 +161,10 @@ status: stable
 - `[[llm-summary-identification-step]]` 补充摘要/分析类输出在生成前应先判定 claim 是否被来源支持。
 - 本页补充生产级 eval 指标层：如何观察和量化一个 Agent 系统是否可靠。
 
+## Relationship to document fidelity risk
+
+`[[ai-agent-document-fidelity-risk]]` adds a content-preservation failure mode to this evaluation framework: long-horizon Agent tests should not only measure final task success, but also whether source documents survive multi-step edits without silent rewrites, omissions, or hallucinated substitutions.
+
 ## Relationship to LLM engineering map
 
 `[[llm-engineering-knowledge-map]]` frames evaluation as the final control layer of the LLM engineering stack. This page keeps the narrower production Agent eval checklist for retrieval, generation, tool behavior, cost, and latency.
@@ -172,6 +176,7 @@ status: stable
 - [[agent-orchestration-production-tradeoffs]]
 - [[llm-summary-identification-step]]
 - [[typed-ai-agent-boundaries]]
+- [[ai-agent-document-fidelity-risk]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[index]]
 - [[log]]

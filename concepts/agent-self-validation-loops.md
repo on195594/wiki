@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-05-13
+updated: 2026-05-17
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow, hermes]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
@@ -134,6 +134,10 @@ UI/Web 任务追加：
 启动本地服务后，用浏览器访问目标页面，检查 console/DOM/截图；将实际页面与设计稿或目标描述对比，修复可确认差异。无法从截图/DOM 判断的设计取舍要列为待确认问题。
 ```
 
+## Relationship to document fidelity risk
+
+`[[ai-agent-document-fidelity-risk]]` narrows what “verified” must mean for document-transform tasks: the agent should prove not only that the task completed, but also that source content was not silently deleted, rewritten, or hallucinated across steps.
+
 ## What this adds to the existing wiki
 已有 [[claude-code-practical-workflow-tips]] 覆盖 Claude Code 的使用入口和浏览器验证价值；[[agentic-content-pipeline-design-patterns]] 覆盖生产级 agent pipeline 的中间产物与人工审核；[[hermes-ai-workflow-formalization-principles]] 覆盖自然语言到形式化约束的路线。
 
@@ -145,6 +149,7 @@ UI/Web 任务追加：
 - [[ai-coding-agent-workflow-types]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[typed-ai-agent-boundaries]]
+- [[ai-agent-document-fidelity-risk]]
 - [[hermes-context-layer-operating-rules]]
 - [[wiki-ingestion-workflow]]
 - [[index]]

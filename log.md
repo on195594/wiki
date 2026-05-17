@@ -589,3 +589,11 @@
 - Backups: `index.md.bak.20260517_173555`, `log.md.bak.20260517_173555`, `ai-coding-assistant-context-budget-management.md.bak.20260517_173555`, `codex-agent-workflow-layering.md.bak.20260517_173555`, `claude-code-practical-workflow-tips.md.bak.20260517_173555`
 - Compiled the article into a reusable repository intelligence concept: index the repo, build dependency graphs, rank core files, detect communities, use Git co-change signals, treat dead-code results as candidates, keep architecture decisions near source, and generate short AI context files. No Repowise default-tool, active skill, cron, runtime, MCP, or Hermes core change was made.
 - Follow-up patch after Claude review: corrected the raw-source nested Jina provenance note, marked the concept as `draft` until local validation, unwrapped Summary wikilinks, and added the new page to related-page navigation lists.
+
+## [2026-05-17] ingest | VentureBeat on frontier AI document fidelity risk
+- Captured raw source: `raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md`
+- Created: `concepts/ai-agent-document-fidelity-risk.md`
+- Updated: `index.md`
+- Cross-linked: `concepts/production-ai-agent-evaluation-framework.md`, `concepts/agent-self-validation-loops.md`, `concepts/typed-ai-agent-boundaries.md`
+- Compiled the article into a reusable concept about multi-step AI Agent document-fidelity risk: frontier models may silently rewrite or distort content, generic tools can worsen degradation, and long workflows need short steps, diff/read-back evidence, reversible tests, narrow tools, and intermediate audit gates. DELEGATE-52 figures were preserved as source-specific directional benchmarks, not mandatory Hermes thresholds.
+- Claude review: `_meta/reviews/2026-05-17-ai-agent-document-fidelity-risk-claude-review.md`; accepted minor patches removed duplicate raw metadata and added the `research` tag. A model-name anomaly in the raw source was verified against live VentureBeat HTML and preserved only as source text, not as a durable concept claim.

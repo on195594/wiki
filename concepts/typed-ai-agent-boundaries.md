@@ -1,7 +1,7 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-05-01
+updated: 2026-05-17
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
@@ -103,6 +103,10 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 - 本页补上 agent 内部的具体工程边界：structured output、function tools、dependency injection。
 - `[[ai-coding-agent-workflow-types]]` 关注 agent 放在哪种执行入口中；本页关注 agent 进入工程系统时接口如何收窄。
 
+## Relationship to document fidelity risk
+
+`[[ai-agent-document-fidelity-risk]]` explains why wide file read/write tools are not sufficient safety controls for autonomous document work. Typed boundaries should be paired with narrow, domain-specific tools and explicit validation of content preservation.
+
 ## Applied Hermes practice
 
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 将本页原则转成我使用 Hermes 做 AI 编程时的默认最佳实践：先压 contract，再选择 execution lane，再用 typed output、窄工具、显式依赖和分层验证控制不确定性。
@@ -115,6 +119,7 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 - [[hermes-context-layer-operating-rules]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- [[ai-agent-document-fidelity-risk]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
