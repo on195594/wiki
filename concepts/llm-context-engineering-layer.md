@@ -1,7 +1,7 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-05-17
 type: concept
 tags: [llm, agent, workflow, research]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md]
@@ -91,6 +91,10 @@ Re-ranker 会结合领域标签与相关性，再次决定优先级。
 ## Takeaway
 一句话概括：
 RAG 解决“找到信息”，context engineering 解决“让模型在有限上下文里持续做对事”。
+
+## Relationship to LLM engineering map
+
+`[[llm-engineering-knowledge-map]]` places context engineering inside the broader LLM system stack: after representation, architecture, training, and inference constraints, but before final evaluation and monitoring. This page remains the narrower reference for the context/RAG boundary.
 
 ## Related
 - [[hermes-knowledge-architecture]]

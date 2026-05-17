@@ -1,7 +1,7 @@
 ---
 title: LLM Summary Identification Step
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-05-17
 type: concept
 tags: [llm, workflow, validation, risk-control, architecture]
 sources: [raw/articles/towardsdatascience-llm-summarizers-identification-step-2026-05-10.md]
@@ -161,6 +161,10 @@ LLM 摘要常见失败是跳过 identification，直接 estimation：模板需�
 5. 审查阶段是否被禁止新增或强化 claim？
 6. 模板是否会诱导模型填满不存在的栏目？
 7. 最终输出是否保留来源限制，而不是只给流畅结论？
+
+## Relationship to LLM engineering map
+
+`[[llm-engineering-knowledge-map]]` describes evaluation and grounding as system layers. This page is the narrower pattern for summary tasks: convert source-backed outputs into claim objects before rendering fluent prose.
 
 ## Related
 - [[production-ai-agent-evaluation-framework]]

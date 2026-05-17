@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-16 | Total pages: 75
+> Last updated: 2026-05-17 | Total pages: 77
 
 ## Entities
 
@@ -14,6 +14,7 @@
 - [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、Agent 行为和生产运营四层指标评估可靠性，阈值只保留为数量级参考
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
 - [[ai-coding-assistant-context-budget-management]] — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
+- [[repository-level-code-intelligence-layer]] — 仓库级代码智能层：用索引、依赖图、中心性排序、Git 共变、死代码候选和架构决策记录，为 AI coding agent 生成低噪音项目上下文
 - [[agentic-content-pipeline-design-patterns]] — Agentic 内容生产 pipeline 的设计模式：专家流程、skill files、MCP 数据源、中间产物、人工审核与可调试迭代
 - [[claude-code-practical-workflow-tips]] — Claude Code 的实用工作流要点：侧边提问、浏览器验证、自动循环、多目录访问与跨设备延续
 - [[codex-agent-workflow-layering]] — Codex 的分层 agent 工作流：prompt、planning、AGENTS.md、skill、MCP 与 automation 各司其职
@@ -39,6 +40,7 @@
 - [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查
 - [[lifeos-overview]] — LifeOS 总览页：定义人生操作系统的一级领域、系统层次和 Hermes 在其中的执行内核角色
 - [[llm-context-engineering-layer]] — Context engineering 作为 RAG 与 prompt 之间的中间层：管理 memory、compression、re-ranking 与 token budget
+- [[llm-engineering-knowledge-map]] — LLM 工程知识地图：从文本表示、Transformer、训练对齐、推理优化、RAG、Prompt 到评估监控的系统分层导航
 - [[llm-summary-identification-step]] — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
 - [[leontraveller-trading-and-investment-system]] — Leontraveller 的交易系统观：不抄底、不和市场争辩，转向顺势、止损、控回撤与简单可执行规则
 - [[money-as-tool-and-investment-vs-consumption-framework]] — 财富决策框架：把钱当作工具，区分资产投资、自我投资与纯消费

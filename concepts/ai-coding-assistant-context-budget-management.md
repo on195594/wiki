@@ -1,7 +1,7 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-05-09
+updated: 2026-05-17
 type: concept
 tags: [ai-coding, agent, context-engineering, cost-control, claude-code, hermes]
 sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
@@ -110,8 +110,13 @@ Verification:
 
 这些更适合在项目或工具版本验证后进入 skill/reference，而不是直接变成全局规范。
 
+## Relationship to repository intelligence
+
+`[[repository-level-code-intelligence-layer]]` complements context budget management by changing the input source: instead of letting an AI coding assistant scan broad repository surfaces, first derive high-density repository signals such as core files, module communities, co-change risks, and decision notes.
+
 ## Related
 - [[claude-code-practical-workflow-tips]]
+- [[repository-level-code-intelligence-layer]]
 - [[llm-context-engineering-layer]]
 - [[hermes-context-engineering-design-priorities]]
 - [[hermes-context-layer-operating-rules]]

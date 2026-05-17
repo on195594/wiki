@@ -1,7 +1,7 @@
 ---
 title: Claude Code Practical Workflow Tips
 created: 2026-04-17
-updated: 2026-05-09
+updated: 2026-05-17
 type: concept
 tags: [claude-code, agent, workflow, automation, browser]
 sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
@@ -122,9 +122,14 @@ Analytics Vidhya 的 Claude Code token-saving 清单把另一个维度补齐：C
 - 自动 loop / schedule / remote control 带来便利，也意味着更高的权限与误操作风险。
 - 浏览器验证闭环主要对 Web 类任务收益最高，对纯后端或纯文本任务不一定同等重要。
 
+## Relationship to repository intelligence
+
+`[[repository-level-code-intelligence-layer]]` strengthens the “right filesystem scope” rule: Claude Code should receive structured repository context and high-value starting files, not default to unbounded full-repository exploration.
+
 ## Related
 - [[ai-coding-assistant-context-budget-management]]
 - [[agent-self-validation-loops]]
+- [[repository-level-code-intelligence-layer]]
 - [[wiki-ingestion-workflow]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-context-engineering-design-priorities]]

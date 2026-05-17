@@ -1,7 +1,7 @@
 ---
 title: Codex Agent Workflow Layering
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-05-17
 type: concept
 tags: [agent, llm, mcp, automation, workflow, configuration, tool]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md]
@@ -135,9 +135,14 @@ automation 不负责设计方法，只负责按时间和环境调度已经成熟
 - 只让 agent 生成代码，不要求验证和审查
 - 一个线程长期混装多个任务，导致上下文膨胀
 
+## Relationship to repository intelligence
+
+`[[repository-level-code-intelligence-layer]]` adds a repo-analysis layer beneath `AGENTS.md`: durable repo rules and context files should be informed by indexed structure, dependency graph signals, Git history, and verified architecture decisions rather than hand-written summaries alone.
+
 ## Related
 - [[hermes-agent-workflow-layering-and-adoption-order]]
 - [[claude-code-practical-workflow-tips]]
+- [[repository-level-code-intelligence-layer]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[wiki-ingestion-workflow]]
 - [[index]]

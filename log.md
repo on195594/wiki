@@ -570,3 +570,22 @@
 - Cross-linked: `concepts/production-ai-agent-evaluation-framework.md`, `concepts/hermes-ai-workflow-formalization-principles.md`
 - Compiled the article into a reusable concept page about treating summaries as evidence-backed claim objects: identify source support before generation, require support categories and evidence pointers, and constrain review stages to weakening/deletion/insufficient-evidence operations. Source fixture numbers were preserved only as directional observations, not mandatory thresholds.
 - Follow-up patch after Claude review: documented raw-source frontmatter in `SCHEMA.md`, normalized the Gemini output path to `~/.hermes/...`, removed duplicate source URL and obvious DOM sharing/footer noise from the raw article, and unwrapped Summary wikilinks in the concept page.
+
+
+## [2026-05-17] ingest | TDS on LLM engineering knowledge map
+- Captured raw source: `raw/articles/towardsdatascience-must-know-topics-llm-engineer-2026-05-09.md`
+- Created: `concepts/llm-engineering-knowledge-map.md`
+- Updated: `index.md`
+- Cross-linked: `concepts/llm-context-engineering-layer.md`, `concepts/production-ai-agent-evaluation-framework.md`, `concepts/llm-summary-identification-step.md`
+- Backups: `index.md.bak.20260517_162624`, `log.md.bak.20260517_162624`, `llm-context-engineering-layer.md.bak.20260517_162624`, `production-ai-agent-evaluation-framework.md.bak.20260517_162624`, `llm-summary-identification-step.md.bak.20260517_162624`
+- Compiled the article into a reusable LLM engineering map: representation, architecture, training/alignment, inference optimization, grounding/context, prompt interface, and evaluation/monitoring. The page is a concept/navigation layer, not an active skill, runtime change, or full LLM encyclopedia.
+
+
+## [2026-05-17] ingest | MarkTechPost on repository-level code intelligence
+- Captured raw source: `raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md`
+- Created: `concepts/repository-level-code-intelligence-layer.md`
+- Updated: `index.md`
+- Cross-linked: `concepts/ai-coding-assistant-context-budget-management.md`, `concepts/codex-agent-workflow-layering.md`, `concepts/claude-code-practical-workflow-tips.md`
+- Backups: `index.md.bak.20260517_173555`, `log.md.bak.20260517_173555`, `ai-coding-assistant-context-budget-management.md.bak.20260517_173555`, `codex-agent-workflow-layering.md.bak.20260517_173555`, `claude-code-practical-workflow-tips.md.bak.20260517_173555`
+- Compiled the article into a reusable repository intelligence concept: index the repo, build dependency graphs, rank core files, detect communities, use Git co-change signals, treat dead-code results as candidates, keep architecture decisions near source, and generate short AI context files. No Repowise default-tool, active skill, cron, runtime, MCP, or Hermes core change was made.
+- Follow-up patch after Claude review: corrected the raw-source nested Jina provenance note, marked the concept as `draft` until local validation, unwrapped Summary wikilinks, and added the new page to related-page navigation lists.
