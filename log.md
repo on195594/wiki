@@ -716,3 +716,10 @@
 - Fixed `_meta/scripts/wiki_tag_audit.py` so declared tag parsing stops before the `Rules:` prose block and does not count rule examples as declared tags.
 - Updated `SCHEMA.md` to record that source-form validation is now health-check coverage, while `source_policy: normative` itself remains a documentation marker.
 - Validation after the script change: health `pass=true`, `P0=0`, `P1=0`, `P2=20` newly surfaced source-maintenance warnings; tag audit has no high-frequency undeclared candidates.
+
+## [2026-05-18] governance | Gstack wiki cleanup
+- User requested direct removal of the `gstack` tag and related wiki pages.
+- Deleted pages: `concepts/gstack-project-execution-lane.md`, `queries/gstack-project-execution-lane-validation-case.md`, `queries/hermes-project-dev-office-hours-review.md`, `queries/hermes-project-dev-migration-plan-eng-review.md`.
+- Removed `gstack` from `SCHEMA.md`, removed deleted pages from `index.md`, and removed active wikilinks from remaining formal pages.
+- Updated `index.md` total pages from 80 to 76.
+- No memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.

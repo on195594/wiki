@@ -176,7 +176,6 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 - [[codex-agent-workflow-layering]]
 - [[hermes-agent-workflow-layering-and-adoption-order]]
 - [[claude-code-practical-workflow-tips]]
-- [[gstack-project-execution-lane]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[subagent-orchestration-patterns]]
 - [[wiki-ingestion-workflow]]

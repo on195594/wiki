@@ -22,7 +22,6 @@ status: active
 
 ### Cron
 - Active job: `晨报` — `0 7 * * *`
-- Active job: `weekly-gstack-update-check` — `0 9 * * 1`
 - Active job: `hermes-weekly-health-check` — `30 8 * * 1`
 - New weekly health cron job id: `7cb813eb5431`
 - Delivery: `origin`

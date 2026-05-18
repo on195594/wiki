@@ -1,7 +1,7 @@
 ---
 title: Draft query inventory
 created: 2026-05-11
-updated: 2026-05-15
+updated: 2026-05-18
 type: meta
 status: current
 ---
@@ -43,7 +43,6 @@ Related stable pages:
 Reason: superseded/generated kickoff drafts; value already captured by later workflow-governance and validation pages.
 
 Related stable pages:
-- [[gstack-project-execution-lane-validation-case]]
 - [[hermes-layer-routing-sample-cases]]
 - [[hermes-layer-routing-edge-cases]]
 - [[hermes-context-layer-operating-rules]]

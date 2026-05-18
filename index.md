@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-18 | Total pages: 80
+> Last updated: 2026-05-18 | Total pages: 76
 
 ## Entities
 
@@ -24,7 +24,6 @@
 - [[dijkstra-ai-programming-formalization]] — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [[family-education-operating-model]] — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，而不是单点名校最优化
 - [[google-sre-gemini-cli-incident-response]] — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
-- [[gstack-project-execution-lane]] — 把 5 个最实用的 gstack skill 串成默认项目推进链：从 office-hours、计划评审到 review 和 QA 的执行编排层
 - [[hermes-agent-workflow-layering-and-adoption-order]] — 把 Codex 的分层工作流翻译成 Hermes 现有架构：指令层、知识层、skills、MCP、验证与 cron 的落地顺序
 - [[hermes-ai-workflow-formalization-principles]] — 将 Dijkstra 的形式化原则落实到 Hermes 工作流：自然语言输入、形式化产物、验证闭环
 - [[hermes-context-engineering-design-priorities]] — 面向 Hermes 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
@@ -71,9 +70,6 @@
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
 - [[hermes-agent-experience-consolidation-capability-assessment]] — Hermes 对 Anthropic Dreaming/Outcomes/多 agent 能力的本地能力映射：当前具备 primitives，可组合实现经验固化闭环，但完整 Auto Dream/`/dreaming` 仍未证实为本机原生能力
-- [[gstack-project-execution-lane-validation-case]] — 用真实小项目验证 gstack 5-skill lane 的闭环价值：从 intake、review 到 QA，确认它能把模糊想法压成可推进的 kickoff artifact
-- [[hermes-project-dev-office-hours-review]] — Hermes 项目开发环境的 office-hours 审查：识别 `~/.hermes` 中项目代码、状态、脚本、cron 与文档混杂的问题
-- [[hermes-project-dev-migration-plan-eng-review]] — Hermes 项目开发迁移计划 eng review：将具备独立边界的内容迁移到项目目录，恢复项目级执行单元
 - [[hermes-layer-routing-edge-cases]] — Hermes 层间路由的边界误判案例：当两个层都像能放时，如何按职责而不是重要性裁决
 - [[hermes-layer-routing-sample-cases]] — Hermes 层间路由的样板案例：用真实场景判断什么该进 wiki、memory、skill、cron、MCP 或 session
 - [[hermes-optimization-sample-case]] — 用当前知识库操作流回放最近优化 Hermes 的全过程，展示如何把对话收敛成长期资产
