@@ -678,3 +678,13 @@
 - Claude review prompt/result: `_meta/reviews/2026-05-18-hermes-lifeos-executable-architecture-split-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-lifeos-executable-architecture-split-plan-claude-review.md`.
 - Claude verdict: `PASS_WITH_MINOR_FIXES`; no blocking or important findings. Accepted minor patches clarified the boundary-contract differentiation gate, the no-archive log wording, and the default answer to the first split question.
 - No target page content, page metadata, page paths, index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-18] governance | Hermes LifeOS layer boundary contract split
+- Executed reviewed split plan: `_meta/plans/2026-05-18-hermes-lifeos-executable-architecture-split-plan.md`
+- Created concept page: `concepts/hermes-lifeos-layer-boundary-contract.md`
+- Updated hub page: `concepts/hermes-lifeos-executable-architecture.md`
+- Updated `index.md` with exactly one new Concepts entry and incremented total pages from 79 to 80.
+- Split scope: extracted/restated the hard layer-boundary contract while keeping the hub as the stable LifeOS architecture page.
+- Differentiation gate honored: the new page emphasizes LifeOS topology and `profile` as runtime-state isolation, rather than duplicating the generic context-layer routing map.
+- Archive default followed: no `_meta/` archive was created; git history remains the rollback source.
+- No memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.

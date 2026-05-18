@@ -35,170 +35,36 @@ LifeOS 不是由多个 profile 拼出来的，而是由一个统一语义层 + �
 - `MCP`：外部系统接入层
 - 少量专用 `profiles`：只承担高摩擦隔离边界
 
-## Hard boundaries
+## Layer boundary contract
 
-### 1. `wiki`
-**职责**
-- 承载长期知识资产
-- 承载需要结构、小节、来源、交叉链接的内容
-- 承载架构原则、领域框架、决策模型、样板案例
+The full layer-by-layer contract now lives in [[hermes-lifeos-layer-boundary-contract]].
 
-**允许进入**
-- LifeOS 架构设计
-- 家庭/教育/资产/工作等领域的长期框架
-- 复盘后已经稳定的结论
-- 需要持续扩写的正式页面
+This hub keeps only the architecture-level summary:
 
-**禁止进入**
-- 临时任务状态
-- 一次性聊天结论
-- 多步 SOP 本体
-- 纯调度信息
-- 敏感 secrets
+| Layer | Architecture role | Default route |
+|---|---|---|
+| `wiki` | Formal LifeOS knowledge layer | Concepts, domain models, decision records, cross-linked reference pages |
+| `memory` | Short stable user/environment facts | One-sentence preferences, durable constraints, tool quirks |
+| `skill` | Repeatable method layer | Reusable workflows with triggers, steps, pitfalls, and verification |
+| `cron` | Scheduling layer | Stable methods running in fresh sessions |
+| `MCP` | External live-system capability layer | Calendar, mail, docs, maps, GitHub, monitoring, or other tool access |
+| `profile` | Runtime-state isolation layer | Work/personal separation, public bot identity, lab experiments, high-risk isolation |
+| `session` | Temporary working context | Exploration, in-flight reasoning, one-off state |
 
-**判定句**
-如果内容回答的是“这是什么、为什么这么设计、和其他知识怎么关联”，优先放 `wiki`。
+LifeOS-specific boundary rule:
 
-### 2. `memory`
-**职责**
-- 承载短小、稳定、值得默认注入上下文的事实
-- 承载用户偏好、长期约束、环境 quirk
+- Keep the main LifeOS semantic layer in the `default profile`.
+- Use `wiki / memory / skill / cron / MCP` for domain and method separation before considering profile separation.
+- Create a new `profile` only when runtime state needs isolation: memory, cron, gateway identity, experimental model/prompt surface, or high-risk automation.
+- Do not create one profile per life domain.
 
-**允许进入**
-- “Hermes 相关规划要优先参考官方文档”这类稳定行为规则
-- 用户长期偏好
-- 已反复验证的工具 quirks
+Anti-boundary-crossing summary:
 
-**禁止进入**
-- 长段说明
-- 可展开成页面的方法论
-- 项目进度
-- 临时 workaround
-- 任何需要小节、来源和案例才能说清的内容
-
-**硬限制**
-- 能压成一句话
-- 脱离当前会话仍成立
-- 未来多次默认注入确实有收益
-
-**判定句**
-如果内容不能被压成一句稳定事实，就不要进 `memory`。
-
-### 3. `skill`
-**职责**
-- 承载可重复执行的方法
-- 承载步骤、验证、坑点、边界和交接条件
-
-**允许进入**
-- 周报生成流程
-- 知识入库流程
-- 教育信息收集与整理流程
-- 家庭决策例会 preparation/checklist
-
-**禁止进入**
-- 大段概念阐述
-- 用户个人长期偏好本体
-- 纯外部接入能力说明
-- 只有一次性的临时解法
-
-**判定句**
-如果内容回答的是“这类事以后稳定怎么做”，优先放 `skill`。
-
-### 4. `cron`
-**职责**
-- 调度已经稳定的方法在 fresh session 中自动运行
-
-**允许进入**
-- 每日晨报
-- 每周教育基金回顾提醒
-- 每日信息汇总
-- 周期性检查和提醒
-
-**禁止进入**
-- 尚未稳定的方法
-- 需要人工频繁改 prompt 才能工作的流程
-- 只靠 cron prompt 临时拼出来的方法
-
-**前置条件**
-- 方法已存在于 `skill` 或足够稳定的自包含 prompt
-- 输入输出已收敛
-- 失败时可观察、可审计、可恢复
-
-**判定句**
-`cron` 只负责“何时跑”，不负责定义“怎么跑”。
-
-### 5. `MCP`
-**职责**
-- 提供 Hermes 对外部实时系统的能力接入
-
-**允许进入**
-- 日历
-- 邮件
-- GitHub
-- 文档系统
-- 地图、行情、任务平台等外部接口
-
-**禁止进入**
-- 业务方法本体
-- 周期性调度定义
-- 长期知识沉淀
-
-**判定句**
-如果问题本质是“Hermes 怎么接入/操作一个外部实时系统”，优先看 `MCP`。
-
-### 6. `profile`
-**职责**
-- 提供 Hermes 状态级隔离：配置、memory、sessions、skills、cron、gateway state
-
-**允许进入**
-- 工作/个人强隔离
-- 面向外部的 bot 身份隔离
-- 实验性模型与流程隔离
-- 高风险自动化与主脑隔离
-
-**禁止进入**
-- 以领域为单位无节制拆分
-- 代替统一知识层
-- 承载主 LifeOS 语义
-
-**硬规则**
-- 没有明确隔离收益，不新建 profile
-- 领域分层优先在 `wiki / skill / cron / MCP` 内完成
-- 主 LifeOS 语义默认只维护在 `default profile`
-
-**判定句**
-`profile` 回答的是“要不要隔离运行时状态”，不是“这是不是一个新领域”。
-
-### 7. `session`
-**职责**
-- 承载探索态、临时态、尚未验证的工作上下文
-
-**升级规则**
-- 稳定短规则 -> `memory`
-- 稳定方法 -> `skill`
-- 正式知识 -> `wiki`
-- 周期性执行 -> `cron`
-- 外部能力接入 -> `MCP`
-
-**硬规则**
-重要不等于可持久化；未稳定内容默认留在 `session`。
-
-## Boundary matrix
-### 一句话裁决表
-- 外部能力：`MCP`
-- 重复方法：`skill`
-- 周期执行：`cron`
-- 短小稳定事实：`memory`
-- 正式知识资产：`wiki`
-- 运行时隔离：`profile`
-- 未稳定过程：`session`
-
-### 反越界规则
-- 不把概念页写成 skill
-- 不把 skill 缩成 cron prompt
-- 不把长篇知识塞进 memory
-- 不把 profile 当领域目录
-- 不把一次性聊天结论直接编译成 wiki
+- Do not put long knowledge into `memory`.
+- Do not shrink a method into a `cron` prompt.
+- Do not turn a concept page into a `skill`.
+- Do not use `profile` as a topic folder.
+- Do not promote a session conclusion just because it feels important.
 
 ## Recommended topology for your Hermes
 ### 默认保持
@@ -378,6 +244,7 @@ LifeOS 不是由多个 profile 拼出来的，而是由一个统一语义层 + �
 - skill 变成概念散文
 
 ## Related
+- [[hermes-lifeos-layer-boundary-contract]]
 - [[companyos-to-lifeos-filesystem-philosophy]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-memory-skills-wiki-boundaries]]
