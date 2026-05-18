@@ -612,3 +612,10 @@
 - Patched the plan for Claude findings: deferred status values, no bulk `queries/` type reclassification, `source_policy: normative` tooling gap, `_meta/` subdirectory roles, duplicate-tag verifier wording, copy-paste-safe commands, and sharper `operations/` stop condition.
 - Updated `SCHEMA.md` for Lane A schema alignment: added `operations/` as a formal directory, expanded type/status guidance, documented source forms, added `source_policy: normative`, and clarified `_meta/plans/`, `_meta/reviews/`, `_meta/scripts/` roles.
 - No content pages, page moves, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
+
+## [2026-05-18] governance | Wiki taxonomy round
+- Updated `SCHEMA.md` taxonomy only; no page frontmatter or content pages were changed.
+- Added stable recurring tags: `content-engineering`, `position-sizing`, `closeout`, `pydantic`, `structured-output`, `typed-boundary`.
+- Deferred ambiguous/project-specific tags including `gstack`, `dreaming`, `project-development`, and `skill-files`.
+- Audit before: declared=45, undeclared_unique=60, undeclared_instances=72.
+- Expected audit after: declared=51, undeclared_unique=54, undeclared_instances=60; final validation recorded in the execution report.

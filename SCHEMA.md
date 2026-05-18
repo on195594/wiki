@@ -96,6 +96,8 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - cron
 - browser
 - context-engineering
+- content-engineering
+- position-sizing
 - architecture
 - risk-control
 - deployment
@@ -115,6 +117,10 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - operating-model
 - model-profiles
 - harness
+- closeout
+- pydantic
+- structured-output
+- typed-boundary
 
 Rules:
 - If a tag appears on 3+ pages, consider adding it to this taxonomy.
