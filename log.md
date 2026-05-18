@@ -605,3 +605,10 @@
 - Cross-linked: `concepts/agent-experience-consolidation-loops.md`, `concepts/production-ai-agent-evaluation-framework.md`, `concepts/hermes-context-layer-operating-rules.md`
 - Compiled the article into a reusable concept about Agent closed-loop learning: capture user corrections as structured memory, distill repeated corrections into candidate rules, validate through offline or shadow evaluation, and only then promote default behavior. Microsoft’s Power Apps MCP results were preserved as source-specific directional observations, not Hermes thresholds. No active skill, memory, cron, runtime, MCP, or wrapper change was made.
 - Claude review: `_meta/reviews/2026-05-18-agent-closed-loop-learning-claude-review.md`; verdict `PASS_WITH_MINOR_FIXES`. Accepted the minor dedup patch that replaced the local routing decision tree with a link to `hermes-context-layer-operating-rules`. Rejected the reported stale index counter after `wiki_health_check` confirmed `formal_pages=79` and `index_wikilinks=79`; deferred optional SCHEMA raw-source provenance-field documentation as broader schema governance.
+
+## [2026-05-18] governance | Wiki cleanup plan and schema alignment
+- Created plan: `_meta/plans/2026-05-18-wiki-governance-cleanup-plan.md`
+- Created Claude review prompt/result: `_meta/reviews/2026-05-18-wiki-governance-cleanup-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-wiki-governance-cleanup-plan-claude-review.md`
+- Patched the plan for Claude findings: deferred status values, no bulk `queries/` type reclassification, `source_policy: normative` tooling gap, `_meta/` subdirectory roles, duplicate-tag verifier wording, copy-paste-safe commands, and sharper `operations/` stop condition.
+- Updated `SCHEMA.md` for Lane A schema alignment: added `operations/` as a formal directory, expanded type/status guidance, documented source forms, added `source_policy: normative`, and clarified `_meta/plans/`, `_meta/reviews/`, `_meta/scripts/` roles.
+- No content pages, page moves, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.

@@ -12,7 +12,7 @@
 ## Conventions
 - 根目录固定为 `~/wiki`
 - 文件名统一使用小写英文加连字符，例如：`hermes-knowledge-architecture.md`
-- 正式知识页放在 `entities/`、`concepts/`、`comparisons/`、`queries/`
+- 正式知识页放在 `entities/`、`concepts/`、`comparisons/`、`queries/`、`operations/`
 - 原始材料只放在 `raw/`，不得直接修改原文内容
 - 每个正式知识页必须包含 YAML frontmatter
 - 每个正式知识页至少包含 2 个 `[[wikilinks]]` 指向其他页面或索引页
@@ -26,16 +26,37 @@
 title: 页面标题
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-type: entity | concept | comparison | query | summary
+type: entity | concept | comparison | query | plan | closeout | validation-case | operation | summary
 tags: [tag1, tag2]
 sources: [raw/articles/source-name.md]
-status: draft | stable
+status: draft | stable | active | closed | current
+
+# Wiki self-governance / normative pages may use:
+source_policy: normative
 
 # Raw-source files under raw/ may use:
 type: raw-source
-status: raw
+status: raw | captured
 ---
 ```
+
+Frontmatter rules:
+- `queries/` historically contains `type: query` pages that may behave like plans, closeouts, or validation cases. Schema expansion does not authorize bulk reclassification; future reclassification requires a separate approved migration plan.
+- `source_policy: normative` is only for wiki rules, standards, operating policies, and self-authored governance pages. It is a documentation marker only; current health-check scripts do not enforce it.
+- Deferred historical status values such as `current-as-of-<date>`, `_meta/` `complete`/`completed`, and raw `raw-source` status should be handled in a later metadata cleanup, not normalized during schema alignment.
+
+### Sources
+
+Allowed `sources` forms:
+- `raw/...`：wiki 内保留的原始材料
+- `concepts/...`、`queries/...`、`comparisons/...`、`operations/...`：wiki 内派生来源
+- `project:/absolute/path`：本地项目证据
+- `session:<stable-id>`：会话来源
+- `skill:<skill-name>`：Hermes skill 来源
+- `docs:<name-or-url>`：官方或外部文档来源
+- `filesystem:<path>`：本地文件系统观察，谨慎使用
+
+`/tmp/...` 不应作为正式页面唯一长期来源。后续清理时应替换为可持久路径、稳定 wiki/review 页面，或明确标记为历史不可复验来源。
 
 ## Tag Taxonomy
 
@@ -115,8 +136,12 @@ Rules:
 - `entities/`：人、组织、产品、项目、模型
 - `concepts/`：概念、架构、方法论、机制
 - `comparisons/`：横向对比
-- `queries/`：值得沉淀的问题与答案
+- `queries/`：值得沉淀的问题与答案；历史上也保留部分 plan / closeout / validation case，未来新页面应优先按语义路由到更准确的位置
+- `operations/`：稳定运行面板、runbook、维护契约和 recurring governance surface；不放一次性项目计划或 raw review artifact
 - `_meta/`：导航与维护文档
+- `_meta/plans/`：计划、整改路线图、执行前治理方案
+- `_meta/reviews/`：独立审查 prompt 和审查结果
+- `_meta/scripts/`：wiki 只读检查、审计和维护脚本
 
 ## Update Policy
 当新信息与旧信息冲突时：
