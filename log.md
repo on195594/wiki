@@ -655,3 +655,13 @@
 - Claude review prompt/result: `_meta/reviews/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan-claude-review.md`.
 - Claude verdict: `APPROVE_WITH_CHANGES`; no blocking findings. Accepted patches added the index pre-check/stop condition, preserve-verbatim frontmatter stub, unconditional investment-watch closeout pointer, and final-verdict completion-summary guidance.
 - No target page content, page metadata, page paths, project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
+
+## [2026-05-18] governance | Hermes project dev migration long-page compression
+- Compressed target page: `queries/hermes-project-dev-migration-plan-eng-review.md`
+- Followed reviewed plan: `_meta/plans/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan.md`
+- Replaced detailed layouts, diagrams, phase checklists, and execution-heavy migration steps with a compact historical engineering decision record.
+- Preserved target path, title, frontmatter, tags, `type`, and `status`; no `index.md` update was required.
+- Evidence pointers retained: `queries/hermes-project-dev-office-hours-review.md`, `queries/investment-watch-final-closeout.md`, `/home/lin/.hermes/projects/investment-watch/`, and `/home/lin/.hermes/projects/project-kickoff/`.
+- Recorded that no `project-kickoff` wiki closeout/status page was found; this remains a follow-up gap, not part of the compression commit.
+- No browsable full-text archive was created; git history remains the archive.
+- No project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
