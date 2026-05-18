@@ -723,3 +723,8 @@
 - Removed `gstack` from `SCHEMA.md`, removed deleted pages from `index.md`, and removed active wikilinks from remaining formal pages.
 - Updated `index.md` total pages from 80 to 76.
 - No memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-18] governance | Source P2 cleanup
+- Normalized Hermes official docs sources from local absolute paths to `docs:hermes-agent/...` references in the layer-routing pages.
+- Replaced non-durable `/tmp/...` skill-refactor sources with `session:2026-05-15-...` evidence handles in `concepts/hermes-skill-refactoring-methodology.md`.
+- Target: return wiki health check to `P0=0`, `P1=0`, `P2=0` without changing page bodies or active Hermes runtime layers.

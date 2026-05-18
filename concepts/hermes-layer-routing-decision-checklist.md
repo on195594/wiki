@@ -1,10 +1,10 @@
 ---
 title: Hermes Layer Routing Decision Checklist
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-05-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, decision, automation, mcp]
-sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, /home/lin/.hermes/hermes-agent/website/docs/user-guide/features/memory.md, /home/lin/.hermes/hermes-agent/website/docs/user-guide/features/skills.md, /home/lin/.hermes/hermes-agent/website/docs/user-guide/features/cron.md, /home/lin/.hermes/hermes-agent/website/docs/user-guide/features/mcp.md]
+sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
 status: stable
 ---
 

@@ -2,10 +2,10 @@
 title: Hermes Skill 重构方法论
 author: Hermes Agent
 created: 2026-05-15
-updated: 2026-05-15
+updated: 2026-05-18
 type: concept
 tags: [hermes, skills, workflow, governance, verification, ai-coding, subagent]
-sources: [/tmp/test-driven-development-skill-refactor-plan.md, /tmp/test-driven-development-phase4-closeout.md, /tmp/gemini-review-tdd-phase4-output.md]
+sources: [session:2026-05-15-test-driven-development-skill-refactor-plan, session:2026-05-15-test-driven-development-phase4-closeout, session:2026-05-15-gemini-review-tdd-phase4-output]
 status: stable
 ---
 
