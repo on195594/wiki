@@ -1,7 +1,7 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-05-07
+updated: 2026-05-18
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
@@ -194,7 +194,7 @@ subagent 返回：
 只有当内容已经被整理成正式知识，有来源、结构、链接和长期复用价值时才升级。
 
 ### Session -> skill
-只有当同类任务未来会重复执行，并且步骤、坑点、验证条件已经跑通时才升级。
+只有当同类任务未来会重复执行，并且步骤、坑点、验证条件已经跑通时才升级。对于用户纠错类反馈，先参考 [[agent-closed-loop-learning-from-corrections-to-rules]]：单次纠正不能直接变成全局 skill 规则，必须先证明它是可复现、可泛化、可验证的模式。
 
 ### Project state -> wiki
 项目结束或阶段收敛后，把可复用结论编译成 wiki；不要把整个过程日志原样搬进 wiki。

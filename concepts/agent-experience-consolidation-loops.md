@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-05-11
+updated: 2026-05-18
 type: concept
 tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md]
@@ -69,7 +69,7 @@ Hermes 对应入口：`session_search`、project closeout、wiki query pages、l
 - **runtime automation**：已验证、可回滚、低噪音的稳定流程
 
 ### 4. Route by layer responsibility
-经验固化的核心治理问题是路由，而不是保存。
+经验固化的核心治理问题是路由，而不是保存。`[[agent-closed-loop-learning-from-corrections-to-rules]]` 进一步补充了纠错晋升门槛：不要把一次用户纠正直接写成全局规则，先记忆、再泛化、再验证、最后推广。
 
 ```text
 lesson candidate
@@ -194,6 +194,7 @@ project evidence / session_search
 
 ## Related pages
 - [[agent-self-validation-loops]]
+- [[agent-closed-loop-learning-from-corrections-to-rules]]
 - [[subagent-orchestration-patterns]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-layer-operating-rules]]

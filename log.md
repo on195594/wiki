@@ -597,3 +597,11 @@
 - Cross-linked: `concepts/production-ai-agent-evaluation-framework.md`, `concepts/agent-self-validation-loops.md`, `concepts/typed-ai-agent-boundaries.md`
 - Compiled the article into a reusable concept about multi-step AI Agent document-fidelity risk: frontier models may silently rewrite or distort content, generic tools can worsen degradation, and long workflows need short steps, diff/read-back evidence, reversible tests, narrow tools, and intermediate audit gates. DELEGATE-52 figures were preserved as source-specific directional benchmarks, not mandatory Hermes thresholds.
 - Claude review: `_meta/reviews/2026-05-17-ai-agent-document-fidelity-risk-claude-review.md`; accepted minor patches removed duplicate raw metadata and added the `research` tag. A model-name anomaly in the raw source was verified against live VentureBeat HTML and preserved only as source text, not as a durable concept claim.
+
+## [2026-05-18] ingest | Microsoft on Power Apps MCP closed-loop learning
+- Captured raw source: `raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md`
+- Created: `concepts/agent-closed-loop-learning-from-corrections-to-rules.md`
+- Updated: `index.md`
+- Cross-linked: `concepts/agent-experience-consolidation-loops.md`, `concepts/production-ai-agent-evaluation-framework.md`, `concepts/hermes-context-layer-operating-rules.md`
+- Compiled the article into a reusable concept about Agent closed-loop learning: capture user corrections as structured memory, distill repeated corrections into candidate rules, validate through offline or shadow evaluation, and only then promote default behavior. Microsoft’s Power Apps MCP results were preserved as source-specific directional observations, not Hermes thresholds. No active skill, memory, cron, runtime, MCP, or wrapper change was made.
+- Claude review: `_meta/reviews/2026-05-18-agent-closed-loop-learning-claude-review.md`; verdict `PASS_WITH_MINOR_FIXES`. Accepted the minor dedup patch that replaced the local routing decision tree with a link to `hermes-context-layer-operating-rules`. Rejected the reported stale index counter after `wiki_health_check` confirmed `formal_pages=79` and `index_wikilinks=79`; deferred optional SCHEMA raw-source provenance-field documentation as broader schema governance.

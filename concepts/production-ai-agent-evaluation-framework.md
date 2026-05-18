@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-05-17
+updated: 2026-05-18
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md]
@@ -165,6 +165,10 @@ status: stable
 
 `[[ai-agent-document-fidelity-risk]]` adds a content-preservation failure mode to this evaluation framework: long-horizon Agent tests should not only measure final task success, but also whether source documents survive multi-step edits without silent rewrites, omissions, or hallucinated substitutions.
 
+## Relationship to closed-loop learning
+
+`[[agent-closed-loop-learning-from-corrections-to-rules]]` extends this evaluation framework from quality measurement into behavior promotion: user corrections should not become default Agent behavior until a candidate rule or prompt passes offline replay, shadow evaluation, or an equivalent scoped gate.
+
 ## Relationship to LLM engineering map
 
 `[[llm-engineering-knowledge-map]]` frames evaluation as the final control layer of the LLM engineering stack. This page keeps the narrower production Agent eval checklist for retrieval, generation, tool behavior, cost, and latency.
@@ -172,6 +176,7 @@ status: stable
 ## Related
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
 - [[agent-self-validation-loops]]
+- [[agent-closed-loop-learning-from-corrections-to-rules]]
 - [[agent-development-lifecycle]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[llm-summary-identification-step]]
