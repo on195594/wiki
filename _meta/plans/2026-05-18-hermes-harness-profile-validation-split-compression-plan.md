@@ -33,6 +33,7 @@ Read-only evidence:
   - `status: draft`
   - tags: `[hermes, optimization, harness, model-profiles, validation, workflow]`
 - Current size: 1324 lines, 31486 bytes
+- Note: the prior long-page triage recorded 1325 lines; line counts can vary by one depending on counting tool/trailing newline handling.
 - Code/template fences: 90 fence markers
 - Triage category: **Move execution detail**
 - Existing canonical project directory exists: `/home/lin/.hermes/projects/hermes-harness-profile-validation/`
@@ -127,7 +128,7 @@ Recommended post-compression structure:
 [One short bullet per workstream A-G; no inline templates/scripts.]
 
 ## Promotion and stop gates
-[Compressed gate list.]
+[Compressed list of all six gates actually executed: Gates 1-5 from section 13 of the original page, plus Gate 6 post-patch regression from `/home/lin/.hermes/projects/hermes-harness-profile-validation/docs/gate-6-post-patch-regression-2026-04-30.md`. Link the Gate 6 evidence explicitly.]
 
 ## Related
 [Existing related links, plus final closeout link if missing.]
@@ -165,13 +166,14 @@ Before editing the target page:
    - `/home/lin/.hermes/projects/hermes-harness-profile-validation/STATUS.md`
    - `/home/lin/.hermes/projects/hermes-harness-profile-validation/docs/final-project-closeout-2026-04-30.md`
    - `/home/lin/.hermes/projects/hermes-harness-profile-validation/docs/gate-6-post-patch-regression-2026-04-30.md`
-5. Decide whether a browsable `_meta/plans/archive/...` copy is needed. Default answer: no.
+5. Confirm wiki final closeout exists: `queries/hermes-harness-profile-validation-final-closeout.md`.
+6. Decide whether a browsable `_meta/plans/archive/...` copy is needed. Default answer: no.
 
 ## 8. Future implementation steps if approved
 
-1. Create a rollback commit for this plan if not already committed.
+1. Confirm the wiki repo is in a clean, committed state so the pre-edit snapshot is recoverable via `git checkout`.
 2. Draft a compact replacement for the target page using the structure in section 5.
-3. Preserve frontmatter unless there is explicit approval to change `status` or `type`.
+3. Do not change frontmatter, `status`, or `type` in the compression commit. Any reclassification requires a separate explicitly approved pass.
 4. Add or preserve links to final closeout and project-local evidence.
 5. Run:
 
@@ -206,3 +208,24 @@ Default recommendation:
 - use git history as archive;
 - include both wiki final closeout link and project-local evidence paths;
 - do not touch active Hermes layers.
+
+Unless a later review or user decision explicitly overrides them, these defaults are the implementation decision.
+
+## 11. Independent review disposition
+
+Claude review artifact:
+
+```text
+_meta/reviews/2026-05-18-hermes-harness-profile-validation-split-compression-plan-claude-review.md
+```
+
+Verdict: `APPROVE_WITH_CHANGES`.
+
+Accepted patches:
+
+- I-1: frontmatter/status/type changes are forbidden in the compression commit and require a separate approved pass.
+- I-2: the compact gate summary must include Gate 6 post-patch regression from project-local evidence, not only original Gates 1-5.
+- I-3: the pre-edit checklist now explicitly verifies the wiki final closeout page.
+- M-1: the future implementation step now says to confirm a clean committed pre-edit snapshot instead of creating a vague "rollback commit".
+- M-2: the line-count discrepancy between 1324 and 1325 is documented as a counting-tool difference.
+- M-3: the default answers in section 10 are now authoritative unless later explicitly overridden.

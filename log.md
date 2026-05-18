@@ -631,4 +631,6 @@
 - Target page: `queries/hermes-harness-profile-validation-detailed-plan.md`
 - Decision baseline: keep the target path by default; compress it later into a compact navigation/decision page; route workstream templates, scripts, fixtures, and task bodies to existing project-local evidence instead of keeping them inline in the query page.
 - Archive default: use git history and existing project-local closeout/evidence; do not create a duplicate `_meta/` full-text archive unless explicitly approved.
+- Claude review prompt/result: `_meta/reviews/2026-05-18-hermes-harness-profile-validation-split-compression-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-harness-profile-validation-split-compression-plan-claude-review.md`.
+- Claude verdict: `APPROVE_WITH_CHANGES`; no blocking findings. Accepted patches clarified frontmatter freeze, Gate 6 inclusion, wiki final closeout pre-check, clean committed pre-edit snapshot wording, line-count discrepancy, and authoritative defaults.
 - No target page content, page metadata, page paths, project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
