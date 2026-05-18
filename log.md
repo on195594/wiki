@@ -625,3 +625,10 @@
 - Scanned formal pages above the 200-line guideline and classified the first five high-priority pages.
 - Recommended first future target: `queries/hermes-harness-profile-validation-detailed-plan.md` as `move execution detail`.
 - No long page content, page metadata, page paths, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
+
+## [2026-05-18] governance | Hermes harness validation page split/compression plan
+- Created page-specific plan: `_meta/plans/2026-05-18-hermes-harness-profile-validation-split-compression-plan.md`
+- Target page: `queries/hermes-harness-profile-validation-detailed-plan.md`
+- Decision baseline: keep the target path by default; compress it later into a compact navigation/decision page; route workstream templates, scripts, fixtures, and task bodies to existing project-local evidence instead of keeping them inline in the query page.
+- Archive default: use git history and existing project-local closeout/evidence; do not create a duplicate `_meta/` full-text archive unless explicitly approved.
+- No target page content, page metadata, page paths, project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
