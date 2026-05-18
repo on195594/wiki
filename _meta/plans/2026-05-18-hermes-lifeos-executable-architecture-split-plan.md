@@ -147,7 +147,9 @@ concepts/hermes-lifeos-layer-boundary-contract.md
 Reason:
 
 - It is the largest self-contained subtopic.
-- It overlaps with existing pages such as `hermes-memory-skills-wiki-boundaries`, `hermes-layer-routing-decision-checklist`, and `hermes-context-layer-operating-rules`, so an implementation must reconcile duplication carefully.
+- It overlaps with existing pages such as `hermes-memory-skills-wiki-boundaries`, `hermes-layer-routing-decision-checklist`, and especially `hermes-context-layer-operating-rules`, so an implementation must reconcile duplication carefully.
+- The split is only justified if the new page is differentiated as a LifeOS architecture contract: it must emphasize `profile` as a runtime-state isolation layer and the default-profile LifeOS topology framing, rather than duplicating the generic context-layer routing map.
+- If that differentiation cannot be maintained during implementation, defer the split instead of creating a redundant boundary page.
 - Extracting it first would reduce hub length while preserving the architecture page as a navigation layer.
 
 Implementation shape:
@@ -156,7 +158,7 @@ Implementation shape:
 2. Move or restate the detailed layer definitions there.
 3. Replace the hub's `Hard boundaries` and `Boundary matrix` detail with a compact summary and link to the new page.
 4. Update `index.md` only for the new page entry.
-5. Update `log.md` with exact files changed and archive policy.
+5. Update `log.md` with exact files changed and the explicit no-archive decision; do not create an `_meta/` archive unless separately approved.
 6. Keep target page frontmatter, path, `type`, and `status` unchanged.
 
 ## 6. Index and link policy
@@ -218,6 +220,7 @@ Stop before implementation if any of these are true:
 ## 10. Review questions before actual split
 
 1. Should the first implementation create only `hermes-lifeos-layer-boundary-contract.md`, or should it defer because existing routing/boundary pages already cover enough?
+   - Current answer: create it only if the implementation can preserve clear differentiation around LifeOS topology and the `profile` layer. If it becomes a generic context-layer routing page, defer.
 2. Should `hermes-lifeos-executable-architecture.md` remain a stable hub with unchanged `status: stable`, or should any split require a separate status review?
 3. Is the candidate topology/profile page necessary now, or should profile-policy detail remain in the hub until profile pressure increases?
 
