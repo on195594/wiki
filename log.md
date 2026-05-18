@@ -619,3 +619,9 @@
 - Deferred ambiguous/project-specific tags including `gstack`, `dreaming`, `project-development`, and `skill-files`.
 - Audit before: declared=45, undeclared_unique=60, undeclared_instances=72.
 - Expected audit after: declared=51, undeclared_unique=54, undeclared_instances=60; final validation recorded in the execution report.
+
+## [2026-05-18] governance | Wiki long-page triage
+- Created triage record: `_meta/plans/2026-05-18-long-page-triage.md`
+- Scanned formal pages above the 200-line guideline and classified the first five high-priority pages.
+- Recommended first future target: `queries/hermes-harness-profile-validation-detailed-plan.md` as `move execution detail`.
+- No long page content, page metadata, page paths, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
