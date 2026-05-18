@@ -634,3 +634,12 @@
 - Claude review prompt/result: `_meta/reviews/2026-05-18-hermes-harness-profile-validation-split-compression-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-harness-profile-validation-split-compression-plan-claude-review.md`.
 - Claude verdict: `APPROVE_WITH_CHANGES`; no blocking findings. Accepted patches clarified frontmatter freeze, Gate 6 inclusion, wiki final closeout pre-check, clean committed pre-edit snapshot wording, line-count discrepancy, and authoritative defaults.
 - No target page content, page metadata, page paths, project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
+
+## [2026-05-18] governance | Hermes harness validation long-page compression
+- Compressed target page: `queries/hermes-harness-profile-validation-detailed-plan.md`
+- Followed reviewed plan: `_meta/plans/2026-05-18-hermes-harness-profile-validation-split-compression-plan.md`
+- Replaced inline project skeletons, templates, prompt bodies, fixtures, scripts, and workstream task bodies with a compact navigation/decision page and pointers to project-local evidence.
+- Preserved target path, title, frontmatter, tags, `type`, and `status`; no index update was required.
+- Included Gate 6 post-patch regression in the gate summary and linked the wiki final closeout.
+- No browsable full-text archive was created; git history plus project-local evidence remain the archive.
+- No project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
