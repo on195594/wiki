@@ -645,3 +645,13 @@
 - No project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
 - Claude implementation review prompt/result: `_meta/reviews/2026-05-18-hermes-harness-profile-validation-compression-implementation-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-harness-profile-validation-compression-implementation-claude-review.md`.
 - Claude verdict: `PASS`; no blocking or important findings, no required patches.
+
+## [2026-05-18] governance | Hermes project dev migration closeout/compression plan
+- Created page-specific plan: `_meta/plans/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan.md`
+- Target page: `queries/hermes-project-dev-migration-plan-eng-review.md`
+- Triage class: `Closeout compress`.
+- Decision baseline: keep the target path/frontmatter unchanged later; compress into a historical engineering decision record; replace detailed layouts, diagrams, and phase checklists with pointers to current project-local evidence and related wiki pages.
+- Archive default: use git history; do not create a duplicate `_meta/` archive unless explicitly approved.
+- Claude review prompt/result: `_meta/reviews/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-project-dev-migration-eng-review-closeout-compression-plan-claude-review.md`.
+- Claude verdict: `APPROVE_WITH_CHANGES`; no blocking findings. Accepted patches added the index pre-check/stop condition, preserve-verbatim frontmatter stub, unconditional investment-watch closeout pointer, and final-verdict completion-summary guidance.
+- No target page content, page metadata, page paths, project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
