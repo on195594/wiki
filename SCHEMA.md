@@ -42,7 +42,8 @@ status: raw | captured
 
 Frontmatter rules:
 - `queries/` historically contains `type: query` pages that may behave like plans, closeouts, or validation cases. Schema expansion does not authorize bulk reclassification; future reclassification requires a separate approved migration plan.
-- `source_policy: normative` is only for wiki rules, standards, operating policies, and self-authored governance pages. It is a documentation marker only; current health-check scripts do not enforce it.
+- `source_policy: normative` is only for wiki rules, standards, operating policies, and self-authored governance pages. It is a documentation marker only; current health-check scripts do not enforce that policy value.
+- Current health checks validate `sources` forms as P2 maintenance warnings, including unexpected source prefixes and non-durable `/tmp/...` paths.
 - Deferred historical status values such as `current-as-of-<date>`, `_meta/` `complete`/`completed`, and raw `raw-source` status should be handled in a later metadata cleanup, not normalized during schema alignment.
 
 ### Sources

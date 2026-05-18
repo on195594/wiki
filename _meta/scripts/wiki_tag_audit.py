@@ -89,6 +89,7 @@ def parse_declared_tags(schema_text: str) -> list[str]:
     if not match:
         return []
     body = match.group(1)
+    body = body.split("\nRules:", 1)[0]
     tags: list[str] = []
     seen: set[str] = set()
     for line in body.splitlines():

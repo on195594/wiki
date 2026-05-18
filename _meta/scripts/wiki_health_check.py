@@ -21,6 +21,18 @@ from typing import Any
 
 CORE_FILES = {"index.md", "log.md", "SCHEMA.md"}
 TINY_THRESHOLD = 120
+ALLOWED_SOURCE_PREFIXES = (
+    "raw/",
+    "concepts/",
+    "queries/",
+    "comparisons/",
+    "operations/",
+    "project:",
+    "session:",
+    "skill:",
+    "docs:",
+    "filesystem:",
+)
 
 
 def rel(root: Path, path: Path) -> str:
@@ -66,6 +78,31 @@ def strip_code(text: str) -> str:
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
+
+
+def extract_frontmatter(text: str) -> str | None:
+    match = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, flags=re.S)
+    return match.group(1) if match else None
+
+
+def parse_inline_list(value: str) -> list[str]:
+    value = value.strip()
+    if not value:
+        return []
+    if value.startswith("[") and value.endswith("]"):
+        return [item.strip().strip("'\"") for item in value.strip("[]").split(",") if item.strip()]
+    return [value.strip().strip("'\"")]
+
+
+def frontmatter_value(frontmatter: str, key: str) -> str | None:
+    match = re.search(rf"^{re.escape(key)}:\s*(.+)$", frontmatter, flags=re.M)
+    if not match:
+        return None
+    return match.group(1).strip()
+
+
+def is_allowed_source(source: str) -> bool:
+    return source.startswith(ALLOWED_SOURCE_PREFIXES) or bool(re.match(r"https?://", source))
 
 
 def add_issue(issues: dict[str, list[dict[str, Any]]], severity: str, code: str, path: str, message: str, **extra: Any) -> None:
@@ -167,6 +204,17 @@ def build_report(root: Path) -> dict[str, Any]:
                 add_issue(issues, "P1", "missing_h1", r, "Formal page missing H1 heading")
             if not text.startswith("---\n"):
                 add_issue(issues, "P1", "missing_frontmatter", r, "Formal page missing YAML frontmatter")
+            frontmatter = extract_frontmatter(text)
+            if frontmatter is not None:
+                sources_value = frontmatter_value(frontmatter, "sources")
+                if sources_value is None:
+                    add_issue(issues, "P2", "missing_sources", r, "Formal page missing sources frontmatter")
+                else:
+                    for source in parse_inline_list(sources_value):
+                        if "/tmp/" in source or source.startswith("/tmp/"):
+                            add_issue(issues, "P2", "tmp_source", r, "Source uses non-durable /tmp path", source=source)
+                        if not is_allowed_source(source):
+                            add_issue(issues, "P2", "unexpected_source_form", r, "Source does not match SCHEMA.md allowed source forms", source=source)
 
     for p in live_md:
         r = rel(root, p)

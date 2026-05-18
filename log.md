@@ -710,3 +710,9 @@
 - Promoted `gstack` to a declared facet tag in `SCHEMA.md`.
 - Updated `concepts/gstack-project-execution-lane.md` with the decision: `gstack` is a gstack-derived review/execution lens tag, not a new entity/project page by default.
 - No index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-18] governance | Wiki audit source/schema checks
+- Enhanced `_meta/scripts/wiki_health_check.py` to emit P2 warnings for missing `sources`, unexpected source forms, and non-durable `/tmp/...` source paths.
+- Fixed `_meta/scripts/wiki_tag_audit.py` so declared tag parsing stops before the `Rules:` prose block and does not count rule examples as declared tags.
+- Updated `SCHEMA.md` to record that source-form validation is now health-check coverage, while `source_policy: normative` itself remains a documentation marker.
+- Validation after the script change: health `pass=true`, `P0=0`, `P1=0`, `P2=20` newly surfaced source-maintenance warnings; tag audit has no high-frequency undeclared candidates.
