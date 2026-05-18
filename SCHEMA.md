@@ -115,6 +115,7 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - evaluation
 - verification
 - operating-model
+- gstack
 - model-profiles
 - harness
 - closeout
@@ -127,6 +128,7 @@ Rules:
 - If a tag appears on 1-2 pages, prefer an existing broader tag unless the narrow tag has clear future retrieval value.
 - If two tags mean the same thing, keep one canonical spelling and replace the other.
 - Reserved but currently unused tags are allowed when they match stable future page areas, e.g. `devops`, `linux`, `networking`, `product`.
+- `gstack` is a facet tag for pages about the gstack-derived project execution/review lane in Hermes. It is not currently an entity page or a generic project tag; keep it paired with broader tags such as `workflow`, `validation`, or `project-development`.
 
 ## Page Thresholds
 - 某个主题在 2 个以上来源重复出现，或在单个来源中足够核心时，创建独立页面

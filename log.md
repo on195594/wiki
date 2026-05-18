@@ -705,3 +705,8 @@
 - Updated: `concepts/public-info-monitoring-automation-methodology.md`.
 - Added a compact decision card and navigation section at the top, following the long-page triage recommendation to add summary/navigation rather than split the page.
 - Updated only the page `updated` date and top navigation content; no index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-18] governance | Gstack taxonomy decision
+- Promoted `gstack` to a declared facet tag in `SCHEMA.md`.
+- Updated `concepts/gstack-project-execution-lane.md` with the decision: `gstack` is a gstack-derived review/execution lens tag, not a new entity/project page by default.
+- No index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.

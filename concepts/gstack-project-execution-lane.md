@@ -1,7 +1,7 @@
 ---
 title: Gstack Project Execution Lane
 created: 2026-04-23
-updated: 2026-04-23
+updated: 2026-05-18
 type: concept
 tags: [gstack, project-execution, workflow, hermes, lifeos]
 sources: [local-gstack-skills, session:gstack-office-hours]
@@ -23,6 +23,18 @@ gstack 对我最有价值的，不是一组零散 skill，而是一条从“想�
 - `gstack-plan-eng-review`
 - `gstack-review`
 - `gstack-qa`
+
+## Taxonomy decision
+
+`gstack` 保留为 wiki taxonomy 里的 facet tag，而不是新建 entity/project 页。
+
+理由：当前 4 个使用 `gstack` 的页面都不是在介绍一个独立外部实体，而是在描述一条被 Hermes 吸收的项目推进/审查方法：执行 lane、验证案例、office-hours 审查、eng-review 迁移计划。它的长期检索价值是“这页使用了 gstack-derived review/execution lens”，不是“这页属于某个项目”。
+
+使用规则：
+
+- 可用于 gstack-derived office-hours、plan review、eng review、review、QA、validation lane 页面。
+- 不用作泛化的 `project` 或 `project-development` 替代品。
+- 如果未来需要记录 gstack 本身的来源、版本、安装方式或外部上下文，再单独创建 entity/source 页面；当前不需要。
 
 ## Why This Matters
 
