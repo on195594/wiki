@@ -1,7 +1,7 @@
 ---
 title: Public Info Monitoring Automation Methodology
 created: 2026-05-06
-updated: 2026-05-08
+updated: 2026-05-18
 type: concept
 tags: [monitoring, automation, public-info, cron, telegram, hermes, workflow]
 sources: [project:/home/lin/.hermes/projects/amazon-price-watch, project:/home/lin/.hermes/projects/investment-watch, skill:public-info-monitoring-automation]
@@ -9,6 +9,36 @@ status: stable
 ---
 
 # Public Info Monitoring Automation Methodology
+
+## Decision card
+
+Use this page when a monitoring idea needs to become a low-noise, auditable, read-only automation project.
+
+Default route:
+
+1. Define the exact user-approved signal before writing collection code.
+2. Model the public source and capture normal/failure fixtures.
+3. Keep parsing, diff/policy, storage, notification, and health checks as separate layers.
+4. Run the worker without LLM judgment in daily operation; use Hermes for build-time assistance, cron scheduling, Telegram delivery, and knowledge capture.
+5. Promote learning to wiki/skill/template only after real runs, failure fixtures, health checks, and a retrospective.
+
+Hard stops:
+
+- do not monitor private, logged-in, CAPTCHA-gated, or access-controlled targets by default;
+- do not auto-buy, auto-trade, auto-submit forms, or otherwise change external state;
+- do not alert on every observed difference; alert only on approved, actionable signals;
+- do not promote project-specific business thresholds into memory, runtime, or reusable skills without a separate review.
+
+Navigation:
+
+- Signal definition: [§1](#1-先定义值得提醒的变化)
+- Source modeling and fixtures: [§2](#2-信息源建模), [§3](#3-先-fixture后-live-scrape)
+- Project architecture and state: [§4](#4-项目最小架构), [§5](#5-状态保存)
+- Diff and notification policy: [§6](#6-变化判断), [§7](#7-通知设计)
+- Hermes runtime and health: [§8](#8-hermes-runtime-模式), [§9](#9-健康检查)
+- Knowledge routing and promotion: [§10](#10-知识沉淀路径)
+- Proven examples: [Amazon sample](#amazon-样板带来的关键教训), [Investment Watch validation](#investment-watch-验证结果)
+- Startup checklist: [新监控项目启动 checklist](#新监控项目启动-checklist)
 
 ## 定位
 

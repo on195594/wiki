@@ -700,3 +700,8 @@
 - Created closeout report: `_meta/reviews/2026-05-18-wiki-governance-cleanup-closeout.md`.
 - Recorded final health, tag audit deltas, completed schema/taxonomy/long-page work, accepted risks, and remaining backlog.
 - No content pages, index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-18] governance | Public info monitoring methodology navigation
+- Updated: `concepts/public-info-monitoring-automation-methodology.md`.
+- Added a compact decision card and navigation section at the top, following the long-page triage recommendation to add summary/navigation rather than split the page.
+- Updated only the page `updated` date and top navigation content; no index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
