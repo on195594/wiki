@@ -1,7 +1,7 @@
 ---
 title: Hermes LifeOS Executable Architecture
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-05-18
 type: concept
 tags: [hermes, lifeos, architecture, workflow, governance]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, session:2026-04-21-hermes-lifeos-vs-profile]
