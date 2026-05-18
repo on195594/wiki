@@ -667,3 +667,12 @@
 - No project-local files, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, or Hermes core were changed.
 - Claude implementation review prompt/result: `_meta/reviews/2026-05-18-hermes-project-dev-migration-compression-implementation-claude-review-prompt.md`, `_meta/reviews/2026-05-18-hermes-project-dev-migration-compression-implementation-claude-review.md`.
 - Claude verdict: `PASS`; no blocking or important findings, no required patches.
+
+## [2026-05-18] governance | Hermes LifeOS executable architecture split plan
+- Created page-specific split concept plan: `_meta/plans/2026-05-18-hermes-lifeos-executable-architecture-split-plan.md`
+- Target page: `concepts/hermes-lifeos-executable-architecture.md`
+- Triage class: `Split concept`.
+- Decision baseline: keep the target as the stable architecture hub; do not edit the target page in this step; if implemented later, split only the layer-boundary contract first unless separately approved.
+- Candidate future split pages: `concepts/hermes-lifeos-layer-boundary-contract.md`, `concepts/hermes-lifeos-topology-and-profile-policy.md`, and `concepts/hermes-lifeos-promotion-operating-policy.md`.
+- Archive default: use git history; do not create a duplicate `_meta/` archive unless explicitly approved.
+- No target page content, page metadata, page paths, index entries, memory, skills, cron, runtime, MCP, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
