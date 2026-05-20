@@ -735,3 +735,10 @@
 - Updated `index.md` total pages from 76 to 77.
 - Followed Gemini independent review: emphasized Just-in-time context assembly and Context Rot defense, linked tool-boundary details to `typed-ai-agent-boundaries` instead of duplicating them.
 - Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-20] fix | Agent context engineering Claude review follow-up
+- Applied accepted Claude review findings for `concepts/agent-context-engineering.md`.
+- Clarified the boundary with `concepts/hermes-context-layer-operating-rules.md` in the relationship section and state-mapping paragraph.
+- Added a reverse related link from `concepts/hermes-context-layer-operating-rules.md` to `concepts/agent-context-engineering.md` and updated its `updated` date.
+- Fixed the raw-source wikilink in the new concept page summary by removing code formatting around `[[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]`.
+- Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.

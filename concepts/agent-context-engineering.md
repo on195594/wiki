@@ -14,7 +14,7 @@ status: stable
 
 可靠 Agent 的核心是“上下文工程”而非“修辞学”：通过即时装配（Just-in-time）系统指令、明确工具边界、精选 Few-shot 示例并动态裁剪消息历史，严格控制模型每一步的可见信息，从而避免上下文腐败（Context Rot）与多步执行偏航。
 
-这页沉淀 MachineLearningMastery 文章 `[[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]` 对 Hermes 的可迁移原则。它补充 `[[llm-context-engineering-layer]]` 与 `[[hermes-context-engineering-design-priorities]]`：前者讲 RAG 与 prompt 之间的上下文层，后者讲 Hermes 的预算、排序、压缩优先级；本页聚焦 Agent 执行过程中的上下文装配：system prompt、tools、examples、message history/state 在每一步如何被选择、裁剪和隔离。
+这页沉淀 MachineLearningMastery 文章 [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]] 对 Hermes 的可迁移原则。它补充 `[[llm-context-engineering-layer]]` 与 `[[hermes-context-engineering-design-priorities]]`：前者讲 RAG 与 prompt 之间的上下文层，后者讲 Hermes 的预算、排序、压缩优先级；本页聚焦 Agent 执行过程中的上下文装配：system prompt、tools、examples、message history/state 在每一步如何被选择、裁剪和隔离。
 
 ## Core principle
 
@@ -72,6 +72,8 @@ Hermes 映射：
 - project logs / run artifacts 保存可审计过程证据。
 - cron/log 保存 recurring 运行结果，不等于默认上下文。
 
+这只是 Agent 运行状态视角下的简要映射；Hermes 全局层间路由规则以 `[[hermes-context-layer-operating-rules]]` 为准。
+
 ## Context rot and JIT defense
 
 Context rot 不是单纯 token 不够，而是上下文质量随长度和噪音下降：旧错误被保留、重复输出占位、无关材料挤掉关键事实、模型在“看起来相关”的历史中迷路。
@@ -99,6 +101,7 @@ Hermes 的防腐原则：
 
 - `[[llm-context-engineering-layer]]`：讲 context engineering 作为 RAG 与 prompt 之间的系统层；本页讲 Agent 多步执行中各类上下文面的即时装配。
 - `[[hermes-context-engineering-design-priorities]]`：讲 Hermes 应先做 budget、ranking、compression、history decay；本页补充为什么这些能力对 Agent prompt/context 稳定性必要。
+- `[[hermes-context-layer-operating-rules]]`：定义 Hermes 全局层间路由规则；本页聚焦 Agent 执行过程中 prompt 四个上下文面的即时装配设计，而非通用层路由决策。
 - `[[typed-ai-agent-boundaries]]`：讲 typed output、typed tools、dependency injection；本页只引用工具边界原则，不重复展开实现细节。
 - `[[agent-development-lifecycle]]`：把 context、tool、prompt、monitor 放进 Build/Test/Deploy/Monitor/Govern 生命周期；本页提供 Build/Test 阶段的上下文装配原则。
 - `[[subagent-orchestration-patterns]]`：讲 subagent 生命周期选择；本页补充子 Agent 应接收最小共享上下文，避免跨任务污染。
