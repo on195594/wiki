@@ -1,0 +1,135 @@
+---
+title: Agent Context Engineering
+created: 2026-05-20
+updated: 2026-05-20
+type: concept
+tags: [agent, llm, context-engineering, hermes, workflow]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+status: stable
+---
+
+# Agent Context Engineering
+
+## Summary
+
+可靠 Agent 的核心是“上下文工程”而非“修辞学”：通过即时装配（Just-in-time）系统指令、明确工具边界、精选 Few-shot 示例并动态裁剪消息历史，严格控制模型每一步的可见信息，从而避免上下文腐败（Context Rot）与多步执行偏航。
+
+这页沉淀 MachineLearningMastery 文章 `[[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]` 对 Hermes 的可迁移原则。它补充 `[[llm-context-engineering-layer]]` 与 `[[hermes-context-engineering-design-priorities]]`：前者讲 RAG 与 prompt 之间的上下文层，后者讲 Hermes 的预算、排序、压缩优先级；本页聚焦 Agent 执行过程中的上下文装配：system prompt、tools、examples、message history/state 在每一步如何被选择、裁剪和隔离。
+
+## Core principle
+
+Agent prompt engineering 不是把一次性聊天 prompt 写得更漂亮，而是设计一个会反复运行的上下文装配系统。
+
+聊天 prompt 的失败通常会马上暴露，用户下一轮可以纠正；Agent 的失败会在多步任务中延迟显现：早期歧义、过宽工具、错误历史、冗余检索和过期状态会被后续步骤当成事实继续使用，最后表现为工具选择漂移、目标偏航、重复操作或看似合理但不可信的交付物。
+
+因此 Agent 的默认问题应从“我该怎么措辞”改成：
+
+> 模型在当前步骤需要看到哪些最小、最高密度、最可信的信息，才能做对下一步？
+
+## Four context surfaces
+
+### 1. System prompt: operating brief, not exhaustive script
+
+System prompt 应定义角色、权限边界、工具使用原则、停止条件和输出契约，但不应试图用 if-else 穷举所有场景。
+
+过度指定会让提示词脆弱、难维护，并压低模型处理新情况的能力；指定不足会让 Agent 用隐含假设补空白。更好的做法是保持“恰当高度”：少量高优先级原则 + 清晰验收标准 + 明确越界停止条件。
+
+Hermes 映射：
+- `SOUL.md`、`CLAUDE.md`、`AGENTS.md` 提供全局/项目级行为边界。
+- skill 的 `Trigger`、`Workflow`、`Pitfalls`、`Verification` 提供任务级操作边界。
+- 不应把某篇文章的 prompt 模板直接硬编码进全局提示词。
+
+### 2. Tools: narrow action surface with negative boundaries
+
+Agent 能调用工具不等于应该暴露更多工具。工具越宽、越相似、越缺少失败语义，模型越容易在多步执行中选错工具。
+
+本页只保留上下文装配层的原则：工具描述应让模型知道“何时使用、何时不用、失败后怎么办、成本/风险是什么”。工具类型、schema、dependency injection 与 public API 边界详见 `[[typed-ai-agent-boundaries]]`，不要在本页重复维护。
+
+Hermes 映射：
+- 工具说明应包含用途、限制、失败语义和反向边界。
+- 高风险工具不应靠 prompt 自觉控制，应配合权限、审批、审计和回滚。
+- 给一个 Agent 挂载工具前，先问：当前任务真的需要它进入可见工具面吗？
+
+### 3. Examples: demonstrate behavior, not only answers
+
+Agent 的 Few-shot 示例不应只展示“输入 → 正确输出”。对多步任务，更有价值的是展示行为模式：如何澄清范围、何时暂停、如何处理工具失败、如何验证结果、如何在证据不足时降级回答。
+
+Hermes 映射：
+- skills 的 references、fixtures、validation records 可以承载局部 Few-shot。
+- 示例应按任务即时加载，而不是塞进全局上下文。
+- 至少为复杂工作流保留一个“识别歧义 → 停止执行 → 请求澄清”的样例。
+
+### 4. Message history and state: dynamic, lossy, and task-scoped
+
+历史消息不是越全越好。长历史会引入旧目标、旧错误、重复工具输出和无关上下文，让模型注意力被稀释。
+
+Agent 运行状态应从“完整聊天记录”转成结构化状态：当前目标、已做决策、已验证事实、待办步骤、失败尝试、风险和停止条件。旧过程可以进入日志或 wiki raw source，但不应默认继续压进 prompt。
+
+Hermes 映射：
+- session context 保存当前对话的活跃意图。
+- memory 只保存短小、稳定、跨任务默认有价值的事实。
+- wiki 保存长期概念、raw source 和可检索知识。
+- project logs / run artifacts 保存可审计过程证据。
+- cron/log 保存 recurring 运行结果，不等于默认上下文。
+
+## Context rot and JIT defense
+
+Context rot 不是单纯 token 不够，而是上下文质量随长度和噪音下降：旧错误被保留、重复输出占位、无关材料挤掉关键事实、模型在“看起来相关”的历史中迷路。
+
+Hermes 的防腐原则：
+
+1. **Just-in-time over pre-loaded**
+   - 需要时再读取 wiki、文件、日志或 tool result。
+   - 不把所有可能有用的资料预先塞进 prompt。
+
+2. **State card over raw transcript**
+   - 对长任务保留结构化状态卡，而不是完整消息历史。
+   - 状态卡必须区分已验证事实、推论、待验证问题和下一步。
+
+3. **Minimal shared context for subagents**
+   - 子 Agent 只接收自己的任务、输入、边界和输出契约。
+   - 不把主 Agent 的全部历史转交给子 Agent。
+   - 这与 `[[subagent-orchestration-patterns]]` 的“从最简单编排开始”原则一致。
+
+4. **Context choice should be explainable**
+   - 对复杂任务，应能回答为什么选了某段上下文、为什么丢弃某段上下文。
+   - 这与 `[[hermes-context-engineering-design-priorities]]` 的 budget、ranking、compression 顺序一致。
+
+## Relationship to existing wiki
+
+- `[[llm-context-engineering-layer]]`：讲 context engineering 作为 RAG 与 prompt 之间的系统层；本页讲 Agent 多步执行中各类上下文面的即时装配。
+- `[[hermes-context-engineering-design-priorities]]`：讲 Hermes 应先做 budget、ranking、compression、history decay；本页补充为什么这些能力对 Agent prompt/context 稳定性必要。
+- `[[typed-ai-agent-boundaries]]`：讲 typed output、typed tools、dependency injection；本页只引用工具边界原则，不重复展开实现细节。
+- `[[agent-development-lifecycle]]`：把 context、tool、prompt、monitor 放进 Build/Test/Deploy/Monitor/Govern 生命周期；本页提供 Build/Test 阶段的上下文装配原则。
+- `[[subagent-orchestration-patterns]]`：讲 subagent 生命周期选择；本页补充子 Agent 应接收最小共享上下文，避免跨任务污染。
+
+## What not to promote blindly
+
+- 不把 CoT、ReAct、Reflexion 固化为 Hermes 默认执行模式；它们是可选推理架构，不是每个任务的最低成本路径。
+- 不因为强调 context engineering 就扩大默认上下文窗口或默认注入更多历史。
+- 不把文章中的经验值、示例 prompt 或 Few-shot 直接写入 `SOUL.md`、`AGENTS.md` 或全局 skill。
+- 不把本页直接升级为 skill；只有当某个具体 Hermes 工作流在真实项目中验证出稳定 SOP，才考虑新增或补丁相关 skill。
+- 不把工具边界内容复制成第二套规则；工具接口治理以 `[[typed-ai-agent-boundaries]]` 为主。
+
+## Operating rules
+
+- 对 Agent 任务，先定义当前步骤需要的最小上下文，再读取材料。
+- 对长任务，维护结构化状态卡，定期裁剪原始历史。
+- 对工具集，优先减少可见工具面，再优化工具描述。
+- 对 Few-shot，优先展示澄清、失败处理和验证行为，而不是只展示成功输出。
+- 对 subagent，传递任务契约和必要证据，不传递完整父上下文。
+- 对任何 active-layer 变更，先走项目级验证和显式审批，不从外部文章直接推广。
+
+## Related
+
+- [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]
+- [[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]
+- [[llm-context-engineering-layer]]
+- [[hermes-context-engineering-design-priorities]]
+- [[typed-ai-agent-boundaries]]
+- [[agent-development-lifecycle]]
+- [[subagent-orchestration-patterns]]
+- [[hermes-context-layer-operating-rules]]
+- [[wiki-ingestion-workflow]]
+- [[index]]
+- [[log]]

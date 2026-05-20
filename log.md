@@ -728,3 +728,10 @@
 - Normalized Hermes official docs sources from local absolute paths to `docs:hermes-agent/...` references in the layer-routing pages.
 - Replaced non-durable `/tmp/...` skill-refactor sources with `session:2026-05-15-...` evidence handles in `concepts/hermes-skill-refactoring-methodology.md`.
 - Target: return wiki health check to `P0=0`, `P1=0`, `P2=0` without changing page bodies or active Hermes runtime layers.
+
+## [2026-05-20] ingest | MachineLearningMastery on prompt engineering for agentic AI
+- Captured raw source: `raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md`
+- Created concept page: `concepts/agent-context-engineering.md`
+- Updated `index.md` total pages from 76 to 77.
+- Followed Gemini independent review: emphasized Just-in-time context assembly and Context Rot defense, linked tool-boundary details to `typed-ai-agent-boundaries` instead of duplicating them.
+- Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
