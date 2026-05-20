@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-20 | Total pages: 77
+> Last updated: 2026-05-20 | Total pages: 78
 
 ## Entities
 
@@ -11,6 +11,7 @@
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
 - [[agent-experience-consolidation-loops]] — Agent 经验固化闭环：从历史任务、失败、成功路径和用户纠正中提取可复用经验，并按 memory/skill/wiki/closeout/evaluator/cron 分层路由
+- [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-orchestration-production-tradeoffs]] — Agent 编排的生产取舍：按成本/规模、延迟、平衡控制或高风险准确率选择 sequential、fan-out、supervisor-worker 或 reflexive loop
 - [[agent-self-validation-loops]] — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件，把 coding agent 任务变成可验证迭代回路
 - [[ai-agent-document-fidelity-risk]] — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险

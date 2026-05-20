@@ -742,3 +742,9 @@
 - Added a reverse related link from `concepts/hermes-context-layer-operating-rules.md` to `concepts/agent-context-engineering.md` and updated its `updated` date.
 - Fixed the raw-source wikilink in the new concept page summary by removing code formatting around `[[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]`.
 - Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-20] concept | Agent failure closed-loop evaluation
+- Created concept page: `concepts/agent-failure-closed-loop-evaluation.md`.
+- Updated `index.md` total pages from 77 to 78.
+- Captured the Hermes-level method: failure signal → neutral evidence → root cause class → minimal fix → regression evaluator/case → human approval before active-layer mutation.
+- Boundary: no memory, cron, MCP config, profile, runtime config, wrappers, quick commands, `SOUL.md`, or Hermes core files were changed.
