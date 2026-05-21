@@ -769,3 +769,8 @@
 - Updated: `index.md`
 - Compiled the article into a reusable concept page about modeling multi-agent capability coverage, budget selection, task assignment, and routing cost as explicit optimization problems.
 - Active-layer boundary: no memory, skill, cron, MCP, profile, or runtime change was promoted; numeric examples remain illustrative synthetic data.
+## [2026-05-21] review | Claude review of agent resource optimization ingestion
+- Reviewer: Claude Code read-only review.
+- Verdict: PASS_WITH_MINOR_FIXES.
+- Accepted fixes: added `created`/`updated` to the raw source frontmatter, replaced the off-wiki summary output path with a run-level note, and removed `[[index]]`/`[[log]]` navigation links from the new concept `Related` section.
+- Rejected/escalated findings: none; no blocking findings were reported.

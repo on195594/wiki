@@ -5,10 +5,12 @@ source: Towards Data Science
 source_url: https://towardsdatascience.com/optimizing-ai-agent-planning-with-operations-research-and-data-science/
 published: 2026-05-20
 captured: 2026-05-21
+created: 2026-05-21
+updated: 2026-05-21
 type: raw-source
 status: raw
 tags: [agent, multi-agent, orchestration, optimization, research]
-extraction: Jina Reader extraction for a Towards Data Science / Medium-family page; Gemini summary output preserved at /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260521-174636-Optimizing-AI-Agent-Planning-with-Operations-Research-and-Data-Science-981597-544223120-summary.md.
+extraction: Jina Reader extraction for a Towards Data Science / Medium-family page; Gemini summary session run 20260521-174636 was used as an off-wiki grounding artifact.
 ---
 
 # Optimizing AI Agent Planning with Operations Research and Data Science

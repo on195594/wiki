@@ -91,5 +91,3 @@ Hermes 含义：如果未来出现高频路由、模型分层、轻重任务分�
 - [[production-ai-agent-evaluation-framework]]
 - [[subagent-orchestration-patterns]]
 - [[hermes-layer-routing-decision-checklist]]
-- [[index]]
-- [[log]]
