@@ -748,3 +748,11 @@
 - Updated `index.md` total pages from 77 to 78.
 - Captured the Hermes-level method: failure signal → neutral evidence → root cause class → minimal fix → regression evaluator/case → human approval before active-layer mutation.
 - Boundary: no memory, cron, MCP config, profile, runtime config, wrappers, quick commands, `SOUL.md`, or Hermes core files were changed.
+
+## [2026-05-21] ingest | MachineLearningMastery on agentic programming as system engineering
+- Captured raw source: `raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md`.
+- Created concept page: `concepts/agentic-programming-system-engineering.md`.
+- Updated `index.md` total pages from 78 to 79.
+- Preserved the source limitation: direct publisher fetch returned Cloudflare 403, so the raw capture uses Jina Reader text while preserving the original Source URL.
+- Durable unit: Agentic programming as software/system engineering, with negative tool constraints, behavioral drift, minimal shared context, and layered memory routing.
+- Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
