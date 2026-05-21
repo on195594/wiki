@@ -756,3 +756,9 @@
 - Preserved the source limitation: direct publisher fetch returned Cloudflare 403, so the raw capture uses Jina Reader text while preserving the original Source URL.
 - Durable unit: Agentic programming as software/system engineering, with negative tool constraints, behavioral drift, minimal shared context, and layered memory routing.
 - Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+
+## [2026-05-21] review-fix | Agentic programming wiki Claude review follow-up
+- Applied accepted Claude review findings for `concepts/agentic-programming-system-engineering.md` and `raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md`.
+- Added inline canonical links for negative tool constraints and minimal shared context to reduce overlap with `agent-context-engineering` and `typed-ai-agent-boundaries`.
+- Removed system/navigation links from the concept `Related` section and normalized the raw source `summary_path` to `~/.hermes/...`.
+- Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.

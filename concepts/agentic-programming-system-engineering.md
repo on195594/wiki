@@ -40,7 +40,7 @@ Agentic programming 的长期价值不在于“更会写 prompt”，而在于�
 - 失败时返回什么；
 - 是否会产生外部副作用。
 
-这补充 `[[typed-ai-agent-boundaries]]`：typed schema 可以约束输入输出形状，但工具仍需要语义边界，尤其是 `Do NOT use when...` 这类负向约束。
+这补充 `[[typed-ai-agent-boundaries]]`：typed schema 可以约束输入输出形状，但工具仍需要语义边界，尤其是 `Do NOT use when...` 这类负向约束。详细工具边界设计规则见 `[[agent-context-engineering]]` 的工具上下文面与 `[[typed-ai-agent-boundaries]]`；本节只记录系统工程视角的原则来源。
 
 ### 2. Behavioral drift is a first-class failure mode
 
@@ -66,7 +66,7 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 - 输出契约；
 - 验证或停止条件。
 
-这与 `[[agent-context-engineering]]` 的 minimal shared context 一致。传递完整历史会增加成本、稀释注意力，并把父任务中的旧错误传播给子任务。
+这与 `[[agent-context-engineering]]` 的 minimal shared context 一致；Hermes 操作映射以该页的 Context rot and JIT defense 为主。传递完整历史会增加成本、稀释注意力，并把父任务中的旧错误传播给子任务。
 
 ### 4. Agent memory is layered, not one bucket
 
@@ -105,6 +105,3 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 - [[agent-failure-closed-loop-evaluation]]
 - [[hermes-context-layer-operating-rules]]
 - [[subagent-orchestration-patterns]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
