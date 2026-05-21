@@ -762,3 +762,10 @@
 - Added inline canonical links for negative tool constraints and minimal shared context to reduce overlap with `agent-context-engineering` and `typed-ai-agent-boundaries`.
 - Removed system/navigation links from the concept `Related` section and normalized the raw source `summary_path` to `~/.hermes/...`.
 - Boundary: no memory, skills, cron, runtime config, MCP config, wrappers, quick commands, `SOUL.md`, Hermes core, or project-local files were changed.
+## [2026-05-21] ingest | TDS on agent planning with operations research
+- Captured raw source: `raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md`
+- Created: `concepts/agent-resource-optimization.md`
+- Updated: `concepts/agent-orchestration-production-tradeoffs.md`
+- Updated: `index.md`
+- Compiled the article into a reusable concept page about modeling multi-agent capability coverage, budget selection, task assignment, and routing cost as explicit optimization problems.
+- Active-layer boundary: no memory, skill, cron, MCP, profile, or runtime change was promoted; numeric examples remain illustrative synthetic data.

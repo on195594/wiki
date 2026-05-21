@@ -1,7 +1,7 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-05-07
+updated: 2026-05-21
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
@@ -168,6 +168,10 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - Reinforces `[[hermes-ai-workflow-formalization-principles]]`: reliable AI workflows need explicit structure, validation, and stop conditions, not just stronger models.
 - Gives `[[public-info-monitoring-automation-methodology]]` a useful constraint: monitoring jobs should stay sequential/narrow unless fan-out or verification reduces real alert risk.
 
+## Relationship to resource optimization
+
+`[[agent-resource-optimization]]` adds the planning layer before orchestration topology selection: ability coverage, budget-constrained selection, task assignment, and route cost should be modeled explicitly before deciding whether a workflow deserves sequential, fan-out, supervisor-worker, or reflexive execution.
+
 ## Limits
 
 - The article is a secondary write-up of benchmark results, not the benchmark paper itself.
@@ -183,6 +187,8 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - [[hermes-context-layer-operating-rules]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[ai-coding-agent-workflow-types]]
+- [[agent-resource-optimization]]
+- [[production-ai-agent-evaluation-framework]]
 - [[public-info-monitoring-automation-methodology]]
 - [[index]]
 - [[log]]
