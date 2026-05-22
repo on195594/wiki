@@ -194,6 +194,7 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - [[agent-resource-optimization]]
 - [[agent-research-evidence-gate]]
 - [[production-ai-agent-evaluation-framework]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[public-info-monitoring-automation-methodology]]
 - [[index]]
 - [[log]]

@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-05-22 | Total pages: 81
+> Last updated: 2026-05-22 | Total pages: 82
 
 ## Entities
 
@@ -17,6 +17,7 @@
 - [[agent-resource-optimization]] — Agent 资源优化：用集合覆盖、分配、背包和网络流视角建模多 Agent 的能力覆盖、预算选择、任务分派与路由成本
 - [[agent-research-evidence-gate]] — 研究型 Agent 的证据质量闸门：Manager 编排、工具取证、Judge 评分和缺口补证，达标后 Analyst 才生成报告
 - [[agent-self-validation-loops]] — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件，把 coding agent 任务变成可验证迭代回路
+- [[constrained-toolbox-evaluator-loop]] — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [[ai-agent-document-fidelity-risk]] — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
 - [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、Agent 行为和生产运营四层指标评估可靠性，阈值只保留为数量级参考
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口

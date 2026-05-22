@@ -1,7 +1,7 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-05-17
+updated: 2026-05-22
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
@@ -120,6 +120,7 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 - [[hermes-layer-routing-decision-checklist]]
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
 - [[ai-agent-document-fidelity-risk]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

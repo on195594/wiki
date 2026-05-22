@@ -187,6 +187,7 @@ status: stable
 - [[llm-summary-identification-step]]
 - [[typed-ai-agent-boundaries]]
 - [[ai-agent-document-fidelity-risk]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[index]]
 - [[log]]

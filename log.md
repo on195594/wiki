@@ -789,3 +789,13 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: updated frontmatter dates on two touched concept pages and normalized mixed-language `targeted补证` wording.
 - Rejected finding: manual index count mismatch, because deterministic health check reported `Formal pages: 81` and `Index wikilinks: 81`.
+
+## [2026-05-22] ingest | NVIDIA multi-agent financial signal discovery
+- Captured raw source: `raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.md`
+- Created: `concepts/constrained-toolbox-evaluator-loop.md`
+- Updated: `concepts/typed-ai-agent-boundaries.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`
+- Updated: `concepts/agent-orchestration-production-tradeoffs.md`
+- Updated: `index.md` total pages from 81 to 82.
+- Durable unit: constrained toolbox + structured blueprint + executable artifact + objective evaluator feedback loop.
+- Boundary: Rank IC thresholds, NVIDIA NIM/NeMo/Nemotron, and article-specific financial formulas remain source-specific; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
