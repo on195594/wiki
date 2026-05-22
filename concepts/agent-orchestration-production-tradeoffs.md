@@ -1,7 +1,7 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-05-21
+updated: 2026-05-22
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
@@ -172,6 +172,10 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 
 `[[agent-resource-optimization]]` adds the planning layer before orchestration topology selection: ability coverage, budget-constrained selection, task assignment, and route cost should be modeled explicitly before deciding whether a workflow deserves sequential, fan-out, supervisor-worker, or reflexive execution.
 
+## Relationship to research evidence gates
+
+`[[agent-research-evidence-gate]]` is a concrete supervisor/Judge specialization of the hierarchical and reflexive patterns described here. It keeps the parent/Manager responsible for routing and final synthesis while using a Judge gate to decide whether research evidence is sufficient or needs targeted evidence backfilling.
+
 ## Limits
 
 - The article is a secondary write-up of benchmark results, not the benchmark paper itself.
@@ -188,6 +192,7 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - [[hermes-ai-workflow-formalization-principles]]
 - [[ai-coding-agent-workflow-types]]
 - [[agent-resource-optimization]]
+- [[agent-research-evidence-gate]]
 - [[production-ai-agent-evaluation-framework]]
 - [[public-info-monitoring-automation-methodology]]
 - [[index]]

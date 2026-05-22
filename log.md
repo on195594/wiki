@@ -774,3 +774,18 @@
 - Verdict: PASS_WITH_MINOR_FIXES.
 - Accepted fixes: added `created`/`updated` to the raw source frontmatter, replaced the off-wiki summary output path with a run-level note, and removed `[[index]]`/`[[log]]` navigation links from the new concept `Related` section.
 - Rejected/escalated findings: none; no blocking findings were reported.
+
+## [2026-05-22] ingest | MachineLearningMastery multi-agent research assistant
+- Captured raw source: `raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md`
+- Created: `concepts/agent-research-evidence-gate.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`
+- Updated: `concepts/agent-orchestration-production-tradeoffs.md`
+- Updated: `index.md`
+- Compiled the article into a reusable concept about research-agent evidence gates: Manager orchestrates, tools gather source-backed evidence, Judge scores sufficiency and missing information, and Analyst writes only after the gate passes. Active-layer promotion remains deferred pending separate project-local validation and approval.
+
+## [2026-05-22] review | Agent research evidence gate AGY independent review
+- Review prompt: `_meta/reviews/2026-05-22-agent-research-evidence-gate-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-22-agent-research-evidence-gate-agy-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: updated frontmatter dates on two touched concept pages and normalized mixed-language `targeted补证` wording.
+- Rejected finding: manual index count mismatch, because deterministic health check reported `Formal pages: 81` and `Index wikilinks: 81`.

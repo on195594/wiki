@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-05-18
+updated: 2026-05-22
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md]
@@ -173,8 +173,13 @@ status: stable
 
 `[[llm-engineering-knowledge-map]]` frames evaluation as the final control layer of the LLM engineering stack. This page keeps the narrower production Agent eval checklist for retrieval, generation, tool behavior, cost, and latency.
 
+## Relationship to research evidence gates
+
+`[[agent-research-evidence-gate]]` applies this evaluation frame to research workflows: the Judge gate evaluates source sufficiency and missing information before an Analyst produces the final report. It is narrower than this page because it focuses on evidence readiness rather than the whole production evaluation stack.
+
 ## Related
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
+- [[agent-research-evidence-gate]]
 - [[agent-self-validation-loops]]
 - [[agent-closed-loop-learning-from-corrections-to-rules]]
 - [[agent-development-lifecycle]]
