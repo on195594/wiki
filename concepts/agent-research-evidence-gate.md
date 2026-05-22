@@ -133,6 +133,7 @@ Do not create cron jobs, MCP servers, wrappers, or runtime changes from this art
 - [[agent-self-validation-loops]]
 - [[llm-summary-identification-step]]
 - [[typed-ai-agent-boundaries]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[index]]
 - [[log]]

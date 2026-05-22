@@ -2,7 +2,7 @@
 title: Automating and Optimizing Financial Signal Discovery with Multi-Agent Systems
 created: 2026-05-22
 updated: 2026-05-22
-type: raw_article
+type: raw-source
 tags: [agent, multi-agent, evaluation, workflow, finance, nvidia]
 source_url: https://developer.nvidia.com/blog/automating-and-optimizing-financial-signal-discovery-with-multi-agent-systems/
 source_site: NVIDIA Technical Blog
@@ -220,133 +220,23 @@ Evaluation Metrics (on: signal_rank_adjusted_return_momentum):
   Num Periods: 3504
   Positive IC Ratio: 46.38%
 In this demonstration, the signal agent generated two momentum-based stock-selection signals using the structured library of mathematical operators we provided.
-The first,
-ExpVolume-Adjusted Momentum
-, computes each stock’s 10-day price return and divides it by an exponentially weighted moving average of trading volume over the same span:
-Signal
-1
-(
-t
-)
-=
-Close
-(
-t
-)
-−
-Close
-(
-t
-−
-10
-)
-Close
-(
-t
-−
-10
-)
-EWMA
-α
-[
-Volume
-]
-(
-t
-)
+The first, ExpVolume-Adjusted Momentum, computes each stock’s 10-day price return and divides it by an exponentially weighted moving average of trading volume over the same span:
+
 `\text{Signal}_1(t) = \frac{ \frac{\text{Close}(t) – \text{Close}(t-10)}{\text{Close}(t-10)} }{ \mathrm{EWMA}_{\alpha}\bigl[\text{Volume}\bigr](t) }`
+
 The denominator is the recursive exponentially-weighted average with span 10:
-EWMA
-α
-[
-Volume
-]
-(
-t
-)
-=
-α
-⋅
-Volume
-(
-t
-)
-+
-(
-1
-−
-α
-)
-⋅
-EWMA
-α
-[
-Volume
-]
-(
-t
-−
-1
-)
+
 `\mathrm{EWMA}_{\alpha}\bigl[\text{Volume}\bigr](t) = \alpha \cdot \text{Volume}(t) + (1-\alpha)\cdot \mathrm{EWMA}_{\alpha}\bigl[\text{Volume}\bigr](t-1)`
+
 The intuition is that a 10-day price return carries more weight when it occurs on low liquidity or thin trading activity. Given two stocks with identical price returns, the one with weaker, fading EWMA volume will receive a larger signal magnitude.
-The second,
-Rank-Adjusted Return Momentum
-, composes two cross-sectional ranks: each stock’s price rank and the rank of its 10-day return, multiplied together so the signal is large only when both are high simultaneously:
-Signal
-2
-(
-t
-)
-∝
-Rank
-t
-(
-Close
-)
-⋅
-Rank
-t
-(
-TS_Return
-(
-Close
-,
-10
-)
-)
-\text{Signal}_2(t) \propto \mathrm{Rank}_t\bigl(\text{Close}\bigr) \cdot \mathrm{Rank}_t\bigl(\text{TS\_Return}(\text{Close}, 10)\bigr)
+The second, Rank-Adjusted Return Momentum, composes two cross-sectional ranks: each stock’s price rank and the rank of its 10-day return, multiplied together so the signal is large only when both are high simultaneously:
+
+`\text{Signal}_2(t) \propto \mathrm{Rank}_t\bigl(\text{Close}\bigr) \cdot \mathrm{Rank}_t\bigl(\text{TS\_Return}(\text{Close}, 10)\bigr)`
+
 The cross-sectional rank on day \(t\) is the within-day quantile across the \(N\) S&P 500 names:
-m
-a
-t
-h
-r
-m
-R
-a
-n
-k
-t
-(
-x
-)
-=
-rank
-(
-x
-t
-)
-N
-+
-1
-∈
-(
-0
-,
-1
-)
-mathrm{Rank}_t(x) = \frac{\mathrm{rank}\bigl(x_t\bigr)}{N+1} \in (0, 1)
+
+`\mathrm{Rank}_t(x) = \frac{\mathrm{rank}\bigl(x_t\bigr)}{N+1} \in (0, 1)`
+
 This isolates stocks that are simultaneously highly priced and showing strong recent momentum—the product sharpens the signal versus either rank in isolation, since middle-of-the-pack names on either dimension are damped multiplicatively.
 The evaluator backtested both signals against S&P 500 forward returns and selected Rank-Adjusted Return Momentum as the stronger candidate, achieving a mean IC of -0.0134 (IC standard deviation 0.1483, information ratio -0.091) with a \(t\)-statistic of -5.37, a vanishingly small \(p\)-value (\(p < 10^{-7}\)) over 3,504 trading days.
 The positive-IC ratio of 46.4% confirms the signal leans negative more often than not. While $|IC|$ sits just below the 0.02 acceptance threshold (hence the “best-effort” outcome after two iterations), the highly significant negative sign means the signal carries consistent predictive information—high-priced, high-momentum stocks systematically underperform forward, the textbook short-momentum / reversal pattern.

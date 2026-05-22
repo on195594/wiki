@@ -799,3 +799,10 @@
 - Updated: `index.md` total pages from 81 to 82.
 - Durable unit: constrained toolbox + structured blueprint + executable artifact + objective evaluator feedback loop.
 - Boundary: Rank IC thresholds, NVIDIA NIM/NeMo/Nemotron, and article-specific financial formulas remain source-specific; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
+
+## [2026-05-22] review | Constrained toolbox evaluator loop AGY independent review
+- Review prompt: `_meta/reviews/2026-05-22-constrained-toolbox-evaluator-loop-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-22-constrained-toolbox-evaluator-loop-agy-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: normalized raw source `type` to `raw-source`, added reverse links from related concept pages, and cleaned vertically split formula fallback text in the raw capture.
+- Blocking/important findings: none.

@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-05-17
+updated: 2026-05-22
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow, hermes]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
@@ -152,5 +152,6 @@ UI/Web 任务追加：
 - [[ai-agent-document-fidelity-risk]]
 - [[hermes-context-layer-operating-rules]]
 - [[wiki-ingestion-workflow]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[index]]
 - [[log]]

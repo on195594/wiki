@@ -1,7 +1,7 @@
 ---
 title: Agent Resource Optimization
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-22
 type: concept
 tags: [agent, multi-agent, orchestration, optimization, architecture, evaluation, hermes]
 sources: [raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md]
@@ -89,5 +89,6 @@ Hermes 含义：如果未来出现高频路由、模型分层、轻重任务分�
 - [[towardsdatascience-agent-planning-operations-research-2026-05-20]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[production-ai-agent-evaluation-framework]]
+- [[constrained-toolbox-evaluator-loop]]
 - [[subagent-orchestration-patterns]]
 - [[hermes-layer-routing-decision-checklist]]
