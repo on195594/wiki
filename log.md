@@ -806,3 +806,10 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: normalized raw source `type` to `raw-source`, added reverse links from related concept pages, and cleaned vertically split formula fallback text in the raw capture.
 - Blocking/important findings: none.
+
+## [2026-05-25] ingest | TDS hybrid AI deterministic analytics
+- Captured raw source: `raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md`
+- Created: `concepts/deterministic-analytics-llm-reasoning-boundary.md`
+- Updated: `index.md` total pages from 82 to 83.
+- Durable unit: separate LLM planning/explanation from deterministic data filtering, aggregation, calculation, and fact generation.
+- Boundary: Copilot Studio, the article's manufacturing assessment schema, numeric examples, and supported analysis types remain source-specific; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
