@@ -827,3 +827,10 @@
 - Updated: `index.md` total pages from 83 to 84.
 - Durable unit: multi-form skill sources can share a provider abstraction, but active exposure requires explicit source layering, filtering, conflict handling, script approval, sandboxing, and audit boundaries.
 - Boundary: Microsoft Agent Framework API names, decorator details, Foundry/Azure client choices, and `require_script_approval` remain source-specific examples; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
+
+## [2026-05-25] review-fix | Agent Skill Provider governance boundary Claude review
+- Review prompt: `_meta/reviews/2026-05-25-agent-skill-provider-governance-boundary-claude-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-25-agent-skill-provider-governance-boundary-claude-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: normalized raw-source extraction route metadata and removed management-page `[[index]]` / `[[log]]` links from the concept page Related section.
+- Boundary: source-specific Microsoft Agent Framework details remain examples only; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.

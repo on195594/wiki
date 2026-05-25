@@ -28,8 +28,7 @@ status: captured
 
 Source URL: https://devblogs.microsoft.com/agent-framework/agent-skills-for-python-file-code-and-class-composed-in-one-provider/
 Source title: Agent Skills for Python: File, Code, and Class – Composed in One Provider
-Extraction route: unknown
-Fallback reason: corrupted_or_noisy
+Extraction route: gemini-summary-workflow
 Source quality: full
 Extraction note: Article prose was extracted from Microsoft Dev Blogs public HTML article.entry-content with code blocks preserved and navigation/comment boilerplate removed.
 
