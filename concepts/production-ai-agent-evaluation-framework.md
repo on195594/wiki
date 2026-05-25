@@ -189,5 +189,6 @@ status: stable
 - [[ai-agent-document-fidelity-risk]]
 - [[constrained-toolbox-evaluator-loop]]
 - [[hermes-ai-workflow-formalization-principles]]
+- [[deterministic-analytics-llm-reasoning-boundary]]
 - [[index]]
 - [[log]]

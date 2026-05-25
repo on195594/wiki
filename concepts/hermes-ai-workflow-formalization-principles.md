@@ -116,6 +116,7 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 - [[hermes-knowledge-base-operating-flow]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-retrieval-priority-and-answer-path]]
+- [[deterministic-analytics-llm-reasoning-boundary]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

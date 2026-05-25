@@ -813,3 +813,10 @@
 - Updated: `index.md` total pages from 82 to 83.
 - Durable unit: separate LLM planning/explanation from deterministic data filtering, aggregation, calculation, and fact generation.
 - Boundary: Copilot Studio, the article's manufacturing assessment schema, numeric examples, and supported analysis types remain source-specific; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
+
+## [2026-05-25] review | Deterministic analytics boundary AGY independent review
+- Review prompt: `_meta/reviews/2026-05-25-deterministic-analytics-llm-boundary-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-25-deterministic-analytics-llm-boundary-agy-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: added reverse links from `typed-ai-agent-boundaries`, `constrained-toolbox-evaluator-loop`, `hermes-ai-workflow-formalization-principles`, and `production-ai-agent-evaluation-framework` to `deterministic-analytics-llm-reasoning-boundary`.
+- Blocking/important findings: none.

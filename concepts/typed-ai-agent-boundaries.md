@@ -121,6 +121,7 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
 - [[ai-agent-document-fidelity-risk]]
 - [[constrained-toolbox-evaluator-loop]]
+- [[deterministic-analytics-llm-reasoning-boundary]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

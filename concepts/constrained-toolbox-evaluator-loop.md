@@ -125,3 +125,4 @@ Hermes 迁移原则：
 - [[agent-resource-optimization]]
 - [[agent-research-evidence-gate]]
 - [[agent-self-validation-loops]]
+- [[deterministic-analytics-llm-reasoning-boundary]]
