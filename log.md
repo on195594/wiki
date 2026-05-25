@@ -820,3 +820,10 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: added reverse links from `typed-ai-agent-boundaries`, `constrained-toolbox-evaluator-loop`, `hermes-ai-workflow-formalization-principles`, and `production-ai-agent-evaluation-framework` to `deterministic-analytics-llm-reasoning-boundary`.
 - Blocking/important findings: none.
+
+## [2026-05-25] ingest | Microsoft Agent Skills provider governance boundary
+- Captured raw source: `raw/articles/microsoft-devblogs-agent-skills-python-provider-2026-05-24.md`
+- Created: `concepts/agent-skill-provider-governance-boundary.md`
+- Updated: `index.md` total pages from 83 to 84.
+- Durable unit: multi-form skill sources can share a provider abstraction, but active exposure requires explicit source layering, filtering, conflict handling, script approval, sandboxing, and audit boundaries.
+- Boundary: Microsoft Agent Framework API names, decorator details, Foundry/Azure client choices, and `require_script_approval` remain source-specific examples; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
