@@ -1,10 +1,10 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-05-22
+updated: 2026-05-28
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
-sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
+sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
 status: stable
 ---
 
@@ -39,6 +39,8 @@ Agent 需要调用外部世界时，最危险的不是“能不能调工具”�
 - 返回值要稳定。
 - docstring 要说明何时使用、输入含义、限制和失败语义。
 - 工具应尽量小而窄，避免一个函数同时承担查询、修改、删除、推断多种职责。
+
+Microsoft Developer 的 AX 文章补充了工具边界的发现层：好工具不仅要有 typed schema，还要能在 harness 装配、模型语义匹配和真实组合工具面中被正确发现。docstring/description 应优先覆盖“何时使用、何时不用、失败时返回什么”，否则模型可能跳过工具，转而用过时训练知识生成看似合理的错误代码。
 
 ### 3. Dependency injection removes hidden global state
 
@@ -116,6 +118,9 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 - [[dijkstra-ai-programming-formalization]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[ai-coding-agent-workflow-types]]
+- [[agent-context-engineering]]
+- [[ai-coding-assistant-context-budget-management]]
+- [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[hermes-context-layer-operating-rules]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]

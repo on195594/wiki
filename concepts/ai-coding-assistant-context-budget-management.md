@@ -1,10 +1,10 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-05-17
+updated: 2026-05-28
 type: concept
 tags: [ai-coding, agent, context-engineering, cost-control, claude-code, hermes]
-sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
+sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md]
 status: draft
 ---
 
@@ -54,6 +54,8 @@ Hermes 映射：
 - 要求 agent 只返回决策所需字段
 
 Hermes 映射：subagent 和 terminal 输出应优先返回压缩后的 evidence summary，而不是把完整探索过程灌回主会话。
+
+Microsoft Developer 的 AX 文章把同一原则推广到 MCP/extension 返回值：工具返回太长、太少或格式混乱，都会让模型错过关键段落或用假设补空白。对 Hermes 来说，agent-facing 工具输出不应追求“把所有资料都给模型”，而应优先返回当前任务决策所需的短结构：结论、必要字段、失败语义、下一步验证线索。
 
 ### 4. File access should be explicit and deny noisy surfaces
 “读整个仓库”通常是上下文预算灾难。文章建议从明确文件开始，只允许读取 import/调用链相关文件，并 deny `.env`、secrets、`node_modules`、build、coverage、logs 等噪音目录。
@@ -117,6 +119,8 @@ Verification:
 ## Related
 - [[claude-code-practical-workflow-tips]]
 - [[repository-level-code-intelligence-layer]]
+- [[agent-context-engineering]]
+- [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[llm-context-engineering-layer]]
 - [[hermes-context-engineering-design-priorities]]
 - [[hermes-context-layer-operating-rules]]

@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-28
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 ---
 
@@ -49,6 +49,18 @@ Hermes 映射：
 - 工具说明应包含用途、限制、失败语义和反向边界。
 - 高风险工具不应靠 prompt 自觉控制，应配合权限、审批、审计和回滚。
 - 给一个 Agent 挂载工具前，先问：当前任务真的需要它进入可见工具面吗？
+
+#### AX cascade addendum: visible is not usable
+
+Microsoft Developer 的 AX 文章补充了一个容易误判的点：工具安装或注册成功，只说明它可能进入 harness 的候选面，不说明模型一定能看到、理解、选择并正确使用它。工具可用性至少经过一条级联链：
+
+1. harness 是否把工具描述装进上下文；
+2. 模型是否把用户意图语义匹配到该工具；
+3. 模型是否愿意调用工具，而不是用过时训练知识高置信猜测；
+4. 工具 schema、参数和返回内容是否足够短、清楚、可执行；
+5. 生成后，CLI/LSP/test 错误是否能让 agent 自修复。
+
+Hermes 映射：评估 skill/tool/MCP 不应只看“是否被暴露”或“是否被调用”，还要看在真实组合上下文里是否被正确选择、低噪声返回、失败后可诊断。这条规则补充 `[[typed-ai-agent-boundaries]]` 的工具接口原则和 `[[ai-coding-assistant-context-budget-management]]` 的上下文预算原则。
 
 ### 3. Examples: demonstrate behavior, not only answers
 
@@ -103,6 +115,7 @@ Hermes 的防腐原则：
 - `[[hermes-context-engineering-design-priorities]]`：讲 Hermes 应先做 budget、ranking、compression、history decay；本页补充为什么这些能力对 Agent prompt/context 稳定性必要。
 - `[[hermes-context-layer-operating-rules]]`：定义 Hermes 全局层间路由规则；本页聚焦 Agent 执行过程中 prompt 四个上下文面的即时装配设计，而非通用层路由决策。
 - `[[typed-ai-agent-boundaries]]`：讲 typed output、typed tools、dependency injection；本页只引用工具边界原则，不重复展开实现细节。
+- `[[ai-coding-assistant-context-budget-management]]`：讲工具输出、日志、文件和历史如何占用上下文预算；本页补充工具是否能被发现和正确选择的 upstream 级联。
 - `[[agent-development-lifecycle]]`：把 context、tool、prompt、monitor 放进 Build/Test/Deploy/Monitor/Govern 生命周期；本页提供 Build/Test 阶段的上下文装配原则。
 - `[[subagent-orchestration-patterns]]`：讲 subagent 生命周期选择；本页补充子 Agent 应接收最小共享上下文，避免跨任务污染。
 
@@ -127,6 +140,7 @@ Hermes 的防腐原则：
 
 - [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]
 - [[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]
+- [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[llm-context-engineering-layer]]
 - [[hermes-context-engineering-design-priorities]]
 - [[typed-ai-agent-boundaries]]

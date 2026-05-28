@@ -834,3 +834,11 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: normalized raw-source extraction route metadata and removed management-page `[[index]]` / `[[log]]` links from the concept page Related section.
 - Boundary: source-specific Microsoft Agent Framework details remain examples only; no memory, skill, cron, MCP, profile, runtime, wrapper, or Hermes core change was promoted.
+
+## [2026-05-28] ingest | Microsoft Developer on AI coding agents using technology
+- Captured raw source: `raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md`
+- Updated: `concepts/agent-context-engineering.md`
+- Updated: `concepts/ai-coding-assistant-context-budget-management.md`
+- Updated: `concepts/typed-ai-agent-boundaries.md`
+- Updated: `index.md`
+- Preserved the article as provenance for the AX cascade: harness context assembly, semantic tool selection, stale high-confidence model fallback, low-noise tool responses, and CLI/LSP/test feedback for self-repair. No active skill, runtime, cron, MCP, or memory promotion was made.
