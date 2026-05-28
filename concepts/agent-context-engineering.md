@@ -50,7 +50,7 @@ Hermes 映射：
 - 高风险工具不应靠 prompt 自觉控制，应配合权限、审批、审计和回滚。
 - 给一个 Agent 挂载工具前，先问：当前任务真的需要它进入可见工具面吗？
 
-#### AX cascade addendum: visible is not usable
+#### AX 级联补充：可见不等于可用
 
 Microsoft Developer 的 AX 文章补充了一个容易误判的点：工具安装或注册成功，只说明它可能进入 harness 的候选面，不说明模型一定能看到、理解、选择并正确使用它。工具可用性至少经过一条级联链：
 

@@ -842,3 +842,11 @@
 - Updated: `concepts/typed-ai-agent-boundaries.md`
 - Updated: `index.md`
 - Preserved the article as provenance for the AX cascade: harness context assembly, semantic tool selection, stale high-confidence model fallback, low-noise tool responses, and CLI/LSP/test feedback for self-repair. No active skill, runtime, cron, MCP, or memory promotion was made.
+
+## [2026-05-28] review-fix | Microsoft Developer AI coding agents wiki ingestion Claude review
+- Review prompt: `_meta/reviews/2026-05-28-ai-coding-agents-use-technology-claude-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-28-ai-coding-agents-use-technology-claude-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted finding: renamed the new `agent-context-engineering` AX subsection heading from English to Chinese for style consistency.
+- Deferred minor finding: did not add optional raw-source `source_type:` because current schema/health checks do not require it and the reviewer marked it non-blocking.
+- Boundary: no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
