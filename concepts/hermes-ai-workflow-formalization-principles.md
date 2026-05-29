@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-05-16
+updated: 2026-05-29
 type: concept
 tags: [hermes, llm, workflow, decision, note]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md]
 status: stable
 ---
 
@@ -85,6 +85,38 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 - 多步骤任务写入 todo
 - 历史事项用 session_search 回忆，而不是把整段旧上下文塞回来
 
+## Principle 7: skills should be executable workflows, not explanatory prose
+Addy Osmani 的 `Agent Skills` 文章对 Hermes 的补充是：面向 AI coding agent 的长期规则不能只写成“最佳实践说明书”。如果规则希望约束 agent 行为，它必须变成可触发、可执行、可验证、有退出条件的 workflow。
+
+实践含义：
+- `skills` 主路径应优先写触发条件、步骤、检查点、证据和退出条件，而不是堆叠背景理念。
+- 说明性原则可以进入 wiki/concept；重复执行流程才适合进入 skill。
+- 原文的 `/spec`、`/plan`、`/build`、`/test`、`/review`、`/ship`、`/code-simplify` 是 Osmani 项目的 SDLC 命令设计，只能作为生命周期类比，不应直接沉淀为 Hermes 命令方案。
+- GitHub stars、安装命令、具体 skill 数量属于来源背景，不是 Hermes 质量标准。
+
+### Anti-rationalization tables as agent shortcut interceptors
+`Anti-rationalization tables` 的价值不是口号，而是 agent 行为拦截器：先列出 agent 或疲劳工程师可能用来跳过流程的借口，再写出预设反驳和停止条件。
+
+Hermes skill 自查时应单独问：
+- 这个 skill 是否写明了常见偷懒路径？
+- 当 agent 说“太简单不用 spec / 测试之后补 / 手动验证够了 / 顺手重构一下”时，skill 是否有明确阻断规则？
+- 这些阻断规则是否连接到可验证证据，而不是只停留在价值判断？
+
+### Read-only check against current Hermes skills
+本次只读抽查 3 个现有 skill，作为概念页有效性的最小本地验证；这不是 active skill 修改授权。
+
+- `test-driven-development`：强匹配。已有 `When to Use / When Not to Use`、RED/GREEN/REFACTOR workflow、验证清单、completion report，并包含 `Common Rationalizations` 表，能直接拦截“测试之后补”“太简单不用测”等借口。
+- `gsummary`：基本匹配。它是 thin entrypoint，已有触发条件、payload capture workflow、pending-payload verification 和 compaction regression pitfalls；但它的反合理化机制主要写在 pitfalls 中，不是显式表格。当前无需修改 active skill，除非后续复盘证明 agent 仍会把入口任务扩张成治理/开发任务。
+- `gemini-summary`：基本匹配。它有明确 backend workflow、cache/source/gate/`全文路径` contract 和 failure fallback；反偷懒规则以 non-negotiable gates / pitfalls 呈现，适合 backend skill。当前无需因为外部文章直接改动。
+
+### Promotion boundary
+本原则只在以下情况才考虑升级为 active skill/reference 修改依据：
+- 复盘发现某个 skill 因缺少检查点、退出条件或反合理化规则，导致 agent 实际走了捷径；
+- 新建或重构 skill 时，需要质量自查清单；
+- 独立审查指出某个 skill 已退化为说明性散文，缺少可执行证据链。
+
+未满足这些条件时，本页只作为 wiki 概念与评审标准，不自动触发 memory、skill、cron、MCP、runtime、wrapper 或 Hermes core 变更。
+
 ## Practical rules for Hermes
 可以直接执行的规则：
 - 先用自然语言获取需求，再尽快转成结构化表示
@@ -93,6 +125,8 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 - 默认先查 wiki，再补外部，再回写 wiki
 - 复杂流程优先复用 skills，而不是重复临场发挥
 - 对 AI 生成内容保持“默认需要验证”的态度
+- 写新 skill 或重构旧 skill 时，检查它是否是可执行 workflow，而不是说明性散文
+- 对高风险/高频偷懒路径，优先写反合理化规则和停止条件
 
 ## Concrete mapping inside Hermes
 把原则映射到 Hermes 内部：

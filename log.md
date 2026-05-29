@@ -850,3 +850,19 @@
 - Patched accepted finding: renamed the new `agent-context-engineering` AX subsection heading from English to Chinese for style consistency.
 - Deferred minor finding: did not add optional raw-source `source_type:` because current schema/health checks do not require it and the reviewer marked it non-blocking.
 - Boundary: no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-05-29] update | Addy Osmani Agent Skills workflow formalization principle
+- Captured raw source: `raw/articles/addyosmani-agent-skills-2026-05-03.md`
+- Updated: `concepts/hermes-ai-workflow-formalization-principles.md`
+- Existing-page decision: reused the Hermes workflow formalization concept instead of creating a near-duplicate agent skill governance page.
+- Durable unit: agent-facing rules should be executable workflows with triggers, checkpoints, evidence, exit criteria, and anti-rationalization shortcut interceptors.
+- Read-only skill check: compared `test-driven-development`, `gsummary`, and `gemini-summary`; no active skill/reference patch was made.
+- Boundary: Osmani project slash commands, install instructions, star counts, and skill counts remain source-specific context; no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-05-29] review | Agent Skills workflow formalization AGY review
+- Review prompt: `_meta/reviews/2026-05-29-agent-skills-workflow-formalization-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-29-agent-skills-workflow-formalization-agy-review.md`
+- Verdict: PASS
+- Blocking/important findings: none.
+- Minor note: AGY observed the review result file as empty during execution because shell redirection created it before AGY read the workspace; the final review output is now persisted in that path.
+- Boundary: review was read-only; no active skill/reference, memory, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
