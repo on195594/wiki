@@ -1,10 +1,10 @@
 ---
 title: Agentic Programming as System Engineering
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-29
 type: concept
 tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance]
-sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
+sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
 status: stable
 ---
 
@@ -27,6 +27,14 @@ Agentic programming 的长期价值不在于“更会写 prompt”，而在于�
 - 工具说明是否写清楚何时用、何时不用、失败后怎么办？
 - 历史和上下文是否被裁剪成当前步骤所需的最小状态？
 - 多步轨迹是否可观测、可复现、可回滚？
+
+### Built backwards anti-pattern: model-as-orchestrator
+
+Benjamin Nweke 的 Towards Data Science 文章 `[[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]]` 给这类失败补了一个好用的诊断标签：**built backwards**。它指的是从“想让 Agent 做什么”出发，挂工具、写 prompt，然后假设模型推理会自动补齐上下文准备、状态同步、重试、工具失败恢复和验证归因。
+
+Hermes 映射：模型可以负责“在已准备好的上下文里决定下一步”，但不应拥有整个 workflow 架构。上下文准备、状态同步、工具执行、重试、可观测性、验证和回滚都应有显式归属；如果一个 workflow 说不清这些职责分别在哪一层，它就不适合进入 active skill、cron、runtime 或 gateway。
+
+这条反模式连接但不替代已有页面：`[[agent-context-engineering]]` 继续负责上下文装配和状态裁剪，`[[typed-ai-agent-boundaries]]` 继续负责 typed output / typed tools / dependency injection，`[[production-ai-agent-evaluation-framework]]` 继续负责可观测评估与多步轨迹检查，`[[agent-orchestration-production-tradeoffs]]` 继续负责按约束选择编排拓扑。
 
 ## Durable units from the article
 
@@ -99,6 +107,7 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 ## Related
 
 - [[machinelearningmastery-agentic-programming-roadmap-2026-05-20]]
+- [[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]]
 - [[agent-context-engineering]]
 - [[typed-ai-agent-boundaries]]
 - [[agent-development-lifecycle]]

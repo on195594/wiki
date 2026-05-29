@@ -866,3 +866,10 @@
 - Blocking/important findings: none.
 - Minor note: AGY observed the review result file as empty during execution because shell redirection created it before AGY read the workspace; the final review output is now persisted in that path.
 - Boundary: review was read-only; no active skill/reference, memory, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-05-29] update | TDS on AI agents built backwards
+- Captured raw source: `raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md`
+- Updated: `concepts/agentic-programming-system-engineering.md`
+- Existing-page decision: reused the Agentic Programming as System Engineering concept instead of creating a near-duplicate architecture page.
+- Durable unit: built backwards / model-as-orchestrator is a diagnostic anti-pattern for workflows that expect model reasoning to own context preparation, state synchronization, retries, failure recovery, observability, and verification.
+- Boundary: no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
