@@ -3,7 +3,7 @@ title: Agentic Programming as System Engineering
 created: 2026-05-21
 updated: 2026-05-29
 type: concept
-tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance]
+tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance, anti-pattern]
 sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
 status: stable
 ---
@@ -110,6 +110,8 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 - [[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]]
 - [[agent-context-engineering]]
 - [[typed-ai-agent-boundaries]]
+- [[production-ai-agent-evaluation-framework]]
+- [[agent-orchestration-production-tradeoffs]]
 - [[agent-development-lifecycle]]
 - [[agent-failure-closed-loop-evaluation]]
 - [[hermes-context-layer-operating-rules]]

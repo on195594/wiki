@@ -873,3 +873,10 @@
 - Existing-page decision: reused the Agentic Programming as System Engineering concept instead of creating a near-duplicate architecture page.
 - Durable unit: built backwards / model-as-orchestrator is a diagnostic anti-pattern for workflows that expect model reasoning to own context preparation, state synchronization, retries, failure recovery, observability, and verification.
 - Boundary: no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-05-29] review-fix | TDS AI agents built backwards Claude review
+- Review prompt: `_meta/reviews/2026-05-29-tds-ai-agents-built-backwards-claude-review-prompt.md`
+- Review result: `_meta/reviews/2026-05-29-tds-ai-agents-built-backwards-claude-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: normalized raw-source frontmatter to the peer TDS schema, clarified the extraction limitation, marked the summary artifact as local-only in `extraction`, added the `anti-pattern` tag, and added related links to `production-ai-agent-evaluation-framework` and `agent-orchestration-production-tradeoffs`.
+- Boundary: review was read-only; no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.

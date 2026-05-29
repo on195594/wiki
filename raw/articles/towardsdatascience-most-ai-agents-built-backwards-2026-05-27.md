@@ -1,21 +1,22 @@
 ---
 title: Most AI Agents Fail in Production Because They’re Built Backwards
+author: Benjamin Nweke
+source: Towards Data Science
+source_url: https://towardsdatascience.com/most-ai-agents-fail-in-production-because-theyre-built-backwards/
+published: 2026-05-27
+captured: 2026-05-29
 created: 2026-05-29
 updated: 2026-05-29
 type: raw-source
-tags: [agent, architecture, orchestration, observability, hermes, workflow]
-sources: [docs:https://towardsdatascience.com/most-ai-agents-fail-in-production-because-theyre-built-backwards/]
-status: captured
+status: raw
+tags: [agent, architecture, orchestration, observability, anti-pattern]
+extraction: Jina Reader article extraction; reader output begins mid-sentence (opening context before "agent system seriously fail in production" is missing), but main body sections, examples, and conclusion are intact. Gemini summary run 20260529-201234 was used as an off-wiki grounding artifact (local path only).
 ---
 
 # Most AI Agents Fail in Production Because They’re Built Backwards
 
-- Source URL: https://towardsdatascience.com/most-ai-agents-fail-in-production-because-theyre-built-backwards/
-- Source: Towards Data Science
-- Author: Benjamin Nweke
-- Published metadata observed: 2026-05-27T13:30:00+00:00
-- Summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260529-201234-Most-AI-Agents-Fail-in-Production-Because-They’re-Built-Backwards-1302158-375103560-summary.md`
-- Extraction note: Jina Reader article extraction was used because generic extraction returned an extractor-generated digest; the reader output begins mid-sentence but preserves the main article body sections, examples, and conclusion.
+Source URL: https://towardsdatascience.com/most-ai-agents-fail-in-production-because-theyre-built-backwards/
+Extraction note: Jina Reader article extraction was used because generic extraction returned an extractor-generated digest; the reader output begins mid-sentence (the opening context before "agent system seriously fail in production" is missing), but preserves the main article body sections, examples, and conclusion.
 
 ---
 
