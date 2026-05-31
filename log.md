@@ -888,3 +888,11 @@
 - Durable unit: model routes and selects parameters; deterministic code executes reviewed workflow logic and returns verifiable structure.
 - Candidate status: concept only; possible future skill/reference rule requires repeated Hermes evidence, schema/fixture/validator coverage, rollback path, and explicit approval.
 - Boundary: no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-06-01] review-fix | LangChain Interpreter Skills AGY review
+- Review prompt: `_meta/reviews/2026-06-01-langchain-interpreter-skills-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-06-01-langchain-interpreter-skills-agy-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: normalized raw-source frontmatter to `source_type: blog` / `type: raw-source`, added `skills` and `governance` tags to the concept page, and fixed one mixed Chinese/English phrase.
+- Deferred minor finding: did not reflow the compressed raw HTML extraction example because it is provenance text and the reviewer marked it as readability-only, not a semantic or gate issue.
+- Boundary: review was read-only; follow-up patches stayed in wiki only. No memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.

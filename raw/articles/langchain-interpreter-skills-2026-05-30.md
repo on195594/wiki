@@ -1,7 +1,8 @@
 ---
 title: LangChain Interpreter Skills: Building Workflows for Agents
 created: 2026-05-31
-type: raw-article
+source_type: blog
+type: raw-source
 source_url: https://www.langchain.com/blog/interpreter-skills
 status: captured
 ---

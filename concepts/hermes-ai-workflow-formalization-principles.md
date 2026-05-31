@@ -3,7 +3,7 @@ title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
 updated: 2026-05-31
 type: concept
-tags: [hermes, llm, workflow, decision, note]
+tags: [hermes, llm, workflow, decision, note, skills, governance]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md]
 status: stable
 ---
