@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-05-29
+updated: 2026-05-31
 type: concept
 tags: [hermes, llm, workflow, decision, note]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md]
 status: stable
 ---
 
@@ -117,6 +117,29 @@ Hermes skill 自查时应单独问：
 
 未满足这些条件时，本页只作为 wiki 概念与评审标准，不自动触发 memory、skill、cron、MCP、runtime、wrapper 或 Hermes core 变更。
 
+## Principle 8: let the model route, let deterministic code execute
+LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量价值不是提出“再加一个 skill 形态”，而是给 Hermes 已有实践命名：**外层由模型判断是否适用、如何传参；内层由可审查代码执行确定性流程并返回可验证结构**。
+
+这与 Hermes 当前的 `gsummary` → `gemini-summary` → wrapper/scripts/validators 模式相近，但 LangChain 的形式更明确：`SKILL.md` 描述何时使用，TypeScript module 承载可执行 API。对 Hermes 的可迁移原则是声明层和执行层分离，而不是照搬 TypeScript interpreter。
+
+### Candidate status
+- concept: “模型路由 + 确定性执行”适合保留在 wiki，作为 agent workflow 设计概念。
+- rule candidate: 当某个 Hermes 子流程高频、可复用、容易跑偏，且已经有 schema / fixture / validator / rollback 证据时，才考虑把该原则提炼进对应 skill/reference。
+- active proposal: 当前没有。本文不授权修改 Hermes runtime、cron、MCP、gateway、wrapper、active skill 或 core。
+
+### Design checks before promotion
+- 这个流程是否已经重复出现，而不是一次文章启发？
+- 模型负责的是路由/参数选择，还是被迫在上下文里手动维护大量状态？
+- 确定性代码是否有输入 schema、输出 shape、错误路径和回滚/重试边界？
+- 现有 Hermes skill/script 是否已经覆盖该实践，只需要命名或链接，而不是新增规则？
+- 如果沉淀进 wiki 后长期不用，是否应标记为 stale 或归档，而不是继续充当 active 依据？
+
+### What not to promote
+- 不把 LangChain 的 TypeScript interpreter 当作 Hermes 当前实现目标。
+- 不把 `SKILL.md + module` 直接等价为 Hermes active skill 规范。
+- 不因本文直接增加工具面、子代理权限、MCP、cron 或 runtime capability。
+- 不把“确定性执行”理解为跳过模型判断；外层路由错误仍会让内部确定性流程失效。
+
 ## Practical rules for Hermes
 可以直接执行的规则：
 - 先用自然语言获取需求，再尽快转成结构化表示
@@ -151,6 +174,7 @@ Hermes skill 自查时应单独问：
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-retrieval-priority-and-answer-path]]
 - [[deterministic-analytics-llm-reasoning-boundary]]
+- [[langchain-interpreter-skills-2026-05-30]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

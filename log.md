@@ -880,3 +880,11 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: normalized raw-source frontmatter to the peer TDS schema, clarified the extraction limitation, marked the summary artifact as local-only in `extraction`, added the `anti-pattern` tag, and added related links to `production-ai-agent-evaluation-framework` and `agent-orchestration-production-tradeoffs`.
 - Boundary: review was read-only; no memory, skill, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-05-31] update | LangChain Interpreter Skills workflow formalization
+- Captured raw source: `raw/articles/langchain-interpreter-skills-2026-05-30.md`
+- Updated: `concepts/hermes-ai-workflow-formalization-principles.md`
+- Existing-page decision: reused the Hermes AI Workflow Formalization Principles concept instead of creating a near-duplicate page about model routing and deterministic execution.
+- Durable unit: model routes and selects parameters; deterministic code executes reviewed workflow logic and returns verifiable structure.
+- Candidate status: concept only; possible future skill/reference rule requires repeated Hermes evidence, schema/fixture/validator coverage, rollback path, and explicit approval.
+- Boundary: no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
