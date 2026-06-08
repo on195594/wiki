@@ -42,6 +42,8 @@ rules/script/workflow automation
 
 Use deterministic automation when fixed rules, SQL, scripts, or API workflows can cover the task. Use an agent when the task requires ambiguity handling, context-sensitive judgment, multi-step decisions, or dynamic tool use. Escalate from one agent to subagents only when the single agent shows real instruction overload, unstable tool choice, domain-role conflict, or measurable need for independent parallel work.
 
+This rule complements `[[agent-context-engineering]]` on tool/instruction/context boundaries and `[[agent-closed-loop-learning-from-corrections-to-rules]]` on evidence-backed rule escalation: do not upgrade a useful rule of thumb into default behavior without local validation.
+
 This source is a general tutorial rather than production evidence, so it strengthens the page's conservative adoption rule but does not by itself justify new active skills, runtime config, cron jobs, MCP tools, or default multi-agent behavior.
 
 ## Four orchestration modes

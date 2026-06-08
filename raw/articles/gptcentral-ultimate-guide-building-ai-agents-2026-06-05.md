@@ -2,12 +2,12 @@
 title: The Ultimate Guide to Building AI Agents
 created: 2026-06-08
 type: raw-source
-source: docs:https://gptcentral.substack.com/p/the-ultimate-guide-to-building-ai
-source_site: GPT Central / ChatGPT Central
+source: GPT Central / ChatGPT Central
+source_url: https://gptcentral.substack.com/p/the-ultimate-guide-to-building-ai
 published: 2026-06-05
 captured: 2026-06-08
-extraction: Jina Reader direct fetch from Substack canonical page
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260608-084702-The-Ultimate-Guide-to-Building-AI-Agents-3749496-396700720-summary.md
+status: captured
+extraction: Jina Reader direct fetch from Substack canonical page. Gemini summary run saved locally at /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260608-084702-The-Ultimate-Guide-to-Building-AI-Agents-3749496-396700720-summary.md (local-only grounding path).
 tags: [agent, workflow, orchestration, subagent, raw-source]
 ---
 

@@ -903,3 +903,10 @@
 - Existing-page decision: reused the subagent orchestration concept instead of creating a near-duplicate AI Agent introduction page.
 - Durable unit: deterministic automation first; single-agent design second; subagents and multi-agent orchestration only after real instruction/tool/domain overload or validated parallelism.
 - Boundary: no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-06-08] review-fix | GPT Central AI agents guide AGY review
+- Review prompt: `_meta/reviews/2026-06-08-gptcentral-ai-agents-ingestion-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-06-08-gptcentral-ai-agents-ingestion-agy-review.md`
+- Verdict: PASS_WITH_MINOR_FIXES
+- Patched accepted findings: synchronized `index.md` last-updated date, normalized raw-source frontmatter to `source` / `source_url` / `status: captured`, moved the local summary path into `extraction`, and added inline cross-links to `agent-context-engineering` and `agent-closed-loop-learning-from-corrections-to-rules`.
+- Boundary: review was read-only; follow-up patches stayed in wiki only. No memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
