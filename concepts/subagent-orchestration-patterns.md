@@ -1,10 +1,10 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-05-07
+updated: 2026-06-08
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md]
 status: stable
 ---
 
@@ -26,6 +26,23 @@ The core question is: **how much lifecycle control does the main agent need over
 - If coordination itself exceeds what the main agent can manage, only then consider an agent team with direct inter-agent messaging.
 
 Each step increases infrastructure burden, context risk, observability difficulty, and required model capability.
+
+## Single-agent first escalation rule
+
+GPT Central's 2026 guide `[[gptcentral-ultimate-guide-building-ai-agents-2026-06-05]]` adds a useful pre-orchestration rule: before adding subagents, first decide whether the task needs an agent at all, then maximize the simplest single-agent design.
+
+Hermes interpretation:
+
+```text
+rules/script/workflow automation
+→ single agent with clear model, tools, instructions, stop conditions
+→ inline or fan-out subagents
+→ persistent pools or teams only after project-local validation
+```
+
+Use deterministic automation when fixed rules, SQL, scripts, or API workflows can cover the task. Use an agent when the task requires ambiguity handling, context-sensitive judgment, multi-step decisions, or dynamic tool use. Escalate from one agent to subagents only when the single agent shows real instruction overload, unstable tool choice, domain-role conflict, or measurable need for independent parallel work.
+
+This source is a general tutorial rather than production evidence, so it strengthens the page's conservative adoption rule but does not by itself justify new active skills, runtime config, cron jobs, MCP tools, or default multi-agent behavior.
 
 ## Four orchestration modes
 
@@ -171,6 +188,7 @@ Closeout: [[gsearch-knowledge-validation-closeout]]
 
 - [[philschmid-subagent-patterns-2026-05-05]]
 - [[alphasignal-agent-orchestration-patterns-2026-05-05]]
+- [[gptcentral-ultimate-guide-building-ai-agents-2026-06-05]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-layer-operating-rules]]
 - [[ai-coding-agent-workflow-types]]

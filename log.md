@@ -896,3 +896,10 @@
 - Patched accepted findings: normalized raw-source frontmatter to `source_type: blog` / `type: raw-source`, added `skills` and `governance` tags to the concept page, and fixed one mixed Chinese/English phrase.
 - Deferred minor finding: did not reflow the compressed raw HTML extraction example because it is provenance text and the reviewer marked it as readability-only, not a semantic or gate issue.
 - Boundary: review was read-only; follow-up patches stayed in wiki only. No memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-06-08] update | GPT Central AI agents guide
+- Captured raw source: `raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md`
+- Updated: `concepts/subagent-orchestration-patterns.md`
+- Existing-page decision: reused the subagent orchestration concept instead of creating a near-duplicate AI Agent introduction page.
+- Durable unit: deterministic automation first; single-agent design second; subagents and multi-agent orchestration only after real instruction/tool/domain overload or validated parallelism.
+- Boundary: no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
