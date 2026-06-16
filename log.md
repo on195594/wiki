@@ -910,3 +910,11 @@
 - Verdict: PASS_WITH_MINOR_FIXES
 - Patched accepted findings: synchronized `index.md` last-updated date, normalized raw-source frontmatter to `source` / `source_url` / `status: captured`, moved the local summary path into `extraction`, and added inline cross-links to `agent-context-engineering` and `agent-closed-loop-learning-from-corrections-to-rules`.
 - Boundary: review was read-only; follow-up patches stayed in wiki only. No memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was promoted.
+
+## [2026-06-10] update | Addy Osmani Loop Engineering Hermes workflow mapping
+- Captured raw source: `raw/articles/addyosmani-loop-engineering-2026-06-08.md`
+- Created: `concepts/loop-engineering-hermes-agent-workflow.md`
+- Updated: `index.md`
+- Durable unit: Hermes agent loops should be auditable loops with discovery, isolated execution, independent verification, external state, and explicit human/active-layer stop points.
+- Adoption routing: useful article-derived workflow rules may move to direct skill/reference adoption or guarded defaults when Hermes already has primitives; runtime, cron, MCP, gateway, wrapper, and production automation remain active proposals requiring separate approval.
+- Boundary: no runtime, cron, MCP, gateway, wrapper, memory, or Hermes core change was made.

@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-06-08 | Total pages: 84
+> Last updated: 2026-06-10 | Total pages: 85
 
 ## Entities
 
@@ -10,6 +10,7 @@
 - [[agent-development-lifecycle]] — Agent 开发生命周期：以 Build → Test → Deploy → Monitor 闭环和 Govern 横切层，把一次性 demo 推进成可验证、可部署、可监控、可治理的工程系统
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
+- [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：把发现、隔离执行、验证、外部状态和下一步决策组织成可审计 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [[agent-experience-consolidation-loops]] — Agent 经验固化闭环：从历史任务、失败、成功路径和用户纠正中提取可复用经验，并按 memory/skill/wiki/closeout/evaluator/cron 分层路由
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
