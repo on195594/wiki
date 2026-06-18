@@ -1,11 +1,13 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-06-18
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: []
 status: stable
+description: 定义把外部材料编译进 Hermes wiki 的标准路径：保存 raw、提炼正式页面、补链接、更新 index 和 log。
+aliases: [wiki-ingestion, knowledge-ingestion]
 ---
 
 # Wiki Ingestion Workflow
@@ -50,6 +52,11 @@ status: stable
 - 没有来源就写死结论
 - 只堆 raw，不更新正式页面
 - 新建页面后不更新 `[[index]]` 与 `[[log]]`
+
+## Relations
+- refines: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-wiki-page-writing-standards]]
+- depends_on: [[hermes-retrieval-priority-and-answer-path]]
 
 ## Related
 - [[hermes-knowledge-architecture]]

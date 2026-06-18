@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
 sources: []
 status: stable
+description: 定义 Hermes wiki 的只读健康检查范围、严重性、通过标准，以及可选 metadata/Relations 的验证方向。
+aliases: [wiki-health-check, wiki-lint-standards]
 ---
 
 # Hermes Wiki Lint and Health Check Standards
@@ -200,6 +202,11 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 内容怎么入库，见 `[[wiki-ingestion-workflow]]`
 - 回答时怎么检索，见 `[[hermes-retrieval-priority-and-answer-path]]`
 - 整体架构，见 `[[hermes-knowledge-architecture]]`
+
+## Relations
+- refines: [[hermes-wiki-page-writing-standards]]
+- depends_on: [[hermes-knowledge-architecture]]
+- depends_on: [[wiki-ingestion-workflow]]
 
 ## Related
 - [[hermes-knowledge-architecture]]

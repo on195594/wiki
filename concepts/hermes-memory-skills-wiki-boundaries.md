@@ -1,11 +1,13 @@
 ---
 title: Hermes Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-06-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration]
 sources: []
 status: stable
+description: 定义 Hermes memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。
+aliases: [layer-boundaries, memory-skill-wiki-boundaries]
 ---
 
 # Hermes Memory Skills Wiki Boundaries
@@ -147,6 +149,11 @@ status: stable
 ### 例 3：总结出“Hermes 知识库整体架构”
 - 归类：`wiki`
 - 原因：这是正式知识资产，适合长期查阅和扩展
+
+## Relations
+- refines: [[hermes-knowledge-architecture]]
+- depends_on: [[wiki-ingestion-workflow]]
+- depends_on: [[hermes-wiki-page-writing-standards]]
 
 ## Related
 - [[hermes-knowledge-architecture]]

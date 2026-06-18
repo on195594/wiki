@@ -1,11 +1,13 @@
 ---
 title: Hermes Knowledge Architecture
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-06-18
 type: concept
 tags: [hermes, knowledge-base, agent, mcp, workflow, configuration]
 sources: []
 status: stable
+description: 定义 Hermes 长期知识系统的 canonical 分层，包括 memory、skills、sessions、wiki、raw 与 MCP/tools 的职责边界。
+aliases: [knowledge-architecture, hermes-wiki-architecture]
 ---
 
 # Hermes Knowledge Architecture
@@ -149,6 +151,11 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - entities/concepts/comparisons/queries = 编译后的知识层
 
 这两套结构叠在一起，才构成完整的 Hermes 知识库整体架构。
+
+## Relations
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[wiki-ingestion-workflow]]
+- depends_on: [[hermes-retrieval-priority-and-answer-path]]
 
 ## Related
 - [[hermes-memory-skills-wiki-boundaries]]

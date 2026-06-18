@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
 sources: []
 status: stable
+description: 定义 Hermes wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。
+aliases: [page-writing-standards, wiki-writing-standards]
 ---
 
 # Hermes Wiki Page Writing Standards
@@ -161,6 +163,11 @@ status: draft | stable
 - 入库流程见 `[[wiki-ingestion-workflow]]`
 - 整体架构见 `[[hermes-knowledge-architecture]]`
 - 健康检查规范见 `[[hermes-wiki-lint-and-health-check-standards]]`
+
+## Relations
+- refines: [[hermes-knowledge-architecture]]
+- depends_on: [[wiki-ingestion-workflow]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
 - [[hermes-knowledge-architecture]]

@@ -931,3 +931,13 @@
 - Deferred/rejected: default `resource` field, full aliases rollout, full historical migration, graph database/vector runtime, and any active skill/memory/cron/MCP/runtime change.
 - Review remediation: normalized the OKF article source to a `docs:`-prefixed source and moved non-whitelisted `relates_to` entries from `## Relations` to `## Related`.
 - Boundary: wiki/schema/query/index documentation only; no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was made.
+
+## [2026-06-18] pilot | Knowledge-object metadata on core governance pages
+- Updated: `concepts/hermes-knowledge-architecture.md`
+- Updated: `concepts/wiki-ingestion-workflow.md`
+- Updated: `concepts/hermes-wiki-page-writing-standards.md`
+- Updated: `concepts/hermes-wiki-lint-and-health-check-standards.md`
+- Updated: `concepts/hermes-memory-skills-wiki-boundaries.md`
+- Added only optional `description`, conservative `aliases`, and white-listed `## Relations` entries for the 5-page P1 pilot.
+- Success gates: health check must remain P0=0/P1=0/P2=0; relations must not replace `sources`; optional metadata must not become mandatory; no active Hermes surface may change.
+- Boundary: wiki formal pages only; no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was made.
