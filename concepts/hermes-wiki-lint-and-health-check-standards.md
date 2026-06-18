@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-06-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
 sources: []
@@ -116,6 +116,16 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 目标：
 - 防止规范写在文档里，但页面实际早已失控
 
+### 11. Agent-readable metadata and relations
+对采用机器可读增强的页面做只读检查：
+- `description` 存在时应短、具体，不能替代 `## Summary`
+- `aliases` 不应与 tag taxonomy 或文件名规范冲突
+- `## Relations` 中的 wikilinks 应可解析
+- `Relations` 不应替代 `sources` 或混淆事实来源与推断关系
+
+目标：
+- 让 Agent 可消费的结构增强保持轻量、可验证、可回滚
+
 ## Severity levels
 建议把 lint 结果按严重性分级：
 
@@ -131,19 +141,21 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - tag taxonomy 失控
 - 明显结构漂移
 - 重要页面陈旧
+- 高价值页面的关系块断链或语义混淆
 
 ### P2
 常规维护：
 - 页面过长
 - 日志接近轮转阈值
 - 页面可读性一般但仍可用
+- 可选 metadata 缺失但未影响检索
 
 ## Recommended lint workflow
 1. 先读 `SCHEMA.md`
 2. 读 `[[index]]`
 3. 读最近的 `[[log]]`
 4. 扫描所有正式知识页
-5. 输出 broken links / orphan / missing index / frontmatter / tag / stale / size / contradictions
+5. 输出 broken links / orphan / missing index / frontmatter / tag / stale / size / contradictions / optional metadata and relations
 6. 按严重性排序
 7. 明确给出每项对应文件路径
 8. 若允许修复，再按优先级修

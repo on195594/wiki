@@ -46,6 +46,34 @@ Frontmatter rules:
 - Current health checks validate `sources` forms as P2 maintenance warnings, including unexpected source prefixes and non-durable `/tmp/...` paths.
 - Deferred historical status values such as `current-as-of-<date>`, `_meta/` `complete`/`completed`, and raw `raw-source` status should be handled in a later metadata cleanup, not normalized during schema alignment.
 
+### Agent-readable knowledge object convention
+
+This wiki remains the Hermes local LLM-wiki/Markdown knowledge base; OKF is only a design reference, not a replacement schema. New or touched high-value formal pages may add optional machine-readable metadata when it improves routing or review:
+
+```yaml
+description: One-sentence page purpose for agent routing and preview.
+aliases: [optional-synonym, common-abbreviation]
+```
+
+Rules:
+- `description` is a routing aid, not a substitute for the page `## Summary`.
+- `aliases` are for obvious high-value synonyms only; do not use them to bypass canonical lowercase-hyphen filenames or tag taxonomy.
+- Do not make optional metadata mandatory for historical pages without a separate migration plan and validator update.
+- Do not introduce a separate `resource` identity field by default; the canonical identity remains the relative wiki path plus `sources` provenance. Reconsider only after a compatibility plan proves concrete value.
+
+Formal pages may also include an optional `## Relations` section when the relationship is useful for agent retrieval or maintenance:
+
+```markdown
+## Relations
+
+- refines: [[page-name]]
+- depends_on: [[page-name]]
+- conflicts_with: []
+- supersedes: []
+```
+
+`Relations` records semantic links between wiki pages. Evidence still belongs in `sources`; inferred relationships must not be presented as source provenance.
+
 ### Sources
 
 Allowed `sources` forms:

@@ -918,3 +918,16 @@
 - Durable unit: Hermes agent loops should be auditable loops with discovery, isolated execution, independent verification, external state, and explicit human/active-layer stop points.
 - Adoption routing: useful article-derived workflow rules may move to direct skill/reference adoption or guarded defaults when Hermes already has primitives; runtime, cron, MCP, gateway, wrapper, and production automation remain active proposals requiring separate approval.
 - Boundary: no runtime, cron, MCP, gateway, wrapper, memory, or Hermes core change was made.
+
+## [2026-06-18] governance | OKF concepts for Hermes wiki
+- Created: `queries/okf-for-hermes-wiki-governance-assessment.md`
+- Updated: `SCHEMA.md`
+- Updated: `concepts/hermes-wiki-page-writing-standards.md`
+- Updated: `concepts/hermes-wiki-lint-and-health-check-standards.md`
+- Updated: `index.md`
+- Health-check remediation: added pre-existing draft page `concepts/hermes-python-engineering-capability-checklist.md` to `index.md` so the existing P1 missing-index issue no longer blocks validation.
+- Decision: adopt OKF/LLM-wiki ideas only as a lightweight Agent-readable knowledge-object enhancement; do not migrate the wiki to OKF or add runtime/database dependencies.
+- Accepted: optional `description`, conservative `aliases`, optional `## Relations`, read-only validation-first rollout, and 5-page pilot scope.
+- Deferred/rejected: default `resource` field, full aliases rollout, full historical migration, graph database/vector runtime, and any active skill/memory/cron/MCP/runtime change.
+- Review remediation: normalized the OKF article source to a `docs:`-prefixed source and moved non-whitelisted `relates_to` entries from `## Relations` to `## Related`.
+- Boundary: wiki/schema/query/index documentation only; no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was made.

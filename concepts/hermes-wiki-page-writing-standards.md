@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-06-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
 sources: []
@@ -56,6 +56,12 @@ status: draft | stable
 - `sources`：来源路径；无来源时可先留空数组
 - `status`：草稿或稳定态
 
+可选机器可读字段：
+- `description`：一句话说明页面用途，帮助 Agent 路由和预览；不能替代 `## Summary`
+- `aliases`：少量高价值同义词，避免制造新 taxonomy
+
+暂不默认新增 `resource` 字段；页面稳定身份仍是相对路径，证据来源仍写入 `sources`。
+
 ## Recommended structure
 推荐默认结构：
 1. `## Summary`
@@ -72,21 +78,23 @@ status: draft | stable
 - 可扫描：段落短、标题清晰、30 秒内能抓到重点
 - 面向复用：页面服务未来回答与维护，而不是只记录一次
 
-## Wikilinks rules
+## Wikilinks and relations
 每个正式页面至少应包含 2 个 `[[wikilinks]]`。
 推荐最低配置：
 - 1 个指向主题相关页面
 - 1 个指向导航页，如 `[[index]]` 或 `[[log]]`
 
-适合链接到：
-- 上位概念
-- 相邻概念
-- 被引用的方法页
-- 导航页
+适合链接到：上位概念、相邻概念、被引用的方法页、导航页。
 
-避免：
-- 孤立页面没有关联
-- 链接堆砌但没有语义关系
+高价值治理页或概念页可增加 `## Relations`，用少量关系词表达页面之间的语义关系：
+- `refines`：细化某个上位页面
+- `depends_on`：依赖某个前置规范或概念
+- `conflicts_with`：与某页存在显式冲突或取舍
+- `supersedes`：替代旧页面或旧结论
+
+关系区块用于检索和维护；证据仍写入 `sources`，不要把推断关系伪装成来源。
+
+避免：孤立页面没有关联；链接堆砌但没有语义关系；为旧页面批量补关系导致大规模无意义 diff。
 
 ## Directory-specific rules
 ### `concepts/`

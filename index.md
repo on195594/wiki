@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-06-10 | Total pages: 85
+> Last updated: 2026-06-18 | Total pages: 87
 
 ## Entities
 
@@ -39,6 +39,7 @@
 - [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径
 - [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、wiki 文件结构、检索与回写闭环
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
+- [[hermes-python-engineering-capability-checklist]] — Hermes Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环
 - [[hermes-skill-refactoring-methodology]] — Hermes active skill 重构方法论：以窄职责、前置安全边界、reference 分层、父验证和独立审查闭环优化 `test-driven-development`
 - [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的可执行架构：default profile 为主脑，wiki/memory/skills/cron/MCP/profiles 严格分层并按边界推进
 - [[hermes-lifeos-layer-boundary-contract]] — Hermes LifeOS 的层边界契约：以 default profile 为主脑，明确 wiki、memory、skill、cron、MCP、profile 与 session 的职责和越界规则
@@ -76,6 +77,7 @@
 - [[leontraveller-vs-ordinary-investor-investment-system]] — 对照两套投资框架：长期配置制度 vs 主动交易纪律
 
 ## Queries
+- [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
 - [[hermes-agent-experience-consolidation-capability-assessment]] — Hermes 对 Anthropic Dreaming/Outcomes/多 agent 能力的本地能力映射：当前具备 primitives，可组合实现经验固化闭环，但完整 Auto Dream/`/dreaming` 仍未证实为本机原生能力
