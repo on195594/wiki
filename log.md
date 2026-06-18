@@ -947,3 +947,10 @@
 - Strategy: added short routing-oriented `description` fields broadly, conservative `aliases` only for obvious names, and whitelist `## Relations` only where existing formal wiki sources supported `depends_on`.
 - Validation: passed `wiki_health_check.py --root /home/lin/wiki`, `git diff --check`, and `git status --short` review.
 - Boundary: this was a lightweight, reversible wiki metadata rollout; no runtime, memory, cron, MCP, wrapper, gateway, profile, plugin, or skill behavior was changed.
+
+## [2026-06-18] closeout | Hermes wiki knowledge-object governance
+- Created: `queries/hermes-wiki-knowledge-object-governance-closeout.md`
+- Updated: `index.md`
+- Updated active skill references: `hermes-wiki-and-domain-knowledge/references/okf-knowledge-object-governance.md`, `coding-agent-delegation/references/delegation-lanes-and-contracts.md`
+- Decision correction: low-risk wiki/documentation metadata changes with backup, health check, realistic-query validation, parent verification, and read-only review should promote after a successful pilot instead of entering indefinite observation.
+- Boundary: wiki closeout plus active skill reference guidance only; no runtime, cron, MCP, gateway, wrapper, memory, credentials, profile/plugin, or Hermes core behavior changed.
