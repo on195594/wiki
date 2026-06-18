@@ -6,6 +6,7 @@ type: query
 tags: [hermes, workflow, configuration, debugging]
 sources: [raw/transcripts/hermes-optimization-sample-case-2026-04.md]
 status: stable
+description: 复盘 2026 年 4 月 Hermes 优化过程，作为知识库运行流程的样例案例。
 ---
 
 # How We Optimized Hermes in April 2026 (Sample Case)

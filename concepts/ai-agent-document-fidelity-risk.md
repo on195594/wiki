@@ -6,6 +6,8 @@ type: concept
 tags: [agent, llm, workflow, research, risk-control, evaluation, verification, ai-coding]
 sources: [raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md]
 status: stable
+description: 说明 AI Agent 处理文档时的保真风险以及需要的证据、验证和人工边界。
+aliases: [document-fidelity-risk]
 ---
 
 # AI Agent Document Fidelity Risk

@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, llm, agent, workflow, decision]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md]
 status: stable
+description: 定义 Hermes 上下文工程的预算控制、排序、压缩和历史衰减优先级。
+aliases: [hermes-context-engineering]
 ---
 
 # Hermes Context Engineering Design Priorities

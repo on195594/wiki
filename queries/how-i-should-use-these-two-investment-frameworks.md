@@ -6,6 +6,7 @@ type: query
 tags: [investment, decision, framework, personal-finance]
 sources: [concepts/ordinary-investor-investment-system.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md, comparisons/leontraveller-vs-ordinary-investor-investment-system.md]
 status: stable
+description: 回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。
 ---
 
 # How I Should Use These Two Investment Frameworks
@@ -163,6 +164,12 @@ Leontraveller 主要防我：
 - 用边界感防止混仓、混逻辑、混情绪
 
 如果做不到严格分层，宁可少做主动交易，也不要让主动交易去污染核心资产系统。
+
+## Relations
+- depends_on: [[ordinary-investor-investment-system]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-vs-ordinary-investor-investment-system]]
 
 ## Related
 - [[ordinary-investor-investment-system]]

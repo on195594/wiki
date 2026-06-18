@@ -6,6 +6,8 @@ type: concept
 tags: [ai-coding, architecture, workflow, context-engineering, agent]
 sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md]
 status: draft
+description: 定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。
+aliases: [repo-code-intelligence]
 ---
 
 # Repository-Level Code Intelligence Layer

@@ -6,6 +6,8 @@ type: concept
 tags: [investment, trading, trend-following, risk-control]
 sources: [raw/articles/leontraveller-investment-notes-1-2026-04-17.md, raw/articles/leontraveller-investment-notes-2-2026-04-17.md]
 status: stable
+description: 整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则。
+aliases: [leontraveller-investment-system]
 ---
 
 # Leontraveller Trading and Investment System

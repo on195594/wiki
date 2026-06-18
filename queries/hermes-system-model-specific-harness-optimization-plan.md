@@ -6,6 +6,8 @@ type: query
 tags: [hermes, optimization, model-profiles, harness, workflow, validation]
 sources: [concepts/hermes-model-specific-harness-profiles.md, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, docs:hermes-agent]
 status: draft
+description: 制定 Hermes 系统针对不同模型优化 harness profile 的计划和验证路径。
+aliases: [harness-optimization-plan]
 ---
 
 # Hermes System Model-Specific Harness Optimization Plan
@@ -185,6 +187,9 @@ status: draft
 - skill 开始变成模型说明书
 - 需要改 Hermes core 才能继续，但没有可复现 eval
 - runtime profile 的收益无法覆盖维护成本
+
+## Relations
+- depends_on: [[hermes-model-specific-harness-profiles]]
 
 ## Related
 - [[hermes-model-specific-harness-profiles]]

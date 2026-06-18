@@ -6,6 +6,7 @@ type: concept
 tags: [agent, skills, governance, architecture]
 sources: [raw/articles/microsoft-devblogs-agent-skills-python-provider-2026-05-24.md, docs:https://devblogs.microsoft.com/agent-framework/agent-skills-for-python-file-code-and-class-composed-in-one-provider/]
 status: stable
+description: 说明多形态 Agent skill 进入统一 provider 前需要保持的命名、暴露和审批边界。
 ---
 
 # Agent Skill Provider Governance Boundary

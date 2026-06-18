@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, lifeos, architecture, workflow, governance]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, session:2026-04-21-hermes-lifeos-vs-profile]
 status: stable
+description: 定义 Hermes LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。
+aliases: [lifeos-executable-architecture]
 ---
 
 # Hermes LifeOS Executable Architecture
@@ -242,6 +244,12 @@ Anti-boundary-crossing summary:
 - cron 里堆复杂业务逻辑
 - wiki 页面里塞步骤化 SOP
 - skill 变成概念散文
+
+## Relations
+- depends_on: [[companyos-to-lifeos-filesystem-philosophy]]
+- depends_on: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[hermes-layer-routing-edge-cases]]
 
 ## Related
 - [[hermes-lifeos-layer-boundary-contract]]

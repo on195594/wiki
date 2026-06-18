@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
 status: stable
+description: 定义 Hermes context layer 在检索、压缩、路由和执行前装配中的操作规则。
+aliases: [context-layer-rules]
 ---
 
 # Hermes Context Layer Operating Rules
@@ -237,6 +239,12 @@ Machine Learning Mastery 文章的处理结果：
 - 可复用原则已整合进本页 Summary、Goal 和 Core principles，不再作为独立文章摘要重复出现。
 - “memory 只放短小稳定事实”的偏好由本页和现有 memory 规则承接，无需重复写入 memory。
 - 若未来多次需要执行上下文审计，再提炼为专门 skill；当前不提前创建。
+
+## Relations
+- depends_on: [[hermes-context-engineering-design-priorities]]
+- depends_on: [[hermes-lifeos-executable-architecture]]
+- depends_on: [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
 - [[agent-context-engineering]]

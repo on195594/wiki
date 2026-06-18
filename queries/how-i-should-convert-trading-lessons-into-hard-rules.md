@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, governance, workflow]
 sources: [queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。
 ---
 
 # How I Should Convert Trading Lessons into Hard Rules
@@ -190,6 +191,13 @@ status: stable
 - 更清楚
 - 更难被自己绕开
 - 更直接地拦住高代价重复错误
+
+## Relations
+- depends_on: [[how-i-should-detect-repeat-mistakes-in-my-trading]]
+- depends_on: [[how-i-should-build-a-post-trade-review-loop]]
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[how-i-should-detect-repeat-mistakes-in-my-trading]]

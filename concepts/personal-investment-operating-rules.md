@@ -6,6 +6,8 @@ type: concept
 tags: [investment, operating-rules, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
 status: stable
+description: 汇总个人投资系统的长期配置、主动交易、风控和行为纪律运行规则。
+aliases: [investment-operating-rules]
 ---
 
 # Personal Investment Operating Rules
@@ -123,6 +125,10 @@ status: stable
 - 能穿越情绪波动
 - 能在工作与家庭节奏下长期坚持
 - 能把配置和交易分开处理
+
+## Relations
+- depends_on: [[leontraveller-trading-and-investment-system]]
+- depends_on: [[ordinary-investor-investment-system]]
 
 ## Related
 - [[leontraveller-trading-and-investment-system]]

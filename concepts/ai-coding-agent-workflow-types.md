@@ -6,6 +6,8 @@ type: concept
 tags: [agent, ai-coding, workflow, ide, terminal, pull-request, cloud, governance]
 sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md]
 status: stable
+description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
+aliases: [coding-agent-workflow-types]
 ---
 
 # AI Coding Agent Workflow Types

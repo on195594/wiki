@@ -6,6 +6,7 @@ type: concept
 tags: [hermes, python, ai-engineering, workflow, tool-boundary, resource-management, concurrency, validation]
 sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md]
 status: draft
+description: 列出 Hermes 执行 Python 工程任务时需要检查的语言、测试、工具和交付能力。
 ---
 
 # Hermes Python Engineering Capability Checklist

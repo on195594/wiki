@@ -6,6 +6,8 @@ type: concept
 tags: [research, note]
 sources: [raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md]
 status: stable
+description: 整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。
+aliases: [ordinary-investor-system]
 ---
 
 # Ordinary Investor Investment System

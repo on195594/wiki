@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, knowledge-base, workflow, configuration, decision, automation, mcp]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
 status: stable
+description: 提供判断内容应进入 wiki、memory、skill、cron、MCP 或 session 的路由检查清单。
+aliases: [layer-routing-checklist]
 ---
 
 # Hermes Layer Routing Decision Checklist
@@ -232,6 +234,9 @@ status: stable
 - 短小稳定偏好或事实？→ `memory`
 - 正式知识资产？→ `wiki`
 - 都不是？→ 留在 session
+
+## Relations
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
 - [[hermes-agent-workflow-layering-and-adoption-order]]

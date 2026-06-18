@@ -4,6 +4,7 @@ created: 2026-05-01
 updated: 2026-05-01
 type: query
 status: stable
+description: 回答如何用 Hermes 以 typed boundaries、窄工具面和验证门执行 AI 编程任务。
 tags: [hermes, ai-coding, best-practice, typed-boundary, workflow, verification]
 sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md]
 ---
@@ -179,6 +180,12 @@ Hermes 任务要求可以这样写：
 - code review checklist：专门检查 LLM 输出、tool surface、dependency injection。
 
 当前不直接创建 skill，因为最佳实践还需要在真实项目中验证。
+
+## Relations
+- depends_on: [[typed-ai-agent-boundaries]]
+- depends_on: [[hermes-ai-workflow-formalization-principles]]
+- depends_on: [[ai-coding-agent-workflow-types]]
+- depends_on: [[hermes-context-layer-operating-rules]]
 
 ## Related
 

@@ -6,6 +6,8 @@ type: query
 tags: [investment, checklist, trading, decision]
 sources: [concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, queries/how-i-should-use-these-two-investment-frameworks.md]
 status: stable
+description: 提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。
+aliases: [pre-trade-checklist]
 ---
 
 # My Investment Pre-Trade Checklist
@@ -147,6 +149,12 @@ status: stable
 
 真正该保留的交易机会，不会因为多问这几句就消失；
 真正有问题的交易，往往就死在这几句问答里。
+
+## Relations
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
+- depends_on: [[ordinary-investor-investment-system]]
+- depends_on: [[how-i-should-use-these-two-investment-frameworks]]
 
 ## Related
 - [[personal-investment-operating-rules]]

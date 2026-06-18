@@ -6,6 +6,7 @@ type: concept
 tags: [hermes, llm, workflow, decision, note, skills, governance]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md]
 status: stable
+description: 把形式化思想转译为 Hermes AI 工作流中的规格、边界、验证和可回滚原则。
 ---
 
 # Hermes AI Workflow Formalization Principles

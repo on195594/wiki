@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, position-sizing, risk-control]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-scale-into-and-out-of-a-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
+description: 回答如何根据风险预算和 setup 质量决定单笔仓位大小。
 ---
 
 # How I Should Size a Position
@@ -174,6 +175,13 @@ status: stable
 真正成熟的仓位管理，核心不是“我看多准”，而是：
 - 即使看错，我也不会被这一笔带偏
 - 即使连续错，我也还能继续活在系统里
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[how-i-should-scale-into-and-out-of-a-position]]
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

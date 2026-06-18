@@ -6,6 +6,8 @@ type: comparison
 tags: [agent, mcp, workflow, tool, comparison]
 sources: [concepts/google-sre-gemini-cli-incident-response.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-knowledge-base-operating-flow.md]
 status: stable
+description: 比较 Hermes 通用 Agent 底座与 Google SRE Gemini CLI 事故响应模式的能力差距。
+aliases: [hermes-vs-google-sre]
 ---
 
 # Hermes vs Google SRE Agentic Incident Response
@@ -183,6 +185,11 @@ Hermes 与 Google 这篇文章展示的方向并不冲突，差别主要不在�
 换句话说：
 - Google 已经把 incident copilot 做成产品化工作流
 - Hermes 已经有底座，但还需要 incident-specific packaging
+
+## Relations
+- depends_on: [[google-sre-gemini-cli-incident-response]]
+- depends_on: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-knowledge-base-operating-flow]]
 
 ## Related
 - [[google-sre-gemini-cli-incident-response]]

@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, risk-control, behavior]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
+description: 回答哪些情境下默认不交易、不加仓或先暂停决策。
 ---
 
 # When I Should Not Trade
@@ -192,6 +193,12 @@ status: stable
 大多数糟糕交易，不是因为没有机会，而是因为在不该动的时候硬要动。
 
 真正长期有用的纪律，不只是知道什么时候买，更是知道什么时候必须停手。
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[how-i-should-use-these-two-investment-frameworks]]
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

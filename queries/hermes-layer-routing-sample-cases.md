@@ -6,6 +6,8 @@ type: query
 tags: [hermes, workflow, decision, configuration, automation, mcp]
 sources: [concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
 status: stable
+description: 提供 Hermes layer routing 的典型样例，用于校准 wiki、memory、skill、cron 和 MCP 归类。
+aliases: [layer-routing-samples]
 ---
 
 # Hermes Layer Routing Sample Cases
@@ -127,6 +129,10 @@ status: stable
 ## Takeaway
 一句话总结：
 - `MCP` 管能力接入，`skill` 管做事方法，`cron` 管调度，`memory` 管短小稳定事实，`wiki` 管正式知识资产；分不清时，宁可先留在 session，也不要急着污染长期层。
+
+## Relations
+- depends_on: [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
 - [[hermes-layer-routing-decision-checklist]]

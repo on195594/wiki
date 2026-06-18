@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, agent, mcp, automation, workflow, configuration, decision]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md]
 status: stable
+description: 定义 Hermes 采用 Agent 工作流分层时的优先顺序和落地边界。
+aliases: [hermes-agent-layering]
 ---
 
 # Hermes Agent Workflow Layering and Adoption Order

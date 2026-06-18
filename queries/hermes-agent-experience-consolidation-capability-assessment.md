@@ -6,6 +6,7 @@ type: query
 tags: [hermes, agent, dreaming, memory, skills, delegation, cron, validation]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: current-as-of-2026-05-11
+description: 评估 Hermes 当前是否具备把 Agent 经验固化为可复用知识和流程的能力。
 ---
 
 # Hermes Agent Experience Consolidation Capability Assessment

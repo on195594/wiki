@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, winners, workflow]
 sources: [queries/how-i-should-size-a-position.md, queries/how-i-should-scale-into-and-out-of-a-position.md, queries/when-i-should-not-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。
 ---
 
 # How I Should Handle a Winning Position
@@ -175,6 +176,13 @@ status: stable
 - 强时拿得住
 - 风险升高时收得回
 - 结构失效时退得出
+
+## Relations
+- depends_on: [[how-i-should-size-a-position]]
+- depends_on: [[how-i-should-scale-into-and-out-of-a-position]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[how-i-should-size-a-position]]

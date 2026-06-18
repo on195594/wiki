@@ -6,6 +6,8 @@ type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
 sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md]
 status: stable
+description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
+aliases: [subagent-patterns]
 ---
 
 # Subagent Orchestration Patterns

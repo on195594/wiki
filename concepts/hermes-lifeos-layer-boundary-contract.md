@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, lifeos, architecture, workflow, governance]
 sources: [concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-knowledge-architecture.md]
 status: stable
+description: 规定 Hermes LifeOS 各层之间的职责、准入和越界判断契约。
+aliases: [lifeos-layer-boundary]
 ---
 
 # Hermes LifeOS Layer Boundary Contract
@@ -177,6 +179,13 @@ Example: a weekly school-information review may have a domain model in `wiki`, a
 - [[hermes-knowledge-architecture]] describes the wiki and Hermes knowledge stack as a whole.
 
 This page should remain the LifeOS architecture contract, especially around `profile` as runtime-state isolation. If it drifts into a generic routing checklist, merge useful pieces back into adjacent pages instead of keeping a redundant page.
+
+## Relations
+- depends_on: [[hermes-lifeos-executable-architecture]]
+- depends_on: [[hermes-context-layer-operating-rules]]
+- depends_on: [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[hermes-knowledge-architecture]]
 
 ## Related
 

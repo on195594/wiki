@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, operations, health, cron, monitoring]
 sources: []
 status: active
+description: 定义 Hermes 周度治理线的最小健康面板和运维检查入口。
+aliases: [health-dashboard]
 ---
 
 # Hermes Health Dashboard

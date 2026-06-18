@@ -7,6 +7,8 @@ type: concept
 tags: [agent, llm, architecture, structured-output, verification]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md]
 status: stable
+description: 划分确定性分析与 LLM 推理的职责边界，避免把可计算事实交给模型猜测。
+aliases: [deterministic-llm-boundary]
 ---
 
 # Deterministic Analytics and LLM Reasoning Boundary

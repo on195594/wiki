@@ -6,6 +6,8 @@ type: concept
 tags: [llm, workflow, research, note]
 sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
 status: stable
+description: 整理 Dijkstra 思想对 AI 编程中规格化、形式化和自然语言边界的启发。
+aliases: [dijkstra-ai-programming]
 ---
 
 # Dijkstra on AI Programming Formalization

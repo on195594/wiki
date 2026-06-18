@@ -6,6 +6,8 @@ type: query
 tags: [hermes, harness, validation, skills, governance, closeout]
 sources: [concepts/hermes-model-specific-harness-profiles.md, queries/hermes-harness-profile-validation-detailed-plan.md]
 status: stable
+description: 记录 Hermes harness profile 验证完成后的结论、限制和后续推广判断。
+aliases: [harness-validation-closeout]
 ---
 
 # Hermes Harness Profile Validation Final Closeout
@@ -122,6 +124,10 @@ When future work proposes model/workflow-specific harness changes:
 4. Patch only the narrow skill that owns the behavior.
 5. Run post-patch regression against the patched skill path.
 6. Do not promote to wrapper, cron, runtime profile, core, or memory without separate evidence.
+
+## Relations
+- depends_on: [[hermes-model-specific-harness-profiles]]
+- depends_on: [[hermes-harness-profile-validation-detailed-plan]]
 
 ## Related
 - [[hermes-model-specific-harness-profiles]]

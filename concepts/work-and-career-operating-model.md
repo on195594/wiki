@@ -6,6 +6,7 @@ type: concept
 tags: [work, career, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-career-and-family-balance]
 status: stable
+description: 定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。
 ---
 
 # Work and Career Operating Model
@@ -82,6 +83,10 @@ status: stable
 - 职业系统能被显式看成家庭与财务系统的一部分
 - 能力栈演化有更清晰的主线
 - 时间预算能反映家庭优先级，而不是总被工作吞掉
+
+## Relations
+- depends_on: [[lifeos-overview]]
+- depends_on: [[hermes-lifeos-executable-architecture]]
 
 ## Related
 - [[lifeos-overview]]

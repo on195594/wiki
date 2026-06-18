@@ -6,6 +6,8 @@ type: query
 tags: [investment, monitoring, automation, hermes, validation, closeout]
 sources: [project:/home/lin/.hermes/projects/investment-watch]
 status: closed
+description: 记录 investment-watch 项目的验证结论、推广边界和知识层 closeout。
+aliases: [investment-watch-closeout]
 ---
 
 # Investment Watch Final Closeout

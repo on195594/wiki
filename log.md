@@ -941,3 +941,9 @@
 - Added only optional `description`, conservative `aliases`, and white-listed `## Relations` entries for the 5-page P1 pilot.
 - Success gates: health check must remain P0=0/P1=0/P2=0; relations must not replace `sources`; optional metadata must not become mandatory; no active Hermes surface may change.
 - Boundary: wiki formal pages only; no memory, active skill/reference, cron, MCP, runtime, wrapper, gateway, or Hermes core change was made.
+
+## [2026-06-18] governance | Knowledge-object metadata broad rollout
+- Scope: `concepts/`, `comparisons/`, `queries/`, `operations/`; no `raw/`, `_meta/`, `SCHEMA.md`, or active Hermes layer changes.
+- Strategy: added short routing-oriented `description` fields broadly, conservative `aliases` only for obvious names, and whitelist `## Relations` only where existing formal wiki sources supported `depends_on`.
+- Validation: passed `wiki_health_check.py --root /home/lin/wiki`, `git diff --check`, and `git status --short` review.
+- Boundary: this was a lightweight, reversible wiki metadata rollout; no runtime, memory, cron, MCP, wrapper, gateway, profile, plugin, or skill behavior was changed.

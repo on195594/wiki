@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, memory, governance, routing, knowledge-base]
 sources: [concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
 status: stable
+description: 记录 Hermes memory 的写入、更新、遗忘和跨层治理注意事项。
+aliases: [memory-governance]
 ---
 
 # Hermes Memory Governance Notes
@@ -112,6 +114,10 @@ status: stable
 3. 如果是方法 → `skill`
 4. 如果是正式知识或治理说明 → `wiki`
 5. 如果还不稳定 → 留在 session
+
+## Relations
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[hermes-layer-routing-decision-checklist]]
 
 ## Related
 - [[hermes-memory-skills-wiki-boundaries]]

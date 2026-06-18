@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, knowledge-base, workflow, note]
 sources: []
 status: stable
+description: 定义 Hermes 知识库从摄取、分类、编译、检索到维护的端到端运行流程。
+aliases: [knowledge-base-operating-flow]
 ---
 
 # Hermes Knowledge Base Operating Flow

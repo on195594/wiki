@@ -6,6 +6,8 @@ type: comparison
 tags: [investment, comparison, trading, asset-allocation]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
 status: stable
+description: 比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的分工和冲突边界。
+aliases: [leontraveller-vs-ordinary-investor]
 ---
 
 # Leontraveller vs Ordinary Investor Investment System
@@ -111,6 +113,10 @@ Leontraveller 更适合：
 一句话收束：
 - Ordinary Investor 解决“钱怎么长期长大”
 - Leontraveller 解决“主动交易时怎么少犯大错”
+
+## Relations
+- depends_on: [[leontraveller-trading-and-investment-system]]
+- depends_on: [[ordinary-investor-investment-system]]
 
 ## Related
 - [[ordinary-investor-investment-system]]

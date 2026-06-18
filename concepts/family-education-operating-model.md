@@ -6,6 +6,7 @@ type: concept
 tags: [family, education, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-family-education-goals]
 status: stable
+description: 定义家庭教育目标在 LifeOS 中的资金、时间、信息和决策运行模型。
 ---
 
 # Family Education Operating Model
@@ -90,6 +91,10 @@ status: stable
 - 每次讨论都能显式看到家庭约束与兜底能力
 - 学校选择能落到“适配度 + 可持续性”而不是单维排名
 - 家庭教育问题能与财务、职业、成长三个域联动判断
+
+## Relations
+- depends_on: [[lifeos-overview]]
+- depends_on: [[hermes-lifeos-executable-architecture]]
 
 ## Related
 - [[lifeos-overview]]

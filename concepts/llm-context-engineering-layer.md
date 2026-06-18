@@ -6,6 +6,8 @@ type: concept
 tags: [llm, agent, workflow, research]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md]
 status: stable
+description: 定义 LLM 检索和 prompt 之间的上下文工程层，包括记忆、压缩、排序和预算控制。
+aliases: [context-engineering-layer]
 ---
 
 # LLM Context Engineering Layer

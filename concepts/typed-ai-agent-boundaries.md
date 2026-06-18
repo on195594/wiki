@@ -6,6 +6,8 @@ type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
 status: stable
+description: 说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。
+aliases: [typed-agent-boundaries]
 ---
 
 # Typed AI Agent Boundaries
@@ -112,6 +114,10 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 ## Applied Hermes practice
 
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 将本页原则转成我使用 Hermes 做 AI 编程时的默认最佳实践：先压 contract，再选择 execution lane，再用 typed output、窄工具、显式依赖和分层验证控制不确定性。
+
+## Relations
+- depends_on: [[dijkstra-ai-programming-formalization]]
+- depends_on: [[hermes-ai-workflow-formalization-principles]]
 
 ## Related
 

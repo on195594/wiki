@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, validation, pattern-detection]
 sources: [queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。
 ---
 
 # How I Should Detect Repeat Mistakes in My Trading
@@ -173,6 +174,13 @@ status: stable
 重复错误识别解决的是“我为什么总在类似地方出错”。
 
 真正有价值的模式识别，不是为了多写总结，而是为了把反复流血的地方，尽快堵成硬规则。
+
+## Relations
+- depends_on: [[how-i-should-build-a-post-trade-review-loop]]
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[how-i-should-review-a-losing-position]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[how-i-should-build-a-post-trade-review-loop]]

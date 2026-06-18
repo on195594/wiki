@@ -6,6 +6,8 @@ type: query
 tags: [hermes, workflow, decision, configuration, automation, mcp]
 sources: [concepts/hermes-layer-routing-decision-checklist.md, queries/hermes-layer-routing-sample-cases.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
 status: stable
+description: 沉淀 Hermes layer routing 中容易混淆的边界案例和判定结果。
+aliases: [layer-routing-edge-cases]
 ---
 
 # Hermes Layer Routing Edge Cases
@@ -240,6 +242,10 @@ status: stable
 ## Takeaway
 一句话总结：
 - 当两个层都像能装下时，不要按“重要性”选，而要按“职责”选；职责仍然是：`MCP` 管能力、`skill` 管方法、`cron` 管调度、`memory` 管短小稳定事实、`wiki` 管正式知识、`session` 管未稳定过程。
+
+## Relations
+- depends_on: [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[hermes-layer-routing-sample-cases]]
 
 ## Related
 - [[hermes-layer-routing-decision-checklist]]

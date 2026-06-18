@@ -6,6 +6,7 @@ type: concept
 tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md]
 status: draft
+description: 定义把 Agent 历史经验和用户纠正路由到 memory、skills、wiki 或评估资产的闭环。
 ---
 
 # Agent Experience Consolidation Loops

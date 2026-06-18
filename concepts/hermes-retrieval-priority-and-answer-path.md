@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, knowledge-base, workflow, tool, configuration]
 sources: []
 status: stable
+description: 定义 Hermes 回答问题时 wiki、memory、skills、sessions、raw 和外部检索的优先级。
+aliases: [retrieval-priority, answer-path]
 ---
 
 # Hermes Retrieval Priority and Answer Path

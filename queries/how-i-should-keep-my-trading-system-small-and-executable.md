@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, system-design, governance]
 sources: [queries/how-i-should-convert-trading-lessons-into-hard-rules.md, queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。
 ---
 
 # How I Should Keep My Trading System Small and Executable
@@ -186,6 +187,13 @@ status: stable
 - 把模糊的压缩
 - 把重复的合并
 - 把无效的删掉
+
+## Relations
+- depends_on: [[how-i-should-convert-trading-lessons-into-hard-rules]]
+- depends_on: [[how-i-should-detect-repeat-mistakes-in-my-trading]]
+- depends_on: [[how-i-should-build-a-post-trade-review-loop]]
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[how-i-should-convert-trading-lessons-into-hard-rules]]

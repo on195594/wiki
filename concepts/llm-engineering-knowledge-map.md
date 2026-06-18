@@ -6,6 +6,8 @@ type: concept
 tags: [llm, architecture, workflow, evaluation, production]
 sources: [raw/articles/towardsdatascience-must-know-topics-llm-engineer-2026-05-09.md]
 status: stable
+description: 提供 LLM 工程知识主题地图，用于定位模型、数据、评估、部署和治理能力。
+aliases: [llm-knowledge-map]
 ---
 
 # LLM Engineering Knowledge Map

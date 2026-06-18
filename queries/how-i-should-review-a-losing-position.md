@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, validation, loss-management]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
+description: 回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。
 ---
 
 # How I Should Review a Losing Position
@@ -156,6 +157,13 @@ status: stable
 - 该不该认错
 - 该不该不动
 - 什么时候才是真正的再平衡
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[how-i-should-use-these-two-investment-frameworks]]
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

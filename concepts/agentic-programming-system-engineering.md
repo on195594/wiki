@@ -6,6 +6,8 @@ type: concept
 tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance, anti-pattern]
 sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
 status: stable
+description: 定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。
+aliases: [agentic-programming]
 ---
 
 # Agentic Programming as System Engineering
@@ -103,6 +105,11 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 - 不把“6 个月学习路线图”写成 Hermes 路线图。
 - 不把 ReAct、reflection 或多 Agent 模式固化为所有任务的默认执行方式。
 - 不因为文章强调生产 Agent，就绕过 Hermes 的 active-layer 审批边界。
+
+## Relations
+- depends_on: [[agent-context-engineering]]
+- depends_on: [[typed-ai-agent-boundaries]]
+- depends_on: [[agent-development-lifecycle]]
 
 ## Related
 

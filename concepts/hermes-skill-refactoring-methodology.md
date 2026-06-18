@@ -7,6 +7,8 @@ type: concept
 tags: [hermes, skills, workflow, governance, verification, ai-coding, subagent]
 sources: [session:2026-05-15-test-driven-development-skill-refactor-plan, session:2026-05-15-test-driven-development-phase4-closeout, session:2026-05-15-gemini-review-tdd-phase4-output]
 status: stable
+description: 总结 Hermes skill 重构时从测试、分层、回归验证到推广的执行方法。
+aliases: [skill-refactoring]
 ---
 
 # Hermes Skill 重构方法论

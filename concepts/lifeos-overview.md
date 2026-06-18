@@ -6,6 +6,8 @@ type: concept
 tags: [lifeos, operating-model, hermes, governance]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
+description: 概述 LifeOS 作为个人长期系统的核心层次、运行对象和治理边界。
+aliases: [lifeos]
 ---
 
 # LifeOS Overview
@@ -96,6 +98,10 @@ LifeOS 当前按以下层次运行：
 - 新知识能找到明确挂载点
 - 新方法能知道应该沉淀为 skill 而不是继续堆在聊天里
 - 重要决策会自然跨到相邻领域回看，而不是单点局部最优
+
+## Relations
+- depends_on: [[companyos-to-lifeos-filesystem-philosophy]]
+- depends_on: [[hermes-lifeos-executable-architecture]]
 
 ## Related
 - [[hermes-lifeos-executable-architecture]]

@@ -6,6 +6,8 @@ type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow, hermes]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
 status: stable
+description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。
+aliases: [self-validation-loop]
 ---
 
 # Agent Self-Validation Loops

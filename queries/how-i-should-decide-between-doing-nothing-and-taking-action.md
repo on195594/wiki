@@ -6,6 +6,7 @@ type: query
 tags: [investment, decision, patience, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-size-a-position.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答投资交易中如何判断等待是否优于立即行动。
 ---
 
 # How I Should Decide Between Doing Nothing and Taking Action
@@ -178,6 +179,13 @@ status: stable
 - 知道什么时候继续等
 - 知道什么时候“不做”其实更难、更值钱
 - 知道什么时候动作只是情绪伪装
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[how-i-should-handle-a-winning-position]]
+- depends_on: [[how-i-should-size-a-position]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

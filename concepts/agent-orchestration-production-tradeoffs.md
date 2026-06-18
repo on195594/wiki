@@ -6,6 +6,8 @@ type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
 status: stable
+description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
+aliases: [agent-orchestration-tradeoffs]
 ---
 
 # Agent Orchestration Production Tradeoffs

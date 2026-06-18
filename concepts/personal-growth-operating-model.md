@@ -6,6 +6,7 @@ type: concept
 tags: [growth, learning, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md, session:2026-04-21-user-growth-and-lifeos]
 status: stable
+description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。
 ---
 
 # Personal Growth Operating Model
@@ -73,6 +74,10 @@ status: stable
 - 成长内容更容易沉淀进 wiki 或 skill，而不是停留在对话里
 - 职业、家庭和成长之间的反馈关系更清晰
 - 成长不再是“有空再说”，而是 LifeOS 的基础域之一
+
+## Relations
+- depends_on: [[lifeos-overview]]
+- depends_on: [[work-and-career-operating-model]]
 
 ## Related
 - [[lifeos-overview]]

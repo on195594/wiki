@@ -6,6 +6,8 @@ updated: 2026-05-22
 tags: [agent, multi-agent, evaluation, workflow, research, governance]
 sources: [raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md]
 status: stable
+description: 定义研究型 Agent 在最终综合前必须通过的证据收集和质量判断门。
+aliases: [evidence-gated-research]
 ---
 
 # Agent Research Evidence Gate

@@ -6,6 +6,8 @@ type: query
 tags: [hermes, gsearch, validation, knowledge, subagent, workflow]
 sources: [project:/home/lin/.hermes/projects/hermes-gemini-google-search-workflow]
 status: closed
+description: 记录 GSearch 知识验证项目的结论、边界和是否推广到 Hermes 的 closeout。
+aliases: [gsearch-closeout]
 ---
 
 # GSearch Knowledge Validation Closeout

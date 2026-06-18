@@ -6,6 +6,7 @@ type: concept
 tags: [monitoring, automation, public-info, cron, telegram, hermes, workflow]
 sources: [project:/home/lin/.hermes/projects/amazon-price-watch, project:/home/lin/.hermes/projects/investment-watch, skill:public-info-monitoring-automation]
 status: stable
+description: 总结只读公共信息监控自动化项目的范围、边界、验证和推广方法。
 ---
 
 # Public Info Monitoring Automation Methodology

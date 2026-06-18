@@ -6,6 +6,8 @@ type: concept
 tags: [llm, workflow, validation, risk-control, architecture]
 sources: [raw/articles/towardsdatascience-llm-summarizers-identification-step-2026-05-10.md]
 status: stable
+description: 说明摘要任务前先识别文档类型、意图和证据边界的必要步骤。
+aliases: [summary-identification]
 ---
 
 # LLM Summary Identification Step

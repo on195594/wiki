@@ -6,6 +6,8 @@ type: concept
 tags: [hermes, agent, harness, model-profiles, skills, context-engineering, verification]
 sources: [raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
+description: 定义 Hermes 针对不同模型配置 harness profile 的适配原则和验证路径。
+aliases: [model-specific-harness, harness-profiles]
 ---
 
 # Hermes Model-Specific Harness Profiles
@@ -118,6 +120,10 @@ wiki concept → project-local evidence → repeated lane evidence → narrow sk
 ```
 
 Detailed closeout: [[hermes-harness-profile-validation-final-closeout]].
+
+## Relations
+- depends_on: [[hermes-agent-workflow-layering-and-adoption-order]]
+- depends_on: [[hermes-context-layer-operating-rules]]
 
 ## Related
 - [[hermes-harness-profile-validation-final-closeout]]

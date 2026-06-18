@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, validation, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-review-a-losing-position.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-decide-between-doing-nothing-and-taking-action.md, concepts/personal-investment-operating-rules.md]
 status: stable
+description: 回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。
 ---
 
 # How I Should Build a Post-Trade Review Loop
@@ -177,6 +178,13 @@ status: stable
 - 不让情绪替代总结
 - 不让复盘停在感受层
 - 最终回到一条条可执行规则上
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[how-i-should-review-a-losing-position]]
+- depends_on: [[how-i-should-handle-a-winning-position]]
+- depends_on: [[how-i-should-decide-between-doing-nothing-and-taking-action]]
+- depends_on: [[personal-investment-operating-rules]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

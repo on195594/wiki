@@ -6,6 +6,8 @@ type: concept
 tags: [claude-code, agent, workflow, automation, browser]
 sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
 status: stable
+description: 沉淀 Claude Code 在侧问、浏览器验证、多目录和任务自动化中的实用工作流技巧。
+aliases: [claude-code-tips]
 ---
 
 # Claude Code Practical Workflow Tips

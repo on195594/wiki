@@ -6,6 +6,7 @@ type: concept
 tags: [agent, multi-agent, orchestration, optimization, architecture, evaluation, hermes]
 sources: [raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md]
 status: stable
+description: 说明如何把多 Agent 和自动化规划视为预算、能力、容量和风险约束下的优化问题。
 ---
 
 # Agent Resource Optimization

@@ -6,6 +6,7 @@ type: concept
 tags: [finance, education-fund, lifeos, operating-model]
 sources: [concepts/personal-investment-operating-rules.md, concepts/money-as-tool-and-investment-vs-consumption-framework.md, concepts/family-education-operating-model.md, session:2026-04-21-user-education-fund-goal]
 status: stable
+description: 定义个人财务与教育基金在 LifeOS 中的资金分层、目标约束和执行模型。
 ---
 
 # Personal Finance and Education Fund Model
@@ -88,6 +89,11 @@ status: stable
 - 任何教育重大决策都能迅速映射到资金影响
 - 家庭安全层、配置层、目标层职责清晰
 - 资产决策更少被短期市场情绪带偏
+
+## Relations
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[money-as-tool-and-investment-vs-consumption-framework]]
+- depends_on: [[family-education-operating-model]]
 
 ## Related
 - [[lifeos-overview]]

@@ -6,6 +6,8 @@ type: concept
 tags: [agent, evaluation, hermes, monitoring, closeout, workflow]
 sources: [docs:https://venturebeat.com/orchestration/langsmith-engine-closes-the-agent-debugging-loop-automatically-but-multi-model-enterprises-still-need-a-neutral-layer]
 status: stable
+description: 说明如何把可复发 Agent 失败转化为 evaluator、fixture 或防回归工件。
+aliases: [failure-loop-evaluation]
 ---
 
 # Agent 失败闭环评估

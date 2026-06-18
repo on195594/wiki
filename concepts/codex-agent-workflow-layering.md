@@ -6,6 +6,8 @@ type: concept
 tags: [agent, llm, mcp, automation, workflow, configuration, tool]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md]
 status: stable
+description: 说明 Codex agent 工作流中 prompt、计划、AGENTS、skills、MCP 和自动化的分层职责。
+aliases: [codex-workflow-layering]
 ---
 
 # Codex Agent Workflow Layering

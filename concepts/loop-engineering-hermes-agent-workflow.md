@@ -6,6 +6,8 @@ type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, hermes]
 sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, skill:coding-agent-delegation, skill:subagent-driven-development]
 status: stable
+description: 定义 Hermes Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
+aliases: [loop-engineering]
 ---
 
 # Loop Engineering for Hermes Agent Workflows

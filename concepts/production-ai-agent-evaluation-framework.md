@@ -6,6 +6,8 @@ type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md]
 status: stable
+description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
+aliases: [agent-evaluation-framework]
 ---
 
 # Production AI Agent Evaluation Framework

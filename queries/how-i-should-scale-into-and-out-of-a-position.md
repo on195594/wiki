@@ -6,6 +6,7 @@ type: query
 tags: [investment, trading, position-sizing, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
+description: 回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。
 ---
 
 # How I Should Scale Into and Out of a Position
@@ -197,6 +198,13 @@ status: stable
 - 错了不补
 - 有利润时先管风险
 - 不让“仓位管理”变成情绪管理的替身
+
+## Relations
+- depends_on: [[my-investment-pre-trade-checklist]]
+- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[how-i-should-review-a-losing-position]]
+- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[leontraveller-trading-and-investment-system]]
 
 ## Related
 - [[my-investment-pre-trade-checklist]]

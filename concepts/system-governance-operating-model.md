@@ -6,6 +6,7 @@ type: concept
 tags: [hermes, governance, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
 status: stable
+description: 定义 LifeOS 和 Hermes 系统治理中的层级边界、变更控制和长期维护模型。
 ---
 
 # System Governance Operating Model
@@ -88,6 +89,12 @@ system governance 的核心目标是：
 - 新自动化只有在方法稳定后才上线
 - 新 profile 变少但更有明确边界价值
 - wiki 的 index/log/related links 能持续支撑导航和审计
+
+## Relations
+- depends_on: [[lifeos-overview]]
+- depends_on: [[hermes-lifeos-executable-architecture]]
+- depends_on: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
 - [[lifeos-overview]]
