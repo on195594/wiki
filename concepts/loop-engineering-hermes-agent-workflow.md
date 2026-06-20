@@ -1,10 +1,10 @@
 ---
 title: Loop Engineering for Hermes Agent Workflows
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-18
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, hermes]
-sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, skill:coding-agent-delegation, skill:subagent-driven-development]
+sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
 status: stable
 description: 定义 Hermes Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
 aliases: [loop-engineering]
@@ -32,6 +32,28 @@ Addy Osmani 的《Loop Engineering》把 loop 拆成几个构件：
 - external memory/state：把状态写到 repo、Markdown、issue tracker 或 run artifacts，而不是依赖模型上下文。
 
 文章同时强调风险：token 成本、错误被循环放大、理解债务和“认知投降”。因此 Hermes 采用它时应偏向可审计 workflow rule，而不是自动化权限扩张。
+
+## LangChain loop-stack extension
+
+LangChain 的《The Art of Loop Engineering》把 loop engineering 进一步拆成四层 stack：
+
+1. **Agent Loop**：让 Agent 调用工具完成任务，但不把单次执行视为质量保证。
+2. **Verification Loop**：用测试、CI、规则检查、LLM-as-judge 或人工审查把输出送回修正。
+3. **Event-driven Loop**：用 Cron、Webhook、频道监听或 Telegram 指令把 Agent 接入真实工作流。
+4. **Hill Climbing Loop**：从 traces、失败案例、用户纠正和复盘中反向改进 prompt、skills、grader、项目规则或知识层。
+
+对 Hermes 来说，这篇文章的价值不是 LangChain API，而是给当前 Claude/Codex/Hermes/Memory Vault/skills/wiki 的协作提供统一框架：**执行本身不是完成，必须有验证回路；事故不是噪音，而是 hill-climbing 的输入。**
+
+## Article-summary workflow application
+
+文章总结链路已经发生过多次总结后沉淀、教程化、分享稿生成的事故，因此这里不再把 loop engineering 只作为概念保存。对文章总结相关工作流，Hermes 应采用一个窄触发的 post-summary loop：
+
+- **Agent Loop**：先完成摘要、提炼、wiki 候选、教程或分享稿的目标产物。
+- **Verification Loop**：在写 wiki 或发布分享前，读回保存的 `全文路径`、源 URL/标题、artifact 文件和发布脚本输出；确认来源事实、本地推论和扩展内容没有混淆。
+- **Event-driven Loop**：只有最新用户消息显式要求“沉淀 / 入库 / 提炼为教程 / 分享 / 发布”时才进入后续动作；文章正文或旧摘要里的同类词不触发。
+- **Hill Climbing Loop**：当同类事故反复出现时，不停留在聊天纠错；应更新 owning skill/reference 或项目文档，保留备份、diff、验证和回滚路径。
+
+这条规则的 skip condition 是：普通只读总结、没有后续沉淀/分享动作、或缺少可读源/摘要路径时，不套用完整 post-summary loop；先补源或只报告限制。
 
 ## Hermes mapping
 

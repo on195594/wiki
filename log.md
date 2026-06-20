@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-06-18] update | Loop engineering for Hermes article-summary workflow
+- Updated: `concepts/loop-engineering-hermes-agent-workflow.md`
+- Added LangChain `The Art of Loop Engineering` as a source extension.
+- Translated Agent / Verification / Event-driven / Hill Climbing loops into a narrow post-summary loop for wiki, tutorial, shareable, and skill-remediation follow-ups.
+
 ## [2026-04-16] create | Wiki initialized
 - Path: `/home/lin/wiki`
 - Created core structure: `raw/`, `entities/`, `concepts/`, `comparisons/`, `queries/`, `_meta/`
