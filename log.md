@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-06-20] ingest | AI Agent human outcome design principle
+- Captured raw source: `raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md`
+- Created: `concepts/ai-agent-human-outcome-design-principle.md`
+- Updated: `index.md`
+- Extracted Forbes startup AI implementation failure cases into a reusable Agent project design principle: validate real problems, measurable outcomes, human trust boundaries, and human-in-the-loop placement before expanding automation.
+- Active-layer boundary: no memory, skill default gate, cron, MCP, runtime, wrapper, or gateway behavior was promoted.
+
 ## [2026-06-18] update | Loop engineering for Hermes article-summary workflow
 - Updated: `concepts/loop-engineering-hermes-agent-workflow.md`
 - Added LangChain `The Art of Loop Engineering` as a source extension.

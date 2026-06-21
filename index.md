@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-06-18 | Total pages: 88
+> Last updated: 2026-06-20 | Total pages: 89
 
 ## Entities
 
@@ -12,6 +12,7 @@
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
 - [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：把发现、隔离执行、验证、外部状态和下一步决策组织成可审计 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
+- [[ai-agent-human-outcome-design-principle]] — AI Agent 项目设计的人类结果优先原则：先验证真实问题、可衡量结果和人类信任边界，再决定模型、自动化和 human-in-the-loop 范围
 - [[agent-experience-consolidation-loops]] — Agent 经验固化闭环：从历史任务、失败、成功路径和用户纠正中提取可复用经验，并按 memory/skill/wiki/closeout/evaluator/cron 分层路由
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-orchestration-production-tradeoffs]] — Agent 编排的生产取舍：按成本/规模、延迟、平衡控制或高风险准确率选择 sequential、fan-out、supervisor-worker 或 reflexive loop
