@@ -3,6 +3,20 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-06-21] review-fix | AI assumption challenger AGY review
+- Review prompt: `_meta/reviews/2026-06-21-ai-assumption-challenger-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-06-21-ai-assumption-challenger-agy-review.md`
+- Verdict: `PASS_WITH_NOTES`; accepted minor backlink fixes.
+- Updated: `concepts/agent-context-engineering.md`, `concepts/claude-code-practical-workflow-tips.md`, `concepts/hermes-context-layer-operating-rules.md`, `concepts/subagent-orchestration-patterns.md`
+- Active-layer boundary: no memory, skill default gate, cron, MCP, runtime, wrapper, or gateway behavior was promoted.
+
+## [2026-06-21] ingest | AI assumption challenger before execution
+- Captured raw source: `raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md`
+- Created: `concepts/ai-assumption-challenger-before-execution.md`
+- Updated: `index.md`
+- Extracted the XDA Claude creative-workflow article into a reusable pre-execution assumption-challenge concept: use AI as a constructive skeptic before design, writing, planning, or agent delegation.
+- Active-layer boundary: no memory, skill default gate, cron, MCP, runtime, wrapper, or gateway behavior was promoted.
+
 ## [2026-06-20] ingest | AI Agent human outcome design principle
 - Captured raw source: `raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md`
 - Created: `concepts/ai-agent-human-outcome-design-principle.md`

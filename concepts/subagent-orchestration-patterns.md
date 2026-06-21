@@ -1,7 +1,7 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-06-08
+updated: 2026-06-21
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
 sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md]
@@ -195,6 +195,7 @@ Closeout: [[gsearch-knowledge-validation-closeout]]
 - [[gptcentral-ultimate-guide-building-ai-agents-2026-06-05]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-layer-operating-rules]]
+- [[ai-assumption-challenger-before-execution]]
 - [[ai-coding-agent-workflow-types]]
 - [[hermes-agent-workflow-layering-and-adoption-order]]
 - [[hermes-layer-routing-decision-checklist]]

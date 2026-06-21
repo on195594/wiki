@@ -1,7 +1,7 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-05-28
+updated: 2026-06-21
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
@@ -153,6 +153,7 @@ Hermes 的防腐原则：
 - [[agent-development-lifecycle]]
 - [[subagent-orchestration-patterns]]
 - [[hermes-context-layer-operating-rules]]
+- [[ai-assumption-challenger-before-execution]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

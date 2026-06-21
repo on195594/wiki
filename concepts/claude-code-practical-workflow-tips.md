@@ -1,7 +1,7 @@
 ---
 title: Claude Code Practical Workflow Tips
 created: 2026-04-17
-updated: 2026-05-17
+updated: 2026-06-21
 type: concept
 tags: [claude-code, agent, workflow, automation, browser]
 sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
@@ -131,6 +131,7 @@ Analytics Vidhya 的 Claude Code token-saving 清单把另一个维度补齐：C
 ## Related
 - [[ai-coding-assistant-context-budget-management]]
 - [[agent-self-validation-loops]]
+- [[ai-assumption-challenger-before-execution]]
 - [[repository-level-code-intelligence-layer]]
 - [[wiki-ingestion-workflow]]
 - [[hermes-ai-workflow-formalization-principles]]

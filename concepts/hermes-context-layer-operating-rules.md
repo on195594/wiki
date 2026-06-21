@@ -1,7 +1,7 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-05-20
+updated: 2026-06-21
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
@@ -251,6 +251,7 @@ Machine Learning Mastery 文章的处理结果：
 - [[hermes-context-engineering-design-priorities]]
 - [[llm-context-engineering-layer]]
 - [[hermes-lifeos-executable-architecture]]
+- [[ai-assumption-challenger-before-execution]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[subagent-orchestration-patterns]]
 - [[hermes-memory-skills-wiki-boundaries]]
