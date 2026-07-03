@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-07-03] ingest+skill-reference | Local-cloud hybrid LLM delegation patterns
+- Captured raw source: `raw/articles/towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02.md`
+- Created: `concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md`
+- Updated: `index.md`, `log.md`
+- Active P1 reference update after explicit confirmation: wrote `coding-agent-delegation` reference `references/local-cloud-hybrid-patterns-for-agent-delegation.md`, added one `coding-agent-delegation` pointer, and added one `subagent-driven-development` pointer.
+- Extracted the article's 5 local/cloud patterns into Hermes PM/subagent delegation patterns: task packet + parent rehydration, external plan + local grounding, thresholded delegation, bounded refinement, and independent review with parent arbitration.
+- Active-layer boundary: no default gate, memory, runtime config, cron, MCP, gateway, wrapper, provider routing, profile, DB, credentials, deployment, or destructive behavior was changed.
+
 ## [2026-07-03] query | Hermes context footprint read-only audit
 - Created: `queries/hermes-context-footprint-readonly-audit-2026-07-03.md`
 - Updated: `index.md`, `log.md`

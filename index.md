@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-07-03 | Total pages: 92
+> Last updated: 2026-07-03 | Total pages: 93
 
 ## Entities
 
@@ -11,6 +11,7 @@
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
 - [[agent-autonomy-ladder-for-hermes-workflows]] — Hermes 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
+- [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]] — 从端云混合 LLM 模式抽象出的 Hermes PM/subagent 调度模式：任务包、计划落地、困难升级、草稿精修和交叉审查
 - [[ai-assumption-challenger-before-execution]] — AI 执行前假设挑战者：在复杂创意、方案设计或 Hermes PM 编排前，用反迎合角色澄清意图、挑战假设、发现盲点，再进入执行
 - [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：把发现、隔离执行、验证、外部状态和下一步决策组织成可审计 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
