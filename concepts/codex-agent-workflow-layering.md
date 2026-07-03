@@ -1,10 +1,10 @@
 ---
 title: Codex Agent Workflow Layering
 created: 2026-04-17
-updated: 2026-05-17
+updated: 2026-06-26
 type: concept
 tags: [agent, llm, mcp, automation, workflow, configuration, tool]
-sources: [raw/articles/openai-codex-best-practices-2026-04-17.md]
+sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md]
 status: stable
 description: 说明 Codex agent 工作流中 prompt、计划、AGENTS、skills、MCP 和自动化的分层职责。
 aliases: [codex-workflow-layering]
@@ -129,9 +129,20 @@ automation 不负责设计方法，只负责按时间和环境调度已经成熟
 
 这条顺序的本质是先固化规则，再固化方法，再接入外部能力，最后才做调度放大。
 
+## Spec layer before generation layer
+
+The New Stack 对 Codeplain 的报道补充了一个 AI coding 分层原则：当 AI 让代码生成变得便宜时，真正应该长期维护的可能不是生成出的实现代码，而是表达业务意图、约束和验收边界的 spec。实现代码更接近派生产物；spec、测试、接口契约和审查记录才是跨 agent、跨会话保留上下文的事实源。
+
+Hermes 对这篇文章的采纳边界：
+- 对中等以上 AI 编程任务，先让需求收敛到 Hermes `spec-driven-development` skill 的 contract，再派生 plan、tests、subagent/coding-agent 任务和 code review。
+- 当逻辑或行为需要变更时，优先修改 spec / acceptance criteria / project doc，再让 agent 生成或修改实现；不要把连续手工补丁当成最终来源。
+- “代码可再生”不是默认行为。数据库迁移、生产配置、凭证、安全策略、不可逆操作和性能敏感边界仍需要显式审查、测试和回滚。
+- Codeplain / Plain / plain-forge 是行业案例，不是 Hermes active skill、runtime、MCP 或 cron 的直接推广授权。
+
 ## Common mistakes
 - 把长期规则继续塞在 prompt 里，而不是迁移到 `AGENTS.md`
 - 在多步复杂任务上跳过 planning
+- 让 AI 在模糊需求上连续补丁实现代码，而没有回写 spec、验收标准或设计意图
 - 还没稳定就急着自动化
 - 一开始把所有外部工具都接入，导致复杂度失控
 - 只让 agent 生成代码，不要求验证和审查
@@ -146,6 +157,7 @@ automation 不负责设计方法，只负责按时间和环境调度已经成熟
 - [[claude-code-practical-workflow-tips]]
 - [[repository-level-code-intelligence-layer]]
 - [[hermes-ai-workflow-formalization-principles]]
+- [[thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]

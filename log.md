@@ -3,6 +3,38 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-07-03] query | Hermes context footprint read-only audit
+- Created: `queries/hermes-context-footprint-readonly-audit-2026-07-03.md`
+- Updated: `index.md`, `log.md`
+- Audited recent `/gsummary`, wiki/governance, skill-optimization, memory/profile, wiki, session_search, project-context, and tool-output context burden using read-only session/file/health-check evidence.
+- Verdict: P0=0; P1 recommendations focus on `/gsummary` footprint baseline, `gemini-summary` candidate slimming review, memory/profile no-append discipline, and broad `session_search` usage discipline.
+- Active-layer boundary: no memory, active skill, runtime config, cron, MCP, gateway, wrapper, profile, Hermes core, DB, credentials, deployment, or destructive behavior was changed.
+
+## [2026-07-03] ingest | Context vs memory engineering for Agent systems
+- Captured raw source: `raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md`
+- Updated: `concepts/agent-context-engineering.md`, `index.md`
+- Review prompt: `_meta/reviews/2026-07-03-context-vs-memory-engineering-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-07-03-context-vs-memory-engineering-agy-review.md`
+- Verdict: `PASS_WITH_NOTES`; accepted the minor note to link `[[hermes-memory-skills-wiki-boundaries]]` from the new boundary section.
+- Extracted the Machine Learning Mastery article into the existing Agent context engineering concept: memory is the candidate information layer, context assembly is the current-call selection, budget, ordering, and placement layer.
+- Active-layer boundary: no memory, skill default gate, runtime, cron, MCP, gateway, wrapper, profile, DB, credentials, deployment, or destructive behavior was promoted.
+
+## [2026-07-01] ingest | Agent autonomy ladder for Hermes workflows
+- Captured raw source: `raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md`
+- Created: `concepts/agent-autonomy-ladder-for-hermes-workflows.md`
+- Updated: `index.md`
+- Extracted the Machine Learning Mastery article into a Hermes autonomy-lane concept: deterministic workflow, orchestrated workflow, bounded reactive loop, bounded multi-agent orchestration, and high-autonomy experiments.
+- Active-layer boundary: no memory, runtime, cron, MCP, gateway, wrapper, profile, DB, credentials, deployment, or destructive behavior was promoted. P1 skill-reference adoption is tracked separately in `coding-agent-delegation`.
+
+## [2026-06-26] ingest | Codeplain spec-driven regenerative code
+- Captured raw source: `raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md`
+- Updated: `concepts/codex-agent-workflow-layering.md`, `concepts/agent-context-engineering.md`
+- Review prompt: `_meta/reviews/2026-06-26-codeplain-wiki-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-06-26-codeplain-wiki-agy-review.md`
+- Verdict: `PASS`; accepted the note to avoid a nonexistent `[[spec-driven-development]]` wiki link by naming the Hermes skill instead.
+- Added the spec layer / generation layer separation as an AI coding workflow principle and captured `provenance debt` as a context-engineering risk for hand-patched AI-generated code.
+- Active-layer boundary: no memory, skill default gate, cron, MCP, runtime, wrapper, or gateway behavior was promoted.
+
 ## [2026-06-21] review-fix | AI assumption challenger AGY review
 - Review prompt: `_meta/reviews/2026-06-21-ai-assumption-challenger-agy-review-prompt.md`
 - Review result: `_meta/reviews/2026-06-21-ai-assumption-challenger-agy-review.md`

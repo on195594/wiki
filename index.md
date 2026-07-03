@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-06-21 | Total pages: 90
+> Last updated: 2026-07-03 | Total pages: 92
 
 ## Entities
 
@@ -10,6 +10,7 @@
 - [[agent-development-lifecycle]] — Agent 开发生命周期：以 Build → Test → Deploy → Monitor 闭环和 Govern 横切层，把一次性 demo 推进成可验证、可部署、可监控、可治理的工程系统
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
+- [[agent-autonomy-ladder-for-hermes-workflows]] — Hermes 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
 - [[ai-assumption-challenger-before-execution]] — AI 执行前假设挑战者：在复杂创意、方案设计或 Hermes PM 编排前，用反迎合角色澄清意图、挑战假设、发现盲点，再进入执行
 - [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：把发现、隔离执行、验证、外部状态和下一步决策组织成可审计 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
@@ -79,6 +80,7 @@
 - [[leontraveller-vs-ordinary-investor-investment-system]] — 对照两套投资框架：长期配置制度 vs 主动交易纪律
 
 ## Queries
+- [[hermes-context-footprint-readonly-audit-2026-07-03]] — Hermes 当前上下文负担只读审计：识别 `/gsummary`、governance skills、memory/profile、wiki、session_search 和工具输出的 token/注意力压力，并给出不改 active layer 的 P0/P1/P2 建议
 - [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
