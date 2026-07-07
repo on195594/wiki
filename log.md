@@ -3,6 +3,20 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-07-07] ingest+skill-reference | First-edit economy for coding agents
+- Captured raw source: `raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md`
+- Created: `concepts/first-edit-economy-for-coding-agents.md`
+- Added active skill reference: `/home/lin/.hermes/skills/software-development/coding-agent-workflow/references/first-edit-economy.md`
+- Updated active skill pointer: `/home/lin/.hermes/skills/software-development/coding-agent-workflow/SKILL.md`
+- Updated: `index.md`, `log.md`
+- Review prompt: `/home/lin/.hermes/projects/skill-governance-evidence/reviews/first-edit-economy-active-20260707/prompt.md`
+- Review result: `/home/lin/.hermes/projects/skill-governance-evidence/reviews/first-edit-economy-active-20260707/stdout.md`
+- Verdict: `PASS`; no repair required after the corrected active skill/reference landing.
+- Final review: `/home/lin/.hermes/projects/skill-governance-evidence/reviews/first-edit-economy-active-final-20260707/stdout.md`; accepted `REQUEST_CHANGES` finding by changing wiki concept frontmatter from `status: pilot` to `status: stable`.
+- Post-fix review: `/home/lin/.hermes/projects/skill-governance-evidence/reviews/first-edit-economy-active-postfix-20260707/stdout.md`; verdict `PASS`.
+- Extracted the VS Code GPT-5.5 coding harness prompt-tuning article into a Hermes concept: concrete anchor, nearby evidence, one falsifiable local hypothesis, cheap discriminating check, smallest grounded edit, immediate validation.
+- Active-layer boundary: active change is limited to an optional `coding-agent-workflow` reference and one SKILL.md pointer; no memory, active skill default gate, runtime config, cron, MCP, gateway, wrapper, provider routing, profile, DB, credentials, deployment, or destructive behavior was promoted.
+
 ## [2026-07-03] ingest+skill-reference | Local-cloud hybrid LLM delegation patterns
 - Captured raw source: `raw/articles/towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02.md`
 - Created: `concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md`
