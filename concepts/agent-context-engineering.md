@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-07-03
+updated: 2026-07-11
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -63,6 +63,10 @@ Microsoft Developer 的 AX 文章补充了一个容易误判的点：工具安�
 5. 生成后，CLI/LSP/test 错误是否能让 agent 自修复。
 
 Hermes 映射：评估 skill/tool/MCP 不应只看“是否被暴露”或“是否被调用”，还要看在真实组合上下文里是否被正确选择、低噪声返回、失败后可诊断。这条规则补充 `[[typed-ai-agent-boundaries]]` 的工具接口原则和 `[[ai-coding-assistant-context-budget-management]]` 的上下文预算原则。
+
+#### 工具可用性与逐轮候选集分离
+
+[[ai-agent-tool-selection-architecture]] 进一步区分“系统允许使用哪些工具”和“当前推理步骤应让模型看到哪些工具”。Hermes toolset 已能提供平台、会话和任务级静态边界；动态 Top-K、语义路由或规划式选择只有在真实会话基线证明静态收窄仍不足时，才值得进入项目级试验。外部文章中的工具数量和阈值不应直接变成 active runtime 默认值。
 
 ### 3. Examples: demonstrate behavior, not only answers
 
@@ -177,6 +181,8 @@ Hermes 的对应规则：
 - [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]]
 - [[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]
 - [[machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03]]
+- [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]
+- [[ai-agent-tool-selection-architecture]]
 - [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26]]
 - [[llm-context-engineering-layer]]

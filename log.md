@@ -1034,3 +1034,21 @@
 - Updated active skill references: `hermes-wiki-and-domain-knowledge/references/okf-knowledge-object-governance.md`, `coding-agent-delegation/references/delegation-lanes-and-contracts.md`
 - Decision correction: low-risk wiki/documentation metadata changes with backup, health check, realistic-query validation, parent verification, and read-only review should promote after a successful pilot instead of entering indefinite observation.
 - Boundary: wiki closeout plus active skill reference guidance only; no runtime, cron, MCP, gateway, wrapper, memory, credentials, profile/plugin, or Hermes core behavior changed.
+
+## [2026-07-11] ingest | Machine Learning Mastery on AI Agent tool selection
+- Captured raw source: `raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md`
+- Created: `concepts/ai-agent-tool-selection-architecture.md`
+- Updated: `concepts/agent-context-engineering.md`, `concepts/production-ai-agent-evaluation-framework.md`, `index.md`
+- Durable unit: separate tool availability, per-step candidate reduction, concrete selection/execution, and fallback; require local comparison of full vs narrowed toolsets before considering dynamic Top-K retrieval.
+- Existing-coverage decision: retained context assembly and evaluation details in their canonical pages, while the new concept owns the distinct tool-selection architecture and Hermes toolset mapping.
+- Evidence boundary: RAG-MCP and the article's micro-benchmark numbers remain source-specific; no tool-count, Top-K, or confidence threshold was promoted as a Hermes default.
+- Boundary: wiki-only ingestion; no memory, active skill/reference, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
+## [2026-07-11] review | AI Agent tool selection wiki ingestion AGY review
+- Review prompt: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review.md`
+- Review exit code: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review.exit` (`0`)
+- Verdict: PASS
+- Blocking/important/minor findings: none; no content patch was required.
+- Confirmed: the new concept is a distinct durable unit, source/local synthesis boundaries are clear, Hermes toolset mapping is bounded, and the evaluation path does not create a new project or active default.
+- Boundary: AGY review was read-only; no memory, active skill/reference, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.

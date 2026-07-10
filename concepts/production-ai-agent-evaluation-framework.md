@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-05-22
+updated: 2026-07-11
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -55,6 +55,10 @@ aliases: [agent-evaluation-framework]
 - Multi-Step Coherence：多步执行是否保持逻辑、状态和目标一致。
 
 工程含义：Agent 不只会“答题”，还会行动。工具越多、步骤越长，错误可能断崖式增加，因此要单独评估过程轨迹，而不是只看最终输出。
+
+#### Tool selection evaluation must separate stages
+
+[[ai-agent-tool-selection-architecture]] 补充了工具选择评测的拆分方式。不要只记录“最后是否调用成功”，至少区分：目标工具是否进入候选集、首次选择是否正确、参数是否有效、执行是否成功，以及任务最终是否完成。对比全量工具面、静态收窄 toolset 和动态 Top-K 时，还应同时记录输入 Token 与端到端延迟，防止只优化 Prompt 长度却增加路由器成本或错召回。
 
 ### 4. Production layer
 用于评估系统是否可持续运行。
@@ -190,6 +194,7 @@ aliases: [agent-evaluation-framework]
 - [[typed-ai-agent-boundaries]]
 - [[ai-agent-document-fidelity-risk]]
 - [[constrained-toolbox-evaluator-loop]]
+- [[ai-agent-tool-selection-architecture]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[deterministic-analytics-llm-reasoning-boundary]]
 - [[index]]
