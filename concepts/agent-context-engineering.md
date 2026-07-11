@@ -4,7 +4,7 @@ created: 2026-05-20
 updated: 2026-07-11
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -129,6 +129,8 @@ Hermes 映射（参见 `[[hermes-memory-skills-wiki-boundaries]]`）：
 1. **预算先于检索**：检索条数不应只由 Top-K 或相似度阈值决定，而应先由上下文装配器计算当前步骤的 token 预算。
 2. **位置是上下文质量的一部分**：关键指令靠前；当前任务、高相关检索结果和需要马上使用的状态靠近生成位置；不要把重要信息随机拼接到长上下文中间。
 
+后续文章 [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 又补充了检索前的分类步骤：当前状态、稳定事实、历史事件和可复用规程应先进入不同候选层，再由 context assembly 决定本轮是否读取。这里最重要的边界是：检索得到的历史事件不等于当前事实；程序性经验也不能因单次成功就自动进入 system prompt 或 skill。
+
 不应把这篇文章直接升级为 active Hermes 行为。它的合理落点是 wiki 概念和后续 `skill-optimization-workflows` / `hermes-knowledge-and-workflow-governance` 的参考材料；是否改 active skill、runtime 或 classifier，仍需要单独的项目级验证、审批和回滚证据。
 
 ## Provenance debt in generated code
@@ -182,6 +184,7 @@ Hermes 的对应规则：
 - [[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]
 - [[machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03]]
 - [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]
+- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
 - [[ai-agent-tool-selection-architecture]]
 - [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26]]

@@ -1,10 +1,10 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-06-21
+updated: 2026-07-11
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
-sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
+sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
 status: stable
 description: 定义 Hermes context layer 在检索、压缩、路由和执行前装配中的操作规则。
 aliases: [context-layer-rules]
@@ -174,6 +174,16 @@ subagent 返回：
 
 生命周期复杂度规则见 `[[subagent-orchestration-patterns]]`：默认把 subagent 当作一次性 inline tool；只有在任务真正独立且并发有收益时才 fan-out；agent pool 和 team 模式需要项目级验证、清理机制和可观测性后再考虑。
 
+## Memory-strategy pre-routing gate
+
+[[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 补充了进入具体 Hermes 层之前的语义判断：先分清信息是当前状态、稳定事实、历史事件还是可复用规程，再选择存储层。完整映射由 `[[hermes-memory-skills-wiki-boundaries]]` 维护；本页只保留 context 装配相关约束：
+
+- session 是当前工作内存，不是档案；
+- 历史事件只有在当前步骤相关时才检索进入 context，不默认注入；
+- 稳定事实应优先读取当前有效版本，旧版本仅在查询历史时暴露；
+- 检索规模由 context budget 约束，大历史库不能因为“命中”就全量注入；
+- 规程只有经过验证后才作为 skill/reference 按需加载。
+
 ## One-screen routing checklist
 遇到新信息、新方法或新需求时，按顺序问：
 
@@ -247,6 +257,7 @@ Machine Learning Mastery 文章的处理结果：
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
 
 ## Related
+- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
 - [[agent-context-engineering]]
 - [[hermes-context-engineering-design-priorities]]
 - [[llm-context-engineering-layer]]

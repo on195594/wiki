@@ -1,10 +1,10 @@
 ---
 title: Hermes Memory Governance Notes
 created: 2026-04-22
-updated: 2026-04-22
+updated: 2026-07-11
 type: concept
 tags: [hermes, memory, governance, routing, knowledge-base]
-sources: [concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
+sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
 status: stable
 description: 记录 Hermes memory 的写入、更新、遗忘和跨层治理注意事项。
 aliases: [memory-governance]
@@ -115,11 +115,21 @@ aliases: [memory-governance]
 4. 如果是正式知识或治理说明 → `wiki`
 5. 如果还不稳定 → 留在 session
 
+## Current fact versus historical event
+
+[[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 提醒：稳定事实与历史事件需要不同的写入和读取规则。
+
+- 新偏好或环境事实写入前，检查是否替代现有条目；优先更新当前事实，而不是并列追加冲突版本。
+- 需要保留变更历史时，把旧值及其时间范围放进 wiki、project log 或 session evidence，不让它继续作为默认当前事实注入。
+- 每条高影响事实尽量保留来源、更新时间和有效性；无法判断当前有效版本时，先检索或向用户确认。
+- 成功运行日志属于情境证据，不是程序内存；只有重复、可泛化且有验证门槛的方法才进入 skill/reference。
+
 ## Relations
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
 - depends_on: [[hermes-layer-routing-decision-checklist]]
 
 ## Related
+- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[hermes-layer-routing-edge-cases]]

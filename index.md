@@ -52,7 +52,7 @@
 - [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：什么进 wiki、memory、skill、cron、MCP，按官方定义和本地知识层分开判断
 - [[hermes-memory-governance-notes]] — 一次实际 memory 减脂后沉淀出的治理规则：什么该继续留在 memory，什么该迁移到 wiki、skill 或 session
 - [[hermes-model-specific-harness-profiles]] — Hermes 的 model-specific harness profile 原则：把 Codex、Claude、Gemini 的模型差异转成 skill / wrapper / project context / verification overlay，而不是贸然扩张 runtime profile
-- [[hermes-memory-skills-wiki-boundaries]] — Hermes memory / skills / wiki 的边界规范与归类准则
+- [[hermes-memory-skills-wiki-boundaries]] — Hermes memory / skills / wiki 的边界规范：把当前状态、稳定事实、历史事件和可复用规程路由到不同层，而不是全部写进 memory
 - [[hermes-retrieval-priority-and-answer-path]] — Hermes 检索优先级与回答路径：先查 wiki，再按 memory/skills/sessions/external 补全
 - [[hermes-wiki-lint-and-health-check-standards]] — Hermes wiki lint / 健康检查规范：链接、索引、frontmatter、标签、陈旧性与结构健康
 - [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查

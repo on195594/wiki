@@ -1,10 +1,10 @@
 ---
 title: Hermes Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-06-18
+updated: 2026-07-11
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration]
-sources: []
+sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md]
 status: stable
 description: 定义 Hermes memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。
 aliases: [layer-boundaries, memory-skill-wiki-boundaries]
@@ -117,6 +117,36 @@ aliases: [layer-boundaries, memory-skill-wiki-boundaries]
 - 形成稳定工作流 → 写入 `skills`
 - 沉淀成架构/方法论/对比分析 → 写入 `wiki`
 
+## Cognitive memory labels mapped to Hermes layers
+
+Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 用 working、semantic、episodic、procedural memory 描述 Agent 信息生命周期。这里的 `memory` 是认知架构总称，不能全部等同于 Hermes 的 `memory` 工具：
+
+| 外部术语 | 信息特征 | Hermes 主要落点 | 不应误放到 |
+|---|---|---|---|
+| Working memory | 当前轮次或会话状态、工具中间结果 | 当前 session；长任务的 project state | 长期 `memory`、wiki |
+| Semantic memory | 当前有效、稳定、跨任务复用的事实与偏好 | 短小事实进入 `USER.md` / `MEMORY.md`；需来源和结构的知识进入 wiki | 原始事件日志 |
+| Episodic memory | 历史事件、决策、交互和运行证据 | session history、project logs、run artifacts、wiki raw source | 默认注入的长期 `memory` |
+| Procedural memory | 已验证、可重复执行的规程 | skills、references、项目 SOP 和 fixtures | 单次成功日志、未经验证的经验 |
+
+映射原则：
+
+- 历史事件不自动成为当前事实；查询时应区分“曾经发生”与“现在仍有效”。
+- 新事实写入前应检查来源、更新时间及是否替代旧事实；冲突版本不能无标记并存。
+- 程序内存不是自动从成功日志升级而来；只有触发条件、步骤、失败边界和验证方式稳定后，才进入 skill/reference。
+- Zep、Mem0、Memory Bank 等是来源中的实现示例，不是 Hermes 默认技术选型。
+
+## Five-step routing questions
+
+对每类候选信息依次判断：
+
+1. **是否需要跨轮保留？** 一次性中间输出留在当前步骤，不持久化。
+2. **是否需要跨会话？** 仅本会话有效的状态留在 session/project state。
+3. **是当前稳定事实还是历史事件？** 当前事实进入结构化 memory 或 wiki；历史事件进入日志、session history 或 raw evidence。
+4. **应全量读取还是按需检索？** 小而有界的 profile 可全量读取；大规模历史应检索、裁剪后再进入 context。
+5. **是否已成熟为可复用规程？** 只有重复验证后的方法才进入 skill/reference。
+
+这五问补充下面的 Hermes 层间清单，不替代 `[[hermes-context-layer-operating-rules]]` 的完整路由规则。
+
 ## Decision checklist
 遇到一个新信息时，依次问：
 1. 这是不是用户偏好或稳定事实？是 → `memory`
@@ -156,6 +186,9 @@ aliases: [layer-boundaries, memory-skill-wiki-boundaries]
 - depends_on: [[hermes-wiki-page-writing-standards]]
 
 ## Related
+- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
+- [[hermes-context-layer-operating-rules]]
+- [[hermes-memory-governance-notes]]
 - [[hermes-knowledge-architecture]]
 - [[wiki-ingestion-workflow]]
 - [[index]]

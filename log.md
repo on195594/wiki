@@ -1052,3 +1052,22 @@
 - Blocking/important/minor findings: none; no content patch was required.
 - Confirmed: the new concept is a distinct durable unit, source/local synthesis boundaries are clear, Hermes toolset mapping is bounded, and the evaluation path does not create a new project or active default.
 - Boundary: AGY review was read-only; no memory, active skill/reference, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
+## [2026-07-11] update | Machine Learning Mastery AI Agent memory strategy decision tree
+- Captured raw source: `raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md`
+- Updated canonical owner: `concepts/hermes-memory-skills-wiki-boundaries.md`
+- Added narrow cross-layer updates: `concepts/hermes-context-layer-operating-rules.md`, `concepts/agent-context-engineering.md`, `concepts/hermes-memory-governance-notes.md`, `index.md`
+- Existing-page decision: did not create a new memory-architecture concept because current Hermes boundary and context pages already own the durable rules.
+- Durable unit: map working, semantic, episodic, and procedural memory to session/project state, bounded durable facts, logs/raw evidence, and validated skills rather than treating all four as Hermes `memory`.
+- Evidence boundary: Zep, Mem0, Memory Bank, full-read, retrieval, and automatic procedure extraction remain source examples; no new dependency, database, memory provider, or active workflow was adopted.
+- Boundary: wiki-only update; no memory write, active skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
+## [2026-07-11] review | AI Agent memory strategy wiki update AGY review
+- Review prompt: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review-prompt.md`
+- Review result: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review.md`
+- Review exit code: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review.exit` (`0`)
+- Verdict: PASS_WITH_MINOR_FIXES
+- Accepted fixes: none.
+- Rejected finding: AGY reported `未经验证 of 经验`, but parent readback/search confirmed the file already contains `未经验证的经验`; recorded as a reviewer false positive.
+- Confirmed: existing-page placement, provenance separation, cognitive-memory mapping, current-fact/history boundary, cross-page ownership, and no-active-promotion boundary all passed.
+- Boundary: AGY review was read-only; no memory write, active skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
