@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-07-18] ingest | Production LLM latency and inference-cost baseline
+- Captured raw source: `raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`, `index.md`, `log.md`
+- Added a production baseline covering queue time, TTFT, inter-token latency, end-to-end P50/P95/P99, input/output Token, model calls per task, cache-hit rate, tool/retrieval latency, and Cost per Query.
+- Separated application/Hermes controls from hosted-provider internals and self-hosted serving controls; model/provider routing, admission control, semantic caching, and call consolidation remain project-local candidates only after a real repeated latency, cost, or availability problem.
+- Independent pre-ingestion review: built-in subagent verdict `REQUEST_CHANGES`; accepted the narrower baseline and control-layer split while retaining `active decision = NO_ACTION`.
+- Active-layer boundary: no memory, active skill/reference, runtime config, cron, MCP, gateway, wrapper, provider routing, profile, DB, credentials, deployment, or destructive behavior was changed. The pre-existing unexplained edit in `gemini-summary/references/kdnuggets-dom-extraction.md` was not touched.
+
 ## [2026-07-07] ingest+skill-reference | First-edit economy for coding agents
 - Captured raw source: `raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md`
 - Created: `concepts/first-edit-economy-for-coding-agents.md`
