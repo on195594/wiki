@@ -150,43 +150,11 @@ aliases: [agent-evaluation-framework]
 - 用同一模型同时做生成和裁判，可能导致评估分数虚高。
 - `[[kdnuggets-llm-latency-inference-cost-2026-07-18]]` 提供的是实践清单而非对照实验；其路由、缓存、批处理和 serving 建议没有固定收益、阈值或平台基准，必须结合代表性流量和质量门槛验证。
 
-## Rubric calibration and aggregate-score failure
+## Rubric calibration
 
-`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]` 提供了一个可复用的评测器失准案例：Similarweb 修改长篇研究 Agent 后看到聚合分数下降，团队据此反复回滚和调整 Prompt，后来检查逐项评语才发现 Agent 本身并未退化，真正冲突的是 Rubric。
+`[[agent-evaluation-rubric-calibration]]` 单独维护评测尺失准的诊断与校准方法：普通问答可使用 Golden Answer 语义比较，开放式长报告应使用分维度 Rubric、忠实度检查和基线 A/B；聚合分数只作诊断指针，必须回溯具体 Case、分项评语和 Trace。分数与证据冲突时，先审计评分维度、锚点和错误激励，再修改 Agent。
 
-### Match the evaluator to the output shape
-
-- 答案形状明确的普通问答，可以组合确定性工具/结构检查与基于 Golden Answer 的语义等价判断。
-- 开放式长篇报告不存在唯一正确文本，应按来源整合、忠实度、论证质量、完整性等维度分别设置带锚点的 Rubric，并与已接受基线做 A/B 比较。
-- 基线是比较参照，不是 Ground Truth；新旧报告可以采用不同但同样有效的分析路径。
-
-### Treat the score as a diagnostic pointer
-
-聚合分数只能指出“哪里可能变化”，不能单独判定真实回归。一次可信诊断至少应能下钻到：
-
-1. 哪些 Case 发生变化；
-2. 哪些评分维度发生变化；
-3. evaluator 的评语如何解释该分数；
-4. 来源忠实度检查发现了什么；
-5. Trace 中的工具选择、检索和合成行为发生了什么。
-
-这与 `[[agent-failure-closed-loop-evaluation]]` 的失败信号 → 证据 → 根因 → 最小修复闭环相接：评分异常只是失败信号，逐例评语、Trace、确定性检查和人工复核才是定位根因的证据。
-
-### Audit the ruler before changing the Agent
-
-出现以下任一信号时，应先暂停依据该分数做发布或回滚决定，并审计 Rubric，而不是继续修改 Agent：
-
-- 聚合分数与逐例人工复核持续冲突；
-- evaluator 评语指出明显缺陷，但对应分数仍然较高；
-- 两个维度奖励相反行为，例如“来源广度”奖励数量，而“归因精度”惩罚模糊来源；
-- “简洁度”权重压过“完整性”，导致需要方法、 Caveat 和上下文的战略报告被错误缩短；
-- 调整 Agent 后只有总分变化，却无法从具体 Case、分项评语或 Trace 解释变化原因。
-
-校准时应把评分锚点改写为真正需要的行为。例如，与其奖励来源数量，不如奖励“具名、相关、可验证，并绑定具体论断”的来源。修改后用同一批 Case 重跑，确认分数与评语对齐，再决定合并、迭代或回滚。
-
-### Evidence boundary
-
-该案例来自 Similarweb 的单一内部工作流，文章没有公开 Benchmark 数据集、统计不确定性、跨模型对照实验或可泛化的权重配置。因此应保留“评测器本身需要校准”的方法论，不把 Similarweb 的具体 Rubric、分数锚点或 LangSmith 产品依赖直接设为 Hermes 默认规则。
+该方法来自 `[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]` 的单一实践案例，不把具体权重、评分锚点或 LangSmith 产品依赖提升为 Hermes 默认规则。
 
 ## What to preserve, what not to preserve
 
@@ -255,6 +223,7 @@ aliases: [agent-evaluation-framework]
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
 - [[kdnuggets-llm-latency-inference-cost-2026-07-18]]
 - [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]
+- [[agent-evaluation-rubric-calibration]]
 - [[agent-research-evidence-gate]]
 - [[agent-self-validation-loops]]
 - [[agent-closed-loop-learning-from-corrections-to-rules]]

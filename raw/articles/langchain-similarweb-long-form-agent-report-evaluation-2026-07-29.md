@@ -24,6 +24,7 @@ extraction: Full public article body extracted deterministically from the server
 - Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260731-191750-How-Similarweb-Evaluates-Long-Form-Agent-Research-Reports-with-LangSmith-1564895-473371560-summary.md`
 
 ## Compiled concept page
+- [[agent-evaluation-rubric-calibration]]
 - [[production-ai-agent-evaluation-framework]]
 - [[agent-failure-closed-loop-evaluation]]
 
