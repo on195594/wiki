@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-07-31] ingest | Similarweb long-form Agent report evaluation and Rubric calibration
+- Captured raw source: `raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`, `index.md`, `log.md`
+- Added the distinction between Golden Answer evaluation for focused questions and dimension-specific Rubrics, faithfulness checks, and baseline A/B comparisons for open-ended long-form reports.
+- Added a Rubric-miscalibration diagnostic: treat aggregate scores as pointers, inspect changed cases, per-criterion comments, faithfulness evidence, and traces, then audit conflicting criteria or incentives before changing the Agent.
+- Preserved the source boundary: the Similarweb case is a single vendor-hosted practitioner report without a released benchmark dataset, cross-model controlled comparison, statistical uncertainty, or generalizable weights.
+- Active-layer boundary: no memory, active skill/reference, runtime config, cron, MCP, gateway, wrapper, provider routing, profile/plugin, credentials, deployment, or external service was changed; LangSmith was not adopted as a Hermes dependency.
+
 ## [2026-07-18] ingest | Production LLM latency and inference-cost baseline
 - Captured raw source: `raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md`
 - Updated: `concepts/production-ai-agent-evaluation-framework.md`, `index.md`, `log.md`

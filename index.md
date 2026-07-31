@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-07-18 | Total pages: 95
+> Last updated: 2026-07-31 | Total pages: 95
 
 ## Entities
 
@@ -28,7 +28,7 @@
 - [[constrained-toolbox-evaluator-loop]] — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [[deterministic-analytics-llm-reasoning-boundary]] — 确定性分析与 LLM 推理边界：让 LLM 生成结构化分析规约和解释结果，让确定性执行器负责过滤、聚合、计算和事实生成
 - [[ai-agent-document-fidelity-risk]] — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
-- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、Agent 行为和生产运营四层指标评估可靠性，阈值只保留为数量级参考
+- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：覆盖检索、生成、Agent 行为、生产运营和 Rubric 校准；聚合分数只作诊断信号，必须回溯逐例评语、忠实度与 Trace
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
 - [[ai-coding-assistant-context-budget-management]] — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
 - [[repository-level-code-intelligence-layer]] — 仓库级代码智能层：用索引、依赖图、中心性排序、Git 共变、死代码候选和架构决策记录，为 AI coding agent 生成低噪音项目上下文
