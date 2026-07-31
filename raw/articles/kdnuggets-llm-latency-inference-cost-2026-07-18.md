@@ -24,6 +24,7 @@ extraction: Full article-like body extracted from the public KDnuggets page; thi
 - Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260718-123440-12-Ways-to-Reduce-LLM-Latency-and-Inference-Costs-in-Production-2163-319740080-summary.md`
 
 ## Compiled concept page
+- [[production-agent-evaluation-baselines]]
 - [[production-ai-agent-evaluation-framework]]
 
 ## Source thesis

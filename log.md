@@ -5,9 +5,10 @@
 
 ## [2026-07-31] review-fix | Split Agent evaluation Rubric calibration into a focused concept
 - Review finding: `concepts/production-ai-agent-evaluation-framework.md` grew to 271 lines after ingestion, exceeding the approximate 200-line split threshold in `SCHEMA.md`.
-- Created: `concepts/agent-evaluation-rubric-calibration.md`
-- Updated: `concepts/production-ai-agent-evaluation-framework.md`, `raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md`, `index.md`, `log.md`
-- Moved the detailed Rubric diagnostic and calibration loop into the focused concept; the production framework now keeps only a concise owner link and source boundary.
+- Created: `concepts/agent-evaluation-rubric-calibration.md`, `concepts/production-agent-evaluation-baselines.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`, the three supporting raw-source links, `index.md`, `log.md`
+- Moved the detailed Rubric diagnostic/calibration loop and the production latency/cost/threshold baseline into focused concepts; the production framework now keeps the four-layer overview plus concise owner links and source boundaries.
+- Result: the production framework was reduced from 271 lines to the schema target range, while the source-backed detail remains retrievable through explicit wikilinks.
 - Active-layer boundary: no memory, active skill/reference, runtime config, cron, MCP, gateway, wrapper, provider routing, profile/plugin, credentials, deployment, or external service was changed.
 
 ## [2026-07-31] ingest | Similarweb long-form Agent report evaluation and Rubric calibration

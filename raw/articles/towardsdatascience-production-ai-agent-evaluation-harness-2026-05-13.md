@@ -13,6 +13,8 @@ extraction: Browser DOM extraction after web_extract/Jina returned summary-like 
 
 # Building an Evaluation Harness for Production AI Agents
 
+Compiled concepts: [[production-ai-agent-evaluation-framework]], [[production-agent-evaluation-baselines]]
+
 Source URL: https://towardsdatascience.com/building-an-evaluation-harness-for-production-ai-agents-a-12-metric-framework-from-100-deployments/
 Extraction note: Browser DOM extraction was used because generic extraction/Jina paths were degraded or summary-like.
 
