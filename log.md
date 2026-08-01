@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-01] review-fix | EvoLib concept inference labels and page compaction
+- Updated: `concepts/agent-experience-consolidation-loops.md`, `log.md`
+- Marked Hermes-local consolidation, weighting, evaluation and anti-pattern judgments as `[推论]` while preserving the source-described EvoLib mechanisms separately.
+- Replaced duplicated Dreaming/Outcomes/multi-agent/cron capability detail with a compact Hermes mapping and canonical link to `[[hermes-agent-experience-consolidation-capability-assessment]]`.
+- Removed the duplicated local-validation block; the concept page now stays within the approximate 200-line target without creating a near-duplicate EvoLib concept.
+- Scope boundary: this fixes only the reviewed P3 findings. The P2 recommendation to add the primary paper and code links remains intentionally unchanged.
+- Active-layer boundary: no memory, active skill/reference, runtime config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, deployment or external service was changed.
+
 ## [2026-08-01] ingest | EvoLib experience-to-evolving-knowledge mechanism
 - Captured raw source: `raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md`
 - Updated: `concepts/agent-experience-consolidation-loops.md`, `index.md`, `log.md`

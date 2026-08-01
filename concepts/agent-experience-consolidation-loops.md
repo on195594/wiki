@@ -21,7 +21,9 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 
 文章中的 `dreaming` 不是模型权重训练，而是让 agent 回顾过去 session 和 memory，写出 plain-text notes / playbooks 供未来 session 使用。
 
-Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。它补充的是知识单元进入持久层后的演化机制，不改变本页原有的 Hermes 层间路由和审批边界。
+Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。
+
+[推论] 该机制补充的是知识单元进入持久层后的演化方式，不改变本页原有的 Hermes 层间路由和审批边界。
 
 ## Core pattern
 
@@ -80,8 +82,8 @@ experience → extract skill/insight → retrieve similar knowledge
 → consolidate/keep separate/supersede/reject → reweight → reuse/revalidate
 ```
 
-- **Consolidation**：新经验产生候选知识后，先检索相似条目；只有适用边界确实可泛化时才合并，不能把语义相似直接当作可替代。
-- **Weighting**：知识价值不只看当前任务是否命中，还要看它是否帮助后续任务生成有效知识。访问次数和最近使用时间只能作为弱信号。
+- **Consolidation（来源机制）**：新经验产生候选知识后，检索相似条目并尝试整合成更通用的知识。[推论] 只有适用边界确实可泛化时才应合并，不能把语义相似直接当作可替代。
+- **Weighting（来源机制）**：知识价值同时考虑当前任务效用和对后续知识生成的贡献。[推论] 访问次数和最近使用时间只能作为弱信号。
 - **Lifecycle metadata**：`source`、适用范围、验证时间、supersession、当前状态和冲突关系是 Hermes 的本地映射，不是博客公开的 EvoLib schema，均应视为 `[推论]`。
 
 ### 4. Route by layer responsibility
@@ -129,58 +131,25 @@ Hermes 的 curator 已经覆盖部分 skill lifecycle；memory consolidation / A
 
 ### Evaluation boundary for evolving knowledge
 
-评估经验固化不能只看“是否检索到旧记录”。还要检查后续任务是否改善、Token 和测试时计算是否换来相称收益、随机混合任务顺序下是否稳定、是否产生错误泛化或陈旧规则，以及提炼、合并、评分和重验证本身的成本。
+[推论] 评估经验固化不能只看“是否检索到旧记录”。还要检查后续任务是否改善、Token 和测试时计算是否换来相称收益、随机混合任务顺序下是否稳定、是否产生错误泛化或陈旧规则，以及提炼、合并、评分和重验证本身的成本。
 
 EvoLib 博客报告了数学、代码效率约束和长程环境交互三类实验，以及 Token 效率和任务顺序鲁棒性，但没有在博客中给出完整数值、超参数、并发成本或生产运行证据。它提供研究方向和评估维度，不能直接证明 Hermes 应采用该框架。
 
 ## Hermes mapping
 
-### Dreaming-like review
-Hermes 当前可组合实现：
+Hermes 已具备 `session_search`、skills、memory、验证工具、`/goal`、`delegate_task` 和 cron 等底层能力，但没有在本地证实存在完整原生 Auto Dream。详细能力状态由 [[hermes-agent-experience-consolidation-capability-assessment]] 维护，本页只保留知识闭环边界：
 
 ```text
-session_search / project evidence
-→ post-session knowledge review
-→ wiki closeout or concept update
-→ narrow skill patch if a reusable procedure changed
-→ no memory write unless the fact is stable and always-needed
+session_search / project evidence → audited review
+→ wiki concept/query or project closeout
+→ narrow skill patch only when a reusable procedure changed
+→ memory only for compact stable facts
+→ runtime/cron only after separate approval
 ```
 
-这是一种人工可审计版 Dreaming。
-
-### Outcomes-like grading
-Hermes 当前可组合实现：
-- `/goal` 设置目标并由 judge model 检查是否完成
-- `delegate_task` 派 fresh-context reviewer / verifier
-- tests, lint, type checks, browser verification, artifact contracts 提供真实反馈
-- skill 中写入 `Verification` section
-
-这对应 [[agent-self-validation-loops]] 中的目标-反馈-迭代结构。
-
-### Multi-agent orchestration
-Hermes 原生支持：
-- `delegate_task` 单 subagent 或 batch 并行
-- fresh child context and separate terminal session
-- bounded nested orchestration via `role="orchestrator"` and `delegation.max_spawn_depth`
-- durable long-running work改用 `cronjob` 或 background terminal
-
-参考：[[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]]。
-
-### Scheduled consolidation
-Hermes 原生支持 cron，但自动经验固化不应直接写 durable layer。
-
-推荐安全路线：
-```text
-scheduled read-only review
-→ candidate lessons report
-→ Telegram / wiki draft
-→ human approval
-→ wiki/skill/memory patch
-→ verification
-→ commit
-```
-
-不推荐初期让 cron 直接修改 memory、skills 或 runtime 配置。
+- `/goal`、fresh-context reviewer 和确定性工具证据可以提供结果验证，详见 [[agent-self-validation-loops]]。
+- 多 Agent 只用于适合拆分的复杂工作，不替代明确验收标准；编排边界见 [[subagent-orchestration-patterns]]。
+- 定时复盘默认只生成候选报告，不自动修改 memory、skills 或 runtime。
 
 ## Anti-patterns
 - 把每篇文章都变成一个 skill。
@@ -190,8 +159,8 @@ scheduled read-only review
 - 让 cron 无人确认地修改 durable knowledge layers。
 - 把一次任务的进展日志当作长期经验。
 - 用多 agent 取代明确验收标准。
-- 把语义相似但适用边界不同的知识强行合并。
-- 让同一个模型同时负责提炼、加权和验收，再把其自评分数当作有效性证明。
+- [推论] 把语义相似但适用边界不同的知识强行合并。
+- [推论] 让同一个模型同时负责提炼、加权和验收，再把其自评分数当作有效性证明。
 
 ## Operating rules
 1. 经验候选必须先问：未来会在哪类任务中复用？
@@ -201,20 +170,6 @@ scheduled read-only review
 5. 只有稳定、短小、经常需要的事实进入 memory。
 6. 自动化只读复盘可以先做；自动写入 durable layer 要等真实验证和单独批准。
 7. 所有经验固化都要保留 provenance 和 rollback path。
-
-## Local validation status
-当前 Hermes 已有构建该闭环的 primitives，但没有在本地 v0.13.0 证实存在完整原生 Auto Dream 或 `/dreaming` 产品入口。详见 [[hermes-agent-experience-consolidation-capability-assessment]]。
-
-因此，本地实践应采用：
-
-```text
-project evidence / session_search
-→ audited closeout
-→ wiki concept/query update
-→ class-level skill patch only when workflow changed
-→ memory only for compact stable facts
-→ runtime/cron promotion only after separate approval
-```
 
 ## Related pages
 - [[microsoft-research-evolib-evolving-knowledge-2026-07-30]]
