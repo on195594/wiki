@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-07-31 | Total pages: 97
+> Last updated: 2026-08-01 | Total pages: 98
 
 ## Entities
 
@@ -45,6 +45,7 @@
 - [[hermes-ai-workflow-formalization-principles]] — 将 Dijkstra 的形式化原则落实到 Hermes 工作流：自然语言输入、形式化产物、验证闭环
 - [[hermes-context-engineering-design-priorities]] — 面向 Hermes 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
 - [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径
+- [[hermes-active-surface-lifecycle-governance]] — Hermes 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
 - [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、wiki 文件结构、检索与回写闭环
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
 - [[hermes-python-engineering-capability-checklist]] — Hermes Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环

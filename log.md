@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-01] ingest+skill-reference | Hermes active-surface lifecycle governance
+- Captured raw source: `raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md`
+- Created: `concepts/hermes-active-surface-lifecycle-governance.md`
+- Updated: `index.md`, `log.md`
+- Generalized the source's `CLAUDE.md` maintenance advice into a Hermes-wide lifecycle for default instructions, memory, skills, tools/MCP, wrappers, quick commands, cron, plugins/profiles, project context, and runtime config: Bootstrap → Calibrate → Promote → Validate → Operate → Rebase → Retire.
+- Preserved the source boundary: the six-month reset is a practitioner heuristic, not a Hermes cron, fixed threshold, or permission for automatic deletion.
+- Active-layer decision: one optional reference and one pointer are authorized under `hermes-active-layer-governance`; no default gate, memory, runtime config, cron, MCP, gateway, wrapper behavior, provider routing, profile/plugin behavior, credentials, deployment, or external service is changed.
+
 ## [2026-07-31] review-fix | Split Agent evaluation Rubric calibration into a focused concept
 - Review finding: `concepts/production-ai-agent-evaluation-framework.md` grew to 271 lines after ingestion, exceeding the approximate 200-line split threshold in `SCHEMA.md`.
 - Created: `concepts/agent-evaluation-rubric-calibration.md`, `concepts/production-agent-evaluation-baselines.md`
