@@ -1,12 +1,12 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-05-18
+updated: 2026-08-01
 type: concept
 tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md]
 status: draft
-description: 定义把 Agent 历史经验和用户纠正路由到 memory、skills、wiki 或评估资产的闭环。
+description: 定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。
 ---
 
 # Agent Experience Consolidation Loops
@@ -20,6 +20,8 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 本页由 VentureBeat 对 Anthropic Claude Managed Agents `dreaming`、`outcomes` 与 multi-agent orchestration 的报道触发：[[venturebeat-anthropic-dreaming-ai-agents-2026-05-07]]。
 
 文章中的 `dreaming` 不是模型权重训练，而是让 agent 回顾过去 session 和 memory，写出 plain-text notes / playbooks 供未来 session 使用。
+
+Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。它补充的是知识单元进入持久层后的演化机制，不改变本页原有的 Hermes 层间路由和审批边界。
 
 ## Core pattern
 
@@ -69,6 +71,19 @@ Hermes 对应入口：`session_search`、project closeout、wiki query pages、l
 - **cron candidate report**：周期性提醒或只读复盘报告
 - **runtime automation**：已验证、可回滚、低噪音的稳定流程
 
+### 3a. Evolve knowledge instead of only appending experience
+
+EvoLib 给出了一个比“保存更多历史”更严格的知识演化模型：
+
+```text
+experience → extract skill/insight → retrieve similar knowledge
+→ consolidate/keep separate/supersede/reject → reweight → reuse/revalidate
+```
+
+- **Consolidation**：新经验产生候选知识后，先检索相似条目；只有适用边界确实可泛化时才合并，不能把语义相似直接当作可替代。
+- **Weighting**：知识价值不只看当前任务是否命中，还要看它是否帮助后续任务生成有效知识。访问次数和最近使用时间只能作为弱信号。
+- **Lifecycle metadata**：`source`、适用范围、验证时间、supersession、当前状态和冲突关系是 Hermes 的本地映射，不是博客公开的 EvoLib schema，均应视为 `[推论]`。
+
 ### 4. Route by layer responsibility
 经验固化的核心治理问题是路由，而不是保存。`[[agent-closed-loop-learning-from-corrections-to-rules]]` 进一步补充了纠错晋升门槛：不要把一次用户纠正直接写成全局规则，先记忆、再泛化、再验证、最后推广。
 
@@ -111,6 +126,12 @@ lesson candidate
 - runtime automation 是否有 rollback path
 
 Hermes 的 curator 已经覆盖部分 skill lifecycle；memory consolidation / Auto Dream 类型能力仍需谨慎验证。
+
+### Evaluation boundary for evolving knowledge
+
+评估经验固化不能只看“是否检索到旧记录”。还要检查后续任务是否改善、Token 和测试时计算是否换来相称收益、随机混合任务顺序下是否稳定、是否产生错误泛化或陈旧规则，以及提炼、合并、评分和重验证本身的成本。
+
+EvoLib 博客报告了数学、代码效率约束和长程环境交互三类实验，以及 Token 效率和任务顺序鲁棒性，但没有在博客中给出完整数值、超参数、并发成本或生产运行证据。它提供研究方向和评估维度，不能直接证明 Hermes 应采用该框架。
 
 ## Hermes mapping
 
@@ -169,6 +190,8 @@ scheduled read-only review
 - 让 cron 无人确认地修改 durable knowledge layers。
 - 把一次任务的进展日志当作长期经验。
 - 用多 agent 取代明确验收标准。
+- 把语义相似但适用边界不同的知识强行合并。
+- 让同一个模型同时负责提炼、加权和验收，再把其自评分数当作有效性证明。
 
 ## Operating rules
 1. 经验候选必须先问：未来会在哪类任务中复用？
@@ -194,6 +217,7 @@ project evidence / session_search
 ```
 
 ## Related pages
+- [[microsoft-research-evolib-evolving-knowledge-2026-07-30]]
 - [[agent-self-validation-loops]]
 - [[agent-closed-loop-learning-from-corrections-to-rules]]
 - [[subagent-orchestration-patterns]]

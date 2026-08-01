@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-01] ingest | EvoLib experience-to-evolving-knowledge mechanism
+- Captured raw source: `raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md`
+- Updated: `concepts/agent-experience-consolidation-loops.md`, `index.md`, `log.md`
+- Added the distinction between accumulating episodic records and evolving reusable knowledge, including candidate skill/insight extraction, similar-knowledge consolidation, immediate/downstream utility weighting, revalidation and retirement.
+- Added evaluation boundaries covering downstream task value, Token/test-time-compute efficiency, mixed task-order robustness, false generalization, stale knowledge and maintenance cost.
+- Preserved the source boundary: the Microsoft Research blog does not publish complete benchmark numbers, prompts, hyperparameters, capacity/pruning policy, concurrent-update cost or production operating evidence.
+- Active-layer decision: no memory, active skill/reference, runtime config, cron, MCP, gateway, wrapper behavior, provider routing, profile/plugin behavior, credentials, deployment, new storage backend or external service was changed.
+
 ## [2026-08-01] ingest+skill-reference | Hermes active-surface lifecycle governance
 - Captured raw source: `raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md`
 - Created: `concepts/hermes-active-surface-lifecycle-governance.md`
