@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-01] review-fix | EvoLib primary paper and code provenance
+- Updated: `raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md`, `log.md`
+- Added the official Microsoft Research publication URL and the `microsoft/EvoLib` GitHub repository URL to the raw source provenance.
+- Linked the paper title at its first substantive mention so future verification does not require rediscovery.
+- Verified both URLs resolved before writing; no ad-hoc frontmatter fields were introduced.
+- This closes the reviewed P2 provenance finding. No concept, index, memory, active skill/reference, runtime, cron, MCP, gateway, wrapper, provider, profile/plugin or external-service behavior changed.
+
 ## [2026-08-01] review-fix | EvoLib concept inference labels and page compaction
 - Updated: `concepts/agent-experience-consolidation-loops.md`, `log.md`
 - Marked Hermes-local consolidation, weighting, evaluation and anti-pattern judgments as `[推论]` while preserving the source-described EvoLib mechanisms separately.

@@ -22,6 +22,8 @@ tags: [agent, memory, research, workflow, evaluation]
 - Authors: Weijia Xu, Alessandro Sordoni, Zelalem Gero, Michel Galley, Eric Yuan, Jianfeng Gao
 - Published: 2026-07-30T09:00:00-07:00
 - Captured: 2026-08-01
+- Primary paper: [Test-Time Learning with an Evolving Library](https://www.microsoft.com/en-us/research/publication/test-time-learning-with-an-evolving-library/)
+- Official code: [microsoft/EvoLib](https://github.com/microsoft/EvoLib)
 - Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260801-161551-EvoLib-Turning-experience-into-evolving-knowledge-Microsoft-Research-2824354-379589320-summary.md`
 - Extraction note: direct deterministic fetch returned HTTP 403; `web_extract` recovered the full article prose. The rendered Microsoft Research page was checked to verify the publication date and displayed author list. Navigation, an unrelated podcast promotion, author cards, social links and footer boilerplate were omitted.
 - Source quality: official Microsoft Research blog with full article prose.
@@ -49,7 +51,7 @@ Memory has become an important AI agent capability: the ability to store and ret
 
 Humans do not remember every detail of past experiences. Instead, they retain strategies that work, mistakes to avoid, and skills that transfer across situations. Over time, these lessons are refined into increasingly general and reusable knowledge.
 
-In the paper *Test-Time Learning with an Evolving Library*, the authors introduce EvoLib, a framework that transforms raw experience into an evolving library of knowledge. Rather than treating memory as a growing archive, EvoLib extracts reusable knowledge and continually refines it as new experiences arrive. The stated goal is to make skills more general, insights more accurate, and downstream performance improve without updating the underlying model.
+In the paper [*Test-Time Learning with an Evolving Library*](https://www.microsoft.com/en-us/research/publication/test-time-learning-with-an-evolving-library/), the authors introduce EvoLib, a framework that transforms raw experience into an evolving library of knowledge. Rather than treating memory as a growing archive, EvoLib extracts reusable knowledge and continually refines it as new experiences arrive. The stated goal is to make skills more general, insights more accurate, and downstream performance improve without updating the underlying model.
 
 ## How EvoLib works
 
