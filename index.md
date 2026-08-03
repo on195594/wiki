@@ -34,7 +34,7 @@
 - [[production-agent-evaluation-baselines]] — 生产 Agent 评估基线：拆分排队、TTFT、生成节奏、端到端分位数、Token、调用、缓存和工具耗时，并把外部阈值限制为方向性参考
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
 - [[ai-coding-assistant-context-budget-management]] — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
-- [[repository-level-code-intelligence-layer]] — 仓库级代码智能层：用索引、依赖图、中心性排序、Git 共变、死代码候选和架构决策记录，为 AI coding agent 生成低噪音项目上下文
+- [[repository-level-code-intelligence-layer]] — 仓库级代码智能层：用索引、依赖图和任务级上下文编译，把目标代码、可达接口、项目约束与显式未知项装配成低噪音 Agent 上下文
 - [[agentic-content-pipeline-design-patterns]] — Agentic 内容生产 pipeline 的设计模式：专家流程、skill files、MCP 数据源、中间产物、人工审核与可调试迭代
 - [[claude-code-practical-workflow-tips]] — Claude Code 的实用工作流要点：侧边提问、浏览器验证、自动循环、多目录访问与跨设备延续
 - [[codex-agent-workflow-layering]] — Codex 的分层 agent 工作流：prompt、planning、AGENTS.md、skill、MCP 与 automation 各司其职

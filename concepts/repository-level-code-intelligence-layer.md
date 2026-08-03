@@ -1,11 +1,11 @@
 ---
 title: Repository-Level Code Intelligence Layer
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-08-03
 type: concept
 tags: [ai-coding, architecture, workflow, context-engineering, agent]
-sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md]
-status: draft
+sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md]
+status: stable
 description: 定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。
 aliases: [repo-code-intelligence]
 ---
@@ -23,6 +23,18 @@ aliases: [repo-code-intelligence]
 不要让 coding agent 以“读整个仓库”作为理解项目的默认入口。
 
 更稳的入口是：先把仓库变成结构化信号，再把高价值信号交给 agent。仓库结构、依赖关系、核心节点、共变历史、死代码候选和架构决策记录，应当先被分析、排序、筛选，再进入 prompt、`AGENTS.md`、`CLAUDE.md` 或项目文档。
+
+## Task-scoped context compilation
+
+[[towardsdatascience-context-compiler-coding-agents-2026-08-01]] 补充了一个更窄的任务层原则：coding agent 的上下文应围绕当前目标编译，而不是把检索到的材料持续累加。
+
+1. **目标驱动**：先确定要修改、审查或解释的文件、符号与行为，再选择上下文。
+2. **分层装配**：目标代码、相关测试、错误与验收条件保留全文；可达依赖优先保留接口、类型、docstring 和关键约束；不可达且没有项目级约束作用的材料默认排除。
+3. **扩展依赖定义**：Hermes 的“依赖”不只包括 import/call graph，还包括 `AGENTS.md`、README、ADR、fixture、配置/schema、CLI/API 契约、当前 diff 和用户边界。
+4. **显式不确定性**：动态派发、反射、插件注册、事件订阅、同名符号与配置驱动入口应标记为 unknown，并保留扩大读取范围的回退路径。
+5. **选择可解释**：上下文包应说明为什么保留全文、为什么只保留接口、为什么排除其他材料，以及哪里可能遗漏。
+
+这是一种任务上下文装配原则，不是对文章 Python 静态分析器的默认采用，也不能替代项目规则读取、根因调查或父级验证。
 
 ## Repository intelligence layers
 
@@ -126,12 +138,9 @@ aliases: [repo-code-intelligence]
 - 高噪音探索适合交给 subagent，主会话只接收核心文件、风险和验证建议。
 - `AGENTS.md` / `CLAUDE.md` 应短而准，可由仓库智能辅助生成，但仍需人工审查。
 
-### Skill/reference candidate
+### Skill/reference mapping
 
-这篇文章不应直接升级为 active skill。只有在本地项目验证过仓库图谱、死代码候选、上下文生成质量后，才适合把其中某个窄动作沉淀为 skill/reference，例如：
-- 陌生项目结构分析 checklist。
-- 项目 `AGENTS.md` 生成前检查。
-- 死代码候选审查流程。
+跨工具、任务级的上下文装配方法由 `coding-agent-workflow` 的 optional reference `task-scoped-context-compilation.md` 承接。它只在目标入口明确且仓库上下文可能过载时按需加载，不是默认静态分析门，也不复制到 delegation、subagent 或 reviewer skills。
 
 ## Relationship to existing concepts
 
@@ -173,11 +182,12 @@ aliases: [repo-code-intelligence]
 
 ## Limits
 
-文章是工具教程，示例只覆盖较小的 Python 项目 `itsdangerous`。它没有证明 Repowise 在大型 monorepo、跨语言仓库、动态入口、插件系统、反射调用或低测试覆盖项目中的准确性和性能。因此，本页只沉淀仓库智能层的设计模式，不沉淀 Repowise 作为默认工具选择。
+Repowise 文章的示例只覆盖较小的 Python 项目 `itsdangerous`；Context Compiler 文章也只报告两个较小 Python 仓库，以 naive full-repo dump 为基线，并用 `characters // 4` 估算 token。两篇来源都没有证明其方法在大型 monorepo、跨语言仓库、动态入口、插件系统、反射调用或低测试覆盖项目中的准确性和性能。因此，本页只沉淀仓库智能与任务级上下文编译的设计原则，不沉淀具体工具、节省比例或默认参数。
 
 ## Related
 
 - [[marktechpost-repowise-repository-code-intelligence-2026-05-15]]
+- [[towardsdatascience-context-compiler-coding-agents-2026-08-01]]
 - [[ai-coding-assistant-context-budget-management]]
 - [[codex-agent-workflow-layering]]
 - [[claude-code-practical-workflow-tips]]
