@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-07-31
+updated: 2026-08-03
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md]
@@ -175,6 +175,10 @@ aliases: [agent-evaluation-framework]
 
 `[[agent-research-evidence-gate]]` applies this evaluation frame to research workflows: the Judge gate evaluates source sufficiency and missing information before an Analyst produces the final report. It is narrower than this page because it focuses on evidence readiness rather than the whole production evaluation stack.
 
+## Relationship to stateful environments and grounded verification
+
+`[[stateful-agent-environments-and-grounded-verification]]` narrows the Agent behavior layer for stateful computer-use workflows: evaluate environment behavior, task depth and authoritative outcome verification together, then separate model, environment, task and verifier failures. It does not make synthetic worlds, RL or database graders a production default.
+
 ## Related
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
 - [[kdnuggets-llm-latency-inference-cost-2026-07-18]]
@@ -182,6 +186,7 @@ aliases: [agent-evaluation-framework]
 - [[agent-evaluation-rubric-calibration]]
 - [[production-agent-evaluation-baselines]]
 - [[agent-research-evidence-gate]]
+- [[stateful-agent-environments-and-grounded-verification]]
 - [[agent-self-validation-loops]]
 - [[agent-closed-loop-learning-from-corrections-to-rules]]
 - [[agent-development-lifecycle]]

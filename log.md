@@ -3,6 +3,20 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-03] ingest+active-adoption | Echoverse stateful environments and authoritative outcome verification
+- Captured raw source: `raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md`
+- Created: `concepts/stateful-agent-environments-and-grounded-verification.md`
+- Updated: `concepts/production-ai-agent-evaluation-framework.md`, `index.md`, `log.md`
+- Added optional active guidance: `/home/lin/.hermes/skills/autonomous-ai-agents/computer-use/references/authoritative-outcome-verification.md` and one short pointer in `SKILL.md`.
+- Durable unit: `environment + tasks + verifier`, with behavior fidelity, state coherence, workflow depth, authoritative outcome verification, domain value, capability worlds, co-evolution and separate model/environment/task/verifier failure attribution.
+- Governance correction: article-derived adoption now has reactive and proactive tracks. A qualifying, low-ceremony, reversible and verifiable `OPTIONAL_REFERENCE` does not require a prior local failure; `DEFAULT_GUIDANCE`, `HARD_GATE`, runtime promotion and independent safety boundaries remain gated.
+- Validation boundary: the optional reference requires one existing low-risk reversible `action → readback` check when adopted; this ingest created no fixture, project, monitor or multi-agent chain.
+- Backup supplied by parent Hermes: `/home/lin/.hermes/backups/skills/echoverse-proactive-adoption-20260803-125557/`
+- Independent review prompt: `_meta/reviews/2026-08-03-echoverse-proactive-adoption-agy-review-prompt.md`
+- Independent review result: `_meta/reviews/2026-08-03-echoverse-proactive-adoption-agy-review.md` (`PASS_WITH_MINOR_FIXES`).
+- Accepted review fix: moved the sole optional-reference pointer into the `effect:"confirmed"` escalation step and changed “you're done” to interaction-delivery confirmation, preventing it from being read as business-state proof.
+- Explicitly untouched: memory, `USER`, cron, MCP, runtime/config, wrapper, gateway, profile/plugin, credentials, Hermes core, project code, dependencies and external systems.
+
 ## [2026-08-01] review-fix | EvoLib primary paper and code provenance
 - Updated: `raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md`, `log.md`
 - Added the official Microsoft Research publication URL and the `microsoft/EvoLib` GitHub repository URL to the raw source provenance.
