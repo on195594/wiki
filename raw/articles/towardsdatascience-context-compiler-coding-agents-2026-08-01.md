@@ -15,8 +15,8 @@ status: captured
 - Author: Emmimal P Alexander
 - Published: 2026-08-01
 - Captured: 2026-08-03
-- Extraction route: browser-rendered accessibility snapshot, bounded before `Related Articles`
-- Source quality: full article body, including visible headings, prose, code blocks, table cells, and figure captions
+- Extraction route: browser-rendered accessibility snapshot, bounded before `Related Articles`; accessibility serialization omitted some linked labels and inline-code text, with the material fragments identified below restored from the live DOM
+- Source quality: substantially complete article prose, headings, code blocks, table cells, and figure captions; not a byte-faithful HTML capture
 
 ## Source limitations
 
@@ -64,7 +64,7 @@ Context Compiler
 
 Across two real Python repos, it cut prompt sizes by 69–74% with a compile time under 75 ms.
 
-Every number here comes from captured terminal runs of the actual code, not estimates. You can check out the source and run the demos yourself on
+Every number here comes from captured terminal runs of the actual code, not estimates. You can check out the source and run the demos yourself on https://github.com/Emmimal/context-compiler/.
 
 The whole pipeline in one figure: each pass narrows the repository down by one more degree before anything reaches the model. Image by the author, generated with gemini
 
@@ -402,9 +402,7 @@ Engineering Trade-offs
 
 Every compiler design involves trade-offs. Here is where the current implementation makes compromises:
 
-Setting
-
-is empirical.
+Setting max_hops=2 is empirical.
 
 It worked well across the test repositories, but a codebase with deeper call chains might need
 
@@ -416,9 +414,7 @@ Name-only call resolution prioritizes speed and simplicity.
 
 It runs in microseconds and requires zero external dependencies, but it causes the name collision issues noted earlier. Adding a full type checker would fix those collisions, but it would destroy the “clone and run with standard Python” setup.
 
-Token counts use
-
-.
+Token counts use characters // 4.
 
 This heuristic is fine for rough estimates, but it strays on dense code. If you need exact counts, replacing it with
 
@@ -466,7 +462,7 @@ Compilers do not exist to make programs shorter. They make them executable by is
 
 Context limits will keep shifting on vendor schedules, sometimes growing and occasionally shrinking. Relying on compiler discipline instead of context window size protects your workflow regardless of what limits an API exposes. That design principle will outlast any single benchmark figure in this post.
 
-Source code, runnable demos, and the CLI are available on
+Source code, runnable demos, and the CLI are available on https://github.com/Emmimal/context-compiler/
 
 References
 

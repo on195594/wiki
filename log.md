@@ -11,6 +11,8 @@
 - Added one optional active reference under `coding-agent-workflow` plus one short pointer; no new skill, project, pilot, hard gate, cron, MCP, runtime/config, gateway, wrapper, provider, profile/plugin, memory, credentials, deployment, dependency, or external service was introduced.
 - Active skill backup: `/home/lin/.hermes/backups/skills/task-scoped-context-compilation-20260803-200242/`
 - Verification: wiki health and `git diff --check` passed; the targeted `coding-agent-workflow` contract passed with its pre-existing line-count warning. The full skill-governance size gate remains blocked because the backed-up entrypoint was already 17,500 bytes against a 15KB cap; no unrelated slimming refactor was folded into this landing.
+- Codex read-only review: initial verdict `REJECT` with one required raw-source fidelity fix. Accepted and repaired the overclaim that the accessibility snapshot contained the full article body; restored the material GitHub link, `max_hops=2`, and `characters // 4` fragments from the live DOM and disclosed that the capture is not byte-faithful HTML. All active skill/reference wording was approved without required changes.
+- Codex focused re-review: `APPROVE`, no blockers or required changes; scope match confirmed. Prompt/output/stderr artifacts are preserved under `/home/lin/.hermes/backups/skills/task-scoped-context-compilation-20260803-200242/reviews/`.
 
 ## [2026-08-03] ingest+active-adoption | Echoverse stateful environments and authoritative outcome verification
 - Captured raw source: `raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md`
