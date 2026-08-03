@@ -1,10 +1,10 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-06-21
+updated: 2026-08-03
 type: concept
 tags: [agent, workflow, ai-coding, orchestration, governance]
-sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
+sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
 description: 把 AI 放在执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
@@ -17,6 +17,8 @@ aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-soun
 AI 在复杂创意、方案设计或 Hermes PM 编排任务中的高价值位置，往往不是直接替人生成最终产物，而是在执行前帮助人类澄清意图、挑战假设、发现盲点，并把多个可能方向收敛成更明确的路径。
 
 XDA 文章 `[[xda-claude-creative-workflow-reframe-2026-06-20]]` 的经验来自个人创意工作流：作者原本会直接进入 Figma、布局、颜色和组件试错；后来改成先和 Claude 对话，探索受众、情绪、故事、定位和弱点，再进入设计、写作或构建。本文的可复用价值不是“Claude 适合做设计”，而是“AI 可以先承担前期反迎合思维伙伴，再由人类执行”。
+
+Wonder Tools 的 `[[wondertools-writers-toolkit-2026-08-01]]` 提供了写作场景中的第二个实践来源：AI 更适合帮助作者发现注意力流失、论证缺口和证据不足，而不是代写成稿。它还明确提醒，通用模型可能顺着作者已有判断作答，因此需要主动要求批评，并由作者保留最终表达和核验责任。
 
 这页补充 `[[agent-context-engineering]]`、`[[claude-code-practical-workflow-tips]]` 和 `[[hermes-context-layer-operating-rules]]`：那些页面分别约束上下文装配、Claude Code 执行工作流和 Hermes 层间路由；本页聚焦执行前的假设挑战角色。
 
@@ -43,6 +45,17 @@ XDA 文章 `[[xda-claude-creative-workflow-reframe-2026-06-20]]` 的经验来自
 5. **Execute manually or with tools**：真正设计、写作或构建仍由人类或受控 agent 完成。
 
 关键提示不是让 AI “更负面”，而是让它提供建设性反对意见：指出什么弱、混乱、缺失、误导或不匹配。
+
+## Writing-specific application: critic, not ghostwriter
+
+在写作任务中，这个模式可以收窄成四步：
+
+1. 作者先提供自己的提纲、草稿或来源材料，而不是让模型从空白处代写成稿。
+2. 要求 AI 标出可能失去读者注意力的段落、缺少证据的论点、隐含前提和结构断点。
+3. 对 AI 的批评逐项回查原文、采访记录或一手来源；模型意见只是待验证的问题清单。
+4. 由作者决定哪些意见成立并完成改写，保留个人声音、出版政策和保密边界。
+
+`NotebookLM` 一类只查询用户提供材料的工具可以缩小来源范围，但“有来源边界”不等于结论正确；开放网络研究和模型生成的长报告仍应回查原始链接。该来源对具体产品的效率判断主要是个人经验，因此这里只沉淀角色边界，不把工具清单升级为 Hermes 默认配置。
 
 ## Hermes mapping
 
@@ -118,3 +131,4 @@ XDA 文章 `[[xda-claude-creative-workflow-reframe-2026-06-20]]` 的经验来自
 ## Related sources
 
 - [[xda-claude-creative-workflow-reframe-2026-06-20]]
+- [[wondertools-writers-toolkit-2026-08-01]]

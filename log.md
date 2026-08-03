@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-03] ingest | AI as a writing critic, not a ghostwriter
+- Captured raw source: `raw/articles/wondertools-writers-toolkit-2026-08-01.md`
+- Updated: `concepts/ai-assumption-challenger-before-execution.md`, `index.md`, `log.md`
+- Added a writing-specific application of the existing assumption-challenger pattern: use AI to surface attention loss, evidence gaps, hidden assumptions and structural breaks, then make the author verify and rewrite rather than delegate authorship.
+- Preserved the source boundary: this is a practitioner interview/tool roundup without controlled comparisons; product prices, limits, integrations and branding remain time-sensitive raw-source details.
+- Kept source-bounded tools distinct from correctness: restricting answers to uploaded materials reduces source scope but does not remove citation or entailment checks.
+- Active-layer decision: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-03] ingest+skill-reference | Task-scoped context compilation for coding agents
 - Captured raw source: `raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md`
 - Updated: `concepts/repository-level-code-intelligence-layer.md`, `index.md`, `log.md`
