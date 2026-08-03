@@ -3,6 +3,17 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-03] review-fix | Wonder Tools writer toolkit ingestion
+- Reviewed commit: `2532cffaef88348ce510ba69e20c9d934f0bc441` (`docs: ingest writer toolkit workflow principle`).
+- Review prompt: `_meta/reviews/2026-08-03-wondertools-writer-toolkit-review-prompt.md`
+- Review result: `_meta/reviews/2026-08-03-wondertools-writer-toolkit-review.md`
+- Verdict: `REQUEST_BOUNDED_FIXES`; no blocking or important findings.
+- Accepted fixes: corrected the saved-body length from `13,345` to the mechanically verified `13,283`; added `content-engineering`, writing-oriented description text, and one explicit writing use case to the existing concept.
+- Adjudicated no-patch finding: no `agent-research-evidence-gate` link was added because the source contributes a writing/assumption-challenger role boundary, not a research-agent evidence-gate architecture.
+- The first independent lane exhausted its tool-call budget without a verdict; a focused second read-only review produced the final verdict above.
+- Post-fix focused re-review: `APPROVE_LANDING`; both accepted findings are closed and no new blocking, important or minor findings remain.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-03] ingest | AI as a writing critic, not a ghostwriter
 - Captured raw source: `raw/articles/wondertools-writers-toolkit-2026-08-01.md`
 - Updated: `concepts/ai-assumption-challenger-before-execution.md`, `index.md`, `log.md`

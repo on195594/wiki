@@ -3,10 +3,10 @@ title: AI Assumption Challenger Before Execution
 created: 2026-06-21
 updated: 2026-08-03
 type: concept
-tags: [agent, workflow, ai-coding, orchestration, governance]
+tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
 sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
-description: 把 AI 放在执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
+description: 把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
 ---
 
@@ -64,6 +64,7 @@ Wonder Tools 的 `[[wondertools-writers-toolkit-2026-08-01]]` 提供了写作场
 适合在以下场景中作为可选前置思考模式：
 
 - 新项目或新功能方向不清；
+- 作者已有提纲或草稿，需要 AI 挑出注意力、论证和证据问题，而不是代写成稿；
 - 需求文字自信但证据薄；
 - 用户显式要求“重构需求”“反迎合”“帮我找盲点”；
 - Hermes 准备把任务派给 AGY、Codex 或 Claude，但目标边界、验收标准或风险阈值还不稳；

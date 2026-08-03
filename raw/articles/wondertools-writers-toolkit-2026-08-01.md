@@ -9,7 +9,7 @@ source: Wonder Tools
 source_url: https://wondertools.substack.com/p/digital-tools-every-writer-should
 published: 2026-08-01T13:04:19+00:00
 captured: 2026-08-03
-extraction: deterministic Substack DOM extraction from `.available-content`; substantially complete article body (13,345 characters), not byte-faithful HTML; bounded share/comment UI text remains visible
+extraction: deterministic Substack DOM extraction from `.available-content`; substantially complete saved article body (13,283 characters), not byte-faithful HTML; bounded share/comment UI text remains visible
 tags: [content-engineering, workflow, tool, research]
 ---
 
