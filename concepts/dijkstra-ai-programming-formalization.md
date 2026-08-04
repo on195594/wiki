@@ -1,7 +1,7 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-05-13
+updated: 2026-08-04
 type: concept
 tags: [llm, workflow, research, note]
 sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
@@ -91,6 +91,7 @@ AI 没有让形式化消失，而是让形式化变得更便宜。
 ## Related
 - [[dijkstra-ewd667-vs-ai-programming-article]]
 - [[infoworld-ai-coding-three-skills-2026-04-16]]
+- [[ai-assistance-cognitive-substitution-and-skill-formation]]
 - [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-knowledge-architecture]]

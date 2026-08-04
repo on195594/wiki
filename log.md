@@ -3,6 +3,24 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] review-fix | Codex review of AI cognitive substitution ingestion
+- Review prompt: `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-review-prompt.md`
+- Review result: `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-review.md`
+- Verdict: `PASS_WITH_MINOR_FIXES`; no blocking findings.
+- Accepted all bounded fixes: labeled cross-domain applications as local inference, weakened causal wording for skill degradation and radiology evidence, added the neuroscience analogy boundary, marked the local summary path as local-only, normalized the neighboring relation to `related`, and aligned the explicit no-promotion layer list.
+- Focused closure prompt/result: `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-closure-prompt.md`, `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-closure.md`.
+- Final Codex verdict: `APPROVE_LANDING`; F1–F7 all `CLOSED`, no new findings, layer boundary `PASS`.
+- Parent verification found the fixes consistent with the saved raw article and existing Wiki ownership boundaries; no pilot, evaluator, monitor or active workflow was added.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
+## [2026-08-04] ingest | AI assistance, cognitive substitution and skill formation
+- Captured raw source: `raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md`
+- Created: `concepts/ai-assistance-cognitive-substitution-and-skill-formation.md`
+- Updated adjacent concepts: `ai-assumption-challenger-before-execution`, `ai-agent-human-outcome-design-principle`, and `dijkstra-ai-programming-formalization`; updated `index.md` and `log.md`.
+- Durable unit: distinguish compensation, scaffolding, substitution and augmentation; evaluate learning or judgment with withdrawal and human-contribution tests rather than polished immediate output alone.
+- Evidence boundary: Psychology Today is a reflective secondary synthesis, not a primary experiment or systematic review; cited studies, numerical claims and cross-domain generalization were not independently revalidated during ingestion.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-04] review-fix | Codex review of level-B shared Wiki routing
 - Independent read-only Codex verdict on commit `37db5ed`: `REQUEST_BOUNDED_FIXES`; no blocking findings, two important and two minor findings.
 - Accepted bounded fixes: made the Hermes read order and fail-open boundary explicit, stated that Wiki content does not grant execution authority, removed a recursive reading ambiguity, and bounded long-term index growth.

@@ -1,7 +1,7 @@
 ---
 title: AI Agent Human Outcome Design Principle
 created: 2026-06-20
-updated: 2026-06-20
+updated: 2026-08-04
 type: concept
 tags: [agent, ai-product, workflow-design, human-in-the-loop, governance, anti-pattern]
 sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
@@ -114,6 +114,7 @@ Wobble 是心理健康支持服务。创始人 Jack Murphy 早期曾关闭一个
 - depends_on: [[typed-ai-agent-boundaries]]
 - depends_on: [[agent-development-lifecycle]]
 - related: [[agent-context-engineering]]
+- related: [[ai-assistance-cognitive-substitution-and-skill-formation]]
 - related: [[production-ai-agent-evaluation-framework]]
 
 ## Related sources
