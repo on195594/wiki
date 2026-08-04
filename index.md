@@ -79,7 +79,7 @@
 - [[work-and-career-operating-model]] — 工作与职业域的 operating model：兼顾现金流、能力复利、时间预算与家庭兼容性
 
 ## Operations
-- [[agent-shared-wiki-index]] — Claude Code、Codex、AGY 与 Hermes 的共享 Wiki 路由入口：按需检索、项目规则优先、默认只读，不全量注入 Vault
+- [[agent-shared-wiki-index]] — Claude Code、Codex、AGY 与 Hermes 的共享 Wiki 路由入口：AGY 常驻加载入口、其余按需，项目规则优先、默认只读，不全量注入 Vault
 - [[hermes-health-dashboard]] — Hermes 周度治理线的运行面板：版本、cron、memory、browser 状态与每周健康报告契约
 
 ## Comparisons

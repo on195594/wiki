@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] active-routing | Promote AGY Wiki route to a global always-on rule
+- Created AGY global rule `~/.gemini/GEMINI.md`, the documented machine-wide rule loaded across all workspaces.
+- The rule requires every new AGY conversation to read the short shared index, while additional Wiki pages remain relevance-bounded and the full Vault is never preloaded.
+- Removed the duplicate model-triggered `shared-wiki-context` skill from the active AGY skill directory and retained it only in the rollback backup.
+- Corrected the earlier assumption that AGY lacked a Codex-like global instruction file; current official Antigravity documentation identifies `~/.gemini/GEMINI.md` as the global rule path.
+- No plugin, MCP, hook, model, Memory Vault, runtime, or background synchronization was added.
+- Backup: `/home/lin/.hermes/backups/agy-wiki-always-on-20260804-120359/`.
+
 ## [2026-08-04] active-routing | Add AGY to the shared Wiki index
 - Added AGY global on-demand skill: `~/.gemini/antigravity-cli/skills/shared-wiki-context/SKILL.md`.
 - Updated the shared index and existing Claude/Codex/Hermes pointers to describe the four-agent route consistently.

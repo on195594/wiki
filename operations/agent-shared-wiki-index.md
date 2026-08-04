@@ -7,7 +7,7 @@ tags: [agent, knowledge-base, context-engineering, multi-agent]
 sources: [concepts/hermes-context-layer-operating-rules.md, concepts/hermes-retrieval-priority-and-answer-path.md]
 status: active
 source_policy: normative
-description: Claude Code、Codex、AGY 与 Hermes 按需检索同一 Wiki 的工具无关入口和读写边界。
+description: Claude Code、Codex、AGY 与 Hermes 的共享 Wiki 入口和读写边界；AGY 常驻加载入口，其余按需进入。
 aliases: [shared-agent-context, cross-agent-wiki-index]
 ---
 
@@ -15,7 +15,7 @@ aliases: [shared-agent-context, cross-agent-wiki-index]
 
 ## Summary
 
-这是 Claude Code、Codex、AGY 与 Hermes 共用的 Wiki 路由入口。它只告诉 Agent **何时查、从哪里查、何时停止**，不复制正文，也不要求会话启动时加载整个 `/home/lin/wiki`。
+这是 Claude Code、Codex、AGY 与 Hermes 共用的 Wiki 路由入口。AGY 在每个新会话启动时读取本页，Claude Code、Codex 和 Hermes 按需读取；任何 Agent 都不在启动时加载或遍历整个 `/home/lin/wiki`。
 
 ## Canonical sources
 
@@ -26,9 +26,9 @@ aliases: [shared-agent-context, cross-agent-wiki-index]
 - 检索顺序：[[hermes-retrieval-priority-and-answer-path]]
 - memory / skills / wiki 分工：[[hermes-memory-skills-wiki-boundaries]]
 
-## When to read the Wiki
+## When to continue into Wiki pages
 
-只在任务需要以下内容时按需检索：
+入口加载后，只在任务需要以下内容时继续检索正文页面：
 
 - 用户问“之前如何决定”“已有方法是什么”“Wiki 中怎么规定”；
 - 需要跨 Claude、Codex、AGY、Hermes 复用已经沉淀的架构、工作流、运维或研究知识；
@@ -49,7 +49,7 @@ aliases: [shared-agent-context, cross-agent-wiki-index]
 
 - **Claude Code**：通过本地文件搜索和读取 `/home/lin/wiki`；由 `~/.claude/CLAUDE.md` 指向本页。
 - **Codex**：通过本地文件搜索和读取 `/home/lin/wiki`；由 `~/.codex/AGENTS.md` 指向本页。
-- **AGY**：通过本地文件搜索和读取 `/home/lin/wiki`；由全局按需 skill `~/.gemini/antigravity-cli/skills/shared-wiki-context/SKILL.md` 指向本页。
+- **AGY**：通过本地文件搜索和读取 `/home/lin/wiki`；全局规则 `~/.gemini/GEMINI.md` 要求每个新会话常驻加载本页，再按任务相关性读取正文。
 - **Hermes**：优先使用已注册的只读 `wiki_readonly` 搜索/读取工具；必要时再使用本地只读文件工具。
 
 ## Write boundary
