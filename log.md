@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] active-routing | Claude + Codex + Hermes shared Wiki index
+- Created: `operations/agent-shared-wiki-index.md` as the tool-neutral route into `/home/lin/wiki`.
+- Updated: `index.md`, `log.md`, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`; Hermes received one compact memory pointer to the same index.
+- Retrieval contract: project instructions first, then bounded Wiki search/read for durable knowledge; no full-vault preload and no claim of automatic cross-agent memory consistency.
+- Write boundary: Wiki remains read-only by default; explicit write requests still require `SCHEMA.md`, `index.md`, `log.md`, health check and diff verification.
+- Explicitly untouched: Memory Vault, MCP configuration, Hermes runtime/config, cron, gateway, provider, profile/plugin, local models, ports, credentials and external services.
+- Backup: `/home/lin/.hermes/backups/agent-shared-wiki-index-20260804-114144/`; rollout contract: `_meta/plans/2026-08-04-agent-shared-wiki-index-rollout.md`.
+
 ## [2026-08-03] review-fix | Wonder Tools writer toolkit ingestion
 - Reviewed commit: `2532cffaef88348ce510ba69e20c9d934f0bc441` (`docs: ingest writer toolkit workflow principle`).
 - Review prompt: `_meta/reviews/2026-08-03-wondertools-writer-toolkit-review-prompt.md`
