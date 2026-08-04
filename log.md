@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] active-routing | Add AGY to the shared Wiki index
+- Added AGY global on-demand skill: `~/.gemini/antigravity-cli/skills/shared-wiki-context/SKILL.md`.
+- Updated the shared index and existing Claude/Codex/Hermes pointers to describe the four-agent route consistently.
+- AGY uses local read/search tools and the existing `/home/lin/wiki` workspace registration; no MCP, Memory Vault, model, plugin, hook, runtime or background synchronization was added.
+- Retrieval remains bounded and read-only by default; project rules and current tool evidence take precedence.
+- Validation: AGY 1.1.10 startup reloaded skills, the official skill path/frontmatter and Wiki workspace registration passed static checks, and Wiki health passed; model-level positive/reverse smoke was attempted in sandbox but blocked before execution by account `RESOURCE_EXHAUSTED` quota (reset ETA ~145h at validation time).
+- Backup: `/home/lin/.hermes/backups/agy-shared-wiki-20260804-115534/`.
+
 ## [2026-08-04] active-routing | Claude + Codex + Hermes shared Wiki index
 - Created: `operations/agent-shared-wiki-index.md` as the tool-neutral route into `/home/lin/wiki`.
 - Updated: `index.md`, `log.md`, `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`; Hermes received one compact memory pointer to the same index.
