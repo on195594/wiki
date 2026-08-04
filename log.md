@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] active-routing | Unify all four agents on level-B Wiki index loading
+- Claude Code, Codex, AGY and Hermes now read the short shared index once at the start of every new session.
+- After context compaction, an agent rereads the index only when it cannot confirm the index remains in active context; the index is not reread for every message.
+- Additional Wiki pages remain relevance-bounded. No agent preloads or traverses the full Vault, and project rules/current evidence still take precedence.
+- Updated active surfaces: `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, `~/.gemini/GEMINI.md`, the compact Hermes memory pointer, and the shared Wiki route/index/log.
+- No hook, plugin, MCP, runtime, gateway, cron, provider, model, Memory Vault, credential, or background synchronization change.
+- Backup: `/home/lin/.hermes/backups/all-agents-wiki-level-b-20260804-121553/`.
+
 ## [2026-08-04] active-routing | Promote AGY Wiki route to a global always-on rule
 - Created AGY global rule `~/.gemini/GEMINI.md`, the documented machine-wide rule loaded across all workspaces.
 - The rule requires every new AGY conversation to read the short shared index, while additional Wiki pages remain relevance-bounded and the full Vault is never preloaded.
