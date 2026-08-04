@@ -3,6 +3,16 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] ingest | Linguistic versus cognitive authorship
+- Captured raw source: `raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md`.
+- Updated existing owner concept: `concepts/ai-assistance-cognitive-substitution-and-skill-formation.md`; no new concept page or index entry was created.
+- Durable unit: textual fluency demonstrates a language result, not by itself the human formation of the problem, judgment, reasoning or tradeoffs; integrated this as a writing-specific extension of the existing Contribution test.
+- Evidence boundary: this is a short personal-perspective essay without empirical validation, disclosure standards or reliable authorship-detection methods; the author's claim that LLMs lack cognitive authorship remains a philosophical position.
+- Independent review prompt: `_meta/reviews/2026-08-04-psychologytoday-two-forms-authorship-subagent-review-prompt.md`.
+- Independent review result: `_meta/reviews/2026-08-04-psychologytoday-two-forms-authorship-subagent-review.md`; reviewer verdict `PASS_WITH_MINOR_FIXES`, parent disposition `APPROVE_AFTER_ADJUDICATION`.
+- Adjudication: rejected the sole required finding because it cited nonexistent raw-file lines and claimed retained share/email noise that deterministic source comparison disproved; accepted the optional `[推论]` label for the locally synthesized contribution questions.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-04] review-fix | Codex review of AI cognitive substitution ingestion
 - Review prompt: `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-review-prompt.md`
 - Review result: `_meta/reviews/2026-08-04-psychologytoday-ai-cognitive-substitution-codex-review.md`

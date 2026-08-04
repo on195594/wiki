@@ -4,7 +4,7 @@ created: 2026-08-04
 updated: 2026-08-04
 type: concept
 tags: [llm, research, workflow, governance]
-sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md]
+sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md]
 status: stable
 description: 用补偿、支架、替代和撤除辅助后的能力，判断 AI 是扩展人的思考还是跳过能力形成过程。
 aliases: [ai-scaffolding-vs-substitution, cognitive-offloading-with-ai, accomplishment-hallucination]
@@ -77,6 +77,19 @@ AI 可以同时提高当前任务表现、缩短等待时间并降低认知负�
 
 这两个问题是诊断框架，不是所有任务的默认硬门禁。若任务目标是可及性补偿或彻底自动化，撤除辅助后的个人能力可能不是主要评价指标。
 
+## Fluency is not cognitive authorship
+
+`[[psychologytoday-ai-two-forms-authorship-2026-07-30]]` 把作者身份区分为两层：**语言作者身份**是可见的措辞、结构和表达，**认知作者身份**是决定什么值得表达以及哪些推理和取舍支撑表达。这个区分补充了 Contribution test：流畅文本只能证明语言结果存在，不能单独证明对应的问题框架、价值判断和推理由人完成。
+
+[推论] 在 AI 辅助写作或研究中，可进一步追问：
+
+- 最终问题和核心判断由谁提出；
+- 哪些证据、反对意见和取舍可追溯到人；
+- AI 只是改善表达，还是也供应了问题框架与结论；
+- 作者能否说明自己接受、拒绝和修改模型建议的理由。
+
+这是贡献归因与读者信任的诊断框架，不是 AI 文本检测法。原文关于 LLM “没有认知作者身份”的说法是作者的哲学立场，文章没有提供实验、披露标准或可靠识别方法。写作中的具体角色边界仍由 `[[ai-assumption-challenger-before-execution]]` 负责，本页不把它升级为所有 Hermes 输出的强制披露门禁。
+
 ## Practical implications by context
 
 以下学习、写作、专业判断和产品设计应用是基于来源机制的本地推论，不是 Psychology Today 文章直接验证的跨领域结论。
@@ -124,3 +137,4 @@ AI 可以同时提高当前任务表现、缩短等待时间并降低认知负�
 ## Related sources
 
 - [[psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03]]
+- [[psychologytoday-ai-two-forms-authorship-2026-07-30]]
