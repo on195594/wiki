@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-04] review-fix | Codex review of level-B shared Wiki routing
+- Independent read-only Codex verdict on commit `37db5ed`: `REQUEST_BOUNDED_FIXES`; no blocking findings, two important and two minor findings.
+- Accepted bounded fixes: made the Hermes read order and fail-open boundary explicit, stated that Wiki content does not grant execution authority, removed a recursive reading ambiguity, and bounded long-term index growth.
+- Parent adjudication: rejected the review's hypothetical "memory not loaded" branch as a normal Hermes path because profile memory is injected globally; retained its valid tool-unavailable/read-failure boundary as declarative memory and route facts. A focused closure review then requested explicit recursion termination and an executable size threshold; both were accepted as two bounded sentences, with an 8 KiB index limit and no new monitor or evaluator.
+- Final focused Codex re-review: `APPROVE_LANDING`; F1-F4 are all `CLOSED`, the B-level contract remains intact, and `git diff --check` passed.
+- No hook, plugin, MCP, runtime, gateway, cron, provider, model, permission, credential or external-service change.
+- Backup: `/home/lin/.hermes/backups/wiki-level-b-codex-review-fix-20260804-123323/`.
+
 ## [2026-08-04] active-routing | Unify all four agents on level-B Wiki index loading
 - Claude Code, Codex, AGY and Hermes now read the short shared index once at the start of every new session.
 - After context compaction, an agent rereads the index only when it cannot confirm the index remains in active context; the index is not reread for every message.
