@@ -3,6 +3,15 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-09] review | AGY review of inspectable tool-calling debugging ingestion
+- Reviewed commit: `52eaf90` (`docs: ingest tool-calling agent debugging`).
+- Review prompt: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review-prompt.md`.
+- Review result: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review.exit`.
+- AGY verdict: `PASS`; no blocking, important or minor findings, and no recommended patches.
+- Parent adjudication: accepted the verdict after confirming the four ingestion-file hashes were unchanged during review, the raw/concept ownership split remained accurate, Wiki health passed with P0/P1/P2 all zero, and `git diff --check` passed.
+- Accepted fixes: none. No re-review was needed.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-09] ingest | Inspectable tool-calling agent debugging
 - Captured raw source: `raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md`.
 - Updated existing owner concept: `concepts/production-ai-agent-evaluation-framework.md`; refined its existing `index.md` description without creating a duplicate concept page.
