@@ -3,6 +3,17 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-09] ingest | Repeated-measures statistical power for AI evaluation
+- Captured raw source: `raw/articles/towardsdatascience-statistical-power-more-problems-2026-08-04.md`.
+- Created concept: `concepts/repeated-measures-statistical-power-for-ai-evaluation.md`; updated `index.md` and `log.md`.
+- Durable unit: distinguish participant/model units, tasks and repeated runs from effective independent evidence; repeated tasks can improve power under a within-subject design only when dependence, task diversity and order/carryover effects are handled explicitly.
+- Hermes mapping is marked `[推论]`: paired comparison, task-cluster treatment and explicit participant × task × condition structure are evaluation candidates, not default statistical gates.
+- Evidence boundary: the source is a practitioner article and unvalidated open-source simulator using strong assumptions and Clark's min F' approximation; source-specific power values were not promoted as Hermes thresholds.
+- Independent review prompt: `_meta/reviews/2026-08-09-repeated-measures-statistical-power-review-prompt.md`.
+- Independent review result: `_meta/reviews/2026-08-09-repeated-measures-statistical-power-review.md`; verdict `PASS_WITH_MINOR_FIXES`, with no blocking or important findings.
+- Accepted the sole minor fix: marked the high-risk-study statistical-review recommendation as `[推论]`; parent verification found the remaining source/local boundaries and adjacent-concept ownership sound.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-04] ingest | Linguistic versus cognitive authorship
 - Captured raw source: `raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md`.
 - Updated existing owner concept: `concepts/ai-assistance-cognitive-substitution-and-skill-formation.md`; no new concept page or index entry was created.
