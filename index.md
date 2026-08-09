@@ -30,7 +30,7 @@
 - [[constrained-toolbox-evaluator-loop]] — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [[deterministic-analytics-llm-reasoning-boundary]] — 确定性分析与 LLM 推理边界：让 LLM 生成结构化分析规约和解释结果，让确定性执行器负责过滤、聚合、计算和事实生成
 - [[ai-agent-document-fidelity-risk]] — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
-- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、Agent 行为和生产运营四层指标评估可靠性，并链接独立的 Rubric 校准方法
+- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、工具调用证据链和生产运营四层视角评估可靠性，并链接独立的 Rubric 校准方法
 - [[repeated-measures-statistical-power-for-ai-evaluation]] — 少样本 AI 评测的重复测量与统计功效：区分主体、任务和有效独立证据，避免把相关观测当成独立样本
 - [[stateful-agent-environments-and-grounded-verification]] — 有状态 Agent 评测单元：把环境、任务与验证器结合，按行为保真、状态连贯、工作流深度和权威结果校验区分失败归因
 - [[production-agent-evaluation-baselines]] — 生产 Agent 评估基线：拆分排队、TTFT、生成节奏、端到端分位数、Token、调用、缓存和工具耗时，并把外部阈值限制为方向性参考

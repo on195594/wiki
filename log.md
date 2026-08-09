@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-09] ingest | Inspectable tool-calling agent debugging
+- Captured raw source: `raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md`.
+- Updated existing owner concept: `concepts/production-ai-agent-evaluation-framework.md`; refined its existing `index.md` description without creating a duplicate concept page.
+- Durable unit: diagnose tool-calling runs as an evidence chain across model request, schema validation, tool execution, result compaction, error path and final-answer grounding.
+- Linked ownership boundaries: `typed-ai-agent-boundaries` owns typed/schema interfaces; `agent-failure-closed-loop-evaluation` owns regression artifacts; the updated evaluation concept owns the observable stage map.
+- Evidence boundary: this is one practitioner tutorial and debugging run; malformed JSON recovery used deliberate fault injection, and Weave is an optional vendor implementation rather than a Hermes adoption recommendation.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-09] ingest | Repeated-measures statistical power for AI evaluation
 - Captured raw source: `raw/articles/towardsdatascience-statistical-power-more-problems-2026-08-04.md`.
 - Created concept: `concepts/repeated-measures-statistical-power-for-ai-evaluation.md`; updated `index.md` and `log.md`.

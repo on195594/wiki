@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-08-03
+updated: 2026-08-09
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -15,7 +15,7 @@ aliases: [agent-evaluation-framework]
 ## Summary
 生产级 AI Agent 的可靠性不应只评估最终答案，而应同时评估检索、生成、工具行为、多步轨迹、成本和延迟。评估基础设施应在上线前建设，而不是上线后补救。
 
-这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]` 和 `[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]` 补充工具选择、生产延迟/成本基线与长篇研究报告的 Rubric 校准案例；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
+这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]`、`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]` 和 `[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]` 补充工具选择、生产延迟/成本基线、长篇研究报告 Rubric 校准与工具调用调试证据链；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
 
 ## Core principle
 
@@ -59,6 +59,23 @@ aliases: [agent-evaluation-framework]
 #### Tool selection evaluation must separate stages
 
 [[ai-agent-tool-selection-architecture]] 补充了工具选择评测的拆分方式。不要只记录“最后是否调用成功”，至少区分：目标工具是否进入候选集、首次选择是否正确、参数是否有效、执行是否成功，以及任务最终是否完成。对比全量工具面、静态收窄 toolset 和动态 Top-K 时，还应同时记录输入 Token 与端到端延迟，防止只优化 Prompt 长度却增加路由器成本或错召回。
+
+#### Tool-call debugging evidence chain
+
+`[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]` 给出了一个可检查的最小工具调用循环。它的可迁移价值不是天气 API 或 OpenAI SDK 示例，而是把一次运行拆成可独立归因的证据边界：
+
+1. `model_request`：模型请求是否成功；失败时不能伪装成工具失败。
+2. `schema_validation`：工具名、JSON 参数和必填字段是否在执行前通过校验。
+3. `tool_execution`：应用实际执行了哪个函数，外部服务返回了什么状态。
+4. `result_compaction`：返回给模型的 payload 是否限长、稳定且保留错误语义。
+5. `error_path`：模型请求失败、参数解析失败、未知工具与工具执行失败是否有可区分的结构化结果。
+6. `final_answer`：最终回答是否使用真实工具结果，还是掩盖了失败。
+
+这条链补充 `[[typed-ai-agent-boundaries]]` 的接口约束和 `[[agent-failure-closed-loop-evaluation]]` 的回归闭环：前者负责让工具边界可验证，后者负责把可复发失败转成 evaluator、fixture 或 smoke check；本页只维护“应观察哪些阶段”。
+
+文章还展示了两个边界案例：一次模型服务端错误发生在工具执行之前；一次通过故障注入制造的 malformed JSON 参数被结构化返回后，模型在下一轮自行重试。它们证明这些错误路径可以被显式观察，但单篇教程不能证明生产故障频率、自动重试可靠性或 Weave 相对其他追踪方案的优势。
+
+`[推论]` 对 Hermes 的最小映射是：仅在模型/工具/MCP/浏览器/子代理链路出现异常或结果无法追溯时，按上述阶段收集已有日志和运行证据；修复后回放原失败案例和一个相邻反例。不要因此默认保存全部参数、引入第三方追踪产品、建立持续评测项目或修改 runtime。
 
 ### 4. Production layer
 用于评估系统是否可持续运行。
@@ -181,6 +198,7 @@ aliases: [agent-evaluation-framework]
 
 ## Related
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
+- [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]
 - [[kdnuggets-llm-latency-inference-cost-2026-07-18]]
 - [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]
 - [[agent-evaluation-rubric-calibration]]
