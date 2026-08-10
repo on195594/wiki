@@ -1,0 +1,85 @@
+---
+title: "Zawinski's Law"
+created: 2026-08-10
+updated: 2026-08-10
+type: raw-source
+status: captured
+tags: [research, architecture]
+sources: [docs:https://lawsofsoftwareengineering.com/laws/zawinskis-law/]
+description: "Zawinski's Law 详情页的本地来源捕获，供软件工程经验法则检索与校准。"
+aliases: []
+source_id: lse-zawinskis-law
+source_url: https://lawsofsoftwareengineering.com/laws/zawinskis-law/
+source_category: Architecture
+source_experience: senior
+source_updated_at: "July 20, 2026"
+extracted_at: 2026-08-10T16:00:08Z
+source_hash: sha256:7f0888d765b0ea3b5a1f674ed4293459ae3f605792a2e0c036496af5dff54f91
+license: CC-BY-NC-ND-4.0
+---
+
+# Zawinski's Law
+
+Every program attempts to expand until it can read mail.
+
+## Takeaways
+
+- Feature creep is unavoidable. Over time, software tends to accumulate more features, leading to software bloat.
+- A lean, minimal application that gains popularity will continually add features until it becomes as complex as its competitors.
+- Programs expand because users (and product managers) keep asking for ‘just one more feature’. There is constant pressure to incorporate popular capabilities to keep users from leaving for other tools.
+- Each new feature increases complexity, which makes the product confusing for users. Developers should protect the tool’s focus and resist platform sprawl.
+
+## Overview
+
+Zawinski’s Law is a humorous observation about software evolution stating that applications continually gain features until they do everything, even things completely outside their original scope. It highlights feature creep, the gradual expansion of scope in software development.
+
+As an application attracts more users, it faces growing expectations to add more capabilities. A basic note-taking app might later incorporate chat or sharing.
+
+Zawinski’s point was about “platformization”: once users live in an app for a significant part of their day, there is pressure for that app to become a platform that can do everything. Unchecked expansion can sabotage a product’s original value. Adding features is easy, but adding only the right features and saying “no” to the rest is essential.
+
+## Examples
+
+**Netscape Navigator** grew from a slim browser into Netscape Communicator, an expansive suite with browser, email, news, and web editing. It became sluggish and over-complicated, paving the way for Firefox, which deliberately stripped down to just a fast browser. Firefox itself later became heavier with plugins and themes.
+
+**Slack** set out to “kill email” but integrated voice calls, video meetings, file sharing, bots, and app plugins. It now wants to be a one-stop workplace hub, far beyond simple messaging.
+
+**GitHub** started hosting code, then expanded to issue tracking, wikis, project boards, discussions, CI pipelines, and package registries.
+
+## Origins
+
+**Jamie Zawinski** (known as jwz) formulated this law around 1995 during his time at Netscape. He was a key programmer on Netscape Navigator and later added the integrated Netscape Mail reader.
+
+He described the browser’s evolution as “our contribution to the proof of the Law of Software Envelopment.” Netscape started as a web browser but by version 2.0-3.0 had expanded to include an email client and news reader.
+
+“Reading mail” was the chosen example because in the mid-90s, you often had to exit your current application and launch a mail program separately.
+
+## Further Reading
+
+- [Zawinski's Law - Wikipedia Wikipedia section on Zawinski's Law](https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski%27s_Law)
+- [Don't Let Architecture Astronauts Scare You Joel Spolsky's classic essay on software bloat and platformization](https://www.joelonsoftware.com/2001/04/21/dont-let-architecture-astronauts-scare-you/)
+
+## Last updated
+
+July 20, 2026
+
+## Related Laws
+
+- [Second-System Effect](https://lawsofsoftwareengineering.com/laws/second-system-effect/)
+- [YAGNI (You Aren't Gonna Need It)](https://lawsofsoftwareengineering.com/laws/yagni/)
+
+## Capture metadata
+
+- Source site: [Laws of Software Engineering](https://lawsofsoftwareengineering.com/)
+- Canonical URL: https://lawsofsoftwareengineering.com/laws/zawinskis-law/
+- Author/site owner: Dr. Milan Milanović
+- Extraction route: deterministic HTML `.content-wrapper` plus source-declared related laws
+- Source quality: full detail-page capture of the principal text sections
+- License: [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+- Limitation: the site characterizes most entries as rules of thumb rather than scientific laws; evidence strength varies by entry.
+- Limitation: navigation, promotional book callout, hidden citation widget and decorative images were excluded.
+- Redistribution boundary: retained for local, non-commercial research; public or commercial redistribution requires separate license review.
+
+## Relations
+
+- grouped_by: [[software-engineering-laws-architecture]]
+- indexed_by: [[software-engineering-laws-decision-map]]

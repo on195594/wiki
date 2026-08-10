@@ -2,11 +2,18 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-08-09 | Total pages: 102
+> Last updated: 2026-08-10 | Total pages: 110
 
 ## Entities
 
 ## Concepts
+- [[software-engineering-laws-architecture]] — 软件工程 Architecture 法则地图：分布式取舍、抽象边界、复杂度分配、兼容性与系统演化风险
+- [[software-engineering-laws-teams]] — 软件工程 Teams 法则地图：团队规模、知识集中、组织结构、晋升机制与协作成本
+- [[software-engineering-laws-planning]] — 软件工程 Planning 法则地图：估算、期限、收尾成本、指标约束与优化时机
+- [[software-engineering-laws-quality]] — 软件工程 Quality 法则地图：渐进维护、测试策略、协议兼容、技术债与长期演化
+- [[software-engineering-laws-scale]] — 软件工程 Scale 法则地图：固定工作量、扩展工作量、串行瓶颈与网络效应
+- [[software-engineering-laws-design]] — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
+- [[software-engineering-laws-decisions]] — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
 - [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态 Top-K 路由
 - [[agent-development-lifecycle]] — Agent 开发生命周期：以 Build → Test → Deploy → Monitor 闭环和 Govern 横切层，把一次性 demo 推进成可验证、可部署、可监控、可治理的工程系统
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
@@ -90,6 +97,7 @@
 - [[leontraveller-vs-ordinary-investor-investment-system]] — 对照两套投资框架：长期配置制度 vs 主动交易纪律
 
 ## Queries
+- [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [[hermes-context-footprint-readonly-audit-2026-07-03]] — Hermes 当前上下文负担只读审计：识别 `/gsummary`、governance skills、memory/profile、wiki、session_search 和工具输出的 token/注意力压力，并给出不改 active layer 的 P0/P1/P2 建议
 - [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构

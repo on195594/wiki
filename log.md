@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-10] ingest | Laws of Software Engineering 56-detail-page corpus
+- Captured the homepage manifest plus 56 independently addressable detail pages under `raw/articles/laws-of-software-engineering/`; verified unique IDs/URLs and official category counts: Architecture 9, Teams 9, Planning 6, Quality 11, Scale 3, Design 6, Decisions 12.
+- Created seven category concepts under `concepts/software-engineering-laws/` and the complete 56-entry query `queries/software-engineering-laws-decision-map.md`.
+- Context boundary: each detail page was extracted independently; category synthesis consumed only validated per-law records; the global decision map consumed only the seven category pages. No all-56 source packet was placed in one synthesis context.
+- Evidence boundary: source statements remain traceable to individual raw pages; category/global synthesis is marked `[综合]`, Hermes-local usage is marked `[推论]`, and numeric/absolute rules retain explicit misuse limits.
+- License boundary: source attribution and CC BY-NC-ND 4.0 notices are retained; captures are for local, non-commercial research, and public/commercial redistribution requires separate review.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, deployment, dependency or external service was changed.
+
 ## [2026-08-09] review | AGY review of inspectable tool-calling debugging ingestion
 - Reviewed commit: `52eaf90` (`docs: ingest tool-calling agent debugging`).
 - Review prompt: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review-prompt.md`.
