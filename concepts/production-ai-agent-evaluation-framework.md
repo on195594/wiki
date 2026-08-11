@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-08-09
+updated: 2026-08-12
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -15,13 +15,21 @@ aliases: [agent-evaluation-framework]
 ## Summary
 生产级 AI Agent 的可靠性不应只评估最终答案，而应同时评估检索、生成、工具行为、多步轨迹、成本和延迟。评估基础设施应在上线前建设，而不是上线后补救。
 
-这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]`、`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]` 和 `[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]` 补充工具选择、生产延迟/成本基线、长篇研究报告 Rubric 校准与工具调用调试证据链；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
+这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]`、`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]`、`[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]` 和 `[[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]` 补充工具选择、生产延迟/成本基线、长篇研究报告 Rubric 校准、工具调用证据链与 Prompt 优化边际递减案例；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
 
 ## Core principle
 
 不要把 AI Agent 的生产质量压缩成一个“准确率”指标。
 
 生产环境中的失败通常来自链路中某一层失真：检索取错上下文，生成不忠实，工具选错或参数错误，多步状态断裂，或者成本/延迟失控。评估系统应覆盖这些层，并能在上线前、软发布、稳定运行阶段持续提供反馈。
+
+### Prompt plateau as a failure-layer signal
+
+`[[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]` 提供了一个外部实践案例：作者团队在同一批 200 份文档上比较抽取 Prompt v12 与 v47，报告得分只从 82% 提升到 83%，却消耗了五周改写。可复用结论不是这组数字本身，而是：当版本化基线显示 Prompt 改写的边际收益已很小，应停止继续调词，转而定位检索、输入可见性、解析、Schema、权限、工具、状态、重试或 UI 边界中的真实故障层。
+
+文章给出的五类案例把这个诊断原则具体化：JSON 外包装由解析和类型校验处理；虚构产品编码由真实目录校验拦截；不可违反的权限规则在执行前由代码检查；畸形工具参数在调用前做 Schema 校验并把具体错误反馈给有界重试；硬性展示长度由生成上限和渲染器边界控制。它们共同支持一个边界：主观表达、语气和难以形式化的示例适合 Prompt；可判定真假的约束应尽量进入确定性代码和验证器。
+
+这个案例也明确限制了 Schema 的作用：结构有效不等于语义正确。一个字段可以满足字符串类型却仍是幻觉，因此评估必须继续覆盖证据、语义和下游结果，而不能把 valid JSON 当成正确性证明。作者建议的 100 个输入、3 个百分点停止线、20–50 个 Eval 案例和最多三次重试均保留为来源特定经验值，不升级为 Hermes 默认阈值。
 
 ## Evaluation layers
 
@@ -139,6 +147,7 @@ aliases: [agent-evaluation-framework]
 - 应用可控层、托管 provider 内部层与自托管 serving 层的边界。
 - 经验阈值的数量级参考。
 - “离线 eval 防回归，在线 eval 捕捉真实流量漂移”的闭环。
+- Prompt 改写收益趋平时先定位系统故障层，并把可确定检查的约束放到代码、Schema、权限门禁或渲染边界。
 
 不保留为核心知识：
 - 文章完整摘要。
@@ -146,6 +155,7 @@ aliases: [agent-evaluation-framework]
 - 未经本地验证的路由、缓存、批处理、量化或 serving 优化默认值。
 - 工具评价的主观排序。
 - “模型是商品，评估是差异化”这类口号。
+- 单篇实践文章给出的固定 Eval 数量、分数差、重试次数或 Prompt 文件组织方式。
 
 工具线索可作为延伸阅读：Ragas、TruLens、DeepEval、LangSmith、OpenTelemetry。是否选型应另做项目级验证。
 
@@ -199,6 +209,7 @@ aliases: [agent-evaluation-framework]
 ## Related
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
 - [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]
+- [[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]
 - [[kdnuggets-llm-latency-inference-cost-2026-07-18]]
 - [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]
 - [[agent-evaluation-rubric-calibration]]

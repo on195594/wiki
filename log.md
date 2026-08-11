@@ -3,6 +3,22 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-12] review-fix | AGY review of Prompt engineering plateau ingestion
+- Review prompt: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review-prompt.md`.
+- Review result: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.exit`.
+- AGY verdict: `PASS_WITH_MINOR_FIXES`; no blocking or important findings.
+- Parent verification accepted the sole minor fix after reading the cited source: changed `虚构代码` to `虚构产品编码` to avoid confusion with programming source code. Rejected findings: none.
+- Hash drift guard confirmed AGY did not mutate the reviewed ingestion files or review prompt.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
+## [2026-08-12] ingest | Prompt engineering plateau and deterministic system boundaries
+- Captured raw source: `raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md` from the canonical Medium URL via Jina Reader fallback.
+- Updated existing owner concept: `concepts/production-ai-agent-evaluation-framework.md`; refined its existing `index.md` description without creating a duplicate concept page.
+- Durable unit: use versioned baseline comparison to detect Prompt-optimization plateaus, then diagnose retrieval, parsing, Schema, permission, tool, state, retry or UI boundaries; anything deterministically checkable should be enforced outside Prompt prose.
+- Preserved boundary: Schema-valid output is not semantic correctness; evidence, business-rule and downstream-outcome checks remain separate gates.
+- Threshold boundary: the source's 100-input comparison, three-point stopping heuristic, 20–50-case Eval set and three-attempt retry ceiling remain source-specific experience values, not Hermes defaults.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-11] governance | Add executable health-check regression fixtures
 - Added `_meta/scripts/test_wiki_health_check.py` using Python stdlib `unittest` and isolated temporary vaults; no test dependency or live Wiki mutation was introduced.
 - Covered the five high-value enforcement paths requested after the tooling assessment: `broken_wikilink`, `unregistered_tag`, `raw_source_drift`, `malformed_review_by`, and `near_duplicate_pages`.
