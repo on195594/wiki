@@ -8,6 +8,7 @@ sources: [raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/article
 status: stable
 description: 沉淀 Claude Code 在侧问、浏览器验证、多目录和任务自动化中的实用工作流技巧。
 aliases: [claude-code-tips]
+review_by: 2026-11-11
 ---
 
 # Claude Code Practical Workflow Tips

@@ -8,6 +8,7 @@ sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/t
 status: stable
 description: 说明 Codex agent 工作流中 prompt、计划、AGENTS、skills、MCP 和自动化的分层职责。
 aliases: [codex-workflow-layering]
+review_by: 2026-11-11
 ---
 
 # Codex Agent Workflow Layering

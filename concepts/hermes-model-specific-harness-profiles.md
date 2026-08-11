@@ -8,6 +8,7 @@ sources: [raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.
 status: stable
 description: 定义 Hermes 针对不同模型配置 harness profile 的适配原则和验证路径。
 aliases: [model-specific-harness, harness-profiles]
+review_by: 2026-11-11
 ---
 
 # Hermes Model-Specific Harness Profiles

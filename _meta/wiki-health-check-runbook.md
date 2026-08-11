@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-05-11
+updated: 2026-08-11
 type: meta
 status: current
 ---
@@ -66,6 +66,9 @@ Important issues:
 - formal page missing frontmatter
 - unexpected unindexed formal pages
 - unreferenced raw source pages
+- formal page carrying a tag not registered in the `SCHEMA.md` tag taxonomy
+- `SCHEMA.md` tag taxonomy missing or unparseable, meaning tag registration is no longer enforced
+- formal page whose `review_by` is not a plain `YYYY-MM-DD` date, meaning the expiry it declares can never fire
 
 ### P2
 
@@ -74,19 +77,24 @@ Maintenance findings:
 - tiny files
 - remaining in-vault backup candidates
 - known unindexed draft query pages
+- formal page whose `review_by` date has passed and is due for a re-read
 
-The eight known draft query pages are expected P2 findings and are documented in [[draft-query-inventory]].
+The `known_unindexed_draft_query` code currently has no instances. The eight draft query pages it was written for were deleted on 2026-05-15 at the user's request; see [[draft-query-inventory]]. The code is retained for future draft query pages, not because any exist today.
 
 ## Current expected result
 
-As of 2026-05-11, the script should pass on `/home/lin/wiki`.
+As of 2026-08-11, the script passes on `/home/lin/wiki`.
 
 Expected current interpretation:
 
 - P0: `0`
 - P1: `0`
-- P2: known draft query pages may appear
+- P2: `0`
 - `pass`: `true`
+
+Any nonzero count is a real finding, not a known-noise allowance.
+
+`page_due_for_review` is the only check whose result changes over time on unchanged files: three pages carry `review_by: 2026-11-11`, so P2 is expected to become nonzero on that date without anything in the wiki having been edited. Clear it by re-reading those pages against their current upstream subject and either bumping `review_by` or correcting the page — not by deleting the field.
 
 ## When to run
 

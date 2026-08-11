@@ -53,10 +53,12 @@ This wiki remains the Hermes local LLM-wiki/Markdown knowledge base; OKF is only
 ```yaml
 description: One-sentence page purpose for agent routing and preview.
 aliases: [optional-synonym, common-abbreviation]
+review_by: YYYY-MM-DD
 ```
 
 Rules:
 - `description` is a routing aid, not a substitute for the page `## Summary`.
+- `review_by` marks a page whose subject is an externally controlled product behaviour, interface or command set that changes on the vendor's schedule, so `status: stable` alone cannot tell a reader whether the page is still true. Add it only to pages that document such a moving target; methodology pages that merely mention a tool do not need it. A passed date does not make the page invalid, it makes the page due for a re-read. The field is enforced: `_meta/scripts/wiki_health_check.py` reports a value that is not a plain `YYYY-MM-DD` date as P1 (`malformed_review_by`, a date that can never fire is worse than no date), and a date already in the past as P2 (`page_due_for_review`).
 - `aliases` are for obvious high-value synonyms only; do not use them to bypass canonical lowercase-hyphen filenames or tag taxonomy.
 - Do not make optional metadata mandatory for historical pages without a separate migration plan and validator update.
 - Do not introduce a separate `resource` identity field by default; the canonical identity remains the relative wiki path plus `sources` provenance. Reconsider only after a compatibility plan proves concrete value.
@@ -90,6 +92,8 @@ Allowed `sources` forms:
 ## Tag Taxonomy
 
 Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before using it on pages.
+
+Scope: this taxonomy governs formal pages only. `raw/`, `_meta/` and the root core files (`index.md`, `log.md`, `SCHEMA.md`) are exempt, because raw captures carry vocabulary from their own sources and would otherwise force a SCHEMA change on every ingestion. Everything else is a formal page — the exemption list is what `_meta/scripts/wiki_health_check.py` actually implements, so a new top-level directory is governed by default rather than silently unchecked; today that means `entities/`, `concepts/`, `comparisons/`, `queries/` and `operations/`. The scope is enforced: an unregistered tag on a formal page is P1, which fails the health check.
 
 **Core tags** describe broad, cross-wiki categories:
 
@@ -151,9 +155,67 @@ Tags are grouped by purpose. Use lowercase kebab-case. Add a new tag here before
 - structured-output
 - typed-boundary
 
+**Reconciliation tags (registered 2026-08-11)** were already in use on formal pages before the taxonomy was enforced. They are registered as-found so that declared and actual tags match; they are not a curated set. All but `anti-pattern`, `delegation` and `tool-boundary` appear on a single page, so prefer an existing Core/Domain/Facet tag before reusing one of them. Merging this long tail into broader tags remains an open optional cleanup; it requires editing page frontmatter and is not implied by registration.
+
+- agentic-programming
+- ai-engineering
+- ai-product
+- anti-pattern
+- asset-allocation
+- audit
+- behavior
+- best-practice
+- career
+- checklist
+- cloud
+- concurrency
+- cost-control
+- delegation
+- dreaming
+- education
+- education-fund
+- family
+- finance
+- framework
+- growth
+- gsearch
+- health
+- human-in-the-loop
+- hybrid-llm
+- ide
+- knowledge
+- learning
+- loss-management
+- operating-rules
+- operations
+- patience
+- pattern-detection
+- personal-finance
+- pm
+- production
+- prompt-tuning
+- public-info
+- pull-request
+- python
+- read-only
+- resource-management
+- routing
+- skill-files
+- skill-optimization
+- software-engineering
+- system-design
+- telegram
+- terminal
+- tool-boundary
+- trend-following
+- wiki
+- winners
+- work
+- workflow-design
+
 Rules:
-- If a tag appears on 3+ pages, consider adding it to this taxonomy.
-- If a tag appears on 1-2 pages, prefer an existing broader tag unless the narrow tag has clear future retrieval value.
+- Register a tag in this file before using it on a formal page. This is enforced, not advisory: an unregistered tag fails the health check.
+- Before registering a new tag, check whether an existing broader tag already covers it. A tag that will only ever apply to one page usually belongs to a broader existing tag instead.
 - If two tags mean the same thing, keep one canonical spelling and replace the other.
 - Reserved but currently unused tags are allowed when they match stable future page areas, e.g. `devops`, `linux`, `networking`, `product`.
 
@@ -161,7 +223,6 @@ Rules:
 - 某个主题在 2 个以上来源重复出现，或在单个来源中足够核心时，创建独立页面
 - 已存在页面则优先增量更新，而不是重复建页
 - 只被顺手提及一次的内容，不单独建页
-- 页面超过约 200 行时，拆分为子主题页并互相链接
 
 ## Directory Roles
 - `raw/articles/`：网页、博客、文档摘录

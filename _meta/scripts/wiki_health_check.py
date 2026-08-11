@@ -16,6 +16,7 @@ import os
 import re
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -105,6 +106,41 @@ def is_allowed_source(source: str) -> bool:
     return source.startswith(ALLOWED_SOURCE_PREFIXES) or bool(re.match(r"https?://", source))
 
 
+def declared_tags(root: Path) -> set[str]:
+    """Tags registered in the SCHEMA.md Tag Taxonomy section.
+
+    An empty result means the section is missing or unparseable. Callers must
+    report that as an issue rather than skip quietly: a tag check that silently
+    stops enforcing is the failure this check exists to prevent.
+
+    Code blocks are stripped first: a bullet inside a fenced example would
+    otherwise register itself as a real tag, which is the one failure mode here
+    that loosens the check without producing any output.
+    """
+    schema = root / "SCHEMA.md"
+    if not schema.exists():
+        return set()
+    text = strip_code(read_text(schema))
+    match = re.search(r"^## Tag Taxonomy\s*$(.*?)^## ", text, flags=re.S | re.M)
+    if not match:
+        return set()
+    return set(re.findall(r"^- ([a-z0-9-]+)\s*$", match.group(1), flags=re.M))
+
+
+def parse_review_by(value: str) -> date | None:
+    """Parse a `review_by` value, or None if it is not a plain YYYY-MM-DD date.
+
+    The regex is not redundant: `date.fromisoformat` also accepts `20261111`
+    and ISO week forms, and SCHEMA.md declares one written format.
+    """
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value.strip()):
+        return None
+    try:
+        return date.fromisoformat(value.strip())
+    except ValueError:
+        return None
+
+
 def add_issue(issues: dict[str, list[dict[str, Any]]], severity: str, code: str, path: str, message: str, **extra: Any) -> None:
     item: dict[str, Any] = {"code": code, "path": path, "message": message}
     item.update(extra)
@@ -182,6 +218,10 @@ def build_report(root: Path) -> dict[str, Any]:
 
     issues: dict[str, list[dict[str, Any]]] = {"P0": [], "P1": [], "P2": []}
     notes: list[str] = []
+    today = date.today()
+    taxonomy = declared_tags(root)
+    if not taxonomy:
+        add_issue(issues, "P1", "unreadable_tag_taxonomy", "SCHEMA.md", "Tag Taxonomy section missing or unparseable; tag registration is not being enforced")
 
     for core in sorted(CORE_FILES):
         if not (root / core).exists():
@@ -206,6 +246,18 @@ def build_report(root: Path) -> dict[str, Any]:
                 add_issue(issues, "P1", "missing_frontmatter", r, "Formal page missing YAML frontmatter")
             frontmatter = extract_frontmatter(text)
             if frontmatter is not None:
+                tags_value = frontmatter_value(frontmatter, "tags")
+                if tags_value is not None and taxonomy:
+                    for tag in parse_inline_list(tags_value):
+                        if tag not in taxonomy:
+                            add_issue(issues, "P1", "unregistered_tag", r, "Tag is not registered in the SCHEMA.md tag taxonomy", tag=tag)
+                review_by_value = frontmatter_value(frontmatter, "review_by")
+                if review_by_value is not None:
+                    review_by = parse_review_by(review_by_value)
+                    if review_by is None:
+                        add_issue(issues, "P1", "malformed_review_by", r, "review_by is not a YYYY-MM-DD date, so the expiry it declares can never fire", value=review_by_value)
+                    elif review_by < today:
+                        add_issue(issues, "P2", "page_due_for_review", r, "review_by date has passed; re-read the page against its current upstream subject", review_by=review_by_value)
                 sources_value = frontmatter_value(frontmatter, "sources")
                 if sources_value is None:
                     add_issue(issues, "P2", "missing_sources", r, "Formal page missing sources frontmatter")
@@ -293,6 +345,7 @@ def build_report(root: Path) -> dict[str, Any]:
         notes.append(f"{known_unindexed_drafts} draft query page(s) are intentionally outside index.md; see _meta/draft-query-inventory.md.")
     notes.append("Inline-code and fenced-code wikilink examples are ignored during link checks.")
     notes.append("Root core files and _meta/ pages are excluded from formal frontmatter/H1 requirements.")
+    notes.append(f"`page_due_for_review` is evaluated against today's date ({today.isoformat()}); it is the one check whose result changes over time on unchanged files.")
 
     result = {
         "root": str(root),

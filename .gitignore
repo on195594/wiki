@@ -7,6 +7,9 @@ _backups/
 .obsidian/cache/
 .obsidian/plugins/*/data.json
 
+# Python bytecode from importing _meta/scripts/ (running them as scripts does not produce it)
+__pycache__/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
