@@ -1,0 +1,33 @@
+# External link liveness for the wiki's own provenance claims.
+#
+# Scope is deliberately the formal pages only, not raw/. A formal page cites a
+# URL as evidence, so a dead one is a real finding. URLs inside raw/ captures
+# are third-party article text we already archived; their rot costs us nothing
+# and they outnumber ours ten to one (598 vs 63), which would bury the signal.
+#
+# This is separate from wiki_health_check.py on purpose: network results are
+# neither deterministic nor offline-safe, and that script is both.
+
+# Only remote links. Internal wikilinks and relative paths are already checked
+# by wiki_health_check.py, and a second resolver would just disagree with it.
+scheme = ["http", "https"]
+
+max_concurrency = 16
+timeout = 20
+max_retries = 2
+retry_wait_time = 2
+
+exclude_all_private = true
+
+# 429 counts as alive. It proves the host answered us, which is what link rot
+# monitoring actually asks. venturebeat.com returns 429 to this machine on a
+# single request with any user agent (verified with curl, both the default and
+# a browser UA), so it is an IP-level block, not throttling that a longer
+# request_interval could clear. Accepted cost: a page that has died behind a
+# rate limiter reads as OK. Left as a permanent red it would just get ignored.
+accept = ["100..=103", "200..=299", "429"]
+
+cache = true
+max_cache_age = "7d"
+
+no_progress = true

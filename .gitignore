@@ -10,6 +10,9 @@ _backups/
 # Python bytecode from importing _meta/scripts/ (running them as scripts does not produce it)
 __pycache__/
 
+# lychee's on-disk request cache (see _meta/lychee.toml)
+.lycheecache
+
 # OS/editor noise
 .DS_Store
 Thumbs.db

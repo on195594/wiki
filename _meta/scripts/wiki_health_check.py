@@ -11,6 +11,8 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import hashlib
+import itertools
 import json
 import os
 import re
@@ -22,6 +24,12 @@ from typing import Any
 
 CORE_FILES = {"index.md", "log.md", "SCHEMA.md"}
 TINY_THRESHOLD = 120
+RAW_HASH_MANIFEST = "_meta/raw-source-hashes.json"
+# Calibrated 2026-08-11 against all 5995 formal-page pairs: median 0.055,
+# p99 0.137, max 0.270 (the top pair being two genuinely distinct orchestration
+# pages). 0.45 sits well clear of that, so it fires on a real re-ingestion
+# rather than on topic overlap. Recalibrate if the corpus changes shape.
+NEAR_DUPLICATE_THRESHOLD = 0.45
 ALLOWED_SOURCE_PREFIXES = (
     "raw/",
     "concepts/",
@@ -139,6 +147,37 @@ def parse_review_by(value: str) -> date | None:
         return date.fromisoformat(value.strip())
     except ValueError:
         return None
+
+
+def content_tokens(text: str) -> set[str]:
+    """Bag of words used to compare two pages for near-duplication.
+
+    Frontmatter and code blocks are dropped: shared tags and shared shell
+    snippets make unrelated pages look alike. CJK is split into bigrams rather
+    than whole runs, so `持仓监控` and `持仓管理` share a token instead of none.
+    """
+    text = re.sub(r"^---\s*\n.*?\n---\s*\n", "", text, flags=re.S)
+    text = re.sub(r"```.*?```", "", text, flags=re.S).lower()
+    tokens = set(re.findall(r"[a-z0-9][a-z0-9-]{2,}", text))
+    for run in re.findall(r"[一-鿿]+", text):
+        tokens.update(run[i : i + 2] for i in range(len(run) - 1))
+    return tokens
+
+
+def load_raw_hashes(root: Path) -> dict[str, str] | None:
+    """Recorded raw/ hashes, or None if the manifest is missing or unreadable.
+
+    None means "cannot check", which the caller reports; it must never be
+    confused with an empty manifest, which would silently pass every file.
+    """
+    path = root / RAW_HASH_MANIFEST
+    if not path.exists():
+        return None
+    try:
+        loaded = json.loads(read_text(path))
+    except json.JSONDecodeError:
+        return None
+    return loaded if isinstance(loaded, dict) else None
 
 
 def add_issue(issues: dict[str, list[dict[str, Any]]], severity: str, code: str, path: str, message: str, **extra: Any) -> None:
@@ -329,6 +368,29 @@ def build_report(root: Path) -> dict[str, Any]:
         needles = [raw.stem, r, no_ext, f"[[{raw.stem}]]", f"[[{no_ext}]]"]
         if not any(any(needle in text for needle in needles) for _, text in non_raw_corpus):
             add_issue(issues, "P1", "unreferenced_raw_source", r, "Raw source page has no non-raw reference")
+
+    recorded_hashes = load_raw_hashes(root)
+    if recorded_hashes is None:
+        add_issue(issues, "P1", "unreadable_raw_hash_manifest", RAW_HASH_MANIFEST, "Raw source hash manifest missing or unparseable; raw/ immutability is not being enforced")
+    else:
+        for p in raw_md:
+            r = rel(root, p)
+            recorded = recorded_hashes.get(r)
+            if recorded is None:
+                add_issue(issues, "P2", "unhashed_raw_source", r, f"Raw source has no entry in {RAW_HASH_MANIFEST}; run wiki_raw_hashes.py")
+            elif recorded != hashlib.sha256(p.read_bytes()).hexdigest():
+                add_issue(issues, "P1", "raw_source_drift", r, "Raw source content no longer matches its recorded hash; pages citing it may no longer describe what it says")
+
+    # ponytail: O(n^2) over formal pages — 5995 pairs at 110 pages is instant.
+    # Around 1000 pages this becomes the slowest check; switch to MinHash/LSH
+    # then rather than raising the threshold to hide the cost.
+    formal_tokens = {rel(root, p): content_tokens(read_text(p)) for p in formal}
+    for (left, left_tokens), (right, right_tokens) in itertools.combinations(sorted(formal_tokens.items()), 2):
+        if not left_tokens or not right_tokens:
+            continue
+        similarity = len(left_tokens & right_tokens) / len(left_tokens | right_tokens)
+        if similarity > NEAR_DUPLICATE_THRESHOLD:
+            add_issue(issues, "P2", "near_duplicate_pages", left, "Formal pages overlap enough to be a re-ingestion of the same subject", other=right, similarity=round(similarity, 3))
 
     if backup_candidates:
         add_issue(
