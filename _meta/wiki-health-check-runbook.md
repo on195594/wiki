@@ -34,6 +34,14 @@ Use default root resolution:
 python3 _meta/scripts/wiki_health_check.py
 ```
 
+Run the offline regression fixtures:
+
+```bash
+python3 -m unittest discover -s _meta/scripts -p 'test_wiki_health_check.py' -v
+```
+
+The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, and near-duplicate pages. They create isolated temporary vaults and never modify `/home/lin/wiki`.
+
 Root resolution order:
 
 1. `--root`

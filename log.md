@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-11] governance | Add executable health-check regression fixtures
+- Added `_meta/scripts/test_wiki_health_check.py` using Python stdlib `unittest` and isolated temporary vaults; no test dependency or live Wiki mutation was introduced.
+- Covered the five high-value enforcement paths requested after the tooling assessment: `broken_wikilink`, `unregistered_tag`, `raw_source_drift`, `malformed_review_by`, and `near_duplicate_pages`.
+- Updated the health-check runbook with the exact offline test command. `index.md` was not changed because this adds tooling, not a formal knowledge page.
+- Verification: all five fixtures pass; the live health check and Git diff checks are rerun in closeout.
+- Boundary: Wiki-local tests and current runbook/log only; no raw/formal content, index, memory, skill, cron, runtime, MCP config, gateway, credentials, dependency, or external service change.
+
 ## [2026-08-11] governance | Closing the three gaps the tooling survey found
 - Trigger: a survey of open-source wiki governance tools concluded that none should replace `wiki_health_check.py` — the decisive reason being that every external schema tool wants the tag vocabulary in its own file, which would recreate the two-copies mismatch removed earlier today. The survey did surface three real gaps, closed here. Setting up a git remote stays deferred at the user's request and remains the highest-severity open finding.
 - External link liveness: installed `lychee` 0.24.2 (`aarch64-unknown-linux-musl`, published checksum verified before install, statically linked) plus `_meta/lychee.toml` and `_meta/scripts/wiki_link_check.sh`. First run: 63 unique external URLs on formal pages, 62 alive, one 429.
