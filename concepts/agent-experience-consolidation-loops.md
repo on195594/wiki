@@ -1,10 +1,10 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-08-01
+updated: 2026-08-14
 type: concept
 tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf]
 status: draft
 description: 定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。
 ---
@@ -22,6 +22,8 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 文章中的 `dreaming` 不是模型权重训练，而是让 agent 回顾过去 session 和 memory，写出 plain-text notes / playbooks 供未来 session 使用。
 
 Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。
+
+Xudong Han 的 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 及其链接的 Alloomi 技术报告进一步区分了外部知识复用与模型权重学习：前者依赖 memory、skills、向量检索或上下文注入，后者把筛选后的任务轨迹用于 LoRA、跨任务 replay 和教师蒸馏，并以评测准入与回滚控制更新。
 
 [推论] 该机制补充的是知识单元进入持久层后的演化方式，不改变本页原有的 Hermes 层间路由和审批边界。
 
@@ -85,6 +87,32 @@ experience → extract skill/insight → retrieve similar knowledge
 - **Consolidation（来源机制）**：新经验产生候选知识后，检索相似条目并尝试整合成更通用的知识。[推论] 只有适用边界确实可泛化时才应合并，不能把语义相似直接当作可替代。
 - **Weighting（来源机制）**：知识价值同时考虑当前任务效用和对后续知识生成的贡献。[推论] 访问次数和最近使用时间只能作为弱信号。
 - **Lifecycle metadata**：`source`、适用范围、验证时间、supersession、当前状态和冲突关系是 Hermes 的本地映射，不是博客公开的 EvoLib schema，均应视为 `[推论]`。
+
+### 3b. Distinguish external consolidation from weight-level learning
+
+Alloomi 报告提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
+
+这与 Hermes 当前知识层互补而非替代：
+
+- memory、skills、wiki 和 project context 让经验可检索、可读、可编辑和可审计；
+- 权重后训练尝试让经验无需每次显式召回即可影响模型行为，但其错误泛化、灾难性遗忘和数据污染更难人工检查；
+- 两者都需要来源、质量筛选、历史回放、独立评估和回滚，不能把模型或知识库的自评分数当作准入证据。
+
+报告给出的同底座 CL-Bench rubric pass rate 从 24.5% 提升至 47.6%，可作为方向性系统证据，但不能直接成为 Hermes 基线：主要结果只有 3 个 seeds，集中在一个 Qwen MoE 底座，教师蒸馏依赖付费外部模型；超过 10 个连续任务的长期效果、更多 seeds、无教师消融和更强对抗实验仍被列为待完成工作。
+
+[推论] 对当前 Hermes 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
+
+```text
+session_search / project evidence / user corrections
+→ quality triage
+→ candidate rule or knowledge unit
+→ historical replay or focused fixture
+→ explicit promotion decision
+→ wiki / narrow skill patch / evaluator
+→ rollback or removal when evidence regresses
+```
+
+除非后续出现本地开源模型、可隔离训练环境、明确数据授权和可复验收益，权重后训练、OpenContext 安装、自动 skill 修改及无人审批的知识晋升都不进入 Hermes 默认工作流。
 
 ### 4. Route by layer responsibility
 经验固化的核心治理问题是路由，而不是保存。`[[agent-closed-loop-learning-from-corrections-to-rules]]` 进一步补充了纠错晋升门槛：不要把一次用户纠正直接写成全局规则，先记忆、再泛化、再验证、最后推广。
@@ -172,6 +200,7 @@ session_search / project evidence → audited review
 7. 所有经验固化都要保留 provenance 和 rollback path。
 
 ## Related pages
+- [[xudong-han-self-evolving-agent-alloomi-2026-08-13]]
 - [[microsoft-research-evolib-evolving-knowledge-2026-07-30]]
 - [[agent-self-validation-loops]]
 - [[agent-closed-loop-learning-from-corrections-to-rules]]

@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-14] ingest | Self-Evolving Agent and weight-level experience learning
+- Captured raw source: `raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md`; preserved the complete public X post plus links to the Alloomi technical report and OpenContext repository.
+- Updated existing owner concept: `concepts/agent-experience-consolidation-loops.md`; refined its existing `index.md` description without creating a duplicate concept page.
+- Durable unit: external memory/skills/wiki reuse and model-weight learning solve different layers; the reusable control pattern is evidence capture → quality filtering → replay/evaluation → explicit promotion → rollback.
+- Evidence boundary: the report's 24.5% → 47.6% result is a same-backbone project-reported comparison, but the main empirical body uses three seeds, one Qwen MoE family, a paid external teacher, and deferred longer-horizon/stronger-ablation experiments; it is directional evidence, not a Hermes adoption baseline.
+- Hermes mapping: retain the existing auditable knowledge-layer workflow (`session_search`/project evidence → review → wiki/skill/evaluator routing); do not infer authorization for weight training, OpenContext installation, automatic skill mutation, cron, runtime or memory changes.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-12] review-fix | AGY review of Prompt engineering plateau ingestion
 - Review prompt: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review-prompt.md`.
 - Review result: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.exit`.
