@@ -1,10 +1,10 @@
 ---
 title: Agentic Programming as System Engineering
 created: 2026-05-21
-updated: 2026-05-29
+updated: 2026-08-15
 type: concept
 tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance, anti-pattern]
-sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
+sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
 status: stable
 description: 定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。
 aliases: [agentic-programming]
@@ -89,6 +89,10 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 
 结论：Agent 经验不应被粗暴写入 memory；需要来源和解释的知识进 wiki，需要执行步骤的 workflow 进 skill，需要复发失败防护的经验进 evaluator/fixture/log。
 
+## Control pattern: reasoning, action, and observation
+
+ReAct provides primary evidence for interleaving language reasoning with task-specific actions and environment observations. Its benchmark results are mixed rather than universal: external interaction can reduce unsupported internal reasoning, but search failures, wrong subgoals and repeated steps create new error paths. Hermes should therefore treat ReAct as an optional trajectory shape for tasks that need iterative environment evidence, not as a default for deterministic, low-risk or already well-specified work. See [[agent-architecture-primary-paper-map]].
+
 ## Hermes layer routing
 
 - Wiki：适合保存本文的概念框架和来源。
@@ -123,3 +127,4 @@ Hermes 映射：这类风险应由 `[[agent-failure-closed-loop-evaluation]]`、
 - [[agent-failure-closed-loop-evaluation]]
 - [[hermes-context-layer-operating-rules]]
 - [[subagent-orchestration-patterns]]
+- [[agent-architecture-primary-paper-map]]

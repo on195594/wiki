@@ -1,10 +1,10 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-05-22
+updated: 2026-08-15
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
-sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md]
+sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md]
 status: stable
 description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
 aliases: [agent-orchestration-tradeoffs]
@@ -135,6 +135,10 @@ Reported article-level claims:
 
 Treat these as source-backed directional claims, not as universal constants. The operating rule matters more than the exact numbers: orchestration patterns trade off differently under scale, cost, latency, and risk.
 
+## Conversation programming is one orchestration abstraction
+
+AutoGen models LLMs, humans, tools and code executors as conversable agents connected by programmable message patterns. Its application cases support role separation and dynamic interaction as useful design options, but the paper is early, uses heterogeneous evaluations, and leaves optimal topology, efficiency, safety and accountability open. Hermes should reuse the abstraction only when role separation or dynamic coordination solves an observed problem; it does not overturn the sequential-first and smallest-sufficient-topology rules on this page. See [[agent-architecture-primary-paper-map]].
+
 ## Hermes mapping
 
 ### Wiki
@@ -198,5 +202,6 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - [[production-ai-agent-evaluation-framework]]
 - [[constrained-toolbox-evaluator-loop]]
 - [[public-info-monitoring-automation-methodology]]
+- [[agent-architecture-primary-paper-map]]
 - [[index]]
 - [[log]]

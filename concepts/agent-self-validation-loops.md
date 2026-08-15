@@ -1,10 +1,10 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-05-22
+updated: 2026-08-15
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow, hermes]
-sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md]
+sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/papers/arxiv-2305-16291-voyager.md]
 status: stable
 description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。
 aliases: [self-validation-loop]
@@ -88,6 +88,10 @@ Agent 应被明确要求：验证失败就修改，再运行验证，直到通�
 - 复杂视觉判断的主观差异
 - LLM 输出的长期漂移和成本问题
 
+## Environment-grounded skill admission
+
+Voyager 展示了比纯文本自我批评（prose self-critique）更强的闭环：生成可执行代码、在环境中运行、反馈中间状态与执行报错、校验任务完成度，仅在验证通过后才将程序沉淀至可检索的技能库。同时其自身的失败案例也表明验证器不可被盲目视为权威：课程可能生成不可能完成的任务，程序可能调用不存在的 API，自我验证 critic 亦会漏判真实成功。可迁移原则是“先有环境证据再做技能准入”；Hermes active skill 的自主修改仍被严格排除在本模式之外。参见 [[agent-architecture-primary-paper-map]] 与 [[stateful-agent-environments-and-grounded-verification]]。
+
 ## Hermes mapping
 
 ### Tool-use discipline
@@ -155,5 +159,7 @@ UI/Web 任务追加：
 - [[hermes-context-layer-operating-rules]]
 - [[wiki-ingestion-workflow]]
 - [[constrained-toolbox-evaluator-loop]]
+- [[agent-architecture-primary-paper-map]]
+- [[stateful-agent-environments-and-grounded-verification]]
 - [[index]]
 - [[log]]

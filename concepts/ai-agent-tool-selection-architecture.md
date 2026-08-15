@@ -1,10 +1,10 @@
 ---
 title: AI Agent Tool Selection Architecture
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-08-15
 type: concept
 tags: [agent, tool, context-engineering, evaluation, workflow, hermes]
-sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
+sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
 status: stable
 description: 区分工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。
 aliases: [agent-tool-selection, tool-routing-for-ai-agents]
@@ -72,6 +72,10 @@ Hermes 官方把工具组织为 core、composite、platform、dynamic MCP 和 cu
 6. **Benchmarking**：比较准确率、Token、延迟和任务完成率。
 
 这些机制解决的层次不同，但组合越多，路由器、索引、阈值、追踪和维护成本也越高。没有本地失败证据时，优先使用静态工具集与清晰描述，而不是直接引入向量检索和规划器。
+
+## Training-time acquisition is not runtime tool routing
+
+Toolformer learns tool-call behavior by sampling candidate API calls, executing them, filtering for future-token loss reduction and fine-tuning the model. That mechanism is upstream of this page's runtime decisions. It does not replace tool visibility control, schema validation, permissions, cost accounting, execution-result checking or fallback. Its stated inability to chain tools, interactively browse results or account for call cost is direct evidence against treating learned tool propensity as sufficient runtime governance. See [[agent-architecture-primary-paper-map]].
 
 ## Evidence and limitations
 
@@ -152,3 +156,4 @@ Hermes 官方已经提供：
 - [[constrained-toolbox-evaluator-loop]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-engineering-design-priorities]]
+- [[agent-architecture-primary-paper-map]]

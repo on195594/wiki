@@ -3,6 +3,23 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-15] review-fix | AGY adversarial review of five primary Agent papers
+- Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review-prompt.md`.
+- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.exit`.
+- AGY verdict: `PASS_WITH_MINOR_FIXES`; no blocking or important findings.
+- Parent verification accepted three minor corrections: promote the ReAct addition to an independent H2 so it is not misattributed to an older secondary article; translate the Voyager insertion to match its Chinese host page; update the deterministic formal-page count from 110 to 112. Rejected findings: none.
+- Hash drift guard confirmed AGY did not mutate the candidate or reviewed live pages.
+- Active-layer boundary: no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
+## [2026-08-15] ingest | Five primary Agent architecture papers
+- Captured five structured primary-paper records under `raw/papers/`: ReAct, Toolformer, Generative Agents, Voyager and AutoGen; each preserves mechanism, reported evidence, limitations and an explicit evidence boundary.
+- Added `queries/agent-architecture-primary-paper-map.md` as a problem-oriented evidence map, not an exhaustive Agent taxonomy.
+- Added `concepts/agent-memory-reflection-planning-pipeline.md` to fill the runtime state-processing gap while keeping application event streams separate from Hermes default memory.
+- Added narrow source-backed deltas to four existing owner pages: ReAct control patterns in `agentic-programming-system-engineering.md`; training-time versus runtime tool control in `ai-agent-tool-selection-architecture.md`; environment-grounded skill admission in `agent-self-validation-loops.md`; conversation programming as one non-default topology in `agent-orchestration-production-tradeoffs.md`.
+- Backup: `/home/lin/.hermes/backups/wiki-agent-primary-papers-20260815_190438`.
+- Preserved boundary: no paper result authorizes default ReAct traces, learned tool calls without runtime governance, automatic promotion into Hermes memory/skills, or multi-agent-by-default execution.
+- Active-layer boundary: Wiki content, index, log, review artifacts and raw hash manifest only; no memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-14] review | AGY review of Self-Evolving Agent ingestion
 - Review prompt: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review-prompt.md`.
 - Review result: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review.exit`.
