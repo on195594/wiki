@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-15] review | AGY review of constrained SLM candidate-scoring ingestion
+- Reviewed exact commit `1ee0529ce95b926a569c28d99d5dfa92723444b9` (`docs: capture constrained SLM candidate scoring`).
+- Review prompt: `_meta/reviews/2026-08-15-constrained-slm-candidate-scoring-agy-review-prompt.md`; result: `_meta/reviews/2026-08-15-constrained-slm-candidate-scoring-agy-review.md`; exit sidecar and before/after SHA-256 manifests preserved beside them.
+- AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. Accepted fixes: `0`; rejected findings: `0`.
+- Parent verification: exact target and adjacent-page hashes showed `NO_DRIFT`; canonical Wiki health check returned `P0=0`, `P1=0`, `P2=0`; `git diff --check` passed.
+- Active-layer boundary: review artifacts and log only; no raw/concept/index content, memory, active skill/reference, prompt/wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-15] ingest | Constrained candidate scoring for SLM narrow automation
 - Captured raw source: `raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md`; preserved the reported benchmark, next-token Logits mechanism, tokenizer constraints, confidence caveat and local summary provenance while omitting site boilerplate.
 - Updated existing owner concept: `concepts/typed-ai-agent-boundaries.md`; distinguished schema-valid structure from inference-time restriction to a finite semantic candidate set, without creating a duplicate concept page.
