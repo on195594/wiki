@@ -83,7 +83,7 @@
 - [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
 - [[subagent-orchestration-patterns]] — Subagent 编排模式：按生命周期复杂度选择 inline tool、fan-out、agent pool 或 team，避免多智能体过度设计
-- [[typed-ai-agent-boundaries]] — 用 Pydantic AI 的 structured output、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
+- [[typed-ai-agent-boundaries]] — 用 structured output、固定候选空间、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
 - [[personal-investment-operating-rules]] — 个人投资操作守则：核心仓做配置，进攻仓做趋势，先保护本金再争取收益
 - [[wiki-ingestion-workflow]] — 把外部信息编译进知识库的标准入库流程
 - [[work-and-career-operating-model]] — 工作与职业域的 operating model：兼顾现金流、能力复利、时间预算与家庭兼容性

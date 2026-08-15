@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-15] ingest | Constrained candidate scoring for SLM narrow automation
+- Captured raw source: `raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md`; preserved the reported benchmark, next-token Logits mechanism, tokenizer constraints, confidence caveat and local summary provenance while omitting site boilerplate.
+- Updated existing owner concept: `concepts/typed-ai-agent-boundaries.md`; distinguished schema-valid structure from inference-time restriction to a finite semantic candidate set, without creating a duplicate concept page.
+- Evidence boundary: the reported 134.01 s versus 94.51 s result uses one Qwen 0.5B model, 600 repeated toy records and one M2 machine; it does not establish classification accuracy, independent generalization or calibrated confidence. The source's `0.6` review threshold and about 30% speedup are not Hermes defaults.
+- Adoption boundary: retain as knowledge for a future project-local, self-hosted fixed-label classifier only when a real bottleneck exists and Logits are available; no classifier project, memory, active skill/reference, wrapper, runtime/provider routing, cron, MCP, gateway or configuration was changed.
+
 ## [2026-08-15] review | AGY post-ingestion review of five primary Agent papers
 - Reviewed exact commit `7735212` (`docs: map five primary agent papers`) rather than the earlier candidate draft.
 - Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review-prompt.md`.
