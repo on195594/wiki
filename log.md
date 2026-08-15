@@ -3,6 +3,15 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-15] review | AGY post-ingestion review of five primary Agent papers
+- Reviewed exact commit `7735212` (`docs: map five primary agent papers`) rather than the earlier candidate draft.
+- Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review-prompt.md`.
+- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review.exit`.
+- AGY verdict: `PASS`; no blocking, important or correctness-required patches. It reported two cosmetic minors: one raw heading differs from the other paper records, and three source-backed host-page insertions use English prose.
+- Parent disposition: accepted fixes `0`; retained the precise Toolformer heading to preserve the hashed raw record, and retained the host-page language because the cited pages already use mixed technical prose and the orchestration page is predominantly English in that region.
+- Hash guard confirmed AGY did not mutate the reviewed commit files or exact prompt. Backup before log update: `/home/lin/.hermes/backups/wiki-agent-primary-papers-post-review-20260815_191405`.
+- Active-layer boundary: review records and log only; no raw/formal knowledge page, index, memory, active skill/reference, prompt, wrapper, runtime/config, cron, MCP, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-15] review-fix | AGY adversarial review of five primary Agent papers
 - Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review-prompt.md`.
 - Review result: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.exit`.
