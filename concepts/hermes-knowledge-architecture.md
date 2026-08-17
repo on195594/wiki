@@ -1,10 +1,10 @@
 ---
 title: Hermes Knowledge Architecture
 created: 2026-04-16
-updated: 2026-06-18
+updated: 2026-08-17
 type: concept
 tags: [hermes, knowledge-base, agent, mcp, workflow, configuration]
-sources: []
+sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md]
 status: stable
 description: 定义 Hermes 长期知识系统的 canonical 分层，包括 memory、skills、sessions、wiki、raw 与 MCP/tools 的职责边界。
 aliases: [knowledge-architecture, hermes-wiki-architecture]
@@ -71,6 +71,22 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - `queries/`：值得长期保留的问题与答案
 
 这一层才是知识沉淀的主战场。
+
+## Conflict-aware knowledge primitives and temporal scoping
+
+知识层不能只保存整理后的结论，还必须表达结论的适用边界、来源冲突和当前未知项。否则，一条写入错误的长期结论会持续污染后续检索与回答。
+
+来源文章给出三类可复用的知识对象：
+
+- **Decision**：保存规则或结论、适用范围、生效时间、替代关系、决策理由和原始来源。仅凭“文档更新”不能推断新规则适用于所有对象或历史时点。
+- **Contradiction**：并列保存相互冲突的主张、各自来源与有效时间、责任方及未解决原因。冲突未被权威证据消解前，不按文档新旧或语义相似度自动选边。
+- **Open Question**：显式记录因证据缺失、范围不清或冲突未决而无法回答的问题，以及形成结论仍需补充的证据。
+
+由此得到的本地知识写入约束是：
+
+- `[推论]` 最新来源不自动等于当前适用来源；必须同时检查对象范围、生效日期和替代关系。
+- `[推论]` 遇到无法确定性解决的来源冲突时，知识编译应 fail closed：保留冲突并停止生成确定性结论，而不是让模型自行调和。
+- `[推论]` 模型可提出知识补丁，但持久化写入仍由可验证规则和明确授权控制；文章中的 Azure、Cosmos DB、向量或图存储仅是实现示例，不构成本地技术选型。
 
 ## Canonical rule
 在 Hermes 的长期知识体系里：

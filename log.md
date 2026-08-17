@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-17] ingest | Conflict-aware persistent knowledge primitives
+- Captured raw source: `raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md`; preserved the full rendered article body, provenance, author/date, extraction route and synthetic-corpus limitations.
+- Updated existing owner concept: `concepts/hermes-knowledge-architecture.md`; added only the missing Decision, Contradiction and Open Question primitives plus scope, effective-date, supersession, rationale and fail-closed conflict handling, without creating a duplicate concept page.
+- Evidence boundary: the Azure stack, synthetic property-insurance corpus, cost figures and token break-even model remain source-specific examples rather than Hermes requirements or production evidence.
+- Pre-ingestion AGY review: prompt `project:/home/lin/.hermes/projects/skill-governance-evidence/docs/reviews/2026-08-17-persistent-knowledge-layer-placement-agy-prompt.md`; result `project:/home/lin/.hermes/projects/skill-governance-evidence/docs/reviews/2026-08-17-persistent-knowledge-layer-placement-agy-review.md`; verdict `PASS_WITH_NOTES`, with no blocking findings. Parent accepted the compact existing-concept landing and rejected mechanical reverse-link expansion.
+- Adoption boundary: no memory, active skill/reference, project/pilot, cron, MCP, runtime, wrapper, gateway, provider, profile/plugin, database, vector store, graph service, credentials or external system was changed.
+- Backup: `/home/lin/.hermes/backups/wiki-persistent-knowledge-layer-20260817_180919`.
+
 ## [2026-08-15] review | AGY review of constrained SLM candidate-scoring ingestion
 - Reviewed exact commit `1ee0529ce95b926a569c28d99d5dfa92723444b9` (`docs: capture constrained SLM candidate scoring`).
 - Review prompt: `_meta/reviews/2026-08-15-constrained-slm-candidate-scoring-agy-review-prompt.md`; result: `_meta/reviews/2026-08-15-constrained-slm-candidate-scoring-agy-review.md`; exit sidecar and before/after SHA-256 manifests preserved beside them.
