@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-08-17 | Total pages: 112
+> Last updated: 2026-08-17 | Total pages: 113
 
 ## Entities
 
@@ -83,6 +83,7 @@
 - [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
 - [[subagent-orchestration-patterns]] — Subagent 编排模式：按生命周期复杂度选择 inline tool、fan-out、agent pool 或 team，避免多智能体过度设计
+- [[multiagent-systemic-failure-modes]] — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
 - [[typed-ai-agent-boundaries]] — 用 structured output、固定候选空间、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
 - [[personal-investment-operating-rules]] — 个人投资操作守则：核心仓做配置，进攻仓做趋势，先保护本金再争取收益
 - [[wiki-ingestion-workflow]] — 把外部信息编译进知识库的标准入库流程

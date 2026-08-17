@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-17] ingest + optional reference | Multiagent systemic failure modes
+- Captured the full official Anthropic Frontier Red Team article at `raw/articles/anthropic-multiagent-systemic-failures-2026-08-13.md`, preserving publication date, extraction route, source quality and cross-provider/production generalization limits.
+- Added `concepts/multiagent-systemic-failure-modes.md` as the smallest distinct concept rather than overloading `subagent-orchestration-patterns`; the durable delta is correlated low-variance behavior, epistemic convergence, resource/collusion failures and incompatible-goal escalation.
+- Added one bounded P1 optional reference at `skill:autonomous-ai-agents/coding-agent-delegation/references/correlated-reviewers-not-independent-evidence.md` plus one routing bullet in the owner `SKILL.md`: agent count or process isolation alone does not establish independent corroboration.
+- Promotion boundary: no default requirement for multiple providers or reviewers, no router/evaluator project, and no memory, runtime/config, cron, MCP, gateway, wrapper, profile/plugin, credential or external-service change.
+- Backup: `/home/lin/.hermes/backups/multiagent-systemic-failures-20260817_233453`.
+
 ## [2026-08-17] review | AGY review of deterministic dispatcher loop ingestion
 - Reviewed exact commit `6251b1ef4f82cfef07f6daaeae8cf505f4437805` (`docs: add deterministic loop dispatcher pattern`).
 - Review prompt: `_meta/reviews/2026-08-17-rag-loop-dispatcher-ingestion-agy-review-prompt.md`; result: `_meta/reviews/2026-08-17-rag-loop-dispatcher-ingestion-agy-review.md`; exit code `0`.
