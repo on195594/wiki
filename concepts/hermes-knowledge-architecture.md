@@ -88,6 +88,13 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - `[推论]` 遇到无法确定性解决的来源冲突时，知识编译应 fail closed：保留冲突并停止生成确定性结论，而不是让模型自行调和。
 - `[推论]` 模型可提出知识补丁，但持久化写入仍由可验证规则和明确授权控制；文章中的 Azure、Cosmos DB、向量或图存储仅是实现示例，不构成本地技术选型。
 
+### Retrieval routing and structural principles
+
+- `[推论]` 需要原始措辞、精确引注或新鲜度判断时读取 raw evidence；需要决策理由、跨来源综合或连续知识时读取 compiled knowledge。只有问题确实同时依赖两者时才走双层检索。
+- `[推论]` 时间范围应在相似度排序前约束候选集；矛盾检查则是所有检索路径共用的输出门禁。
+- `[推论]` 术语漂移应通过一个 canonical entity page 及其 `aliases` 对齐，避免同一概念拆成多个互相遗漏的页面。
+- `[推论]` 多跳解释应沿 `refines`、`depends_on`、`conflicts_with`、`supersedes` 等类型化关系遍历；top-k 相似度排序只能排名，不能替代关系链遍历。
+
 ## Canonical rule
 在 Hermes 的长期知识体系里：
 - `memory` 是偏好与稳定事实层

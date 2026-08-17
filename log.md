@@ -3,6 +3,16 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-17] review | AGY review of conflict-aware persistent knowledge ingestion
+- Reviewed exact commit `04a38e15bff913c4b5db936b2e8235d97999cb53` (`docs: add conflict-aware knowledge primitives`) against the full raw article and four adjacent owner concepts.
+- Initial review prompt/result: `_meta/reviews/2026-08-17-persistent-knowledge-layer-post-ingestion-agy-review-prompt.md`, `_meta/reviews/2026-08-17-persistent-knowledge-layer-post-ingestion-agy-review.md`; initial verdict `PASS` with no findings. Exact raw/concept/index/log hashes showed `NO_DRIFT` during AGY execution.
+- Parent verification rejected the initial review's three false-negative coverage classifications: page-level `aliases` did not itself state canonical entity alignment; the linear Wiki→raw fallback did not encode evidence/knowledge/both routing; Relations syntax did not explain typed multi-hop traversal.
+- A live-file focused re-review timed out (`...-agy-r2-prompt.md`, exit `124`); the bounded-snapshot rerun succeeded (`...-agy-r2b-prompt.md`, `...-agy-r2b-review.md`, exit `0`) with verdict `PASS_WITH_NOTES` and classified all three as `MISSING_DURABLE_DELTA`.
+- Accepted one compact four-bullet patch in `concepts/hermes-knowledge-architecture.md`: evidence-vs-compiled routing, temporal pre-filter plus contradiction output gate, canonical entity alignment, and typed multi-hop traversal. No new concept page or reverse-link expansion was added.
+- Final coverage disposition: Decision, Contradiction, Open Question, scoped supersession, effective dates, rationale retention, fail-closed conflicts, terminology alignment, typed multi-hop traversal and layer routing are captured; layer taxonomy and when-not-to-build boundaries remain owned by existing pages; Azure implementation and cost/benchmark claims correctly remain raw-only.
+- Wiki-only boundary: review records, `concepts/hermes-knowledge-architecture.md`, `index.md` and `log.md`; no raw source, memory, active skill/reference, project/pilot, cron, MCP, runtime, wrapper, gateway, provider, profile/plugin, database, credentials or external service was changed.
+- Backups: `/home/lin/.hermes/backups/wiki-persistent-knowledge-layer-post-review-20260817_192953`, `/home/lin/.hermes/backups/wiki-persistent-knowledge-layer-review-fix-20260817_194019`.
+
 ## [2026-08-17] ingest | Conflict-aware persistent knowledge primitives
 - Captured raw source: `raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md`; preserved the full rendered article body, provenance, author/date, extraction route and synthetic-corpus limitations.
 - Updated existing owner concept: `concepts/hermes-knowledge-architecture.md`; added only the missing Decision, Contradiction and Open Question primitives plus scope, effective-date, supersession, rationale and fail-closed conflict handling, without creating a duplicate concept page.
