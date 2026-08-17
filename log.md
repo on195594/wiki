@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-17] review | AGY review of deterministic dispatcher loop ingestion
+- Reviewed exact commit `6251b1ef4f82cfef07f6daaeae8cf505f4437805` (`docs: add deterministic loop dispatcher pattern`).
+- Review prompt: `_meta/reviews/2026-08-17-rag-loop-dispatcher-ingestion-agy-review-prompt.md`; result: `_meta/reviews/2026-08-17-rag-loop-dispatcher-ingestion-agy-review.md`; exit code `0`.
+- AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. Accepted fixes: `0`; rejected findings: `0`.
+- Parent verification: before/after SHA-256 manifests matched exactly, confirming no reviewed file drift during AGY execution.
+- Active-layer boundary: review records and `log.md` only; no raw/concept/index content, memory, active skill/reference, runtime/config, cron, MCP, wrapper, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-17] ingest | Deterministic dispatcher inside bounded loops
 - Captured the full rendered source at `raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md`, with author/date, extraction route, local summary provenance and source-specific evidence limits.
 - Updated the existing owner concept `concepts/loop-engineering-hermes-agent-workflow.md` instead of creating a duplicate workflow page; the durable delta is “model emits typed diagnostic signals, deterministic code owns dispatch, retry budget, drift detection and stopping.”
