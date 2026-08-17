@@ -1,0 +1,6 @@
+c7268c04c693c1a201fb100928761be882ab3e1dcab28d99cb008cd9c40390f0  /home/lin/wiki/concepts/multiagent-systemic-failure-modes.md
+ae840a9efdc2d08a8a35c1baa5d9711046041389756a68878380f2d92f1b56b0  /home/lin/wiki/raw/articles/anthropic-multiagent-systemic-failures-2026-08-13.md
+24a3a0df980c37be2368b2277b8f4d7d75051ebb1de44fa1bfb459064b377ba6  /home/lin/wiki/index.md
+ef16378efec6e0a2d4e61512c99122300a98d83056a125603d72a1b3511d6169  /home/lin/wiki/log.md
+c17e0c072c267913a321db05451c7df7d0de0e57264dfd6117cc94dd7ff95697  /home/lin/.hermes/skills/autonomous-ai-agents/coding-agent-delegation/SKILL.md
+2ca4c04e15d0c5666565518d4875b098387d158cc7636373a1445d62dc01aed7  /home/lin/.hermes/skills/autonomous-ai-agents/coding-agent-delegation/references/correlated-reviewers-not-independent-evidence.md
