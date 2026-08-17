@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-17] ingest | Deterministic dispatcher inside bounded loops
+- Captured the full rendered source at `raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md`, with author/date, extraction route, local summary provenance and source-specific evidence limits.
+- Updated the existing owner concept `concepts/loop-engineering-hermes-agent-workflow.md` instead of creating a duplicate workflow page; the durable delta is “model emits typed diagnostic signals, deterministic code owns dispatch, retry budget, drift detection and stopping.”
+- Added cross-links to `agent-autonomy-ladder-for-hermes-workflows`, `agent-self-validation-loops` and `deterministic-analytics-llm-reasoning-boundary`; refreshed the existing `index.md` description while keeping the formal-page count unchanged.
+- Adoption boundary: no memory, active skill/reference, project/pilot, cron, MCP, runtime, wrapper, gateway, provider, profile/plugin, database, credentials or external service was changed.
+- Backup: `/home/lin/.hermes/backups/wiki-rag-loop-dispatcher-20260817`.
+
 ## [2026-08-17] review | AGY review of conflict-aware persistent knowledge ingestion
 - Reviewed exact commit `04a38e15bff913c4b5db936b2e8235d97999cb53` (`docs: add conflict-aware knowledge primitives`) against the full raw article and four adjacent owner concepts.
 - Initial review prompt/result: `_meta/reviews/2026-08-17-persistent-knowledge-layer-post-ingestion-agy-review-prompt.md`, `_meta/reviews/2026-08-17-persistent-knowledge-layer-post-ingestion-agy-review.md`; initial verdict `PASS` with no findings. Exact raw/concept/index/log hashes showed `NO_DRIFT` during AGY execution.

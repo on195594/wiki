@@ -1,10 +1,10 @@
 ---
 title: Loop Engineering for Hermes Agent Workflows
 created: 2026-06-10
-updated: 2026-06-18
+updated: 2026-08-17
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, hermes]
-sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
+sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
 status: stable
 description: 定义 Hermes Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
 aliases: [loop-engineering]
@@ -19,6 +19,18 @@ Loop engineering 是把 coding agent 从“一轮 prompt → 一轮回答”的�
 ## Durable principle
 
 Hermes 中的 agent loop 应被设计为可审计闭环：自动或半自动发现任务，隔离执行，独立验证，外部记录状态，并在人类确认点前停止。任何 runtime、cron、MCP、gateway、wrapper 或生产侧自动改动都必须另走 active-layer 审批、备份、验证和回滚。
+
+## Deterministic dispatcher inside bounded loops
+
+当循环面对多个可能动作时，优先采用“模型提信号、代码控流程”的非对称控制面，而不是让模型自由决定工具序列和循环长度：
+
+- 模型只产生类型化诊断信号；程序化校验与外部验证可提供更强信号，确定性 dispatcher 根据显式规则选择下一步。
+- 每类 trigger 映射到一个命名、可测试的 action；每轮保留 `trigger / action / state delta / verifier result`，便于审计和定位错误规则。
+- 除最大轮次或时间预算外，候选集不再变化、建议动作重复或质量趋势恶化时应提前停止；不要只依赖模型置信度决定是否继续。
+- 查询扩展或修复输入只能补充原始目标锚点，不能替换它；检测到结果持续偏离原目标时停止循环。
+- 该模式适合问题类型和允许动作可枚举、需要复现与审计的 workflow；工具集合开放或探索路径不可预先覆盖时，才考虑更高自主度的受限 agent loop。
+
+这补充 [[agent-autonomy-ladder-for-hermes-workflows]]、[[agent-self-validation-loops]] 与 [[deterministic-analytics-llm-reasoning-boundary]]：前者划分自主度，后两者分别定义反馈验证和确定性事实边界；本节定义循环内部“信号—分发—停止”的控制权归属。原文的 RAG 示例、激活规则和成本数字是来源案例，不构成 Hermes 默认实现或性能基线。
 
 ## Source idea
 
@@ -122,6 +134,8 @@ LangChain 的《The Art of Loop Engineering》把 loop engineering 进一步拆�
 ## Related
 
 - [[agent-self-validation-loops]]
+- [[agent-autonomy-ladder-for-hermes-workflows]]
+- [[deterministic-analytics-llm-reasoning-boundary]]
 - [[subagent-orchestration-patterns]]
 - [[agent-context-engineering]]
 - [[ai-coding-agent-workflow-types]]
