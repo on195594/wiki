@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] review | AGY review of human-machine scientific discovery ingestion
+- Reviewed exact commit `04665602eeb929a07b437a3e3ab4fb66facaf3c6` (`docs: add verification scarcity concept`).
+- Review prompt: `_meta/reviews/2026-08-18-human-machine-scientific-discovery-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-human-machine-scientific-discovery-agy-review.md`; exit code `0`.
+- AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. Accepted fixes: `0`; rejected findings: `0`.
+- Parent verification: all six before/after SHA-256 checks matched exactly, confirming no drift in the raw source, concept, index, log, raw hash manifest, or review prompt during AGY execution.
+- Active-layer boundary: review records and `log.md` only; no raw/concept/index content, memory, active skill/reference, project/pilot, runtime/config, cron, MCP, wrapper, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-18] ingest | Human-machine scientific discovery and verification scarcity
 - Captured a structured source record at `raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md` from the full rendered Towards Data Science article, preserving author/date, the Hadamard and Maxwell cases, the reported research loop, institutional proposals, local summary provenance and explicit extraction limits.
 - Added `concepts/human-machine-scientific-discovery-verification-scarcity.md` as the smallest distinct concept. Its durable delta is that cheap candidate generation does not lower every knowledge-admission cost: deterministic certificates, partial formalization, novelty checks and expert review cover different obligations, while scoped negative results remain reusable assets.
