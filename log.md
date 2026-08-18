@@ -3,6 +3,19 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] review | AGY review of specification engineering sedimentation
+- Review prompt: `_meta/reviews/2026-08-18-specification-engineering-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-specification-engineering-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
+- AGY verdict: `PASS`; blocking findings: none. It accepted the existing formalization-concept placement, optional reference, trigger/skip symmetry, Direct-path preservation and secondary-source evidence boundary.
+- Parent verification: all eight before/after SHA-256 values matched exactly (`NO_DRIFT`) for the raw source, concept, index, log, raw hash manifest, active `SKILL.md`, optional reference and generated reference index.
+- Accepted fixes: `0`; deferred findings: `0`. No new workflow/default gate or runtime/config/cron/MCP/gateway/wrapper/provider/profile/plugin/memory/external side effect was introduced.
+
+## [2026-08-18] ingest + optional reference | Specification engineering for Hermes
+- Captured the cleaned full rendered KDnuggets article at `raw/articles/kdnuggets-specification-engineering-2026-08-10.md`, preserving author/date, source route, local summary provenance and secondary-source limitations.
+- Updated the existing owner `concepts/hermes-ai-workflow-formalization-principles.md` rather than creating a duplicate concept: specification is a shared correctness agreement and a risk-triggered checklist, not an eight-field ritual for every task.
+- Active workflow landing: one bounded optional reference under `skill:software-development/spec-driven-development`, with a one-line owner pointer; Direct remains the default for clear, local, reversible work with cheap deterministic verification.
+- Promotion boundary: no new workflow, default spec gate, memory, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, dependency or external service was added.
+- Backup: `/home/lin/.hermes/backups/specification-engineering-20260818_160606`.
+
 ## [2026-08-18] review | AGY review of Antigravity Custom Agents sedimentation
 - Review prompt: `_meta/reviews/2026-08-18-antigravity-custom-agents-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-antigravity-custom-agents-agy-review.md`; exit code `0`.
 - AGY verdict: `PASS`; blocking findings: none. It accepted the existing-concept placement, bounded optional-reference trigger/skip rules, vendor-interface freshness caveat and Hermes parent-verification boundary.

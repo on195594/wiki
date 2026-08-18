@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-05-31
+updated: 2026-08-18
 type: concept
 tags: [hermes, llm, workflow, decision, note, skills, governance]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md]
 status: stable
 description: 把形式化思想转译为 Hermes AI 工作流中的规格、边界、验证和可回滚原则。
 ---
@@ -43,6 +43,18 @@ Hermes 不应把对话本身当作最终控制面，而应不断把模糊意图�
 - 需求或实现过程中发现约束变化时，先更新 spec，再调整实现和测试
 - 临时聊天指令不能成为唯一决策记录
 - 具体 spec 目录形态参考 `writing-plans` skill 的 “Spec-driven development for agentic projects”，不要在 wiki concept 里重复维护文件清单
+
+## Principle 2.6: specification is an agreement, not an eight-field ritual
+
+`[[kdnuggets-specification-engineering-2026-08-10]]` 把 prompt 与 specification 的边界说得更直接：prompt 解决“如何提问”，specification 解决“参与者如何共同判断做对了”。可复用的最小检查面是目标、必要上下文与输入、输出契约、约束、验收标准、边缘情况和验证方式；但这些是风险检查面，不是每个任务必须填写的固定模板。
+
+Hermes 映射：
+- 需求、边界或验收不清，或任务跨模块、跨会话、跨 agent、涉及 active/high-risk surface 时，进入 `spec-driven-development`；
+- 规格草案应让 AI 指出缺失条件，但生成者的自检不能替代独立测试、结构化校验或人工判断；
+- 只针对失败的验收项定向修正，并记录最终假设、已知局限和 contract 变化；
+- 明确、局部、可回滚且有便宜确定性验证的小修继续走 `coding-agent-workflow` 的 Direct 路径，不为形式完整度增加仪式。
+
+证据边界：原文是二手工程综述；ROPE、SWE-bench/SWT-Bench 和 DORA 数字在成为强制门禁或本地阈值前，需要回到原论文或官方报告核验。
 
 ## Principle 3: formal artifacts are the real memory of work
 真正可靠的长期资产不是聊天记录，而是形式化产物：
@@ -176,6 +188,7 @@ LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量�
 - [[hermes-retrieval-priority-and-answer-path]]
 - [[deterministic-analytics-llm-reasoning-boundary]]
 - [[langchain-interpreter-skills-2026-05-30]]
+- [[kdnuggets-specification-engineering-2026-08-10]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
