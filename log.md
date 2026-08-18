@@ -3,6 +3,19 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] review | AGY review of pre-deploy Agent regression-test sedimentation
+- Review prompt: `_meta/reviews/2026-08-18-agent-regression-tests-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-agent-regression-tests-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
+- AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted the existing-concept placement, capability-triggered matrix, lifecycle cross-link, evidence limits and no-active-promotion boundary.
+- Parent verification: all seven before/after SHA-256 values matched exactly (`NO_DRIFT`); accepted fixes: `0`; rejected findings: `0`.
+- Review boundary: no raw/concept/index/hash content, memory, active skill/reference, independent evaluator project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, dependency or external service was changed by the reviewer.
+
+## [2026-08-18] ingest | Pre-deploy structural regression tests for AI Agents
+- Captured the full public Machine Learning Mastery article at `raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md`, preserving author/date, direct-HTML extraction route, local summary provenance and practitioner-source limitations.
+- Updated the existing owner `concepts/production-ai-agent-evaluation-framework.md` with a capability-triggered seven-probe matrix, rather than creating a duplicate concept or universal checklist.
+- Linked the matrix from the Test → Deploy boundary in `concepts/agent-development-lifecycle.md`; a probe becomes a fixture/evaluator/smoke only after it captures a real local failure through `agent-failure-closed-loop-evaluation`.
+- Evidence boundary: the source provides no runnable suite, dataset, failure prevalence or independent reproduction; its Token proportion and any future trial/pass thresholds remain source- or project-specific rather than Hermes defaults.
+- Promotion boundary: no memory, active skill/reference, independent evaluation project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, dependency or external service was changed. Backup: `/home/lin/.hermes/backups/wiki-agent-regression-tests-20260818_214403.tar.gz`.
+
 ## [2026-08-18] governance | Long-term governance repair
 - Aligned `SCHEMA.md`, page-writing/lint/ingestion standards and the health runbook; routine low-risk ingestion now closes with existing health/diff checks, while independent AI review is risk-triggered rather than default.
 - Extended `wiki_health_check.py` with required-frontmatter and formal `type`/`status` enum enforcement; added RED→GREEN regression coverage plus closed-query index lifecycle coverage.

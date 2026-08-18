@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-05-11
+updated: 2026-08-18
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -46,6 +46,8 @@ Test 阶段必须在生产前发生，但不必等完美评估集。
 - 版本对比样本
 
 多轮 agent 不能只靠单轮问答测试。客服、编程、检索、操作型 agent 都需要场景模拟，因为它们的关键能力是追问、查状态、调用工具、从歧义中恢复并完成端到端任务。
+
+进入 Deploy 前，按系统实际能力选用 `[[production-ai-agent-evaluation-framework]]` 的结构性回归矩阵：上下文裁剪、外部写入、非可信检索、结构化输出、循环编排、RAG 和持久状态分别触发对应测试；不存在该能力时跳过，不把七项清单机械升级为所有 Agent 的统一门禁。真实失败再交给 `[[agent-failure-closed-loop-evaluation]]` 形成回归工件。
 
 ### 3. Deploy
 Deploy 阶段不同于普通无状态应用部署。

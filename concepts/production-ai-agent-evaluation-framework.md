@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-08-12
+updated: 2026-08-18
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -15,7 +15,7 @@ aliases: [agent-evaluation-framework]
 ## Summary
 生产级 AI Agent 的可靠性不应只评估最终答案，而应同时评估检索、生成、工具行为、多步轨迹、成本和延迟。评估基础设施应在上线前建设，而不是上线后补救。
 
-这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]`、`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]`、`[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]` 和 `[[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]` 补充工具选择、生产延迟/成本基线、长篇研究报告 Rubric 校准、工具调用证据链与 Prompt 优化边际递减案例；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
+这页编译自 `[[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]`，并由 `[[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]`、`[[kdnuggets-llm-latency-inference-cost-2026-07-18]]`、`[[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]`、`[[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]`、`[[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]` 和 `[[machinelearningmastery-agent-regression-tests-2026-08-17]]` 补充工具选择、结构性部署前回归、生产延迟/成本基线、长篇研究报告 Rubric 校准、工具调用证据链与 Prompt 优化边际递减案例；它与 `[[agent-self-validation-loops]]`、`[[agent-development-lifecycle]]`、`[[agent-orchestration-production-tradeoffs]]` 和 `[[agent-failure-closed-loop-evaluation]]` 衔接。
 
 ## Core principle
 
@@ -95,6 +95,28 @@ aliases: [agent-evaluation-framework]
 工程含义：可用的 Agent 还必须可负担、可观测、可调优。平均延迟和平均成本会隐藏长尾失败。
 
 生产观测字段、延迟/成本诊断顺序、控制层边界和外部经验阈值由 `[[production-agent-evaluation-baselines]]` 单独维护。本页只保留 Production layer 在四层框架中的位置。
+
+## Pre-deploy structural regression matrix
+
+`[[machinelearningmastery-agent-regression-tests-2026-08-17]]` 把编排层风险压成七类部署前故障探针。它们不是所有 Agent 都必须机械执行的统一套件；应按系统实际具备的能力触发，并把通过条件落到轨迹、状态或副作用证据，而不是只看最终回复。
+
+| 故障探针 | 触发条件 | 最小通过证据 | 跳过条件 |
+| --- | --- | --- | --- |
+| 上下文丢失与检索退化 | 多轮上下文可能被裁剪、摘要或外部记忆召回 | 早期关键事实仍能被正确恢复；检索与摘要分别判定，不能用 OR 断言互相遮蔽 | 短时、无裁剪、无跨轮状态任务 |
+| 工具执行幂等性 | Agent 能向外部系统写入，且调用可能重试或并发 | 同一逻辑操作重复到达时只产生一次真实写入，并可返回一致结果 | 纯只读工具或无外部副作用 |
+| 指令覆盖与 Prompt injection | 用户输入、网页、RAG 文档等不可信内容可影响工具调用 | 直接和间接注入都不能产生越权工具副作用；检查 trace 与真实状态，而非拒绝文案 | 无不可信输入且无工具执行面 |
+| 结构化输出依从性 | 下游依赖 schema、枚举或机器可读结果 | 同时检查解析、`finish_reason`、拒绝语义、字段值约束和模型版本；valid JSON 不等于语义正确 | 自由文本且无机器消费契约 |
+| 非终止与有界编排 | 存在 retry、tool loop、reactive loop 或多 Agent 等待关系 | 不可能任务和持续错误工具在步骤、累计成本与 wall-clock 三重预算内结构化退出 | 单步确定性调用，无循环或等待 |
+| RAG 与参数记忆冲突 | Agent 使用检索内容覆盖或补充模型知识 | 正向验证可采用可信新事实，负向验证可抵抗可检测的检索投毒；结合忠实度与归因证据 | 不使用检索增强 |
+| 状态恢复与一致性 | 工作流会持久化、跨进程恢复或跨版本续跑 | 销毁内存实例后能从持久状态继续完成；覆盖 schema/version migration 和 mid-tool-call 幂等边界 | 单进程、短生命周期、不可恢复任务 |
+
+由于 Agent 输出具有随机性，来源建议固定具体模型版本，在服务商允许时降低采样随机性，并通过重复试验估计有界通过率。`[推论]` Hermes 不采用文章中的任何固定 Token 占比、试验次数或通过阈值作为默认值；每个项目应按风险、成本和可重复性设定最小本地门槛。
+
+### Evidence and promotion boundary
+
+这篇来源是实践者清单，没有提供可运行测试代码、数据集、故障频率、独立复现或“每个 Agent 都适用”的证据。它声称多数 Agent 失败位于状态层，这对定位有启发，但不能替代模型、provider、权限、检索和业务逻辑的分层归因。七项探针也明确不覆盖成本/延迟回归、上游工具契约漂移、PII 泄漏和 embedding/reindex 版本错配。
+
+`[推论]` 在 Hermes 中，本矩阵只作为 `[[agent-development-lifecycle]]` 的 Test → Deploy 知识检查入口。只有某一探针捕获真实本地失败时，才通过 `[[agent-failure-closed-loop-evaluation]]` 保留“原失败案例 + 一个相邻反例”的 fixture、evaluator 或 smoke；不得因单篇文章创建独立评测项目、全局硬门禁或 active runtime 自动化。
 
 ## Phased implementation
 
