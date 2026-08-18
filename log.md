@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] ingest | Human-machine scientific discovery and verification scarcity
+- Captured a structured source record at `raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md` from the full rendered Towards Data Science article, preserving author/date, the Hadamard and Maxwell cases, the reported research loop, institutional proposals, local summary provenance and explicit extraction limits.
+- Added `concepts/human-machine-scientific-discovery-verification-scarcity.md` as the smallest distinct concept. Its durable delta is that cheap candidate generation does not lower every knowledge-admission cost: deterministic certificates, partial formalization, novelty checks and expert review cover different obligations, while scoped negative results remain reusable assets.
+- Independently checked the two cited Maxwell arXiv records plus the official AlphaEvolve and OpenAI unit-distance reports. The author's four-equilibrium Maxwell claim remains `candidate`; the Hadamard search coverage remains author-reported; provider percentages remain source-specific.
+- Linked rather than duplicated the existing owners for self-validation, constrained evaluator loops, research evidence gates, production evaluation, cognitive substitution and Hermes knowledge architecture.
+- Adoption boundary: no memory, active skill/reference, project/pilot, cron, MCP, runtime/config, wrapper, gateway, provider, profile/plugin, credentials, dependency or external service was changed.
+
 ## [2026-08-17] review | AGY review of multiagent systemic failure sedimentation
 - Reviewed wiki commit `cfc94b1` plus the active optional reference and owner pointer from exact saved snapshots.
 - Review prompt: `_meta/reviews/2026-08-17-multiagent-systemic-failures-agy-review-prompt.md`; result: `_meta/reviews/2026-08-17-multiagent-systemic-failures-agy-review.md`; exit code `0`.
