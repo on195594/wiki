@@ -1,10 +1,10 @@
 ---
 title: Hermes Model-Specific Harness Profiles
 created: 2026-04-30
-updated: 2026-04-30
+updated: 2026-08-18
 type: concept
 tags: [hermes, agent, harness, model-profiles, skills, context-engineering, verification]
-sources: [raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
+sources: [raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
 description: 定义 Hermes 针对不同模型配置 harness profile 的适配原则和验证路径。
 aliases: [model-specific-harness, harness-profiles]
@@ -34,6 +34,20 @@ LangChain 的 Deep Agents 文章给 Hermes 的核心启发是：Agent 的能力�
 - wiki：长期概念、架构原则和决策依据
 
 所以 Hermes 的 model-specific harness 不是一个单点配置文件，而是一组跨层 overlay。
+
+### 1.1 Agent-level harness profile：角色范围比模型范围更窄
+
+Google Antigravity 的 Custom Agents 补充了一个更窄的 harness 单元：同一模型和 provider 内，可以用文件化角色配置限定 system instruction、默认工具、Skill/MCP 子集、模型、权限与生命周期 Hook，并选择该角色能作为主 Agent、子 Agent或两者运行。项目级角色放在 `.agents/agents/`，稳定的用户级角色放在 `~/.gemini/config/agents/`；这些路径和字段属于随产品演进的外部接口，使用前仍需核对当前官方文档。
+
+Hermes 映射不是增加一套通用编排层，而是让现有 `coding-agent-delegation` 的 AGY lane 在确有重复角色时获得更小的上下文和工具面：
+
+- 优先把项目测试、依赖或构建约定放进仓库级角色，不复制到 Hermes 全局指令。
+- 用户级角色只承载跨项目稳定职责，例如只读审查；不要预建架构师、测试员、文档员等角色目录。
+- `mainAgent` / `subagent` 只决定 AGY 内的启动形态，不改变 Hermes 作为父级的范围、授权、验证和最终裁决责任。
+- `commandExecutionPolicy` 和 Hook 是 provider 侧执行控制，不是 Hermes 的批准替代品；写操作、生产、凭证、DB、cron、runtime 与外部副作用仍受原有边界约束。
+- 先用真实重复配置或上下文膨胀证明角色值得存在；一次性任务继续使用 bounded task packet 或普通 subagent。
+
+这强化了本页的 `overlay before core` 原则，但没有提供创建新 Hermes runtime profile、自动路由器或默认多 Agent 工作流的证据。
 
 ### 2. 当前不应马上新建 Hermes runtime profile
 当前运行状态显示 Hermes 只有 `default` profile，模型为 `gpt-5.5`，provider 为 OpenAI Codex，Gateway 正常运行，Telegram 是主要入口。这符合现阶段策略：保持主脑稳定，不因为一篇文章就立刻增加 runtime profile。

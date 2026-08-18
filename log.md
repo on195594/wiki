@@ -3,6 +3,19 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] review | AGY review of Antigravity Custom Agents sedimentation
+- Review prompt: `_meta/reviews/2026-08-18-antigravity-custom-agents-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-antigravity-custom-agents-agy-review.md`; exit code `0`.
+- AGY verdict: `PASS`; blocking findings: none. It accepted the existing-concept placement, bounded optional-reference trigger/skip rules, vendor-interface freshness caveat and Hermes parent-verification boundary.
+- Parent verification: all six before/after SHA-256 values matched exactly (`NO_DRIFT`) for the raw source, concept, index, log, raw hash manifest and active AGY reference during review execution.
+- Accepted fixes: `0`; rejected findings: `0`. No Custom Agent, new skill/workflow, router, runtime profile, memory, cron, MCP, plugin or configuration was created.
+
+## [2026-08-18] ingest + optional reference | Google Antigravity Custom Agents
+- Captured the full rendered official article at `raw/articles/google-antigravity-custom-agents-2026-08-12.md`, preserving author/date, current paths and fields, extraction route, source quality and vendor-evidence limitations.
+- Updated `concepts/hermes-model-specific-harness-profiles.md` rather than creating a duplicate concept: added agent-level role profiles as a narrower harness overlay with project/global placement, main/subagent symmetry, scoped tools and explicit parent-verification boundaries.
+- Updated the existing index description and added one bounded optional reference update in `skill:autonomous-ai-agents/coding-agent-delegation/references/agy-cli-runtime-config-customization.md`; no new workflow, skill, role directory, runtime profile or router was created.
+- Promotion boundary: Custom Agents are candidates only for repeated AGY roles or measured context/tool-surface problems; provider permission policy and hooks do not replace Hermes approval, drift checks or parent verification.
+- Backup: `/home/lin/.hermes/backups/antigravity-custom-agents-20260818_154438`.
+
 ## [2026-08-18] review | AGY review of human-machine scientific discovery ingestion
 - Reviewed exact commit `04665602eeb929a07b437a3e3ab4fb66facaf3c6` (`docs: add verification scarcity concept`).
 - Review prompt: `_meta/reviews/2026-08-18-human-machine-scientific-discovery-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-human-machine-scientific-discovery-agy-review.md`; exit code `0`.
