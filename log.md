@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] ingest | ABC Legal managed-agent lifecycle case
+- Captured the complete official Anthropic customer case at `raw/articles/claude-abc-legal-managed-agents-2026-08-17.md`, preserving publication date, extraction route, local summary provenance and vendor/customer-reported evidence limits.
+- Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate workflow: added Agent-as-code, PR as the change control surface, human-in-the-loop → eval → graded autonomy, and the Initial Agent → Harvester → Tuner feedback loop.
+- Linked the detailed feedback-promotion boundary to `agent-closed-loop-learning-from-corrections-to-rules` and `agent-experience-consolidation-loops`; refreshed the existing index description while keeping the formal-page count unchanged.
+- Evidence boundary: ABC Legal's fleet size, agreement and cost figures remain company/vendor-reported case data, not Hermes thresholds or proof of platform superiority.
+- Promotion boundary: no memory, active skill/reference, project/pilot, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, dependency or external service was changed. Backup: `/home/lin/.hermes/backups/wiki-abc-legal-managed-agents-20260818.tar.gz`.
+
 ## [2026-08-18] review | AGY review of pre-deploy Agent regression-test sedimentation
 - Review prompt: `_meta/reviews/2026-08-18-agent-regression-tests-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-agent-regression-tests-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
 - AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted the existing-concept placement, capability-triggered matrix, lifecycle cross-link, evidence limits and no-active-promotion boundary.

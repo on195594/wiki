@@ -4,7 +4,7 @@ created: 2026-05-11
 updated: 2026-08-18
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -84,6 +84,14 @@ Govern 横跨 Build、Test、Deploy、Monitor。
 - 生产行为可见性
 - 多团队、多 agent 之间的一致边界
 
+### 案例补充：Agent-as-code 与 PR 控制面
+
+ABC Legal 的公开案例为这条生命周期提供了一个企业落地样本：每个 Agent 的 prompt、工具列表、调度、凭据引用和 memory 配置都进入 Git；任何行为变更先成为 Pull Request，经人工审批后才部署，因此版本历史、审查、回滚和审计复用同一控制面。其新 Agent 先在 human-in-the-loop 模式中给出建议并积累标注反馈与 eval，只有在特定任务上达到公司设定的表现要求后才逐步获得自动执行权限。
+
+对需要反馈调优的 Agent，ABC Legal 使用 `Initial Agent → Harvester → Tuner`：运行 Agent 留下审计轨迹，Harvester 从 Slack 回复和 Emoji 收集标签，Tuner 周期性提出 prompt 或 YAML 配置 PR；模型不直接在线改写生产规则，合并权仍由人掌握。这一闭环由 [[agent-closed-loop-learning-from-corrections-to-rules]] 解释规则晋升边界，由 [[agent-experience-consolidation-loops]] 解释经验固化，不在本页重复其详细流程。
+
+[推论] 对 Hermes-adjacent Agent 项目，可迁移的不是特定托管产品，而是四个控制点：可审查的文本资产、PR/差异作为变更边界、基于真实反馈的 eval、以及人工批准后的分级放权。是否值得 Agent 化还应同时计算业务价值、模型与工具调用成本、验证成本和维护负担；ABC Legal 报告的数量、约 98% 一致性及最高约 50% 成本下降只属于该公司案例，不是 Hermes 的默认阈值。
+
 ## Hermes interpretation
 这篇文章给 Hermes 的价值，是把已有零散原则放进一条生命周期总线。
 
@@ -137,6 +145,7 @@ Hermes 映射：
 
 ## Related
 - [[langchain-agent-development-lifecycle-2026-05-09]]
+- [[claude-abc-legal-managed-agents-2026-08-17]]
 - [[agent-self-validation-loops]]
 - [[subagent-orchestration-patterns]]
 - [[agent-orchestration-production-tradeoffs]]
