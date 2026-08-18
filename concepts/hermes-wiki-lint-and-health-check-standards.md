@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-06-18
+updated: 2026-08-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
 sources: []
@@ -73,6 +73,8 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - `sources`
 - `status`
 
+并验证 `type` 与 `status` 使用 `SCHEMA.md` 声明的枚举；日期化状态应改用 `updated`、`review_by` 或正文说明。
+
 目标：
 - 保持页面结构统一
 - 保证后续筛选、治理和自动化处理可行
@@ -84,12 +86,12 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 防止 tag 漫游
 - 防止同义标签并存造成检索分裂
 
-### 6. Page size check
-检查页面是否过长，经验阈值约 200 行。
+### 6. Page size triage
+页面长度只作为人工分诊信号，不设机械行数阈值。
 
 目标：
 - 防止一个页面变成无法维护的大杂烩
-- 发现应拆分为子页面的候选项
+- 只有页面混合多个职责、检索成本明显上升时才拆分
 
 ### 7. Staleness check
 检查页面是否长时间未更新，且主题已被更晚资料覆盖。
@@ -106,7 +108,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 要求显式记录冲突，而不是静默覆盖
 
 ### 9. Log health
-检查 `[[log]]` 是否持续追加、是否过长、是否需要轮转。
+检查 `[[log]]` 是否保持精简、是否按年度归档，以及普通摄取是否误生成大量 review sidecar。
 
 目标：
 - 保持维护历史可追踪
@@ -139,7 +141,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 
 ### P1
 应尽快修：
-- orphan pages
+- 未进入主索引的非 `closed` 正式页面
 - tag taxonomy 失控
 - 明显结构漂移
 - 重要页面陈旧
@@ -147,7 +149,8 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 
 ### P2
 常规维护：
-- 页面过长
+- 只有主索引入链的语义孤岛页
+- 经人工确认需要拆分的多职责页面
 - 日志接近轮转阈值
 - 页面可读性一般但仍可用
 - 可选 metadata 缺失但未影响检索
@@ -174,7 +177,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 一个健康的 Hermes wiki，至少应满足：
 - 没有 broken wikilinks
 - 没有长期 orphan pages
-- 所有正式页面都进入 `[[index]]`
+- 所有非历史关闭页面都进入 `[[index]]`
 - frontmatter 完整
 - tags 受控
 - 页面可扫描

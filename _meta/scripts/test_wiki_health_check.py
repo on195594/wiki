@@ -46,6 +46,7 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         name: str,
         *,
         tags: str = "known-tag",
+        status: str = "stable",
         review_by: str | None = None,
         body: str | None = None,
     ) -> Path:
@@ -57,8 +58,9 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
             "to avoid unrelated tiny-file findings while exercising one health rule only.\n"
         )
         path.write_text(
-            f"---\ntitle: {name}\ntags: [{tags}]\nsources: [docs:test]\n"
-            f"status: stable\n{review_line}---\n\n{page_body}",
+            f"---\ntitle: {name}\ncreated: 2026-01-01\nupdated: 2026-01-01\n"
+            f"type: concept\ntags: [{tags}]\nsources: [docs:test]\n"
+            f"status: {status}\n{review_line}---\n\n{page_body}",
             encoding="utf-8",
         )
         with (self.root / "index.md").open("a", encoding="utf-8") as index:
@@ -95,6 +97,30 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
     def test_reports_malformed_review_by(self) -> None:
         self.add_formal("bad-review-date", review_by="soon")
         self.assertIn("malformed_review_by", self.issue_codes("P1"))
+
+    def test_reports_missing_required_frontmatter_field(self) -> None:
+        path = self.add_formal("missing-title")
+        path.write_text(
+            path.read_text(encoding="utf-8").replace("title: missing-title\n", ""),
+            encoding="utf-8",
+        )
+        self.assertIn("missing_frontmatter_field", self.issue_codes("P1"))
+
+    def test_reports_invalid_formal_status(self) -> None:
+        self.add_formal("invalid-status", status="current-as-of-2026-01-01")
+        self.assertIn("invalid_formal_status", self.issue_codes("P1"))
+
+    def test_allows_closed_query_outside_main_index(self) -> None:
+        path = self.add_formal("closed-record", status="closed")
+        query = self.root / "queries" / path.name
+        query.parent.mkdir()
+        path.rename(query)
+        index = self.root / "index.md"
+        index.write_text(
+            index.read_text(encoding="utf-8").replace("- [[closed-record]]\n", ""),
+            encoding="utf-8",
+        )
+        self.assertNotIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
 
     def test_reports_near_duplicate_pages(self) -> None:
         body = "# Shared subject\n\n" + "重复知识治理内容用于检测重新摄取。" * 20 + "\n"

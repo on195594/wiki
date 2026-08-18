@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-06-18
+updated: 2026-08-18
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: []
@@ -31,8 +31,9 @@ aliases: [wiki-ingestion, knowledge-ingestion]
    - `comparisons/`
    - `queries/`
 5. 为页面补充 `[[wikilinks]]`
-6. 更新 `[[index]]`
-7. 记录到 `[[log]]`
+6. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
+7. 在 `[[log]]` 只记录 durable delta、证据边界和验证结果
+8. 运行 Wiki health check 与 `git diff --check`
 
 ## Filing rules
 - 值得长期复用的问答，归档到 `queries/`
@@ -52,6 +53,11 @@ aliases: [wiki-ingestion, knowledge-ingestion]
 - 没有来源就写死结论
 - 只堆 raw，不更新正式页面
 - 新建页面后不更新 `[[index]]` 与 `[[log]]`
+- 普通低风险摄取也默认生成独立 AI review、exit/stderr 和前后 hash sidecar
+
+## Review trigger
+
+独立 AI 审查不是普通摄取的默认步骤。只在 Schema/治理规则变更、跨层推广、高风险事实、多来源冲突或确定性检查不足时触发；其他情况由现有 health check、Git diff 和父级事实核验收口。
 
 ## Relations
 - refines: [[hermes-knowledge-architecture]]

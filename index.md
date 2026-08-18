@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-08-18 | Total pages: 114
+> Last updated: 2026-08-18 | Indexed pages: 111
 
 ## Entities
 
@@ -102,18 +102,15 @@
 ## Queries
 - [[agent-architecture-primary-paper-map]] — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
 - [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
-- [[hermes-context-footprint-readonly-audit-2026-07-03]] — Hermes 当前上下文负担只读审计：识别 `/gsummary`、governance skills、memory/profile、wiki、session_search 和工具输出的 token/注意力压力，并给出不改 active layer 的 P0/P1/P2 建议
 - [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
-- [[hermes-agent-experience-consolidation-capability-assessment]] — Hermes 对 Anthropic Dreaming/Outcomes/多 agent 能力的本地能力映射：当前具备 primitives，可组合实现经验固化闭环，但完整 Auto Dream/`/dreaming` 仍未证实为本机原生能力
+- [[hermes-agent-experience-consolidation-capability-assessment]] — 2026-05-11 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验
 - [[hermes-layer-routing-edge-cases]] — Hermes 层间路由的边界误判案例：当两个层都像能放时，如何按职责而不是重要性裁决
 - [[hermes-layer-routing-sample-cases]] — Hermes 层间路由的样板案例：用真实场景判断什么该进 wiki、memory、skill、cron、MCP 或 session
 - [[hermes-optimization-sample-case]] — 用当前知识库操作流回放最近优化 Hermes 的全过程，展示如何把对话收敛成长期资产
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] — 用 typed output、窄工具、显式依赖和验证 gate，把 Pydantic AI 的边界原则转成我使用 Hermes 做 AI 编程的默认最佳实践
-- [[hermes-system-model-specific-harness-optimization-plan]] — 基于 Deep Agents harness profiles 原则制定 Hermes 系统优化计划：稳定 default 主脑，先做 overlay registry、小 eval，再决定 skill/profile/cron 推广
-- [[hermes-harness-profile-validation-detailed-plan]] — Hermes harness profile 验证项目详细计划书：项目结构、prompt overlay、eval rubric、实验记录、promotion gates 与 rollback/safety 边界
 - [[hermes-harness-profile-validation-final-closeout]] — Hermes harness profile 验证项目最终结论：只推广 planning/code-review 两个窄 skill patch，不推广 summary、coding/config、runtime profile、core、SOUL、cron 或 memory
 - [[how-i-should-use-these-two-investment-frameworks]] — 如何在日常决策中分层使用两套投资框架：长期制度管底盘，主动纪律管进攻
 - [[my-investment-pre-trade-checklist]] — 下单前检查清单：先分清资金层、动作类型、退出计划，再决定是否出手

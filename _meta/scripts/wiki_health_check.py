@@ -42,6 +42,19 @@ ALLOWED_SOURCE_PREFIXES = (
     "docs:",
     "filesystem:",
 )
+REQUIRED_FORMAL_FIELDS = ("title", "created", "updated", "type", "tags", "sources", "status")
+ALLOWED_FORMAL_TYPES = {
+    "entity",
+    "concept",
+    "comparison",
+    "query",
+    "plan",
+    "closeout",
+    "validation-case",
+    "operation",
+    "summary",
+}
+ALLOWED_FORMAL_STATUSES = {"draft", "stable", "active", "closed", "current"}
 
 
 def rel(root: Path, path: Path) -> str:
@@ -285,6 +298,37 @@ def build_report(root: Path) -> dict[str, Any]:
                 add_issue(issues, "P1", "missing_frontmatter", r, "Formal page missing YAML frontmatter")
             frontmatter = extract_frontmatter(text)
             if frontmatter is not None:
+                values = {field: frontmatter_value(frontmatter, field) for field in REQUIRED_FORMAL_FIELDS}
+                for field, value in values.items():
+                    if value is None:
+                        add_issue(
+                            issues,
+                            "P1",
+                            "missing_frontmatter_field",
+                            r,
+                            "Formal page missing required frontmatter field",
+                            field=field,
+                        )
+                type_value = values["type"]
+                if type_value is not None and type_value not in ALLOWED_FORMAL_TYPES:
+                    add_issue(
+                        issues,
+                        "P1",
+                        "invalid_formal_type",
+                        r,
+                        "Formal page type is outside the SCHEMA.md enum",
+                        value=type_value,
+                    )
+                status_value = values["status"]
+                if status_value is not None and status_value not in ALLOWED_FORMAL_STATUSES:
+                    add_issue(
+                        issues,
+                        "P1",
+                        "invalid_formal_status",
+                        r,
+                        "Formal page status is outside the SCHEMA.md enum",
+                        value=status_value,
+                    )
                 tags_value = frontmatter_value(frontmatter, "tags")
                 if tags_value is not None and taxonomy:
                     for tag in parse_inline_list(tags_value):
@@ -351,6 +395,8 @@ def build_report(root: Path) -> dict[str, Any]:
         text = read_text(p)
         status_match = re.search(r"^status:\s*(.+)$", text, flags=re.M)
         status = status_match.group(1).strip().strip('"') if status_match else None
+        if r.startswith("queries/") and status == "closed":
+            continue
         if r.startswith("queries/") and status == "draft":
             known_unindexed_drafts += 1
             add_issue(issues, "P2", "known_unindexed_draft_query", r, "Draft query intentionally outside main index", status=status)

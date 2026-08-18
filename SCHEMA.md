@@ -16,7 +16,7 @@
 - 原始材料只放在 `raw/`，不得直接修改原文内容。此条已强制：`_meta/raw-source-hashes.json` 记录每个 raw 文件的 SHA-256，`wiki_health_check.py` 比对不符即 P1 `raw_source_drift`（正式页引用的快照被改动后，引用仍能解析但已不指向当初读到的内容）。新 ingest 后运行 `_meta/scripts/wiki_raw_hashes.py` 更新清单并连同内容一起提交；已有文件的 hash 变化是要解释的发现，不是重新生成就能抹掉的噪音。
 - 每个正式知识页必须包含 YAML frontmatter
 - 每个正式知识页至少包含 2 个 `[[wikilinks]]` 指向其他页面或索引页
-- 新建或更新页面后，必须同步更新 `index.md`
+- 新建或更新可检索的正式页面后，必须同步更新 `index.md`；`queries/` 中 `status: closed` 的历史计划/审查记录可退出主索引
 - 每次关键操作都必须追加到 `log.md`
 - `memory` 只存稳定偏好与长期事实；正式知识以 wiki 为准
 
@@ -41,6 +41,8 @@ status: raw | captured
 ```
 
 Frontmatter rules:
+- 正式页必须包含 `title`、`created`、`updated`、`type`、`tags`、`sources`、`status`；health check 会校验字段存在性以及 `type` / `status` 枚举。
+- `status` 只使用 `draft | stable | active | closed | current`。日期属于 `created`、`updated`、`review_by` 或正文，不编码进 status。
 - `queries/` historically contains `type: query` pages that may behave like plans, closeouts, or validation cases. Schema expansion does not authorize bulk reclassification; future reclassification requires a separate approved migration plan.
 - `source_policy: normative` is only for wiki rules, standards, operating policies, and self-authored governance pages. It is a documentation marker only; current health-check scripts do not enforce that policy value.
 - Current health checks validate `sources` forms as P2 maintenance warnings, including unexpected source prefixes and non-durable `/tmp/...` paths.
@@ -238,6 +240,14 @@ Rules:
 - `_meta/plans/`：计划、整改路线图、执行前治理方案
 - `_meta/reviews/`：独立审查 prompt 和审查结果
 - `_meta/scripts/`：wiki 只读检查、审计和维护脚本
+
+## Lifecycle and Review Retention
+
+- `draft` 必须在真实使用后转为 `stable`，或在计划/审查结束后转为 `closed`；不要用永久 draft 代替裁决。
+- `queries/` 中 `closed` 的历史计划、一次性审查和 superseded 记录可以保留文件与 Git 历史，但默认退出 `index.md`；仍有长期检索价值的 closeout 可继续留在主索引。
+- 普通低风险摄取默认闭环是：更新 raw/formal/index/log → health check → `git diff --check`。独立 AI 审查仅在 Schema/治理规则、跨层推广、高风险事实、多来源冲突或确定性验证不足时触发。
+- `_meta/reviews/` 只保留实际执行且对裁决有价值的 prompt/result；普通摄取不生成 review、exit、stderr、前后 hash sidecar。
+- `log.md` 每项只记录 durable delta、证据边界和验证结果；按年度归档，避免把完整审查过程复制进主日志。
 
 ## Update Policy
 当新信息与旧信息冲突时：

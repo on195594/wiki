@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] governance | Long-term governance repair
+- Aligned `SCHEMA.md`, page-writing/lint/ingestion standards and the health runbook; routine low-risk ingestion now closes with existing health/diff checks, while independent AI review is risk-triggered rather than default.
+- Extended `wiki_health_check.py` with required-frontmatter and formal `type`/`status` enum enforcement; added RED→GREEN regression coverage plus closed-query index lifecycle coverage.
+- Resolved the seven lifecycle findings: three durable concepts are `stable`; two superseded harness plans, one dated context audit and one stale capability snapshot are `closed`; the three pure historical plan/audit pages left the main index without deletion.
+- Verification: 8 stdlib regression tests pass; live health check returns `P0=0`, `P1=0`, `P2=0`; external-link check reports `64 OK / 0 Errors`; `git diff --check` passes. Backup: `/home/lin/.hermes/backups/wiki-governance-fix-20260818_165531.tar.gz`.
+- Independent review: AGY `1.1.14` returned `PASS` with no blocking findings; parent before/after hash comparison was `NO_DRIFT`. Temporary prompt/result were not promoted into `_meta/reviews` because the review produced no durable finding.
+- Deferred by design: no bulk tag/orphan rewrite, no historical review-artifact deletion, and no remote restic restore test or cron/runtime change.
+
 ## [2026-08-18] review | AGY review of specification engineering sedimentation
 - Review prompt: `_meta/reviews/2026-08-18-specification-engineering-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-specification-engineering-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
 - AGY verdict: `PASS`; blocking findings: none. It accepted the existing formalization-concept placement, optional reference, trigger/skip symmetry, Direct-path preservation and secondary-source evidence boundary.

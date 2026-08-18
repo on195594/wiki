@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-08-11
+updated: 2026-08-18
 type: meta
 status: current
 ---
@@ -40,7 +40,7 @@ Run the offline regression fixtures:
 python3 -m unittest discover -s _meta/scripts -p 'test_wiki_health_check.py' -v
 ```
 
-The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, and near-duplicate pages. They create isolated temporary vaults and never modify `/home/lin/wiki`.
+The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, near-duplicate pages, required frontmatter fields, formal status enums, and closed-query index lifecycle. They create isolated temporary vaults and never modify `/home/lin/wiki`.
 
 Root resolution order:
 
@@ -98,6 +98,8 @@ Important issues:
 - broken relative Markdown links
 - formal page missing H1
 - formal page missing frontmatter
+- formal page missing any required frontmatter field
+- formal page whose `type` or `status` is outside the `SCHEMA.md` enum
 - unexpected unindexed formal pages
 - unreferenced raw source pages
 - formal page carrying a tag not registered in the `SCHEMA.md` tag taxonomy
@@ -117,11 +119,13 @@ Maintenance findings:
 - raw source with no entry in `_meta/raw-source-hashes.json`, usually a new ingestion whose manifest update was skipped
 - two formal pages overlapping above the near-duplicate threshold, usually the same subject ingested twice
 
+`queries/` pages with `status: closed` may stay outside the main index without producing a finding; Git history and direct search remain their archive path.
+
 The `known_unindexed_draft_query` code currently has no instances. The eight draft query pages it was written for were deleted on 2026-05-15 at the user's request; see [[draft-query-inventory]]. The code is retained for future draft query pages, not because any exist today.
 
 ## Current expected result
 
-As of 2026-08-11, the script passes on `/home/lin/wiki`.
+As of 2026-08-18, the script passes on `/home/lin/wiki`.
 
 Expected current interpretation:
 

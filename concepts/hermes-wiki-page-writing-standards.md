@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-06-18
+updated: 2026-08-18
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
 sources: []
@@ -42,10 +42,10 @@ Hermes wiki 页面不是随手笔记，而是正式知识资产。
 title: Page Title
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-type: entity | concept | comparison | query | summary
+type: entity | concept | comparison | query | plan | closeout | validation-case | operation | summary
 tags: [tag1, tag2]
 sources: []
-status: draft | stable
+status: draft | stable | active | closed | current
 ---
 ```
 
@@ -56,7 +56,7 @@ status: draft | stable
 - `type`：必须匹配目录职责
 - `tags`：只能使用 `SCHEMA.md` 中已定义的标签
 - `sources`：来源路径；无来源时可先留空数组
-- `status`：草稿或稳定态
+- `status`：只使用 Schema 枚举；历史日期放入 `updated`、`review_by` 或正文
 
 可选机器可读字段：
 - `description`：一句话说明页面用途，帮助 Agent 路由和预览；不能替代 `## Summary`
@@ -132,7 +132,7 @@ status: draft | stable
 - 保留原主题，不要越改越漂移
 - `updated` 日期必须刷新
 - 新增信息优先并入现有结构
-- 页面超过约 200 行时考虑拆页
+- 只有页面混合多个职责或检索成本明显上升时才考虑拆页，不按行数机械拆分
 - 主题已经分叉时建立新页面并互链
 
 ## Quality checklist

@@ -1,12 +1,12 @@
 ---
 title: Hermes Harness Profile Validation Detailed Plan
 created: 2026-04-30
-updated: 2026-04-30
+updated: 2026-08-18
 type: query
 tags: [hermes, optimization, harness, model-profiles, validation, workflow]
 sources: [queries/hermes-system-model-specific-harness-optimization-plan.md, concepts/hermes-model-specific-harness-profiles.md, docs:hermes-agent, skill:writing-plans, skill:hermes-project-and-extension-management]
-status: draft
-description: 规划 Hermes model-specific harness profile 验证的步骤、样例、标准和回滚边界。
+status: closed
+description: Hermes model-specific harness profile 验证的历史计划，已由最终 closeout 取代。
 aliases: [harness-validation-plan]
 ---
 
