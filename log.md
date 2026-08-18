@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-18] review | AGY review of ABC Legal managed-agent lifecycle ingestion
+- Review prompt: `_meta/reviews/2026-08-18-abc-legal-managed-agents-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-abc-legal-managed-agents-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
+- AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted the existing-concept placement, source limitations, inference labeling, owner links, index/log consistency and no-active-promotion boundary.
+- Parent verification: all nine before/after SHA-256 values matched exactly (`NO_DRIFT`); the raw source digest also matched `_meta/raw-source-hashes.json`; accepted fixes: `0`; rejected findings: `0`.
+- Review boundary: no raw/concept/index/hash content, memory, active skill/reference, project/pilot, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credentials, dependency or external service was changed by the reviewer.
+
 ## [2026-08-18] ingest | ABC Legal managed-agent lifecycle case
 - Captured the complete official Anthropic customer case at `raw/articles/claude-abc-legal-managed-agents-2026-08-17.md`, preserving publication date, extraction route, local summary provenance and vendor/customer-reported evidence limits.
 - Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate workflow: added Agent-as-code, PR as the change control surface, human-in-the-loop → eval → graded autonomy, and the Initial Agent → Harvester → Tuner feedback loop.
