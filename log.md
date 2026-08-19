@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-19] review | AGY review of staged structured-output sedimentation
+- Review prompt: `_meta/reviews/2026-08-19-staged-structured-output-agy-review-prompt.md`; result: `_meta/reviews/2026-08-19-staged-structured-output-agy-review.md`; AGY `1.1.15`, exit code `0`, empty stderr.
+- AGY verdict: `APPROVE`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted source fidelity, existing-concept placement, proactive optional-skill adoption, separate evaluation dimensions and the no-runtime-leakage boundary.
+- Parent verification: all six pre/post SHA-256 values matched exactly for the raw source, concept, index, log, raw hash manifest and active skill; accepted fixes: `0`; rejected findings: `0`.
+- Review boundary: no raw/concept/index/hash content, active skill, memory, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was changed by AGY.
+
 ## [2026-08-19] ingest + optional workflow | Staged structured output for local LLMs
 - Captured the full rendered Towards Data Science article at `raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md`, preserving author/date, browser-DOM extraction route, local summary provenance and flattened-format/trailing-chrome limitations.
 - Updated the existing owner `concepts/typed-ai-agent-boundaries.md` rather than creating a duplicate concept: added the schema-valid/semantically-wrong failure case and the optional “scope selection → detailed extraction” pattern.
