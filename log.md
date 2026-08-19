@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-19] ingest + optional workflow | Staged structured output for local LLMs
+- Captured the full rendered Towards Data Science article at `raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md`, preserving author/date, browser-DOM extraction route, local summary provenance and flattened-format/trailing-chrome limitations.
+- Updated the existing owner `concepts/typed-ai-agent-boundaries.md` rather than creating a duplicate concept: added the schema-valid/semantically-wrong failure case and the optional “scope selection → detailed extraction” pattern.
+- Active workflow landing: one bounded optional rule in `skill:software-development/grounded-structured-output-workflows`; staged extraction is proactively considered when scope filtering, state judgment and nested extraction are combined, but it is not a universal two-call gate.
+- Evidence boundary: the source is one worked smart-home case without repeated trials, a dataset, latency/cost measurements or proof of general superiority; the minimum comparison keeps semantic correctness, schema success, call count and latency separate.
+- Promotion boundary: no new skill, project, model runtime, provider, dependency, cron, MCP, gateway, wrapper, profile/plugin, credential or external service was added. Backup: `/home/lin/.hermes/backups/structured-output-two-stage-20260819-151947`.
+
 ## [2026-08-18] review | AGY review of ABC Legal managed-agent lifecycle ingestion
 - Review prompt: `_meta/reviews/2026-08-18-abc-legal-managed-agents-agy-review-prompt.md`; result: `_meta/reviews/2026-08-18-abc-legal-managed-agents-agy-review.md`; AGY `1.1.14`, exit code `0`, empty stderr.
 - AGY verdict: `PASS`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted the existing-concept placement, source limitations, inference labeling, owner links, index/log consistency and no-active-promotion boundary.

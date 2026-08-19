@@ -1,10 +1,10 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-08-15
+updated: 2026-08-19
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
-sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
+sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
 status: stable
 description: 说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。
 aliases: [typed-agent-boundaries]
@@ -30,6 +30,12 @@ Pydantic AI 这篇文章的长期价值，不是“又一个 Python agent 框架
 - 下游处理不确定：业务代码拿到的是已验证 Python 对象，而不是一段待解释文本。
 
 重要细节：`Field(description=...)` 不只是文档，也是在给模型提供字段级约束。字段说明越明确，校验失败和自动重试越少。
+
+### 1.1 Stage scope selection before nested extraction
+
+`[[towardsdatascience-structured-output-local-llms-2026-08-09]]` 提供了一个结构正确但语义错误的本地小模型案例：单次调用既要判断哪些设备仍需调度，又要提取属性、映射字段并组装嵌套对象；结果通过 Pydantic 校验，却错误保留了已经完成任务的设备。作者把流程拆成两个窄契约后修正了该案例：第一阶段只输出当前处理范围，第二阶段只为已锁定对象填充完整字段。
+
+这个模式适合主动作为可选设计候选，而不是等生产失败后才考虑。当一次调用同时承担前置筛选、状态判断和复杂嵌套提取，尤其使用本地小模型时，应比较 one-shot 与“范围判定 → 细节填充”两种路径。分阶段会增加调用与跨阶段一致性成本，因此不是所有结构化输出的默认门禁；最小验证应同时检查语义正确率、schema 成功率、调用次数和延迟。单篇智能家居案例证明了可行性，不证明普遍优越性。
 
 ### 2. Candidate scoring constrains the semantic output space
 
@@ -96,7 +102,7 @@ Pydantic AI 的 `RunContext` 模式把依赖作为运行时参数注入工具函
 
 ### Skill
 
-如果未来在 Hermes 中实际采用 Pydantic AI 或类似框架构建 agent，才应把具体开发流程沉淀为 skill。当前只保留为概念原则，不提前写执行 SOP。
+当外部方案补足现有 structured-output 工作流的明确空白，且低成本、可逆、可验证时，可以主动沉淀为带触发和跳过条件的 optional reference；不必等待 Hermes 先出现同类生产失败。缺少本地证据限制的是默认推广强度，不阻止可选模式进入现有 owner skill。
 
 ### MCP / internal tools
 
@@ -111,6 +117,7 @@ Hermes 现有规则“写完要验证”可以进一步细化为：agent 输出�
 ## Operating rules
 
 - 对任何进入生产链路的 LLM 输出，优先定义 schema，而不是信任自然语言格式。
+- 当一次调用同时承担范围筛选、状态判断和复杂嵌套提取时，主动评估“先定范围、再填细节”的分阶段 schema，并与 one-shot 基线比较后选择。
 - 对自托管的固定标签窄任务，先判断一次前向传播的候选打分能否替代自由生成；托管端不暴露 Logits 或任务输出开放时跳过。
 - 对任何暴露给 agent 的工具，优先当成 public API 设计，而不是临时 helper。
 - 对任何外部依赖，优先通过显式上下文注入，而不是全局变量。
