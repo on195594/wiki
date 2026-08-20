@@ -3,6 +3,22 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-20] review-fix | AGY review of coping rehearsal and imaginal exposure ingestion
+- Review prompt: `_meta/reviews/2026-08-20-coping-rehearsal-imaginal-exposure-agy-review-prompt.md`; result: `_meta/reviews/2026-08-20-coping-rehearsal-imaginal-exposure-agy-review.md`; AGY `1.1.16`, exit code `0`, empty stderr.
+- AGY verdict: `PASS_WITH_NOTES`; Blocking and Important findings: none; Minor findings: two.
+- Accepted fixes: moved the ingestion log entry into reverse-chronological position and removed the raw source from concept `depends_on`; provenance remains in frontmatter `sources` and `## Related`.
+- Parent verification: all five reviewed target hashes matched the pre-review snapshot exactly (`NO_DRIFT`) before accepted fixes were applied.
+- Boundary: AGY review was read-only; fixes stayed inside wiki concept/log/review artifacts. No memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, credentials, external service, or Hermes core change was made.
+
+## [2026-08-20] ingest | Donald Robertson on coping rehearsal and imaginal exposure
+- Captured structured raw source: `raw/articles/donald-robertson-mentally-rehearse-coping-2026-08-18.md`.
+- Created draft concept: `concepts/coping-skill-application-and-imaginal-exposure.md`.
+- Updated: `index.md`.
+- Durable unit: separate coping-skill acquisition from real-world application; detect self-regulation practices that substitute for action; test transfer only through mild, bounded, progressively realistic contact with discomfort.
+- Evidence boundary: the source is a practitioner synthesis, not a peer-reviewed study or clinical guideline; no efficacy, dosage, indication, contraindication, or unified mechanism was promoted as established fact.
+- Validation: raw/header readback, wiki health check, raw-source hash manifest, and `git diff --check` required before closeout.
+- Boundary: wiki-only ingestion; no memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
 ## [2026-08-19] review | AGY review of staged structured-output sedimentation
 - Review prompt: `_meta/reviews/2026-08-19-staged-structured-output-agy-review-prompt.md`; result: `_meta/reviews/2026-08-19-staged-structured-output-agy-review.md`; AGY `1.1.15`, exit code `0`, empty stderr.
 - AGY verdict: `APPROVE`; Blocking, Important, Minor and Recommended patches were all `None`. It accepted source fidelity, existing-concept placement, proactive optional-skill adoption, separate evaluation dimensions and the no-runtime-leakage boundary.
@@ -1519,12 +1535,3 @@
 - Rejected finding: AGY reported `未经验证 of 经验`, but parent readback/search confirmed the file already contains `未经验证的经验`; recorded as a reviewer false positive.
 - Confirmed: existing-page placement, provenance separation, cognitive-memory mapping, current-fact/history boundary, cross-page ownership, and no-active-promotion boundary all passed.
 - Boundary: AGY review was read-only; no memory write, active skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
-
-## [2026-08-20] ingest | Donald Robertson on coping rehearsal and imaginal exposure
-- Captured structured raw source: `raw/articles/donald-robertson-mentally-rehearse-coping-2026-08-18.md`.
-- Created draft concept: `concepts/coping-skill-application-and-imaginal-exposure.md`.
-- Updated: `index.md`.
-- Durable unit: separate coping-skill acquisition from real-world application; detect self-regulation practices that substitute for action; test transfer only through mild, bounded, progressively realistic contact with discomfort.
-- Evidence boundary: the source is a practitioner synthesis, not a peer-reviewed study or clinical guideline; no efficacy, dosage, indication, contraindication, or unified mechanism was promoted as established fact.
-- Validation: raw/header readback, wiki health check, raw-source hash manifest, and `git diff --check` required before closeout.
-- Boundary: wiki-only ingestion; no memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.

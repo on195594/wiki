@@ -96,7 +96,6 @@ aliases: [coping-skill-transfer, imaginal-exposure-and-avoidance, 应对技能�
 ## Relations
 
 - refines: [[personal-growth-operating-model]]
-- depends_on: [[donald-robertson-mentally-rehearse-coping-2026-08-18]]
 
 ## Related
 
