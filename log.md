@@ -1519,3 +1519,12 @@
 - Rejected finding: AGY reported `未经验证 of 经验`, but parent readback/search confirmed the file already contains `未经验证的经验`; recorded as a reviewer false positive.
 - Confirmed: existing-page placement, provenance separation, cognitive-memory mapping, current-fact/history boundary, cross-page ownership, and no-active-promotion boundary all passed.
 - Boundary: AGY review was read-only; no memory write, active skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
+## [2026-08-20] ingest | Donald Robertson on coping rehearsal and imaginal exposure
+- Captured structured raw source: `raw/articles/donald-robertson-mentally-rehearse-coping-2026-08-18.md`.
+- Created draft concept: `concepts/coping-skill-application-and-imaginal-exposure.md`.
+- Updated: `index.md`.
+- Durable unit: separate coping-skill acquisition from real-world application; detect self-regulation practices that substitute for action; test transfer only through mild, bounded, progressively realistic contact with discomfort.
+- Evidence boundary: the source is a practitioner synthesis, not a peer-reviewed study or clinical guideline; no efficacy, dosage, indication, contraindication, or unified mechanism was promoted as established fact.
+- Validation: raw/header readback, wiki health check, raw-source hash manifest, and `git diff --check` required before closeout.
+- Boundary: wiki-only ingestion; no memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
