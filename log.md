@@ -3,6 +3,18 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-24] ingest + workflow adoption | Agent Skill mechanisms and lifecycle governance
+- Captured the full-paper evidence packet at `raw/papers/arxiv-2608-14036-demystifying-agent-skills.md`, based on arXiv v1 full-PDF review rather than the secondary Chinese guide.
+- Updated `concepts/agent-experience-consolidation-loops.md` with the controlled Raw / Workflow Memory / Skill comparison, procedural-anchor mechanism, outcome-label boundary, retrieval-versus-outcome separation, misuse/cost dimensions, frontier-model implications and governed candidate-to-retirement lifecycle.
+- Updated `index.md`; the existing concept remains the owner rather than creating a duplicate “Skill checklist” page.
+- Active workflow landing: extended the existing `skill:hermes/skill-optimization-workflows` action-anchor reference and owner pointer; no new Skill, router or universal per-task gate was created.
+- Project landing: added a bounded pilot specification to the existing `/home/lin/.hermes/projects/skill-governance-evidence` workspace; the pilot may produce evidence and candidate diffs only, not automatic Active publication.
+- Evidence boundary: the primary study and supporting lifecycle/evolution/security papers are 2026 preprints concentrated in terminal/coding/tool environments; vendor capability and format-adoption claims remain vendor-reported. Package portability does not imply behavioral portability.
+- Safety boundary: automated trajectory distillation may create candidates only; external/shared evidence requires provenance and outcome attribution, and Active promotion remains separately authorized, verified and reversible.
+- Independent review: AGY returned `PASS` with no blocking findings; it accepted source fidelity, bounded triggers/skips, lifecycle-dimension separation, candidate-only synthesis, package-vs-behavior portability, pilot observability/privacy and zero runtime/infrastructure expansion. Review evidence: `project:/home/lin/.hermes/projects/skill-governance-evidence/docs/reviews/2026-08-24-agent-skill-lifecycle-agy/`.
+- Parent verification: both active target SHA-256 values matched before/after AGY (`NO_DRIFT`); the focused Skill contract validator passed with 0 warnings at 150 main-file lines, all local references valid, and 18 reference files scanned.
+- Validation: raw hash manifest added exactly one source; wiki health check returned `P0=0`, `P1=0`, `P2=0`; Wiki and project-local `git diff --check` passed.
+
 ## [2026-08-20] review-fix | AGY review of coping rehearsal and imaginal exposure ingestion
 - Review prompt: `_meta/reviews/2026-08-20-coping-rehearsal-imaginal-exposure-agy-review-prompt.md`; result: `_meta/reviews/2026-08-20-coping-rehearsal-imaginal-exposure-agy-review.md`; AGY `1.1.16`, exit code `0`, empty stderr.
 - AGY verdict: `PASS_WITH_NOTES`; Blocking and Important findings: none; Minor findings: two.

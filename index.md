@@ -28,7 +28,7 @@
 - [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：以类型化信号、确定性 dispatcher、有界重试和可审计状态差异组织 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [[ai-agent-human-outcome-design-principle]] — AI Agent 项目设计的人类结果优先原则：先验证真实问题、可衡量结果和人类信任边界，再决定模型、自动化和 human-in-the-loop 范围
-- [[agent-experience-consolidation-loops]] — Agent 经验固化与知识演化闭环：区分外部知识复用与模型权重学习，从历史证据提炼经验，按层路由，并经质量筛选、回放评估、准入和回滚形成可审计复用
+- [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：把历史证据提炼为程序锚点，分离发现、调用、适配、结果、误用和成本，并以来源归因、候选验证、准入、退役和回滚治理长期复用
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-evaluation-rubric-calibration]] — Agent 评测 Rubric 校准：聚合分数只作诊断指针；分数、评语、人工复核或 Trace 冲突时，先审计评分维度、锚点和错误激励
 - [[first-edit-economy-for-coding-agents]] — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
