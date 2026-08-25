@@ -54,7 +54,7 @@
 - [[dijkstra-ai-programming-formalization]] — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [[family-education-operating-model]] — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，而不是单点名校最优化
 - [[google-sre-gemini-cli-incident-response]] — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
-- [[hermes-agent-workflow-layering-and-adoption-order]] — 把 Codex 的分层工作流翻译成 Hermes 现有架构：指令层、知识层、skills、MCP、验证与 cron 的落地顺序
+- [[hermes-agent-workflow-layering-and-adoption-order]] — Hermes 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
 - [[hermes-ai-workflow-formalization-principles]] — 将形式化与 specification engineering 落实到 Hermes：自然语言表达意图，风险触发的规格定义正确性边界，验证闭环负责验收
 - [[hermes-context-engineering-design-priorities]] — 面向 Hermes 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
 - [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径

@@ -3,6 +3,15 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-25] ingest + workflow sedimentation | Code Mode and JSON-plumbing boundary
+- Captured the full X Article at `raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md`, preserving author/date, extraction route, source quality, references and evidence limits.
+- Updated the existing owner `concepts/hermes-agent-workflow-layering-and-adoption-order.md` rather than creating a duplicate concept: inserted a Programmatic execution / Code Mode layer between live capabilities and verification.
+- Durable rule: LLM owns task understanding, planning, program generation and semantic judgment; deterministic code owns pagination, loops, filtering, sorting, joins, retries, format conversion and intermediate tool payloads.
+- Routing is based on dataflow and reduced model-visible payload, not task size or tool-call count. Direct one-shot calls and steps requiring fresh semantic judgment remain outside Code Mode.
+- Active workflow landing had already been completed under `skill:autonomous-ai-agents/dynamic-workflow` with entry routing from `skill:software-development/coding-agent-workflow`; this wiki change records the architecture and provenance without creating another skill, runtime path or router.
+- Evidence boundary: the source's `99.9%` token reduction, endpoint counts, product maturity and vendor comparisons remain source-specific; MCP's protocol, documentation, authentication, approval and permission roles are not removed.
+- Boundary: no memory, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external-service change was made.
+
 ## [2026-08-24] ingest + workflow adoption | Agent Skill mechanisms and lifecycle governance
 - Captured the full-paper evidence packet at `raw/papers/arxiv-2608-14036-demystifying-agent-skills.md`, based on arXiv v1 full-PDF review rather than the secondary Chinese guide.
 - Updated `concepts/agent-experience-consolidation-loops.md` with the controlled Raw / Workflow Memory / Skill comparison, procedural-anchor mechanism, outcome-label boundary, retrieval-versus-outcome separation, misuse/cost dimensions, frontier-model implications and governed candidate-to-retirement lifecycle.
