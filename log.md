@@ -3,6 +3,19 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-26] ingest | Audience-situation content briefs
+- Captured source provenance at `raw/articles/searchengineland-content-briefs-audience-situations-2026-08-24.md` from Search Engine Land, preserving the URL, title, author/date, Jina Reader route, source quality and practitioner-source limitation.
+- Created concept page `concepts/audience-situation-content-briefs.md` as the smallest durable unit: audience situations, CEP, 7W, brief fields, bounded comparison testing and Hermes layer routing.
+- No existing concept was overwritten; the page links to the adjacent agentic content pipeline, formalization, project kickoff and wiki ingestion concepts.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service change was made.
+- Independent AGY review requested; review artifacts and verdict will be appended as a separate review record.
+
+## [2026-08-26] review | AGY review of audience-situation content briefs
+- Review prompt: `_meta/reviews/2026-08-26-audience-situation-content-briefs-agy-review-prompt.md`; result: `_meta/reviews/2026-08-26-audience-situation-content-briefs-agy-review.md`; AGY read-only verdict: `PASS`.
+- AGY accepted source fidelity, minimal concept placement, provenance/frontmatter/index/log/hash consistency, and strict wiki-only boundary. No P0/P1 findings.
+- Accepted minor hygiene fix: refreshed `index.md` header to `Last updated: 2026-08-26 | Indexed pages: 113`.
+- Deferred: none. The review's transient empty-file note was resolved when the result was written; no active Hermes surface was changed.
+
 ## [2026-08-25] ingest + workflow sedimentation | Code Mode and JSON-plumbing boundary
 - Captured the full X Article at `raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md`, preserving author/date, extraction route, source quality, references and evidence limits.
 - Updated the existing owner `concepts/hermes-agent-workflow-layering-and-adoption-order.md` rather than creating a duplicate concept: inserted a Programmatic execution / Code Mode layer between live capabilities and verification.
