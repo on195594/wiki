@@ -106,7 +106,7 @@
 - [[agent-architecture-primary-paper-map]] — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
 - [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
-- [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构
+- [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 在 Hermes wiki 中的采纳边界，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
 - [[hermes-wiki-knowledge-freshness-improvement-plan]] — 已执行的 Wiki 知识新鲜度改造决策：复用 sources、review_by、updated 和 [推论]，不引入新状态机或验证项目
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`

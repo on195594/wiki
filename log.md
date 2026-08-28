@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-28] ingest | Google Cloud OKF Knowledge Catalog scale-out pattern
+- Captured the complete official main article at `raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md`, preserving authors/date, deterministic extraction route, local summary provenance, API/IAM/lifecycle details and vendor-example limitations.
+- Updated the existing owner `queries/okf-for-hermes-wiki-governance-assessment.md` rather than creating a duplicate concept or workflow.
+- Durable delta: recorded the Entry/Aspect mapping, `searchEntries` → `LookupContext` → `entries.get(view=ALL)` retrieval split, viewer/editor IAM separation, explicit deletion lifecycle, Region/link-traversal limits and server-side predicate constraints.
+- Decision unchanged: Hermes remains Markdown-first; Knowledge Catalog is only a project-level candidate after real cross-team discovery, identity isolation or data-colocation pressure appears.
+- Boundary: Wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-28] review-fix | AGY review of commit ed3c5fa
 - Review prompt: `_meta/reviews/2026-08-28-workspace-commit-ed3c5fa-agy-review-prompt.md`; result: `_meta/reviews/2026-08-28-workspace-commit-ed3c5fa-agy-review.md`; AGY `1.1.22` verdict: `PASS_WITH_MINOR_FIXES`.
 - Accepted Important fix: restored two missing 2026-08-26 section headers so execution and initial OpenWiki ingestion bullets are no longer orphaned.

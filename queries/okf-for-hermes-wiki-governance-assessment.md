@@ -1,10 +1,10 @@
 ---
 title: OKF Concepts for Hermes Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-08-28
 type: query
 tags: [hermes, knowledge-base, governance, context-engineering]
-sources: [docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, docs:hermes-llm-wiki, docs:hermes-skills, docs:hermes-memory]
+sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, docs:hermes-llm-wiki, docs:hermes-skills, docs:hermes-memory]
 status: stable
 description: 评估 OKF/LLM-wiki 思路如何作为 Hermes wiki 的机器可读治理增强，而不是替代现有 wiki 架构。
 aliases: [okf, open-knowledge-format, knowledge-object, llm-wiki]
@@ -58,6 +58,24 @@ OKF 对 Hermes wiki 有用，但只应作为机器可读治理增强参考，不
 - context pack 引用是否存在；
 - `sources` 是否可复验。
 
+## 企业规模化实现证据：Google Cloud Knowledge Catalog
+
+Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Markdown/YAML 交付形态的前提下映射到企业 Catalog，但这是供应商特定的规模化方案，不改变 Hermes 当前的本地架构裁决。
+
+### 来源中的实现事实
+
+- **对象映射**：EntryGroup 承载一个 bundle；`okf-bundle` EntryType 表示概念；`overview` Aspect 保存 Markdown 正文；`okf` Aspect 保存来源、验证、状态、失效时间、运行时与证明等 13 类结构化信号。
+- **三级检索**：`searchEntries` 先找候选；`LookupContext` 每次最多读取 10 个条目并用 `context_budget` 限制格式化上下文；需要完整结构化信号时再调用 `entries.get(view=ALL)`。
+- **权限分离**：读取 Agent 使用 `roles/dataplex.catalogViewer`；发布身份使用 `roles/dataplex.catalogEditor`；EntryGroup IAM 向条目继承。
+- **生命周期**：`kcmd push` 是幂等 upsert，但每次重写全部条目；概念删除需要显式 `kcmd delete`，整个 bundle 可删除 EntryGroup，而共享 EntryType/AspectType 保留。
+- **检索边界**：数组字段的子字段不能直接做服务端谓词过滤；时间谓词不能使用完整 RFC3339 时间戳；`LookupContext` 不会沿正文链接自动遍历，而且一次调用只解析同一 Region 的条目。
+
+### 对 Hermes 的边界化含义
+
+- 这篇文章补充的是“当 bundle 数量、身份边界和跨项目发现成为真实问题时，Catalog 如何承载”的实现证据，不是本地接入 Google Cloud 的授权。
+- `[推论]` 如果未来出现多个团队分别拥有知识包、Agent 需要跨项目搜索、不同读取身份必须看到不同条目，才值得把 Catalog 作为项目级候选，并先比较本地 Markdown 检索、权限和运维成本。
+- `[推论]` 可复用的本地原则只有三点：候选搜索与正文/证明读取分层、读写身份分离、删除与退役显式化；这些原则继续由现有 Wiki/检索/生命周期 owner 承载，不创建新 Skill、MCP 或运行时服务。
+
 ## Defer or reject
 
 ### Defer `resource`
@@ -69,8 +87,8 @@ OKF 对 Hermes wiki 有用，但只应作为机器可读治理增强参考，不
 ### Reject full migration
 不把 85+ 现有页面一次性迁移到 OKF 风格；这会制造大量无意义 diff、审计噪声和回滚压力。
 
-### Reject external graph/runtime dependencies
-不引入图数据库、外部向量库或专有 catalog。官方 LLM-wiki 文档强调 Markdown-first、无数据库、无特殊 runtime。
+### Reject default external graph/runtime dependencies
+默认不引入图数据库、外部向量库或专有 catalog。Google Cloud 的实现说明证明了企业 Catalog 是可行的规模化选项，但没有证明当前 Hermes 存在该规模问题；只有真实的跨团队发现、权限隔离或数据共置需求出现后，才按项目级方案另行比较和授权。
 
 ## Pilot scope
 
