@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-28] review-fix | AGY review of commit ed3c5fa
+- Review prompt: `_meta/reviews/2026-08-28-workspace-commit-ed3c5fa-agy-review-prompt.md`; result: `_meta/reviews/2026-08-28-workspace-commit-ed3c5fa-agy-review.md`; AGY `1.1.22` verdict: `PASS_WITH_MINOR_FIXES`.
+- Accepted Important fix: restored two missing 2026-08-26 section headers so execution and initial OpenWiki ingestion bullets are no longer orphaned.
+- Accepted Minor hygiene fix: removed the prior SDLC review's `.exit` and before/after hash sidecars after preserving verdict and `NO_DRIFT` in the review record.
+- Rejected as a required edit: the freshness concept remains intentionally `draft` after the later adversarial review; the earlier `stable` statement is retained as historical intermediate state, not current authority.
+- Parent verified all 24 commit target hashes had `NO_DRIFT`; corrected AGY's raw line count from 914 to 913; independently reran 8/8 Wiki health unit tests.
+- Boundary: Wiki-only review and documentation fixes; no memory, active skill/reference, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-28] review | AGY review of Anthropic AI-native SDLC ingestion
 - Review prompt: `_meta/reviews/2026-08-28-anthropic-ai-native-sdlc-agy-review-prompt.md`; result: `_meta/reviews/2026-08-28-anthropic-ai-native-sdlc-agy-review.md`; AGY `1.1.22` returned `PASS` with no Blocking, Important, Minor or recommended patches.
 - Parent before/after SHA-256 comparison returned `NO_DRIFT`; accepted fixes: `0`.
@@ -27,7 +35,7 @@
 - Staged (not yet applied) updates to `skill:hermes-knowledge-and-workflow-governance` and `skill:hermes-wiki-and-domain-knowledge` to encode Wiki promotion vs active adoption and direct low-risk landing.
 - Skill writes are pending the configured skill-write approval; no active skill behavior was claimed as changed.
 
-
+## [2026-08-26] execute | Hermes Wiki knowledge freshness adoption
 - Executed the plan directly in `concepts/hermes-knowledge-architecture.md`, `concepts/hermes-memory-skills-wiki-boundaries.md`, and `concepts/wiki-ingestion-workflow.md`.
 - Added source-adjacency guidance for important conclusions, `[推论]` separation, bounded `review_by` use, local freshness maintenance and the clarification that `updated` is not full-page verification.
 - Preserved existing Wiki mechanisms; no new status enum, template, validator, watcher, verification project, batch migration or active Hermes surface was introduced.
@@ -41,7 +49,7 @@
 - Added `## Summary` to the plan and corrected the raw source quality to `structured summary`.
 - No verification project, batch migration, watcher, new schema, active skill, runtime, cron, MCP, memory or external service was added.
 
-
+## [2026-08-26] ingest | OpenWiki self-correcting memory
 - Captured the LangChain/OpenWiki source at `raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md`, preserving URL, extraction route, reported metrics and vendor/practitioner evidence limitations.
 - Created concept `concepts/hermes-knowledge-freshness-and-claim-evidence.md`: claims, evidence binding, stale state, local inference labeling and on-demand verification.
 - Created query plan `queries/hermes-wiki-knowledge-freshness-improvement-plan.md`: baseline, 3–5 page Wiki-only pilot, local verification loop and conditional structured enhancement.

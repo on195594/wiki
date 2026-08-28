@@ -1,8 +1,0 @@
-AGY version: 1.1.22
-
-4481ea4a46a33155bdff479c3903849d294ccbe67e11523feeccea86b0159a62  raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md
-ab32c2082d28c9ea5ffa2f302a679af56fd0d789e2aeb20bc8e5ccee52c4139d  concepts/agent-development-lifecycle.md
-777b0ba6b7782ba702381e8b1898f3fc8c5b5e8486eff9d2a45d7599830f3895  index.md
-827fa6b1a4c81b5d9983f37d7d6a863fbb5db746fbcab68ff022f0553ac44648  log.md
-522a92c12647eb02b9dca69ce1db69bdf2a611b02bc56451c7611691d3090628  _meta/raw-source-hashes.json
-47cfd19f944eaa7f61b25a7967ff44a7e87cd27afc4f830634d40bc8468bf28e  _meta/reviews/2026-08-28-anthropic-ai-native-sdlc-agy-review-prompt.md
