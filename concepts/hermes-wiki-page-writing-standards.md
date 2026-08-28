@@ -156,6 +156,16 @@ status: draft | stable | active | closed | current
 ## Minimal template
 最小模板只需保留：frontmatter、`# 标题`、`## Summary`、主体内容、`## Related`。
 
+## Source and freshness guidance
+
+对于重要结论，优先在同段或相邻句放具体 Wiki、raw 或官方来源；数字、当前外部行为、规范性规则、争议结论和多来源综合结论尤其如此。普通背景段落保留页面级 `sources` 即可。
+
+来源事实与本地推导分开；本地推导使用 `[推论]`。仅对外部厂商控制的产品行为、接口或命令集设置 `review_by`；仅提及工具的方法论页面不为了形式添加日期。
+
+页面局部复核只说明相关段落，不代表整页已复核；`updated` 仅表示文件最近编辑时间。无法确认时保留限制，不把未确认内容写成当前规则。
+
+低风险、来源清楚且已有 Wiki owner 的外部知识，可以直接按最小改动沉淀到现有正式页面或入库规则；不因缺少 active workflow 证据而另建验证项目、试点门槛或新基础设施。涉及 Schema、active skill、runtime、cron、MCP、memory 或批量迁移时，另行走对应治理流程。
+
 ## Relationship to other rules
 这页定义“怎么写页面”，不是“信息该放哪里”。
 - 内容归类边界见 `[[hermes-memory-skills-wiki-boundaries]]`

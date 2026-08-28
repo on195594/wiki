@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-08-18
+updated: 2026-08-28
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -18,7 +18,7 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 核心原则：可靠 agent 不是一次性 demo，而是一个可循环改进的工程系统：先构建明确边界，再用 eval 和场景测试验证，受控部署到可恢复运行时，用 trace 和反馈监控真实行为，并由治理层管理成本、权限、上下文和资产复用。
 
 ## Source anchor
-本页来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`。
+本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例和 `[[anthropic-ai-native-sdlc-playbook-2026-08-21]]` 补充。
 
 该文有产品导向：LangGraph、LangSmith、Deep Agents 等是 LangChain 生态中的参考实现，不应直接等同于 Hermes 的默认方案。本页只沉淀可迁移的生命周期模型。
 
@@ -92,6 +92,18 @@ ABC Legal 的公开案例为这条生命周期提供了一个企业落地样本�
 
 [推论] 对 Hermes-adjacent Agent 项目，可迁移的不是特定托管产品，而是四个控制点：可审查的文本资产、PR/差异作为变更边界、基于真实反馈的 eval、以及人工批准后的分级放权。是否值得 Agent 化还应同时计算业务价值、模型与工具调用成本、验证成本和维护负担；ABC Legal 报告的数量、约 98% 一致性及最高约 50% 成本下降只属于该公司案例，不是 Hermes 的默认阈值。
 
+### 补充：提交工件驱动的 AI-native SDLC
+
+Anthropic 的 AI-native SDLC playbook 把 Plan、Design、Build、Test、Deploy、Maintain 从线性交接改写为由已提交工件连接的循环：`intent → spec → plan → code/tests → PR/review → incident record → new intent`。每个阶段读取上一阶段已批准的产物，并把自己的产物提交到版本控制；提交历史同时承担需求、决策、实现和批准的审计轨迹。
+
+这套框架补充了三个可迁移原则：
+
+- **瓶颈随代码生成速度迁移**：当 Build 压缩到小时级，Plan、验证、审批和生产反馈会成为主要约束；增加更多编码 Agent 不能解决上下游拥堵。
+- **建议性控制与确定性控制分层**：Prompt、`CLAUDE.md` 和 Skills 用于传递上下文与策略，但不能保证执行；必须成立的边界应由测试、Hooks、CI、沙箱、权限和人工批准负责。
+- **生产反馈重新进入生命周期**：监控信号应先由确定性规则检测，再触发有权限边界的诊断或候选变更，并把结果写回下一轮可审查工件，而不是让模型直接在线改写生产规则。
+
+[推论] 对 Hermes，价值不在于强制采用这些文件名或新增一套总工作流，而在于保持现有 owner 间的可审查交接：用户请求或项目问题承载 intent，`spec-driven-development` 定义契约，`writing-plans` 承载依赖步骤，`coding-agent-workflow` 负责实现与验证路由，active-layer/runtime owner 负责发布、回滚和生产权限。只有跨会话、委派或多阶段任务才值得保存独立工件；清晰、局部、可逆且有便宜验证的小改动继续走 Direct。
+
 ## Hermes interpretation
 这篇文章给 Hermes 的价值，是把已有零散原则放进一条生命周期总线。
 
@@ -113,6 +125,9 @@ Hermes 映射：
 
 ## What not to copy blindly
 - 不要因为文章强调 LangGraph / LangSmith / Deep Agents，就把它们视为 Hermes 的必选架构。
+- 不要把 `intent.md`、`spec.md`、`plan.md` 固化为所有任务的必填文件；工件形式应服从任务跨度、审查和交接需求。
+- 不要把 20–50 个历史任务、1σ/2σ/3σ 响应层级、“一页 CLAUDE.md”或“错误两次即写规则”升级为 Hermes 默认阈值；它们是来源中的起步建议，需要本地证据。
+- 不要因官方来源直接采用 Claude Security、Claude Tag、Cowork、Managed Settings 或其他 Anthropic 产品；产品选择、凭证、运行时和自动化仍需独立评估与授权。
 - 不要把生命周期页直接变成 skill；它当前是架构概念，不是本地已验证 SOP。
 - 不要把 Monitor 理解成“保存全部聊天记录”；应保存足以定位失败和构造 eval 的 trace-like evidence。
 - 不要把 Govern 理解成重流程审批；治理的目标是低风险快速迭代。
@@ -145,6 +160,7 @@ Hermes 映射：
 
 ## Related
 - [[langchain-agent-development-lifecycle-2026-05-09]]
+- [[anthropic-ai-native-sdlc-playbook-2026-08-21]]
 - [[claude-abc-legal-managed-agents-2026-08-17]]
 - [[agent-self-validation-loops]]
 - [[subagent-orchestration-patterns]]

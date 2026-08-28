@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-08-26 | Indexed pages: 113
+> Last updated: 2026-08-28 | Indexed pages: 115
 
 ## Entities
 
@@ -15,7 +15,7 @@
 - [[software-engineering-laws-design]] — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
 - [[software-engineering-laws-decisions]] — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
 - [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态 Top-K 路由
-- [[agent-development-lifecycle]] — Agent 开发生命周期：以 Build → Test → Deploy → Monitor 闭环和 Govern 横切层推进工程化，用 Agent-as-code、PR 审批、反馈 eval 和分级放权控制生产变更
+- [[agent-development-lifecycle]] — Agent 开发生命周期：以提交工件连接 Build → Test → Deploy → Monitor 闭环，并用 Govern、PR 审批、反馈 eval、确定性边界和分级放权控制生产变更
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
 - [[agent-memory-reflection-planning-pipeline]] — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 Hermes 默认 memory
@@ -61,6 +61,7 @@
 - [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径
 - [[hermes-active-surface-lifecycle-governance]] — Hermes 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
 - [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、冲突感知对象、证据/知识路由、实体对齐、关系遍历与检索回写闭环
+- [[hermes-knowledge-freshness-and-claim-evidence]] — Hermes 知识新鲜度与来源精度：复用 sources、review_by、updated 和 [推论] 改善可复用 Wiki 知识
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
 - [[hermes-python-engineering-capability-checklist]] — Hermes Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环
 - [[hermes-skill-refactoring-methodology]] — Hermes active skill 重构方法论：以窄职责、前置安全边界、reference 分层、父验证和独立审查闭环优化 `test-driven-development`
@@ -106,6 +107,7 @@
 - [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 思路在 Hermes wiki 中的采纳边界：只作为机器可读知识对象增强，不替代现有 Markdown wiki 架构
+- [[hermes-wiki-knowledge-freshness-improvement-plan]] — 已执行的 Wiki 知识新鲜度改造决策：复用 sources、review_by、updated 和 [推论]，不引入新状态机或验证项目
 - [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
 - [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
 - [[hermes-agent-experience-consolidation-capability-assessment]] — 2026-05-11 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验

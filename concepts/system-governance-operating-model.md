@@ -1,7 +1,7 @@
 ---
 title: System Governance Operating Model
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-08-26
 type: concept
 tags: [hermes, governance, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -52,6 +52,21 @@ system governance 的核心目标是：
 
 ### 5. Governance is an enabling layer
 治理不是为了增加流程，而是为了让 LifeOS 能持续扩展而不塌陷。
+
+### 6. Aggressive evolution without durable bloat
+
+低风险、局部、可逆且能立即验证的改进默认直接落到现有 owner；不因缺少历史故障而自动转成试点、观察期或多轮审查。更快演进必须同时更快替换、合并和退役，不能只加速新增。
+
+每次 durable 修改优先回答：更新哪个 owner、替换什么旧内容、能否合并重复规则、能否退出 closed/superseded 入口。默认目标是同一概念族 `net durable growth <= 0`；确需新增 canonical owner 时，必须说明现有 owner 为何无法承载。
+
+评估必须收敛到四种结果之一：
+
+- `APPLY_NOW`：低风险、可逆、可立即验证，直接执行；
+- `APPLY_BOUNDED`：方向有价值，直接窄落到现有 owner；
+- `DEFER_EXACT`：明确缺少的事实或授权、最小补证动作和重新触发事件；
+- `REJECT`：收益低于成本或与当前架构不匹配，不进入模糊 backlog。
+
+资金、安全、凭证、生产、破坏性操作、不可逆迁移和无人监管的 active/runtime 自修改仍保持严格门禁。激进演进反转的是低风险任务的举证责任，不削弱高风险安全边界。
 
 ## Interfaces with other domains
 ### 与 [[lifeos-overview]] 的关系

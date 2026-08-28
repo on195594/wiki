@@ -3,6 +3,66 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-28] review | AGY review of Anthropic AI-native SDLC ingestion
+- Review prompt: `_meta/reviews/2026-08-28-anthropic-ai-native-sdlc-agy-review-prompt.md`; result: `_meta/reviews/2026-08-28-anthropic-ai-native-sdlc-agy-review.md`; AGY `1.1.22` returned `PASS` with no Blocking, Important, Minor or recommended patches.
+- Parent before/after SHA-256 comparison returned `NO_DRIFT`; accepted fixes: `0`.
+- Parent bounded AGY's “verbatim” wording: the main article body is preserved, while the raw source explicitly discloses the truncated final resources-list line and includes two Markdown fence repairs; AGY's end-line citation was one line high. No durable concept correction was needed.
+- Review remained read-only. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was changed.
+
+## [2026-08-28] ingest | Anthropic AI-native SDLC playbook
+- Captured the official playbook at `raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md`, preserving author/date, deterministic extraction route, local summary provenance and the truncated-resources limitation.
+- Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate workflow: added the committed-artifact chain, bottleneck migration, advisory-vs-deterministic control split and production-feedback loop.
+- Hermes mapping remains distributed across existing owners: intent/project context, `spec-driven-development`, `writing-plans`, `coding-agent-workflow`, and separately authorized active-layer/runtime operations.
+- Evidence boundary: Anthropic product choices, productivity expectations, 20–50-task eval guidance, sigma tiers and documentation heuristics remain source-specific rather than Hermes defaults.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was changed.
+
+## [2026-08-26] governance | Aggressive evolution without durable bloat
+- Added a low-risk action bias to `/home/lin/.hermes/SOUL.md`: local, reversible, cheaply verifiable changes prefer direct execution over pilots or observation.
+- Updated `skill:hermes-active-layer-governance` with `APPLY_NOW`, `APPLY_BOUNDED`, `DEFER_EXACT`, and scoped-reviewer decision defaults while preserving L2/L3 gates.
+- Updated `concepts/system-governance-operating-model.md` with replacement-first evolution, concept-family `net durable growth <= 0`, explicit defer requirements, and high-risk exceptions.
+- No new skill, project, cron, watcher, evaluator, runtime service, provider, credential, MCP, memory entry, or schema was added.
+
+## [2026-08-26] skill + wiki guidance | Direct low-risk knowledge landing
+- Updated `concepts/hermes-wiki-page-writing-standards.md`: low-risk, source-backed knowledge with an existing Wiki owner may land directly without a validation project, pilot gate, coverage exercise or new infrastructure; Schema/active-surface/batch changes remain separately governed.
+- Staged (not yet applied) updates to `skill:hermes-knowledge-and-workflow-governance` and `skill:hermes-wiki-and-domain-knowledge` to encode Wiki promotion vs active adoption and direct low-risk landing.
+- Skill writes are pending the configured skill-write approval; no active skill behavior was claimed as changed.
+
+
+- Executed the plan directly in `concepts/hermes-knowledge-architecture.md`, `concepts/hermes-memory-skills-wiki-boundaries.md`, and `concepts/wiki-ingestion-workflow.md`.
+- Added source-adjacency guidance for important conclusions, `[推论]` separation, bounded `review_by` use, local freshness maintenance and the clarification that `updated` is not full-page verification.
+- Preserved existing Wiki mechanisms; no new status enum, template, validator, watcher, verification project, batch migration or active Hermes surface was introduced.
+- The query plan is now marked `closed` as an executed decision record; future edits follow the canonical writing and ingestion pages.
+- Verification: Wiki health check and `git diff --check` completed after the changes.
+
+## [2026-08-26] repair | Codex findings on Wiki freshness plan
+- Applied Codex B1/B2 repairs: added the final source/freshness guidance to `concepts/hermes-wiki-page-writing-standards.md`; clarified that Wiki edits require current-task write authorization and the existing index/log/health-check/diff closeout.
+- Removed local adoption of OpenWiki status vocabulary from the concept and plan; Hermes continues using `sources`, `review_by`, `updated` and `[推论]`.
+- Narrowed `review_by` to externally controlled product behavior, interfaces and command sets; clarified that `updated` does not mean full-page review.
+- Added `## Summary` to the plan and corrected the raw source quality to `structured summary`.
+- No verification project, batch migration, watcher, new schema, active skill, runtime, cron, MCP, memory or external service was added.
+
+
+- Captured the LangChain/OpenWiki source at `raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md`, preserving URL, extraction route, reported metrics and vendor/practitioner evidence limitations.
+- Created concept `concepts/hermes-knowledge-freshness-and-claim-evidence.md`: claims, evidence binding, stale state, local inference labeling and on-demand verification.
+- Created query plan `queries/hermes-wiki-knowledge-freshness-improvement-plan.md`: baseline, 3–5 page Wiki-only pilot, local verification loop and conditional structured enhancement.
+- Corrected boundary: Wiki promotion and Wiki-only optimization are recommended; active skill/runtime/cron/MCP/memory/schema migration remain separately gated.
+- Independent AGY review requested; review artifacts and verdict will be appended separately.
+
+## [2026-08-26] plan-revision | Remove verification-project gate from Wiki freshness adoption
+- User identified that the prior plan turned direct Wiki improvement into another validation/pilot project and created a delay-to-land loop.
+- Replaced the staged pilot/approval plan with an immediately applicable Wiki maintenance rule: claim–evidence–status, optional `## Evidence` / `## Verification`, Just-in-Time stale handling, and edit-opportunity migration.
+- The concept page was promoted from `draft` to `stable`; the query page remains `active` as the operating plan.
+- No success gate, independent validation project, background watcher, full-vault migration or active Hermes surface change is required for ordinary adoption.
+
+## [2026-08-26] review | AGY review of OpenWiki freshness sedimentation and Wiki improvement plan
+- Review prompt: `_meta/reviews/2026-08-26-openwiki-freshness-agy-review-prompt.md`; result: `_meta/reviews/2026-08-26-openwiki-freshness-agy-review.md`; AGY read-only verdict: `PASS_WITH_NOTES`.
+- AGY explicitly approved stages 0–1 Wiki-only pilot and found no Blocking or Important findings.
+- Accepted minor fixes: index count 113→115, raw-source SHA-256 manifest updated, non-standard `related` moved to `## Related`, and Stage 2 clarified as Just-in-Time rather than a watcher or full scan.
+- AGY accepted the corrected boundary: Wiki promotion and Wiki-only optimization are recommended; active workflow/runtime/cron/MCP/memory/schema migration remain separately gated.
+- Verification: raw hash manifest reports 145 files; Wiki health check `pass: true`, `P0=0`, `P1=0`, `P2=0`; `git diff --check` passed.
+- Active Hermes surfaces were untouched.
+
+
 ## [2026-08-26] ingest | Audience-situation content briefs
 - Captured source provenance at `raw/articles/searchengineland-content-briefs-audience-situations-2026-08-24.md` from Search Engine Land, preserving the URL, title, author/date, Jina Reader route, source quality and practitioner-source limitation.
 - Created concept page `concepts/audience-situation-content-briefs.md` as the smallest durable unit: audience situations, CEP, 7W, brief fields, bounded comparison testing and Hermes layer routing.

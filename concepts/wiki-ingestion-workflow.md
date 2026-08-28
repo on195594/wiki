@@ -30,6 +30,8 @@ aliases: [wiki-ingestion, knowledge-ingestion]
    - `concepts/`
    - `comparisons/`
    - `queries/`
+   - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源；本地推导使用 `[推论]`
+   - 外部厂商控制的产品行为、接口或命令集按需要使用 `review_by`
 5. 为页面补充 `[[wikilinks]]`
 6. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
 7. 在 `[[log]]` 只记录 durable delta、证据边界和验证结果
