@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-28] ingest | Vercel language-native durable workflow design
+- Captured the official Vercel article at `raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md`, preserving author/date, deterministic extraction provenance, the main article body and vendor-evidence limitations.
+- Updated `concepts/agent-orchestration-production-tradeoffs.md` with the smallest reusable rule: prefer language-native/library-first durable execution before a dedicated platform, require in-flight code-version routing, and keep idempotency, compensation and authoritative readback outside ergonomic Hook claims.
+- Reused the existing concept and active `project-carrier-decision` owner; no new concept, skill, project, dependency, runtime, cron, MCP, gateway, wrapper or provider integration was created.
+- Verification: raw hash manifest refresh, wiki health check and `git diff --check` run after the write.
+
 ## [2026-08-28] ingest | Google Cloud OKF Knowledge Catalog scale-out pattern
 - Captured the complete official main article at `raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md`, preserving authors/date, deterministic extraction route, local summary provenance, API/IAM/lifecycle details and vendor-example limitations.
 - Updated the existing owner `queries/okf-for-hermes-wiki-governance-assessment.md` rather than creating a duplicate concept or workflow.

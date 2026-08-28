@@ -1,10 +1,10 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-08-15
+updated: 2026-08-28
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
-sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md]
+sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md]
 status: stable
 description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
 aliases: [agent-orchestration-tradeoffs]
@@ -28,6 +28,16 @@ The durable engineering question is not "how many agents can I add?" but **which
 - If mistakes are unacceptable and volume is low, add a reflexive self-correction loop with explicit stop conditions.
 
 The same specialist agents can be connected in different ways; the architecture is the state-sharing, communication, verification, and recovery design around them.
+
+## Language-native durable execution before platform orchestration
+
+`[[vercel-best-workflow-engine-programming-language-2026-08-27]]` adds a narrower carrier-selection principle: once durable execution is genuinely required, first test whether ordinary language control flow plus a library can preserve the existing program shape. Native conditions, loops, exceptions, functions and async calls are easier to keep beside business logic than a second platform-specific DAG when both satisfy the same recovery model.
+
+The article's strongest reusable evidence is not the claim that one product is the “best” engine. It is the boundary exposed by long-running workflow evolution: replay/checkpoint support is incomplete unless an in-flight run can still reach compatible code. Vercel addresses this by pinning each run to its original immutable deployment; its official Postgres backend did not yet provide equivalent version routing at publication time. A unified Hook/Webhook API may improve developer experience, but it does not prove idempotency, compensation, schema migration or exactly-once external effects.
+
+Hermes interpretation: escalate from scripts and authoritative project artifacts only for a concrete need such as cross-process persistence, durable external waits, in-flight version routing, operational visibility or protected irreversible side effects. Prefer a language-native/library-first carrier before a dedicated platform, then verify a worker loss immediately after one side effect succeeds but before the next checkpoint. Keep receipts, Git state and external readback authoritative over runtime checkpoints.
+
+Limits: this is a Vercel vendor article, deployment pinning depends on infrastructure that retains and routes immutable versions, and the reported Workflow v5 performance gain was not independently reproduced here. It is selection evidence, not a Hermes default or a reason to adopt the TypeScript SDK.
 
 ## Four production orchestration patterns
 
@@ -191,6 +201,7 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 
 ## Related
 
+- [[vercel-best-workflow-engine-programming-language-2026-08-27]]
 - [[alphasignal-agent-orchestration-patterns-2026-05-05]]
 - [[subagent-orchestration-patterns]]
 - [[agent-self-validation-loops]]
