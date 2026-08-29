@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-08-28
+updated: 2026-08-29
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -18,7 +18,7 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 核心原则：可靠 agent 不是一次性 demo，而是一个可循环改进的工程系统：先构建明确边界，再用 eval 和场景测试验证，受控部署到可恢复运行时，用 trace 和反馈监控真实行为，并由治理层管理成本、权限、上下文和资产复用。
 
 ## Source anchor
-本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例和 `[[anthropic-ai-native-sdlc-playbook-2026-08-21]]` 补充。
+本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例、`[[anthropic-ai-native-sdlc-playbook-2026-08-21]]` 和 Microsoft Agent Framework 的 `[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]` 补充。
 
 该文有产品导向：LangGraph、LangSmith、Deep Agents 等是 LangChain 生态中的参考实现，不应直接等同于 Hermes 的默认方案。本页只沉淀可迁移的生命周期模型。
 
@@ -33,6 +33,14 @@ Build 阶段先决定 agent 系统的抽象层级，而不是直接堆 prompt �
 - no-code / low-code builder：让领域专家参与 prompt、workflow 和 context 编辑
 
 可迁移原则：简单任务可以只需要 tool-calling loop；复杂 agent 需要工程师保留 hooks、middleware、auth、approval 和业务规则控制权。
+
+#### 共享 Agent 定义与薄宿主
+
+Microsoft Agent Framework 的生产化示例补充了 Build 与后续阶段之间的结构边界：把 instructions、tools、skills、memory、approvals 和资源生命周期集中到一个共享 Agent factory，再由 console、hosted service 和 eval runner 三个薄宿主消费同一份定义。可迁移的机制不是 Microsoft 的具体 SDK，而是“核心定义一次、宿主只负责运行环境”的分层；这样观测、治理、部署和评测面对的是同一个 Agent，而不是三份逐渐漂移的副本。
+
+宿主差异仍应显式存在，但应表现为环境策略而不是复制业务逻辑：本地宿主可以保留交互式调试能力，托管宿主默认关闭容器文件访问与 shell，需要文件时注入外部持久存储；代码执行只有在外部沙箱成立时才可启用，子进程执行器本身不能被称为沙箱。评测宿主则复用同一 Agent，先运行便宜、确定性的本地检查，再按需增加模型评分；trace 中暴露的真实失败应回流为下一轮 eval，而不是直接在线改写 Agent。
+
+[推论] 对 Hermes-adjacent 项目，只有确实存在 console、runtime、eval 或其他多个载体时才需要共享 factory / thin-host 结构；单入口、局部且可验证的脚本继续保持单一入口，避免为尚不存在的部署形态预建抽象。
 
 ### 2. Test
 Test 阶段必须在生产前发生，但不必等完美评估集。
@@ -128,6 +136,7 @@ Hermes 映射：
 - 不要把 `intent.md`、`spec.md`、`plan.md` 固化为所有任务的必填文件；工件形式应服从任务跨度、审查和交接需求。
 - 不要把 20–50 个历史任务、1σ/2σ/3σ 响应层级、“一页 CLAUDE.md”或“错误两次即写规则”升级为 Hermes 默认阈值；它们是来源中的起步建议，需要本地证据。
 - 不要因官方来源直接采用 Claude Security、Claude Tag、Cowork、Managed Settings 或其他 Anthropic 产品；产品选择、凭证、运行时和自动化仍需独立评估与授权。
+- 不要因为 Microsoft 示例把 OpenTelemetry、Purview、Foundry、Blob Storage 或 `LocalCodeAct` 当成 Hermes 默认选型；其中 `LocalCodeAct` 明确不是沙箱，任何托管、凭证、遥测内容捕获或代码执行能力都需要独立项目证据和授权。
 - 不要把生命周期页直接变成 skill；它当前是架构概念，不是本地已验证 SOP。
 - 不要把 Monitor 理解成“保存全部聊天记录”；应保存足以定位失败和构造 eval 的 trace-like evidence。
 - 不要把 Govern 理解成重流程审批；治理的目标是低风险快速迭代。
@@ -161,6 +170,7 @@ Hermes 映射：
 ## Related
 - [[langchain-agent-development-lifecycle-2026-05-09]]
 - [[anthropic-ai-native-sdlc-playbook-2026-08-21]]
+- [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]
 - [[claude-abc-legal-managed-agents-2026-08-17]]
 - [[agent-self-validation-loops]]
 - [[subagent-orchestration-patterns]]

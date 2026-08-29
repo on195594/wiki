@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-29] ingest | Microsoft Agent Framework production-ready harness
+- Captured the official Microsoft Agent Framework article at `raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md`, preserving author/date, the full main article body, code examples, extraction provenance and vendor-evidence limitations.
+- Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate concept or workflow: added the shared Agent factory / thin-host boundary, explicit host-specific capability reduction, and the trace-to-eval feedback connection.
+- Kept OpenTelemetry, Purview, Foundry, Blob Storage and `LocalCodeAct` as source examples rather than Hermes defaults; `LocalCodeAct` is explicitly not treated as a sandbox.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-28] ingest | Vercel language-native durable workflow design
 - Captured the official Vercel article at `raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md`, preserving author/date, deterministic extraction provenance, the main article body and vendor-evidence limitations.
 - Updated `concepts/agent-orchestration-production-tradeoffs.md` with the smallest reusable rule: prefer language-native/library-first durable execution before a dedicated platform, require in-flight code-version routing, and keep idempotency, compensation and authoritative readback outside ergonomic Hook claims.
