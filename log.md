@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-29] ingest | Coding-agent collaboration loop and human review gate
+- Captured Sara A. Metwalli's Towards Data Science article at `raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md`, preserving author/date, complete main article text, extraction provenance and practitioner-evidence limitations.
+- Updated the existing owner `concepts/ai-coding-agent-workflow-types.md` rather than creating a duplicate concept: added the five-part task packet, Ask → Inspect → Plan → Implement → Test → Review loop, small-testable-task rule and post-test human review boundary.
+- Corrected the earlier summary limitation: the direct article extraction does contain the five request elements—goal, context, constraints, acceptance criteria and validation—even though the Karakeep-derived summary packet lost their formatting.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-29] ingest | Microsoft Agent Framework production-ready harness
 - Captured the official Microsoft Agent Framework article at `raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md`, preserving author/date, the full main article body, code examples, extraction provenance and vendor-evidence limitations.
 - Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate concept or workflow: added the shared Agent factory / thin-host boundary, explicit host-specific capability reduction, and the trace-to-eval feedback connection.

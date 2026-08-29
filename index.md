@@ -44,7 +44,7 @@
 - [[repeated-measures-statistical-power-for-ai-evaluation]] — 少样本 AI 评测的重复测量与统计功效：区分主体、任务和有效独立证据，避免把相关观测当成独立样本
 - [[stateful-agent-environments-and-grounded-verification]] — 有状态 Agent 评测单元：把环境、任务与验证器结合，按行为保真、状态连贯、工作流深度和权威结果校验区分失败归因
 - [[production-agent-evaluation-baselines]] — 生产 Agent 评估基线：拆分排队、TTFT、生成节奏、端到端分位数、Token、调用、缓存和工具耗时，并把外部阈值限制为方向性参考
-- [[ai-coding-agent-workflow-types]] — AI coding agent 的四类工作流：IDE、Terminal、PR、Cloud，按交互模式而不是品牌选择执行入口
+- [[ai-coding-agent-workflow-types]] — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
 - [[ai-coding-assistant-context-budget-management]] — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
 - [[repository-level-code-intelligence-layer]] — 仓库级代码智能层：用索引、依赖图和任务级上下文编译，把目标代码、可达接口、项目约束与显式未知项装配成低噪音 Agent 上下文
 - [[agentic-content-pipeline-design-patterns]] — Agentic 内容生产 pipeline 的设计模式：专家流程、skill files、MCP 数据源、中间产物、人工审核与可调试迭代

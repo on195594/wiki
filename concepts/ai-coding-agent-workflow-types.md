@@ -1,10 +1,10 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-05-07
+updated: 2026-08-29
 type: concept
 tags: [agent, ai-coding, workflow, ide, terminal, pull-request, cloud, governance]
-sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md]
+sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md]
 status: stable
 description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
 aliases: [coding-agent-workflow-types]
@@ -26,6 +26,14 @@ Agent 与普通 chatbot 的差异在于持续执行循环：read → reason → 
 - 我是否要在本机 shell 中逐步控制复杂改动？
 - 我是否只需要 PR 层面的异步审查？
 - 我是否愿意把边界清楚的任务交给远端环境后台执行？
+
+## Collaboration loop and human review gate
+
+`[[towardsdatascience-work-with-ai-coding-agents-2026-08-27]]` 补充了交互模式选择之前的协作闭环：一份可执行的 coding-agent 任务应至少给出目标、需要读取的上下文、不可越过的约束、验收标准和验证命令；“让代码更好”这类没有问题定义与成功标准的请求，应先澄清而不是直接交给 Agent。
+
+对需要修改仓库的任务，采用 **Ask → Inspect → Plan → Implement → Test → Review**：先让 Agent 只读检查代码位置、相关测试与架构约束，再确认计划并进入小步实现。任务应拆成可独立检查的小单元，每一步尽早运行相关验证，避免在错误理解上一次修改大量文件。
+
+测试通过只说明实现满足了当前可执行检查，不代表设计已经合理。最终人工审查仍需检查：是否符合现有架构、是否出现无关改动或隐藏假设、是否新增了依赖、异常输入是否被处理，以及可维护性和安全影响。该来源是实践者经验总结，不提供不同模型或工作流的量化对照，因此这些内容作为协作检查项，而不是证明某种流程必然提升固定比例的性能。
 
 ## Four workflow types
 
@@ -178,6 +186,7 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 - [[codex-agent-workflow-layering]]
 - [[hermes-agent-workflow-layering-and-adoption-order]]
 - [[claude-code-practical-workflow-tips]]
+- [[towardsdatascience-work-with-ai-coding-agents-2026-08-27]]
 - [[hermes-layer-routing-decision-checklist]]
 - [[subagent-orchestration-patterns]]
 - [[wiki-ingestion-workflow]]
