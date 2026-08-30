@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-08-30] ingest | Claude SEO clone failure and semantic acceptance boundary
+- Captured Will Scott's Search Engine Land article at `raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md`, preserving author/editor/reviewer, publication date, source URL, full Karakeep-captured article text, local summary provenance and practitioner-evidence limitations.
+- Updated the existing owner `concepts/agent-autonomy-ladder-for-hermes-workflows.md` rather than creating a duplicate concept: added the two reported page-cloning incidents and the rule that interaction success or artifact existence does not establish semantic correctness.
+- Added a bounded domain verifier for genuinely new SEO/content pages: compare candidate body content with existing canonical pages before publication, stop near-clones for human judgment, and do not globalize this check to summaries, translations, templates or deliberate reuse.
+- Evidence boundary: the article's GSC figures, prevalence claim and “more than a sentence or two” threshold remain source-specific and were not promoted to Hermes defaults.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-29] ingest | Coding-agent collaboration loop and human review gate
 - Captured Sara A. Metwalli's Towards Data Science article at `raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md`, preserving author/date, complete main article text, extraction provenance and practitioner-evidence limitations.
 - Updated the existing owner `concepts/ai-coding-agent-workflow-types.md` rather than creating a duplicate concept: added the five-part task packet, Ask → Inspect → Plan → Implement → Test → Review loop, small-testable-task rule and post-test human review boundary.
