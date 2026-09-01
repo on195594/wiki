@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-07-11
+updated: 2026-09-01
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -16,7 +16,7 @@ aliases: [agent-context-engineering, context-engineering-for-agents]
 
 可靠 Agent 的核心是“上下文工程”而非“修辞学”：通过即时装配（Just-in-time）系统指令、明确工具边界、精选 Few-shot 示例并动态裁剪消息历史，严格控制模型每一步的可见信息，从而避免上下文腐败（Context Rot）与多步执行偏航。
 
-这页沉淀 MachineLearningMastery 文章 [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]] 对 Hermes 的可迁移原则。它补充 `[[llm-context-engineering-layer]]` 与 `[[hermes-context-engineering-design-priorities]]`：前者讲 RAG 与 prompt 之间的上下文层，后者讲 Hermes 的预算、排序、压缩优先级；本页聚焦 Agent 执行过程中的上下文装配：system prompt、tools、examples、message history/state 在每一步如何被选择、裁剪和隔离。
+这页综合 [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]] 与 [[towardsdatascience-context-engineering-data-scientists-2026-08-30]] 等来源对 Hermes 的可迁移原则。它补充 `[[llm-context-engineering-layer]]` 与 `[[hermes-context-engineering-design-priorities]]`：前者讲 RAG 与 prompt 之间的上下文层，后者讲 Hermes 的预算、排序、压缩优先级；本页聚焦 Agent 执行过程中的上下文装配：system prompt、tools、examples、message history/state 在每一步如何被选择、裁剪和隔离。
 
 ## Core principle
 
@@ -40,6 +40,19 @@ Hermes 映射：
 - `SOUL.md`、`CLAUDE.md`、`AGENTS.md` 提供全局/项目级行为边界。
 - skill 的 `Trigger`、`Workflow`、`Pitfalls`、`Verification` 提供任务级操作边界。
 - 不应把某篇文章的 prompt 模板直接硬编码进全局提示词。
+
+#### Project mode declaration as high-density context
+
+[[towardsdatascience-context-engineering-data-scientists-2026-08-30]] 给出一个数据科学场景：与其在项目入口穷举实现规则，不如先声明工作区当前属于 EDA、研究还是生产交付，让 Agent 据此选择 Notebook / 脚本、探索速度和工程严谨度。可迁移机制是**短模式声明 + 不可省略边界**，不是要求模型猜测生产约束。
+
+Hermes 映射：
+- 已有 `AGENTS.md`、`CLAUDE.md`、README 或 project context owner 时，在原 owner 中声明当前模式，不新建平行文件。
+- 模式声明只承载会改变多数任务决策的高密度差异；数据权限、验收标准、安全、生产写入和回滚边界仍需明确写出。
+- 项目只有一种稳定模式，或源码、测试与现有文档已足以表达时跳过；不要把模式标签变成所有目录的必填模板。
+
+#### On-demand skill decomposition, not one microtask per file
+
+文章主张把数据加载、清洗、训练等微任务拆成子技能，再由短上层技能路由。对 Hermes，可迁移标准不是“每个微任务创建 Skill”，而是：拆分后当前任务能省略无关上下文、子流程有独立触发/验证边界，并且现有 owner 无法继续清晰承载时才拆。否则继续使用一个 owner 加按需 reference；具体瘦身规则由 `skill-slimming-refactor-governance` 维护，不在本页复制。
 
 ### 2. Tools: narrow action surface with negative boundaries
 
@@ -131,7 +144,13 @@ Hermes 映射（参见 `[[hermes-memory-skills-wiki-boundaries]]`）：
 
 后续文章 [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 又补充了检索前的分类步骤：当前状态、稳定事实、历史事件和可复用规程应先进入不同候选层，再由 context assembly 决定本轮是否读取。这里最重要的边界是：检索得到的历史事件不等于当前事实；程序性经验也不能因单次成功就自动进入 system prompt 或 skill。
 
-不应把这篇文章直接升级为 active Hermes 行为。它的合理落点是 wiki 概念和后续 `skill-optimization-workflows` / `hermes-knowledge-and-workflow-governance` 的参考材料；是否改 active skill、runtime 或 classifier，仍需要单独的项目级验证、审批和回滚证据。
+文章原则可以在 Wiki 之外进入现有 active reference，但应按风险分层：低成本、可逆、触发/跳过条件明确且能立即验证的 optional guidance 可直接窄落现有 owner，不因缺少历史故障而强制试点；默认门禁、runtime、classifier、权限或无人监管自修改仍需要更强证据、明确授权和回滚。
+
+### Agent-maintained context assets
+
+[[towardsdatascience-context-engineering-data-scientists-2026-08-30]] 还建议根据反馈更新 `CLAUDE.md` 或 skill，并让 Agent 按需读取 JSON、Python、Notebook 与 HTML artifact。可迁移机制是把配置、偏好和交付物视为可检查、可版本化的上下文资产，而不是把模型原生 memory 当唯一长期载体。
+
+[推论] 对 Hermes，用户明确指出某个低风险、精确且可逆的上下文缺口时，Agent 可以生成并应用窄 diff，再用原案例和邻近反例验证；不需要把每次小改动都降级成观察期。未经授权的宽范围修改、生产/权限/凭证边界和无人监管的 active/runtime 自修改仍禁止。项目级上下文文件的 owner 与清理路径由 `explicit-local-context-files-for-agent-memory` reference 维护。
 
 ## Provenance debt in generated code
 
@@ -162,12 +181,16 @@ Hermes 的对应规则：
 - 不因为强调 context engineering 就扩大默认上下文窗口或默认注入更多历史。
 - 不因为强调 memory engineering 就扩大长期 memory 写入范围；外部文章中的方法论优先进入 wiki 或 skill reference 候选，而不是用户/环境 memory。
 - 不把文章中的经验值、示例 prompt 或 Few-shot 直接写入 `SOUL.md`、`AGENTS.md` 或全局 skill。
+- 不把“每个微任务一个 Skill”升级为 Hermes 默认拓扑；拆分必须减少当前任务的可见噪声，并保留清晰 owner、路由和验证边界。
+- 不把“模型失败主要因为上下文错误”当成排他性根因；工具、权限、数据、模型/provider、实现和验收问题仍需分别诊断。
+- 不把作者让 Claude 直接更新 Skill 的个人做法推广为无人监管自修改；精确授权的低风险变更可以直接落地，但必须有 diff、验证和回滚。
 - 不把本页直接升级为 skill；只有当某个具体 Hermes 工作流在真实项目中验证出稳定 SOP，才考虑新增或补丁相关 skill。
 - 不把工具边界内容复制成第二套规则；工具接口治理以 `[[typed-ai-agent-boundaries]]` 为主。
 
 ## Operating rules
 
 - 对 Agent 任务，先定义当前步骤需要的最小上下文，再读取材料。
+- 对多模式项目，用短模式声明表达 EDA / 研究 / 生产等高密度差异，同时保留不可推断的硬边界。
 - 对长任务，维护结构化状态卡，定期裁剪原始历史。
 - 对工具集，优先减少可见工具面，再优化工具描述。
 - 对 Few-shot，优先展示澄清、失败处理和验证行为，而不是只展示成功输出。
@@ -188,6 +211,7 @@ Hermes 的对应规则：
 - [[ai-agent-tool-selection-architecture]]
 - [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26]]
+- [[towardsdatascience-context-engineering-data-scientists-2026-08-30]]
 - [[llm-context-engineering-layer]]
 - [[hermes-context-engineering-design-priorities]]
 - [[typed-ai-agent-boundaries]]

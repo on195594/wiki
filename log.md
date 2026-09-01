@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-01] ingest + optional workflow adoption | Context engineering for data-science agents
+- Captured Piero Paialunga's Towards Data Science article at `raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md`, preserving the full substantive body, author/date, Karakeep extraction provenance and practitioner-evidence limitations.
+- Updated `concepts/agent-context-engineering.md` with project-mode declarations, bounded on-demand Skill decomposition, explicit context artifacts and supervised low-risk context maintenance; replaced the prior blanket project-validation deferral with the current risk-tiered optional-reference path.
+- Adopted one bounded optional pattern in `skill:hermes-knowledge-and-workflow-governance/references/explicit-local-context-files-for-agent-memory.md`; reused the existing `skill-slimming-refactor-governance` owner instead of duplicating its Skill-decomposition rules.
+- Active-reference backup: `/home/lin/.hermes/backups/skills/20260901-103419-hermes-context-files/explicit-local-context-files-for-agent-memory.md`. `skill_manage` was blocked by an unrelated pre-existing scanner finding elsewhere in the Skill, so the exact authorized reference was patched through the active-layer fallback; the canonical validator and targeted trigger/skip/boundary assertions passed.
+- Boundary: no new concept, Skill, project, dependency, memory, cron, MCP, runtime, gateway, wrapper, provider, profile/plugin, credential or external service was created or enabled.
+
 ## [2026-09-01] review-fix | AGY review of Context Development Lifecycle ingestion
 - Review prompt: `_meta/reviews/2026-09-01-context-development-lifecycle-agy-review-prompt.md`; result: `_meta/reviews/2026-09-01-context-development-lifecycle-agy-review.md`; AGY `1.1.22` verdict: `PASS_WITH_MINOR_FIXES`.
 - Accepted one Minor fix after parent readback confirmed it: updated the existing `index.md` header date from `2026-08-30` to `2026-09-01`; indexed-page count remains `115` because no new formal page was created.
