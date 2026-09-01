@@ -1,10 +1,10 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-08-24
+updated: 2026-09-01
 type: concept
 tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, docs:https://alloomi.ai/reports/sea.pdf, docs:https://agentskills.io/specification]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, docs:https://agentskills.io/specification]
 status: stable
 description: 定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。
 ---
@@ -24,6 +24,8 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。
 
 Xudong Han 的 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 及其链接的 Alloomi 技术报告进一步区分了外部知识复用与模型权重学习：前者依赖 memory、skills、向量检索或上下文注入，后者把筛选后的任务轨迹用于 LoRA、跨任务 replay 和教师蒸馏，并以评测准入与回滚控制更新。
+
+[[arxiv-2608-27454-wikiskill]] 进一步用受控实验区分不可变执行轨迹、持续累积的 Wiki 知识和可回滚的 Skill 状态。它补充的关键不是另一种存储格式，而是：候选 Skill 可以回滚，支持后续搜索的证据、拒绝原因和结构化知识不能随之丢失。
 
 [推论] 该机制补充的是知识单元进入持久层后的演化方式，不改变本页原有的 Hermes 层间路由和审批边界。
 
@@ -162,6 +164,38 @@ observed evidence
 
 Hermes 的默认策略因此是：把上述框架用于非平凡 Skill 创建、合并、路由或性能改动；小型确定性文本修正继续走 Direct。项目级证据进入现有 `skill-governance-evidence`，不创建新的治理工程；Active 晋升仍由独立授权、备份、验证和回滚控制。
 
+### 3d. Separate persistent knowledge from reversible Skill state
+
+WikiSkill 将每轮状态表示为活动 Skill 集合与持久 Wiki 的组合。Raw Layer 保存不可变轨迹，Wiki Layer 汇总成功策略、失败模式、演化日志、被拒绝方案和 Skill 影响，Skill Layer 承载实际执行指令。候选 Skill 因验证分数下降而回滚时，Wiki 不回滚；后续提案仍可读取失败证据和拒绝理由，避免重复搜索同一无效路径。
+
+这为 Hermes 增加了一个明确的不变量：
+
+```text
+rollback(active candidate) != erase(evidence and rejected reasoning)
+```
+
+[推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先作为证据进入可审计知识层；Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令。
+
+#### Role-specific knowledge access
+
+论文主配置只让 Wiki Maintainer 与 Skill Proposer 读取 Wiki，不让生成训练轨迹的 Inference Agent 直接读取。Gemini-3.5-Flash 消融中，无持久 Wiki、Wiki 供 Proposer 使用、Wiki 同时供 Inference Agent 使用的平均分分别为 48.7、63.7 和 60.9。该结果支持一个窄的诊断原则，而不是“执行 Agent 永不查 Wiki”的全局规则：
+
+- **触发**：rollout 轨迹将用于判断当前 Skill 的缺口或生成后续 Skill 候选；
+- **候选规则**：默认让维护者/提案者使用持久知识，让 rollout actor 只使用当前待测 Skill，以免额外知识掩盖 Skill 缺口；
+- **跳过**：普通知识任务、生产执行，或实验目标本身就是比较 Wiki 检索策略；
+- **最低验证**：冻结同一任务集、模型、Skill、validator 与预算，对比 Skill-only 和 Skill+Wiki rollout 的失败归因、held-out 结果与成本；
+- **毕业条件**：本地 A/B 证明隔离能稳定改善诊断或后续 Skill 演化，且不会造成不可接受的任务质量损失，才进入 `skill-optimization-workflows` 默认指导。
+
+在本地证据出现前，这只是 `OPTIONAL_REFERENCE` 候选，不是 Active Skill、runtime 或 cron 改动。
+
+#### Transfer requires compatibility evidence
+
+WikiSkill 报告跨模型正迁移，也报告明显负迁移：Qwen-3.6-27B 演化的 Skill 可让 Qwen-3.5-9B 在 SpreadsheetBench 从无 Skill 的 24.3% 和自演化的 33.6% 提升到 50.5%；但 Qwen-3.5-4B 形成的碎片化命令约束用于 Gemini-3.5-Flash 时，成绩可从 50.5% 降到 18.1%。这加强了现有 `Skill × model × harness × tool environment` 复验要求：来源模型更强或文件格式兼容都不能替代目标环境的 held-out、误用和成本检查。
+
+#### Evidence boundary
+
+该论文直接把所有活动 Skill 注入系统提示以隔离 Skill 质量，因此没有验证真实生产中的检索、触发和选择；即时提升门槛可能拒绝有延迟收益的中间修改；Wiki 没有自动清理机制；任务没有覆盖数百步或数小时执行，也没有研究单次长任务中的在线适应。因此它为“持久知识 + 可回滚 Skill”的治理架构提供了强方向性证据，但不授权自动 Wiki→Skill 晋升、无人审批自修改或定时 Active 发布。
+
 ### 4. Route by layer responsibility
 经验固化的核心治理问题是路由，而不是保存。`[[agent-closed-loop-learning-from-corrections-to-rules]]` 进一步补充了纠错晋升门槛：不要把一次用户纠正直接写成全局规则，先记忆、再泛化、再验证、最后推广。
 
@@ -252,6 +286,7 @@ session_search / project evidence → audited review
 7. 所有经验固化都要保留 provenance 和 rollback path。
 
 ## Related pages
+- [[arxiv-2608-27454-wikiskill]]
 - [[arxiv-2608-14036-demystifying-agent-skills]]
 - [[xudong-han-self-evolving-agent-alloomi-2026-08-13]]
 - [[microsoft-research-evolib-evolving-knowledge-2026-07-30]]

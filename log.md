@@ -3,6 +3,20 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-01] review | AGY review of WikiSkill ingestion
+- Review prompt: `_meta/reviews/2026-09-01-wikiskill-ingestion-agy-review-prompt.md`; result: `_meta/reviews/2026-09-01-wikiskill-ingestion-agy-review.md`; AGY `1.1.23` verdict: `PASS`.
+- Blocking: `0`; Important: `0`; Minor: `0`; recommended patches: none. Parent independently checked the paper's main-result, transfer and ablation evidence and accepted fixes: `0`.
+- Reviewer remained read-only. Final Wiki health, regression tests, diff check and Git commit are owned by parent Hermes.
+- Boundary: review records and `log.md` only; no active Skill/reference, memory, project/pilot, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was changed.
+
+## [2026-09-01] ingest | WikiSkill persistent knowledge and reversible Skill evolution
+- Captured the full-paper evidence packet at `raw/papers/arxiv-2608-27454-wikiskill.md`, preserving architecture, role boundaries, five-benchmark/five-model results, persistent-Wiki ablation, cross-model positive/negative transfer and source limitations.
+- Updated the existing owner `concepts/agent-experience-consolidation-loops.md` rather than creating a duplicate concept or Skill: separated immutable evidence, persistent compiled knowledge and reversible Skill state, and retained rejected proposals as evidence rather than active instructions.
+- Added one `OPTIONAL_REFERENCE` candidate only: for diagnostic Skill-evolution rollouts, compare Skill-only versus Skill+Wiki actor access under a frozen local A/B before considering default guidance; ordinary production knowledge retrieval is explicitly out of scope.
+- Refreshed the existing `index.md` description. Backups: `/home/lin/wiki-backups/20260901-224450-wikiskill/`.
+- Verification: raw hash manifest added exactly one source with no drift in existing raw files; Wiki health passed with no P0/P1/P2 findings; 8/8 health-check unit tests and `git diff --check` passed.
+- Boundary: Wiki knowledge only. No active Skill/reference, memory, project/pilot, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was changed.
+
 ## [2026-09-01] ingest + optional workflow adoption | Context engineering for data-science agents
 - Captured Piero Paialunga's Towards Data Science article at `raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md`, preserving the full substantive body, author/date, Karakeep extraction provenance and practitioner-evidence limitations.
 - Updated `concepts/agent-context-engineering.md` with project-mode declarations, bounded on-demand Skill decomposition, explicit context artifacts and supervised low-risk context maintenance; replaced the prior blanket project-validation deferral with the current risk-tiered optional-reference path.
