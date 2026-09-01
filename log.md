@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-01] review-fix | AGY review of Context Development Lifecycle ingestion
+- Review prompt: `_meta/reviews/2026-09-01-context-development-lifecycle-agy-review-prompt.md`; result: `_meta/reviews/2026-09-01-context-development-lifecycle-agy-review.md`; AGY `1.1.22` verdict: `PASS_WITH_MINOR_FIXES`.
+- Accepted one Minor fix after parent readback confirmed it: updated the existing `index.md` header date from `2026-08-30` to `2026-09-01`; indexed-page count remains `115` because no new formal page was created.
+- Blocking: `0`; Important: `0`; rejected findings: `0`. Reviewer remained read-only; no source, concept, active layer or runtime behavior was changed by AGY.
+- Boundary: wiki-only review and metadata correction. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-09-01] ingest | Context Development Lifecycle for agent context assets
 - Captured Ankit Jain and Patrick Dubois's sponsored The New Stack article at `raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md`, preserving the full main body, provenance, Karakeep/public-page cross-check and evidence limitations.
 - Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate CDLC concept or skill: mapped Generate → Evaluate → Distribute → Observe onto Build → Test → Deploy → Monitor for skill, prompt, configuration and rule assets.
