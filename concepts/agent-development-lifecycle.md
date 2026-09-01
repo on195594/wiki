@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-08-29
+updated: 2026-09-01
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -18,11 +18,23 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 核心原则：可靠 agent 不是一次性 demo，而是一个可循环改进的工程系统：先构建明确边界，再用 eval 和场景测试验证，受控部署到可恢复运行时，用 trace 和反馈监控真实行为，并由治理层管理成本、权限、上下文和资产复用。
 
 ## Source anchor
-本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例、`[[anthropic-ai-native-sdlc-playbook-2026-08-21]]` 和 Microsoft Agent Framework 的 `[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]` 补充。
+本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例、`[[anthropic-ai-native-sdlc-playbook-2026-08-21]]`、Microsoft Agent Framework 的 `[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]` 和 The New Stack 的 `[[thenewstack-agent-context-development-lifecycle-2026-08-31]]` 补充。
 
 该文有产品导向：LangGraph、LangSmith、Deep Agents 等是 LangChain 生态中的参考实现，不应直接等同于 Hermes 的默认方案。本页只沉淀可迁移的生命周期模型。
 
 ## Core lifecycle
+
+### Context Development Lifecycle：上下文资产的聚焦视角
+
+The New Stack 文章把 skills、agent 配置、prompt 指令和规则文件视为软件资产，并提出 `Generate → Evaluate → Distribute → Observe` 的 Context Development Lifecycle（CDLC）。它不是另一套 Hermes 总工作流，而是对本页生命周期中“上下文资产”这一子集的聚焦映射：
+
+- Generate → Build：编写 skill、prompt 配置和 agent 规则；
+- Evaluate → Test：验证 frontmatter/语法、触发准确性、场景输出、跨模型与版本回归，以及是否重复模型已知内容；
+- Distribute → Deploy：通过版本控制、可发现入口和权限边界发布，而不是聊天中复制文件；
+- Observe → Monitor：从真实使用、人工纠正和完成任务所需轮次中识别缺失、错误或过时的上下文。
+
+[推论] 对 Hermes，这四阶段由现有 owner 分担：`hermes-knowledge-and-workflow-governance` 决定生成与分层，`skill-optimization-workflows` 负责有证据的评测，`hermes-active-layer-governance` 负责受控发布与退役，post-session / scheduled knowledge review 只在相应触发下收集反馈。映射的价值是补足交接，不是再建一个 `CDLC` skill 或中央 registry。
+
 ### 1. Build
 Build 阶段先决定 agent 系统的抽象层级，而不是直接堆 prompt 或工具。
 
@@ -81,6 +93,10 @@ Agent 可能没有报错，但在几步前选错工具、拿错上下文或传�
 
 Trace 的价值不是归档过程，而是让失败能被定位、复现，并转化成下一轮 eval。
 
+#### 上下文资产的方向性观测信号
+
+`[[thenewstack-agent-context-development-lifecycle-2026-08-31]]` 提出两个可选信号：`human touch` 观察开发者纠正、补充或接管 agent 的频率，`reuse multiplier` 观察一次 skill/context 改进能被多少使用者或工作流复用。它们适合帮助定位上下文质量和分发问题，但文章没有给出独立基线、统一口径或普适阈值，因此不作为 Hermes KPI 或自动晋升条件。任务结果正确性、边界遵守和可验证交付仍优先于单纯减少人工介入。
+
 ### 5. Govern
 Govern 横跨 Build、Test、Deploy、Monitor。
 
@@ -89,6 +105,7 @@ Govern 横跨 Build、Test、Deploy、Monitor。
 - 工具访问权限与审计
 - 人类审批点
 - prompt / skill / context / agent 资产的复用和版本化
+- 领域 owner 负责内容正确性，平台/治理 owner 负责验证、分发、安全扫描和退役机制
 - 生产行为可见性
 - 多团队、多 agent 之间的一致边界
 
@@ -139,6 +156,8 @@ Hermes 映射：
 - 不要因为 Microsoft 示例把 OpenTelemetry、Purview、Foundry、Blob Storage 或 `LocalCodeAct` 当成 Hermes 默认选型；其中 `LocalCodeAct` 明确不是沙箱，任何托管、凭证、遥测内容捕获或代码执行能力都需要独立项目证据和授权。
 - 不要把生命周期页直接变成 skill；它当前是架构概念，不是本地已验证 SOP。
 - 不要把 Monitor 理解成“保存全部聊天记录”；应保存足以定位失败和构造 eval 的 trace-like evidence。
+- 不要因 CDLC 文章倡导集中观测，就默认新增全量日志、dashboard、registry 或常驻 observer；先复用现有 session evidence、项目验证和按触发运行的知识审查。
+- 不要把 `human touch` 或 `reuse multiplier` 直接设成 KPI；二者来自赞助文章中的经验框架，缺少独立比较和统一测量边界。
 - 不要把 Govern 理解成重流程审批；治理的目标是低风险快速迭代。
 
 ## Validation outcome
@@ -171,6 +190,7 @@ Hermes 映射：
 - [[langchain-agent-development-lifecycle-2026-05-09]]
 - [[anthropic-ai-native-sdlc-playbook-2026-08-21]]
 - [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]
+- [[thenewstack-agent-context-development-lifecycle-2026-08-31]]
 - [[claude-abc-legal-managed-agents-2026-08-17]]
 - [[agent-self-validation-loops]]
 - [[subagent-orchestration-patterns]]

@@ -15,7 +15,7 @@
 - [[software-engineering-laws-design]] — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
 - [[software-engineering-laws-decisions]] — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
 - [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态 Top-K 路由
-- [[agent-development-lifecycle]] — Agent 开发生命周期：用共享 Agent 定义与薄宿主连接 Build → Test → Deploy → Monitor，并以 Govern、可观测 trace、反馈 eval、确定性边界和分级放权控制生产变更
+- [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理，并用 CDLC 聚焦 skill、prompt、规则等上下文资产的生成、评测、分发和观测
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用即时装配、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
 - [[agent-memory-reflection-planning-pipeline]] — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 Hermes 默认 memory

@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-01] ingest | Context Development Lifecycle for agent context assets
+- Captured Ankit Jain and Patrick Dubois's sponsored The New Stack article at `raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md`, preserving the full main body, provenance, Karakeep/public-page cross-check and evidence limitations.
+- Updated the existing owner `concepts/agent-development-lifecycle.md` rather than creating a duplicate CDLC concept or skill: mapped Generate → Evaluate → Distribute → Observe onto Build → Test → Deploy → Monitor for skill, prompt, configuration and rule assets.
+- Added context-specific evaluation checks, bounded `human touch` / `reuse multiplier` signals, domain-owner versus platform-governance responsibility, and explicit rejection of automatic KPI, registry, dashboard or observer promotion.
+- Boundary: wiki-only ingestion. No memory, active skill/reference, project, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-08-30] ingest | Claude SEO clone failure and semantic acceptance boundary
 - Captured Will Scott's Search Engine Land article at `raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md`, preserving author/editor/reviewer, publication date, source URL, full Karakeep-captured article text, local summary provenance and practitioner-evidence limitations.
 - Updated the existing owner `concepts/agent-autonomy-ladder-for-hermes-workflows.md` rather than creating a duplicate concept: added the two reported page-cloning incidents and the rule that interaction success or artifact existence does not establish semantic correctness.
