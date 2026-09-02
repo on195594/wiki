@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-02] ingest | Warp file-based self-improving Agent Skills loop
+- Captured Michael Segner's Anthropic/Warp customer case at `raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md` as a clearly labeled structured capture, preserving every substantive section and finite list, author/date, public-page and Karakeep cross-check, six Skill-writing recommendations, issue-triage example and evidence limitations.
+- Updated the existing owner `concepts/agent-experience-consolidation-loops.md` rather than creating a duplicate concept: added the Base Skill → in-workflow human feedback → Improver Skill → reviewed PR implementation pattern.
+- Preserved the corrected knowledge-evolution boundary: self-improvement may add, delete, replace, merge, move, split, retire or keep; the article does not authorize append-only rule growth, unattended Skill mutation or scheduled Active publication.
+- Evidence boundary: Warp and usage figures are company/vendor-reported, and the article provides no controlled accuracy gain, bad-edit rate, review-cost measurement or long-term regression evidence.
+- Boundary: Wiki-only ingestion. No memory, active Skill/reference, project/pilot, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service changed.
+
 ## [2026-09-02] review | AGY review of SKILL.state Wiki and active workflow
 - AGY `1.1.23` using `Gemini 3.1 Pro (High)` returned `PASS`; blocking findings: none; stderr empty; exit code `0`.
 - Review evidence: `project:/home/lin/.hermes/projects/skill-governance-evidence/docs/reviews/2026-09-02-skill-state-agy/` preserves the exact prompt, JSON response, stderr, exit status and before/after hashes.
