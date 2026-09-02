@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-09-01
+updated: 2026-09-02
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -105,6 +105,24 @@ Hermes 映射：
 
 这只是 Agent 运行状态视角下的简要映射；Hermes 全局层间路由规则以 `[[hermes-context-layer-operating-rules]]` 为准。
 
+#### SKILL.state：状态成为执行真相源，而不是历史摘要
+
+[[arxiv-2608-26263-skill-state]] 把“状态卡优于 transcript”推进成了明确的运行时契约。每一步只向模型提供不可变 Skill 规范 `P`、当前结构化状态 `Σ_t` 和最新观察 `O_t`；模型提出状态补丁与动作，确定性运行时负责校验、合并和执行。上一步的推理、旧观察和旧动作不再自动进入下一轮 Prompt，但仍可保留在外部日志中供审计、调试和恢复。
+
+论文的核心增量不是“再做一次摘要”，而是把未来决策依赖从自然语言历史迁移为经校验的当前状态。其 Warehouse 实验在 100 步时报告 Stateful 基线使用 1,062,387 Token，而 SKILL.state 使用 65,408 Token；在约 1,800 Token 的等预算对照中，滑动窗口、LLMLingua 与 SKILL.state 分别得到 0.18、0.22 和 0.94。InterCode CTF 与 τ-Bench 结果进一步表明该机制不只适用于合成库存状态。所有数字仍受论文实现、Schema、Prompt、模型和评测环境约束，不是 Hermes 的收益承诺。
+
+对 Hermes，长程状态应至少分开：
+
+- **不可变契约**：目标、Skill/Spec、权限边界、验收与停止条件；
+- **可变执行状态**：当前阶段、已验证事实、已做决策、待办、失败尝试、风险和下一动作；
+- **状态补丁**：只表达本轮新增、修改和删除，禁止模型隐式重写完整状态；
+- **证据指针**：状态结论指向必要的文件、工具输出或日志位置，不把大证据块复制进状态；
+- **外部轨迹**：完整动作、观察、审批和副作用结果进入 append-only artifact，不默认回灌 Prompt。
+
+[推论] 状态更新需要版本、Schema 校验、merge/null-delete 语义、失败回滚和关键事实保留 probe；涉及写操作时还应记录授权与副作用账本。论文验证了 JSON patch 与回滚重试方向，但没有评估 Hermes 的权限模型或持久化格式。
+
+这不是所有任务的默认模式。以下任一条件成立时应保留历史检索或混合执行：Schema 需要动态发现；早期观察可能延迟显现价值；任务目标本身要求审计、溯源或解释历史；状态会随步数无界增长；多个写者缺少冲突解决；模型经常产生语义错误但 Schema 合法的 patch。论文中 Gemma-4-31B-it 的失败有 68% 来自意外覆盖或删除，说明“结构化”不等于“可靠更新”。
+
 ## Context rot and JIT defense
 
 Context rot 不是单纯 token 不够，而是上下文质量随长度和噪音下降：旧错误被保留、重复输出占位、无关材料挤掉关键事实、模型在“看起来相关”的历史中迷路。
@@ -192,6 +210,7 @@ Hermes 的对应规则：
 - 对 Agent 任务，先定义当前步骤需要的最小上下文，再读取材料。
 - 对多模式项目，用短模式声明表达 EDA / 研究 / 生产等高密度差异，同时保留不可推断的硬边界。
 - 对长任务，维护结构化状态卡，定期裁剪原始历史。
+- 对真正长程、状态密集的任务，让“不可变契约 + 经校验当前状态 + 最新观察”成为下一步的最小输入；完整轨迹留在外部证据层，必要时按指针恢复，不默认重放。
 - 对工具集，优先减少可见工具面，再优化工具描述。
 - 对 Few-shot，优先展示澄清、失败处理和验证行为，而不是只展示成功输出。
 - 对 subagent，传递任务契约和必要证据，不传递完整父上下文。

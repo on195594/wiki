@@ -1,10 +1,10 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-07-11
+updated: 2026-09-02
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
-sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
+sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
 status: stable
 description: 定义 Hermes context layer 在检索、压缩、路由和执行前装配中的操作规则。
 aliases: [context-layer-rules]
@@ -38,6 +38,11 @@ Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口�
 
 ### 5. Context quality must be testable
 不能只看最终回答是否“看起来不错”。压缩、检索和状态更新后，应能用 probe 检查关键事实是否仍被保留，例如当前目标、已做决策、已处理文件、下一步。
+
+### 6. Long-horizon execution state is a validated projection, not a rolling recap
+[[arxiv-2608-26263-skill-state]] 为长程程序性任务增加了更强约束：下一步默认只消费不可变执行契约、经校验的当前状态和最新观察。模型只提议状态 patch；确定性层拥有 Schema、merge、删除、版本和回滚语义。完整历史是外部审计与恢复证据，不是每轮 Prompt 的默认运行时真相源。
+
+启用条件：任务确实长程且状态密集、存在有界领域 Schema、patch 可确定性校验、历史轨迹不是任务输出。跳过或采用混合模式：动态 Schema、延迟相关观察、审计/解释型任务、并发写状态、无界状态或低可靠结构化输出。不得把论文中的 Token/准确率结果直接设为 Hermes 阈值。
 
 ## Layer map
 ### 1. Current session
@@ -124,11 +129,14 @@ Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口�
 
 建议结构：
 - 当前目标
+- 不可变契约 / Skill / Spec 版本
 - 已确认决策
+- 已验证事实及证据指针
 - 未决问题
 - 已完成步骤
 - 下一步
 - 风险与约束
+- 状态版本、最近 patch 与回滚点
 - 相关文件 / skill / wiki 页面
 
 判定句：如果它是“这个项目现在推进到哪了”，写 project state，不写 memory。

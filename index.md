@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-09-01 | Indexed pages: 115
+> Last updated: 2026-09-02 | Indexed pages: 115
 
 ## Entities
 
@@ -17,7 +17,7 @@
 - [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态 Top-K 路由
 - [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理，并用 CDLC 聚焦 skill、prompt、规则等上下文资产的生成、评测、分发和观测
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
-- [[agent-context-engineering]] — Agent 上下文工程：用项目模式声明、按需 Skill/reference、最小必要上下文、工具反向边界和状态裁剪，防止 context rot 与多步执行偏航
+- [[agent-context-engineering]] — Agent 上下文工程：用最小必要上下文、工具反向边界和显式长程执行状态替代 transcript 累积，防止 context rot、状态污染与多步偏航
 - [[agent-memory-reflection-planning-pipeline]] — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 Hermes 默认 memory
 - [[agent-autonomy-ladder-for-hermes-workflows]] — Hermes 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
 - [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]] — 从端云混合 LLM 模式抽象出的 Hermes PM/subagent 调度模式：任务包、计划落地、困难升级、草稿精修和交叉审查
@@ -58,7 +58,7 @@
 - [[hermes-agent-workflow-layering-and-adoption-order]] — Hermes 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
 - [[hermes-ai-workflow-formalization-principles]] — 将形式化与 specification engineering 落实到 Hermes：自然语言表达意图，风险触发的规格定义正确性边界，验证闭环负责验收
 - [[hermes-context-engineering-design-priorities]] — 面向 Hermes 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
-- [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：session、memory、skill、wiki、project state、cron/log 与 subagent 的职责边界和升级路径
+- [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：层间职责、长程任务的不可变契约/经校验状态/最新观察输入，以及历史证据的外置边界
 - [[hermes-active-surface-lifecycle-governance]] — Hermes 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
 - [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、冲突感知对象、证据/知识路由、实体对齐、关系遍历与检索回写闭环
 - [[hermes-knowledge-freshness-and-claim-evidence]] — Hermes 知识新鲜度与来源精度：复用 sources、review_by、updated 和 [推论] 改善可复用 Wiki 知识

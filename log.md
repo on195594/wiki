@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-02] ingest + active workflow | SKILL.state explicit long-horizon execution state
+- Captured a full-paper evidence packet at `raw/papers/arxiv-2608-26263-skill-state.md`, preserving the runtime equations, schema/patch ownership, SkillExecBench and public-benchmark results, open-weight failure taxonomy, sufficient-statistic assumption and explicit non-applicability boundaries.
+- Updated the existing owners `concepts/agent-context-engineering.md` and `concepts/hermes-context-layer-operating-rules.md` rather than creating a duplicate formal concept: long-horizon model input is now framed as immutable contract + validated current state + latest observation, while evidence and trajectory remain external audit/recovery assets.
+- Updated active `skill:autonomous-ai-agents/dynamic-workflow` with one trigger-bounded reference, `references/explicit-state-long-horizon-execution.md`; deterministic code owns patch validation, merge, rollback, permission gates and side-effect readback. Short calls, dynamic schemas, delayed-relevance tasks, trajectory-defined outputs and unresolved concurrent writes explicitly skip or hybridize the pattern.
+- No validation project was created. This is a bounded L1 active-workflow change; it does not add a persistence service, change Hermes runtime/config, make `execute_code` durable, or relax any approval boundary.
+- Backups: `/home/lin/wiki-backups/20260902-080644-skill-state/` and `/home/lin/.hermes/backups/skills/20260902-080644-skill-state/`; rollback removes the active reference/pointer and restores the backed-up owner files and integrity manifest.
+- Verification: raw hash manifest added exactly one source with no existing drift; Wiki health passed with P0/P1/P2 all zero; 8/8 health-check tests, `git diff --check`, targeted explicit-state smoke and all 128 governed active-skill contract checks passed. Pre-existing validator warnings outside this change remain unchanged.
+
 ## [2026-09-01] review | AGY review of WikiSkill ingestion
 - Review prompt: `_meta/reviews/2026-09-01-wikiskill-ingestion-agy-review-prompt.md`; result: `_meta/reviews/2026-09-01-wikiskill-ingestion-agy-review.md`; AGY `1.1.23` verdict: `PASS`.
 - Blocking: `0`; Important: `0`; Minor: `0`; recommended patches: none. Parent independently checked the paper's main-result, transfer and ablation evidence and accepted fixes: `0`.
