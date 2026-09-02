@@ -6,7 +6,7 @@ type: concept
 tags: [agent, tool, context-engineering, evaluation, workflow, hermes]
 sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
 status: stable
-description: 区分工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。
+description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。
 aliases: [agent-tool-selection, tool-routing-for-ai-agents]
 ---
 

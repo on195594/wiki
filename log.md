@@ -1724,3 +1724,9 @@
 - Durable delta: distinguish federated capability discovery from local availability/admission, then retain candidate reduction, selection, execution, and fallback as separate downstream decisions.
 - Evidence boundary: ARD is an early draft described by secondary reporting; no claim of Hermes need, interoperability, security, or performance was made.
 - Boundary: wiki-only ingestion; no memory, skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, credential, or core change was made.
+
+## [2026-09-02] review + fix | AGY review of ARD wiki ingestion
+- Review prompt: `_meta/reviews/2026-09-02-ard-wiki-ingestion-agy-review-prompt.md`; result: `_meta/reviews/2026-09-02-ard-wiki-ingestion-agy-review.md`; exit: `0`; verdict: `PASS_WITH_MINOR_FIXES`.
+- Independent review reported no blocking or important findings. Parent verification confirmed both cited minor issues.
+- Accepted fixes (2): aligned the canonical page `description` with the discovery layer, and relabeled raw-note links so the canonical owner is distinct from adjacent concepts.
+- Boundary: review and fixes remain wiki-only; no active layer changed.

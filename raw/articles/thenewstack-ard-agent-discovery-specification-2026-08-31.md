@@ -53,6 +53,9 @@ The reusable principle is to keep discovery/catalog infrastructure separate from
 
 ## Compiled concept pages
 
-- [[ai-agent-tool-selection-architecture]]
+- Canonical owner: [[ai-agent-tool-selection-architecture]]
+
+## Adjacent boundary concepts
+
 - [[agent-context-engineering]]
 - [[typed-ai-agent-boundaries]]
