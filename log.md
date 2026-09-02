@@ -1717,3 +1717,10 @@
 - Rejected finding: AGY reported `未经验证 of 经验`, but parent readback/search confirmed the file already contains `未经验证的经验`; recorded as a reviewer false positive.
 - Confirmed: existing-page placement, provenance separation, cognitive-memory mapping, current-fact/history boundary, cross-page ownership, and no-active-promotion boundary all passed.
 - Boundary: AGY review was read-only; no memory write, active skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, or Hermes core change was made.
+
+## [2026-09-02] ingest | Agentic Resource Discovery (ARD) discovery layer
+- Captured raw source: `raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md` from The New Stack (Amanda Caswell, 2026-08-31); it records a secondary-source summary and extraction limits.
+- Updated canonical owner: `concepts/ai-agent-tool-selection-architecture.md`.
+- Durable delta: distinguish federated capability discovery from local availability/admission, then retain candidate reduction, selection, execution, and fallback as separate downstream decisions.
+- Evidence boundary: ARD is an early draft described by secondary reporting; no claim of Hermes need, interoperability, security, or performance was made.
+- Boundary: wiki-only ingestion; no memory, skill/reference, project pilot, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, credential, or core change was made.

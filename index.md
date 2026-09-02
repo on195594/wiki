@@ -14,7 +14,7 @@
 - [[software-engineering-laws-scale]] — 软件工程 Scale 法则地图：固定工作量、扩展工作量、串行瓶颈与网络效应
 - [[software-engineering-laws-design]] — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
 - [[software-engineering-laws-decisions]] — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
-- [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态 Top-K 路由
+- [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态路由
 - [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理，并用 CDLC 聚焦 skill、prompt、规则等上下文资产的生成、评测、分发和观测
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用最小必要上下文、工具反向边界和显式长程执行状态替代 transcript 累积，防止 context rot、状态污染与多步偏航
