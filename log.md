@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-02] review | AGY review of SKILL.state Wiki and active workflow
+- AGY `1.1.23` using `Gemini 3.1 Pro (High)` returned `PASS`; blocking findings: none; stderr empty; exit code `0`.
+- Review evidence: `project:/home/lin/.hermes/projects/skill-governance-evidence/docs/reviews/2026-09-02-skill-state-agy/` preserves the exact prompt, JSON response, stderr, exit status and before/after hashes.
+- Parent hash guard confirmed `NO_DRIFT` across all 10 reviewed Wiki, active Skill/reference/index and integrity-manifest targets. The review remained read-only.
+- AGY accepted source-claim boundaries, existing-owner placement, explicit trigger/skip conditions, append-only audit evidence, permission/rollback/exact-target-readback gates, and the explicit denial of cross-turn `execute_code` durability.
+- Accepted fixes: `0`; no new Skill, validation project, runtime/config, persistence service, cron, MCP, gateway, wrapper, provider, profile/plugin, credential, dependency or external service was added.
+
 ## [2026-09-02] ingest + active workflow | SKILL.state explicit long-horizon execution state
 - Captured a full-paper evidence packet at `raw/papers/arxiv-2608-26263-skill-state.md`, preserving the runtime equations, schema/patch ownership, SkillExecBench and public-benchmark results, open-weight failure taxonomy, sufficient-statistic assumption and explicit non-applicability boundaries.
 - Updated the existing owners `concepts/agent-context-engineering.md` and `concepts/hermes-context-layer-operating-rules.md` rather than creating a duplicate formal concept: long-horizon model input is now framed as immutable contract + validated current state + latest observation, while evidence and trajectory remain external audit/recovery assets.
