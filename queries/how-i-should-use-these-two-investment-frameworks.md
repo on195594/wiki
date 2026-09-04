@@ -3,7 +3,7 @@ title: How I Should Use These Two Investment Frameworks
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, decision, framework, personal-finance]
+tags: [investment, decision, comparison, lifeos]
 sources: [concepts/ordinary-investor-investment-system.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md, comparisons/leontraveller-vs-ordinary-investor-investment-system.md]
 status: stable
 description: 回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。

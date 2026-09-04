@@ -1,10 +1,10 @@
 ---
 title: Hermes Health Dashboard
 created: 2026-04-22
-updated: 2026-04-22
-type: concept
-tags: [hermes, operations, health, cron, monitoring]
-sources: []
+updated: 2026-09-03
+type: operation
+tags: [hermes, governance, validation, cron, monitoring]
+sources: [concepts/hermes-memory-governance-notes.md, skill:hermes-runtime-operations]
 status: active
 description: 定义 Hermes 周度治理线的最小健康面板和运维检查入口。
 aliases: [health-dashboard]

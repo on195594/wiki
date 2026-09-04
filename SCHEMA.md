@@ -74,9 +74,14 @@ Formal pages may also include an optional `## Relations` section when the relati
 - depends_on: [[page-name]]
 - conflicts_with: []
 - supersedes: []
+- related: [[page-name]]
 ```
 
 `Relations` records semantic links between wiki pages. Evidence still belongs in `sources`; inferred relationships must not be presented as source provenance.
+
+Rules:
+- Allowed relation keys are strictly limited to: `depends_on`, `refines`, `conflicts_with`, `supersedes`, `related`.
+- Values must be `[]` or a comma-separated list of `[[page-name]]` wikilinks. Free text, trailing non-link comments, or unregistered keys are rejected.
 
 ### Sources
 
@@ -157,63 +162,8 @@ Scope: this taxonomy governs formal pages only. `raw/`, `_meta/` and the root co
 - structured-output
 - typed-boundary
 
-**Reconciliation tags (registered 2026-08-11)** were already in use on formal pages before the taxonomy was enforced. They are registered as-found so that declared and actual tags match; they are not a curated set. All but `anti-pattern`, `delegation` and `tool-boundary` appear on a single page, so prefer an existing Core/Domain/Facet tag before reusing one of them. Merging this long tail into broader tags remains an open optional cleanup; it requires editing page frontmatter and is not implied by registration.
-
-- agentic-programming
-- ai-engineering
-- ai-product
-- anti-pattern
-- asset-allocation
-- audit
-- behavior
-- best-practice
-- career
-- checklist
-- cloud
-- concurrency
-- cost-control
-- delegation
-- dreaming
-- education
-- education-fund
-- family
-- finance
-- framework
-- growth
-- gsearch
-- health
-- human-in-the-loop
-- hybrid-llm
-- ide
-- knowledge
-- learning
-- loss-management
-- operating-rules
-- operations
-- patience
-- pattern-detection
-- personal-finance
-- pm
-- production
-- prompt-tuning
-- public-info
-- pull-request
-- python
-- read-only
-- resource-management
-- routing
-- skill-files
-- skill-optimization
-- software-engineering
-- system-design
-- telegram
-- terminal
-- tool-boundary
-- trend-following
-- wiki
-- winners
-- work
-- workflow-design
+**Reconciliation tags (registered 2026-08-11, retired 2026-09-03)**:
+Historically registered to tolerate single-use legacy tags. On 2026-09-03, all 55 reconciliation tags were fully converged into canonical Core, Domain, and Facet tags across all formal pages. Formal pages now strictly adhere to the curated Core, Domain, and Facet taxonomy above.
 
 Rules:
 - Register a tag in this file before using it on a formal page. This is enforced, not advisory: an unregistered tag fails the health check.

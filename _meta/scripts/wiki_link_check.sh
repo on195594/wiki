@@ -6,6 +6,8 @@
 # lychee's, so a nonzero exit means dead links, not "the script broke".
 set -euo pipefail
 
+PATH="${HOME:+$HOME/.local/bin:}$PATH"
+
 ROOT="${OBSIDIAN_VAULT_PATH:-/home/lin/wiki}"
 cd "$ROOT"
 

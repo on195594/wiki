@@ -199,3 +199,4 @@ Gemini CLI 的作用不是只参与某一环，而是尽量横跨整条链：
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
+- [[hermes-vs-google-sre-agentic-incident-response]]

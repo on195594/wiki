@@ -3,7 +3,7 @@ title: Agentic Programming as System Engineering
 created: 2026-05-21
 updated: 2026-08-15
 type: concept
-tags: [agent, agentic-programming, software-engineering, tool-boundary, context-engineering, governance, anti-pattern]
+tags: [agent, ai-coding, architecture, tool, context-engineering, governance, debugging]
 sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
 status: stable
 description: 定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。

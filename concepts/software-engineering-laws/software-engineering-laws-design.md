@@ -96,6 +96,5 @@ aliases: [software-engineering-laws-design]
 
 ## Relations
 
-- source: [source index](../../raw/articles/laws-of-software-engineering/index.md)
-- indexed_by: [[software-engineering-laws-decision-map]]
+- refines: [[software-engineering-laws-decision-map]]
 - related: [[agentic-programming-system-engineering]]

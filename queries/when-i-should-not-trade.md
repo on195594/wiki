@@ -3,7 +3,7 @@ title: When I Should Not Trade
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, risk-control, behavior]
+tags: [investment, trading, risk-control, decision]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
 description: 回答哪些情境下默认不交易、不加仓或先暂停决策。

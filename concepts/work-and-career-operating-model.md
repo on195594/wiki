@@ -3,7 +3,7 @@ title: Work and Career Operating Model
 created: 2026-04-21
 updated: 2026-04-21
 type: concept
-tags: [work, career, lifeos, operating-model]
+tags: [lifeos, operating-model, workflow, decision]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-career-and-family-balance]
 status: stable
 description: 定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。

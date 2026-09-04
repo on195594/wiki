@@ -3,6 +3,34 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-03] governance | Phase 3 P2 long-term architectural optimization
+- Converged 55 legacy Reconciliation Tags: across 35 formal pages, mapped all single-use and non-curated tags into the canonical 51-tag taxonomy (14 Core + 23 Domain + 14 Facet); reduced distinct tags from 101 to 47 and single-use tags from 50 to 3.
+- Retired Reconciliation Tags section in `SCHEMA.md`: formally closed the temporary reconciliation tag registry from 2026-08-11; all formal pages now strictly adhere to curated Core/Domain/Facet taxonomy.
+- Topology weaving for 15 isolated formal pages: connected all 15 zero-in-degree pages (`agent-shared-wiki-index`, `multiagent-systemic-failure-modes`, `hermes-active-surface-lifecycle-governance`, etc.) into their respective concept hubs and query records; zero-in-degree pages reduced from 15 to 0.
+- Verification: `wiki_health_check.py` passed (P0=0, P1=0, P2=0); `wiki_tag_audit.py` passed (47 unique tags, 0 undeclared); `test_wiki_health_check.py` passed (13/13); `git diff --check` passed.
+
+## [2026-09-03] governance | Phase 2 P1 semantic rules and health check hardening
+- Hardened `_meta/scripts/wiki_health_check.py`: added P1 check for non-markdown review sidecar files in `_meta/reviews/`; added P2 check for `## Relations` syntax format and key whitelist (`ALLOWED_RELATION_KEYS = {"depends_on", "refines", "conflicts_with", "supersedes", "related"}`).
+- Updated `SCHEMA.md` and `_meta/wiki-health-check-runbook.md`: formally included `related` in the Relations specification; documented the new review sidecar (P1) and Relations (P2) validation rules in severity policy.
+- Normalized formal page Relations: cleaned non-standard keys (`indexed_by`, `category`, `source*`, `extends`, `related_to`, `informs`, `evidence`) across 14 pages (including the software-engineering-laws suite), achieving 100% compliance across all 68 pages with Relations (229 valid relation lines).
+- Fixed `operations/hermes-health-dashboard.md`: updated `type` from `concept` to `operation`, populated valid `sources`, and updated freshness timestamp.
+- Expanded regression tests: added 5 new unit tests in `_meta/scripts/test_wiki_health_check.py` covering illegal sidecar (recursive), unregistered relation key, invalid relation format, and invalid relation value; all 13 tests pass.
+- Verification: `wiki_health_check.py` passed (P0=0, P1=0, P2=0); `test_wiki_health_check.py` passed (13/13); `wiki_tag_audit.py` passed (0 undeclared); `wiki_link_check.sh` passed (0 dead links); `git diff --check` passed.
+
+## [2026-09-03] governance | Phase 1 P0 tool and environment remediation
+- Fixed `_meta/scripts/wiki_tag_audit.py`: added formal page filtering to exempt `raw/`, `_meta/` and root core files per SCHEMA.md line 98; audit exit code returned from 1 to 0 (0 undeclared tags on formal pages).
+- Cleaned `_meta/reviews/`: removed 46 illegal non-markdown sidecar files (.exit, .stderr, .sha256, .txt) violating SCHEMA.md line 249; git-staged deletions.
+- Restored external link check dependency: verified and installed prebuilt `lychee` v0.24.2 (archive SHA-256 `5d0b0e3aeab240f41920c633a6eaf97599be6eedda034b36e858ede7dba5e535`, binary SHA-256 `29bc0ac5c5ac3cfe9c312a5783a94f8fca33118d1a7bb687323eab0b52735f79`) to `~/.local/bin/lychee` per runbook; added PATH prepend in `_meta/scripts/wiki_link_check.sh`.
+- Full verification: `wiki_health_check.py` passed (P0=0, P1=0, P2=0); `wiki_tag_audit.py` passed (0 undeclared); `test_wiki_health_check.py` passed (8/8); `wiki_link_check.sh` passed (99 checked, 0 errors).
+- Boundary: Tooling and environment remediation only. No formal page content or runtime/active layer modified.
+
+## [2026-09-03] ingest + minimal executable landing | GitHub Copilot task-level efficiency
+- Captured the official GitHub Blog article at `raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md`, preserving authors, publication date, full extracted body, source URL, extraction route and the vendor/workload-specific evidence limitation.
+- Updated existing owners `concepts/loop-engineering-hermes-agent-workflow.md` and `concepts/hermes-context-engineering-design-priorities.md`; no duplicate concept, Skill, runtime or telemetry service was created.
+- Added the reusable rule to optimize completed-task cost rather than isolated tool-call tokens; preserve source-like output, use lossless search reshaping, treat recovery/retry signals as compression evidence, test Prompt behavior, and avoid background-result retrieval detours.
+- Minimal executable landing reused the existing read-only `scripts/gsummary-status.py` and recorded the 2026-09-03 baseline: 901 total records, 867 summary records, 835 real-summary successes; summary status 840 ok / 21 timeout / 6 error. This is not yet task-level cost telemetry.
+- Boundary: Wiki and read-only project observation only. No memory, active Skill/reference, project implementation, runtime/config, cron, MCP, gateway, wrapper, provider, profile/plugin or external service changed.
+
 ## [2026-09-02] ingest | Warp file-based self-improving Agent Skills loop
 - Captured Michael Segner's Anthropic/Warp customer case at `raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md` as a clearly labeled structured capture, preserving every substantive section and finite list, author/date, public-page and Karakeep cross-check, six Skill-writing recommendations, issue-triage example and evidence limitations.
 - Updated the existing owner `concepts/agent-experience-consolidation-loops.md` rather than creating a duplicate concept: added the Base Skill → in-workflow human feedback → Improver Skill → reviewed PR implementation pattern.
@@ -357,7 +385,7 @@
 ## [2026-08-15] review | AGY post-ingestion review of five primary Agent papers
 - Reviewed exact commit `7735212` (`docs: map five primary agent papers`) rather than the earlier candidate draft.
 - Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review-prompt.md`.
-- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review.exit`.
+- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-post-ingestion-agy-review.md` (exit code: 0).
 - AGY verdict: `PASS`; no blocking, important or correctness-required patches. It reported two cosmetic minors: one raw heading differs from the other paper records, and three source-backed host-page insertions use English prose.
 - Parent disposition: accepted fixes `0`; retained the precise Toolformer heading to preserve the hashed raw record, and retained the host-page language because the cited pages already use mixed technical prose and the orchestration page is predominantly English in that region.
 - Hash guard confirmed AGY did not mutate the reviewed commit files or exact prompt. Backup before log update: `/home/lin/.hermes/backups/wiki-agent-primary-papers-post-review-20260815_191405`.
@@ -365,7 +393,7 @@
 
 ## [2026-08-15] review-fix | AGY adversarial review of five primary Agent papers
 - Review prompt: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review-prompt.md`.
-- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.exit`.
+- Review result: `_meta/reviews/2026-08-15-agent-primary-papers-ingestion-agy-review.md` (exit code: 0).
 - AGY verdict: `PASS_WITH_MINOR_FIXES`; no blocking or important findings.
 - Parent verification accepted three minor corrections: promote the ReAct addition to an independent H2 so it is not misattributed to an older secondary article; translate the Voyager insertion to match its Chinese host page; update the deterministic formal-page count from 110 to 112. Rejected findings: none.
 - Hash drift guard confirmed AGY did not mutate the candidate or reviewed live pages.
@@ -382,7 +410,7 @@
 
 ## [2026-08-14] review | AGY review of Self-Evolving Agent ingestion
 - Review prompt: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review-prompt.md`.
-- Review result: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review.exit`.
+- Review result: `_meta/reviews/2026-08-14-self-evolving-agent-ingestion-agy-review.md` (exit code: 0).
 - AGY verdict: `PASS`; no blocking, important, minor or recommended patch findings.
 - Parent verification: before/after hashes for all five reviewed commit targets matched exactly; accepted fixes: none; rejected findings: none.
 - Reviewer-tool caveat: AGY ran `pytest` despite the read-only request and created an ignored `.pytest_cache/` scratch directory. Hermes removed it, reran the canonical Wiki health check and five stdlib regression tests, and confirmed P0/P1/P2 all zero with `git diff --check` passing.
@@ -398,7 +426,7 @@
 
 ## [2026-08-12] review-fix | AGY review of Prompt engineering plateau ingestion
 - Review prompt: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review-prompt.md`.
-- Review result: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.exit`.
+- Review result: `_meta/reviews/2026-08-12-prompt-engineering-plateau-ingestion-agy-review.md` (exit code: 0).
 - AGY verdict: `PASS_WITH_MINOR_FIXES`; no blocking or important findings.
 - Parent verification accepted the sole minor fix after reading the cited source: changed `虚构代码` to `虚构产品编码` to avoid confusion with programming source code. Rejected findings: none.
 - Hash drift guard confirmed AGY did not mutate the reviewed ingestion files or review prompt.
@@ -464,7 +492,7 @@
 ## [2026-08-09] review | AGY review of inspectable tool-calling debugging ingestion
 - Reviewed commit: `52eaf90` (`docs: ingest tool-calling agent debugging`).
 - Review prompt: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review-prompt.md`.
-- Review result: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review.md`; exit sidecar: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review.exit`.
+- Review result: `_meta/reviews/2026-08-09-tool-calling-agent-debugging-agy-review.md` (exit code: 0).
 - AGY verdict: `PASS`; no blocking, important or minor findings, and no recommended patches.
 - Parent adjudication: accepted the verdict after confirming the four ingestion-file hashes were unchanged during review, the raw/concept ownership split remained accurate, Wiki health passed with P0/P1/P2 all zero, and `git diff --check` passed.
 - Accepted fixes: none. No re-review was needed.
@@ -1699,8 +1727,7 @@
 
 ## [2026-07-11] review | AI Agent tool selection wiki ingestion AGY review
 - Review prompt: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review-prompt.md`
-- Review result: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review.md`
-- Review exit code: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review.exit` (`0`)
+- Review result: `_meta/reviews/2026-07-11-ai-agent-tool-selection-agy-review.md` (exit code: 0)
 - Verdict: PASS
 - Blocking/important/minor findings: none; no content patch was required.
 - Confirmed: the new concept is a distinct durable unit, source/local synthesis boundaries are clear, Hermes toolset mapping is bounded, and the evaluation path does not create a new project or active default.
@@ -1717,8 +1744,7 @@
 
 ## [2026-07-11] review | AI Agent memory strategy wiki update AGY review
 - Review prompt: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review-prompt.md`
-- Review result: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review.md`
-- Review exit code: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review.exit` (`0`)
+- Review result: `_meta/reviews/2026-07-11-ai-agent-memory-strategy-agy-review.md` (exit code: 0)
 - Verdict: PASS_WITH_MINOR_FIXES
 - Accepted fixes: none.
 - Rejected finding: AGY reported `未经验证 of 经验`, but parent readback/search confirmed the file already contains `未经验证的经验`; recorded as a reviewer false positive.

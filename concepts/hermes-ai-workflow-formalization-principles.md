@@ -192,3 +192,4 @@ LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量�
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
+- [[hermes-python-engineering-capability-checklist]]

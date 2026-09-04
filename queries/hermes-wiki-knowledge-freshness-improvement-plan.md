@@ -3,7 +3,7 @@ title: Hermes Wiki 知识新鲜度改造计划
 created: 2026-08-26
 updated: 2026-08-26
 type: query
-tags: [hermes, wiki, knowledge-base, verification, workflow, architecture]
+tags: [hermes, governance, knowledge-base, verification, workflow, architecture]
 sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
 status: closed
 description: 直接复用现有 Wiki 规范，改善来源精度、易变信息复查和事实推论边界，不另设验证项目。

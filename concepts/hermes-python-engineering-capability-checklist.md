@@ -3,7 +3,7 @@ title: Hermes Python Engineering Capability Checklist
 created: 2026-06-16
 updated: 2026-08-18
 type: concept
-tags: [hermes, python, ai-engineering, workflow, tool-boundary, resource-management, concurrency, validation]
+tags: [hermes, tool, ai-coding, workflow, governance, optimization, architecture, validation]
 sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md]
 status: stable
 description: 列出 Hermes 执行 Python 工程任务时需要检查的语言、测试、工具和交付能力。

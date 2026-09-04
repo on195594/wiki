@@ -3,7 +3,7 @@ title: My Investment Pre-Trade Checklist
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, checklist, trading, decision]
+tags: [investment, risk-control, trading, decision]
 sources: [concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, queries/how-i-should-use-these-two-investment-frameworks.md]
 status: stable
 description: 提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。

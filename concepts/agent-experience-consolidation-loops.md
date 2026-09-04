@@ -3,7 +3,7 @@ title: Agent Experience Consolidation Loops
 created: 2026-05-11
 updated: 2026-09-02
 type: concept
-tags: [agent, memory, skills, wiki, validation, workflow, hermes, multi-agent]
+tags: [agent, memory, skills, knowledge-base, validation, workflow, hermes, multi-agent]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, docs:https://agentskills.io/specification]
 status: stable
 description: 定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。

@@ -3,7 +3,7 @@ title: Personal Finance and Education Fund Model
 created: 2026-04-21
 updated: 2026-04-21
 type: concept
-tags: [finance, education-fund, lifeos, operating-model]
+tags: [investment, lifeos, operating-model]
 sources: [concepts/personal-investment-operating-rules.md, concepts/money-as-tool-and-investment-vs-consumption-framework.md, concepts/family-education-operating-model.md, session:2026-04-21-user-education-fund-goal]
 status: stable
 description: 定义个人财务与教育基金在 LifeOS 中的资金分层、目标约束和执行模型。

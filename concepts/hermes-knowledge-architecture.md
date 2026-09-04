@@ -187,3 +187,4 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
+- [[agent-shared-wiki-index]]

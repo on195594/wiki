@@ -1,10 +1,10 @@
 ---
 title: Hermes Context Engineering Design Priorities
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-09-03
 type: concept
 tags: [hermes, llm, agent, workflow, decision]
-sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md]
+sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md]
 status: stable
 description: 定义 Hermes 上下文工程的预算控制、排序、压缩和历史衰减优先级。
 aliases: [hermes-context-engineering]
@@ -31,6 +31,8 @@ aliases: [hermes-context-engineering]
 - 缺少“为什么这段上下文被放进 prompt”的可解释性记录
 
 也就是说，Hermes 现在更像“有很多材料可取”，但还不够像“有一个明确的上下文调度器”。
+
+GitHub Copilot 的公开工程案例提供了一个校准：上下文优化的目标应是任务总成本和结果质量，而不是单次 tool result 的 Token 数。压缩后若触发回读、重跑或额外交互，便是失败信号；源码和任意脚本结果应优先保真，搜索结果应无损重排，只有重复性噪声适合选择性压缩。
 
 ## What to build first
 优先级建议按收益 / 实施难度排序，而不是按概念完整度排序。
@@ -154,3 +156,4 @@ Hermes 的 context engineering 应遵循 4 条规则：
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
+- [[hermes-context-footprint-readonly-audit-2026-07-03]]

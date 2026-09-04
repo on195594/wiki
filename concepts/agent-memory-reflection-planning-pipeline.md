@@ -88,7 +88,7 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。Hermes 
 - refines: [[agent-context-engineering]]
 - related: [[agent-experience-consolidation-loops]]
 - related: [[agent-self-validation-loops]]
-- indexed_by: [[agent-architecture-primary-paper-map]]
+- related: [[agent-architecture-primary-paper-map]]
 - conflicts_with: []
 - supersedes: []
 

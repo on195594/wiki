@@ -3,7 +3,7 @@ title: GSearch Knowledge Validation Closeout
 created: 2026-05-07
 updated: 2026-05-07
 type: query
-tags: [hermes, gsearch, validation, knowledge, subagent, workflow]
+tags: [hermes, tool, validation, knowledge-base, subagent, workflow]
 sources: [project:/home/lin/.hermes/projects/hermes-gemini-google-search-workflow]
 status: closed
 description: 记录 GSearch 知识验证项目的结论、边界和是否推广到 Hermes 的 closeout。

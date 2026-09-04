@@ -82,3 +82,4 @@ Echoverse 的数字来自特定模型、合成环境和任务配置；真实 Web
 - [[agent-development-lifecycle]]
 - [[agent-self-validation-loops]]
 - [[agent-failure-closed-loop-evaluation]]
+- [[human-machine-scientific-discovery-verification-scarcity]]

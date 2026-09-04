@@ -3,7 +3,7 @@ title: First-edit Economy for Coding Agents
 created: 2026-07-07
 updated: 2026-07-07
 type: concept
-tags: [agent, ai-coding, workflow, prompt-tuning, evaluation, hermes]
+tags: [agent, ai-coding, workflow, optimization, evaluation, hermes]
 sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md, skill:coding-agent-workflow, skill:coding-agent-delegation]
 status: stable
 source_policy: source_backed

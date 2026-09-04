@@ -3,7 +3,7 @@ title: Personal Growth Operating Model
 created: 2026-04-21
 updated: 2026-04-21
 type: concept
-tags: [growth, learning, lifeos, operating-model]
+tags: [lifeos, operating-model, optimization, evaluation]
 sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md, session:2026-04-21-user-growth-and-lifeos]
 status: stable
 description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。
@@ -87,3 +87,4 @@ description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执�
 - [[hermes-lifeos-executable-architecture]]
 - [[index]]
 - [[log]]
+- [[coping-skill-application-and-imaginal-exposure]]

@@ -3,7 +3,7 @@ title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
 updated: 2026-08-18
 type: concept
-tags: [ai-coding, agent, context-engineering, cost-control, claude-code, hermes]
+tags: [ai-coding, agent, context-engineering, optimization, claude-code, hermes]
 sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md]
 status: stable
 description: 总结 coding assistant 控制上下文预算、压缩历史和减少无效 token 消耗的方法。

@@ -51,6 +51,7 @@ aliases: [knowledge freshness, claim evidence, stale knowledge]
 - `[[hermes-wiki-page-writing-standards]]`：候选的写作规范落点。
 - `[[hermes-wiki-lint-and-health-check-standards]]`：候选的验证落点。
 - `[[wiki-ingestion-workflow]]`：候选的入库流程落点。
+- [[hermes-wiki-knowledge-freshness-improvement-plan]]
 
 ## Relations
 

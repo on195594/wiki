@@ -20,10 +20,20 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_ROOT = "/home/lin/wiki"
+CORE_FILES = {"index.md", "log.md", "SCHEMA.md"}
 
 
 def rel(root: Path, path: Path) -> str:
     return path.relative_to(root).as_posix()
+
+
+def is_formal_page(root: Path, path: Path) -> bool:
+    r = rel(root, path)
+    return not (
+        r in CORE_FILES
+        or r.startswith("_meta/")
+        or r.startswith("raw/")
+    )
 
 
 def is_live_markdown(root: Path, path: Path) -> bool:
@@ -123,6 +133,8 @@ def build_report(root: Path) -> dict[str, Any]:
     tagged_pages = 0
 
     for path in sorted(p for p in root.rglob("*.md") if is_live_markdown(root, p)):
+        if not is_formal_page(root, path):
+            continue
         frontmatter = extract_frontmatter(read_text(path))
         if frontmatter is None:
             continue

@@ -3,7 +3,7 @@ title: AI Coding Agent Workflow Types
 created: 2026-04-30
 updated: 2026-08-29
 type: concept
-tags: [agent, ai-coding, workflow, ide, terminal, pull-request, cloud, governance]
+tags: [agent, ai-coding, workflow, tool, deployment, governance]
 sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md]
 status: stable
 description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
@@ -192,3 +192,4 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
+- [[first-edit-economy-for-coding-agents]]

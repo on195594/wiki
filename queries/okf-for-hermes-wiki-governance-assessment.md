@@ -132,3 +132,4 @@ Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Mark
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[index]]
 - [[log]]
+- [[hermes-wiki-knowledge-object-governance-closeout]]

@@ -77,8 +77,8 @@ aliases: [agent-production-baselines, llm-latency-cost-baselines]
 ## Relations
 
 - refines: [[production-ai-agent-evaluation-framework]]
-- related_to: [[agent-resource-optimization]]
-- related_to: [[agent-evaluation-rubric-calibration]]
+- related: [[agent-resource-optimization]]
+- related: [[agent-evaluation-rubric-calibration]]
 
 ## Related
 

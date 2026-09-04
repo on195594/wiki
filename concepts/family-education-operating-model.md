@@ -3,7 +3,7 @@ title: Family Education Operating Model
 created: 2026-04-21
 updated: 2026-04-21
 type: concept
-tags: [family, education, lifeos, operating-model]
+tags: [lifeos, operating-model, decision]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-family-education-goals]
 status: stable
 description: 定义家庭教育目标在 LifeOS 中的资金、时间、信息和决策运行模型。

@@ -144,13 +144,12 @@ aliases: [software-engineering-laws-decision-map]
 
 ## Relations
 
-- category: [[software-engineering-laws-architecture]]
-- category: [[software-engineering-laws-teams]]
-- category: [[software-engineering-laws-planning]]
-- category: [[software-engineering-laws-quality]]
-- category: [[software-engineering-laws-scale]]
-- category: [[software-engineering-laws-design]]
-- category: [[software-engineering-laws-decisions]]
+- depends_on: [[software-engineering-laws-architecture]]
+- depends_on: [[software-engineering-laws-teams]]
+- depends_on: [[software-engineering-laws-planning]]
+- depends_on: [[software-engineering-laws-quality]]
+- depends_on: [[software-engineering-laws-scale]]
+- depends_on: [[software-engineering-laws-design]]
+- depends_on: [[software-engineering-laws-decisions]]
 - related: [[llm-engineering-knowledge-map]]
 - related: [[agentic-programming-system-engineering]]
-- source: [Laws of Software Engineering source index](../raw/articles/laws-of-software-engineering/index.md)

@@ -3,7 +3,7 @@ title: How I Should Review a Losing Position
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, validation, loss-management]
+tags: [investment, trading, validation, risk-control]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
 description: 回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。

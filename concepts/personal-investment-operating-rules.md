@@ -3,7 +3,7 @@ title: Personal Investment Operating Rules
 created: 2026-04-17
 updated: 2026-04-17
 type: concept
-tags: [investment, operating-rules, risk-control]
+tags: [investment, governance, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
 status: stable
 description: 汇总个人投资系统的长期配置、主动交易、风控和行为纪律运行规则。
@@ -136,3 +136,4 @@ aliases: [investment-operating-rules]
 - [[money-as-tool-and-investment-vs-consumption-framework]]
 - [[index]]
 - [[log]]
+- [[how-i-should-keep-my-trading-system-small-and-executable]]

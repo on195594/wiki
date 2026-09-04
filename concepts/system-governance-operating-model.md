@@ -122,3 +122,4 @@ system governance 的核心目标是：
 - [[personal-growth-operating-model]]
 - [[index]]
 - [[log]]
+- [[hermes-active-surface-lifecycle-governance]]

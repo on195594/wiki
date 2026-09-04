@@ -3,7 +3,7 @@ title: How I Should Keep My Trading System Small and Executable
 created: 2026-04-17
 updated: 2026-04-17
 type: query
-tags: [investment, trading, system-design, governance]
+tags: [investment, trading, architecture, governance]
 sources: [queries/how-i-should-convert-trading-lessons-into-hard-rules.md, queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, concepts/personal-investment-operating-rules.md]
 status: stable
 description: 回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。

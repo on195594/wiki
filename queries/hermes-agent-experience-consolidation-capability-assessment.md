@@ -3,7 +3,7 @@ title: Hermes Agent Experience Consolidation Capability Assessment
 created: 2026-05-11
 updated: 2026-08-18
 type: query
-tags: [hermes, agent, dreaming, memory, skills, delegation, cron, validation]
+tags: [hermes, agent, research, memory, skills, orchestration, cron, validation]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: closed
 description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当前能力需重新核验。

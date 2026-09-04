@@ -75,6 +75,6 @@ aliases: [multiagent-systemic-failures, correlated-agent-failures]
 
 ## Relations
 
-- extends: [[subagent-orchestration-patterns]]
+- refines: [[subagent-orchestration-patterns]]
 - related: [[agent-orchestration-production-tradeoffs]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-evaluation-rubric-calibration]]
-- informs: [[agent-research-evidence-gate]]
+- related: [[agent-research-evidence-gate]]

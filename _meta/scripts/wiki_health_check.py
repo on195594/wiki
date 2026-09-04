@@ -55,6 +55,8 @@ ALLOWED_FORMAL_TYPES = {
     "summary",
 }
 ALLOWED_FORMAL_STATUSES = {"draft", "stable", "active", "closed", "current"}
+ALLOWED_RELATION_KEYS = {"depends_on", "refines", "conflicts_with", "supersedes", "related"}
+RELATION_VALUE_PATTERN = re.compile(r"^(\[\]|\[\[[^\]]+\]\](?:\s*,\s*\[\[[^\]]+\]\])*)$")
 
 
 def rel(root: Path, path: Path) -> str:
@@ -279,6 +281,12 @@ def build_report(root: Path) -> dict[str, Any]:
         if not (root / core).exists():
             add_issue(issues, "P0", "missing_core_file", core, f"Missing core file: {core}")
 
+    reviews_dir = root / "_meta" / "reviews"
+    if reviews_dir.exists() and reviews_dir.is_dir():
+        for item in sorted(reviews_dir.rglob("*")):
+            if item.is_file() and not item.name.endswith(".md"):
+                add_issue(issues, "P1", "illegal_review_sidecar", rel(root, item), "Review directory contains non-markdown sidecar file")
+
     for p in live_md:
         r = rel(root, p)
         text = read_text(p)
@@ -350,6 +358,31 @@ def build_report(root: Path) -> dict[str, Any]:
                             add_issue(issues, "P2", "tmp_source", r, "Source uses non-durable /tmp path", source=source)
                         if not is_allowed_source(source):
                             add_issue(issues, "P2", "unexpected_source_form", r, "Source does not match SCHEMA.md allowed source forms", source=source)
+            clean_body = strip_code(body)
+            rel_match = re.search(r"^##\s+Relations\s*$", clean_body, flags=re.M)
+            if rel_match:
+                rel_body = clean_body[rel_match.end():]
+                next_h = re.search(r"^##\s+", rel_body, flags=re.M)
+                if next_h:
+                    rel_body = rel_body[:next_h.start()]
+                for line in rel_body.splitlines():
+                    s = line.strip()
+                    if not s or s.startswith("#"):
+                        continue
+                    if not s.startswith("- "):
+                        add_issue(issues, "P2", "invalid_relation_format", r, "Relations line does not start with '- '", line=s)
+                        continue
+                    item = s[2:].strip()
+                    if ":" not in item:
+                        add_issue(issues, "P2", "invalid_relation_format", r, "Relations line does not match '- key: value' format", line=s)
+                        continue
+                    k, v = item.split(":", 1)
+                    k = k.strip()
+                    v = v.strip()
+                    if k not in ALLOWED_RELATION_KEYS:
+                        add_issue(issues, "P2", "unregistered_relation_key", r, f"Relations key '{k}' is outside allowed relation keys", key=k)
+                    if not RELATION_VALUE_PATTERN.fullmatch(v):
+                        add_issue(issues, "P2", "invalid_relation_value", r, "Relations value must be '[]' or a comma-separated list of [[wikilinks]]", value=v)
 
     for p in live_md:
         r = rel(root, p)

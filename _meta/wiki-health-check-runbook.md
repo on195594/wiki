@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-08-18
+updated: 2026-09-03
 type: meta
 status: current
 ---
@@ -107,6 +107,7 @@ Important issues:
 - formal page whose `review_by` is not a plain `YYYY-MM-DD` date, meaning the expiry it declares can never fire
 - raw source whose content no longer matches its recorded SHA-256, meaning pages citing it may no longer describe what it says
 - `_meta/raw-source-hashes.json` missing or unparseable, meaning `raw/` immutability is no longer enforced
+- non-markdown sidecar file in `_meta/reviews/`, violating `SCHEMA.md` review retention rules
 
 ### P2
 
@@ -118,6 +119,7 @@ Maintenance findings:
 - formal page whose `review_by` date has passed and is due for a re-read
 - raw source with no entry in `_meta/raw-source-hashes.json`, usually a new ingestion whose manifest update was skipped
 - two formal pages overlapping above the near-duplicate threshold, usually the same subject ingested twice
+- formal page with malformed `## Relations` line or relation key outside the `SCHEMA.md` whitelist
 
 `queries/` pages with `status: closed` may stay outside the main index without producing a finding; Git history and direct search remain their archive path.
 

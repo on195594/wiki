@@ -3,7 +3,7 @@ title: From Coping Skill Acquisition to Real-World Application
 created: 2026-08-20
 updated: 2026-08-20
 type: concept
-tags: [growth, learning, health]
+tags: [lifeos, evaluation, monitoring, decision]
 sources: [raw/articles/donald-robertson-mentally-rehearse-coping-2026-08-18.md]
 status: draft
 description: 区分情绪调节技能的习得与现实应用，并用有界想象暴露检验练习是否真正减少回避。

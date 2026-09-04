@@ -3,7 +3,7 @@ title: Hermes Memory Governance Notes
 created: 2026-04-22
 updated: 2026-07-11
 type: concept
-tags: [hermes, memory, governance, routing, knowledge-base]
+tags: [hermes, memory, governance, orchestration, knowledge-base]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
 status: stable
 description: 记录 Hermes memory 的写入、更新、遗忘和跨层治理注意事项。

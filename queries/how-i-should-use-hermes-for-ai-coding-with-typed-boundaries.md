@@ -5,7 +5,7 @@ updated: 2026-05-01
 type: query
 status: stable
 description: 回答如何用 Hermes 以 typed boundaries、窄工具面和验证门执行 AI 编程任务。
-tags: [hermes, ai-coding, best-practice, typed-boundary, workflow, verification]
+tags: [hermes, ai-coding, typed-boundary, workflow, verification]
 sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md]
 ---
 

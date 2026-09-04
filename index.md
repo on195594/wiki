@@ -2,7 +2,7 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-09-02 | Indexed pages: 115
+> Last updated: 2026-09-03 | Indexed pages: 115
 
 ## Entities
 

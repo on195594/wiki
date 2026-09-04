@@ -3,7 +3,7 @@ title: Leontraveller vs Ordinary Investor Investment System
 created: 2026-04-17
 updated: 2026-04-17
 type: comparison
-tags: [investment, comparison, trading, asset-allocation]
+tags: [investment, comparison, trading, position-sizing]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
 status: stable
 description: 比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的分工和冲突边界。

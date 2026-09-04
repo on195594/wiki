@@ -3,7 +3,7 @@ title: AI Task Delegation Patterns from Local-Cloud Hybrid LLMs
 created: 2026-07-03
 updated: 2026-07-03
 type: concept
-tags: [agent, delegation, subagent, pm, workflow, hermes, hybrid-llm]
+tags: [agent, orchestration, subagent, decision, workflow, hermes, llm]
 sources: [raw/articles/towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02.md, concepts/agent-autonomy-ladder-for-hermes-workflows.md, concepts/subagent-orchestration-patterns.md, concepts/agent-context-engineering.md]
 status: stable
 description: 将端云混合 LLM 的 5 种模式抽象为 Hermes PM/subagent/外部 AI 调度模式：任务包、计划落地、困难升级、草稿精修、交叉审查。

@@ -144,6 +144,5 @@ aliases: [software-engineering-laws-decisions]
 
 ## Relations
 
-- source: [source index](../../raw/articles/laws-of-software-engineering/index.md)
-- indexed_by: [[software-engineering-laws-decision-map]]
+- refines: [[software-engineering-laws-decision-map]]
 - related: [[llm-engineering-knowledge-map]]

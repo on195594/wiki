@@ -3,7 +3,7 @@ title: Human-Machine Scientific Discovery and Verification Scarcity
 created: 2026-08-18
 updated: 2026-08-18
 type: concept
-tags: [agent, research, workflow, evaluation, verification, human-in-the-loop]
+tags: [agent, research, workflow, evaluation, verification, decision]
 sources: [raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md]
 status: stable
 description: 当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。

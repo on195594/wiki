@@ -216,3 +216,4 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - [[agent-architecture-primary-paper-map]]
 - [[index]]
 - [[log]]
+- [[multiagent-systemic-failure-modes]]

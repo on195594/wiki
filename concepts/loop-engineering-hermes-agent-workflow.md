@@ -1,10 +1,10 @@
 ---
 title: Loop Engineering for Hermes Agent Workflows
 created: 2026-06-10
-updated: 2026-08-17
+updated: 2026-09-03
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, hermes]
-sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
+sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
 status: stable
 description: 定义 Hermes Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
 aliases: [loop-engineering]
@@ -19,6 +19,28 @@ Loop engineering 是把 coding agent 从“一轮 prompt → 一轮回答”的�
 ## Durable principle
 
 Hermes 中的 agent loop 应被设计为可审计闭环：自动或半自动发现任务，隔离执行，独立验证，外部记录状态，并在人类确认点前停止。任何 runtime、cron、MCP、gateway、wrapper 或生产侧自动改动都必须另走 active-layer 审批、备份、验证和回滚。
+
+## Task-level efficiency evidence
+
+GitHub Copilot 的工程案例补充了一条可复用但需本地验证的规则：优化完整任务交付，而不是孤立的单次工具调用。压缩某次输出如果导致 Agent 回读原文、重跑命令、增加轮次或携带更多历史上下文，局部 Token 节省可能转化为更高的总成本。
+
+可复用的最小控制集：
+- 源代码、`git diff`、`git show` 和任意脚本结果默认保持原样；搜索结果可无损重排但不得丢匹配项；只对可预测的安装、构建、测试和进度噪声做选择性压缩。
+- 保留原始输出恢复路径，并把 `raw_output_retrieved`、重复命令、重复读取、额外轮次和验证失败作为压缩质量信号。
+- Prompt 精简必须绑定行为回归测试，尤其验证并行判断、工具边界、停止条件和父级验收责任没有被改写。
+- 后台任务完成事件在不改变结果内容的前提下应尽量直接携带结果，并批量合并可同时处理的完成事件，避免额外的模型拉取轮次。
+
+这些是 Wiki 层的设计约束和观测建议，不是对 Hermes runtime、wrapper 或默认压缩策略的授权。文章中的收益数字属于 GitHub Copilot 特定工作负载的组织报告，不能直接作为 Hermes 基线。
+
+## Minimal executable landing
+
+先复用 GSummary 项目现有的只读状态脚本，不新增遥测服务或运行时字段：
+
+```bash
+python3 /home/lin/.hermes/projects/hermes-gsummary-workflow/scripts/gsummary-status.py
+```
+
+2026-09-03 基线：总记录 `901`，summary 记录 `867`，真实 summary 成功 `835`；summary 状态为 `840 ok / 21 timeout / 6 error`。这只能作为运行量和错误状态的起点，尚未包含重复读取、重复命令或额外拉取轮次，因此不应宣称已经完成任务级成本观测。下一步只有在现有日志能可靠提供这些字段时才扩展统计。
 
 ## Deterministic dispatcher inside bounded loops
 
