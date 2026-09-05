@@ -1,10 +1,10 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-05-17
+updated: 2026-09-06
 type: concept
 tags: [llm, agent, workflow, research]
-sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md]
+sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md]
 status: stable
 description: 定义 LLM 检索和 prompt 之间的上下文工程层，包括记忆、压缩、排序和预算控制。
 aliases: [context-engineering-layer]
@@ -81,6 +81,24 @@ Re-ranker 会结合领域标签与相关性，再次决定优先级。
 - 小型知识库
 - 极低延迟服务
 - 强确定性、可审计优先的规则型流程
+
+## Agentic RAG trust boundary
+
+Agentic RAG 不只返回检索结果，还会改写查询、选择数据源、组合检索方式、重排、拒绝候选并循环搜索。来源文章据此主张：可信度需要覆盖这些中间决策，而不能只看最终答案和 Top-k 切片。
+
+可复用的设计原则：
+- **保留可重放的检索证据链**：记录原始请求、查询改写、实际过滤条件、检索方式、候选来源、排名数据、时间戳、接受或拒绝原因、工具分支和未核实项。工程师仅凭请求与 trace 应能回答“为什么选它、当时为何有效、替代项为何被拒绝”。
+- **硬约束先于相似度**：租户、调用者权限、有效期、地域、文档类型和审核状态决定候选是否有资格被返回；相似度只在允许集合内排序。身份和 scope 应由工具或数据库注入并强制执行，不能信任模型从检索内容或用户文本中自行推导。
+- **验证主张而不只展示引用**：生成期间保留来源 provenance，并建立 `claim → excerpt/source` 映射。无支撑主张应删除或降格；有效来源相互冲突时应揭示冲突、收窄到共同证据，或转人工复核。
+- **检索内容是数据，不是策略**：文档正文即使来自内部库也属于不可信模型输入，不得修改权限、检索政策、工具调用或记忆晋升规则；查询改写和后续工具调用仍需通过应用层校验。
+
+这部分与 [[production-ai-agent-evaluation-framework]] 的分工是：本页定义上下文与检索信任边界，评测页负责将语料选择、召回、租户隔离、引用覆盖和主张支撑拆分验证。[[agent-development-lifecycle]] 负责把失败案例送回评测与迭代，[[agent-context-engineering]] 负责更宽的上下文装配与工具选择边界。
+
+### Evidence boundary
+
+- 上述机制来自一篇 Oracle 赞助的架构文章；它没有公开数据集、基准测试、生产事故材料或独立对照。
+- “Oracle AI Vector Search 靠近业务数据可减少副本并在数据库层执行访问控制”只保留为来源示例，不构成 Hermes 技术选型结论。
+- Hermes 尚未用本地生产失败案例验证全量 retrieval trace、claim-support gate 或对应指标阈值；在此之前，这些内容是概念级评审原则，不是 active-layer 默认门禁。
 
 ## Why it matters for Hermes
 这个观点和 Hermes 当前知识架构是对齐的：

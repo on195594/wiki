@@ -1763,3 +1763,10 @@
 - Independent review reported no blocking or important findings. Parent verification confirmed both cited minor issues.
 - Accepted fixes (2): aligned the canonical page `description` with the discovery layer, and relabeled raw-note links so the canonical owner is distinct from adjacent concepts.
 - Boundary: review and fixes remain wiki-only; no active layer changed.
+
+## [2026-09-06] update | The New Stack on evidence for trustworthy agentic RAG
+- Captured raw source: `raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md` (Jeremy Daly, 2026-09-05); the page explicitly identifies Oracle as sponsor.
+- Updated canonical owner: `concepts/llm-context-engineering-layer.md`; updated its existing `index.md` entry instead of creating a near-duplicate concept page.
+- Durable delta: retain replayable retrieval decisions, enforce identity/scope/currency before similarity ranking, map claims to supporting excerpts, and treat retrieved content as untrusted data rather than policy.
+- Evidence boundary: the source provides no public benchmark, production incident record, or independent comparison; Oracle AI Vector Search remains a vendor example, not a Hermes selection decision.
+- Boundary: wiki-only update; no memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, credential, or Hermes core change was made.
