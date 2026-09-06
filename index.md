@@ -2,11 +2,12 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-09-06 | Indexed pages: 115
+> Last updated: 2026-09-06 | Indexed pages: 116
 
 ## Entities
 
 ## Concepts
+- [[local-first-sync-confirmed-mirror-outbox-conflict-policy]] — Local-First 同步中的确认镜像、持久化 Outbox、乐观视图、游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [[software-engineering-laws-architecture]] — 软件工程 Architecture 法则地图：分布式取舍、抽象边界、复杂度分配、兼容性与系统演化风险
 - [[software-engineering-laws-teams]] — 软件工程 Teams 法则地图：团队规模、知识集中、组织结构、晋升机制与协作成本
 - [[software-engineering-laws-planning]] — 软件工程 Planning 法则地图：估算、期限、收尾成本、指标约束与优化时机

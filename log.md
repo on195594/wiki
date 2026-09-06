@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-06] ingest + concept | Reverse Engineering Linear's Sync Engine
+- Preserved a substantially complete browser-rendered README text capture in `raw/articles/reverse-linear-sync-engine-2026-09-06.md`, with provenance, CC BY 4.0 attribution, omitted-image/link and 8-line callout limitations, one documented whitespace normalization, reverse-engineering limits, implementation-drift warning, and an explicit no-active-layer boundary.
+- Added `concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md`: distilled confirmed mirror + durable outbox + optimistic view, cursor advancement, replay/idempotency, explicit conflict policy, lazy hydration, and transactional undo/redo.
+- Mapped the pattern to existing chat/session routing and future Desktop or recoverable-agent specs without changing Memory, active Skills, runtime/config, Cron, MCP, Gateway, plugins, or production behavior.
+
 ## [2026-09-06] independent review | commit a6584cd agent collaboration and harness evidence
 - AGY `1.1.27` with `Gemini 3.1 Pro (High)` returned `APPROVE_LANDING` with no content findings for exact commit `a6584cd3784a1642a450de60167978ccbdef77c4`.
 - Parent verification confirmed both raw-source hashes, inference markers, Wiki health, whitespace checks, source-link targets, and no active-layer changes. Favorable reviewer overclaims were narrowed in the preserved report.
