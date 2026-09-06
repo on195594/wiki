@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-06] review | Reverse Engineering Linear's Sync Engine (`6ea1d94`)
+- Pi `0.84.4` independently reviewed commit `6ea1d9488b2ef6d51bc5b0afd364679da781a049` using read-only file tools and returned `APPROVE_LANDING` with no findings.
+- Parent verification accepted the declared eight-line callout omission and one trailing-space cleanup as bounded provenance exceptions; no content repair was warranted.
+- Preserved the exact prompt, reviewer result, target hashes, reviewer limitation, and parent disposition under `_meta/reviews/`.
+
 ## [2026-09-06] ingest + concept | Reverse Engineering Linear's Sync Engine
 - Preserved a substantially complete browser-rendered README text capture in `raw/articles/reverse-linear-sync-engine-2026-09-06.md`, with provenance, CC BY 4.0 attribution, omitted-image/link and 8-line callout limitations, one documented whitespace normalization, reverse-engineering limits, implementation-drift warning, and an explicit no-active-layer boundary.
 - Added `concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md`: distilled confirmed mirror + durable outbox + optimistic view, cursor advancement, replay/idempotency, explicit conflict policy, lazy hydration, and transactional undo/redo.
