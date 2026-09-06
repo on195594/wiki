@@ -1,10 +1,10 @@
 ---
 title: Stateful Agent Environments and Grounded Verification
 created: 2026-08-03
-updated: 2026-08-03
+updated: 2026-09-05
 type: concept
 tags: [agent, browser, evaluation, verification, workflow, research]
-sources: [raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md]
+sources: [raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md]
 status: stable
 description: 用 environment + tasks + verifier 评估有状态 Agent 的行为保真、工作流深度与权威结果校验，并区分模型、环境、任务和验证器失败。
 aliases: [grounded-agent-environment]
@@ -63,14 +63,15 @@ aliases: [grounded-agent-environment]
 
 ## Hermes mapping
 
-以下是 Hermes 映射，均为 `[推论]`，不是 Echoverse 原文事实：
+以下是 Hermes 映射，均为 `[推论]`，不是 Echoverse 或 Stencil 原文事实：
 
 - 对需要持久业务状态的 GUI 动作，在声明完成前优先读回最权威可用状态；截图变化、AX/driver 的 `confirmed` 或控件消失只证明交互层效果。
 - 对只读浏览、导航、临时 UI 或没有状态契约的任务，不为形式完整而增加业务回读；无法回读时明确验证限制。
+- 对 Agent runtime 的 rewind、fork、resume、cancel、child-agent cleanup 和外部副作用，优先验证权威 session/run/job 状态；进程退出、视图变化或 worker 自报完成不足以单独证明恢复或业务成功。
 - 把“环境 + 任务 + 验证器”用于评测设计和失败归因，不把它外推成所有 computer-use 任务都必须有 synthetic world、RL 或数据库 grader。
 - 先复用已有、低风险、可撤销任务验证 action → readback，再决定是否需要更高权威的验证面；不因一篇研究自动创建 fixture、project、monitor 或 multi-agent chain。
 
-这条映射与 `[[production-ai-agent-evaluation-framework]]` 的工具行为和多步连贯性指标相连，也与 `[[agent-development-lifecycle]]` 的测试/监控/治理闭环、`[[agent-self-validation-loops]]` 的反馈和停止条件相连。
+这条映射与 `[[production-ai-agent-evaluation-framework]]` 的工具行为和多步连贯性指标相连，也与 `[[agent-development-lifecycle]]` 的测试/监控/治理闭环、`[[agent-self-validation-loops]]` 的反馈和停止条件相连。Harness 的控制平面/执行平面边界与 `[[subagent-orchestration-patterns]]` 交叉，但不构成新的编排模式。
 
 ## Evidence boundary
 
@@ -82,4 +83,5 @@ Echoverse 的数字来自特定模型、合成环境和任务配置；真实 Web
 - [[agent-development-lifecycle]]
 - [[agent-self-validation-loops]]
 - [[agent-failure-closed-loop-evaluation]]
+- [[stencil-the-harness-playbook-2026-09-05]]
 - [[human-machine-scientific-discovery-verification-scarcity]]

@@ -15,7 +15,7 @@
 - [[software-engineering-laws-design]] — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
 - [[software-engineering-laws-decisions]] — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
 - [[ai-agent-tool-selection-architecture]] — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态路由
-- [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理，并用 CDLC 聚焦 skill、prompt、规则等上下文资产的生成、评测、分发和观测
+- [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理，并将 harness 视为权威状态、受控执行和可恢复作业的边界
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用最小必要上下文、工具反向边界和显式长程执行状态替代 transcript 累积，防止 context rot、状态污染与多步偏航
 - [[agent-memory-reflection-planning-pipeline]] — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 Hermes 默认 memory
@@ -32,7 +32,7 @@
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-evaluation-rubric-calibration]] — Agent 评测 Rubric 校准：聚合分数只作诊断指针；分数、评语、人工复核或 Trace 冲突时，先审计评分维度、锚点和错误激励
 - [[first-edit-economy-for-coding-agents]] — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
-- [[agent-orchestration-production-tradeoffs]] — Agent 编排的生产取舍：按工作负载选择最小拓扑，并在确需持久化时优先评估 language-native/library-first、在途版本路由与副作用恢复语义
+- [[agent-orchestration-production-tradeoffs]] — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，并验证持久化与副作用恢复语义
 - [[agent-resource-optimization]] — Agent 资源优化：用集合覆盖、分配、背包和网络流视角建模多 Agent 的能力覆盖、预算选择、任务分派与路由成本
 - [[agent-research-evidence-gate]] — 研究型 Agent 的证据质量闸门：Manager 编排、工具取证、Judge 评分和缺口补证，达标后 Analyst 才生成报告
 - [[agent-self-validation-loops]] — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件，把 coding agent 任务变成可验证迭代回路
@@ -40,9 +40,9 @@
 - [[constrained-toolbox-evaluator-loop]] — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [[deterministic-analytics-llm-reasoning-boundary]] — 确定性分析与 LLM 推理边界：让 LLM 生成结构化分析规约和解释结果，让确定性执行器负责过滤、聚合、计算和事实生成
 - [[ai-agent-document-fidelity-risk]] — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
-- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：用检索、生成、Agent 行为和生产运营四层视角评估可靠性，并按能力触发部署前结构性回归探针
+- [[production-ai-agent-evaluation-framework]] — 生产级 AI Agent 评估框架：分层评估检索、生成、Agent 行为和生产运营，并比较多 Agent 相对单 Agent 的收益、协调成本与错误相关性
 - [[repeated-measures-statistical-power-for-ai-evaluation]] — 少样本 AI 评测的重复测量与统计功效：区分主体、任务和有效独立证据，避免把相关观测当成独立样本
-- [[stateful-agent-environments-and-grounded-verification]] — 有状态 Agent 评测单元：把环境、任务与验证器结合，按行为保真、状态连贯、工作流深度和权威结果校验区分失败归因
+- [[stateful-agent-environments-and-grounded-verification]] — 有状态 Agent 评测单元：结合环境、任务与验证器，并从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
 - [[production-agent-evaluation-baselines]] — 生产 Agent 评估基线：拆分排队、TTFT、生成节奏、端到端分位数、Token、调用、缓存和工具耗时，并把外部阈值限制为方向性参考
 - [[ai-coding-agent-workflow-types]] — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
 - [[ai-coding-assistant-context-budget-management]] — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
@@ -86,7 +86,7 @@
 - [[progressive-knowledge-system-growth]] — 知识系统的渐进式生长原则：先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长
 - [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
-- [[subagent-orchestration-patterns]] — Subagent 编排模式：按生命周期复杂度选择 inline tool、fan-out、agent pool 或 team，避免多智能体过度设计
+- [[subagent-orchestration-patterns]] — Subagent 编排模式：先验证单 Agent 基线、真实瓶颈和可分解性，再选择 inline tool、fan-out、agent pool 或 team
 - [[multiagent-systemic-failure-modes]] — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
 - [[typed-ai-agent-boundaries]] — 用 structured output、分阶段语义分解、固定候选空间、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
 - [[personal-investment-operating-rules]] — 个人投资操作守则：核心仓做配置，进攻仓做趋势，先保护本金再争取收益

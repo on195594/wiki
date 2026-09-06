@@ -1,10 +1,10 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-06-21
+updated: 2026-09-04
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
 status: stable
 description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
 aliases: [subagent-patterns]
@@ -47,6 +47,14 @@ Use deterministic automation when fixed rules, SQL, scripts, or API workflows ca
 This rule complements `[[agent-context-engineering]]` on tool/instruction/context boundaries and `[[agent-closed-loop-learning-from-corrections-to-rules]]` on evidence-backed rule escalation: do not upgrade a useful rule of thumb into default behavior without local validation.
 
 This source is a general tutorial rather than production evidence, so it strengthens the page's conservative adoption rule but does not by itself justify new active skills, runtime config, cron jobs, MCP tools, or default multi-agent behavior.
+
+### Single-agent baseline before multi-agent escalation
+
+`[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]]` provides a stronger precondition for escalation: choose multi-agent collaboration by task decomposability and measured single-agent need, not by task complexity or nominal team size. Weakly coupled, independently verifiable subtasks may justify fan-out; strongly sequential or shared-state tasks usually do not. A stronger single-agent baseline raises the burden of proof for adding coordination.
+
+[推论] Hermes rule: establish the single-agent baseline, identify a real bottleneck, confirm genuine parallelism, define merge and verification criteria, then run a small comparison. Agreement among similar agents is not independent evidence; parent-level evidence review remains mandatory.
+
+The paper's numerical threshold, benchmark deltas, and coordination multipliers are source-specific observations, not Hermes defaults. [推论] This update is a slimming rule: do not create a multi-agent workflow, pool, team, or router without local evidence that the gain exceeds communication, context, latency, and error-propagation costs.
 
 ## Four orchestration modes
 

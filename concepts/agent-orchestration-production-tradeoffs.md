@@ -1,10 +1,10 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-08-28
+updated: 2026-09-04
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
-sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md]
+sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
 status: stable
 description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
 aliases: [agent-orchestration-tradeoffs]
@@ -28,6 +28,14 @@ The durable engineering question is not "how many agents can I add?" but **which
 - If mistakes are unacceptable and volume is low, add a reflexive self-correction loop with explicit stop conditions.
 
 The same specialist agents can be connected in different ways; the architecture is the state-sharing, communication, verification, and recovery design around them.
+
+### Additive value must beat coordination cost
+
+The Nature study `[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]]` sharpens topology selection with four checks: single-agent baseline, task decomposability, coordination/context cost, and error correlation.
+
+[推论] Multi-agent evaluation should compare against the single-agent baseline and record communication, extra inference, latency, merge quality, and whether multiple workers repeat the same mistake. Do not treat worker count or agreement as a quality or independence metric.
+
+The study's fixed thresholds and benchmark-specific percentages remain descriptive evidence only. [推论] Hermes should use them as questions for local experiments, not as global routing gates or default team sizes.
 
 ## Language-native durable execution before platform orchestration
 

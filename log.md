@@ -3,6 +3,17 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-05] ingest + existing-owner update | The Harness Playbook
+- Captured `raw/articles/stencil-the-harness-playbook-2026-09-05.md` with URL, capture date, structured-capture limitation, local summary path, source claims, Hermes inferences, and non-adoption boundaries; publisher author, date, title, and section structure were independently checked on 2026-09-06.
+- Updated existing owners `concepts/agent-development-lifecycle.md` and `concepts/stateful-agent-environments-and-grounded-verification.md`; added the harness as a stateful execution boundary, authoritative-state/readback rules, control-plane versus execution-plane separation, bounded job lifecycle requirements, and explicit evidence limits.
+- Kept the article out of Memory, active Skills, runtime/config, MCP, Cron, gateway, provider, and new projects. No new workflow was created.
+
+## [2026-09-04] ingest + minimal existing-owner update | Nature multi-agent collaboration study
+- Captured `raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md` as a structured evidence record; verified publisher metadata and retained links to the paper, preprint, code, archive, and local summary.
+- Updated existing owners `concepts/subagent-orchestration-patterns.md`, `concepts/agent-orchestration-production-tradeoffs.md`, and `concepts/production-ai-agent-evaluation-framework.md`.
+- Landed the slimming rule: establish a single-agent baseline and genuine task decomposability before adding multi-agent coordination; measure coordination cost and correlated errors; do not promote source-specific thresholds to Hermes defaults.
+- No new Skill, memory, runtime route, MCP, Cron, router, pool, team, or evaluation platform was created.
+
 ## [2026-09-03] governance | Phase 3 P2 long-term architectural optimization
 - Converged 55 legacy Reconciliation Tags: across 35 formal pages, mapped all single-use and non-curated tags into the canonical 51-tag taxonomy (14 Core + 23 Domain + 14 Facet); reduced distinct tags from 101 to 47 and single-use tags from 50 to 3.
 - Retired Reconciliation Tags section in `SCHEMA.md`: formally closed the temporary reconciliation tag registry from 2026-08-11; all formal pages now strictly adhere to curated Core/Domain/Facet taxonomy.

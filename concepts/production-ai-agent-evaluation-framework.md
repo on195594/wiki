@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-08-18
+updated: 2026-09-04
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -61,8 +61,13 @@ aliases: [agent-evaluation-framework]
 - Tool Selection Accuracy：是否为当前意图选择了正确工具。
 - Tool Execution Success：工具调用参数、格式、返回是否成功。
 - Multi-Step Coherence：多步执行是否保持逻辑、状态和目标一致。
+- Multi-Agent Baseline Delta: 多智能体相对单智能体是否有可验证的增益。
+- Coordination Cost: 额外消息、Token、调用、延迟和合并成本是否超过收益。
+- Error Correlation: 多个 Agent 是否重复同一种错误，导致“多数意见”被误当成独立证据。
 
 工程含义：Agent 不只会“答题”，还会行动。工具越多、步骤越长，错误可能断崖式增加，因此要单独评估过程轨迹，而不是只看最终输出。
+
+[推论] 对多智能体任务，先记录单智能体基线，再按任务可分解性决定是否启用并行或协作。文章中的 45% 阈值、推理轮数指数和具体 benchmark 百分比不作为 Hermes 默认门槛；只有本地对照实验或真实失败案例才足以推动路由规则或 regression artifact。
 
 #### Tool selection evaluation must separate stages
 

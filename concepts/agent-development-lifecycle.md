@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-09-01
+updated: 2026-09-05
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -18,11 +18,25 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 核心原则：可靠 agent 不是一次性 demo，而是一个可循环改进的工程系统：先构建明确边界，再用 eval 和场景测试验证，受控部署到可恢复运行时，用 trace 和反馈监控真实行为，并由治理层管理成本、权限、上下文和资产复用。
 
 ## Source anchor
-本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例、`[[anthropic-ai-native-sdlc-playbook-2026-08-21]]`、Microsoft Agent Framework 的 `[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]` 和 The New Stack 的 `[[thenewstack-agent-context-development-lifecycle-2026-08-31]]` 补充。
+本页最初来自 LangChain 文章 `[[langchain-agent-development-lifecycle-2026-05-09]]`，后续由回归测试、企业案例、`[[anthropic-ai-native-sdlc-playbook-2026-08-21]]`、Microsoft Agent Framework 的 `[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]`、The New Stack 的 `[[thenewstack-agent-context-development-lifecycle-2026-08-31]]` 和 `[[stencil-the-harness-playbook-2026-09-05]]` 补充。
 
 该文有产品导向：LangGraph、LangSmith、Deep Agents 等是 LangChain 生态中的参考实现，不应直接等同于 Hermes 的默认方案。本页只沉淀可迁移的生命周期模型。
 
 ## Core lifecycle
+
+### Harness as a stateful execution boundary
+
+The Stencil article `[[stencil-the-harness-playbook-2026-09-05]]` is best absorbed here as an architecture supplement, not a new Hermes workflow. Its reusable claim is that an Agent Harness is a stateful execution boundary around the model/tool loop: it owns authoritative session state, control-plane policy, bounded work units, child-agent/job lifecycles, compatibility rules, observability, and views derived from state.
+
+[推论] Hermes mapping
+
+- **Single authoritative state:** state that affects rewind, fork, resume, retry, child-agent lifecycle, or recovery must be persisted or reconstructible from the authoritative run/session state; do not rely on plugin closures, process-local counters, or in-memory tool registries.
+- **Control plane vs execution plane:** the trusted parent/host owns state, routing, approvals, policy, credentials, and audit evidence. Workers and sandboxes execute bounded instructions and do not become policy authorities.
+- **Bounded work units:** shell commands, child agents, background jobs, and long-lived services need explicit ownership, timeout, cancellation, resource limits, cleanup, and observable terminal states.
+- **Projection and verification:** TUI, Web, Telegram, logs, and inspection views are projections. Completion, cancellation, resume, cleanup, and external side effects should be read back from the strongest available authoritative state when the task has such a contract.
+- **Smallest sufficient surface:** do not adopt a new state tree, Director, dynamic CLI, tool-count target, sandbox implementation, or rendering protocol from the article without a concrete local failure, a project owner, and an independent validation path.
+
+[证据边界] The article's architecture, benchmark, latency, plugin-count, and technology-choice claims remain source claims. The Hermes rules above are bounded local inferences; they do not authorize runtime/config, active Skill, MCP, cron, gateway, or provider changes.
 
 ### Context Development Lifecycle：上下文资产的聚焦视角
 
@@ -191,6 +205,7 @@ Hermes 映射：
 - [[anthropic-ai-native-sdlc-playbook-2026-08-21]]
 - [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]
 - [[thenewstack-agent-context-development-lifecycle-2026-08-31]]
+- [[stencil-the-harness-playbook-2026-09-05]]
 - [[claude-abc-legal-managed-agents-2026-08-17]]
 - [[agent-self-validation-loops]]
 - [[subagent-orchestration-patterns]]
