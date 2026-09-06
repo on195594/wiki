@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-06] ingest + existing-owner update | Solving the right problem before agentic implementation
+- Captured Mike Huls's Towards Data Science article in `raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md` with author/date, full Karakeep body, local summary path, and explicit practitioner-evidence limitations.
+- Updated the existing owner `concepts/hermes-ai-workflow-formalization-principles.md`: allocate preflight validation effort by decision reversal cost; prefer evidence, user confirmation, real samples, or a minimal Spike over six mandatory documents.
+- Preserved the small-task Direct path and rejected a new Skill, project pilot, fixed six-document workflow, default multi-Agent review, hard gate, Memory entry, runtime/config, Cron, MCP, Gateway, wrapper, provider, or plugin change.
+
 ## [2026-09-06] review | Reverse Engineering Linear's Sync Engine (`6ea1d94`)
 - Pi `0.84.4` independently reviewed commit `6ea1d9488b2ef6d51bc5b0afd364679da781a049` using read-only file tools and returned `APPROVE_LANDING` with no findings.
 - Parent verification accepted the declared eight-line callout omission and one trailing-space cleanup as bounded provenance exceptions; no content repair was warranted.

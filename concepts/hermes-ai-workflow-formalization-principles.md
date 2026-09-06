@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-08-18
+updated: 2026-09-06
 type: concept
 tags: [hermes, llm, workflow, decision, note, skills, governance]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md]
 status: stable
 description: 把形式化思想转译为 Hermes AI 工作流中的规格、边界、验证和可回滚原则。
 ---
@@ -53,6 +53,10 @@ Hermes 映射：
 - 规格草案应让 AI 指出缺失条件，但生成者的自检不能替代独立测试、结构化校验或人工判断；
 - 只针对失败的验收项定向修正，并记录最终假设、已知局限和 contract 变化；
 - 明确、局部、可回滚且有便宜确定性验证的小修继续走 `coding-agent-workflow` 的 Direct 路径，不为形式完整度增加仪式。
+
+`[[towardsdatascience-right-problem-agentic-ai-2026-09-03]]` 增加了一个用于分配前置投入的维度：**验证投入应随决策的反悔成本增加**。优先验证可能推翻数据契约、系统边界、集成方案或权限边界的假设；文案等便宜、局部、可逆的细节保留弹性。验证手段可以是已有证据、用户确认、真实样本或最小 Spike，结论回写原有 spec / ADR，而不是为文章提出的六个领域分别建立必填文档。
+
+这是一条风险比例原则，不是“消除全部不确定性”的硬门禁，也不意味着默认增加多 Agent 审查。文章主要提供工程师经验案例与假设性推演，没有受控数据证明工时不增加或返工必然下降；其中“理想情况下不会花更多时间”不能转写成 Hermes 的效果承诺或阈值。
 
 证据边界：原文是二手工程综述；ROPE、SWE-bench/SWT-Bench 和 DORA 数字在成为强制门禁或本地阈值前，需要回到原论文或官方报告核验。
 
@@ -189,6 +193,7 @@ LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量�
 - [[deterministic-analytics-llm-reasoning-boundary]]
 - [[langchain-interpreter-skills-2026-05-30]]
 - [[kdnuggets-specification-engineering-2026-08-10]]
+- [[towardsdatascience-right-problem-agentic-ai-2026-09-03]]
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
