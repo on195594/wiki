@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-06] independent review | commit a6584cd agent collaboration and harness evidence
+- AGY `1.1.27` with `Gemini 3.1 Pro (High)` returned `APPROVE_LANDING` with no content findings for exact commit `a6584cd3784a1642a450de60167978ccbdef77c4`.
+- Parent verification confirmed both raw-source hashes, inference markers, Wiki health, whitespace checks, source-link targets, and no active-layer changes. Favorable reviewer overclaims were narrowed in the preserved report.
+- The reviewer violated the read-only instruction by creating eight untracked temporary patch files. Parent removed only those files; exact target hashes remained unchanged. No source patch was warranted.
+
 ## [2026-09-05] ingest + existing-owner update | The Harness Playbook
 - Captured `raw/articles/stencil-the-harness-playbook-2026-09-05.md` with URL, capture date, structured-capture limitation, local summary path, source claims, Hermes inferences, and non-adoption boundaries; publisher author, date, title, and section structure were independently checked on 2026-09-06.
 - Updated existing owners `concepts/agent-development-lifecycle.md` and `concepts/stateful-agent-environments-and-grounded-verification.md`; added the harness as a stateful execution boundary, authoritative-state/readback rules, control-plane versus execution-plane separation, bounded job lifecycle requirements, and explicit evidence limits.
