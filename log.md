@@ -1770,3 +1770,10 @@
 - Durable delta: retain replayable retrieval decisions, enforce identity/scope/currency before similarity ranking, map claims to supporting excerpts, and treat retrieved content as untrusted data rather than policy.
 - Evidence boundary: the source provides no public benchmark, production incident record, or independent comparison; Oracle AI Vector Search remains a vendor example, not a Hermes selection decision.
 - Boundary: wiki-only update; no memory, active skill/reference, project, config, cron, MCP, runtime, wrapper, gateway, profile/plugin, credential, or Hermes core change was made.
+
+## [2026-09-06] review + fix | AGY review of agentic RAG trust-boundary ingestion
+- Reviewed commit: `ef4c25a` (`wiki: capture agentic RAG trust boundaries`). Prompt: `_meta/reviews/2026-09-06-agentic-rag-trust-boundary-agy-review-prompt.md`; result: `_meta/reviews/2026-09-06-agentic-rag-trust-boundary-agy-review.md`; AGY `1.1.27`; model `Gemini 3.1 Pro (High)`; exit `0`.
+- AGY verdict: `APPROVE_LANDING`; no blocking, important, or minor findings. Parent verification accepted the source, hash, links, schema/index/log, minimality, and active-layer boundary passes.
+- Parent calibration found one P3 evidence-label gap not caught by AGY: locally reusable design rules and the Hermes owner mapping were not explicitly marked `[推论]`. Added two group-level labels without changing behavior or source claims.
+- Scope integrity: exact pre/post commit-blob and prompt SHA-256 manifests match (`NO_DRIFT`). Final parent verdict: `PASS_WITH_MINOR_FIXES`.
+- Boundary: review and fix are wiki-only; no memory or active Hermes surface changed.
