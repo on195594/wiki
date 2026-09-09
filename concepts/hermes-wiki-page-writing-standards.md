@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-08-18
+updated: 2026-09-09
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
 sources: []
@@ -160,11 +160,34 @@ status: draft | stable | active | closed | current
 
 对于重要结论，优先在同段或相邻句放具体 Wiki、raw 或官方来源；数字、当前外部行为、规范性规则、争议结论和多来源综合结论尤其如此。普通背景段落保留页面级 `sources` 即可。
 
-来源事实与本地推导分开；本地推导使用 `[推论]`。仅对外部厂商控制的产品行为、接口或命令集设置 `review_by`；仅提及工具的方法论页面不为了形式添加日期。
+来源事实与本地推导分开；本地推导使用 `[推论]`。凡外部变化可能导致 Agent 错误行动的知识均可设置 `review_by`；纯方法论不为年龄加日期。
 
 页面局部复核只说明相关段落，不代表整页已复核；`updated` 仅表示文件最近编辑时间。无法确认时保留限制，不把未确认内容写成当前规则。
 
 低风险、来源清楚且已有 Wiki owner 的外部知识，可以直接按最小改动沉淀到现有正式页面或入库规则；不因缺少 active workflow 证据而另建验证项目、试点门槛或新基础设施。涉及 Schema、active skill、runtime、cron、MCP、memory 或批量迁移时，另行走对应治理流程。
+
+## Optional freshness and local claims
+
+- `volatility` 可选，取 `low | medium | high`，表达现实变化速度，不是质量评分。缺失不代表 low：当前外部事实或适用性未知按 YELLOW，明确稳定方法或时间范围内的历史知识可为 GREEN。
+- `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于今天；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
+- `review_by` 可用于任何外部变化可能导致 Agent 错误行动的知识。`verified_at <= today <= review_by` 才在日期窗口内；到期当天仍有效，次日起需复核。无法验证时不得删除到期字段来消除告警。
+- `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
+- 校验：非法 `volatility`、非法/未来 `verified_at`、任意页面非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
+
+混合页面的局部核验紧邻具体断言，标明版本/环境范围与证据。`_As of: 日期 · Source: 来源_` 仅提供核对时间线索，不能替代 `verified_at` + `review_by`。
+
+只有实际核验后才填写以下 block；模板不预填日期。block 仅覆盖其内部明确写出的 claim：
+
+```markdown
+> [!volatile]
+> verified_at: YYYY-MM-DD
+> review_by: YYYY-MM-DD
+> source: docs:具体权威地址或 project:具体证据路径
+>
+> 已核验的具体行为及版本/环境范围。
+```
+
+其余易变段落仍待验证；稳定方法论可独立使用。第一阶段 health check 不解析局部 block，由 Agent 按检索契约判断。
 
 ## Relationship to other rules
 这页定义“怎么写页面”，不是“信息该放哪里”。

@@ -2,7 +2,8 @@
 
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
-> Last updated: 2026-09-06 | Indexed pages: 116
+> 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
+> Last updated: 2026-09-09 | Indexed pages: 116
 
 ## Entities
 

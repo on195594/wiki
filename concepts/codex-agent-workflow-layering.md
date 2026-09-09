@@ -1,17 +1,22 @@
 ---
 title: Codex Agent Workflow Layering
 created: 2026-04-17
-updated: 2026-06-26
+updated: 2026-09-09
 type: concept
 tags: [agent, llm, mcp, automation, workflow, configuration, tool]
-sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md]
+sources: [docs:https://learn.chatgpt.com/docs/agent-configuration/agents-md, raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md]
 status: stable
+volatility: high
 description: 说明 Codex agent 工作流中 prompt、计划、AGENTS、skills、MCP 和自动化的分层职责。
 aliases: [codex-workflow-layering]
 review_by: 2026-11-11
 ---
 
 # Codex Agent Workflow Layering
+
+## Freshness scope
+
+本页为混合知识：稳定方法论可独立复用；只有下方 volatile block 中的具体断言于 2026-09-09 核对。其余 API、命令、产品能力、模型或运行状态仍待验证，页面级 review_by 未到期不代表已核验。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围；本次不填写整页 verified_at。
 
 ## Summary
 这页提炼 OpenAI 的 Codex best practices：高质量 agent 工作流不是靠一次性 prompt magic，而是靠分层设计。单次任务目标放在 prompt，长期仓库规则放进 `AGENTS.md`，某类任务的方法沉淀成 skill，repo 外的实时上下文通过 MCP 接入，成熟后的稳定流程再交给 automation 调度。这样才能把“会写代码的助手”变成“可持续复用的工程代理”。
@@ -40,6 +45,16 @@ prompt 的职责是把这一次要做什么说清楚。
 如果任务还处在“方向模糊、约束不清、步骤未拆开”的阶段，就应优先走 plan，而不是继续堆 prompt。
 
 ### 3. AGENTS.md stores durable repo rules
+
+> [!volatile]
+> verified_at: 2026-09-09
+> review_by: 2026-10-09
+> source: docs:https://learn.chatgpt.com/docs/agent-configuration/agents-md
+>
+> 当前官方文档说明 Codex 按全局、项目根到工作目录构建指令链；每层优先 AGENTS.override.md，再取 AGENTS.md，较近目录的指令覆盖先前内容。此核验仅覆盖文档中的指令发现规则，不验证本机每种运行端或自动化调度行为。
+
+_As of: 2026-09-09 · Source: [官方文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md)_
+
 `AGENTS.md` 负责承载仓库级长期规则，例如：
 - 目录结构
 - build / test / lint 命令

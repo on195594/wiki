@@ -5,6 +5,8 @@ import importlib.util
 import json
 import tempfile
 import unittest
+from datetime import date
+from unittest.mock import patch
 from pathlib import Path
 
 MODULE_PATH = Path(__file__).with_name("wiki_health_check.py")
@@ -70,6 +72,40 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
     def issue_codes(self, severity: str) -> set[str]:
         report = wiki_health_check.build_report(self.root)
         return {item["code"] for item in report["issues"][severity]}
+
+    def test_optional_freshness_and_date_boundaries(self):
+        p = self.add_formal("freshness")
+        original = p.read_text()
+        cases = [
+            ("", set(), set()),
+            ("volatility: high", set(), set()),
+            ("volatility: invalid", {"invalid_volatility"}, set()),
+            ("volatility:", {"invalid_volatility"}, set()),
+            ("verified_at: 2026-02-30", {"malformed_verified_at"}, set()),
+            ("verified_at: 20260909", {"malformed_verified_at"}, set()),
+            ("verified_at:", {"malformed_verified_at"}, set()),
+            ("review_by:", {"malformed_review_by"}, set()),
+            ("verified_at: 2026-09-10", {"future_verified_at"}, {"verified_after_updated"}),
+            ("verified_at: 2026-09-09", set(), {"verified_after_updated"}),
+            ("volatility: high\nverified_at: 2026-01-01", set(), {"missing_review_by"}),
+            ("review_by: 2026-09-09", set(), set()),
+            ("review_by: 2026-09-08", set(), {"page_due_for_review"}),
+            ("volatility: low\nreview_by: bad", {"malformed_review_by"}, set()),
+            ("volatility: high\nverified_at: 2026-01-01\nreview_by: 2026-09-10", set(), set()),
+        ]
+        with patch.object(wiki_health_check, "date", wraps=date) as clock:
+            clock.today.return_value = date(2026, 9, 9)
+            for metadata, p1, p2 in cases:
+                with self.subTest(metadata=metadata):
+                    p.write_text(original.replace("status: stable\n", "status: stable\n" + metadata + "\n"))
+                    self.assertEqual(self.issue_codes("P1"), p1)
+                    report = wiki_health_check.build_report(self.root)
+                    self.assertEqual({i["code"] for i in report["issues"]["P2"] if i["path"] == "concepts/freshness.md"}, p2)
+
+    def test_multiline_sources_read_all_items(self):
+        p = self.add_formal("block-sources")
+        p.write_text(p.read_text().replace("sources: [docs:test]", "sources:\n  - docs:test\n  - /tmp/transient"))
+        self.assertIn("tmp_source", self.issue_codes("P2"))
 
     def test_reports_broken_wikilink(self) -> None:
         self.add_formal("broken-link", body="# Broken link\n\n" + "context " * 20 + "[[missing-page]]\n")

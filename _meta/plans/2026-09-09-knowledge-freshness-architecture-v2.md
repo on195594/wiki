@@ -3,7 +3,7 @@ title: Hermes Wiki Knowledge Freshness Architecture v2
 created: 2026-09-09
 updated: 2026-09-09
 type: plan
-status: draft
+status: closed
 tags: [hermes, knowledge-base, governance, verification, architecture, workflow]
 sources:
   - concepts/hermes-knowledge-architecture.md
@@ -442,7 +442,7 @@ _As of: 2026-09-09 · Source: [[raw-source]]_
 > 当前行为……
 ```
 
-第一阶段不要求 health check 解析 volatile block；先作为写作约定试运行。局部 block 只覆盖紧随其后的 claim，不能刷新页面级 `verified_at`。
+第一阶段不要求 health check 解析 volatile block；先作为写作约定试运行。局部 block 只覆盖 block 内明确的 claim，不能刷新页面级 `verified_at`。
 
 ### 禁止
 
@@ -596,10 +596,10 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 审查本方案。
-- [ ] 明确 `volatility` / `verified_at` 为 optional。
-- [ ] 选 5–10 个高波动页面做样本。
-- [ ] 记录当前 retrieval 行为作为 baseline。
+- [x] 审查本方案。
+- [x] 明确 `volatility` / `verified_at` 为 optional。
+- [x] 选 5–10 个高波动页面做样本。
+- [x] 记录当前 retrieval 行为作为 baseline。
 
 验收：
 
@@ -610,12 +610,12 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 更新 `SCHEMA.md`，增加 `volatility` 与 `verified_at` 可选字段。
-- [ ] 更新 `hermes-wiki-page-writing-standards.md`。
-- [ ] 扩大 `review_by` 的适用定义：凡外部变化可能导致 Agent 错误行动的知识均可使用。
-- [ ] 更新现有 `_meta/page-template.md`；不为此新增 page generator。
-- [ ] 增加 health-check 字段格式验证。
-- [ ] 增加对应 regression tests。
+- [x] 更新 `SCHEMA.md`，增加 `volatility` 与 `verified_at` 可选字段。
+- [x] 更新 `hermes-wiki-page-writing-standards.md`。
+- [x] 扩大 `review_by` 的适用定义：凡外部变化可能导致 Agent 错误行动的知识均可使用。
+- [x] 更新现有 `_meta/page-template.md`；不为此新增 page generator。
+- [x] 增加 health-check 字段格式验证。
+- [x] 增加对应 regression tests。
 
 验收：
 
@@ -627,30 +627,30 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 更新 `hermes-retrieval-priority-and-answer-path.md`。
-- [ ] 在 `operations/agent-shared-wiki-index.md` 写入必须执行 Freshness Gate 和关系入边检查的最小入口规则，并链接 canonical 检索契约。
-- [ ] 将 “wiki first” 明确修改为 “freshness-qualified wiki first”。
-- [ ] 定义 GREEN/YELLOW/RED 运行时判断。
-- [ ] 将 `supersedes`、`conflicts_with` 升级为 retrieval hard constraints。
-- [ ] 增加至少 8 个 behavior cases。
+- [x] 更新 `hermes-retrieval-priority-and-answer-path.md`。
+- [x] 在 `operations/agent-shared-wiki-index.md` 写入必须执行 Freshness Gate 和关系入边检查的最小入口规则，并链接 canonical 检索契约。
+- [x] 将 “wiki first” 明确修改为 “freshness-qualified wiki first”。
+- [x] 定义 GREEN/YELLOW/RED 运行时判断。
+- [x] 将 `supersedes`、`conflicts_with` 升级为 retrieval hard constraints。
+- [x] 增加至少 8 个 behavior cases。
 
 最低测试集：
 
-- [ ] stable + low volatility -> GREEN
-- [ ] high volatility + valid verified_at + valid review_by -> GREEN
-- [ ] high volatility + future review_by but no verified_at -> YELLOW
-- [ ] high volatility + future verified_at -> YELLOW，并触发 P1
-- [ ] volatile block with verified_at + valid review_by + source -> only that claim GREEN
-- [ ] 局部 claim 复核后，同页其他易变 claim 仍为 YELLOW
-- [ ] expired review_by -> YELLOW
-- [ ] current question + old high-volatility page -> YELLOW
-- [ ] legacy page without volatility + current external fact -> YELLOW
-- [ ] legacy page without volatility + stable method -> GREEN
-- [ ] 只命中旧页但存在 inbound supersedes -> RED，并发现替代页
-- [ ] A supersedes B 且 A 已到期 -> A YELLOW、B RED，并寻找 live evidence
-- [ ] conflict 只声明在另一页 -> RED/fail closed
-- [ ] historical question uses old time-scoped source correctly
-- [ ] method-only section of old page不被无意义 freshness gate 阻塞
+- [x] stable + low volatility -> GREEN
+- [x] high volatility + valid verified_at + valid review_by -> GREEN
+- [x] high volatility + future review_by but no verified_at -> YELLOW
+- [x] high volatility + future verified_at -> YELLOW，并触发 P1
+- [x] volatile block with verified_at + valid review_by + source -> only that claim GREEN
+- [x] 局部 claim 复核后，同页其他易变 claim 仍为 YELLOW
+- [x] expired review_by -> YELLOW
+- [x] current question + old high-volatility page -> YELLOW
+- [x] legacy page without volatility + current external fact -> YELLOW
+- [x] legacy page without volatility + stable method -> GREEN
+- [x] 只命中旧页但存在 inbound supersedes -> RED，并发现替代页
+- [x] A supersedes B 且 A 已到期 -> A YELLOW、B RED，并寻找 live evidence
+- [x] conflict 只声明在另一页 -> RED/fail closed
+- [x] historical question uses old time-scoped source correctly
+- [x] method-only section of old page不被无意义 freshness gate 阻塞
 
 验收：
 
@@ -662,10 +662,10 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 实现 `_meta/scripts/wiki_reverse_lookup.py`，统一支持精确 source 反查和 Relations 入边反查。
-- [ ] 输出稳定排序 JSON，不生成持久化索引文件。
-- [ ] 增加 source 与 relation lookup 的最小 regression tests。
-- [ ] ingest workflow 接入精确 source 与 Relations 反查；新来源继续走带依据的窄词检索。
+- [x] 实现 `_meta/scripts/wiki_reverse_lookup.py`，统一支持精确 source 反查和 Relations 入边反查。
+- [x] 输出稳定排序 JSON，不生成持久化索引文件。
+- [x] 增加 source 与 relation lookup 的最小 regression tests。
+- [x] ingest workflow 接入精确 source 与 Relations 反查；新来源继续走带依据的窄词检索。
 
 验收：
 
@@ -676,12 +676,12 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 更新 `wiki-ingestion-workflow.md`。
-- [ ] ingest 时输出 `NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE`。
-- [ ] CONFIRM 只刷新真实验证过的 metadata。
-- [ ] UPDATE 使用最小 patch。
-- [ ] CONFLICT 不自动统一。
-- [ ] SUPERSEDE 建立明确 relation。
+- [x] 更新 `wiki-ingestion-workflow.md`。
+- [x] ingest 时输出 `NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE`。
+- [x] CONFIRM 只刷新真实验证过的 metadata。
+- [x] UPDATE 使用最小 patch。
+- [x] CONFLICT 不自动统一。
+- [x] SUPERSEDE 建立明确 relation。
 
 验收：
 
@@ -707,10 +707,10 @@ Relations 目标不存在继续由现有 `broken_wikilink` P0 处理，不新增
 
 任务：
 
-- [ ] 使用 `_As of..._` 简单标记。
-- [ ] 必要时使用 `[!volatile]` block。
-- [ ] 观察 Agent 是否更准确定位待验证段落。
-- [ ] 不做全库迁移。
+- [x] 使用 `_As of..._` 简单标记。
+- [x] 必要时使用 `[!volatile]` block。
+- [x] 观察 Agent 是否更准确定位待验证段落。
+- [x] 不做全库迁移。
 
 验收：
 
@@ -834,3 +834,118 @@ Hermes Wiki v2 的目标不是让所有知识永远“最新”，这是不可�
 - [[hermes-retrieval-priority-and-answer-path]]
 - [[hermes-wiki-page-writing-standards]]
 - [[wiki-ingestion-workflow]]
+
+## 20. 实施与验收证据（2026-09-09）
+
+状态：已收口。实现与独立 AGY 复审完成（PASS、无实现阻断项）；用户于 2026-09-09 明确同意 Claude 行为验收不计未完成，并授权 Git 提交和推送。Claude 记为用户豁免，不宣称实测通过；其余历史证据保持原文。
+
+### 基线与五页样本
+
+基线 `48dc01b`，初始 `git status --short` 为空。修改前执行 `python3 -m unittest discover -s _meta/scripts -p 'test_*.py'`：13 tests OK；`python3 _meta/scripts/wiki_health_check.py --format markdown`：PASS，P0/P1/P2=0/0/0，119 正式页、163 raw、116 index links。
+
+五页样本（均读取基线正文；后两页通过 `git show 48dc01b:<path>` 回看，不修改）：
+
+| concepts/ 下页面 | 基线检索证据与缺口 | 本次处置 |
+|---|---|---|
+| claude-code-practical-workflow-tips.md | stable，review_by=2026-11-11，无 verified_at；方法与当前命令混合 | 局部目录访问 claim 试点 |
+| codex-agent-workflow-layering.md | 同上；来源可命中工作流分层内容，无法区分核验范围 | 局部指令发现规则试点 |
+| hermes-model-specific-harness-profiles.md | 同上；旧 default/model/Gateway 快照写成当前状态 | 历史化旧快照，局部 CLI/路径计算试点 |
+| hermes-agent-workflow-layering-and-adoption-order.md | stable，无 freshness 字段；稳定分层与当前工具 owner 混合 | 保持历史页；读取时按 claim 范围判断 |
+| hermes-layer-routing-decision-checklist.md | stable，无 freshness 字段；方法与外部 memory/cron/MCP 定义混合 | 保持历史页；实时行为独立核验 |
+
+这是文件/检索契约的静态基线，不是修改前四端 fresh-session 行为实测。原契约只要求 wiki first，入口已有实时验证边界，却没有关系入边硬约束；健康检查只处理 review_by 格式与到期。不能据此声称旧 Agent 实际犯过错误。
+
+### 实现与确定性验证
+
+- 可选元数据、Schema、写作、健康规则和模板已同步；模板不预填 verified_at/review_by。保留任意页面 review_by 校验。修正共享 frontmatter 读取的跨行吞值与多行 sources 只读首项问题。
+- 反查脚本支持互斥 source/page；精确来源返回路径数组，页面查询返回 declared_by/relation/target 数组；去重排序、不持久化索引。错误返回 stderr JSON、exit 2，无成功 stdout；代码示例（反引号、波浪围栏、行内/缩进）排除。
+- 22 项 unittest 通过；其中元数据表驱动含 15 个缺省/非法/未来/边界情形，反查覆盖多引用、block list、重复边、关系类型、代码例子、无匹配、歧义、无效 UTF-8、非法 sources、不可读目录和 CLI 错误。
+- 实库 source 查询 `raw/articles/openai-codex-best-practices-2026-04-17.md` 返回 codex-agent-workflow-layering、hermes-agent-workflow-layering-and-adoption-order、hermes-layer-routing-decision-checklist 三页。检索契约页面的入边查询返回知识架构、摄取流程和共享入口的声明。
+- Freshness Gate 通过共享入口和 Agent 契约生效，Python 不实现语义裁决。没有新增依赖、全局配置、memory/skills/runtime/MCP 改动或批量历史页迁移。
+
+### 可复现行为 fixture 与命令
+
+测试为虚构 Aster CLI；today 固定 2026-09-09。临时 Vault `/tmp/wiki-freshness-v2-fixture`，正式页均在 concepts/；共同 frontmatter 为 title=文件 stem、created=2026-01-01、updated=2026-09-09、type=concept、tags=[tool]、sources=[docs:aster-v2]、status=stable。默认正文为 `Aster CLI v2 buffer limit is 16.`。下表列出差异；不把虚构来源写进真实 raw。
+
+| fixture | 额外元数据/正文 |
+|---|---|
+| stable | volatility=low；正文 Method: compare output with acceptance criteria. |
+| valid | high；verified_at=09-01；review_by=10-01（均 2026 年） |
+| missing | high；review_by=10-01；无 verified_at |
+| future | high；verified_at=09-10；review_by=10-01 |
+| mixed | high；稳定 Method 同 stable；volatile block 内 verified_at=09-01、review_by=10-01、source=docs:aster-v2、v2 limit=16；block 外 Other claim: Aster CLI v2 supports teleport. |
+| expired | high；verified_at=08-01；review_by=09-08 |
+| old | high；verified_at=01-01；review_by=02-01；只有默认 API claim，无稳定方法段 |
+| legacy | 无 freshness 元数据 |
+| legacy-method | 无 freshness 元数据，正文为 stable 的 Method |
+| b | high；verified_at=09-01；review_by=10-01；正文 v1 limit=8，适用至 v2 于 08-01 生效 |
+| a | high；verified_at=08-01；review_by=09-08；正文 v2 limit=16，替代从 08-01 起对 v2 生效、不替代 v1 历史；Relations: supersedes 指向 b |
+| conflict-target | 默认正文 |
+| conflict-declarer | v2 limit=32，同 scope/date/authority，明确 unresolved；Relations: conflicts_with 指向 conflict-target |
+| candidate | aliases=[Aster CLI]；sources=[docs:aster-v1]；正文仅 Aster CLI buffer-limit configuration. |
+| distractor | sources=[docs:general]；正文仅 Agent AI workflow and general productivity. |
+| raw/articles/new-aster.md | 产品 Aster CLI；窄词 buffer-limit；v2 buffer-limit is 16。没有正式页 sources 引用它 |
+
+命令：`python3 -B /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /tmp/wiki-freshness-v2-fixture --page concepts/b.md`（a/supersedes/b）；对 conflict-target 查询得到 conflict-declarer/conflicts_with；`--source raw/articles/new-aster.md` 输出 `[]`。`rg -n -i 'aster cli|buffer-limit' .../concepts/candidate.md .../concepts/distractor.md` 命中 candidate 的 aliases（第 9 行）和正文（第 12 行），不命中 distractor。
+
+新材料候选判定：candidate 是 **heuristic candidate**，局部 v2 limit=16 为 **NEW**（可并入原 owner；旧正文没有数值 claim，不能仅凭 docs:aster-v1 推断 UPDATE）。distractor 缺窄词匹配而排除，不强行分入五分类。Codex 实测给出此结果；AGY 首轮误判 UPDATE，已收紧契约并重测，AGY/Codex/Hermes 均判 NEW。此 fixture 只验证 NEW 与排除，五分类规则不等于五类都已有端到端样例。
+
+调用均在 /home/lin/wiki，未使用 resume/continue：
+
+- Claude 2.1.259：`claude -p --no-session-persistence --permission-mode plan --tools Read,Grep,Glob,Bash --allowedTools 'Read,Grep,Glob,Bash(python3 _meta/scripts/wiki_reverse_lookup.py *)' --output-format json < /tmp/wiki-freshness-v2-probe.txt`。
+- Codex 0.153.4：`codex exec --ephemeral --sandbox read-only --json - < /tmp/wiki-freshness-v2-probe.txt`。
+- AGY：Python subprocess 参数列表调用 `agy --mode plan --sandbox --print-timeout 180s --log-file /tmp/wiki-freshness-agy-cli.log --output-format json -p <prompt字符串>`；AGY 的 -p 必须带参数，不能仅从 stdin 提供。
+- Hermes v0.21.1：`hermes chat --query-file /tmp/wiki-freshness-v2-probe.txt --oneshot --max-turns 12 --run-budget 150 -t terminal`。
+
+完整 probe 要求：按既有全局入口读取共享入口与 canonical 检索/摄取契约，不读取实施计划预期；用现有工具反查 fixture；依次回答下表 15 项（资格、scope、live 要求、依据），判断固定新来源/候选/干扰页，再指出三真实试点页的稳定原则、局部核验 claim 和待验证部分。固定日期 09-09，只读不联网，不修改外部状态。初轮“不能联网虚构产品”混入了无法验证条件；重测将第 8 项明确为“尚未尝试核验，且无证据表明权威来源不可取得”的初判，避免把 YELLOW 与验证失败后的 RED 混淆。
+
+### 15 项实际行为结果
+
+下列 Codex/AGY 初轮均实际读取共享入口、canonical 文件并运行反查。Codex fresh session 的完整响应及工具 JSONL 在本次 /tmp 证据中；AGY conversation `5ad69af8-d370-43a8-8612-fc68908b17d9` 返回完整表格。结果摘要在此长期保留，临时日志不作为唯一证据。
+
+| # | 输入/范围 | 预期 | 首轮 Codex / AGY |
+|---|---|---|---|
+| 1 | stable 方法 | GREEN | GREEN / GREEN |
+| 2 | valid v2 claim | GREEN，当前事实仍 live | GREEN + live / 同 |
+| 3 | missing | YELLOW | YELLOW / YELLOW |
+| 4 | future | YELLOW + P1 | YELLOW + future_verified_at P1 / 同 |
+| 5 | mixed block | 仅该 claim GREEN | 局部 GREEN / 同 |
+| 6 | mixed teleport | YELLOW | YELLOW / 同 |
+| 7 | expired | YELLOW | YELLOW / 同 |
+| 8 | old 当前适用性初判 | YELLOW，实际无法核验才 RED | 首轮均 RED（提示混入无法验证条件）；收紧后 AGY/Codex/Hermes 均 YELLOW |
+| 9 | legacy 当前外部事实 | YELLOW | YELLOW / 同 |
+| 10 | legacy-method | GREEN | GREEN / 同 |
+| 11 | 只命中 b 问 v2 | RED，发现 a | RED，反查发现 a / 同 |
+| 12 | a 到期 | a YELLOW、b RED，live | 符合 / 符合 |
+| 13 | 只命中 conflict-target | RED/fail closed | 入边冲突 RED / 同 |
+| 14 | 07-01 的 v1 历史 b | 时间范围 GREEN | GREEN / 同 |
+| 15 | mixed 方法 | GREEN | GREEN；Codex 另指出 old 实际无方法段，不虚构内容 / GREEN |
+
+### 试点核验来源与范围
+
+- Claude：2026-09-09 实际打开官方 memory 文档，核对 additional directories 小节的 --add-dir 与指令加载开关；本机 --help 辅助确认参数存在。[官方文档](https://code.claude.com/docs/en/memory)。不验证 /teleport、浏览器、schedule 或远程能力。
+- Codex：实际打开官方 AGENTS 文档（developers.openai.com 跳转至 learn.chatgpt.com），核对 global/project/discovery/merge 顺序。[官方文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md)。不宣称本机所有运行端已验证。
+- Hermes：实际读取 `/home/lin/.hermes/hermes-agent/hermes_cli/profiles.py` 的 `_get_profiles_root` 与 `_get_default_hermes_home`，执行 `hermes --version`、`hermes profile --help`。核验仅覆盖命名 profile 路径计算与 CLI 子命令，不读取或刷新当前模型/provider/Gateway 状态。
+- 三页只加局部 verified_at=2026-09-09、review_by=2026-10-09 和具体 source；保留页面 review_by=2026-11-11，不增加页面级 verified_at。Codex/AGY 初轮均正确定位局部 claim、稳定方法及仍待验证内容，未提升整页。
+
+### 四端与复审状态
+
+- 全局入口只读核对：Claude `~/.claude/CLAUDE.md`、Codex `~/.codex/AGENTS.md`、AGY `~/.gemini/GEMINI.md`、Hermes `~/.hermes/memories/MEMORY.md` 均包含共享入口路径；未修改。
+- Claude 用户豁免（2026-09-09，不计未完成）：此前返回 `Failed to authenticate: OAuth session expired and could not be refreshed`，模型 usage 为 0。没有行为执行证据，不进行凭证变更。
+- Codex 首次受只读宿主初始化限制；获准放行 CLI 初始化后，子会话仍为 read-only，完成上述 15 项、候选及三页范围判断。第 8 项收紧后重测通过，代表性行为验收通过。
+- AGY 首次被 socket 沙箱限制；放行本地通信后完成初轮。第 8 项和候选 NEW 分类重测通过，代表性行为验收通过。
+- Hermes 首次受会话目录只读限制；正常初始化重跑已读当前工作区契约、执行 fixture 反查，但在预算内未返回最终判断，首轮不计通过；缩为代表性案例的新会话返回完整判断，入口/缺验证/替代及局部验证全部通过（未声称 Hermes 完成全部 15 项）。
+- AGY 独立实施复审首轮只有等待文字，不计通过；续审发现 log 标题插入错误，修复后复审 **PASS，Blocking None**。prompt/result 见 [[2026-09-09-knowledge-freshness-v2-agy-review-prompt]]、[[2026-09-09-knowledge-freshness-v2-agy-review]]。已记录一次 reviewer 误运行 manifest writer 的边界偏差，确认未改变任何 raw/manifest 字节；最终复审只执行只读比较。
+
+重测命令与结果：AGY 同参数 fresh session、Codex 同参数 fresh session、Hermes `--max-turns 20 --run-budget 210`，均改读 `/tmp/wiki-freshness-v2-focused.txt`。此 prompt 明确只读且不读取计划，要求加载既有入口并实际读取 old/missing/mixed/b/a/candidate/distractor、新 raw；依次判断未尝试核验的 old、missing、block/teleport、反查 b 的 a/b 资格、精确反查为空后的 NEW/干扰页分类。三端均返回 YELLOW、YELLOW、GREEN/YELLOW、a YELLOW/b RED、heuristic candidate NEW/干扰排除，未将局部提升整页。
+
+会话标识：Codex 初轮 `01a084fc-da5c-7281-a7f2-303ffe0e6969`，重测 `01a08500-85e1-7fa3-8d90-564f845438c7`；AGY 重测 `f308be16-f910-4fec-9746-15aa0c1cf8a0`；Hermes 重测 `20260909_151005_4dcefa`（16 tool calls，最终完整回答）。Claude 初轮 `258449eb-75e5-4f23-ab61-8c288071faf4` 只有认证失败。15 项行为已由 Codex/AGY 初轮加边界重测覆盖；Claude 后经用户明确豁免，不计未完成；不宣称四端全部实测通过。
+
+- [x] 元数据与反查回归、检索/摄取契约、三个局部 claim 试点。
+- [x] 15 项行为案例及固定新来源候选检查（初轮问题与纠正如上）。
+- [x] Codex、AGY、Hermes fresh-session 代表性行为。
+- [x] Claude fresh-session 验收项收口（用户豁免；认证失败记录保留，不等于实测通过）。
+- [x] AGY 独立实施复审取得明确无阻断裁决（PASS）。
+- [x] 整体 Phase 0–5 按用户确认的验收范围关闭。
+
+最终验证：22 tests OK；Wiki health check P0/P1/P2=0/0/0；`git diff --check` 无输出；`git diff -- raw/ _meta/raw-source-hashes.json` 为空。共享入口 5055 bytes，未超过 8 KiB。实现范围已完成；Claude 验收由用户豁免，计划关闭，按用户授权提交并推送。

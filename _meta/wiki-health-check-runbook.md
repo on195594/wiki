@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-09-03
+updated: 2026-09-09
 type: meta
 status: current
 ---
@@ -37,7 +37,7 @@ python3 _meta/scripts/wiki_health_check.py
 Run the offline regression fixtures:
 
 ```bash
-python3 -m unittest discover -s _meta/scripts -p 'test_wiki_health_check.py' -v
+python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v
 ```
 
 The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, near-duplicate pages, required frontmatter fields, formal status enums, and closed-query index lifecycle. They create isolated temporary vaults and never modify `/home/lin/wiki`.
@@ -47,6 +47,15 @@ Root resolution order:
 1. `--root`
 2. `OBSIDIAN_VAULT_PATH`
 3. `/home/lin/wiki`
+
+## Reverse lookup
+
+```bash
+python3 _meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --source raw/articles/openai-codex-best-practices-2026-04-17.md
+python3 _meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page concepts/codex-agent-workflow-layering.md
+```
+
+Modes are mutually exclusive. Source mode returns direct formal-page paths; page mode returns `declared_by`, `relation`, `target` records for all allowed relation types. Lists are deduplicated and sorted. Empty matches return `[]`; unreadable/malformed input or ambiguous links return exit 2 with JSON error on stderr and no result on stdout. Sources are exact strings, not URL aliases or heuristic similarity. Page input is an existing Wiki-relative Markdown path. Links use canonical paths, optional `.md`, basename, fragment and display alias under existing Wiki conventions; ambiguous targets must be disambiguated. No persisted index is created.
 
 ## Companion scripts
 
@@ -140,7 +149,7 @@ Any nonzero count is a real finding, not a known-noise allowance.
 
 `near_duplicate_pages` uses a Jaccard threshold of `0.45`, calibrated on 2026-08-11 against all 5995 formal-page pairs: median `0.055`, p99 `0.137`, observed max `0.270`. A half-rewritten copy of an existing page measures `0.566` and a verbatim copy `1.000`, so the threshold sits in the gap between real topic overlap and real duplication. Recalibrate it if the corpus changes shape; do not raise it to silence a finding.
 
-`page_due_for_review` is the only check whose result changes over time on unchanged files: three pages carry `review_by: 2026-11-11`, so P2 is expected to become nonzero on that date without anything in the wiki having been edited. Clear it by re-reading those pages against their current upstream subject and either bumping `review_by` or correcting the page — not by deleting the field.
+Date checks use local today: `review_by` expires the following day; future `verified_at` is P1. Never clear expiry by deleting the field. Recheck the affected claims before changing dates. Optional freshness rules are defined in SCHEMA.md.
 
 ## When to run
 

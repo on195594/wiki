@@ -95,8 +95,20 @@ def is_formal_page(root: Path, path: Path) -> bool:
 
 
 def strip_code(text: str) -> str:
-    text = re.sub(r"```.*?```", "", text, flags=re.S)
-    text = re.sub(r"`[^`]*`", "", text)
+    lines = []
+    fence = ""
+    for line in text.splitlines(keepends=True):
+        if fence:
+            if re.fullmatch(r" {0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*\n?", line):
+                fence = ""
+            continue
+        opening = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
+        if opening:
+            fence = opening[1]
+        elif not line.startswith(("    ", "\t")):
+            lines.append(line)
+    text = "".join(lines)
+    text = re.sub(r"(`+).*?\1", "", text, flags=re.S)
     return text
 
 
@@ -119,10 +131,22 @@ def parse_inline_list(value: str) -> list[str]:
 
 
 def frontmatter_value(frontmatter: str, key: str) -> str | None:
-    match = re.search(rf"^{re.escape(key)}:\s*(.+)$", frontmatter, flags=re.M)
+    match = re.search(rf"^{re.escape(key)}:[ \t]*(.*)$", frontmatter, flags=re.M)
     if not match:
         return None
-    return match.group(1).strip()
+    value = match.group(1).strip()
+    if not value:
+        items = []
+        for line in frontmatter[match.end():].splitlines()[1:]:
+            if not line.strip():
+                continue
+            item = re.fullmatch(r"[ \t]+-[ \t]+(.+)", line)
+            if not item:
+                break
+            items.append(item.group(1).strip())
+        if items:
+            return "[" + ", ".join(items) + "]"
+    return value
 
 
 def is_allowed_source(source: str) -> bool:
@@ -343,6 +367,21 @@ def build_report(root: Path) -> dict[str, Any]:
                         if tag not in taxonomy:
                             add_issue(issues, "P1", "unregistered_tag", r, "Tag is not registered in the SCHEMA.md tag taxonomy", tag=tag)
                 review_by_value = frontmatter_value(frontmatter, "review_by")
+                volatility = frontmatter_value(frontmatter, "volatility")
+                verified_value = frontmatter_value(frontmatter, "verified_at")
+                if volatility is not None and volatility not in {"low", "medium", "high"}:
+                    add_issue(issues, "P1", "invalid_volatility", r, "volatility must be low, medium or high", value=volatility)
+                if verified_value is not None:
+                    verified = parse_review_by(verified_value)
+                    if verified is None:
+                        add_issue(issues, "P1", "malformed_verified_at", r, "verified_at is not a YYYY-MM-DD date", value=verified_value)
+                    elif verified > today:
+                        add_issue(issues, "P1", "future_verified_at", r, "verified_at cannot record a future verification", value=verified_value)
+                    updated = parse_review_by(values["updated"] or "")
+                    if verified and updated and verified > updated:
+                        add_issue(issues, "P2", "verified_after_updated", r, "verified_at is later than updated")
+                    if volatility == "high" and review_by_value is None:
+                        add_issue(issues, "P2", "missing_review_by", r, "High volatility page with verified_at needs review_by")
                 if review_by_value is not None:
                     review_by = parse_review_by(review_by_value)
                     if review_by is None:
@@ -486,7 +525,7 @@ def build_report(root: Path) -> dict[str, Any]:
         notes.append(f"{known_unindexed_drafts} draft query page(s) are intentionally outside index.md; see _meta/draft-query-inventory.md.")
     notes.append("Inline-code and fenced-code wikilink examples are ignored during link checks.")
     notes.append("Root core files and _meta/ pages are excluded from formal frontmatter/H1 requirements.")
-    notes.append(f"`page_due_for_review` is evaluated against today's date ({today.isoformat()}); it is the one check whose result changes over time on unchanged files.")
+    notes.append(f"Freshness dates are evaluated against today's date ({today.isoformat()}); expiry starts the day after review_by.")
 
     result = {
         "root": str(root),

@@ -1,17 +1,22 @@
 ---
 title: Hermes Model-Specific Harness Profiles
 created: 2026-04-30
-updated: 2026-08-18
+updated: 2026-09-09
 type: concept
 tags: [hermes, agent, harness, model-profiles, skills, context-engineering, verification]
-sources: [raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
+sources: [project:/home/lin/.hermes/hermes-agent/hermes_cli/profiles.py, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
+volatility: high
 description: 定义 Hermes 针对不同模型配置 harness profile 的适配原则和验证路径。
 aliases: [model-specific-harness, harness-profiles]
 review_by: 2026-11-11
 ---
 
 # Hermes Model-Specific Harness Profiles
+
+## Freshness scope
+
+本页为混合知识：稳定方法论可独立复用；只有下方 volatile block 中的具体断言于 2026-09-09 核对。其余 API、命令、产品能力、模型或运行状态仍待验证，页面级 review_by 未到期不代表已核验。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围；本次不填写整页 verified_at。
 
 ## Summary
 LangChain 的 Deep Agents 文章给 Hermes 的核心启发是：Agent 的能力不是裸模型能力，而是 `模型 + harness` 的组合能力。对 Hermes 来说，harness 不只是 runtime profile；它包括 system/developer 指令、skills、工具暴露方式、subagent 使用、项目上下文、verification 纪律、cron 入口和 wiki/memory 注入策略。
@@ -50,7 +55,17 @@ Hermes 映射不是增加一套通用编排层，而是让现有 `coding-agent-d
 这强化了本页的 `overlay before core` 原则，但没有提供创建新 Hermes runtime profile、自动路由器或默认多 Agent 工作流的证据。
 
 ### 2. 当前不应马上新建 Hermes runtime profile
-当前运行状态显示 Hermes 只有 `default` profile，模型为 `gpt-5.5`，provider 为 OpenAI Codex，Gateway 正常运行，Telegram 是主要入口。这符合现阶段策略：保持主脑稳定，不因为一篇文章就立刻增加 runtime profile。
+
+> [!volatile]
+> verified_at: 2026-09-09
+> review_by: 2026-10-09
+> source: project:/home/lin/.hermes/hermes-agent/hermes_cli/profiles.py
+>
+> 本机 Hermes v0.21.1（upstream 9d865810）的 profile CLI 提供 list/use/create 等命令；源码 `_get_profiles_root()` 将命名 profiles 定位在默认 Hermes 根目录下的 profiles 子目录。仅核对接口与路径计算，不证明当前配置、模型、provider 或 Gateway 健康，也不授权创建 profile。
+
+_As of: 2026-09-09 · Source: 本机 profiles.py 与 hermes profile --help_
+
+历史观察（2026-04-30，当前待验证）：当时记录仅有 `default` profile、模型 `gpt-5.5`、OpenAI Codex provider、Gateway 正常及 Telegram 入口。该快照不说明今天的运行状态。稳定原则仍是：不因为一篇文章就立刻增加 runtime profile。
 
 更合理的顺序是：
 1. 先在 wiki 记录模型差异原则。

@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-09] implement | Knowledge freshness architecture v2
+- Added optional volatility/verified_at validation and deterministic source/relation reverse lookup; synchronized Schema, template, writing/health standards, shared entry, retrieval and ingestion contracts. Freshness is evaluated per scope, with incoming supersession/conflict checks and live-evidence priority.
+- Piloted local claim verification on Claude/Codex workflow and Hermes harness pages; only actually checked claims received dates. Preserved historical runtime context and all raw sources.
+- Regression: 22 unittest tests pass; Wiki health P0/P1/P2=0/0/0. Codex/AGY completed the 15-case set with a focused retest clarifying unattempted versus failed verification; Hermes representative fresh-session probes passed. Claude could not run due to expired authentication; the user waived this acceptance item on 2026-09-09. It is not recorded as a successful probe; no credentials or global configuration changed.
+- Evidence and remaining acceptance are recorded in `_meta/plans/2026-09-09-knowledge-freshness-architecture-v2.md`; independent AGY re-review returned PASS with no blockers after fixing the log header insertion. The user authorized closing the plan with the Claude waiver, committing and pushing the changes.
+
 ## [2026-09-06] ingest + existing-owner update | Solving the right problem before agentic implementation
 - Captured Mike Huls's Towards Data Science article in `raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md` with author/date, full Karakeep body, local summary path, and explicit practitioner-evidence limitations.
 - Updated the existing owner `concepts/hermes-ai-workflow-formalization-principles.md`: allocate preflight validation effort by decision reversal cost; prefer evidence, user confirmation, real samples, or a minimal Spike over six mandatory documents.

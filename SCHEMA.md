@@ -55,12 +55,18 @@ This wiki remains the Hermes local LLM-wiki/Markdown knowledge base; OKF is only
 ```yaml
 description: One-sentence page purpose for agent routing and preview.
 aliases: [optional-synonym, common-abbreviation]
+volatility: low | medium | high
+verified_at: YYYY-MM-DD
 review_by: YYYY-MM-DD
 ```
 
 Rules:
 - `description` is a routing aid, not a substitute for the page `## Summary`.
-- `review_by` marks a page whose subject is an externally controlled product behaviour, interface or command set that changes on the vendor's schedule, so `status: stable` alone cannot tell a reader whether the page is still true. Add it only to pages that document such a moving target; methodology pages that merely mention a tool do not need it. A passed date does not make the page invalid, it makes the page due for a re-read. The field is enforced: `_meta/scripts/wiki_health_check.py` reports a value that is not a plain `YYYY-MM-DD` date as P1 (`malformed_review_by`, a date that can never fire is worse than no date), and a date already in the past as P2 (`page_due_for_review`).
+- `volatility` 可选，取 `low | medium | high`，表达现实变化速度，不是质量评分。缺失不代表 low：当前外部事实或适用性未知按 YELLOW，明确稳定方法或时间范围内的历史知识可为 GREEN。
+- `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于今天；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
+- `review_by` 可用于任何外部变化可能导致 Agent 错误行动的知识。`verified_at <= today <= review_by` 才在日期窗口内；到期当天仍有效，次日起需复核。无法验证时不得删除到期字段来消除告警。
+- `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
+- 校验：非法 `volatility`、非法/未来 `verified_at`、任意页面非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
 - `aliases` are for obvious high-value synonyms only; do not use them to bypass canonical lowercase-hyphen filenames or tag taxonomy.
 - Do not make optional metadata mandatory for historical pages without a separate migration plan and validator update.
 - Do not introduce a separate `resource` identity field by default; the canonical identity remains the relative wiki path plus `sources` provenance. Reconsider only after a compatibility plan proves concrete value.
@@ -215,6 +221,6 @@ Rules:
 
 ## Operating Rule
 回答知识相关问题时，优先顺序为：
-1. 先查 wiki
-2. wiki 不足再查外部资料
-3. 有长期价值的结果再回写 wiki
+1. 按 [[hermes-retrieval-priority-and-answer-path]] 执行 freshness-qualified wiki first，检查关系出入边。
+2. 当前/实时事实先核对当前项目、live tool 或权威来源；历史问题先限定时间范围。
+3. 有长期价值且有写入授权时才回写 wiki。

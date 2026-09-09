@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-08-18
+updated: 2026-09-09
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: []
@@ -24,18 +24,42 @@ aliases: [wiki-ingestion, knowledge-ingestion]
    - PDF → `raw/papers/`
    - 会议/音视频整理 → `raw/transcripts/`
 2. 提炼主题、实体、概念、可复用结论
-3. 搜索现有 wiki，避免重复建页
-4. 新建或更新正式页面：
+3. 搜索现有正式页，区分精确依赖和启发式候选，按下表逐 claim 输出分类与匹配依据
+4. 按 NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE 做最小补丁：
    - `entities/`
    - `concepts/`
    - `comparisons/`
    - `queries/`
    - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源；本地推导使用 `[推论]`
-   - 外部厂商控制的产品行为、接口或命令集按需要使用 `review_by`
+   - 外部变化可能导致错误行动的知识按需添加 volatility/review_by，真实核验才填写 verified_at
 5. 为页面补充 `[[wikilinks]]`
 6. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
 7. 在 `[[log]]` 只记录 durable delta、证据边界和验证结果
 8. 运行 Wiki health check 与 `git diff --check`
+
+## 来源变化与候选发现
+
+摄取时先抽取产品名、实体名、别名及窄主题词，再搜索现有正式页。两种证据不可混用：
+
+- **exact dependent**：已被引用来源需重审时，用 `python3 _meta/scripts/wiki_reverse_lookup.py --source <精确来源字符串>` 列出全部直接依赖正式页。raw 快照不可覆盖；新快照保留新路径，旧来源路径只用于反查依赖。
+- **heuristic candidate**：新来源尚未被引用时，精确反查可以返回 `[]`；继续按产品/实体/aliases/窄主题词搜索正式页 title、aliases、正文。记录每页命中字段、具体词、对应 claim 和需复查原因。仅有 agent、AI、workflow 等宽泛词的干扰页排除并解释；候选不是确定性依赖，更不等于失效。
+- 对受影响页运行 `--page <页面相对路径>`，读取关系出入边及其范围，再按 [[hermes-retrieval-priority-and-answer-path]] 判断。反查失败必须报告，不当成没有依赖。
+
+每次输出：`来源 | exact dependent/heuristic candidate | 页面 | 命中字段/词或精确 sources 边 | claim/范围 | 分类 | 修改/不修改理由`。无需新建永久 needs-review 字段或持久化索引。
+
+## 五种分类与最小补丁
+
+| 分类 | 判据 | 操作 |
+|---|---|---|
+| NEW | 无对应旧结论且无冲突 | 按页面阈值并入 owner 或建页 |
+| CONFIRM | 新证据确认旧 claim | 无需正文 diff；只刷新真正复核范围的日期，局部不升级整页 |
+| UPDATE | 旧知识大体成立，局部变化 | 只改受影响段落，保留证据/范围 |
+| CONFLICT | 新旧证据在同一范围无法统一 | 保留双方；影响当前事实时必须在正式页 Relations 建立 conflicts_with，正文说明范围/理由，不自动选边 |
+| SUPERSEDE | 明确新规则/版本替代旧结论 | 新页/当前页建立 supersedes 指向旧页，正文说明生效范围，旧页保留历史 |
+
+若旧页只说明主题而没有对应旧 claim，新断言归 NEW（可并入现有 owner）；不能仅凭 sources 中的版本名推断正文发生 UPDATE 或 SUPERSEDE。
+
+不能为凑分类制造变更：同一来源可确认一个 claim、更新另一个；每项分别解释。只有实际验证后才填 `verified_at`；不能仅凭材料进入 raw 就把候选页视为当前已验证。
 
 ## Filing rules
 - 值得长期复用的问答，归档到 `queries/`
