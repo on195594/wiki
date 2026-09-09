@@ -32,6 +32,7 @@ aliases: [wiki-ingestion, knowledge-ingestion]
    - `queries/`
    - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源；本地推导使用 `[推论]`
    - 外部变化可能导致错误行动的知识按需添加 volatility/review_by，真实核验才填写 verified_at
+   - NEW / CONFIRM / UPDATE 中若局部 `[!volatile]` claim 写入 `> source: X`，必须同时满足 `X ∈ page.frontmatter.sources`，否则该次 ingest 不算闭环；已有来源不重复添加，也不因此刷新整页 `verified_at`
 5. 为页面补充 `[[wikilinks]]`
 6. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
 7. 在 `[[log]]` 只记录 durable delta、证据边界和验证结果

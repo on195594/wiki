@@ -3,6 +3,12 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-09] governance repair | Knowledge freshness v2 post-review contracts
+- Established `block source ⊆ page sources`: page-level `sources` remains canonical provenance and the sole deterministic entry for source reverse lookup/invalidation; a local `[!volatile]` source is claim attribution and cannot be the page's only source record.
+- Aligned `review_by` validation language across Schema, page-writing standards, lint/health standards, runbook, and existing `is_formal_page()` behavior; no validator or reverse-lookup code changed.
+- Validation: 23 unittests passed; Wiki health P0/P1/P2=0/0/0; all three real volatile sources reverse-resolved to their owner pages; `git diff --check` passed; raw and hash manifest were unchanged. Independent read-only review returned `APPROVE_LANDING` with no blocking findings.
+- Boundary: no claim parser, persistent index, database, Freshness Engine, runtime/active-layer change, or historical metadata migration was added.
+
 ## [2026-09-09] fix | Knowledge freshness review findings
 - Made reverse-lookup commands independent of the caller's working directory across the shared entry, retrieval and ingestion contracts, and runbook.
 - Preserved commas in block-list and quoted inline source values so exact dependency lookup cannot silently split a source identifier.

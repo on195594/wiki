@@ -172,7 +172,7 @@ status: draft | stable | active | closed | current
 - `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于今天；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
 - `review_by` 可用于任何外部变化可能导致 Agent 错误行动的知识。`verified_at <= today <= review_by` 才在日期窗口内；到期当天仍有效，次日起需复核。无法验证时不得删除到期字段来消除告警。
 - `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
-- 校验：非法 `volatility`、非法/未来 `verified_at`、任意页面非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
+- 校验：正式知识页（formal page）中的非法 `volatility`、非法/未来 `verified_at`、非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
 
 混合页面的局部核验紧邻具体断言，标明版本/环境范围与证据。`_As of: 日期 · Source: 来源_` 仅提供核对时间线索，不能替代 `verified_at` + `review_by`。
 
@@ -188,6 +188,8 @@ status: draft | stable | active | closed | current
 ```
 
 其余易变段落仍待验证；稳定方法论可独立使用。第一阶段 health check 不解析局部 block，由 Agent 按检索契约判断。
+
+添加 block 前先检查页面级 `sources`：block 使用的新来源必须同步加入，已有来源不重复添加。页面级 `sources` 是 canonical provenance；加入局部来源只表示页面包含依赖该来源的 claim，不表示来源支撑整页，也不能据此刷新整页 `verified_at`。因此 `block source ⊆ page sources`，block `source:` 不得成为页面唯一的来源记录。
 
 ## Relationship to other rules
 这页定义“怎么写页面”，不是“信息该放哪里”。

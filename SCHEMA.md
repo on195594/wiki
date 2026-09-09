@@ -66,7 +66,7 @@ Rules:
 - `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于今天；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
 - `review_by` 可用于任何外部变化可能导致 Agent 错误行动的知识。`verified_at <= today <= review_by` 才在日期窗口内；到期当天仍有效，次日起需复核。无法验证时不得删除到期字段来消除告警。
 - `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
-- 校验：非法 `volatility`、非法/未来 `verified_at`、任意页面非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
+- 校验：正式知识页（formal page）中的非法 `volatility`、非法/未来 `verified_at`、非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
 - `aliases` are for obvious high-value synonyms only; do not use them to bypass canonical lowercase-hyphen filenames or tag taxonomy.
 - Do not make optional metadata mandatory for historical pages without a separate migration plan and validator update.
 - Do not introduce a separate `resource` identity field by default; the canonical identity remains the relative wiki path plus `sources` provenance. Reconsider only after a compatibility plan proves concrete value.
@@ -99,6 +99,8 @@ Allowed `sources` forms:
 - `skill:<skill-name>`：Hermes skill 来源
 - `docs:<name-or-url>`：官方或外部文档来源
 - `filesystem:<path>`：本地文件系统观察，谨慎使用
+
+页面级 `sources` 是 canonical provenance，也是 source reverse lookup 与来源失效传播的唯一确定性入口。局部 `[!volatile]` block 的 `source:` 只标识该 claim 的具体证据，并且必须同时存在于页面 frontmatter 的 `sources` 中，即 `block source ⊆ page sources`；不得把 block `source:` 作为页面唯一的来源记录。
 
 `/tmp/...` 不应作为正式页面唯一长期来源。后续清理时应替换为可持久路径、稳定 wiki/review 页面，或明确标记为历史不可复验来源。
 

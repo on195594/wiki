@@ -857,7 +857,7 @@ Hermes Wiki v2 的目标不是让所有知识永远“最新”，这是不可�
 
 ### 实现与确定性验证
 
-- 可选元数据、Schema、写作、健康规则和模板已同步；模板不预填 verified_at/review_by。保留任意页面 review_by 校验。修正共享 frontmatter 读取的跨行吞值与多行 sources 只读首项问题。
+- 可选元数据、Schema、写作、健康规则和模板已同步；模板不预填 verified_at/review_by。后续 post-review repair 将 `review_by` 校验明确限定为 formal page，以匹配既有实现。修正共享 frontmatter 读取的跨行吞值与多行 sources 只读首项问题。
 - 反查脚本支持互斥 source/page；精确来源返回路径数组，页面查询返回 declared_by/relation/target 数组；去重排序、不持久化索引。错误返回 stderr JSON、exit 2，无成功 stdout；代码示例（反引号、波浪围栏、行内/缩进）排除。
 - 22 项 unittest 通过；其中元数据表驱动含 15 个缺省/非法/未来/边界情形，反查覆盖多引用、block list、重复边、关系类型、代码例子、无匹配、歧义、无效 UTF-8、非法 sources、不可读目录和 CLI 错误。
 - 实库 source 查询 `raw/articles/openai-codex-best-practices-2026-04-17.md` 返回 codex-agent-workflow-layering、hermes-agent-workflow-layering-and-adoption-order、hermes-layer-routing-decision-checklist 三页。检索契约页面的入边查询返回知识架构、摄取流程和共享入口的声明。
