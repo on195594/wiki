@@ -25,9 +25,15 @@ class ReverseLookupTests(unittest.TestCase):
     def test_source_lists_duplicates_and_formal_scope(self):
         self.page('concepts/b.md', '[docs:source, docs:source]')
         self.page('operations/a.md', '\n  - docs:other\n\n  - docs:source')
+        self.page('concepts/comma-block.md', '\n  - docs:https://example.test/a,b')
+        self.page('concepts/comma-inline.md', '["docs:https://example.test/a,b"]')
         for name in ('raw/a.md', '_meta/a.md', '_backups/a.md', 'index.md', 'concepts/a.bak.md.bak.x.md'):
             self.page(name)
         self.assertEqual(reverse.lookup(self.root, source='docs:source'), ['concepts/b.md', 'operations/a.md'])
+        self.assertEqual(
+            reverse.lookup(self.root, source='docs:https://example.test/a,b'),
+            ['concepts/comma-block.md', 'concepts/comma-inline.md'],
+        )
         self.assertEqual(reverse.lookup(self.root, source='docs:missing'), [])
 
     def test_inbound_canonical_links_and_dedup(self):

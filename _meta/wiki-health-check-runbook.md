@@ -51,8 +51,8 @@ Root resolution order:
 ## Reverse lookup
 
 ```bash
-python3 _meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --source raw/articles/openai-codex-best-practices-2026-04-17.md
-python3 _meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page concepts/codex-agent-workflow-layering.md
+python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --source raw/articles/openai-codex-best-practices-2026-04-17.md
+python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page concepts/codex-agent-workflow-layering.md
 ```
 
 Modes are mutually exclusive. Source mode returns direct formal-page paths; page mode returns `declared_by`, `relation`, `target` records for all allowed relation types. Lists are deduplicated and sorted. Empty matches return `[]`; unreadable/malformed input or ambiguous links return exit 2 with JSON error on stderr and no result on stdout. Sources are exact strings, not URL aliases or heuristic similarity. Page input is an existing Wiki-relative Markdown path. Links use canonical paths, optional `.md`, basename, fragment and display alias under existing Wiki conventions; ambiguous targets must be disambiguated. No persisted index is created.

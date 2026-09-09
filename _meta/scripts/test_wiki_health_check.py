@@ -111,6 +111,20 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("broken-link", body="# Broken link\n\n" + "context " * 20 + "[[missing-page]]\n")
         self.assertIn("broken_wikilink", self.issue_codes("P0"))
 
+    def test_checks_nested_list_links_but_ignores_indented_code(self) -> None:
+        self.add_formal(
+            "nested-link",
+            body="# Nested link\n\n" + "context " * 20 + "\n\n- parent\n    - [[missing-nested-page]]\n",
+        )
+        self.add_formal(
+            "code-example",
+            body="# Code example\n\n" + "context " * 20 + "\n\n    [[missing-code-example]]\n",
+        )
+        report = wiki_health_check.build_report(self.root)
+        targets = {item.get("target") for item in report["issues"]["P0"]}
+        self.assertIn("missing-nested-page", targets)
+        self.assertNotIn("missing-code-example", targets)
+
     def test_reports_unregistered_tag(self) -> None:
         self.add_formal("unknown-tag", tags="not-registered")
         self.assertIn("unregistered_tag", self.issue_codes("P1"))

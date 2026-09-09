@@ -41,9 +41,9 @@ aliases: [wiki-ingestion, knowledge-ingestion]
 
 摄取时先抽取产品名、实体名、别名及窄主题词，再搜索现有正式页。两种证据不可混用：
 
-- **exact dependent**：已被引用来源需重审时，用 `python3 _meta/scripts/wiki_reverse_lookup.py --source <精确来源字符串>` 列出全部直接依赖正式页。raw 快照不可覆盖；新快照保留新路径，旧来源路径只用于反查依赖。
+- **exact dependent**：已被引用来源需重审时，用 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --source <精确来源字符串>` 列出全部直接依赖正式页。raw 快照不可覆盖；新快照保留新路径，旧来源路径只用于反查依赖。
 - **heuristic candidate**：新来源尚未被引用时，精确反查可以返回 `[]`；继续按产品/实体/aliases/窄主题词搜索正式页 title、aliases、正文。记录每页命中字段、具体词、对应 claim 和需复查原因。仅有 agent、AI、workflow 等宽泛词的干扰页排除并解释；候选不是确定性依赖，更不等于失效。
-- 对受影响页运行 `--page <页面相对路径>`，读取关系出入边及其范围，再按 [[hermes-retrieval-priority-and-answer-path]] 判断。反查失败必须报告，不当成没有依赖。
+- 对受影响页运行 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page <页面相对路径>`，读取关系出入边及其范围，再按 [[hermes-retrieval-priority-and-answer-path]] 判断。反查失败必须报告，不当成没有依赖。
 
 每次输出：`来源 | exact dependent/heuristic candidate | 页面 | 命中字段/词或精确 sources 边 | claim/范围 | 分类 | 修改/不修改理由`。无需新建永久 needs-review 字段或持久化索引。
 

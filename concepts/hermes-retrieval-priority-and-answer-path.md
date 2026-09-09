@@ -75,7 +75,7 @@ Hermes 处理知识问题时，不应直接把当前模型记忆当答案来源�
 
 1. 先限定问题的时间、版本、产品、环境和具体 claim/section。历史问题只评价当时适用范围，不自动偏爱最新来源；当前问题中的稳定方法也单独判断。
 2. 读取候选页 path、title、status、updated、sources、可选 volatility/verified_at/review_by、Relations 和相关局部标记。缺失 volatility 不等于 low；日期非法或未来 verified_at 不构成验证证据。来源须支持同一范围。
-3. 检查关系出边，并运行 `python3 _meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page <页面相对路径>` 检查正式页入边。把替代页、冲突页加入候选，即使搜索只命中旧页。查询出错时报告缺口，不把失败当成空关系集，不直接宣称 GREEN。
+3. 检查关系出边，并运行 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page <页面相对路径>` 检查正式页入边。把替代页、冲突页加入候选，即使搜索只命中旧页。查询出错时报告缺口，不把失败当成空关系集，不直接宣称 GREEN。
 4. 同一范围内按 `RED > YELLOW > GREEN` 判定；跨范围不机械传播。需要实时核验的版本、配置、进程、市场、政策、最新行为等优先使用当前项目/live/官方证据，日期未到期也不能豁免。下表 GREEN 表示 Wiki 范围内证据资格，不替代强制实时验证。
 
 | 状态 | 条件（限定当前范围后） | 回答行为 |

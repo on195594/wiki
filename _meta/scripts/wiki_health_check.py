@@ -97,6 +97,7 @@ def is_formal_page(root: Path, path: Path) -> bool:
 def strip_code(text: str) -> str:
     lines = []
     fence = ""
+    list_indent: int | None = None
     for line in text.splitlines(keepends=True):
         if fence:
             if re.fullmatch(r" {0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*\n?", line):
@@ -105,8 +106,18 @@ def strip_code(text: str) -> str:
         opening = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
         if opening:
             fence = opening[1]
-        elif not line.startswith(("    ", "\t")):
+        elif line.startswith(("    ", "\t")):
+            indent = len(line) - len(line.lstrip(" \t"))
+            if list_indent is not None and re.match(r"(?:[-+*]|\d+[.)])\s+", line.lstrip()):
+                lines.append(line)
+                list_indent = indent
+        else:
             lines.append(line)
+            item = re.match(r"^( {0,3})(?:[-+*]|\d+[.)])\s+", line)
+            if item:
+                list_indent = len(item[1])
+            elif line.strip():
+                list_indent = None
     text = "".join(lines)
     text = re.sub(r"(`+).*?\1", "", text, flags=re.S)
     return text

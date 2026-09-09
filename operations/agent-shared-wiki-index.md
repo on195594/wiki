@@ -44,7 +44,7 @@ aliases: [shared-agent-context, cross-agent-wiki-index]
 1. 入口已读取后，若还需查 Wiki 正文，先读项目内适用的 `AGENTS.md`、`CLAUDE.md`、README、ADR 和源码；项目规则优先于共享 Wiki。若项目规则再次指向本页，视为入口已满足，不递归重读。
 2. 用用户原词、中文同义词、英文别名和较窄技术词搜索 Wiki。
 3. 优先读取 `concepts/`、`operations/` 和 `queries/` 中最相关的少量页面；不要遍历或注入整个 Vault。
-4. 消费 Wiki 结论前必须进入 [[hermes-retrieval-priority-and-answer-path]]，执行 Freshness Gate：先限定问题范围，检查候选页关系出边及入边，再判断资格；用 `_meta/scripts/wiki_reverse_lookup.py --page <页面相对路径>` 发现入边，不能只看检索命中页自身。查询失败不等于没有替代或冲突，应报告证据缺口。
+4. 消费 Wiki 结论前必须进入 [[hermes-retrieval-priority-and-answer-path]]，执行 Freshness Gate：先限定问题范围，检查候选页关系出边及入边，再判断资格；用 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page <页面相对路径>` 发现入边，不能只看检索命中页自身。查询失败不等于没有替代或冲突，应报告证据缺口。
 5. 回答时区分 Wiki 直接结论、本地推论和需要实时工具验证的当前事实。
 6. 找不到时明确说明检索词和缺口，再决定是否查外部来源；不要把“未找到”说成“从未讨论”。
 

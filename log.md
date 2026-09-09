@@ -3,6 +3,11 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-09] fix | Knowledge freshness review findings
+- Made reverse-lookup commands independent of the caller's working directory across the shared entry, retrieval and ingestion contracts, and runbook.
+- Preserved commas in block-list and quoted inline source values so exact dependency lookup cannot silently split a source identifier.
+- Kept visible nested-list wikilinks in health checks while continuing to ignore actual indented code; 23 regression tests pass and Wiki health remains P0/P1/P2=0/0/0.
+
 ## [2026-09-09] implement | Knowledge freshness architecture v2
 - Added optional volatility/verified_at validation and deterministic source/relation reverse lookup; synchronized Schema, template, writing/health standards, shared entry, retrieval and ingestion contracts. Freshness is evaluated per scope, with incoming supersession/conflict checks and live-evidence priority.
 - Piloted local claim verification on Claude/Codex workflow and Hermes harness pages; only actually checked claims received dates. Preserved historical runtime context and all raw sources.

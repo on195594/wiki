@@ -11,7 +11,7 @@ from pathlib import Path
 
 from wiki_health_check import (
     ALLOWED_RELATION_KEYS, RELATION_VALUE_PATTERN, extract_frontmatter,
-    frontmatter_value, is_formal_page, is_live_file, parse_inline_list, rel, strip_code,
+    frontmatter_value, is_formal_page, is_live_file, rel, strip_code,
 )
 
 
@@ -25,17 +25,30 @@ def sources(frontmatter: str) -> list[str]:
     if not value:
         block = re.split(r"^[^ \t\n]", frontmatter[match.end():], maxsplit=1, flags=re.M)[0]
         lines = [line for line in block.splitlines() if line.strip()]
-        if not lines or any(not re.fullmatch(r"[ \t]+-[ \t]+\S.*", line) for line in lines):
+        items = [re.fullmatch(r"[ \t]+-[ \t]+(\S.*)", line) for line in lines]
+        if not items or any(item is None for item in items):
             raise ValueError("invalid sources block list")
+        result = []
+        for item in items:
+            scalar = item[1].strip()
+            if scalar[:1] in {"'", '"'}:
+                if len(scalar) < 2 or scalar[-1] != scalar[0]:
+                    raise ValueError("invalid quoted source item")
+                scalar = scalar[1:-1]
+            if not scalar or any(char in scalar for char in "[]{}\n"):
+                raise ValueError("invalid source item")
+            result.append(scalar)
+        return result
     elif not (value.startswith("[") and value.endswith("]")):
         raise ValueError("sources must be a list")
     value = frontmatter_value(frontmatter, "sources") or ""
     # Wiki source identifiers are plain strings or quoted strings. Unsupported
     # YAML constructs fail explicitly rather than silently changing an edge.
-    token = r'''(?:'[^'\n,]+'|"[^"\n,]+"|[^\s,\[\]{}'"#]+)'''
+    token = r'''(?:'[^'\n]+'|"[^"\n]+"|[^\s,\[\]{}'"#]+)'''
     if not re.fullmatch(r"\[\s*(?:" + token + r"(?:\s*,\s*" + token + r")*)?\s*\]", value):
         raise ValueError("invalid or unsupported source list")
-    return parse_inline_list(value)
+    items = re.findall(token, value[1:-1])
+    return [item[1:-1] if item[:1] in {"'", '"'} else item for item in items]
 
 
 def resolve_target(root: Path, current: Path, target: str, pages: list[Path]) -> str:
