@@ -127,7 +127,7 @@ Hermes 映射：
 
 `[[langchain-organizing-context-multi-agent-harness-2026-09-08]]` distinguishes forked subagents, which inherit a supervisor's conversation, from isolated subagents, which receive a fresh context. Its durable contribution is not “always copy history”, but a role-aware test: does the child need to continue an already established causal chain, or independently evaluate a frozen object?
 
-Hermes currently runs `delegate_task` children in isolated contexts, so the practical mapping is a bounded handoff rather than a literal conversation fork:
+Without assuming that Hermes provides a literal conversation fork, the practical mapping is a bounded handoff:
 
 - **Worker / fixer continuing diagnosed work**: pass the verified diagnosis, exact paths or SHAs, accepted decisions, failing check, constraints and expected artifact. This preserves prior evidence without forcing rediscovery or copying unrelated transcript noise.
 - **Reviewer / verifier**: pass the frozen artifact, acceptance criteria and necessary project rules, but omit the parent's diagnosis, confidence and desired verdict so the review remains meaningfully independent.

@@ -80,7 +80,7 @@ Failure mode:
 
 ### Context handoff by role
 
-The lifecycle mode and the context-handoff mode are separate decisions. `[[langchain-organizing-context-multi-agent-harness-2026-09-08]]` proposes full-context forks for workers that continue a supervisor's diagnosis and isolated contexts for reviewers and self-contained researchers. Hermes does not currently expose a literal fork mode through `delegate_task`; preserve the useful distinction with the smallest existing mechanism:
+The lifecycle mode and the context-handoff mode are separate decisions. `[[langchain-organizing-context-multi-agent-harness-2026-09-08]]` proposes full-context forks for workers that continue a supervisor's diagnosis and isolated contexts for reviewers and self-contained researchers. Without assuming that Hermes exposes a literal fork mode, preserve the useful distinction with the smallest existing mechanism:
 
 - **Continuation worker / fixer**: include a bounded evidence packet containing the verified diagnosis, exact paths or SHAs, prior decisions, failing check, constraints and expected artifact. Do not make it rediscover facts the parent has already verified.
 - **Independent reviewer / verifier**: provide the frozen diff or artifact, acceptance criteria and necessary project rules, but omit the parent's reasoning and expected conclusion.

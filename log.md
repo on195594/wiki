@@ -3,10 +3,15 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-15] independent Pi review repair | Organizing Context in a Multi-Agent Harness
+- Pi reviewed exact commit `7c5fc75c35308b88159777c86fc83d59703cf64c` read-only and returned `REQUEST_CHANGES` with `P1-F1` and `P2-F2`; prompt, raw output and matching before/after hashes are stored under `_meta/reviews/2026-09-15-organizing-context-7c5fc75-pi-review*`.
+- Removed unsupported assertions about current `delegate_task` context/fork semantics and stated the bounded-handoff guidance without assuming a literal Hermes fork.
+- Corrected extraction provenance to distinguish omitted image contents from the two retained empty-alt image links; refreshed the raw-source hash manifest.
+
 ## [2026-09-15] ingest + existing-owner update | Organizing Context in a Multi-Agent Harness
 - Captured `raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md` with authors/date, the full substantive public article body, extraction provenance, local summary pointer and vendor-evidence limitations.
 - Updated existing owners `concepts/agent-context-engineering.md` and `concepts/subagent-orchestration-patterns.md`; no duplicate concept page or new workflow was created.
-- Preserved the role-aware handoff rule: continuation workers receive bounded verified evidence, while independent reviewers and self-contained researchers receive clean task contracts without the parent's conclusion. Hermes `delegate_task` remains isolated; no literal fork behavior was claimed or added.
+- Preserved the role-aware handoff rule: continuation workers receive bounded verified evidence, while independent reviewers and self-contained researchers receive clean task contracts without the parent's conclusion. This Wiki change added no fork behavior and did not verify `delegate_task` runtime context semantics.
 - Boundary: Wiki-only ingestion. Prompt-cache savings remain source-specific; no Memory, active Skill/reference, runtime/config, Cron, MCP, gateway, wrapper, provider, profile/plugin or permission policy changed.
 
 
