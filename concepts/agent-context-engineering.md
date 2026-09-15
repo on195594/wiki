@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-09-02
+updated: 2026-09-15
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -123,6 +123,19 @@ Hermes 映射：
 
 这不是所有任务的默认模式。以下任一条件成立时应保留历史检索或混合执行：Schema 需要动态发现；早期观察可能延迟显现价值；任务目标本身要求审计、溯源或解释历史；状态会随步数无界增长；多个写者缺少冲突解决；模型经常产生语义错误但 Schema 合法的 patch。论文中 Gemma-4-31B-it 的失败有 68% 来自意外覆盖或删除，说明“结构化”不等于“可靠更新”。
 
+### Subagent handoff: causal continuation vs independent judgment
+
+`[[langchain-organizing-context-multi-agent-harness-2026-09-08]]` distinguishes forked subagents, which inherit a supervisor's conversation, from isolated subagents, which receive a fresh context. Its durable contribution is not “always copy history”, but a role-aware test: does the child need to continue an already established causal chain, or independently evaluate a frozen object?
+
+Hermes currently runs `delegate_task` children in isolated contexts, so the practical mapping is a bounded handoff rather than a literal conversation fork:
+
+- **Worker / fixer continuing diagnosed work**: pass the verified diagnosis, exact paths or SHAs, accepted decisions, failing check, constraints and expected artifact. This preserves prior evidence without forcing rediscovery or copying unrelated transcript noise.
+- **Reviewer / verifier**: pass the frozen artifact, acceptance criteria and necessary project rules, but omit the parent's diagnosis, confidence and desired verdict so the review remains meaningfully independent.
+- **Researcher**: pass a self-contained question, source requirements and output contract. Parallel researchers should not receive a duplicated parent history unless the question truly depends on it.
+- **Memory extraction**: conversation may be the evidence, but Hermes storage boundaries and explicit write authorization still apply. The article's forked memorizer example does not authorize copying private history broadly or granting unrestricted writes.
+
+The article argues that prompt caching can make full-context forks cheaper than repeated discovery. That is implementation-specific and workload-dependent: without measured cache hits, relevant-context quality and latency, Hermes should prefer explicit evidence packets over a new fork runtime.
+
 ## Context rot and JIT defense
 
 Context rot 不是单纯 token 不够，而是上下文质量随长度和噪音下降：旧错误被保留、重复输出占位、无关材料挤掉关键事实、模型在“看起来相关”的历史中迷路。
@@ -137,9 +150,10 @@ Hermes 的防腐原则：
    - 对长任务保留结构化状态卡，而不是完整消息历史。
    - 状态卡必须区分已验证事实、推论、待验证问题和下一步。
 
-3. **Minimal shared context for subagents**
-   - 子 Agent 只接收自己的任务、输入、边界和输出契约。
-   - 不把主 Agent 的全部历史转交给子 Agent。
+3. **Role-aware shared context for subagents**
+   - 接续型 worker 接收自己的任务、边界、输出契约和已验证前序证据。
+   - 独立 reviewer / researcher 接收冻结对象与验收契约，但不接收父级推理结论。
+   - 默认不转交主 Agent 的全部历史；只有未来本地证据证明完整 fork 比有界证据包更好时才考虑升级。
    - 这与 `[[subagent-orchestration-patterns]]` 的“从最简单编排开始”原则一致。
 
 4. **Context choice should be explainable**
@@ -213,7 +227,7 @@ Hermes 的对应规则：
 - 对真正长程、状态密集的任务，让“不可变契约 + 经校验当前状态 + 最新观察”成为下一步的最小输入；完整轨迹留在外部证据层，必要时按指针恢复，不默认重放。
 - 对工具集，优先减少可见工具面，再优化工具描述。
 - 对 Few-shot，优先展示澄清、失败处理和验证行为，而不是只展示成功输出。
-- 对 subagent，传递任务契约和必要证据，不传递完整父上下文。
+- 对 subagent，按角色传递上下文：接续型 worker 继承有界已验证证据；独立 reviewer / researcher 只接收冻结对象与验收契约；默认不传完整父上下文。
 - 对任何 active-layer 变更，先走项目级验证和显式审批，不从外部文章直接推广。
 
 ## Relations
@@ -231,6 +245,7 @@ Hermes 的对应规则：
 - [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
 - [[thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26]]
 - [[towardsdatascience-context-engineering-data-scientists-2026-08-30]]
+- [[langchain-organizing-context-multi-agent-harness-2026-09-08]]
 - [[llm-context-engineering-layer]]
 - [[hermes-context-engineering-design-priorities]]
 - [[typed-ai-agent-boundaries]]

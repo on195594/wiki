@@ -3,6 +3,13 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-15] ingest + existing-owner update | Organizing Context in a Multi-Agent Harness
+- Captured `raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md` with authors/date, the full substantive public article body, extraction provenance, local summary pointer and vendor-evidence limitations.
+- Updated existing owners `concepts/agent-context-engineering.md` and `concepts/subagent-orchestration-patterns.md`; no duplicate concept page or new workflow was created.
+- Preserved the role-aware handoff rule: continuation workers receive bounded verified evidence, while independent reviewers and self-contained researchers receive clean task contracts without the parent's conclusion. Hermes `delegate_task` remains isolated; no literal fork behavior was claimed or added.
+- Boundary: Wiki-only ingestion. Prompt-cache savings remain source-specific; no Memory, active Skill/reference, runtime/config, Cron, MCP, gateway, wrapper, provider, profile/plugin or permission policy changed.
+
+
 ## [2026-09-09] governance repair | Knowledge freshness v2 post-review contracts
 - Established `block source ⊆ page sources`: page-level `sources` remains canonical provenance and the sole deterministic entry for source reverse lookup/invalidation; a local `[!volatile]` source is claim attribution and cannot be the page's only source record.
 - Aligned `review_by` validation language across Schema, page-writing standards, lint/health standards, runbook, and existing `is_formal_page()` behavior; no validator or reverse-lookup code changed.

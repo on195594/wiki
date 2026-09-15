@@ -1,10 +1,10 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-09-04
+updated: 2026-09-15
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
 status: stable
 description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
 aliases: [subagent-patterns]
@@ -77,6 +77,17 @@ Hermes mapping:
 
 Failure mode:
 - No mid-task correction. If the subagent misunderstands, the parent only learns when the result returns.
+
+### Context handoff by role
+
+The lifecycle mode and the context-handoff mode are separate decisions. `[[langchain-organizing-context-multi-agent-harness-2026-09-08]]` proposes full-context forks for workers that continue a supervisor's diagnosis and isolated contexts for reviewers and self-contained researchers. Hermes does not currently expose a literal fork mode through `delegate_task`; preserve the useful distinction with the smallest existing mechanism:
+
+- **Continuation worker / fixer**: include a bounded evidence packet containing the verified diagnosis, exact paths or SHAs, prior decisions, failing check, constraints and expected artifact. Do not make it rediscover facts the parent has already verified.
+- **Independent reviewer / verifier**: provide the frozen diff or artifact, acceptance criteria and necessary project rules, but omit the parent's reasoning and expected conclusion.
+- **Self-contained researcher**: provide the question, source standard and output contract only; this keeps parallel fan-out from duplicating irrelevant history.
+- **Memory-oriented child**: use only when the conversation itself is necessary evidence, and retain Hermes's existing privacy, layer-routing and explicit write-authorization boundaries.
+
+Prompt-cache savings are a possible property of LangChain's full fork, not a Hermes default. Add a fork-like runtime only after a real workload shows repeated rediscovery that bounded evidence packets cannot solve and a comparison measures quality, latency and token cost.
 
 ### 2. Fan-out: spawn independent agents and wait for results
 
@@ -157,6 +168,7 @@ This matches the existing Hermes bias: prefer narrow skills, project-local valid
 - Do not use persistent agents when a fresh subagent can return a verifiable result.
 - Do not use fan-out for dependent tasks; split dependencies first or keep the parent in sequence control.
 - Treat subagent outputs as claims until the parent verifies paths, URLs, command results, or tests.
+- Match handoff context to role: continuation workers receive bounded verified evidence; independent reviewers and researchers receive clean task contracts without the parent's conclusion.
 - Require explicit cleanup for anything persistent.
 - Do not promote agent-pool or team patterns into cron or default skills without a real validation project.
 - Keep direct agent-to-agent communication out of core workflows until deadlock, conflict, and audit controls exist.
@@ -201,6 +213,7 @@ Closeout: [[gsearch-knowledge-validation-closeout]]
 - [[philschmid-subagent-patterns-2026-05-05]]
 - [[alphasignal-agent-orchestration-patterns-2026-05-05]]
 - [[gptcentral-ultimate-guide-building-ai-agents-2026-06-05]]
+- [[langchain-organizing-context-multi-agent-harness-2026-09-08]]
 - [[agent-orchestration-production-tradeoffs]]
 - [[hermes-context-layer-operating-rules]]
 - [[ai-assumption-challenger-before-execution]]
