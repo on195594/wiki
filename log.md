@@ -3,6 +3,14 @@
 > Chronological record of wiki actions.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-16] runtime remediation + dashboard refresh | Hermes health baseline
+- Replaced the stale v0.10 baseline with live `v0.21.3 [fb56a7e0]` evidence covering gateway, six Cron jobs, Memory, browser, session store, backup/restore and remaining host/dependency risks.
+- Installed Playwright Chromium/headless-shell 1217 and passed a local browser smoke. The first real Amazon run returned `source_status=ok` for 10/10 products but its trigger owner timed out before durable completion; a second complete trigger then recorded Cron `completed`, job `Last run: ok`, and 10/10 successful product observations with no repeated price alert.
+- Compressed `USER.md` from 1350 to 843 chars; offline-deleted 513 unrouted stale open Telegram sessions after a verified SQLite snapshot, then optimized `state.db` from 1053.2 MB to 655.9 MB with integrity checks and a clean gateway restart.
+- Restored `updates.pre_update_backup: quick`; added monthly dual-repository restic verification and quarterly isolated restore-drill timers. Both services were run immediately and passed for `jedi` and `wiki`, including restored SQLite quick checks.
+- Updated the local safe-update script to stop the gateway through `hermes gateway stop`, preserving the planned-stop marker; upstream #108219 and #42517 remain open, and no forced dependency upgrade was applied.
+- Boundary: host SSH/firewall/public-port hardening and terminal/backend isolation remain unresolved; the dashboard records them but this Wiki write does not authorize or implement those changes.
+
 ## [2026-09-15] independent Pi review repair | Organizing Context in a Multi-Agent Harness
 - Pi reviewed exact commit `7c5fc75c35308b88159777c86fc83d59703cf64c` read-only and returned `REQUEST_CHANGES` with `P1-F1` and `P2-F2`; prompt, raw output and matching before/after hashes are stored under `_meta/reviews/2026-09-15-organizing-context-7c5fc75-pi-review*`.
 - Removed unsupported assertions about current `delegate_task` context/fork semantics and stated the bounded-handoff guidance without assuming a literal Hermes fork.
@@ -14,6 +22,11 @@
 - Preserved the role-aware handoff rule: continuation workers receive bounded verified evidence, while independent reviewers and self-contained researchers receive clean task contracts without the parent's conclusion. This Wiki change added no fork behavior and did not verify `delegate_task` runtime context semantics.
 - Boundary: Wiki-only ingestion. Prompt-cache savings remain source-specific; no Memory, active Skill/reference, runtime/config, Cron, MCP, gateway, wrapper, provider, profile/plugin or permission policy changed.
 
+## [2026-09-15] ingest + existing-owner update | LangChain Paid Media Agent
+- Captured `raw/articles/langchain-paid-media-agent-2026-09-13.md` as a structured record of the complete public article, including its reported performance figures, metric-level authority rules, progressive tool discovery, shared-state failures, approval/readback path and vendor-evidence limitations.
+- Updated existing owners `concepts/agent-context-engineering.md` and `concepts/subagent-orchestration-patterns.md`; no duplicate concept page was created.
+- Preserved the reusable deltas: deterministic computation before model judgment, authority by metric, progressive tool disclosure, and isolation of each subagent's writable paths, lifecycle state and mechanical completion condition.
+- Boundary: Wiki-only ingestion. The article's business and efficiency figures remain self-reported; no Memory, active Skill, runtime/config, sandbox provider, MCP, Cron, gateway, campaign integration or production write path changed.
 
 ## [2026-09-09] governance repair | Knowledge freshness v2 post-review contracts
 - Established `block source ⊆ page sources`: page-level `sources` remains canonical provenance and the sole deterministic entry for source reverse lookup/invalidation; a local `[!volatile]` source is claim attribution and cannot be the page's only source record.

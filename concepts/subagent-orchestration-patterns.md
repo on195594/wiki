@@ -4,7 +4,7 @@ created: 2026-05-07
 updated: 2026-09-15
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, hermes, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
 status: stable
 description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
 aliases: [subagent-patterns]
@@ -107,6 +107,12 @@ Hermes mapping:
 
 Failure mode:
 - Premature fan-out creates duplicate work and inconsistent assumptions. The parent must pass enough shared context to each worker.
+
+#### Context isolation is not execution isolation
+
+`[[langchain-paid-media-agent-2026-09-13]]` reports two concrete parent-worker failures. Two platform workers had separate context windows but wrote to the same report path and shared one `done` flag; the first completion could make the second stop without an artifact. Another worker could not determine whether PDF rendering had succeeded, repeatedly inspected files and eventually tried to rebuild the PDF.
+
+The narrow fix was per-worker output paths and completion state, a three-tool child surface（read context、compute、render）, and one mechanical stop condition: successful render means done. The reusable rule is broader than context separation: each child needs isolated writable state, a bounded tool set, an exact return artifact, explicit failure semantics and a completion condition the parent can verify. Shared paths or lifecycle flags turn nominally parallel work into hidden coupling.
 
 ### 3. Agent pool: persistent workers with messages
 

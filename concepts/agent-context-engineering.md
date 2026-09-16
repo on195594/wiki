@@ -4,7 +4,7 @@ created: 2026-05-20
 updated: 2026-09-15
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。
 aliases: [agent-context-engineering, context-engineering-for-agents]
@@ -80,6 +80,14 @@ Hermes 映射：评估 skill/tool/MCP 不应只看“是否被暴露”或“是
 #### 工具可用性与逐轮候选集分离
 
 [[ai-agent-tool-selection-architecture]] 进一步区分“系统允许使用哪些工具”和“当前推理步骤应让模型看到哪些工具”。Hermes toolset 已能提供平台、会话和任务级静态边界；动态 Top-K、语义路由或规划式选择只有在真实会话基线证明静态收窄仍不足时，才值得进入项目级试验。外部文章中的工具数量和阈值不应直接变成 active runtime 默认值。
+
+#### Paid Media Agent：按需工具与确定性计算案例
+
+LangChain 的 `[[langchain-paid-media-agent-2026-09-13]]` 是上述原则的生产案例，而不是新的默认架构。其早期周报把原始广告和 pipeline 数据全部交给模型计算；作者报告单次约 390 万输入 Token、1,112 秒。改由 Python 对齐时间窗、计算指标并应用固定规则后，模型只解释原因和提出建议，运行时间降至 85 秒，成本约降 40 倍。这些数字只适用于该冻结测试集，但支持“模型负责判断，代码负责可复现计算”的边界。
+
+同一案例把 200 多个广告接口隐藏在 Search → Read schema → Run 三步之后，仅披露当前问题需要的定义；作者报告首轮工具上下文由约 38,000 Token 降至 12,000 Token。可迁移规则仍是渐进披露并以任务完成率和答案质量共同验收，不是照搬 Top-K、Token 阈值或 LangChain 产品栈。
+
+该案例还说明权威源应按指标而非整套系统指定：广告平台负责 spend、impressions、clicks，warehouse 负责 leads、opportunities、pipeline；无法可靠关联时保留来源、时间窗、归因模型和缺口，不用模型制造统一答案。
 
 ### 3. Examples: demonstrate behavior, not only answers
 

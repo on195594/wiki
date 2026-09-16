@@ -3,7 +3,7 @@
 > Hermes 长期知识目录。
 > 这里记录正式沉淀页面，不记录原始聊天。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-15 | Indexed pages: 116
+> Last updated: 2026-09-16 | Indexed pages: 116
 
 ## Entities
 
@@ -97,7 +97,7 @@
 
 ## Operations
 - [[agent-shared-wiki-index]] — Claude Code、Codex、AGY 与 Hermes 的 B 级共享 Wiki 路由入口：每个新会话读取索引一次，正文按需，项目规则优先、默认只读
-- [[hermes-health-dashboard]] — Hermes 周度治理线的运行面板：版本、cron、memory、browser 状态与每周健康报告契约
+- [[hermes-health-dashboard]] — Hermes 周度治理线的当前运行面板：版本、Cron、Memory、session store、browser、备份恢复与开放风险
 
 ## Comparisons
 - [[dijkstra-ewd667-vs-ai-programming-article]] — 对照 EWD667 原文与 2026 AI 编程文章：哪些原则不变，哪些是 AI 时代的新变量
