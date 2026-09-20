@@ -319,6 +319,7 @@ def build_report(root: Path) -> dict[str, Any]:
     all_files = [p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts]
     live_md = sorted([p for p in all_files if p.suffix == ".md" and is_live_file(root, p)])
     backup_candidates = sorted([p for p in all_files if is_backup_candidate(root, p)])
+    raw_files = sorted(p for p in all_files if rel(root, p).startswith("raw/"))
     raw_md = [p for p in live_md if rel(root, p).startswith("raw/")]
     formal = [p for p in live_md if is_formal_page(root, p)]
 
@@ -564,7 +565,7 @@ def build_report(root: Path) -> dict[str, Any]:
     if recorded_hashes is None:
         add_issue(issues, "P1", "unreadable_raw_hash_manifest", RAW_HASH_MANIFEST, "Raw source hash manifest missing or unparseable; raw/ immutability is not being enforced")
     else:
-        for p in raw_md:
+        for p in raw_files:
             r = rel(root, p)
             recorded = recorded_hashes.get(r)
             if recorded is None:

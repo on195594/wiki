@@ -15,11 +15,16 @@ from wiki_root import resolve_root
 SKIP_PARTS = {".git", "__pycache__"}
 SYNTHETIC_LINE_MARKER = "public-check: synthetic"
 AUTHOR_HOME = re.compile(r"(?:file://)?/home/" + "lin" + r"(?:/|\b)")
-PRIVATE_SOURCE = re.compile(r"(?:^|[\[,\s])(?:session:|project:/|filesystem:|skill:)")
+PRIVATE_SOURCE = re.compile(r"(?<![A-Za-z0-9_])(?:session:|project:/|filesystem:|skill:)")
+PRIVATE_ARTIFACT = re.compile(
+    r"\b(?:session|summary)\s+run\s+\d{8}-\d{6}\b|\boff-wiki\s+(?:grounding\s+)?artifact\b",
+    re.I,
+)
 PERSONAL_ENDPOINT = re.compile(r"(?:telegram:\d{6,}|\bjob_id\s*[:=]\s*[0-9a-f]{8,})", re.I)
 PRIVATE_KEY = re.compile(r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----")
 SECRET_ASSIGNMENT = re.compile(
-    r"\b(?:api[_-]?key|access[_-]?token|secret|password|passwd)\b\s*[:=]\s*(['\"])([^'\"\n]{8,})\1",
+    r"\b(?:api[_-]?key|access[_-]?token|secret|password|passwd)\b\s*[:=]\s*"
+    r"(?:(['\"])([^'\"\n]{8,})\1|([A-Za-z0-9][A-Za-z0-9._/+@=-]{7,}))",
     re.I,
 )
 SAFE_SECRET_MARKERS = (
@@ -61,26 +66,33 @@ def frontmatter(text: str) -> str | None:
     return match.group(1) if match else None
 
 
-def source_field(metadata: str) -> str:
-    match = re.search(r"^sources:\s*(.*)$", metadata, re.M)
-    if not match:
-        return ""
-    value = match.group(1)
-    if value.strip():
-        return value
-    block = []
-    for line in metadata[match.end() :].splitlines():
-        if not line.strip():
-            continue
-        if not line.startswith((" ", "\t")):
-            break
-        block.append(line)
-    return "\n".join(block)
+def provenance_fields(metadata: str) -> str:
+    """Return public-source metadata without needing a YAML dependency."""
+    values: list[str] = []
+    active = False
+    for line in metadata.splitlines():
+        field = re.match(r"^([A-Za-z_][\w-]*):\s*(.*)$", line)
+        if field:
+            active = field.group(1) in {"source", "sources", "source_url", "extraction", "provenance"}
+            if active:
+                values.append(field.group(2))
+        elif active and line.startswith((" ", "\t")):
+            values.append(line)
+        elif line.strip():
+            active = False
+    return "\n".join(values)
 
 
 def has_literal_secret(text: str) -> bool:
     for match in SECRET_ASSIGNMENT.finditer(text):
-        value = match.group(2).strip().lower()
+        quoted = match.group(2) is not None
+        value = (match.group(2) or match.group(3)).strip().lower()
+        if not quoted and (
+            re.fullmatch(r"[a-z_]+", value)
+            or re.fullmatch(r"[A-Z][A-Z0-9_]*", match.group(3))
+            or value.startswith(("os.environ", "env.", "getenv", "require_"))
+        ):
+            continue
         if not any(marker in value for marker in SAFE_SECRET_MARKERS):
             return True
     return False
@@ -114,8 +126,10 @@ def build_report(root: Path) -> dict[str, Any]:
         if AUTHOR_HOME.search(text):
             add(violations, rel, "author-home-path")
         metadata = frontmatter(text)
-        if metadata is not None and PRIVATE_SOURCE.search(source_field(metadata)):
+        if metadata is not None and PRIVATE_SOURCE.search(provenance_fields(metadata)):
             add(violations, rel, "private-provenance")
+        if PRIVATE_ARTIFACT.search(candidate_text):
+            add(violations, rel, "private-session-artifact")
         if PERSONAL_ENDPOINT.search(text):
             add(violations, rel, "personal-endpoint-identifier")
         if PRIVATE_KEY.search(text):

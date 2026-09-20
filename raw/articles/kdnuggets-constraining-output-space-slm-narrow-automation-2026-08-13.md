@@ -8,7 +8,7 @@ published: 2026-08-13
 captured: 2026-08-15
 status: captured
 tags: [llm, structured-output, optimization, evaluation, routing]
-extraction: Full article-like body extracted from the public KDnuggets page; this structured capture preserves the benchmark, implementation mechanism, tokenizer constraints, source caveats, and local summary path while omitting related-post, newsletter, navigation, and footer boilerplate.
+extraction: Full article-like body extracted from the public KDnuggets page; this structured capture preserves the benchmark, implementation mechanism, tokenizer constraints, and source caveats while omitting related-post, newsletter, navigation, and footer boilerplate.
 ---
 
 # Constraining Output Space for SLM Narrow Automation Optimization

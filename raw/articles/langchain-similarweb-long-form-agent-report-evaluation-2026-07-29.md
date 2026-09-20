@@ -8,7 +8,7 @@ published: 2026-07-29
 captured: 2026-07-31
 status: captured
 tags: [agent, evaluation, workflow, harness]
-extraction: Full public article body extracted deterministically from the server-rendered main region, bounded from Key Takeaways to before Related content; prose is complete, while code and JSON formatting were flattened by text extraction. Local summary path is recorded in the Source section.
+extraction: Full public article body extracted deterministically from the server-rendered main region, bounded from Key Takeaways to before Related content; prose is complete, while code and JSON formatting were flattened by text extraction.
 ---
 
 # How Similarweb Evaluates Long-Form Agent Research Reports with LangSmith

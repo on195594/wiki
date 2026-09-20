@@ -10,7 +10,7 @@ updated: 2026-05-29
 type: raw-source
 status: raw
 tags: [agent, architecture, orchestration, observability, anti-pattern]
-extraction: Jina Reader article extraction; reader output begins mid-sentence (opening context before "agent system seriously fail in production" is missing), but main body sections, examples, and conclusion are intact. Gemini summary run 20260529-201234 was used as an off-wiki grounding artifact (local path only).
+extraction: Jina Reader article extraction; reader output begins mid-sentence (opening context before "agent system seriously fail in production" is missing), but main body sections, examples, and conclusion are intact.
 ---
 
 # Most AI Agents Fail in Production Because They’re Built Backwards

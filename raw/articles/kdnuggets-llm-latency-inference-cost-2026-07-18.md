@@ -8,7 +8,7 @@ published: 2026-07-14
 captured: 2026-07-18
 status: captured
 tags: [llm, production, latency, inference-cost, evaluation, hermes]
-extraction: Full article-like body extracted from the public KDnuggets page; this wiki capture preserves provenance, all 12 numbered controls, source caveats, and the local summary path rather than reproducing trailing related-post, newsletter, navigation, or footer boilerplate.
+extraction: Full article-like body extracted from the public KDnuggets page; this wiki capture preserves provenance, all 12 numbered controls, and source caveats rather than reproducing trailing related-post, newsletter, navigation, or footer boilerplate.
 ---
 
 # 12 Ways to Reduce LLM Latency and Inference Costs in Production

@@ -191,6 +191,16 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         )
         self.assertIn("raw_source_drift", self.issue_codes("P1"))
 
+    def test_reports_binary_raw_source_drift(self) -> None:
+        raw = self.root / "raw" / "attachments" / "source.bin"
+        raw.parent.mkdir(parents=True)
+        raw.write_bytes(b"current bytes\x00")
+        manifest = {"raw/attachments/source.bin": hashlib.sha256(b"different bytes\x00").hexdigest()}
+        (self.root / "_meta" / "raw-source-hashes.json").write_text(
+            json.dumps(manifest), encoding="utf-8"
+        )
+        self.assertIn("raw_source_drift", self.issue_codes("P1"))
+
     def test_reports_malformed_review_by(self) -> None:
         self.add_formal("bad-review-date", review_by="soon")
         self.assertIn("malformed_review_by", self.issue_codes("P1"))
