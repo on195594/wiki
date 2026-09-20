@@ -27,25 +27,31 @@ PRIVATE_ARTIFACT = re.compile(
 PERSONAL_ENDPOINT = re.compile(r"(?:telegram:\d{6,}|\bjob_id\s*[:=]\s*[0-9a-f]{8,})", re.I)
 PRIVATE_KEY = re.compile(r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----")
 SECRET_ASSIGNMENT = re.compile(
-    r"\b(?:api[_-]?key|access[_-]?token|secret|password|passwd)\b\s*[:=]\s*"
-    r"(?:(['\"])([^'\"\n]{8,})\1|([A-Za-z0-9][A-Za-z0-9._/+@=-]{7,}))",
-    re.I,
+    r"(?:^|(?<=[{,(]))[ \t]*(?:export[ \t]+)?[\"']?"
+    r"(?:api[_-]?key|access[_-]?token|secret|password|passwd)[\"']?[ \t]*[:=][ \t]*"
+    r'(?:"(?P<double>[^"\n]+)"|\'(?P<single>[^\'\n]+)\'|'
+    r"(?P<bare>[A-Za-z0-9$][A-Za-z0-9_.$/+@={}-]*))",
+    re.I | re.M,
 )
-SAFE_SECRET_MARKERS = (
+SAFE_SECRET_VALUES = {
+    "changeme",
+    "dummy",
     "example",
     "placeholder",
-    "your_api_key",
-    "your-api-key",
-    "your_token",
-    "your-token",
-    "dummy",
     "test-only",
-    "changeme",
-    "<",
-    "${",
-    "...",
     "xxx",
+    "your-api-key",
+    "your-token",
+    "your_api_key",
+    "your_token",
+}
+SAFE_SECRET_PATTERN = re.compile(
+    r"(?:your|example|sample|dummy|test)[_-](?:api[_-]?key|access[_-]?token|token|password|secret)",
+    re.I,
 )
+ENV_REFERENCE = re.compile(r"\$(?:[A-Za-z_][A-Za-z0-9_]*|\{[A-Za-z_][A-Za-z0-9_]*\})")
+CONFIG_SUFFIXES = {".cfg", ".conf", ".env", ".ini", ".json", ".toml", ".yaml", ".yml"}
+CODE_SUFFIXES = {".c", ".cpp", ".go", ".js", ".jsx", ".php", ".py", ".rb", ".rs", ".sh", ".ts", ".tsx"}
 GENERIC_HOME_NAMES = {"user", "example", "username", "name"}
 HOME_PATH = re.compile(r"(?:file://)?/home/([A-Za-z0-9._-]+)(?:/|\b)")
 PRIVATE_IPV4 = re.compile(r"(?<!\d)(?:10\.|192\.168\.|172\.(?:1[6-9]|2\d|3[01])\.)\d{1,3}\.\d{1,3}(?!\d)")
@@ -87,21 +93,54 @@ def provenance_fields(metadata: str) -> str:
     return "\n".join(values)
 
 
-def has_literal_secret(text: str) -> bool:
+def is_config_path(path: Path) -> bool:
+    return path.name == ".env" or path.name.startswith(".env.") or path.suffix.lower() in CONFIG_SUFFIXES
+
+
+def is_placeholder(value: str) -> bool:
+    normalized = value.strip().lower()
+    return (
+        normalized in SAFE_SECRET_VALUES
+        or normalized == "..."
+        or re.fullmatch(r"<[^<>\n]+>", normalized) is not None
+        or SAFE_SECRET_PATTERN.fullmatch(normalized) is not None
+    )
+
+
+def is_program_expression(text: str, match: re.Match[str], value: str, path: Path) -> bool:
+    if is_config_path(path):
+        return False
+    line_start = text.rfind("\n", 0, match.start()) + 1
+    line_end = text.find("\n", match.end())
+    if line_end < 0:
+        line_end = len(text)
+    prefix = text[line_start : match.start()]
+    suffix = text[match.end() : line_end]
+    if value in {"os.environ", "os.getenv", "getenv"} and suffix.lstrip().startswith(("[", "(")):
+        return True
+    if re.fullmatch(r"(?:require|get|load|read)_[A-Za-z0-9_]+", value) and suffix.lstrip().startswith("("):
+        return True
+    identifier = re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.]*", value) is not None
+    inside_call = prefix.rfind("(") > prefix.rfind(")")
+    return identifier and (path.suffix.lower() in CODE_SUFFIXES or inside_call)
+
+
+def credential_assignment_risk(text: str, path: Path) -> tuple[bool, bool]:
+    """Return (violation, candidate) without returning matched values."""
+    violation = False
+    candidate = False
     for match in SECRET_ASSIGNMENT.finditer(text):
-        quoted = match.group(2) is not None
-        value = (match.group(2) or match.group(3)).strip().lower()
-        if quoted and value.startswith("$"):
+        quoted = match.group("double") is not None or match.group("single") is not None
+        value = (match.group("double") or match.group("single") or match.group("bare")).strip()
+        if is_placeholder(value) or ENV_REFERENCE.fullmatch(value):
             continue
-        if not quoted and (
-            re.fullmatch(r"[a-z_]+", value)
-            or re.fullmatch(r"[A-Z][A-Z0-9_]*", match.group(3))
-            or value.startswith(("os.environ", "env.", "getenv", "require_"))
-        ):
+        if not quoted and is_program_expression(text, match, value, path):
             continue
-        if not any(marker in value for marker in SAFE_SECRET_MARKERS):
-            return True
-    return False
+        if quoted or is_config_path(path) or re.search(r"[^A-Za-z_]", value):
+            violation = True
+        else:
+            candidate = True
+    return violation, candidate
 
 
 def add(items: list[dict[str, str]], path: str, rule: str) -> None:
@@ -121,8 +160,12 @@ def build_report(root: Path) -> dict[str, Any]:
     for path in sorted(p for p in root.rglob("*") if p.is_file() and not SKIP_PARTS.intersection(p.relative_to(root).parts)):
         rel = path.relative_to(root).as_posix()
         scanned += 1
+        data = path.read_bytes()
+        if b"\x00" in data:
+            add(candidates, rel, "unreviewed-binary-or-non-utf8")
+            continue
         try:
-            text = path.read_text(encoding="utf-8")
+            text = data.decode("utf-8")
         except UnicodeDecodeError:
             add(candidates, rel, "unreviewed-binary-or-non-utf8")
             continue
@@ -140,8 +183,11 @@ def build_report(root: Path) -> dict[str, Any]:
             add(violations, rel, "personal-endpoint-identifier")
         if PRIVATE_KEY.search(text):
             add(violations, rel, "private-key-material")
-        if has_literal_secret(text):
+        secret_violation, secret_candidate = credential_assignment_risk(text, path)
+        if secret_violation:
             add(violations, rel, "literal-secret-assignment")
+        if secret_candidate:
+            add(candidates, rel, "possible-secret-assignment")
 
         for match in HOME_PATH.finditer(candidate_text):
             if match.group(1).lower() not in GENERIC_HOME_NAMES and not AUTHOR_HOME.fullmatch(match.group(0)):

@@ -55,7 +55,7 @@ Frontmatter rules:
 
 ### Agent-readable knowledge object convention
 
-This wiki remains the Hermes local LLM-wiki/Markdown knowledge base; OKF is only a design reference, not a replacement schema. New or touched high-value formal pages may add optional machine-readable metadata when it improves routing or review:
+This wiki remains a public Markdown knowledge base for reusable LLM and agent knowledge; OKF is only a design reference, not a replacement schema. New or touched high-value formal pages may add optional machine-readable metadata when it improves routing or review:
 
 ```yaml
 description: One-sentence page purpose for agent routing and preview.

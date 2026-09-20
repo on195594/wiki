@@ -42,8 +42,9 @@ git diff --check
 
 - **Violation**: deterministic public-boundary failure; the command exits `1`.
 - **Candidate**: possible personal instance record that needs content review; candidates do not fail the command by themselves.
+- **PASS**: no blocking rule matched. It does not mean candidates were adjudicated, attachments were reviewed, or the repository is absolutely safe.
 - Reports contain only repository-relative paths and rule names, never matched values.
-- Binary or non-UTF-8 files are candidates marked `unreviewed-binary-or-non-utf8`; they cannot be counted as reviewed until inspected with an appropriate tool.
+- Files containing NUL bytes and files that do not decode as UTF-8 are candidates marked `unreviewed-binary-or-non-utf8`; they cannot be counted as reviewed until inspected with an appropriate tool.
 - Generic product paths, configurable examples and obvious credential placeholders are allowed. A synthetic example does not prove deployment or authorization.
 
 ## Reverse lookup
