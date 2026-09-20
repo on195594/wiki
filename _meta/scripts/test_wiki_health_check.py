@@ -56,7 +56,7 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         review_line = f"review_by: {review_by}\n" if review_by else ""
         page_body = body or (
-            f"# {name}\n\nThis formal fixture contains enough stable explanatory text "
+            f"# {name}\n\n## Summary\n\nThis formal fixture contains enough stable explanatory text "
             "to avoid unrelated tiny-file findings while exercising one health rule only.\n"
         )
         path.write_text(
@@ -67,6 +67,8 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         )
         with (self.root / "index.md").open("a", encoding="utf-8") as index:
             index.write(f"- [[{name}]]\n")
+        with (self.root / "log.md").open("a", encoding="utf-8") as log:
+            log.write(f"\n[[{name}]]\n")
         return path
 
     def issue_codes(self, severity: str) -> set[str]:
@@ -75,6 +77,7 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
 
     def test_optional_freshness_and_date_boundaries(self):
         p = self.add_formal("freshness")
+        self.add_formal("freshness-owner", body="# Freshness owner\n\n" + "context " * 20 + "[[freshness]]\n")
         original = p.read_text()
         cases = [
             ("", set(), set()),
@@ -110,6 +113,50 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
     def test_reports_broken_wikilink(self) -> None:
         self.add_formal("broken-link", body="# Broken link\n\n" + "context " * 20 + "[[missing-page]]\n")
         self.assertIn("broken_wikilink", self.issue_codes("P0"))
+
+    def test_reports_missing_summary(self) -> None:
+        self.add_formal("missing-summary", body="# Missing summary\n\n" + "context " * 20 + "\n")
+        self.assertIn("missing_summary", self.issue_codes("P2"))
+
+    def test_reports_broken_relative_markdown_link(self) -> None:
+        self.add_formal("broken-markdown", body="# Broken markdown\n\n" + "context " * 20 + "[missing](missing.md)\n")
+        self.assertIn("broken_markdown_link", self.issue_codes("P1"))
+
+    def test_reports_index_only_inbound(self) -> None:
+        self.add_formal("index-only")
+        log = self.root / "log.md"
+        log.write_text(log.read_text(encoding="utf-8").replace("\n[[index-only]]\n", "\n"), encoding="utf-8")
+        self.assertIn("index_only_inbound", self.issue_codes("P2"))
+
+    def test_reports_orphan_formal_page(self) -> None:
+        self.add_formal("orphan")
+        (self.root / "index.md").write_text(
+            (self.root / "index.md").read_text(encoding="utf-8").replace("- [[orphan]]\n", ""),
+            encoding="utf-8",
+        )
+        (self.root / "log.md").write_text(
+            (self.root / "log.md").read_text(encoding="utf-8").replace("\n[[orphan]]\n", "\n"),
+            encoding="utf-8",
+        )
+        self.assertIn("orphan_formal_page", self.issue_codes("P2"))
+
+    def test_resolves_symlinked_root(self) -> None:
+        self.add_formal("symlink-root")
+        with tempfile.TemporaryDirectory() as alias_dir:
+            alias = Path(alias_dir) / "wiki"
+            alias.symlink_to(self.root, target_is_directory=True)
+            report = wiki_health_check.build_report(alias)
+        self.assertNotIn("orphan_formal_page", {item["code"] for item in report["issues"]["P2"]})
+        self.assertTrue(report["pass"])
+
+    def test_reports_log_out_of_order(self) -> None:
+        log = self.root / "log.md"
+        log.write_text(
+            log.read_text(encoding="utf-8")
+            + "\n## [2026-01-02] newer\n\n## [2026-01-03] older\n",
+            encoding="utf-8",
+        )
+        self.assertIn("log_out_of_order", self.issue_codes("P1"))
 
     def test_checks_nested_list_links_but_ignores_indented_code(self) -> None:
         self.add_formal(

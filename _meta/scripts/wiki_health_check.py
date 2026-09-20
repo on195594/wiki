@@ -262,6 +262,33 @@ def resolve_wikilink(root: Path, current: Path, target: str, stems: dict[str, li
     return False
 
 
+def resolve_wikilink_path(root: Path, current: Path, target: str, stems: dict[str, list[str]]) -> Path | None:
+    """Resolve an unambiguous link to a path for inbound-link analysis."""
+    target = target.split("|", 1)[0].split("#", 1)[0].strip()
+    if not target:
+        return None
+    if target.endswith(".md"):
+        candidates = [root / target, current.parent / target]
+    elif "/" in target:
+        candidates = [
+            root / f"{target}.md",
+            root / target,
+            current.parent / f"{target}.md",
+            current.parent / target,
+        ]
+    else:
+        matches = stems.get(target, [])
+        candidates = [root / matches[0]] if len(matches) == 1 else []
+    for candidate in candidates:
+        try:
+            resolved = candidate.resolve()
+            if resolved.exists() and resolved.is_relative_to(root.resolve()):
+                return resolved
+        except OSError:
+            continue
+    return None
+
+
 def git_status(root: Path) -> dict[str, Any]:
     git_dir = root / ".git"
     if not git_dir.exists():
@@ -286,6 +313,7 @@ def git_status(root: Path) -> dict[str, Any]:
 
 
 def build_report(root: Path) -> dict[str, Any]:
+    root = root.expanduser().resolve()
     if not root.exists() or not root.is_dir():
         raise FileNotFoundError(f"wiki root does not exist or is not a directory: {root}")
 
@@ -316,6 +344,12 @@ def build_report(root: Path) -> dict[str, Any]:
         if not (root / core).exists():
             add_issue(issues, "P0", "missing_core_file", core, f"Missing core file: {core}")
 
+    log_path = root / "log.md"
+    if log_path.exists():
+        log_dates = re.findall(r"^## \[(\d{4}-\d{2}-\d{2})\]", read_text(log_path), flags=re.M)
+        if any(left < right for left, right in zip(log_dates, log_dates[1:])):
+            add_issue(issues, "P1", "log_out_of_order", "log.md", "Log entries are not in descending date order")
+
     reviews_dir = root / "_meta" / "reviews"
     if reviews_dir.exists() and reviews_dir.is_dir():
         for item in sorted(reviews_dir.rglob("*")):
@@ -337,6 +371,8 @@ def build_report(root: Path) -> dict[str, Any]:
             body = re.sub(r"^---\s*\n.*?\n---\s*\n", "", text, flags=re.S)
             if not re.search(r"^#\s+\S", body, flags=re.M):
                 add_issue(issues, "P1", "missing_h1", r, "Formal page missing H1 heading")
+            if not re.search(r"^##\s+Summary\s*$", body, flags=re.M):
+                add_issue(issues, "P2", "missing_summary", r, "Formal page missing ## Summary")
             if not text.startswith("---\n"):
                 add_issue(issues, "P1", "missing_frontmatter", r, "Formal page missing YAML frontmatter")
             frontmatter = extract_frontmatter(text)
@@ -434,6 +470,8 @@ def build_report(root: Path) -> dict[str, Any]:
                     if not RELATION_VALUE_PATTERN.fullmatch(v):
                         add_issue(issues, "P2", "invalid_relation_value", r, "Relations value must be '[]' or a comma-separated list of [[wikilinks]]", value=v)
 
+    formal_paths = set(formal)
+    inbound: dict[Path, set[Path]] = {p: set() for p in formal}
     for p in live_md:
         r = rel(root, p)
         text = strip_code(read_text(p))
@@ -441,6 +479,10 @@ def build_report(root: Path) -> dict[str, Any]:
             target = match.group(1).split("|", 1)[0].split("#", 1)[0].strip()
             if not resolve_wikilink(root, p, target, stems):
                 add_issue(issues, "P0", "broken_wikilink", r, "Broken wikilink", target=target)
+                continue
+            target_path = resolve_wikilink_path(root, p, target, stems)
+            if target_path in formal_paths:
+                inbound[target_path].add(p)
         for match in re.finditer(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", text):
             url = match.group(1).strip()
             if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", url) or url.startswith("#"):
@@ -455,6 +497,20 @@ def build_report(root: Path) -> dict[str, Any]:
                 inside = False
             if inside and not candidate.exists():
                 add_issue(issues, "P1", "broken_markdown_link", r, "Broken relative Markdown link", target=url)
+
+    for target_path, sources in inbound.items():
+        target_rel = rel(root, target_path)
+        frontmatter = extract_frontmatter(read_text(target_path)) or ""
+        if frontmatter_value(frontmatter, "status") == "closed":
+            continue
+        sources.discard(target_path)
+        semantic_sources = sources & formal_paths
+        if semantic_sources:
+            continue
+        if root / "index.md" in sources:
+            add_issue(issues, "P2", "index_only_inbound", target_rel, "Formal page is linked only from administrative files")
+        else:
+            add_issue(issues, "P2", "orphan_formal_page", target_rel, "Formal page has no inbound wikilinks from another formal page")
 
     index_path = root / "index.md"
     index_links: set[str] = set()

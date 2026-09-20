@@ -1,7 +1,7 @@
 ---
 title: Hermes Context Footprint Read-only Audit 2026-07-03
 created: 2026-07-03
-updated: 2026-08-18
+updated: 2026-09-20
 type: query
 tags: [hermes, context-engineering, governance, optimization, verification]
 sources: [concepts/agent-context-engineering.md, concepts/hermes-context-engineering-design-priorities.md, concepts/ai-coding-assistant-context-budget-management.md, concepts/hermes-context-layer-operating-rules.md]
@@ -11,6 +11,10 @@ aliases: [hermes-context-footprint-audit]
 ---
 
 # Hermes Context Footprint Read-only Audit 2026-07-03
+
+## Summary
+
+本页记录 2026-07-03 对 Hermes 上下文负担的只读审计范围、证据、分层发现和建议。
 
 ## Scope
 

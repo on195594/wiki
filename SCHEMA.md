@@ -195,6 +195,7 @@ Rules:
 - `queries/`：值得沉淀的问题与答案；历史上也保留部分 plan / closeout / validation case，未来新页面应优先按语义路由到更准确的位置
 - `operations/`：稳定运行面板、runbook、维护契约和 recurring governance surface；不放一次性项目计划或 raw review artifact
 - `_meta/`：导航与维护文档
+- `_meta/log-archive/`：`log.md` 历史条目的年度归档
 - `_meta/plans/`：计划、整改路线图、执行前治理方案
 - `_meta/reviews/`：独立审查 prompt 和审查结果
 - `_meta/scripts/`：wiki 只读检查、审计和维护脚本

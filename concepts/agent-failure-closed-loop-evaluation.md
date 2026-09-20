@@ -1,7 +1,7 @@
 ---
 title: Agent 失败闭环评估
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-09-20
 type: concept
 tags: [agent, evaluation, hermes, monitoring, closeout, workflow]
 sources: [docs:https://venturebeat.com/orchestration/langsmith-engine-closes-the-agent-debugging-loop-automatically-but-multi-model-enterprises-still-need-a-neutral-layer]
@@ -11,6 +11,10 @@ aliases: [failure-loop-evaluation]
 ---
 
 # Agent 失败闭环评估
+
+## Summary
+
+本页定义如何把可复发的 Agent 失败转化为中立证据、根因分类、最小修复和防回归评估工件。
 
 ## 定义
 

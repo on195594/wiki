@@ -1,7 +1,7 @@
 ---
 title: Hermes Agent Experience Consolidation Capability Assessment
 created: 2026-05-11
-updated: 2026-08-18
+updated: 2026-09-20
 type: query
 tags: [hermes, agent, research, memory, skills, orchestration, cron, validation]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -10,6 +10,10 @@ description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当
 ---
 
 # Hermes Agent Experience Consolidation Capability Assessment
+
+## Summary
+
+本页是截至 2026-08-18 的 Hermes 经验固化能力历史评估，当前能力结论使用前必须重新核验。
 
 > Historical snapshot closed on 2026-08-18. Version、命令和原生能力结论不得作为当前状态直接复用，需重新查官方文档与本机证据。
 

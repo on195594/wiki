@@ -1,7 +1,7 @@
 ---
 title: Public Info Monitoring Automation Methodology
 created: 2026-05-06
-updated: 2026-05-18
+updated: 2026-09-20
 type: concept
 tags: [monitoring, automation, research, cron, tool, hermes, workflow]
 sources: [project:/home/lin/.hermes/projects/amazon-price-watch, project:/home/lin/.hermes/projects/investment-watch, skill:public-info-monitoring-automation]
@@ -10,6 +10,10 @@ description: 总结只读公共信息监控自动化项目的范围、边界、�
 ---
 
 # Public Info Monitoring Automation Methodology
+
+## Summary
+
+本页总结只读公共信息监控自动化从信号定义、采集、变化判断到通知、健康检查和知识推广的最小可审计流程。
 
 ## Decision card
 

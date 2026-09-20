@@ -1,7 +1,7 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-09-05
+updated: 2026-09-20
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md]
@@ -30,7 +30,7 @@ The Stencil article `[[stencil-the-harness-playbook-2026-09-05]]` is best absorb
 
 [推论] Hermes mapping
 
-- **Single authoritative state:** state that affects rewind, fork, resume, retry, child-agent lifecycle, or recovery must be persisted or reconstructible from the authoritative run/session state; do not rely on plugin closures, process-local counters, or in-memory tool registries.
+- **Single authoritative state:** state that affects rewind, fork, resume, retry, child-agent lifecycle, or recovery must be persisted or reconstructible from the authoritative run/session state; do not rely on plugin closures, process-local counters, or in-memory tool registries. For recoverable client synchronization, see [[local-first-sync-confirmed-mirror-outbox-conflict-policy]].
 - **Control plane vs execution plane:** the trusted parent/host owns state, routing, approvals, policy, credentials, and audit evidence. Workers and sandboxes execute bounded instructions and do not become policy authorities.
 - **Bounded work units:** shell commands, child agents, background jobs, and long-lived services need explicit ownership, timeout, cancellation, resource limits, cleanup, and observable terminal states.
 - **Projection and verification:** TUI, Web, Telegram, logs, and inspection views are projections. Completion, cancellation, resume, cleanup, and external side effects should be read back from the strongest available authoritative state when the task has such a contract.

@@ -1,7 +1,7 @@
 ---
 title: Investment Watch Final Closeout
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-09-20
 type: query
 tags: [investment, monitoring, automation, hermes, validation, closeout]
 sources: [project:/home/lin/.hermes/projects/investment-watch]
@@ -11,6 +11,10 @@ aliases: [investment-watch-closeout]
 ---
 
 # Investment Watch Final Closeout
+
+## Summary
+
+本页记录 investment-watch 的本地验证结论、知识层收束结果和未获授权的推广边界。
 
 ## Final status
 

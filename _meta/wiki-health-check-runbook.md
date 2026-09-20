@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-09-09
+updated: 2026-09-20
 type: meta
 status: current
 ---
@@ -40,7 +40,7 @@ Run the offline regression fixtures:
 python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v
 ```
 
-The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, near-duplicate pages, required frontmatter fields, formal status enums, and closed-query index lifecycle. They create isolated temporary vaults and never modify `/home/lin/wiki`.
+The fixtures cover broken wikilinks, unregistered tags, raw-source drift, malformed `review_by`, near-duplicate pages, required frontmatter fields, formal status enums, missing Summary sections, inbound-link islands, log ordering, and closed-query index lifecycle. They create isolated temporary vaults and never modify `/home/lin/wiki`.
 
 Root resolution order:
 
@@ -136,7 +136,7 @@ The `known_unindexed_draft_query` code currently has no instances. The eight dra
 
 ## Current expected result
 
-As of 2026-08-18, the script passes on `/home/lin/wiki`.
+As of 2026-09-20, the script passes on `/home/lin/wiki`.
 
 Expected current interpretation:
 

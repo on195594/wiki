@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-09-09
+updated: 2026-09-20
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
 sources: []
@@ -46,15 +46,17 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 防止知识网络断裂
 
 ### 2. Orphan pages
-检查哪些正式页面没有任何 inbound links。
+检查哪些正式页面没有任何 inbound links，以及哪些页面只有主索引入链。
 
 目标：
 - 找出知识孤岛
 - 避免页面存在但永远检索不到
+- 让主题页进入知识网络，而不只是目录列表
 
 说明：
 - 新页面短期内可能是“暂时孤立”
-- 但长期孤立页应被补链、合并或归档
+- 只有 `index.md` 入链的页面属于语义孤岛，应补充主题相关入链
+- 长期孤立页应被补链、合并或归档
 
 ### 3. Index completeness
 检查所有正式页面是否都列在 `[[index]]` 中。
@@ -63,7 +65,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 保证目录仍是有效导航入口
 - 防止页面实际存在但索引缺失
 
-### 4. Frontmatter validation
+### 4. Frontmatter and summary validation
 检查页面是否具备完整 frontmatter：
 - `title`
 - `created`
@@ -73,7 +75,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - `sources`
 - `status`
 
-并验证 `type` 与 `status` 使用 `SCHEMA.md` 声明的枚举；日期化状态应改用 `updated`、`review_by` 或正文说明。
+同时检查正式页存在 `## Summary`，并验证 `type` 与 `status` 使用 `SCHEMA.md` 声明的枚举；日期化状态应改用 `updated`、`review_by` 或正文说明。
 
 目标：
 - 保持页面结构统一
@@ -108,7 +110,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - 要求显式记录冲突，而不是静默覆盖
 
 ### 9. Log health
-检查 `[[log]]` 是否保持精简、是否按年度归档，以及普通摄取是否误生成大量 review sidecar。
+检查 `[[log]]` 是否保持精简、日期是否按降序排列、历史条目是否按年度归档，以及普通摄取是否误生成大量 review sidecar。
 
 目标：
 - 保持维护历史可追踪
