@@ -24,7 +24,6 @@ tags: [agent, memory, research, workflow, evaluation]
 - Captured: 2026-08-01
 - Primary paper: [Test-Time Learning with an Evolving Library](https://www.microsoft.com/en-us/research/publication/test-time-learning-with-an-evolving-library/)
 - Official code: [microsoft/EvoLib](https://github.com/microsoft/EvoLib)
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260801-161551-EvoLib-Turning-experience-into-evolving-knowledge-Microsoft-Research-2824354-379589320-summary.md`
 - Extraction note: direct deterministic fetch returned HTTP 403; `web_extract` recovered the full article prose. The rendered Microsoft Research page was checked to verify the publication date and displayed author list. Navigation, an unrelated podcast promotion, author cards, social links and footer boilerplate were omitted.
 - Source quality: official Microsoft Research blog with full article prose.
 - Limitation: this page is a research-blog overview, not the complete paper. It does not expose the full prompts, mathematical formulation, benchmark numbers, hyperparameters, knowledge-capacity or pruning policy, concurrent-update cost, conflict policy, or production operating evidence.

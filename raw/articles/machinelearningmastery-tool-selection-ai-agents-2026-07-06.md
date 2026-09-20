@@ -9,7 +9,6 @@ captured: 2026-07-11
 type: raw-source
 status: captured
 tags: [agent, tool, context-engineering, evaluation, workflow]
-extraction: Direct HTML extraction from the page's `<article>` element; scripts, navigation, sharing widgets, sidebars, and template clutter were removed. Headings, paragraphs, lists, and code text were retained. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260710-195324-The-Complete-Guide-to-Tool-Selection-in-AI-Agents-2982184-999313640-summary.md
 ---
 
 # The Complete Guide to Tool Selection in AI Agents

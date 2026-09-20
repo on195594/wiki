@@ -209,10 +209,8 @@ Outcome:
 
 - Inline subagent review should remain the default for ordinary saved search artifacts.
 - Fan-out review can improve source/synthesis separation, but only justifies its cost for promotion/ADR evidence or high source-quality risk.
-- Agent pools, teams, and persistent reviewer routing were not justified by the experiment.
-- The project closed as a knowledge-validation success, while live Telegram `/gsearch` remains unpromoted pending a separate narrow-scope promotion package.
-
-Closeout: [[gsearch-knowledge-validation-closeout]]
+- Agent pools, teams, and persistent reviewer routing require their own public evidence; this page does not treat a private project trial as validation.
+- Runtime command or messaging-channel promotion requires separate authorization and target-system verification.
 
 ## Related
 

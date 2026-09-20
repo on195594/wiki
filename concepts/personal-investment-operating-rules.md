@@ -1,19 +1,21 @@
 ---
-title: Personal Investment Operating Rules
+title: Investment Risk Control Framework
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: concept
 tags: [investment, governance, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
 status: stable
-description: 汇总个人投资系统的长期配置、主动交易、风控和行为纪律运行规则。
+description: 汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。
 aliases: [investment-operating-rules]
 ---
 
-# Personal Investment Operating Rules
+# Investment Risk Control Framework
 
 ## Summary
-这一页把 [[leontraveller-trading-and-investment-system]] 的交易纪律，与 [[ordinary-investor-investment-system]] 的长期系统观，压缩成一套更适合个人长期执行的投资操作守则。
+这一页把 [[leontraveller-trading-and-investment-system]] 的交易纪律，与 [[ordinary-investor-investment-system]] 的长期系统观，压缩成可跨账户参数化的风险控制框架。它不保存真实账户、持仓或交易记录。
+
+证据边界：内容用于教育和流程设计，不构成投资建议；任何阈值都应由采用者按法规、目标、期限和风险承受能力重新验证。
 
 ## Core principle
 先保护本金，再争取收益；先做配置，再做进攻；先定义规则，再做判断。

@@ -6,7 +6,6 @@ type: raw-source
 source: X / Xudong Han
 source_url: https://x.com/Xudong07452910/status/2087856761755549920
 status: captured
-extraction: Public X post text extracted from gallery-dl metadata; the linked technical report was inspected separately at https://alloomi.ai/reports/sea.pdf. Local Gemini summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260814-202327-{-487945-310446880-summary.md
 ---
 
 # Xudong Han on Self-Evolving Agent and Alloomi

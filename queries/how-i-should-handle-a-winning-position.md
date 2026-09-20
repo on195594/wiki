@@ -1,7 +1,7 @@
 ---
-title: How I Should Handle a Winning Position
+title: Managing a Winning Position
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, position-sizing, workflow]
 sources: [queries/how-i-should-size-a-position.md, queries/how-i-should-scale-into-and-out-of-a-position.md, queries/when-i-should-not-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。
 ---
 
-# How I Should Handle a Winning Position
+# Managing a Winning Position
 
 ## Summary
 这页不讨论怎么找到赢家，而是讨论找到之后最容易做错的部分：赚一点就想跑、稍微回撤就慌、明明该让利润奔跑却被浮盈情绪驱动乱减仓。目标是把盈利仓位从“让我舒服一点”的对象，重新变回一个需要按规则管理的头寸。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 当一个仓位已经盈利后，我应该怎么处理，才能既保护已有利润，又不把好仓位过早卖飞？

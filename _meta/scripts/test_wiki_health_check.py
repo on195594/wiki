@@ -225,11 +225,11 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("duplicate-two", body=body)
         self.assertIn("near_duplicate_pages", self.issue_codes("P2"))
 
-    def test_reports_illegal_review_sidecar(self) -> None:
+    def test_reports_non_public_review_artifact(self) -> None:
         rev_dir = self.root / "_meta" / "reviews"
         rev_dir.mkdir(parents=True)
         (rev_dir / "sample.exit").write_text("0", encoding="utf-8")
-        self.assertIn("illegal_review_sidecar", self.issue_codes("P1"))
+        self.assertIn("non_public_task_artifact", self.issue_codes("P1"))
 
     def test_reports_unregistered_relation_key(self) -> None:
         body = "# Relation page\n\n" + "context " * 20 + "\n\n## Relations\n\n- invalid_key: [[duplicate-one]]\n"
@@ -241,11 +241,11 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("bad-format", body=body)
         self.assertIn("invalid_relation_format", self.issue_codes("P2"))
 
-    def test_reports_nested_illegal_review_sidecar(self) -> None:
+    def test_reports_nested_non_public_review_artifact(self) -> None:
         nested_dir = self.root / "_meta" / "reviews" / "subdir" / "deep"
         nested_dir.mkdir(parents=True)
-        (nested_dir / "nested.exit").write_text("0", encoding="utf-8")
-        self.assertIn("illegal_review_sidecar", self.issue_codes("P1"))
+        (nested_dir / "nested.md").write_text("review transcript", encoding="utf-8")
+        self.assertIn("non_public_task_artifact", self.issue_codes("P1"))
 
     def test_reports_invalid_relation_value(self) -> None:
         body = "# Value page\n\n" + "context " * 20 + "\n\n## Relations\n\n- related: arbitrary non-link text\n"

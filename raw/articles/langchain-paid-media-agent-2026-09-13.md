@@ -8,7 +8,6 @@ captured: 2026-09-15
 type: raw-source
 status: captured
 tags: [agent, context-engineering, multi-agent, orchestration, workflow, governance]
-extraction: structured capture from the complete public article body; local Chinese summary at ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260915-111744-How-We-Built-LangChain’s-Paid-Media-Agent-349075-842889800-summary.md
 ---
 
 # How We Built LangChain's Paid Media Agent
@@ -21,7 +20,6 @@ extraction: structured capture from the complete public article body; local Chin
 - Captured: 2026-09-15
 - Extraction route: complete public-page extraction; this Wiki note is a structured capture rather than a verbatim mirror
 - Source quality: full main article available at capture time
-- Local Chinese summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260915-111744-How-We-Built-LangChain’s-Paid-Media-Agent-349075-842889800-summary.md`
 - Limitation: this is a LangChain vendor/practitioner report. Business outcomes, latency, cost and token figures are self-reported and were not independently reproduced for Hermes. Product-specific choices such as Deep Agents, LangSmith Sandbox and LangSmith Deployment are examples, not local adoption decisions.
 
 ## Problem and reported outcome

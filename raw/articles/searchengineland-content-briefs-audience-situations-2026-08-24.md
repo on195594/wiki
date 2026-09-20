@@ -8,7 +8,6 @@ captured: 2026-08-26
 type: raw-source
 tags: [content-strategy, seo, audience-research]
 status: raw
-extraction: jina_reader; full rendered article; local Gemini summary available at ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260826-174021-searchengineland.com-content-briefs-audience-situations-485558-703246-508628200-summary.md
 ---
 
 # Source
@@ -20,7 +19,6 @@ extraction: jina_reader; full rendered article; local Gemini summary available a
 - Captured: 2026-08-26
 - Extraction route: Jina Reader fallback; source body retrieved from rendered article.
 - Source quality: full.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260826-174021-searchengineland.com-content-briefs-audience-situations-485558-703246-508628200-summary.md`
 
 ## Source capture note
 

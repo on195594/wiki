@@ -73,9 +73,9 @@ Local-First 不等于全部数据常驻内存。大数据集可按当前访问�
 
 ## Hermes 映射 [建议]
 
-- `chat-agent-session-routing` 已经覆盖 durable enqueue、update offset、去重、幂等和重启验证；本文补充的是“确认状态 + pending operations + optimistic view”的概念解释，当前无需修改 active skill。
-- Telegram → Hermes 的可恢复任务流应保持 `接收 update -> 授权/解析 -> durable enqueue -> 推进 offset -> 执行 -> 回读副作用 -> 完成` 的边界；没有真实恢复需求时不增加独立同步引擎。
-- 未来若 Hermes Desktop 出现多设备、离线消息或多窗口并发需求，再在项目 spec/ADR 中定义权威源、操作 ID、游标作用域、冲突矩阵、拒绝回滚和过期策略。
+- 聊天到 Agent 的可恢复路由可以覆盖 durable enqueue、offset、去重、幂等和重启验证；本文补充“确认状态 + pending operations + optimistic view”的概念解释，不授权修改任何 active skill。
+- 可恢复任务流应保持 `接收 update -> 授权/解析 -> durable enqueue -> 推进 offset -> 执行 -> 回读副作用 -> 完成` 的边界；没有真实恢复需求时不增加独立同步引擎。
+- 若未来出现多设备、离线消息或多窗口并发需求，再在目标项目 spec/ADR 中定义权威源、操作 ID、游标作用域、冲突矩阵、拒绝回滚和过期策略。
 - 长时间运行的 Agent 工作流可复用“pending intent 与 confirmed artifact 分离”的原则；checkpoint 仍不能替代外部结果回读。这与 [[agent-development-lifecycle]] 的权威状态和恢复边界一致。
 - 生产侧副作用仍应按 [[production-ai-agent-evaluation-framework]] 的幂等、恢复和验证要求设计；客户端同步个案不自动变成生产数据迁移规范。
 

@@ -1,9 +1,9 @@
 # Wiki Index
 
-> Hermes 长期知识目录。
-> 这里记录正式沉淀页面，不记录原始聊天。
+> 可跨用户、跨项目复用的公开知识目录。
+> 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-20 | Indexed pages: 116
+> Last updated: 2026-09-20 | Indexed pages: 110
 
 ## Entities
 
@@ -66,17 +66,17 @@
 - [[hermes-knowledge-freshness-and-claim-evidence]] — Hermes 知识新鲜度与来源精度：复用 sources、review_by、updated 和 [推论] 改善可复用 Wiki 知识
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
 - [[hermes-python-engineering-capability-checklist]] — Hermes Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环
-- [[hermes-skill-refactoring-methodology]] — Hermes active skill 重构方法论：以窄职责、前置安全边界、reference 分层、父验证和独立审查闭环优化 `test-driven-development`
-- [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的可执行架构：default profile 为主脑，wiki/memory/skills/cron/MCP/profiles 严格分层并按边界推进
+- [[hermes-skill-refactoring-methodology]] — Hermes Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
+- [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
 - [[hermes-lifeos-layer-boundary-contract]] — Hermes LifeOS 的层边界契约：以 default profile 为主脑，明确 wiki、memory、skill、cron、MCP、profile 与 session 的职责和越界规则
 - [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：什么进 wiki、memory、skill、cron、MCP，按官方定义和本地知识层分开判断
-- [[hermes-memory-governance-notes]] — 一次实际 memory 减脂后沉淀出的治理规则：什么该继续留在 memory，什么该迁移到 wiki、skill 或 session
+- [[hermes-memory-governance-notes]] — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [[hermes-model-specific-harness-profiles]] — Hermes 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
 - [[hermes-memory-skills-wiki-boundaries]] — Hermes memory / skills / wiki 的边界规范：把当前状态、稳定事实、历史事件和可复用规程路由到不同层，而不是全部写进 memory
 - [[hermes-retrieval-priority-and-answer-path]] — Hermes 检索优先级与回答路径：先查 wiki，再按 memory/skills/sessions/external 补全
 - [[hermes-wiki-lint-and-health-check-standards]] — Hermes wiki lint / 健康检查规范：链接、索引、frontmatter、标签、陈旧性与结构健康
 - [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查
-- [[lifeos-overview]] — LifeOS 总览页：定义人生操作系统的一级领域、系统层次和 Hermes 在其中的执行内核角色
+- [[lifeos-overview]] — LifeOS 可配置总览模板：定义可选领域、系统层次、公开/私有边界和 Hermes 的可选执行角色
 - [[llm-context-engineering-layer]] — Context engineering 管理 memory、compression、re-ranking 与 token budget，并定义 Agentic RAG 的可重放检索证据、权限硬约束和主张支撑边界
 - [[llm-engineering-knowledge-map]] — LLM 工程知识地图：从文本表示、Transformer、训练对齐、推理优化、RAG、Prompt 到评估监控的系统分层导航
 - [[llm-summary-identification-step]] — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
@@ -86,18 +86,17 @@
 - [[personal-finance-and-education-fund-model]] — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，让教育基金按目标导向独立建模
 - [[personal-growth-operating-model]] — 个人成长域的 operating model：把成长作为职业升级、家庭沟通与判断质量的底层引擎
 - [[progressive-knowledge-system-growth]] — 知识系统的渐进式生长原则：先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长
-- [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和 Hermes cron 运行
+- [[public-info-monitoring-automation-methodology]] — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和可选调度
 - [[system-governance-operating-model]] — 系统治理域的 operating model：管理 Hermes LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
 - [[subagent-orchestration-patterns]] — Subagent 编排模式：先验证单 Agent 基线、真实瓶颈和可分解性，再选择 inline tool、fan-out、agent pool 或 team
 - [[multiagent-systemic-failure-modes]] — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
 - [[typed-ai-agent-boundaries]] — 用 structured output、分阶段语义分解、固定候选空间、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
-- [[personal-investment-operating-rules]] — 个人投资操作守则：核心仓做配置，进攻仓做趋势，先保护本金再争取收益
+- [[personal-investment-operating-rules]] — 投资风险控制框架：分离配置与进攻资金，先定义风险预算和退出规则再行动
 - [[wiki-ingestion-workflow]] — 把外部信息编译进知识库的标准入库流程
 - [[work-and-career-operating-model]] — 工作与职业域的 operating model：兼顾现金流、能力复利、时间预算与家庭兼容性
 
 ## Operations
-- [[agent-shared-wiki-index]] — Claude Code、Codex、AGY 与 Hermes 的 B 级共享 Wiki 路由入口：每个新会话读取索引一次，正文按需，项目规则优先、默认只读
-- [[hermes-health-dashboard]] — Hermes 周度治理线的当前运行面板：版本、Cron、Memory、session store、browser、备份恢复与开放风险
+- [[agent-shared-wiki-index]] — Agent 共享 Wiki 的产品无关接入模板：根目录可配置、先做公开边界检查、正文按需、项目规则优先且默认只读
 
 ## Comparisons
 - [[dijkstra-ewd667-vs-ai-programming-article]] — 对照 EWD667 原文与 2026 AI 编程文章：哪些原则不变，哪些是 AI 时代的新变量
@@ -107,26 +106,21 @@
 ## Queries
 - [[agent-architecture-primary-paper-map]] — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
 - [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
-- [[hermes-wiki-knowledge-object-governance-closeout]] — Hermes wiki knowledge-object metadata 治理复盘：记录从 OKF 评估、试点、真实查询验证到全 wiki 推广和反保守规则修正
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 在 Hermes wiki 中的采纳边界，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
 - [[hermes-wiki-knowledge-freshness-improvement-plan]] — 已执行的 Wiki 知识新鲜度改造决策：复用 sources、review_by、updated 和 [推论]，不引入新状态机或验证项目
-- [[investment-watch-final-closeout]] — Investment Watch 项目知识收束页：本地验证 typed、contract-backed、read-only 投资观察系统，runtime、cron、skill、memory 推广均延后等待单独批准
-- [[gsearch-knowledge-validation-closeout]] — GSearch 验证项目的知识沉淀闭环：确认 project-local evidence lane 有效，inline 默认、fan-out 限定场景，并暂不推广 live Telegram `/gsearch`
 - [[hermes-agent-experience-consolidation-capability-assessment]] — 2026-05-11 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验
 - [[hermes-layer-routing-edge-cases]] — Hermes 层间路由的边界误判案例：当两个层都像能放时，如何按职责而不是重要性裁决
 - [[hermes-layer-routing-sample-cases]] — Hermes 层间路由的样板案例：用真实场景判断什么该进 wiki、memory、skill、cron、MCP 或 session
-- [[hermes-optimization-sample-case]] — 用当前知识库操作流回放最近优化 Hermes 的全过程，展示如何把对话收敛成长期资产
-- [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] — 用 typed output、窄工具、显式依赖和验证 gate，把 Pydantic AI 的边界原则转成我使用 Hermes 做 AI 编程的默认最佳实践
-- [[hermes-harness-profile-validation-final-closeout]] — Hermes harness profile 验证项目最终结论：只推广 planning/code-review 两个窄 skill patch，不推广 summary、coding/config、runtime profile、core、SOUL、cron 或 memory
-- [[how-i-should-use-these-two-investment-frameworks]] — 如何在日常决策中分层使用两套投资框架：长期制度管底盘，主动纪律管进攻
-- [[my-investment-pre-trade-checklist]] — 下单前检查清单：先分清资金层、动作类型、退出计划，再决定是否出手
-- [[when-i-should-not-trade]] — 不该出手的场景清单：补亏损、情绪单、越权单、无退出计划时默认停手
-- [[how-i-should-review-a-losing-position]] — 亏损仓位复盘：先分清仓位层次，再判断是正常回撤、该认错，还是被包装成再平衡的情绪补仓
-- [[how-i-should-scale-into-and-out-of-a-position]] — 仓位分批进出规则：对了再加、错了不补、减仓先服务于风险管理
-- [[how-i-should-size-a-position]] — 仓位大小规则：先看错了能亏多少，再决定能下多大，不让 conviction 取代风险预算
-- [[how-i-should-handle-a-winning-position]] — 盈利仓处理规则：强时拿住，减仓先看是否真在做风险管理而不是利润焦虑
-- [[how-i-should-decide-between-doing-nothing-and-taking-action]] — 等待与出手的裁决规则：当动作只是缓解不舒服时，默认继续等
-- [[how-i-should-build-a-post-trade-review-loop]] — 交易后复盘闭环：先看过程是否合格，再把复盘压成下一轮可执行的规则修正
-- [[how-i-should-detect-repeat-mistakes-in-my-trading]] — 识别重复错误：只有可命名、可复现、可归因的问题，才值得升级成硬规则
-- [[how-i-should-convert-trading-lessons-into-hard-rules]] — 教训到硬规则的转化：只有反复出现、代价够大、且能压成明确动作的，才值得制度化
-- [[how-i-should-keep-my-trading-system-small-and-executable]] — 交易系统做减法：保留少数高阻断力规则，删除不能被快速调用的说明书式规则
+- [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] — Hermes AI 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署
+- [[how-i-should-use-these-two-investment-frameworks]] — 分层组合两套教育性投资框架：长期制度管底盘，主动纪律管进攻
+- [[my-investment-pre-trade-checklist]] — 通用交易前风险清单：先分清资金层、动作类型、退出计划，再决定是否出手
+- [[when-i-should-not-trade]] — 通用停手条件：补亏损、情绪单、越权单或无退出计划时默认不行动
+- [[how-i-should-review-a-losing-position]] — 亏损仓复盘方法：区分正常回撤、失效判断和伪装成再平衡的情绪补仓
+- [[how-i-should-scale-into-and-out-of-a-position]] — 分批进出方法：对了再加、错了不补、减仓服务于风险预算
+- [[how-i-should-size-a-position]] — 参数化仓位预算：先限定最大可承受损失，再计算规模
+- [[how-i-should-handle-a-winning-position]] — 盈利仓风险管理：区分结构、风险预算与利润焦虑
+- [[how-i-should-decide-between-doing-nothing-and-taking-action]] — 不行动与行动的裁决框架：动作只是在缓解不适时默认等待
+- [[how-i-should-build-a-post-trade-review-loop]] — 交易后复盘闭环：先评价过程，再把重复问题压成可执行修正
+- [[how-i-should-detect-repeat-mistakes-in-my-trading]] — 重复错误识别：只有可命名、可复现、可归因的问题才升级规则
+- [[how-i-should-convert-trading-lessons-into-hard-rules]] — 教训到硬规则的转化：仅制度化反复、高代价且可执行的问题
+- [[how-i-should-keep-my-trading-system-small-and-executable]] — 交易系统做减法：保留少数高阻断力规则，删除不可快速调用的说明书式规则

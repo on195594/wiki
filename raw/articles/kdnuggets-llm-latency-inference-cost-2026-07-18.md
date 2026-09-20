@@ -21,7 +21,6 @@ extraction: Full article-like body extracted from the public KDnuggets page; thi
 - URL: https://www.kdnuggets.com/12-ways-to-reduce-llm-latency-and-inference-costs-in-production
 - Extraction note: The public article body was extracted successfully and contained all 12 sections advertised by the title. This note preserves a structured source capture; unrelated site boilerplate was omitted.
 - Source limitation: The article is a practitioner checklist without controlled experiments, benchmark datasets, fixed thresholds, citations, or platform-specific performance results. Treat claimed gains as hypotheses to validate against representative traffic.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260718-123440-12-Ways-to-Reduce-LLM-Latency-and-Inference-Costs-in-Production-2163-319740080-summary.md`
 
 ## Compiled concept page
 - [[production-agent-evaluation-baselines]]

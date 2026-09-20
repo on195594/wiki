@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic read-only health check for the local Hermes wiki.
 
-Default root resolution: --root, OBSIDIAN_VAULT_PATH, then /home/lin/wiki.
+Default root resolution: --root, OBSIDIAN_VAULT_PATH, then this repository.
 Exit codes:
   0: pass (no P0/P1 issues)
   1: health check ran but P0/P1 issues exist
@@ -14,13 +14,15 @@ import argparse
 import hashlib
 import itertools
 import json
-import os
+
 import re
 import subprocess
 import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
+
+from wiki_root import resolve_root
 
 CORE_FILES = {"index.md", "log.md", "SCHEMA.md"}
 TINY_THRESHOLD = 120
@@ -36,11 +38,8 @@ ALLOWED_SOURCE_PREFIXES = (
     "queries/",
     "comparisons/",
     "operations/",
-    "project:",
-    "session:",
-    "skill:",
+    "repository:",
     "docs:",
-    "filesystem:",
 )
 REQUIRED_FORMAL_FIELDS = ("title", "created", "updated", "type", "tags", "sources", "status")
 ALLOWED_FORMAL_TYPES = {
@@ -350,11 +349,18 @@ def build_report(root: Path) -> dict[str, Any]:
         if any(left < right for left, right in zip(log_dates, log_dates[1:])):
             add_issue(issues, "P1", "log_out_of_order", "log.md", "Log entries are not in descending date order")
 
-    reviews_dir = root / "_meta" / "reviews"
-    if reviews_dir.exists() and reviews_dir.is_dir():
-        for item in sorted(reviews_dir.rglob("*")):
-            if item.is_file() and not item.name.endswith(".md"):
-                add_issue(issues, "P1", "illegal_review_sidecar", rel(root, item), "Review directory contains non-markdown sidecar file")
+    for retired_dir in ("_meta/plans", "_meta/reviews", "_meta/log-archive"):
+        directory = root / retired_dir
+        if directory.exists() and directory.is_dir():
+            for item in sorted(directory.rglob("*")):
+                if item.is_file():
+                    add_issue(
+                        issues,
+                        "P1",
+                        "non_public_task_artifact",
+                        rel(root, item),
+                        "Public wiki contains a retired task, review, or personal log artifact",
+                    )
 
     for p in live_md:
         r = rel(root, p)
@@ -589,7 +595,7 @@ def build_report(root: Path) -> dict[str, Any]:
         )
 
     if known_unindexed_drafts:
-        notes.append(f"{known_unindexed_drafts} draft query page(s) are intentionally outside index.md; see _meta/draft-query-inventory.md.")
+        notes.append(f"{known_unindexed_drafts} draft query page(s) are intentionally outside index.md.")
     notes.append("Inline-code and fenced-code wikilink examples are ignored during link checks.")
     notes.append("Root core files and _meta/ pages are excluded from formal frontmatter/H1 requirements.")
     notes.append(f"Freshness dates are evaluated against today's date ({today.isoformat()}); expiry starts the day after review_by.")
@@ -649,12 +655,12 @@ def markdown_report(result: dict[str, Any]) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Read-only Hermes wiki health check")
-    parser.add_argument("--root", default=os.environ.get("OBSIDIAN_VAULT_PATH", "/home/lin/wiki"))
+    parser.add_argument("--root")
     parser.add_argument("--format", choices=["json", "markdown"], default="json")
     args = parser.parse_args(argv)
 
     try:
-        report = build_report(Path(args.root).expanduser().resolve())
+        report = build_report(resolve_root(args.root))
     except Exception as exc:  # noqa: BLE001 - CLI error path should be explicit and compact.
         print(json.dumps({"pass": False, "error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2

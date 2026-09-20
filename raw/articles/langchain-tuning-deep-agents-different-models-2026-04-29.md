@@ -42,7 +42,7 @@ Agent 的实际能力不是 `model` 单变量，而是 `model + harness` 的组�
 
 ## Compiled wiki outputs
 - Concept: [[hermes-model-specific-harness-profiles]]
-- Hermes plan: [[hermes-system-model-specific-harness-optimization-plan]]
+- Historical local implementation plan omitted from the public repository.
 
 ---
 

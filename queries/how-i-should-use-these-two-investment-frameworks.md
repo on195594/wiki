@@ -1,7 +1,7 @@
 ---
-title: How I Should Use These Two Investment Frameworks
+title: Combining Two Investment Frameworks
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, decision, comparison, lifeos]
 sources: [concepts/ordinary-investor-investment-system.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md, comparisons/leontraveller-vs-ordinary-investor-investment-system.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。
 ---
 
-# How I Should Use These Two Investment Frameworks
+# Combining Two Investment Frameworks
 
 ## Summary
 这页不是再讲一遍两套框架“各自是什么”，而是回答一个更实际的问题：如果我同时认可 [[ordinary-investor-investment-system]] 和 [[leontraveller-trading-and-investment-system]]，那在日常决策里到底该怎么用，才不会混乱、打架、或者把长期资金拖进短线情绪里。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 如果我同时想吸收 Ordinary Investor 的长期制度观，和 Leontraveller 的主动交易纪律，我在现实里应该怎么分工使用它们？

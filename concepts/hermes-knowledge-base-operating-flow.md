@@ -1,10 +1,10 @@
 ---
 title: Hermes Knowledge Base Operating Flow
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-09-20
 type: concept
 tags: [hermes, knowledge-base, workflow, note]
-sources: []
+sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, concepts/hermes-knowledge-architecture.md]
 status: stable
 description: 定义 Hermes 知识库从摄取、分类、编译、检索到维护的端到端运行流程。
 aliases: [knowledge-base-operating-flow]
@@ -120,7 +120,7 @@ aliases: [knowledge-base-operating-flow]
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-knowledge-architecture]]
 - [[hermes-memory-skills-wiki-boundaries]]
-- [[hermes-optimization-sample-case]]
+
 - [[hermes-retrieval-priority-and-answer-path]]
 - [[hermes-wiki-page-writing-standards]]
 - [[hermes-wiki-lint-and-health-check-standards]]

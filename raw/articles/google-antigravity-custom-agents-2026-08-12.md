@@ -24,7 +24,6 @@ status: captured
 - Extraction route: rendered browser DOM, main container
 - Source quality: full official article body
 - Limitation: this is a vendor announcement, not independent production evidence. Configuration fields and paths are current as stated on the publication date and should be checked against current official documentation before use. Navigation and footer boilerplate were omitted.
-- Local summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-153254-🐴-Google-Antigravity-Blog-Introducing-Custom-Agents-452500-188920120-summary.md`
 
 ## Article body
 

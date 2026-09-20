@@ -9,7 +9,6 @@ source_site: MachineLearningMastery.com
 published: 2026-05-20
 extracted: 2026-05-21
 extraction_note: Direct publisher fetch returned Cloudflare 403; clean source was extracted through Jina Reader while preserving the original publisher URL.
-summary_path: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260521-123939-Agentic-Programming-A-Roadmap-699023-076706800-summary.md
 status: captured
 ---
 
@@ -22,7 +21,6 @@ status: captured
 - Published: 2026-05-20
 - Extracted: 2026-05-21
 - Extraction limitation: Direct publisher fetch returned Cloudflare 403; this raw capture uses Jina Reader text and preserves the original source URL.
-- Gemini summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260521-123939-Agentic-Programming-A-Roadmap-699023-076706800-summary.md`
 
 ## Local summary
 

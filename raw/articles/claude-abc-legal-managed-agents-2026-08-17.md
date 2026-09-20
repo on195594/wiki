@@ -11,7 +11,6 @@ published: 2026-08-17
 captured: 2026-08-18
 source_quality: full-official-customer-case-study
 status: captured
-extraction: Full article body extracted from the rendered public page; navigation, related posts, subscription and footer boilerplate omitted. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-224151-How-ABC-Legal-turned-every-employee-into-a-builder-with-Claude-managed-agents-781746-265543360-summary.md
 ---
 
 # How ABC Legal turned every employee into a builder with Claude Managed Agents
@@ -26,7 +25,6 @@ extraction: Full article body extracted from the rendered public page; navigatio
 - Extraction route: rendered public article text via deterministic web extraction; page chrome and trailing related-content blocks removed at explicit article boundaries.
 - Source quality: complete official customer case-study body.
 - Limitations: this is an Anthropic-published customer story based primarily on ABC Legal CTO Brandon Fuller's account. The reported adoption, agreement and cost figures are company/vendor-reported; the article provides no dataset, eval protocol, statistical uncertainty, independent audit or cross-platform comparison. Product-selection claims should not be treated as proof that Claude Managed Agents is the best fit for Hermes.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-224151-How-ABC-Legal-turned-every-employee-into-a-builder-with-Claude-managed-agents-781746-265543360-summary.md`
 
 ## Captured source
 

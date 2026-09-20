@@ -1,10 +1,10 @@
 ---
 title: Hermes LifeOS Executable Architecture
 created: 2026-04-21
-updated: 2026-05-18
+updated: 2026-09-20
 type: concept
 tags: [hermes, lifeos, architecture, workflow, governance]
-sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, session:2026-04-21-hermes-lifeos-vs-profile]
+sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 description: 定义 Hermes LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。
 aliases: [lifeos-executable-architecture]
@@ -13,11 +13,11 @@ aliases: [lifeos-executable-architecture]
 # Hermes LifeOS Executable Architecture
 
 ## Summary
-这页把“LifeOS 在上、Hermes primitives 在下、profiles 只做少量边界隔离”的结论压成可执行架构。目标不是再谈抽象理念，而是明确每一层的职责、禁止越界的规则、落地顺序和验收标准，让 Hermes 可以作为个人 LifeOS 的执行内核持续运行。
+这页把“LifeOS 在上、Hermes primitives 在下、profiles 只做少量边界隔离”整理成可移植参考架构。它描述职责、越界规则、采用顺序和验收条件，不表示某个 Hermes 实例已按此部署。
 
 ## Goal
-把 Hermes 建成一个以 `default profile` 为主脑的 LifeOS：
-- 正式知识统一沉淀到 `~/wiki`
+在适用的 Hermes 版本中，可以用一个协调 profile 组织 LifeOS：
+- 正式知识沉淀到部署者选择的 `$WIKI_ROOT`
 - 稳定偏好与长期事实只保留在 `memory`
 - 可复用方法沉淀为 `skills`
 - 周期性动作通过 `cron` 运行
@@ -28,9 +28,9 @@ aliases: [lifeos-executable-architecture]
 ### 主判断
 LifeOS 不是由多个 profile 拼出来的，而是由一个统一语义层 + 少量受控执行层组成。
 
-### 默认拓扑
-- `default profile`：唯一主脑，承载 LifeOS 主语义层
-- `~/wiki`：正式知识与结构化页面
+### 参考拓扑
+- 协调 profile：承载 LifeOS 主语义层；名称和能力以目标版本为准
+- `$WIKI_ROOT`：正式知识与结构化页面
 - `memory`：短小稳定规则、偏好、环境事实
 - `skills`：重复工作的方法层
 - `cron`：已稳定方法的调度层
@@ -68,24 +68,14 @@ Anti-boundary-crossing summary:
 - Do not use `profile` as a topic folder.
 - Do not promote a session conclusion just because it feels important.
 
-## Recommended topology for your Hermes
-### 默认保持
-- 主脑：`default profile`
-- 正式知识库：`~/wiki`
-- 对话入口：当前 Telegram gateway
+## Reference deployment choices
 
-### 只在满足条件时增加 profile
-#### `work`
-适用条件：需要与个人 LifeOS 分开维护工作记忆、工作 token、工作 cron、工作人格。
+- 单一协调 profile：适合没有明确运行时隔离需求的部署。
+- 工作隔离 profile：只在工作记忆、凭证、调度或身份必须与其他域隔离时采用。
+- 公共 bot profile：只在多人可触发入口需要独立权限和状态时采用。
+- 实验 profile：只在新模型、prompt、skill 或 provider 可能影响稳定路径时采用。
 
-#### `public` 或 `bot`
-适用条件：需要一个对外可暴露、可被多人触发、不能污染主脑记忆的入口。
-
-#### `lab`
-适用条件：需要实验新模型、新 prompt、新 skill、新接入，不希望影响主脑稳定性。
-
-### 当前建议
-在没有明确隔离痛点前，继续只保留 `default profile`。
+这些名称是合成示例；不表示 profile 已创建。默认选择是先用 wiki、skill、project context 和权限边界分层，只有真实隔离收益经过验证后再增加 profile。
 
 ## Execution plan
 
@@ -106,7 +96,7 @@ Anti-boundary-crossing summary:
 **Goal**
 先建统一语义层，不急着开 profile。
 
-**Must create as wiki pages**
+**Optional domain-page examples**
 - `concepts/lifeos-overview.md`
 - `concepts/family-education-operating-model.md`
 - `concepts/personal-finance-and-education-fund-model.md`
@@ -145,10 +135,10 @@ Anti-boundary-crossing summary:
 **Goal**
 只给已经跑顺的方法加调度。
 
-**Priority cron candidates**
-- 每周教育基金与学校信息回顾
-- 每日信息摄取摘要
-- 每周家庭关键事项清单
+**Possible cron candidates**
+- 周期性公开信息摘要
+- 经授权的目标检查
+- 已稳定方法的低风险状态报告
 
 **Rules**
 - 没有稳定 skill，不上 cron
@@ -220,18 +210,16 @@ Anti-boundary-crossing summary:
 - 调度写死在 skill 里 -> 拆到 cron
 - 领域拆成 profile -> 收回主脑
 
-## Immediate next steps
-按投入产出比，下一步顺序应该是：
-1. 创建 `lifeos-overview` 总览页
-2. 创建“家庭教育 operating model”页面
-3. 创建“教育基金 operating model”页面
-4. 抽一条高频方法做成 skill
-5. 连续人工跑通 2-3 次后，再决定是否加 cron
-6. 只有出现明确隔离痛点时，再创建新 profile
+## Adoption sequence
+1. 定义需要管理的领域和公开/私有边界。
+2. 为确有复用价值的领域建立概念页；私有状态留在其私有 owner。
+3. 抽一条重复方法做成 skill，并用合成或公开 fixture 验证。
+4. 多次人工跑通后，再决定是否增加调度。
+5. 只有出现明确隔离痛点时，再评估新 profile。
 
 ## Success criteria
 如果这个架构跑对了，会看到：
-- 你主要靠 `default profile + wiki + skills` 运转，而不是 profile 泛滥
+- 部署主要靠协调 profile、wiki 与 skills 运转，而不是 profile 泛滥
 - 新需求能快速落层，不再反复讨论“放哪里”
 - 聊天产出更少停留在会话里，更多进入正式资产层
 - 自动化数量不多，但稳定可控

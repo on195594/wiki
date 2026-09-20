@@ -11,7 +11,6 @@ published: 2026-08-26
 captured: 2026-08-28
 source_quality: full-official-blog-main-body
 status: captured
-extraction: Main article body captured via deterministic web extraction; promotional lead-in and trailing related-article/footer chrome omitted. Code and API examples are preserved as flattened Markdown. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260828-193516-Scale-OKF-bundles-across-an-organization-with-Knowledge-Catalog-Google-Cloud-Blo-3535604-884852560-summary.md
 ---
 
 # Using OKF with Knowledge Catalog to serve context for agents
@@ -26,7 +25,6 @@ extraction: Main article body captured via deterministic web extraction; promoti
 - Extraction route: deterministic web extraction; main article retained through `Getting started`, trailing related-article/footer chrome omitted.
 - Source quality: complete official article main body.
 - Limitations: this is a Google Cloud product article and synthetic Acme Retail example, not independent evidence that Knowledge Catalog is necessary or superior for Hermes. Product APIs, IAM roles, limits and setup commands are current as published and require current official-documentation verification before implementation. Flattened extraction may not preserve interactive loading widgets or original code-block formatting exactly.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260828-193516-Scale-OKF-bundles-across-an-organization-with-Knowledge-Catalog-Google-Cloud-Blo-3535604-884852560-summary.md`
 
 ## Captured source
 

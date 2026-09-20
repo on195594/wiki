@@ -1,7 +1,7 @@
 ---
-title: How I Should Size a Position
+title: Position Sizing by Risk Budget
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, position-sizing, risk-control]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-scale-into-and-out-of-a-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答如何根据风险预算和 setup 质量决定单笔仓位大小。
 ---
 
-# How I Should Size a Position
+# Position Sizing by Risk Budget
 
 ## Summary
 这页回答的不是“这票有多好”，而是“就算它很好，我最多能下多大”。目标是把仓位从主观兴奋里拿出来，重新放回风险预算里。因为大多数重伤，不是来自看错一次，而是来自在看错时下得太大。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 我应该怎么决定一笔仓位的大小，避免超仓、重仓硬扛，或者把 conviction 当成放大风险的理由？

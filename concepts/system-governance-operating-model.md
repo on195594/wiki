@@ -1,7 +1,7 @@
 ---
 title: System Governance Operating Model
 created: 2026-04-21
-updated: 2026-08-26
+updated: 2026-09-20
 type: concept
 tags: [hermes, governance, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -12,7 +12,7 @@ description: 定义 LifeOS 和 Hermes 系统治理中的层级边界、变更控
 # System Governance Operating Model
 
 ## Summary
-这页定义 LifeOS 中的 system governance 域：它管理的不是某个具体人生对象，而是 Hermes 这套人生操作系统本身如何保持可治理、可审计、可演化。它回答的是“系统怎么不失控”，而不是“今天具体执行什么任务”。
+这页提供一个 system governance 参考域：它描述 Hermes 类系统如何保持可治理、可审计、可演化，而不记录某个实例今天的运行状态或待办。
 
 ## Core objective
 system governance 的核心目标是：
@@ -48,7 +48,7 @@ system governance 的核心目标是：
 隔离只在真实风险、真实污染或真实身份边界出现时使用；不要把 profile 当目录树。
 
 ### 4. Durable artifacts over chat residue
-重要结论应尽快沉淀为正式页面、skill 或 memory，而不是长期依赖会话残留。
+重要结论先判断公开性和目标 owner：公共通用知识才进入公开页面；私有事实进入其私有 owner；可复用方法可进入受治理的 skill。任何层都不应长期依赖会话残留。
 
 ### 5. Governance is an enabling layer
 治理不是为了增加流程，而是为了让 LifeOS 能持续扩展而不塌陷。

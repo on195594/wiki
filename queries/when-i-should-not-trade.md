@@ -1,7 +1,7 @@
 ---
-title: When I Should Not Trade
+title: When Not to Trade
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, risk-control, decision]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答哪些情境下默认不交易、不加仓或先暂停决策。
 ---
 
-# When I Should Not Trade
+# When Not to Trade
 
 ## Summary
 这页不是告诉你“什么时候值得出手”，而是专门回答反面问题：哪些情况下最容易把交易做成情绪释放、摊平亏损、越权加仓或系统外乱动。目的不是保守，而是防止你在最差状态下做出最贵决定。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 哪些情况下，我应该默认不交易、不加仓、不补仓，先停下来？

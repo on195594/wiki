@@ -1,24 +1,29 @@
 # Wiki Schema
 
 ## Domain
-这个知识库用于沉淀与 Hermes 协作的长期知识资产，覆盖：
+这个公开知识库用于沉淀可跨用户、跨项目复用的长期知识资产，覆盖：
 - AI / LLM / Agent / MCP / 自动化工作流
 - DevOps / Linux / 网络 / 部署 / 故障处理
 - 工具链、配置经验、最佳实践
 - 值得长期保留的研究摘录、对比分析、决策记录
 
-目标不是保存聊天原文，而是把高价值信息编译成可复用、可交叉链接、可持续维护的 Markdown 知识层。
+目标不是保存聊天原文、个人运行状态或私有配置，而是把公开可理解的高价值信息编译成可复用、可交叉链接、可持续维护的 Markdown 知识层。
+
+公开边界适用于所有目录，包括 `raw/`、`_meta/`、附件、脚本、日志和日志归档。写入任何层之前，先判断材料是否适合公开；不适合公开的内容不得先落入 `raw/` 再等待后续清理。
 
 ## Conventions
-- 根目录固定为 `~/wiki`
+- 仓库根目录可配置；维护脚本统一按 `--root`、`OBSIDIAN_VAULT_PATH`、脚本所在仓库根目录的优先级解析，不依赖用户名或调用工作目录
 - 文件名统一使用小写英文加连字符，例如：`hermes-knowledge-architecture.md`
 - 正式知识页放在 `entities/`、`concepts/`、`comparisons/`、`queries/`、`operations/`
-- 原始材料只放在 `raw/`，不得直接修改原文内容。此条已强制：`_meta/raw-source-hashes.json` 记录每个 raw 文件的 SHA-256，`wiki_health_check.py` 比对不符即 P1 `raw_source_drift`（正式页引用的快照被改动后，引用仍能解析但已不指向当初读到的内容）。新 ingest 后运行 `_meta/scripts/wiki_raw_hashes.py` 更新清单并连同内容一起提交；已有文件的 hash 变化是要解释的发现，不是重新生成就能抹掉的噪音。
+- 只有适合公开的原始材料才进入 `raw/`，且不得随意修改原文内容。此条已强制：`_meta/raw-source-hashes.json` 记录每个 raw 文件的 SHA-256，`wiki_health_check.py` 比对不符即 P1 `raw_source_drift`（正式页引用的快照被改动后，引用仍能解析但已不指向当初读到的内容）。新 ingest 后运行 `_meta/scripts/wiki_raw_hashes.py` 更新清单并连同内容一起提交；已有文件的 hash 变化是要解释的发现，不是重新生成就能抹掉的噪音。公开边界整改可删除私有指针或移除不适合公开的 raw，但必须在公共日志中记录不含个人信息的例外理由，并只更新对应 manifest 项。
 - 每个正式知识页必须包含 YAML frontmatter
 - 每个正式知识页至少包含 2 个 `[[wikilinks]]` 指向其他页面或索引页
 - 新建或更新可检索的正式页面后，必须同步更新 `index.md`；`queries/` 中 `status: closed` 的历史计划/审查记录可退出主索引
-- 每次关键操作都必须追加到 `log.md`
+- 每次影响公开仓库知识或验证契约的关键操作都必须追加到 `log.md`；不记录个人运行状态、会话过程、授权对话或私有任务台账
 - `memory` 只存稳定偏好与长期事实；正式知识以 wiki 为准
+- 公共知识必须脱离作者私有环境仍可理解。私有会话、本机路径、未公开项目、个人任务状态和本机检查结果不能充当公众可复验的证据。
+- 个人实践仅保留可复用的方法、适用条件和经验局限；第一人称经历、真实家庭数据、持仓、账户、调度和当前系统状态不得进入仓库。
+- 示例配置、命令和拓扑必须明确为可配置或合成示例；它们不表示作者已经部署，也不提供执行授权。
 
 ## Frontmatter
 ```yaml
@@ -94,15 +99,13 @@ Rules:
 Allowed `sources` forms:
 - `raw/...`：wiki 内保留的原始材料
 - `concepts/...`、`queries/...`、`comparisons/...`、`operations/...`：wiki 内派生来源
-- `project:/absolute/path`：本地项目证据
-- `session:<stable-id>`：会话来源
-- `skill:<skill-name>`：Hermes skill 来源
+- `repository:<relative-path-or-commit>`：公开仓库内可回读的规范、代码或提交证据
 - `docs:<name-or-url>`：官方或外部文档来源
-- `filesystem:<path>`：本地文件系统观察，谨慎使用
+- `https://...`：公开可访问的外部来源
 
 页面级 `sources` 是 canonical provenance，也是 source reverse lookup 与来源失效传播的唯一确定性入口。局部 `[!volatile]` block 的 `source:` 只标识该 claim 的具体证据，并且必须同时存在于页面 frontmatter 的 `sources` 中，即 `block source ⊆ page sources`；不得把 block `source:` 作为页面唯一的来源记录。
 
-`/tmp/...` 不应作为正式页面唯一长期来源。后续清理时应替换为可持久路径、稳定 wiki/review 页面，或明确标记为历史不可复验来源。
+本机路径、私有会话、私有 skill 和未公开项目不得列为公共 provenance。可复用但不可公开复验的内容必须在正文中明确标为有限经验或推论；失去依据的事实断言应删除或降级，不得用无关公开链接、`source_policy: normative`、清空 `sources` 或刷新 `verified_at` 掩盖缺口。
 
 ## Tag Taxonomy
 
@@ -193,20 +196,17 @@ Rules:
 - `concepts/`：概念、架构、方法论、机制
 - `comparisons/`：横向对比
 - `queries/`：值得沉淀的问题与答案；历史上也保留部分 plan / closeout / validation case，未来新页面应优先按语义路由到更准确的位置
-- `operations/`：稳定运行面板、runbook、维护契约和 recurring governance surface；不放一次性项目计划或 raw review artifact
+- `operations/`：健康检查方法、runbook、维护契约和 recurring governance surface；不保存某个作者实例今天的健康状态，也不放一次性项目计划或 raw review artifact
 - `_meta/`：导航与维护文档
-- `_meta/log-archive/`：`log.md` 历史条目的年度归档
-- `_meta/plans/`：计划、整改路线图、执行前治理方案
-- `_meta/reviews/`：独立审查 prompt 和审查结果
 - `_meta/scripts/`：wiki 只读检查、审计和维护脚本
 
 ## Lifecycle and Review Retention
 
 - `draft` 必须在真实使用后转为 `stable`，或在计划/审查结束后转为 `closed`；不要用永久 draft 代替裁决。
-- `queries/` 中 `closed` 的历史计划、一次性审查和 superseded 记录可以保留文件与 Git 历史，但默认退出 `index.md`；仍有长期检索价值的 closeout 可继续留在主索引。
+- `queries/` 中只有公开可复用的历史决策或 superseded 方法可以保留；个人计划、一次性审查、会话输出和任务 closeout 不进入工作树，由 Git 历史承担变更追踪。仍有长期检索价值的公共决策页可留在主索引。
 - 普通低风险摄取默认闭环是：更新 raw/formal/index/log → health check → `git diff --check`。独立 AI 审查仅在 Schema/治理规则、跨层推广、高风险事实、多来源冲突或确定性验证不足时触发。
-- `_meta/reviews/` 只保留实际执行且对裁决有价值的 prompt/result；普通摄取不生成 review、exit、stderr、前后 hash sidecar。
-- `log.md` 每项只记录 durable delta、证据边界和验证结果；按年度归档，避免把完整审查过程复制进主日志。
+- 审查 prompt、会话输出、前后 hash sidecar、个人执行计划和任务 closeout 不进入公开知识库；稳定发现合并到其正式 owner，提交历史承担变更追踪。
+- `log.md` 每项只记录公开仓库的 durable delta、证据边界和验证结果，避免复制完整审查过程或个人环境状态。
 
 ## Update Policy
 当新信息与旧信息冲突时：

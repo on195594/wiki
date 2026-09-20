@@ -1,7 +1,7 @@
 ---
 title: OKF Concepts for Hermes Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-08-28
+updated: 2026-09-20
 type: query
 tags: [hermes, knowledge-base, governance, context-engineering]
 sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, docs:hermes-llm-wiki, docs:hermes-skills, docs:hermes-memory]
@@ -13,7 +13,7 @@ aliases: [okf, open-knowledge-format, knowledge-object, llm-wiki]
 # OKF Concepts for Hermes Wiki Governance Assessment
 
 ## Summary
-OKF 对 Hermes wiki 有用，但只应作为机器可读治理增强参考，不应替代当前 `~/wiki` 的 LLM-wiki 三层结构。当前优先落地的是可选 `description`、保守 `aliases`、可读 `## Relations`、只读 validator 和小范围试点；不做全库迁移、不新增图数据库、不触碰 active skill/runtime/memory。
+OKF 对 Hermes wiki 有用，但只应作为机器可读治理增强参考，不应替代由部署者配置的 `$WIKI_ROOT` 三层结构。优先采用可选 `description`、保守 `aliases`、可读 `## Relations` 和只读 validator；示例不表示已迁移、已启用图数据库或已修改 active skill/runtime/memory。
 
 ## Decision
 采纳“知识对象增强”而不是“迁移到 OKF”：
@@ -132,4 +132,3 @@ Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Mark
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[index]]
 - [[log]]
-- [[hermes-wiki-knowledge-object-governance-closeout]]

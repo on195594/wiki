@@ -21,7 +21,6 @@ extraction_limitations: Full article prose was obtained from the existing Karake
 - Captured: 2026-09-02
 - Extraction route: Karakeep full-content capture
 - Source quality: full
-- Local summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260902-091039-MCP-was-supposed-to-solve-the-agent-tooling-problem.-It-missed-a-step.-https-the-2046515-593366480-summary.md`
 
 ## Core claim
 

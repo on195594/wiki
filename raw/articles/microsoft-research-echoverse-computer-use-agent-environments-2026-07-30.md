@@ -25,7 +25,6 @@ tags: [agent, browser, research, evaluation, validation, workflow]
 - Technical report: https://www.microsoft.com/en-us/research/publication/echoverse-deep-evolving-environments-for-training-computer-use-agents-at-scale/
 - Official code: https://github.com/microsoft/Echoverse
 - Dataset: https://huggingface.co/datasets/microsoft/Echoverse
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260803-123849-Echoverse-Deep,-evolving-environments-for-computer-use-agents-138238-688552880-summary.md`
 - Extraction note: direct deterministic fetch returned HTTP 403. Browser extraction from the verified main DOM obtained the full rendered article. This file is a structured capture, not a verbatim mirror; bounded site boilerplate was retained in the extraction source but is not reproduced below.
 - Source quality: official Microsoft Research article with a linked technical report, code repository and dataset.
 

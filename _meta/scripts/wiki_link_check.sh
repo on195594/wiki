@@ -8,10 +8,36 @@ set -euo pipefail
 
 PATH="${HOME:+$HOME/.local/bin:}$PATH"
 
-ROOT="${OBSIDIAN_VAULT_PATH:-/home/lin/wiki}"
+ROOT=""
+LYCHEE_ARGS=()
+while (($#)); do
+  case "$1" in
+    --root)
+      (($# >= 2)) || { printf '%s\n' 'error: --root requires a value' >&2; exit 2; }
+      ROOT=$2
+      shift 2
+      ;;
+    --root=*)
+      ROOT=${1#--root=}
+      shift
+      ;;
+    *)
+      LYCHEE_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if [[ -z "$ROOT" ]]; then
+  ROOT=${OBSIDIAN_VAULT_PATH:-}
+fi
+if [[ -z "$ROOT" ]]; then
+  SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+  ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd -P)
+fi
 cd "$ROOT"
 
-exec lychee -c _meta/lychee.toml "$@" \
+exec lychee -c _meta/lychee.toml "${LYCHEE_ARGS[@]}" \
   'concepts/**/*.md' \
   'queries/**/*.md' \
   'comparisons/**/*.md' \

@@ -1,10 +1,10 @@
 ---
 title: Loop Engineering for Hermes Agent Workflows
 created: 2026-06-10
-updated: 2026-09-03
+updated: 2026-09-20
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, hermes]
-sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://www.langchain.com/blog/the-art-of-loop-engineering, skill:coding-agent-delegation, skill:subagent-driven-development, skill:article-and-content-summarization]
+sources: [raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://www.langchain.com/blog/the-art-of-loop-engineering]
 status: stable
 description: 定义 Hermes Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
 aliases: [loop-engineering]
@@ -34,13 +34,9 @@ GitHub Copilot 的工程案例补充了一条可复用但需本地验证的规�
 
 ## Minimal executable landing
 
-先复用 GSummary 项目现有的只读状态脚本，不新增遥测服务或运行时字段：
+先复用目标项目已有的只读状态命令，不新增遥测服务或运行时字段。一个可移植的起点只需要输出总任务数、成功/失败状态和可回读 artifact；重复读取、重复命令、额外轮次与验证失败只有在现有日志可靠提供时才扩展统计。
 
-```bash
-python3 /home/lin/.hermes/projects/hermes-gsummary-workflow/scripts/gsummary-status.py
-```
-
-2026-09-03 基线：总记录 `901`，summary 记录 `867`，真实 summary 成功 `835`；summary 状态为 `840 ok / 21 timeout / 6 error`。这只能作为运行量和错误状态的起点，尚未包含重复读取、重复命令或额外拉取轮次，因此不应宣称已经完成任务级成本观测。下一步只有在现有日志能可靠提供这些字段时才扩展统计。
+这是测量设计，不表示任何项目已经部署状态脚本，也不提供任务级成本基线。示例实现必须放在目标项目中，并由该项目的 fixture 和回归检查验证。
 
 ## Deterministic dispatcher inside bounded loops
 

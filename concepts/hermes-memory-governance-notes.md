@@ -1,7 +1,7 @@
 ---
 title: Hermes Memory Governance Notes
 created: 2026-04-22
-updated: 2026-07-11
+updated: 2026-09-20
 type: concept
 tags: [hermes, memory, governance, orchestration, knowledge-base]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
@@ -13,7 +13,7 @@ aliases: [memory-governance]
 # Hermes Memory Governance Notes
 
 ## Summary
-这页记录一次针对 `USER.md` 与 `MEMORY.md` 的主动减脂后，哪些内容应该继续留在 `memory`，哪些应该迁移到 `wiki`、`skill` 或仅保留在 session。它不是重复定义 `memory / skill / wiki` 的边界，而是把这次实际治理中得到的高频判断压成可复用的治理规则。
+这页提供 `USER.md` 与 `MEMORY.md` 的通用减脂和跨层路由规则：哪些内容适合留在 `memory`，哪些应进入公开 wiki、受治理的 skill、项目私有状态或仅留在 session。它不描述任何人的当前 memory 内容或容量。
 
 ## Why this page exists
 在实际使用里，最容易发生的漂移不是“不知道 memory 是什么”，而是：
@@ -21,7 +21,7 @@ aliases: [memory-governance]
 - 把方法、架构原则、治理说明和用户事实混在一起
 - 因为最近刚讨论过，就把尚未稳定的内容提前写入 `memory`
 
-这次减脂说明：`memory` 的问题通常不是缺内容，而是缺克制。
+常见经验是：`memory` 的问题通常不是缺内容，而是缺少准入和替换纪律。这个判断是方法建议，不是公开实验结论。
 
 ## What should stay in memory
 只有满足下面四点，才应该继续留在 `memory`：
@@ -70,10 +70,10 @@ aliases: [memory-governance]
 - 本周临时计划状态
 - 还没有跨任务复用价值的短期判断
 
-## Compression rules learned from this cleanup
+## Compression rules
 ### Rule 1: Merge by role, not by wording
 如果多条记忆都在表达同一个角色，应合并为一条：
-- 多条都在表达“用户偏好 skill 保持窄职责” → 合并
+- 多条都在表达同一项稳定工作偏好 → 合并
 - 多条都在表达“官方文档是 Hermes 相关设计的校准基线” → 合并
 - 多条都在表达同一个 tool quirk → 合并
 
@@ -91,7 +91,7 @@ aliases: [memory-governance]
 - 相关链接
 那么它大概率已经不适合 `memory`。
 
-## Practical routing examples from this cleanup
+## Synthetic routing examples
 ### 例 1：关于 memory 只保留稳定事实的原则
 - `memory` 中保留一句压缩版政策
 - `wiki` 中保留完整治理说明
@@ -102,10 +102,6 @@ aliases: [memory-governance]
 - 具体拆分原则放到相关 `skill` 或 `wiki`
 - 原因：偏好和方法不能混放
 
-### 例 3：关于 `read_file` 前缀污染的 quirk
-- `MEMORY.md` 保留一条合并后的高价值 quirk
-- 不再保留三条重复变体
-- 原因：这属于稳定环境事实，但只需要一条
 
 ## Minimal operating policy
 以后做 memory 治理时，固定按这个顺序判断：

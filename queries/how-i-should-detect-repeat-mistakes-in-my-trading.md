@@ -1,7 +1,7 @@
 ---
-title: How I Should Detect Repeat Mistakes in My Trading
+title: Detecting Repeat Trading Mistakes
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, validation, debugging]
 sources: [queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。
 ---
 
-# How I Should Detect Repeat Mistakes in My Trading
+# Detecting Repeat Trading Mistakes
 
 ## Summary
 这页不是复盘单笔交易，而是往上一层看：哪些错误不是偶发，而是在反复出现。目标是把“我最近老出同一种问题”的模糊感觉，压缩成可识别的重复模式，再决定哪些该升成硬规则，哪些还只是一次性失误。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 我怎么从多笔交易里识别重复性错误，并把它们变成真正有效的规则修正？

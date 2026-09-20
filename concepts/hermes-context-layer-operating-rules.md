@@ -1,10 +1,10 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-09-02
+updated: 2026-09-20
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
-sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, session:2026-04-29-effective-context-engineering-for-hermes]
+sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 description: 定义 Hermes context layer 在检索、压缩、路由和执行前装配中的操作规则。
 aliases: [context-layer-rules]
@@ -243,19 +243,21 @@ subagent 返回：
 - 上下文过载 → 总结状态后开 fresh session
 - 复杂任务串味 → 拆 subagent
 
-## Operating policy for current Hermes
-当前阶段采用保守策略：
-- 默认不增加 profile；继续用 default profile 作为主脑
-- Telegram 仍是唯一主要入口
-- wiki 是长期知识层，memory 只存高密度长期事实
-- 新 workflow 先小项目验证，跑通后再决定是否 skill 化或 cron 化
-- Hermes 本体源码修改保持谨慎；若 update 会覆盖，优先记录限制并考虑上游 issue/PR
+## Reference deployment policy
+在目标 Hermes 版本支持相关能力时，可采用以下保守策略：
+- 没有明确隔离收益时不增加 profile；协调 profile 的名称由部署者决定
+- 消息入口、CLI 或其他 gateway 只是可选接入面，不应成为知识正确性的前提
+- wiki 承载正式知识，memory 只存短小稳定事实
+- 新 workflow 先用公开或合成 fixture 验证，再决定是否 skill 化或调度
+- 修改 Hermes 本体前先核对目标版本和升级覆盖风险，必要时走上游 issue/PR
+
+这些是参考规则，不表示任何 profile、gateway、skill 或 cron 已经部署或获得授权。
 
 ## Source integration note
 Machine Learning Mastery 文章的处理结果：
 - 原文和 Gemini 摘要保存在 `[[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]`，作为可追溯 raw source。
 - 可复用原则已整合进本页 Summary、Goal 和 Core principles，不再作为独立文章摘要重复出现。
-- “memory 只放短小稳定事实”的偏好由本页和现有 memory 规则承接，无需重复写入 memory。
+- “memory 只放短小稳定事实”是本页的方法建议；是否写入某个部署的 memory 需要独立授权。
 - 若未来多次需要执行上下文审计，再提炼为专门 skill；当前不提前创建。
 
 ## Relations

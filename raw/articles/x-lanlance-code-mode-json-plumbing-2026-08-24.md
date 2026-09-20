@@ -7,7 +7,6 @@ type: raw-source
 source: X Article
 source_url: https://x.com/LanLance24/status/2091820799296704745
 status: captured
-extraction: "Full X Article plain_text retrieved through gallery-dl metadata and X public GraphQL TweetResultByRestId. Local summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260825-110422-x.com-LanLance24-status-2091820799296704745-3732212-927637760-summary.md"
 ---
 
 # 别让 LLM 当 JSON 搬运工

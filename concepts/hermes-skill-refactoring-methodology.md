@@ -1,174 +1,129 @@
 ---
-title: Hermes Skill 重构方法论
+title: Hermes Skill Refactoring Methodology
 author: Hermes Agent
 created: 2026-05-15
-updated: 2026-05-18
+updated: 2026-09-20
 type: concept
 tags: [hermes, skills, workflow, governance, verification, ai-coding, subagent]
-sources: [session:2026-05-15-test-driven-development-skill-refactor-plan, session:2026-05-15-test-driven-development-phase4-closeout, session:2026-05-15-gemini-review-tdd-phase4-output]
+sources: [raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/papers/arxiv-2608-27454-wikiskill.md, concepts/agent-self-validation-loops.md, concepts/subagent-orchestration-patterns.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
-description: 总结 Hermes skill 重构时从测试、分层、回归验证到推广的执行方法。
+description: 总结 Hermes skill 重构时从边界收敛、分层到回归验证的可移植方法。
 aliases: [skill-refactoring]
 ---
 
-# Hermes Skill 重构方法论
+# Hermes Skill Refactoring Methodology
 
 ## Summary
 
-`test-driven-development` 的优化说明：skill 重构不应从“大重写”开始，而应先把职责边界、硬安全线、合法例外、reference 分层和独立审查闭环做清楚。主 `SKILL.md` 只保留执行时必须看到的规则；长案例、领域清单、项目经验下沉到 `references/`；最后用本地静态检查和独立模型审查关闭。
+Skill 重构不应从大重写开始。先明确单一职责、触发与跳过条件、硬安全线、合法例外和验证合约；主 `SKILL.md` 只保留执行时必须看到的规则，长案例和条件细节才进入 `references/`。
 
-这套方法适用于 Hermes active skill 的治理型改造，尤其是一个 skill 已经混入过多项目特例、执行入口过重、或与其他 skill 职责边界变模糊时。它连接 [[hermes-context-layer-operating-rules]]、[[hermes-knowledge-architecture]]、[[agent-self-validation-loops]] 和 [[subagent-orchestration-patterns]]。
+证据边界：本页综合公开的 Skill 演化材料和通用验证原则。它没有公开基准证明某种目录结构必然提高成功率，也不表示任何本地 Skill 已按此改造、审查或发布。Hermes 的具体 Skill 格式与命令应以目标版本官方文档为准。
 
-## Case: test-driven-development
+## When this method applies
 
-改造目标：把 `test-driven-development` 从“强硬 TDD 教条 + 大量项目特例合集”收敛成“窄而清晰的 TDD 执行纪律 skill”。
+适用于一个 Skill 已出现以下信号时：
 
-最终定位：
+- 主入口混入大量项目特例；
+- 与其他 Skill 的职责边界模糊；
+- 合法例外散落，快速扫描时容易误判；
+- 安全或授权边界只藏在 reference；
+- 完成声明缺少可重复的命令、输出或 artifact。
 
-- 不是 Telegram 编程任务总入口。
-- 是 `coding-agent-workflow` 在新功能、bugfix、行为变更、风险 refactor、review finding 回归测试时触发的专用执行 skill。
-- 核心仍是 RED → GREEN → REFACTOR：先写测试、确认失败、最小实现、确认通过、再重构。
-- 合法例外必须显式命名，尤其是 coverage-only hardening。
+不适用于仅因“未来可能需要”而做的预防性重构。
 
-## 原始问题
+## Phase 0: Read-only baseline
 
-1. 主文档过长：decision-support、cash-state、CLI runner、risk guardrail 等历史项目特例占比过高。
-2. 合法例外太靠后：coverage-only 允许测试立即通过，但位置靠后，容易和前文绝对语气冲突。
-3. 安全边界不集中：生产 DB、live API、支付、通知、真实状态文件等测试边界需要前置。
-4. skill 边界不清：root cause、planning、subagent 编排、TDD 执行纪律混在一起。
-5. closeout 证据不硬：缺少 RED / GREEN / Regression 三类证据的固定报告格式。
+先读取主文档、关联 references、调用入口和现有验证器，记录：
 
-## 分阶段改造模式
+- Skill 的实际单一职责；
+- 当前触发、跳过和升级条件；
+- 常驻规则与条件细节的分布；
+- 已存在的测试、静态检查和回滚点；
+- 哪些内容只是一次项目经验，不能直接升级为通用规则。
 
-### Phase 0: 只读基线
+## Phase 1: Tighten the main contract
 
-先读主文档和 references，统计领域特例位置，不修改 active skill。
+只修改共享 owner 能解决的问题：
 
-产出：当前结构、风险清单、待迁移段落、目标 reference 判断。
+- 把 `When to use / When not to use` 前置；
+- 把数据、权限、生产副作用和不可逆操作边界放在主路径；
+- 明确合法例外及其额外证据要求；
+- 定义完成报告最少需要的可回读证据；
+- 删除已被平台能力或其他 Skill owner 覆盖的重复规则。
 
-### Phase 1: 主文档结构补丁
+不要先移动所有文件，也不要为一个实现新建接口或注册表。
 
-只改主 `SKILL.md` 的结构和前置边界，不移动 reference 文件。
+## Phase 2: Move conditional detail behind discoverable routes
 
-关键动作：
+只有当主入口已过重时才下沉 references。每条路由都应包含任务可识别的触发词，而不只是文件名。
 
-- 前置 `When to Use / When Not to Use`。
-- 前置 `Hard limits`。
-- 提前 coverage-only hardening。
-- 增加 closeout 模板。
-- 保留 TDD 核心语义，不软化原则。
+例如：
 
-验收点：skill 可加载；前 80 行能看到适用范围、例外、安全边界；RED / GREEN / REFACTOR / failing test first 仍存在。
+- run ID collision / atomic report write / lock → CLI reliability reference；
+- placeholder URL / source normalization / deduplication → search post-processing reference；
+- production state / payment / notification → high-risk test boundary reference。
 
-### Phase 2: 领域特例引用化
+安全、授权、触发和验证底线仍留在主文档；reference 不能成为隐藏关键约束的地方。
 
-把主路径中的长领域段落替换为 reference routing 索引。
+## Phase 3: Preserve behavioral evidence
 
-关键动作：
+重构前后至少验证：
 
-- 保留所有 reference 内容，不删除知识。
-- 主文档只保留触发词和加载路径。
-- 每个 reference 索引条目必须有 agent 能从任务描述识别的触发关键词，不能只是文件名。
-- 安全边界、授权边界、RED/GREEN 证据要求仍留在主文档。
+1. 代表性任务仍会触发该 Skill；
+2. 明确跳过条件仍不会误触发；
+3. 主路径能找到必要 reference；
+4. 风险边界没有被下沉或弱化；
+5. 原有验证器和最小回归检查通过。
 
-核心判断：这一步不是“压缩字数”，而是把运行时必须常驻的规则和场景特例分层。
+对于委派任务，子 Agent 的自述不是证据。父级应回读变更并重跑关键检查；无法复验时把结果标为 provisional，而不是“通过”。
 
-### Phase 3: delegate_task 和父验证强化
+## Phase 4: Bounded review and convergence
 
-防止 subagent self-report 直接变成完成结论。
+独立审查应针对实际变更，而不是只审计划。审查重点：
 
-关键动作：
+- 职责是否变窄而没有丢失必要行为；
+- 触发词和 reference 是否可发现；
+- 安全、授权和回滚是否仍显式；
+- 合法例外是否在所有快速扫描位置一致；
+- 完成声明能否由真实命令或 artifact 复验。
 
-- delegate goal 要求返回 changed files、RED command、GREEN command、Regression command、exit code、summary。
-- coverage-only 模式要返回 false-negative check 结果，或说明为什么只能算 provisional coverage。
-- 父 agent 必须验证关键声明：重新运行测试、读回变更，或检查父 agent 可直接控制的 session 输出。
-- 重复非收敛失败时停止，报告证据和下一步诊断，不盲修。
+只修复经父级复核成立的具体问题。没有阻塞或重要问题后停止，不为“更完整”继续扩写。
 
-### Phase 4: 独立审查与收敛
+## Reusable checklist
 
-对 Phase 1-3 修改后的实际 skill 和 references 做只读审查。
+- 是否确有重构需要，而不是规格性预建？
+- 是否先查找并修改现有 owner？
+- 主文档前部能否看见适用范围、跳过条件和硬边界？
+- 哪些规则必须常驻，哪些只是条件细节？
+- references 是否由任务语义触发？
+- 是否保留一条可运行的回归检查？
+- 子 Agent 或审查结论是否由父级读回验证？
+- 变更是否减少重复、替换旧规则或退役过时入口？
 
-审查维度：职责边界、过度瘦身、安全边界、reference 可发现性、TDD 原则、coverage-only 自洽性、delegate_task 证据要求、父 agent 验证规则。
+## Anti-patterns
 
-收敛规则：只接受 blocking / important findings；minor suggestions 不阻塞关闭；没有 blocking / important findings 时冻结，不继续打磨。
+- 把一次成功经验直接膨胀成长期通用规则；
+- 用“更完整”为理由堆积项目特例；
+- 把安全和授权边界藏到 reference；
+- 只审计划，不审最终文件；
+- 用审查标签替代父级验证；
+- 只新增规则，不删除、合并或替换旧规则；
+- 把示例配置写成已经部署或获得执行授权。
 
-## 关键设计原则
+## Takeaway
 
-### 默认入口要轻
+Skill 重构的目标不是写更多规则，而是让默认路径更短、责任更清楚、风险边界更可见、例外更明确、证据更可复验。
 
-一个 skill 的主文档不是知识仓库。主文档应回答：什么时候用、什么时候不用、执行纪律是什么、有什么硬边界、如何验证完成。长案例和领域经验应进入 `references/`。
+## Relations
+- depends_on: [[agent-self-validation-loops]]
+- depends_on: [[subagent-orchestration-patterns]]
+- related: [[hermes-context-layer-operating-rules]]
+- related: [[hermes-knowledge-architecture]]
 
-### 专用流程要窄
-
-`test-driven-development` 只负责 TDD 执行纪律。根因分析归 debugging workflow，多步计划归 planning workflow，subagent 编排归 orchestration workflow。
-
-### 安全边界全局可见
-
-测试安全线必须在主文档早期出现：不削弱测试、不碰生产 DB/live API/支付/通知/真实状态文件、不未经批准新增依赖、不用手动验证替代回归测试、不信 subagent self-report。
-
-这些边界不应只存在于 references，因为主 skill 被加载时才是最低保证。
-
-### 合法例外要命名并同步
-
-coverage-only 是 TDD 中容易被误判的合法例外：新测试可能立即通过，但这不等于测试无效。
-
-必须同步更新：
-
-- 适用范围：前置 coverage-only。
-- Verify RED：测试立即通过时做 false-negative check，而不是改测试。
-- Red Flags：避免把“test passes immediately”绝对化。
-- Checklist / Completion Report：记录 false-negative check 或 provisional coverage。
-
-例外一旦出现，就要同步所有快速扫描位置，否则 skill 内部会自相矛盾。
-
-### Reference routing 要有触发词
-
-只列 `references/foo.md` 不够。每条 routing 都要写出触发条件，例如：
-
-- run ID collisions / atomic report writes / run locks → CLI reliability reference。
-- placeholder URLs / domain-only source normalization / final output deduplication → search runner postprocessing reference。
-- missing implementation contracts / subprocess CLI behavior / temp run directories → contract-first runner tests reference。
-
-触发词决定 agent 能不能在任务描述中识别该加载哪个 reference。
-
-### 审查结果必须再验证
-
-独立审查不是终点。findings 要分级，修完后重新做静态检查、skill 加载验证，必要时二次独立复审。这对应 [[agent-self-validation-loops]] 的验证闭环，而不是“让另一个模型说好就结束”。
-
-## 可复用检查清单
-
-改造任意 active skill 前，先问：
-
-- 这个 skill 的单一职责是什么？
-- 它是否承担了本该由其他 skill 处理的入口职责？
-- 主文档前 80 行是否包含适用范围、合法例外和硬安全边界？
-- 哪些内容是执行时必须常驻的规则？哪些应迁到 references？
-- references 是否有可识别触发词？
-- completion report 是否要求可验证证据？
-- subagent 输出是否需要父 agent 验证？
-- 有无覆盖合法例外的同步点，例如 Verify / Red Flags / Checklist / Closeout？
-- 是否有独立审查、accepted finding patch、最终加载验证？
-
-## 反模式
-
-- 把一次成功经验直接膨胀成主 skill 大段规则。
-- 用“更完整”为理由把领域特例堆进主文档。
-- 把安全边界迁到 reference，导致默认加载时不可见。
-- 只让 Claude/Gemini 审查计划，不审查最终 active 文件。
-- 把 minor suggestion 当成继续打磨的理由，导致计划—审查—再计划循环。
-- 忘记同步合法例外，导致 Verify RED、Red Flags、Checklist 互相冲突。
-- 相信 subagent 自述，没有父 agent 复核命令、输出或文件。
-
-## 最终结果
-
-本次 `test-driven-development` 改造最终关闭条件：
-
-- skill 版本：`1.2.1`。
-- 主文档可加载。
-- 全部 references 存在并在主文档中有触发词。
-- Gemini Phase 4 独立审查结果：`approve`。
-- blocking findings：None。
-- important findings：None。
-- Phase 4 closeout：ready。
-
-最终经验：skill 优化不是把规则写得更多，而是让默认路径更短、边界更硬、例外更明确、证据更可验证。
+## Related
+- [[agent-self-validation-loops]]
+- [[subagent-orchestration-patterns]]
+- [[hermes-context-layer-operating-rules]]
+- [[hermes-knowledge-architecture]]
+- [[index]]
+- [[log]]

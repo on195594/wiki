@@ -10,7 +10,6 @@ author: Michael Segner
 published: 2026-08-26
 captured: 2026-09-02
 status: captured
-extraction: "Structured complete capture compiled from the public Claude page and cross-checked against the Karakeep-backed gsummary source packet; it preserves every substantive section and finite list but is not a verbatim mirror. Navigation, related posts, subscription UI and footer were omitted. Local summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260902-183412-How-Warp-builds-self-improving-agents-on-Claude-https-claude.com-blog-how-warp-b-2860662-862153320-summary.md"
 ---
 
 # How Warp builds self-improving agents on Claude
@@ -25,7 +24,6 @@ extraction: "Structured complete capture compiled from the public Claude page an
 - Extraction route: structured capture from the public-page extraction, cross-checked against the full Karakeep capture used by `gsummary`.
 - Source quality: complete structured capture of the substantive sections and finite lists; not a verbatim article mirror.
 - Limitations: this is an Anthropic-published customer case based on Warp's account. Company scale and usage figures are self-reported. The article gives no controlled comparison, accuracy improvement, bad-edit rate, reviewer-time cost, or long-term regression data for the self-improvement loop; it supports a design pattern and operating lessons, not unattended production self-modification.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260902-183412-How-Warp-builds-self-improving-agents-on-Claude-https-claude.com-blog-how-warp-b-2860662-862153320-summary.md`
 
 ## Structured source capture
 

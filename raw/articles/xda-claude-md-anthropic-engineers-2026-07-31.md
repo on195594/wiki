@@ -23,7 +23,6 @@ tags: [claude-code, workflow, governance, context-engineering]
 - Author: Mahnoor Faisal
 - Published: 2026-07-31T19:36:46Z
 - Captured: 2026-08-01
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260801-110911-Your-CLAUDE.md-is-probably-wrong,-and-here's-how-Anthropic's-engineers-actually--2515868-178246680-summary.md`
 - Extraction note: direct deterministic fetch closed the connection; Jina Reader recovered the full article. The generated-summary widget and bounded publisher boilerplate were removed.
 - Source quality: full article prose recovered.
 - Limitation: this is a practitioner article interpreting Claude Code behavior and Boris Cherny's advice, not a controlled cross-model or cross-project evaluation. The six-month reset interval is an experience-based heuristic.

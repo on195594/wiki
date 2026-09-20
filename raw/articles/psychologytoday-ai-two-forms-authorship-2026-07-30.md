@@ -23,7 +23,6 @@ tags: [llm, content-engineering, research]
 - Published: 2026-07-30
 - Reviewed by: Kaja Perina
 - Captured: 2026-08-04
-- Local summary (local-only auxiliary path, not a stable long-term source): `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260804-203820-AI-and-the-Two-Forms-of-Authorship-2057961-474244480-summary.md`
 - Extraction route: direct HTTP fetch with a browser-like User-Agent; text extracted from the first `<article>` DOM using headings, paragraphs, list items and blockquotes
 - Source quality: substantially complete article prose; not a byte-faithful HTML capture
 

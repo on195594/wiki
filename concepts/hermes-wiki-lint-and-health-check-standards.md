@@ -4,7 +4,7 @@ created: 2026-04-16
 updated: 2026-09-20
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
-sources: []
+sources: [repository:SCHEMA.md, repository:_meta/scripts/wiki_health_check.py, repository:_meta/scripts/wiki_tag_audit.py]
 status: stable
 description: 定义 Hermes wiki 的只读健康检查范围、严重性、通过标准，以及可选 metadata/Relations 的验证方向。
 aliases: [wiki-health-check, wiki-lint-standards]

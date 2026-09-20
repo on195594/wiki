@@ -8,7 +8,6 @@ published_at: 2026-05-12
 captured_at: 2026-05-13 14:35:12 +0800
 status: raw
 tags: [ai-coding, spec-driven-development, workflow, agent, validation]
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260513-135202-From-Vibe-Coding-to-Spec-Driven-Development-Towards-Data-Science-401509-566400520-summary.md
 ---
 
 # From Vibe Coding to Spec-Driven Development
@@ -17,7 +16,7 @@ summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/2
 
 This raw page captures Mariya Mansurova's Towards Data Science article about moving from ad-hoc vibe coding to spec-driven development for AI-assisted software projects. The canonical URL was verified from the saved gsummary output and `web_extract` metadata.
 
-Extraction limitation: `web_extract` returned a structured markdown summary rather than the full article body. The full local Gemini summary is preserved at `summary_path`.
+Extraction limitation: `web_extract` returned a structured markdown summary rather than the full article body. No private local summary artifact is retained as public evidence.
 
 ## Core claim
 
@@ -65,7 +64,6 @@ AI辅助开发正从随性的“直觉编程（Vibe coding）”转向系统化�
 - 采用“计划 → 实现 → 验证”循环，让 agent 按文档执行而不是按聊天记忆执行。
 - 阶段完成后引入 replanning，更新 roadmap 和变更记录。
 
-全文路径：/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260513-135202-From-Vibe-Coding-to-Spec-Driven-Development-Towards-Data-Science-401509-566400520-summary.md
 
 ## Extracted article text
 

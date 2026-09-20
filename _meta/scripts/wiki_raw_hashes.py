@@ -19,9 +19,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
+
 import sys
 from pathlib import Path
+
+from wiki_root import resolve_root
 
 MANIFEST = "_meta/raw-source-hashes.json"
 
@@ -44,11 +46,11 @@ def build_manifest(root: Path) -> dict[str, str]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Write the raw/ SHA-256 manifest")
-    parser.add_argument("--root", default=os.environ.get("OBSIDIAN_VAULT_PATH", "/home/lin/wiki"))
+    parser.add_argument("--root")
     args = parser.parse_args(argv)
 
     try:
-        root = Path(args.root).expanduser().resolve()
+        root = resolve_root(args.root)
         manifest_path = root / MANIFEST
         current = build_manifest(root)
         previous: dict[str, str] = {}

@@ -11,7 +11,6 @@ published: 2026-08-21
 captured: 2026-08-28
 source_quality: full-official-playbook-main-body
 status: captured
-extraction: Main article body captured via deterministic web extraction; navigation and trailing related/footer chrome omitted. The resources list is truncated in the extracted packet. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260828-173515-The-AI-Native-SDLC-playbook-Claude-by-Anthropic-3422299-304062680-summary.md
 ---
 
 # The AI-Native SDLC playbook
@@ -26,7 +25,6 @@ extraction: Main article body captured via deterministic web extraction; navigat
 - Extraction route: deterministic web extraction; page navigation and trailing related/footer blocks removed at explicit article boundaries.
 - Source quality: complete main playbook body through closing thoughts; the final resources list is truncated in the extraction packet.
 - Limitations: this is an official Anthropic vendor playbook based on its Applied AI team and customer work. Productivity expectations, sample counts, sigma response tiers and product choices are source-specific guidance rather than independently evaluated Hermes defaults.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260828-173515-The-AI-Native-SDLC-playbook-Claude-by-Anthropic-3422299-304062680-summary.md`
 
 ## Captured source
 

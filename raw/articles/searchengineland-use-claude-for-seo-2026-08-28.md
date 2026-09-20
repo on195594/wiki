@@ -9,7 +9,6 @@ published: 2026-08-28
 captured: 2026-08-30
 type: raw-source
 status: captured
-extraction: "Karakeep full captured article content; wrapper removed 0 boilerplate lines and 1 duplicate line; local summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260830-123431-Use-Claude-for-SEO.-Don’t-let-Claude-do-SEO-1310046-923374800-summary.md"
 ---
 
 # Use Claude for SEO. Don’t let Claude do SEO.

@@ -24,7 +24,6 @@ status: captured
 - Published: 2026-07-06
 - Captured: 2026-07-07
 - Extraction quality: full article body from `web_extract` after deterministic HTML/JSON-LD extraction returned empty.
-- Local summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260707-200524-code.visualstudio.com-blogs-2026-07-06-optimizing-vscode-coding-harness-model-pr-2513611-587550680-summary.md`
 
 ## Abstract
 

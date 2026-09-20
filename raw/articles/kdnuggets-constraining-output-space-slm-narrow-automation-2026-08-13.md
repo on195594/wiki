@@ -22,7 +22,6 @@ extraction: Full article-like body extracted from the public KDnuggets page; thi
 - URL: https://www.kdnuggets.com/constraining-output-space-small-language-model-narrow-automation-optimization
 - Extraction note: The public article body was extracted successfully from the KDnuggets article container. This note is a structured source capture rather than a verbatim HTML archive.
 - Source limitation: This is a practitioner article with one toy benchmark, not a peer-reviewed or independently reproduced study. Its latency and confidence claims require local validation before production use.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260815-192036-Constraining-Output-Space-for-SLM-Narrow-Automation-Optimization-1496776-565623960-summary.md`
 
 ## Compiled concept page
 

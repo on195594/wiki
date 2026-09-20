@@ -14,7 +14,6 @@ status: captured
 - Source: Microsoft for Developers
 - Author: Waldek Mastykarz
 - Published metadata observed: 2026-05-27T18:30:38+00:00
-- Summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260528-215805-How-AI-coding-agents-actually-use-your-technology-230467-100269240-summary.md`
 - Extraction note: Article prose was extracted from public HTML `article.entry-content`; headings and prose were preserved, navigation/comment boilerplate removed. `web_extract` initially returned a generated summary, so direct HTML was used for raw provenance.
 
 ---

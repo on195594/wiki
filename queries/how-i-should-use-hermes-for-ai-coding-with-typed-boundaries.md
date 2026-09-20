@@ -1,5 +1,5 @@
 ---
-title: How I Should Use Hermes for AI Coding with Typed Boundaries
+title: Using Hermes for AI Coding with Typed Boundaries
 created: 2026-05-01
 updated: 2026-05-01
 type: query
@@ -9,11 +9,13 @@ tags: [hermes, ai-coding, typed-boundary, workflow, verification]
 sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md]
 ---
 
-# How I Should Use Hermes for AI Coding with Typed Boundaries
+# Using Hermes for AI Coding with Typed Boundaries
 
 ## Summary
 
 我用 Hermes 做 AI 编程时，默认最佳实践不是“让 agent 自由写代码”，而是把任务不断收窄成可验证边界：先把自然语言需求压成规格和验收标准，再选择执行入口，再要求实现围绕 typed output、narrow tool surface、explicit dependency context 和 verification gate 展开。
+Public boundary: this is a version-sensitive method guide. Examples do not prove that a profile, provider, tool or policy is deployed or authorized.
+
 
 核心原则来自 `[[typed-ai-agent-boundaries]]`：模型仍然不确定，但我可以让模型和工程系统之间的接口更确定。
 

@@ -21,7 +21,6 @@ status: captured
 - Published: 2026-05-05
 - Captured: 2026-05-07
 - Extraction method: `share.google` link resolved by exact-title search; canonical article fetched through Jina Reader.
-- Gemini summary output: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260507-094718-How-Agents-Manage-Other-Agents-Four-Subagents-Patterns-in-2026-—-https-www.phils-160538-490197803-summary.md`
 - Limitations: Jina Reader output was used as the full-text capture and may include minor site navigation/Markdown conversion artifacts.
 
 ## Why this source matters

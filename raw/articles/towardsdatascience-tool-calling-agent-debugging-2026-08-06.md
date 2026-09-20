@@ -22,7 +22,6 @@ tags: [agent, debugging, evaluation, tool]
 - Author: Abdullahi Dattijo
 - Published: 2026-08-06
 - Captured: 2026-08-09
-- Local summary (local-only auxiliary path, not a stable long-term source): `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260809-230723-I-Built-a-Tool-Calling-Agent-in-Python.-Here’s-How-I-Debugged-It-3200861-612734240-summary.md`
 - Extraction route: rendered `main.innerText` from the live browser through persistent CDP
 - Source quality: complete visible article prose from the opening through `Selected Sources`; author/share/publisher footer removed; not a byte-faithful HTML capture
 

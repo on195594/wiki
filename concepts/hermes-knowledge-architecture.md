@@ -155,7 +155,7 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 ### Obsidian
 - 作为浏览与编辑前端
 - 使用 wikilinks 和 frontmatter 直接消费 wiki 目录
-- 与 `OBSIDIAN_VAULT_PATH=/home/lin/wiki` 对齐
+- 与部署者选择的 `OBSIDIAN_VAULT_PATH=/path/to/wiki` 对齐；示例路径不表示已经部署
 
 ### MCP / native tools
 - 当 wiki 规模扩大后，可把 search/read/write 封装成原生工具
@@ -182,6 +182,7 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - depends_on: [[hermes-retrieval-priority-and-answer-path]]
 
 ## Related
+- [[okf-for-hermes-wiki-governance-assessment]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-retrieval-priority-and-answer-path]]
 - [[wiki-ingestion-workflow]]

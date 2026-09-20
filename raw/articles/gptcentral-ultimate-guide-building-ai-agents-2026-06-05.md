@@ -7,7 +7,6 @@ source_url: https://gptcentral.substack.com/p/the-ultimate-guide-to-building-ai
 published: 2026-06-05
 captured: 2026-06-08
 status: captured
-extraction: Jina Reader direct fetch from Substack canonical page. Gemini summary run saved locally at /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260608-084702-The-Ultimate-Guide-to-Building-AI-Agents-3749496-396700720-summary.md (local-only grounding path).
 tags: [agent, workflow, orchestration, subagent, raw-source]
 ---
 
@@ -16,7 +15,6 @@ tags: [agent, workflow, orchestration, subagent, raw-source]
 Source URL: https://gptcentral.substack.com/p/the-ultimate-guide-to-building-ai
 Extraction note: Jina Reader direct fetch from Substack canonical page; substantial public Markdown source prose extracted. Source includes newsletter/promotional boilerplate and was used as provenance for updating [[subagent-orchestration-patterns]].
 Source quality: substantial/full public article prose from Jina Reader, with visible promotional/navigation boilerplate retained.
-Saved summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260608-084702-The-Ultimate-Guide-to-Building-AI-Agents-3749496-396700720-summary.md`
 
 ## Raw extracted source
 

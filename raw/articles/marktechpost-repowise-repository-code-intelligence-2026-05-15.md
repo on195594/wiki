@@ -17,7 +17,6 @@ Source URL: https://www.marktechpost.com/2026/05/15/how-to-build-repository-leve
 
 Extraction note: Generic extraction returned a generated summary instead of source prose. Direct MarkTechPost access is bot-challenged, so this raw capture uses the verified nested Jina Reader fallback (`https://r.jina.ai/http://r.jina.ai/http://<source-url>`), then removes obvious navigation, share, and publisher-promo boilerplate. Some code snippets are preserved as raw extracted lines because the source is a tutorial.
 
-Gemini summary path: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260517-171907-MarkTechPost-Repowise-repository-level-code-intelligence-321801-070283600-summary.md`
 
 ## Raw article text
 

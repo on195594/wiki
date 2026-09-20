@@ -175,21 +175,18 @@ Hermes 映射：
 - 不要把 Govern 理解成重流程审批；治理的目标是低风险快速迭代。
 
 ## Validation outcome
-2026-05-11 首次项目级映射已完成，样例项目为本地 live worker `amazon-price-watch`。
+本仓库不包含可公开复验的项目级验证 artifact，因此不把私有试运行写成“已验证”的公共事实。以下映射是由公开来源综合出的检查框架，应用到具体项目时仍需留下该项目自己的公开 fixture、测试、部署回读和监控证据：
 
-证据路径：`/home/lin/.hermes/projects/amazon-price-watch/docs/reviews/2026-05-11-agent-development-lifecycle-checklist.md`。
+- Build：需求、接口、权限和运行时边界清楚；
+- Test：行为、失败路径与回归检查可重复；
+- Deploy：发布路径、版本和回滚点明确；
+- Monitor：健康、运行报告和静默/告警合约可检查；
+- Govern：数据、凭证、外部副作用与晋升授权有显式边界。
 
-结论：`agent-development-lifecycle` 可作为项目检查表框架使用，能把一个低风险、确定性 worker 映射到 `Build → Test → Deploy → Monitor`，并把 `Govern` 作为跨阶段边界记录：
-- Build：README、AGENTS、source-analysis、methodology、typed CLI worker 和 runtime adapter 边界清楚
-- Test：pytest、ruff、format、ty、diff check 与既有 review records 构成证据
-- Deploy：已有 Hermes no-agent cron wrapper/job 的历史验证证据，但本次未改变 runtime
-- Monitor：health、run reports、stdout contract 和 silent-when-healthy 语义可检查
-- Govern：不登录、不绕 CAPTCHA、不自动购买、不提交本地 watchlist/data/debug，且 runtime/cron/skill/wiki/memory 推广均需单独批准
-
-边界：这是项目级概念验证，不是 runtime、cron、skill、memory 或 wiki 方法论推广授权。项目证据留在 `amazon-price-watch`；本页只保存概念验证结果和检索入口。
+经验局限：这是一套设计综合，不是某个未公开项目的成功率或生产适用性证明。
 
 ## Validation and promotion path
-当前状态：wiki concept 已完成首次项目级验证，但仍不改 memory、skill、cron 或 runtime。
+当前状态：wiki concept 已形成公开方法框架，但未附带公共项目验证；它不授权修改 memory、skill、cron 或 runtime。
 
 后续若要转成 Hermes 操作实践，应继续在真实小项目或 Hermes-adjacent 项目中验证 lifecycle checklist：
 1. Build artifact 是否明确？

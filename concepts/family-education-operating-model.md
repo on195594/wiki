@@ -1,18 +1,20 @@
 ---
 title: Family Education Operating Model
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-09-20
 type: concept
 tags: [lifeos, operating-model, decision]
-sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-family-education-goals]
+sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
-description: 定义家庭教育目标在 LifeOS 中的资金、时间、信息和决策运行模型。
+description: 提供可跨家庭复用的教育决策变量、适用条件与可持续性边界。
 ---
 
 # Family Education Operating Model
 
 ## Summary
-这页定义家庭教育领域在 LifeOS 里的职责、目标、边界和协同关系。它不直接回答“选哪所学校”，而是定义：面对孩子成长与择校问题时，家庭教育系统应该优先优化什么、如何避免把教育问题误做成纯资源竞赛、以及 Hermes 后续该围绕哪些信息结构和决策接口提供支持。
+这页提供一个家庭教育决策模板。它不回答具体家庭“选哪所学校”，而是列出面对成长与择校问题时可复用的目标、约束、风险和兜底变量。
+
+证据边界：本页是方法模板，不含真实家庭、学校、孩子或预算资料，也未由公开纵向研究验证；具体采用时应结合专业意见、当地制度和家庭实际。
 
 ## Core objective
 家庭教育系统的核心目标不是单点名校最大化，而是：
@@ -66,15 +68,15 @@ description: 定义家庭教育目标在 LifeOS 中的资金、时间、信息�
 ### 与 [[personal-growth-operating-model]] 的关系
 父母的表达、情绪管理、学习方式和成长观，会深刻影响教育环境质量。
 
-## What Hermes should eventually support here
-后续 Hermes 在这个领域应主要支持：
+## Optional assistant support
+如果部署者选择让 Hermes 或其他助手参与，这类工具可以支持：
 - 学校信息归档与比较
 - 教育路径方案对比
 - 约束条件清单化
 - 家庭教育决策记录
 - 周期性回顾与状态更新
 
-这些支持未来可分化为 wiki 页面、skill 和 cron，但当前阶段先停留在正式知识层。
+这些是能力示例，不表示已经接线、已自动运行或获得访问家庭资料的授权。
 
 ## Boundary
 这页不包含：

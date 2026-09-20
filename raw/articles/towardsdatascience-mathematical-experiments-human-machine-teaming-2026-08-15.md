@@ -7,7 +7,6 @@ type: raw-source
 source: Towards Data Science
 source_url: https://towardsdatascience.com/mathematical-experiments-are-becoming-abundant-through-human-machine-teaming/
 status: captured
-extraction: "Structured capture from the full rendered browser DOM (35,471 characters). It preserves the article's argument, case details, workflow, evidence boundaries, institutional claims, references, and selected verbatim statements, but is not a verbatim full-text mirror. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-133740-Mathematical-Experiments-Are-Becoming-Abundant-Through-Human-Machine-Teaming-366837-292262280-summary.md"
 ---
 
 # Mathematical Experiments Are Becoming Abundant Through Human-Machine Teaming
@@ -160,7 +159,3 @@ These are design proposals and normative judgments. The article does not demonst
 - OpenAI, “An OpenAI model has disproved a central conjecture in discrete geometry,” 2026-05-20.
 - Tom Zahavy, “Position: LLMs can’t jump,” ICML 2026.
 - Michael Nielsen, “Using spaced repetition systems to see through a piece of mathematics,” 2019-01-12.
-
-## Local summary
-
-`~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-133740-Mathematical-Experiments-Are-Becoming-Abundant-Through-Human-Machine-Teaming-366837-292262280-summary.md`

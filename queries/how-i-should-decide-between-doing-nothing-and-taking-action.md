@@ -1,7 +1,7 @@
 ---
-title: How I Should Decide Between Doing Nothing and Taking Action
+title: Deciding Between Inaction and Action
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, decision, risk-control, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-size-a-position.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答投资交易中如何判断等待是否优于立即行动。
 ---
 
-# How I Should Decide Between Doing Nothing and Taking Action
+# Deciding Between Inaction and Action
 
 ## Summary
 这页不是劝人保守，而是专门解决一个高频错误：明明最优动作是等待，却因为不舒服、怕错过、想证明自己在做事，于是强行出手。目标是把“什么都不做”从被动拖延，变成一种有标准、有边界、有判断依据的主动动作。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 在投资和交易里，我怎么判断现在该行动，还是该什么都不做、继续等？

@@ -1,10 +1,10 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-08-29
+updated: 2026-09-20
 type: concept
 tags: [agent, ai-coding, workflow, tool, deployment, governance]
-sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md]
+sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
 aliases: [coding-agent-workflow-types]
@@ -157,13 +157,15 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 
 ## Hermes interpretation
 
-对 Hermes 来说，这个分类可以作为 agent 执行入口选择规则：
+对支持相应 gateway、delegation 和调度能力的 Hermes 版本，这个分类可以作为入口选择参考。具体命令和运行语义必须在目标版本对照官方文档核验：
 
-- Hermes 当前 Telegram / gateway 入口更接近“远程触发的 terminal/cloud 混合模式”：用户异步发任务，Hermes 在本机执行并回报。
-- `delegate_task` / subagent 更接近受控 cloud-agent 思路，但实际运行在本机隔离上下文中，仍应要求可验证输出。
+- 消息 gateway 可形成“远程触发的 terminal/cloud 混合模式”；是否启用及其执行位置由部署决定。
+- delegation/subagent 可形成受控 handoff，但上下文、隔离和生命周期语义以目标版本为准，输出仍需父级验证。
 - 对代码修改，Hermes 应继续优先按任务复杂度决定是否走 plan、subagent、terminal verification，而不是把所有任务都当成同一种聊天请求。
 - 对 PR review 类任务，应把目标限定为 review / comment / risk finding，不应默认直接改本地工作区。
 - 对 cron，应只承接已经稳定的 workflow；这与 cloud agent 的高自主性类似，都要求边界清楚、失败代价可控、输出可审查。
+
+上述示例不表示 Telegram、gateway、delegation 或 cron 已经部署或授权。
 
 内部编排层见 `[[subagent-orchestration-patterns]]`：本页按用户与执行环境的交互方式分类；subagent 编排页按主 agent 对 worker 生命周期的控制方式分类。两者应组合使用，避免把“远程/后台执行”误等同于“需要复杂多智能体团队”。
 

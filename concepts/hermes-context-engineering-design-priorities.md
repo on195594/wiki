@@ -156,4 +156,3 @@ Hermes 的 context engineering 应遵循 4 条规则：
 - [[wiki-ingestion-workflow]]
 - [[index]]
 - [[log]]
-- [[hermes-context-footprint-readonly-audit-2026-07-03]]

@@ -8,7 +8,6 @@ published: 2026-08-18
 captured: 2026-08-20
 status: captured
 tags: [growth, learning, health]
-extraction: Structured source capture from the public Substack `.available-content` article body (11,298 characters), preserving the argument, safety boundary, 25-step exercise sequence, and paid-content cutoff; this page is not a verbatim mirror. Local Chinese summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260820-195220-How-to-Mentally-Rehearse-Coping-by-Donald-J.-Robertson-2780756-578671840-summary.md`.
 ---
 
 # How to Mentally Rehearse Coping
@@ -24,7 +23,6 @@ extraction: Structured source capture from the public Substack `.available-conte
 - Extraction route: deterministic Substack DOM extraction from `.available-content`; public body length 11,298 characters.
 - Source quality: complete public portion, including the imaginal-exposure exercise and safety section.
 - Source limitation: practitioner synthesis rather than a peer-reviewed study or clinical guideline. It combines Stoic rehearsal, cognitive defusion, imaginal exposure, stress inoculation, Benson-style breathing, coping appraisal, and frustration tolerance without supplying primary-study citations or showing that this exact combination has been clinically validated. The subscriber-only continuation was unavailable.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260820-195220-How-to-Mentally-Rehearse-Coping-by-Donald-J.-Robertson-2780756-578671840-summary.md`
 
 ## Compiled concept page
 

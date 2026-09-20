@@ -15,9 +15,7 @@ tags: [llm, engineering, architecture]
 
 Source URL: https://towardsdatascience.com/the-must-know-topics-for-an-llm-engineer/
 
-Extraction note: Direct HTTP extraction was blocked or summary-like; this raw capture uses browser DOM extraction from `article/main`. The source file used for ingestion was `/home/lin/Downloads/tds-llm-engineer-source.md`.
 
-Gemini summary path: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260517-155459-The-Must-Know-Topics-for-an-LLM-Engineer-259012-488087680-summary.md`
 
 ## Raw article text
 

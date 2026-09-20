@@ -11,7 +11,6 @@ author: Ben Dickson
 published: 2026-05-13
 captured: 2026-05-17
 extraction_note: Direct HTML article extraction from article element; web_extract returned a generated summary and was not used as raw source.
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260517-185750-VentureBeat-frontier-AI-document-rewrite-errors-397493-519719360-summary.md
 ---
 
 # VentureBeat on Frontier AI Document Fidelity Risk
@@ -26,7 +25,6 @@ summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/2
 - Publisher: VentureBeat
 - Author: Ben Dickson
 - Published: 2026-05-13
-- Gemini summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260517-185750-VentureBeat-frontier-AI-document-rewrite-errors-397493-519719360-summary.md`
 
 ## Extracted source
 

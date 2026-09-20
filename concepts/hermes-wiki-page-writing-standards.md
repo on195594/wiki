@@ -1,10 +1,10 @@
 ---
 title: Hermes Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-09-09
+updated: 2026-09-20
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
-sources: []
+sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md]
 status: stable
 description: 定义 Hermes wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。
 aliases: [page-writing-standards, wiki-writing-standards]
@@ -14,7 +14,7 @@ aliases: [page-writing-standards, wiki-writing-standards]
 
 ## Summary
 Hermes wiki 页面不是随手笔记，而是正式知识资产。
-写作规范的目标是让页面可读、可链接、可维护、可增量更新，并能被后续回答直接复用。
+写作规范的目标是让公共页面脱离作者私有环境仍可读、可链接、可维护、可增量更新，并能被后续回答直接复用。
 
 ## Canonical principle
 一篇合格页面至少要满足：

@@ -23,7 +23,6 @@ tags: [content-engineering, workflow, tool, research]
 - Authors: Mallary Tenore Tarpley and Jeremy Caplan
 - Published: 2026-08-01T13:04:19+00:00
 - Captured: 2026-08-03
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260803-203313-🧰-A-Writer’s-Toolkit-614164-462659400-summary.md`
 - Extraction route: deterministic Substack DOM extraction from `.available-content`
 - Source quality: substantially complete article prose from the opening introduction through the closing reader prompt; not a byte-faithful HTML capture
 

@@ -13,6 +13,7 @@ from wiki_health_check import (
     ALLOWED_RELATION_KEYS, RELATION_VALUE_PATTERN, extract_frontmatter,
     frontmatter_value, is_formal_page, is_live_file, rel, strip_code,
 )
+from wiki_root import resolve_root
 
 
 def sources(frontmatter: str) -> list[str]:
@@ -138,13 +139,13 @@ def lookup(root: Path, *, source: str | None = None, page: str | None = None) ->
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", default=os.environ.get("OBSIDIAN_VAULT_PATH", "/home/lin/wiki"))
+    parser.add_argument("--root")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--source")
     mode.add_argument("--page")
     args = parser.parse_args(argv)
     try:
-        result = lookup(Path(args.root), source=args.source, page=args.page)
+        result = lookup(resolve_root(args.root), source=args.source, page=args.page)
     except (OSError, UnicodeError, ValueError) as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2

@@ -11,7 +11,6 @@ captured: 2026-09-06
 status: captured
 extraction: "Substantially complete browser-rendered README text capture (#readme). The rendered text had 89,897 characters and 1,449 lines; the saved source body has 89,620 characters and 1,441 lines after omitting the 8-line 'Important / Check out the SUMMARY' callout and removing one trailing space. Images and link destinations are not embedded."
 license: CC-BY-4.0
-local_summary: "/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260906-111937-Reverse-Engineering-Linear's-Sync-Engine-https-github.com-wzhudev-reverse-linear-3968594-358517800-summary.md"
 ---
 
 # Provenance and evidence boundary

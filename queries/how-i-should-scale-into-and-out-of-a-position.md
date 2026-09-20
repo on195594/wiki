@@ -1,7 +1,7 @@
 ---
-title: How I Should Scale Into and Out of a Position
+title: Scaling Into and Out of a Position
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, position-sizing, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-review-a-losing-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。
 ---
 
-# How I Should Scale Into and Out of a Position
+# Scaling Into and Out of a Position
 
 ## Summary
 这页不是鼓励“分批”本身，而是回答一个更实战的问题：什么时候分批进出是风险管理，什么时候只是把犹豫包装成策略、把摊平包装成分批、把不愿认错包装成仓位管理。目标是让分批成为执行工具，而不是自我安慰工具。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 我什么时候可以分批建仓、分批减仓，什么时候又不应该这样做？

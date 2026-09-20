@@ -9,7 +9,6 @@ source_site: MachineLearningMastery.com
 published: 2026-05-21
 extracted: 2026-05-22
 extraction_note: Direct HTML fetch with browser-like headers; article/main body extracted from public HTML. Wrapper pre-clean removed boilerplate and duplicate lines.
-summary_path: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260522-121938-How-to-Build-a-Multi-Agent-Research-Assistant-in-Python-1837182-650363080-summary.md
 status: captured
 ---
 
@@ -23,7 +22,6 @@ status: captured
 - Published: 2026-05-21
 - Extracted: 2026-05-22
 - Extraction limitation: Direct HTML fetch succeeded and the gsummary wrapper pre-clean removed obvious navigation/boilerplate. The Gemini summary noted that Reflex UI/PDF export sections were mentioned but not fully represented in the extracted implementation details.
-- Gemini summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260522-121938-How-to-Build-a-Multi-Agent-Research-Assistant-in-Python-1837182-650363080-summary.md`
 
 ## Local summary
 

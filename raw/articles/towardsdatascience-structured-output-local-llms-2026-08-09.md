@@ -20,7 +20,6 @@ extraction_limitations: Browser-rendered DOM innerText from the longest article-
 - Captured: 2026-08-19
 - Extraction route: browser-rendered DOM, longest article-like `main` container, 13333 characters.
 - Extraction limitation: formatting is flattened to rendered text; trailing publisher chrome may remain. This capture should not be treated as a byte-for-byte mirror of the article HTML.
-- Local Gemini summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260819-145106-How-to-Implement-Structured-Output-with-Local-LLMs-1498140-375632480-summary.md` (off-wiki grounding artifact).
 
 ## Compiled concept page
 

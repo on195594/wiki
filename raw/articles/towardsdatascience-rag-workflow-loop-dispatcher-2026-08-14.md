@@ -7,7 +7,6 @@ type: raw-source
 source: Towards Data Science
 source_url: https://towardsdatascience.com/rag-workflow-and-loop-engineering-the-dispatcher-that-decides-when-to-loop-and-when-to-stop/
 status: captured
-extraction: "Full rendered browser DOM main.innerText captured after direct HTTP returned 403. Local summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260817-200548-RAG-Workflow-and-Loop-Engineering-The-Dispatcher-That-Decides-When-to-Loop-and-W-3790819-403008560-summary.md"
 ---
 
 # RAG Workflow and Loop Engineering: The Dispatcher That Decides When to Loop and When to Stop

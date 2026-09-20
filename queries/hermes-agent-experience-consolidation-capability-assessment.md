@@ -13,15 +13,15 @@ description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当
 
 ## Summary
 
-本页是截至 2026-08-18 的 Hermes 经验固化能力历史评估，当前能力结论使用前必须重新核验。
+本页是基于 2026-05-11 时 Hermes Agent v0.13.0 公开文档与公开 issue 的历史评估，2026-08-18 关闭；当前能力结论使用前必须重新核验。
 
-> Historical snapshot closed on 2026-08-18. Version、命令和原生能力结论不得作为当前状态直接复用，需重新查官方文档与本机证据。
+> Historical snapshot closed on 2026-08-18. Version、命令和原生能力结论不得作为当前状态直接复用，需重新查官方文档与目标部署证据。
 
 ## Question
 结合 Anthropic `dreaming` / `outcomes` / multi-agent orchestration 这篇文章，Hermes 当前是否原生具备类似能力？哪些是当前原生能力，哪些是可组合实现，哪些只是未来可能支持？
 
 ## Short answer
-Hermes 当前已经原生具备大部分底层 primitives：memory、session search、skills、skill curator、cron、subagent delegation、goal/judge loop 和工具验证面。但当前本地 v0.13.0 checkout 没有证实存在完整等价 Anthropic Dreaming 的一键原生闭环，也没有证实存在本机 `/dreaming` 或 Auto Dream 实现。
+截至该历史快照，公开文档描述了 memory、session search、skills、skill curator、cron、subagent delegation、goal/judge loop 和工具验证面；公开证据没有证明存在完整等价 Anthropic Dreaming 的一键原生闭环，也没有证明 `/dreaming` 或 Auto Dream 已成为该版本的公开能力。
 
 本地应采用人工可审计版经验固化闭环：
 
@@ -44,27 +44,6 @@ session/project evidence
 - Delegation docs confirm `delegate_task` spawns isolated child `AIAgent` instances with fresh context and their own terminal sessions; batch delegation runs in parallel.
 - Cron docs confirm scheduled agent sessions, skill-backed jobs, fresh sessions, `context_from`, script gates, and no-agent mode.
 - Slash command docs confirm `/goal`, where a judge model checks multi-turn goal completion and can auto-continue.
-
-### Local environment check
-Observed locally on 2026-05-11:
-
-```text
-Hermes Agent v0.13.0 (2026.5.7)
-Project: /home/lin/.hermes/hermes-agent
-Python: 3.11.15
-```
-
-`hermes doctor` showed available toolsets including:
-- `memory`
-- `skills`
-- `session_search`
-- `delegation`
-- `cronjob`
-- `todo`
-- `browser-cdp`
-- `kanban` as runtime-gated
-
-Local source search in `/home/lin/.hermes/hermes-agent` for `dreaming`, `Dreaming`, `/dreaming`, and `Auto Dream` found no implementation hits in Python or Markdown docs except unrelated sleep/BCI metric text.
 
 ### Community signals
 Relevant public issues found:
@@ -143,7 +122,7 @@ A later validation project could test a read-only weekly review job:
 cron scheduled job
 → search recent sessions and project closeouts
 → generate candidate lessons only
-→ deliver to Telegram
+→ deliver to an approved review channel
 → wait for explicit user approval before patching wiki/skills/memory
 ```
 

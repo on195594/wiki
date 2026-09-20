@@ -25,9 +25,6 @@ extraction_limitations: share.google could not be extracted directly; canonical 
 ## Compiled concept page
 - [[agent-context-engineering]]
 
-## Local summary artifact
-- `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260520-080934-Prompt-Engineering-for-Agentic-AI-MachineLearningMastery.com-3412011-016113080-summary.md`
-
 ## Extracted source text
 
 Source URL: https://machinelearningmastery.com/prompt-engineering-for-agentic-ai/

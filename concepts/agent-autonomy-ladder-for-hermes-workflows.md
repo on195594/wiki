@@ -4,7 +4,7 @@ created: 2026-07-01
 updated: 2026-08-30
 type: concept
 tags: [agent, workflow, orchestration, multi-agent, subagent, hermes, governance]
-sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md, skill:coding-agent-delegation]
+sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md]
 status: stable
 description: 用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 Hermes 任务应给 agent 多少自主权。
 aliases: [agent-autonomy-ladder, hermes-agent-autonomy]

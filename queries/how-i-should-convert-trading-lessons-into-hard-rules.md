@@ -1,7 +1,7 @@
 ---
-title: How I Should Convert Trading Lessons into Hard Rules
+title: Converting Trading Lessons into Hard Rules
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, governance, workflow]
 sources: [queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。
 ---
 
-# How I Should Convert Trading Lessons into Hard Rules
+# Converting Trading Lessons into Hard Rules
 
 ## Summary
 这页不是继续讲“学到了什么”，而是讲什么时候一条教训应该真正升级成硬规则。目标是防止两种极端：一种是什么都不制度化，问题永远重复；另一种是什么都想写成规则，结果规则越来越多、越来越空、越来越没人执行。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 哪些交易教训应该升级成硬规则？硬规则应该写到什么颗粒度，才既有约束力，又不会把系统写烂？

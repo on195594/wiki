@@ -23,7 +23,6 @@ extraction: Full article body extracted from the public Machine Learning Mastery
 - Extraction route: direct HTML `<article>` extraction; author and publication date cross-checked against the page JSON-LD `Article` metadata.
 - Source quality: Full public article body, 1,457 words according to page JSON-LD.
 - Source limitation: This is a practitioner checklist, not a peer-reviewed study or independently reproduced benchmark. It provides no runnable suite, dataset, measured failure prevalence, local threshold, or evidence that every test applies to every Agent architecture. Claims such as “most failures” and universal CI/CD suitability remain the author's generalizations.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-191854-7-Regression-Tests-Every-AI-Agent-Should-Pass-Before-Deploy-630133-992978760-summary.md`
 
 ## Compiled concept pages
 

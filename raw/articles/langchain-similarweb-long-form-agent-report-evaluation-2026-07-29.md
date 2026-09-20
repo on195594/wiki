@@ -21,7 +21,6 @@ extraction: Full public article body extracted deterministically from the server
 - URL: https://www.langchain.com/blog/how-similarweb-evaluates-long-form-agent-research-reports-with-langsmith
 - Extraction note: The complete public article body was extracted from the server-rendered `<main>` region and bounded before related-content and newsletter boilerplate. Text extraction preserved the prose and examples but flattened code/JSON formatting.
 - Source limitation: This is a vendor-hosted practitioner case from one Similarweb workflow. It does not provide cross-model controlled experiments, a released benchmark dataset, statistical uncertainty, or evidence that the reported Rubric weights generalize to other Agent systems.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260731-191750-How-Similarweb-Evaluates-Long-Form-Agent-Research-Reports-with-LangSmith-1564895-473371560-summary.md`
 
 ## Compiled concept page
 - [[agent-evaluation-rubric-calibration]]

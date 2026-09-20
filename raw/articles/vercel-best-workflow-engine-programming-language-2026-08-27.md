@@ -7,7 +7,6 @@ author: Pranay Prakash
 published: 2026-08-27
 captured: 2026-08-28
 status: captured
-extraction: web_extract deterministic page extraction; Gemini summary retained at /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260828-200049-The-best-workflow-engine-is-a-programming-language-3560123-878885520-summary.md
 ---
 
 # The best workflow engine is a programming language

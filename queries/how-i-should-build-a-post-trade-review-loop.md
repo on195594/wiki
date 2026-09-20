@@ -1,7 +1,7 @@
 ---
-title: How I Should Build a Post-Trade Review Loop
+title: Building a Post-Trade Review Loop
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, validation, workflow]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/how-i-should-review-a-losing-position.md, queries/how-i-should-handle-a-winning-position.md, queries/how-i-should-decide-between-doing-nothing-and-taking-action.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。
 ---
 
-# How I Should Build a Post-Trade Review Loop
+# Building a Post-Trade Review Loop
 
 ## Summary
 这页不是为了写漂亮复盘，而是为了防止两种常见自欺：赚了就以为自己对，亏了就以为市场错。目标是把每笔交易结束后的感受，压缩成可复用的规则修正输入，让下一笔不是在重复同样的情绪，而是在使用更清晰的系统。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 一笔交易结束后，我应该怎么复盘，才能真的帮助下一轮决策，而不是只是情绪总结？

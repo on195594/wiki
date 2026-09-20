@@ -8,7 +8,6 @@ captured: 2026-05-15
 type: raw-source
 status: raw
 tags: [agent, evaluation, validation, monitoring, harness]
-extraction: Browser DOM extraction after web_extract/Jina returned summary-like or inaccessible content; Gemini summary output preserved at /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260515-164041-TDS-AI-Agent-Evaluation-Harness-12-Metrics-3059721-356727000-summary.md.
 ---
 
 # Building an Evaluation Harness for Production AI Agents

@@ -1,7 +1,7 @@
 ---
-title: How I Should Keep My Trading System Small and Executable
+title: Keeping a Trading System Small and Executable
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, architecture, governance]
 sources: [queries/how-i-should-convert-trading-lessons-into-hard-rules.md, queries/how-i-should-detect-repeat-mistakes-in-my-trading.md, queries/how-i-should-build-a-post-trade-review-loop.md, queries/my-investment-pre-trade-checklist.md, concepts/personal-investment-operating-rules.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。
 ---
 
-# How I Should Keep My Trading System Small and Executable
+# Keeping a Trading System Small and Executable
 
 ## Summary
 这页不是教你再加更多规则，而是教你怎么做减法。目标是避免一个常见结局：每次犯错都加一条，最后系统越来越厚、越来越像百科全书，但真正下单时没人能完整执行。一个系统如果复杂到只能事后解释，就已经不是执行系统，而是自我安慰系统。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 当我的交易规则越来越多时，怎么保持系统足够小、够清楚、真正能执行，而不是越写越复杂、越写越空？

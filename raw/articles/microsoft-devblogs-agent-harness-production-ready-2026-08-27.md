@@ -10,7 +10,6 @@ author: Wes Steyn
 published: 2026-08-27
 captured: 2026-08-29
 status: captured
-extraction: "Main article body extracted from the public Microsoft Dev Blogs HTML via web_extract; site navigation, reactions, comments, recommendations, and footer were omitted. Local Gemini summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260829-142417-devblogs.microsoft.com-agent-framework-agent-harness-making-your-claw-production-213824-113889280-summary.md"
 ---
 
 # Agent Harness: Making your claw production-ready
@@ -24,7 +23,6 @@ extraction: "Main article body extracted from the public Microsoft Dev Blogs HTM
 - Captured: 2026-08-29
 - Extraction route: public HTML through `web_extract`; article body retained, site chrome and discussion widgets omitted.
 - Source quality: full main article body, including code examples and links; this remains a vendor-authored implementation example rather than independent production validation.
-- Local Gemini summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260829-142417-devblogs.microsoft.com-agent-framework-agent-harness-making-your-claw-production-213824-113889280-summary.md`
 
 ## Extracted source
 

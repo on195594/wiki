@@ -1,31 +1,35 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-09-09
+updated: 2026-09-20
 type: concept
 tags: [knowledge-base, workflow, research, automation]
-sources: []
+sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
 status: stable
-description: 定义把外部材料编译进 Hermes wiki 的标准路径：保存 raw、提炼正式页面、补链接、更新 index 和 log。
+description: 定义公开材料进入 Hermes wiki 的标准路径：先过公开边界，再保存 raw、提炼正式页面、补链接并验证。
 aliases: [wiki-ingestion, knowledge-ingestion]
 ---
 
 # Wiki Ingestion Workflow
 
 ## Goal
-把链接、文档、对话结论、视频摘要等外部信息，稳定转化为 Hermes 可复用的长期知识。
+把适合公开的链接、文档、视频摘要等外部信息，稳定转化为可跨用户复用的长期知识。
 
 ## Summary
-这页定义 Hermes 把外部材料编译进 wiki 的标准入库路径：先保存 raw，再提炼主题与结论，随后更新正式页面、补充链接，并同步维护 `[[index]]` 与 `[[log]]`。
+这页定义 Hermes 把外部材料编译进公开 wiki 的标准入库路径：先判断是否适合公开，再保存 raw、提炼主题与结论，随后更新正式页面、补充链接，并同步维护 `[[index]]` 与 `[[log]]`。
 
 ## Standard flow
-1. 获取原始材料
+1. 先过公开边界
+   - 不接收私密对话、本机状态、真实持仓、家庭资料、凭证、私有配置或个人任务台账
+   - 公共知识必须脱离作者环境仍可理解；本机路径和私有会话不能充当公众可复验证据
+   - 边界适用于 `raw/`、正式页、附件、`_meta/`、脚本和日志，不允许“先存 raw 再判断”
+2. 获取公开原始材料
    - URL → `raw/articles/`
    - PDF → `raw/papers/`
-   - 会议/音视频整理 → `raw/transcripts/`
-2. 提炼主题、实体、概念、可复用结论
-3. 搜索现有正式页，区分精确依赖和启发式候选，按下表逐 claim 输出分类与匹配依据
-4. 按 NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE 做最小补丁：
+   - 公开会议/音视频整理 → `raw/transcripts/`
+3. 提炼主题、实体、概念、可复用结论
+4. 搜索现有正式页，区分精确依赖和启发式候选，按下表逐 claim 输出分类与匹配依据
+5. 按 NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE 做最小补丁：
    - `entities/`
    - `concepts/`
    - `comparisons/`
@@ -33,18 +37,18 @@ aliases: [wiki-ingestion, knowledge-ingestion]
    - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源；本地推导使用 `[推论]`
    - 外部变化可能导致错误行动的知识按需添加 volatility/review_by，真实核验才填写 verified_at
    - NEW / CONFIRM / UPDATE 中若局部 `[!volatile]` claim 写入 `> source: X`，必须同时满足 `X ∈ page.frontmatter.sources`，否则该次 ingest 不算闭环；已有来源不重复添加，也不因此刷新整页 `verified_at`
-5. 为页面补充 `[[wikilinks]]`
-6. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
-7. 在 `[[log]]` 只记录 durable delta、证据边界和验证结果
-8. 运行 Wiki health check 与 `git diff --check`
+6. 为页面补充 `[[wikilinks]]`
+7. 更新 `[[index]]`；已关闭的历史 plan/audit 不必进入主索引
+8. 在 `[[log]]` 只记录公共仓库的 durable delta、证据边界和验证结果
+9. 运行 Wiki health check、公开内容检查与 `git diff --check`
 
 ## 来源变化与候选发现
 
 摄取时先抽取产品名、实体名、别名及窄主题词，再搜索现有正式页。两种证据不可混用：
 
-- **exact dependent**：已被引用来源需重审时，用 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --source <精确来源字符串>` 列出全部直接依赖正式页。raw 快照不可覆盖；新快照保留新路径，旧来源路径只用于反查依赖。
+- **exact dependent**：已被引用来源需重审时，在仓库根运行 `python3 _meta/scripts/wiki_reverse_lookup.py --root "$WIKI_ROOT" --source <精确来源字符串>` 列出全部直接依赖正式页。`WIKI_ROOT` 是调用者选择的仓库根；raw 快照不可覆盖，新快照保留新路径，旧来源路径只用于反查依赖。
 - **heuristic candidate**：新来源尚未被引用时，精确反查可以返回 `[]`；继续按产品/实体/aliases/窄主题词搜索正式页 title、aliases、正文。记录每页命中字段、具体词、对应 claim 和需复查原因。仅有 agent、AI、workflow 等宽泛词的干扰页排除并解释；候选不是确定性依赖，更不等于失效。
-- 对受影响页运行 `python3 /home/lin/wiki/_meta/scripts/wiki_reverse_lookup.py --root /home/lin/wiki --page <页面相对路径>`，读取关系出入边及其范围，再按 [[hermes-retrieval-priority-and-answer-path]] 判断。反查失败必须报告，不当成没有依赖。
+- 对受影响页运行 `python3 _meta/scripts/wiki_reverse_lookup.py --root "$WIKI_ROOT" --page <页面相对路径>`，读取关系出入边及其范围，再按 [[hermes-retrieval-priority-and-answer-path]] 判断。反查失败必须报告，不当成没有依赖。
 
 每次输出：`来源 | exact dependent/heuristic candidate | 页面 | 命中字段/词或精确 sources 边 | claim/范围 | 分类 | 修改/不修改理由`。无需新建永久 needs-review 字段或持久化索引。
 
@@ -77,6 +81,9 @@ aliases: [wiki-ingestion, knowledge-ingestion]
 
 ## Anti-patterns
 - 把整段聊天直接复制进 wiki
+- 把私密材料先写入 raw，再用“尚未提炼”解释公开边界缺失
+- 把本机路径、私有 session 或未公开项目写成公众可复验来源
+- 把合成示例描述成已经部署或获得授权的配置
 - 没有来源就写死结论
 - 只堆 raw，不更新正式页面
 - 新建页面后不更新 `[[index]]` 与 `[[log]]`

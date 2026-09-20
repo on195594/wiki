@@ -23,7 +23,6 @@ tags: [agent, workflow, claude-code, ai-coding]
 - Author: Yash Patel
 - Published: 2026-06-20T20:30:22Z
 - Captured: 2026-06-21
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260621-172926-I-use-Claude-to-reframe-my-creative-workflow,-and-it-turned-out-to-be-the-best-c-3622393-143331400-summary.md`
 - Extraction note: deterministic fetch parsed XDA page metadata and article DOM/JSON-LD; navigation, related-card, account and footer noise may remain in the body excerpt below.
 - Source quality: usable full article body with some publisher boilerplate noise.
 - Limitation: this is a personal experience essay, not a controlled study or team-level workflow evaluation.

@@ -9,7 +9,6 @@ source_site: Microsoft Dev Blogs
 published: 2026-05-24
 extracted: 2026-05-24
 extraction_note: Article prose was extracted from Microsoft Dev Blogs public HTML article.entry-content with code blocks preserved and navigation/comment boilerplate removed.
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260524-175728-Agent-Skills-for-Python-File-Code-and-Class-Composed-in-One-Provider-4185108-177666200-summary.md
 status: captured
 ---
 
@@ -22,7 +21,6 @@ status: captured
 - Published: 2026-05-24
 - Extracted: 2026-05-24
 - Extraction limitation: Public HTML extraction preserved article prose and code blocks; this capture is source text for local knowledge synthesis, not a Hermes implementation decision.
-- Gemini summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260524-175728-Agent-Skills-for-Python-File-Code-and-Class-Composed-in-One-Provider-4185108-177666200-summary.md`
 
 ## Local summary
 

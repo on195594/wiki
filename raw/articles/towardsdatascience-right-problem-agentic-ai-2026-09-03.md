@@ -8,7 +8,6 @@ captured: 2026-09-06
 type: raw-source
 status: captured
 tags: [ai-coding, software-engineering, workflow, specification]
-extraction: full Karakeep-captured article body; local Chinese summary at ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260906-170106-How-to-Solve-the-Right-Problem-in-the-Age-of-Agentic-AI-Towards-Data-Science-67030-726380240-summary.md
 ---
 
 # How to Solve the Right Problem in the Age of Agentic AI
@@ -22,7 +21,6 @@ extraction: full Karakeep-captured article body; local Chinese summary at ~/.her
 - Extraction route: Karakeep full-content capture
 - Source quality: full article body
 - Limitation: practitioner framework supported mainly by first-person anecdotes and a hypothetical case-system walkthrough. Statements about tenfold speed, hundreds of wrong changes, effort parity, and reduced rework are not controlled Hermes measurements and must not become local thresholds or hard gates without independent evidence.
-- Local Chinese summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260906-170106-How-to-Solve-the-Right-Problem-in-the-Age-of-Agentic-AI-Towards-Data-Science-67030-726380240-summary.md`
 
 ## Captured article
 

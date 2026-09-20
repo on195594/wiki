@@ -22,7 +22,6 @@ status: captured
 - Published: 2026-04-29T12:00:37+00:00
 - Extracted: 2026-05-01
 - Extraction note: direct browser navigation hit Cloudflare security verification; text below was extracted through Jina Reader.
-- Gemini summary output: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260501-084036-machinelearningmastery.com-building-ai-agents-in-python-with-pydantic-ai-1905-562980379-summary.md`
 
 ## Raw extracted markdown
 

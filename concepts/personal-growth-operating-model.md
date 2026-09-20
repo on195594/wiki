@@ -1,10 +1,10 @@
 ---
 title: Personal Growth Operating Model
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-09-20
 type: concept
 tags: [lifeos, operating-model, optimization, evaluation]
-sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md, session:2026-04-21-user-growth-and-lifeos]
+sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md]
 status: stable
 description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。
 ---
@@ -12,7 +12,9 @@ description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执�
 # Personal Growth Operating Model
 
 ## Summary
-这页定义个人成长在 LifeOS 里的角色：成长不是闲暇时顺便做的附属项目，而是职业升级、家庭沟通、判断质量和长期自我更新能力的底层引擎。本页回答的是成长系统该如何建模与约束，而不是给出某个具体学习计划。
+这页提供个人成长域的通用建模模板：把判断、表达、学习、执行和自我管理作为可观察能力，而不是保存某个人的学习记录或成长状态。
+
+证据边界：这是自我管理框架，不是心理、教育或职业效果的实证保证；具体目标、记录和复盘应留在使用者自己的私有系统。
 
 ## Core objective
 个人成长系统的目标是：
@@ -60,13 +62,15 @@ description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执�
 
 这些适合进入更细化页面、方法层或日志层。
 
-## What Hermes should eventually support here
-后续 Hermes 在这个领域应支持：
+## Optional assistant support
+在获得相应数据访问授权后，Hermes 或其他助手可以支持：
 - 成长主题归档
 - 知识到方法的转化
 - 输出项目跟踪
 - 周期性成长回顾
 - 将成长成果映射回职业、家庭和财务系统
+
+这些能力示例不表示任何个人记录已经接入或自动化。
 
 ## Success criteria
 这个 operating model 成立时，应看到：

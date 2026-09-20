@@ -22,7 +22,6 @@ extraction: full rendered article body from div#post-, with promotional and rela
 - Extraction route: rendered browser DOM, exact KDnuggets `div#post-` container
 - Source quality: full article body
 - Limitation: this is a cleaned rendered-text capture rather than a byte-for-byte HTML mirror. Promotional inserts and the trailing “More On This Topic” list were removed. Research figures and vendor claims remain secondary-source statements and require checking against the cited papers or official reports before becoming normative Hermes rules.
-- Local Chinese summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260818-155804-Specification-Engineering-The-New-Skill-After-Prompt-Engineering-472993-186899200-summary.md`
 
 ## Captured article
 

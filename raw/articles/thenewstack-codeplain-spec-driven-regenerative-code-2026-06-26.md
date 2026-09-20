@@ -17,7 +17,6 @@ extraction_limitations: HTML article body was extracted from The New Stack page 
 - Title: `"Code should be regenerated, not maintained": Codeplain makes the case for spec-driven development`
 - Source: The New Stack
 - Captured: 2026-06-26
-- Local summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260626-155503-Code-3183861-356495120-summary.md`
 - Extraction note: HTML article body extracted from `#tns-post-body-content` / `#tns-post-body` with bounded substring fallback; scripts/navigation/forms removed; duplicate blocks removed.
 
 ## Compiled concept pages

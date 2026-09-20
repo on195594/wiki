@@ -4,7 +4,7 @@ created: 2026-05-06
 updated: 2026-09-20
 type: concept
 tags: [monitoring, automation, research, cron, tool, hermes, workflow]
-sources: [project:/home/lin/.hermes/projects/amazon-price-watch, project:/home/lin/.hermes/projects/investment-watch, skill:public-info-monitoring-automation]
+sources: [concepts/agent-development-lifecycle.md, concepts/stateful-agent-environments-and-grounded-verification.md, concepts/deterministic-analytics-llm-reasoning-boundary.md]
 status: stable
 description: 总结只读公共信息监控自动化项目的范围、边界、验证和推广方法。
 ---
@@ -24,7 +24,7 @@ Default route:
 1. Define the exact user-approved signal before writing collection code.
 2. Model the public source and capture normal/failure fixtures.
 3. Keep parsing, diff/policy, storage, notification, and health checks as separate layers.
-4. Run the worker without LLM judgment in daily operation; use Hermes for build-time assistance, cron scheduling, Telegram delivery, and knowledge capture.
+4. Run the worker without LLM judgment in daily operation; use Hermes only for supported and authorized build-time assistance, scheduling, delivery, and knowledge capture.
 5. Promote learning to wiki/skill/template only after real runs, failure fixtures, health checks, and a retrospective.
 
 Hard stops:
@@ -42,19 +42,14 @@ Navigation:
 - Diff and notification policy: [§6](#6-变化判断), [§7](#7-通知设计)
 - Hermes runtime and health: [§8](#8-hermes-runtime-模式), [§9](#9-健康检查)
 - Knowledge routing and promotion: [§10](#10-知识沉淀路径)
-- Proven examples: [Amazon sample](#amazon-样板带来的关键教训), [Investment Watch validation](#investment-watch-验证结果)
+- Illustrative examples: [Web price monitoring](#网页价格监控示例的关键教训), [Higher-risk monitoring](#更高风险监控的边界)
 - Startup checklist: [新监控项目启动 checklist](#新监控项目启动-checklist)
 
 ## 定位
 
-这是一套用于个人自动化的通用方法：定期观察公开信息源，只在发生有意义的变化时提醒，并保留可审计状态。
+这是一套面向公开信息的通用方法：定期观察无需登录的公开来源，只在发生有意义的变化时提醒，并保留可审计状态。
 
-第一套已验证样板是本机项目：
-
-- 项目：`/home/lin/.hermes/projects/amazon-price-watch`
-- 样板场景：Amazon Global Store 中国站商品降价监控
-- 项目复盘：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-amazon-price-watch-retrospective.md`
-- Hermes 计划：`/home/lin/.hermes/projects/amazon-price-watch/docs/plans/2026-05-06-hermes-monitoring-methodology-promotion-plan.md`
+证据边界：本页综合仓库内的生命周期、有状态验证和确定性计算原则。价格监控等场景仅作合成示例，不表示某个站点、项目、通知渠道或 Hermes Cron 已经部署；真实采用必须由目标项目的 fixture、测试、运行回读和权限审批证明。
 
 ## 适用场景
 
@@ -96,17 +91,17 @@ Navigation:
 人工处理动作：
 ```
 
-Amazon 样板：
+合成的价格监控示例：
 
 ```text
-监控对象：globalstore.amazon.cn 商品
-信息源：公开商品详情页
+监控对象：公开商品页
+信息源：无需登录的公开详情页
 采集字段：标题、价格、币种、可用性、抓取状态
 提醒条件：当前价格低于上一次成功抓取价格
 不提醒条件：价格不变、涨价
 异常提醒条件：抓取失败、价格不可观测、健康检查异常
 频率：每日低频
-通知渠道：Hermes Telegram
+通知渠道：部署者批准的通知通道
 人工处理动作：用户自行决定是否购买；系统不自动下单
 ```
 
@@ -192,7 +187,7 @@ monitoring-project/
 - `parser`：纯解析，不访问网络。
 - `scraper/collector`：外部采集 adapter。
 - `diff/policy`：纯变化判断，不读写文件、不发通知。
-- `notify`：只格式化确定性文本，不调用 Telegram。
+- `notify`：只格式化确定性文本，不直接调用外部通知服务。
 - `storage`：状态读写，JSONL 为审计历史，latest 为索引。
 - `health`：判断运行是否可信。
 - `cli`：stdout/exit-code 合约边界。
@@ -256,7 +251,7 @@ Hermes cron 友好的 stdout 合约：
 
 ```text
 空 stdout：不通知
-非空 stdout：可投递给 Telegram
+非空 stdout：可投递给已批准的通知通道
 exit 0：本轮完成，包括有业务/运行提醒的完成
 非 0 exit：运行失败，由调度层告警
 ```
@@ -266,12 +261,12 @@ exit 0：本轮完成，包括有业务/运行提醒的完成
 Hermes 在这个方法中承担三类角色：
 
 - 构建期：用工具、浏览器、Playwright、测试帮助建模和修复。
-- 运行期：用 cron 调度，用 Telegram gateway 投递。
+- 运行期：在目标版本支持且已授权时，用调度器运行并向批准的通道投递。
 - 沉淀期：用 skills/wiki/memory/session search 管理可复用知识。
 
 日常运行不依赖 LLM 临场判断，应该由固定 worker 执行。
 
-推荐 Hermes cron no-agent wrapper：
+若目标 Hermes 版本支持相应能力且部署者已授权，可采用 no-agent wrapper；以下仅是可配置示例：
 
 ```bash
 cd /path/to/project
@@ -281,10 +276,10 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 
 注意：
 
-- wrapper 放在 `~/.hermes/scripts/`。
+- wrapper 可放在部署者选择的 Hermes 脚本目录。
 - cron 注册相对脚本路径。
 - wrapper 先手动运行通过，再创建 cron job。
-- 不在项目核心代码里调用 Telegram。
+- 不在项目核心代码里绑定具体通知服务。
 - 不在 wrapper 内递归创建 cron job。
 
 ## 9. 健康检查
@@ -305,7 +300,7 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 
 ## 10. 知识沉淀路径
 
-按 Hermes 官方机制和本机约定，分层沉淀：
+按 Hermes 文档和通用知识分层，分别沉淀：
 
 - 项目 docs：保存具体事实、证据、source-analysis、复盘。
 - wiki：保存人类可读的方法论、决策说明、样板案例索引。
@@ -323,20 +318,20 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 5. 项目 gate 通过。
 6. 才考虑进入 wiki/skill/template。
 
-## Amazon 样板带来的关键教训
+## 网页价格监控示例的关键教训
 
 - 页面上的价格必须限定语义区域，不能取页面第一个 `¥`。
 - `Decimal("0.00")` 可能是合法值，fallback 用 `is None`。
 - 失败快照不能抹掉上一次成功价格基线。
 - health 不能静默通过缺状态。
-- `scripts/project-uv` 能避免 Hermes 外层 venv 警告污染 stdout。
+- 项目自己的 runner 应隔离环境噪音，避免污染 stdout 合约。
 - 项目核心不依赖 Hermes；Hermes 是 runtime 和知识层。
 
-## Investment Watch 验证结果
+这些是对典型页面解析失败模式的设计推论；仓库未附带某个商业站点的公开 fixture，不能据此宣称站点适配已验证。
 
-`investment-watch` 验证了本方法论在更高风险的个人决策支持场景中也成立，但必须增加更强的边界：typed contracts、read-only / warning-only 报告层、phase closeout，以及明确的 non-closure。
+## 更高风险监控的边界
 
-验证入口：[[investment-watch-final-closeout]]
+当监控输出可能影响投资、医疗、法律或其他高风险决策时，只读采集本身并不足以证明系统安全。应增加 typed contracts、read-only / warning-only 报告层、来源和时效检查、明确的 non-closure，以及人工决策边界。
 
 可复用结论：
 
@@ -347,7 +342,7 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 
 不推广的内容：
 
-- 不把 `investment-watch` 的投资规则、基金配置、阈值、目标权重或风险判断推广为通用投资建议。
+- 不把任何私有项目的投资规则、基金配置、阈值、目标权重或风险判断推广为通用投资建议。
 - 不把 risk guardrails、strategic rebalance、post-signal review 或 data lifecycle audit 直接变成自动动作。
 - 不把项目 phase 日志、行情、持仓或一次性 smoke 结果写入 memory。
 
@@ -373,10 +368,3 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 - [[wiki-ingestion-workflow]]
 - [[hermes-context-layer-operating-rules]]
 - [[hermes-layer-routing-decision-checklist]]
-
-## 相关链接
-
-- Amazon Price Watch 项目：`/home/lin/.hermes/projects/amazon-price-watch`
-- 项目方法论：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-monitoring-automation-workflow-methodology.md`
-- 项目复盘：`/home/lin/.hermes/projects/amazon-price-watch/docs/methodology/2026-05-06-amazon-price-watch-retrospective.md`
-- 推广计划：`/home/lin/.hermes/projects/amazon-price-watch/docs/plans/2026-05-06-hermes-monitoring-methodology-promotion-plan.md`

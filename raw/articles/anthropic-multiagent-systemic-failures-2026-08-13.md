@@ -19,7 +19,6 @@ status: captured
 - Extraction: Full rendered browser DOM captured by the local `/gsummary` workflow; related-content and subscription boilerplate removed.
 - Source quality: Official first-party research article.
 - Limitations: Experiments, prompts, environments and several model variants are Anthropic-controlled; the article does not provide an independently reproduced cross-provider benchmark or establish universal production failure rates.
-- Local summary: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260817-232619-Patterns-and-problems-in-emerging-multiagent-systems-3941306-590616800-summary.md`
 
 ## Captured source
 

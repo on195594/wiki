@@ -11,7 +11,6 @@ captured_at: 2026-09-02
 venue_note: accepted at EMNLP
 extraction_route: arXiv HTML via Karakeep full-content capture; arXiv abstract metadata independently checked
 source_quality: full-paper evidence packet
-local_summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260902-074740-SKILL.state-Scalable-Long-Horizon-Agent-Skills-1927510-501119800-summary.md
 type: raw-source
 status: captured
 ---

@@ -22,7 +22,6 @@ source_quality: primary-paper-full-text
 - PDF reviewed: `https://arxiv.org/pdf/2608.27454`
 - Version reviewed: arXiv v1, 2026-08-27
 - Extraction route: full arXiv HTML text recovered after Karakeep returned `content_unavailable`; appendices and embedded prompts were included in the review.
-- Local summary artifact: `/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260901-222742-WikiSkill-Compiling-Agent-Experience-into-Persistent-Knowledge-for-Skill-Evoluti-1244231-100858000-summary.md`
 
 ## Research question
 

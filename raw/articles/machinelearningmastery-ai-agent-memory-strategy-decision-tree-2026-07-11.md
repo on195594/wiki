@@ -9,7 +9,6 @@ captured: 2026-07-11
 type: raw-source
 status: captured
 tags: [agent, memory, context-engineering, workflow, governance]
-extraction: Direct HTML extraction from the page's `<article>` element; scripts, navigation, sharing widgets, sidebars, and template clutter were removed. Headings, paragraphs, lists, and code text were retained. Local Gemini summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260711-174053-Choosing-the-Right-AI-Agent-Memory-Strategy-A-Decision-Tree-Approach-69279-318306040-summary.md
 ---
 
 # Choosing the Right AI Agent Memory Strategy: A Decision-Tree Approach

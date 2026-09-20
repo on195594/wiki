@@ -8,7 +8,6 @@ source: Towards Data Science
 source_url: https://towardsdatascience.com/how-to-work-with-ai-coding-agents/
 published: 2026-08-27
 captured: 2026-08-29
-extraction: Direct web extraction of the complete main article body; site navigation, author footer, sharing controls, and related articles were excluded. Gemini summary artifact: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260829-232211-towardsdatascience.com-how-to-work-with-ai-coding-agents-694873-599985520-summary.md
 ---
 
 # How to Work with AI Coding Agents

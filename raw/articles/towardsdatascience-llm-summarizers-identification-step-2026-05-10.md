@@ -8,7 +8,6 @@ captured: 2026-05-16
 type: raw-source
 status: raw
 tags: [llm, workflow, validation, risk-control]
-extraction: Browser DOM extraction because web_extract returned a generated summary-like artifact and Jina Reader was inaccessible; Gemini summary output preserved at ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260516-212602-LLM-Summarizers-Skip-the-Identification-Step-147832-915777280-summary.md.
 ---
 
 # LLM Summarizers Skip the Identification Step

@@ -1,10 +1,10 @@
 ---
 title: Work and Career Operating Model
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-09-20
 type: concept
 tags: [lifeos, operating-model, workflow, decision]
-sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, session:2026-04-21-user-career-and-family-balance]
+sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
 description: 定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。
 ---
@@ -12,7 +12,9 @@ description: 定义工作与职业在 LifeOS 中的目标、项目、能力积�
 # Work and Career Operating Model
 
 ## Summary
-这页定义工作与职业领域在 LifeOS 中的角色：它不只是收入来源，也是家庭安全边界、成长空间、时间配置和未来选择权的重要基础。本页回答的是职业系统应如何被建模，而不是某一次求职、某一个项目或某一个短期 KPI 应怎么做。
+这页提供工作与职业域的通用建模模板：把收入稳定性、能力复利、时间预算、家庭兼容性和未来选择权作为显式变量，而不保存某个人的雇佣、薪酬或求职状态。
+
+证据边界：这是决策框架，不保证职业结果；具体判断需结合行业、地区、劳动关系与个人约束。
 
 ## Core objective
 工作与职业系统的核心目标是：
@@ -69,13 +71,15 @@ description: 定义工作与职业在 LifeOS 中的目标、项目、能力积�
 
 这些更适合后续 skill 或项目页。
 
-## What Hermes should eventually support here
-后续 Hermes 在这个领域应支持：
+## Optional assistant support
+在获得相应数据访问授权后，Hermes 或其他助手可以支持：
 - 职业决策对比
 - 能力栈盘点
 - 项目/成果整理
 - 周期性职业回顾
 - 与家庭和财务约束联动的职业选择评估
+
+这些能力示例不表示任何工作、家庭或财务资料已经接入。
 
 ## Success criteria
 这个 operating model 成立时，应出现：

@@ -8,7 +8,6 @@ captured: 2026-09-15
 type: raw-source
 status: captured
 tags: [agent, multi-agent, subagent, context-engineering, orchestration, harness]
-extraction: Public article main body extracted on 2026-09-15 via Hermes web extraction; site navigation, footer, image contents and related-content cards omitted; two empty-alt image links retained. Local Chinese summary: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260915-115736-Organizing-Context-in-a-Multi-Agent-Harness-392215-745454720-summary.md.
 ---
 
 # Organizing Context in a Multi-Agent Harness
@@ -22,7 +21,6 @@ extraction: Public article main body extracted on 2026-09-15 via Hermes web extr
 - Captured: 2026-09-15
 - Extraction quality: Full substantive article body; navigation, footer, image contents and related-content cards omitted; two empty-alt image links retained.
 - Evidence limitation: This is a LangChain product/engineering article. Its prompt-caching and cost claims are architectural guidance, not a controlled benchmark or proof that Hermes implements forked context.
-- Local summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260915-115736-Organizing-Context-in-a-Multi-Agent-Harness-392215-745454720-summary.md`
 
 ## Captured article body
 

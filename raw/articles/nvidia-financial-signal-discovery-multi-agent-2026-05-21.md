@@ -9,7 +9,6 @@ source_site: NVIDIA Technical Blog
 published: 2026-05-21
 extracted: 2026-05-22
 extraction_note: Direct HTML fetch with browser-like headers; extracted .entry-content source prose from NVIDIA Technical Blog. web_extract returned a synthesized summary and was not used as source.
-summary_path: ~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260522-195212-Automating-and-Optimizing-Financial-Signal-Discovery-with-Multi-Agent-Systems-2246843-812495160-summary.md
 status: captured
 ---
 
@@ -23,7 +22,6 @@ status: captured
 - Published: 2026-05-21
 - Extracted: 2026-05-22
 - Extraction limitation: Direct HTML extraction returned substantial source prose from `.entry-content`; the article includes formulas, configuration snippets, and backtest statistics, but not the underlying S&P 500 dataset or full backtest engine implementation.
-- Gemini summary: `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260522-195212-Automating-and-Optimizing-Financial-Signal-Discovery-with-Multi-Agent-Systems-2246843-812495160-summary.md`
 
 ## Local summary
 

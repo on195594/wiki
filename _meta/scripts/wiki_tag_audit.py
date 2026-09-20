@@ -12,14 +12,15 @@ from __future__ import annotations
 import argparse
 import ast
 import json
-import os
+
 import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
-DEFAULT_ROOT = "/home/lin/wiki"
+from wiki_root import resolve_root
+
 CORE_FILES = {"index.md", "log.md", "SCHEMA.md"}
 
 
@@ -175,14 +176,14 @@ def build_report(root: Path) -> dict[str, Any]:
     }
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Audit wiki frontmatter tags against SCHEMA.md taxonomy")
-    parser.add_argument("--root", default=os.environ.get("OBSIDIAN_VAULT_PATH", DEFAULT_ROOT))
+    parser.add_argument("--root")
     parser.add_argument("--format", choices=["json", "text"], default="text")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     try:
-        root = Path(args.root).expanduser().resolve()
+        root = resolve_root(args.root)
         report = build_report(root)
     except Exception as exc:  # noqa: BLE001 - CLI boundary
         print(f"ERROR: {exc}", file=sys.stderr)

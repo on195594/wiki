@@ -12,7 +12,6 @@ doi: https://doi.org/10.1038/s42256-026-01268-y
 captured: 2026-09-04
 status: captured
 extraction: Structured capture from the public article page and the completed Hermes URL-summary run; not a byte-for-byte copy of the full paper.
-local_summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260904-164505-Capable-language-models-can-outgrow-the-benefits-of-collaboration-1722218-662728120-summary.md
 ---
 
 # Capable language models can outgrow the benefits of collaboration

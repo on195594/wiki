@@ -23,7 +23,6 @@ tags: [llm, research, workflow]
 - Published/updated: 2026-08-03
 - Reviewed by: Jessica Schrader
 - Captured: 2026-08-04
-- Local summary (local-only auxiliary path, not a stable long-term source): `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260804-195605-When-AI-Finishes-Your-Thoughts,-What-Happens-to-Them-2014216-501656640-summary.md`
 - Extraction route: direct HTTP fetch with a browser-like User-Agent; text extracted from the page `<article>` DOM using block elements
 - Source quality: substantially complete article prose, references and publisher disclaimer; not a byte-faithful HTML capture
 

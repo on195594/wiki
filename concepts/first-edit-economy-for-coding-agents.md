@@ -4,7 +4,7 @@ created: 2026-07-07
 updated: 2026-07-07
 type: concept
 tags: [agent, ai-coding, workflow, optimization, evaluation, hermes]
-sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md, skill:coding-agent-workflow, skill:coding-agent-delegation]
+sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md]
 status: stable
 source_policy: source_backed
 aliases: [first-edit-economy, economical-search-and-edit, 少探索早验证]

@@ -7,7 +7,6 @@ type: raw-source
 source: Towards Data Science
 source_url: https://towardsdatascience.com/designing-a-persistent-knowledge-layer-that-refuses-to-guess/
 status: captured
-extraction: "Full rendered browser DOM main.innerText captured by the local gsummary workflow; cleaned source packet removed duplicate and boilerplate lines. Local summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260817-175356-Designing-a-Persistent-Knowledge-Layer-That-Refuses-to-Guess-3666181-660767840-summary.md"
 ---
 
 # Designing a Persistent Knowledge Layer That Refuses to Guess

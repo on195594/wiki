@@ -9,7 +9,6 @@ source_url: https://addyo.substack.com/p/loop-engineering
 extraction:
   route: jina_reader_direct_fetch
   source_quality: full
-  summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260610-202621-Loop-Engineering-Addy-Osmani-2587920-533404480-summary.md
 status: captured
 ---
 

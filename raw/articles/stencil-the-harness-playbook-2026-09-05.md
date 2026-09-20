@@ -11,7 +11,6 @@ published: 2026-09-02
 captured: 2026-09-05
 status: captured
 extraction: "Structured capture based on the completed Hermes URL-summary run; the local output is preserved separately. This file is not a byte-for-byte extraction of the publisher page."
-local_summary: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260905-161356-The-Harness-Playbook-2991970-819941600-summary.md
 ---
 
 # The Harness Playbook

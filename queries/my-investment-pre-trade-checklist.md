@@ -1,7 +1,7 @@
 ---
-title: My Investment Pre-Trade Checklist
+title: Investment Pre-Trade Risk Checklist
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, risk-control, trading, decision]
 sources: [concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, queries/how-i-should-use-these-two-investment-frameworks.md]
@@ -10,10 +10,12 @@ description: 提供下单前快速检查清单，用于拦截情绪单、越权�
 aliases: [pre-trade-checklist]
 ---
 
-# My Investment Pre-Trade Checklist
+# Investment Pre-Trade Risk Checklist
 
 ## Summary
 这页不是讲宏观理念，而是给下单前最后一分钟用的。目标只有一个：把“我好像想买”压缩成一套可快速执行的检查，尽量拦住情绪单、摊平单、越权单和没有退出计划的单。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 每次准备下单前，我应该快速检查什么，才能减少低质量交易和错误加仓？

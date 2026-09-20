@@ -24,7 +24,6 @@ tags: [agent, evaluation, research]
 - Captured: 2026-08-09
 - Online simulation: https://nathanbos.github.io/power-sim/
 - GitHub repository: https://github.com/nathanbos/power-sim
-- Local summary (local-only auxiliary path, not a stable long-term source): `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260809-205511-How-to-Get-More-Statistical-Power-from-Fewer-Research-Participants-3071928-041679640-summary.md`
 - Extraction route: rendered `main.innerText` from the live browser through persistent CDP
 - Source quality: complete visible article prose; navigation and trailing publisher promotion removed; not a byte-faithful HTML capture
 

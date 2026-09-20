@@ -22,7 +22,6 @@ tags: [agent, evaluation, validation, prompt-tuning, system-design]
 - Author: Kritnandan
 - Published: 2026-08-09
 - Captured: 2026-08-12
-- Local summary (local-only auxiliary path, not a stable long-term source): `~/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260812-005023-Why-Prompt-Engineering-Alone-Won’t-Save-Your-AI-Product-1327607-753220800-summary.md`
 - Extraction route: Jina Reader Medium fallback
 - Source quality: complete article prose; Medium UI boilerplate and image-only prompts removed; not a byte-faithful HTML capture
 

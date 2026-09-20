@@ -9,7 +9,6 @@ source: MachineLearningMastery.com
 author: Matthew Mayo
 published: 2026-06-12
 status: summarized
-summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260616-103843-machinelearningmastery.com-python-concepts-every-ai-engineer-must-master-468266-818338800-summary.md
 ---
 
 # Python Concepts Every AI Engineer Must Master
@@ -38,7 +37,3 @@ summary_path: /home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/2
 本文不作为 Python 教程沉淀，而作为 Hermes 工作流可靠性检查清单的来源之一。具体转化见：
 
 - [[hermes-python-engineering-capability-checklist]]
-
-## Local summary artifact
-
-全文路径：`/home/lin/.hermes/projects/hermes-gsummary-workflow/runs/outputs/20260616-103843-machinelearningmastery.com-python-concepts-every-ai-engineer-must-master-468266-818338800-summary.md`

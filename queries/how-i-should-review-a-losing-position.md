@@ -1,7 +1,7 @@
 ---
-title: How I Should Review a Losing Position
+title: Reviewing a Losing Position
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-09-20
 type: query
 tags: [investment, trading, validation, risk-control]
 sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-use-these-two-investment-frameworks.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
@@ -9,10 +9,12 @@ status: stable
 description: 回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。
 ---
 
-# How I Should Review a Losing Position
+# Reviewing a Losing Position
 
 ## Summary
 这页不是讲“亏了怎么办最安慰自己”，而是讲亏损仓位出现后，怎么把问题拆清：这是正常波动、系统内小亏、结构失效后的该认错，还是被我包装成“长期主义”或“再平衡”的情绪补仓。目标是尽快把亏损仓位从情绪对象，重新变回一个需要判断和处理的头寸。
+Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+
 
 ## Question
 当一个持仓开始亏损后，我应该怎么复盘和判断，才不会把小错拖成大错？
