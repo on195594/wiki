@@ -9,7 +9,7 @@ source: XDA Developers
 source_url: https://www.xda-developers.com/use-claude-to-reframe-creative-workflow/
 published: 2026-06-20T20:30:22Z
 captured: 2026-06-21
-extraction: deterministic HTML/JSON-LD article extraction via local gsummary workflow
+extraction: deterministic HTML/JSON-LD extraction from the public article
 tags: [agent, workflow, claude-code, ai-coding]
 ---
 

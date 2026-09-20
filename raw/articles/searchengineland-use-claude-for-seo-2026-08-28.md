@@ -21,7 +21,7 @@ status: captured
 - Reviewed by: Danny Goodwin
 - Published: 2026-08-28 10:00
 - Source URL: https://searchengineland.com/use-claude-for-seo-dont-let-claude-do-seo-485931
-- Extraction route: Karakeep captured article content reused by `/gsummary`
+- Extraction route: captured public article content
 - Source quality: full captured article text
 - Limitation: practitioner article with two author-reported Claude incidents; the cited GSC figures and broader prevalence were not independently reproduced for this ingestion. The capture retains some inline promotion and related-link text from the publisher page.
 

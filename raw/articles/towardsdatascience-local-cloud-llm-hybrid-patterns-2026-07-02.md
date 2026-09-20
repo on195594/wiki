@@ -7,7 +7,7 @@ published_at: unknown
 captured_at: 2026-07-03
 status: raw
 tags: [llm, agent, delegation, hybrid-llm, hermes, local-cloud]
-extraction_limitations: Direct publisher fetch returned HTTP 403; source packet was captured through Jina Reader fallback and cached by gsummary. This raw note preserves the extracted source packet and Gemini summary, not a newly fetched page.
+extraction_limitations: Direct publisher fetch returned HTTP 403; the source packet was captured through Jina Reader fallback. This raw note preserves that extracted packet and a structured summary, not a newly fetched page.
 ---
 
 # Stop Choosing Between Local and Cloud LLMs: A Field Guide to Hybrid Patterns

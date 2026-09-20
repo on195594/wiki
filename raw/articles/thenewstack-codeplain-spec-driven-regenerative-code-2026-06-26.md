@@ -7,7 +7,7 @@ published_at: unknown
 captured_at: 2026-06-26
 status: raw
 tags: [ai-coding, spec-driven-development, agent, context-engineering, hermes]
-extraction_limitations: HTML article body was extracted from The New Stack page container by the `/gsummary` workflow; this raw page stores the generated summary and source metadata rather than the full original article body.
+extraction_limitations: HTML article body was extracted from The New Stack page container; this raw page stores a structured summary and source metadata rather than the full original article body.
 ---
 
 # Codeplain spec-driven regenerative code

@@ -21,7 +21,7 @@ status: captured
 - Author: Abid Ali Awan
 - Published: 2026-05-21
 - Extracted: 2026-05-22
-- Extraction limitation: Direct HTML fetch succeeded and the gsummary wrapper pre-clean removed obvious navigation/boilerplate. The Gemini summary noted that Reflex UI/PDF export sections were mentioned but not fully represented in the extracted implementation details.
+- Extraction limitation: Direct HTML fetch succeeded and pre-cleaning removed obvious navigation and boilerplate. Reflex UI and PDF export sections are mentioned but not fully represented in the extracted implementation details.
 
 ## Local summary
 

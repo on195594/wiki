@@ -21,7 +21,7 @@ status: captured
 - Published: 2026-08-26
 - Captured: 2026-09-02
 - Source URL: https://claude.com/blog/how-warp-builds-self-improving-agents-on-claude
-- Extraction route: structured capture from the public-page extraction, cross-checked against the full Karakeep capture used by `gsummary`.
+- Extraction route: structured capture from the public page.
 - Source quality: complete structured capture of the substantive sections and finite lists; not a verbatim article mirror.
 - Limitations: this is an Anthropic-published customer case based on Warp's account. Company scale and usage figures are self-reported. The article gives no controlled comparison, accuracy improvement, bad-edit rate, reviewer-time cost, or long-term regression data for the self-improvement loop; it supports a design pattern and operating lessons, not unattended production self-modification.
 

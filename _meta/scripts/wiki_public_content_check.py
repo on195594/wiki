@@ -17,7 +17,11 @@ SYNTHETIC_LINE_MARKER = "public-check: synthetic"
 AUTHOR_HOME = re.compile(r"(?:file://)?/home/" + "lin" + r"(?:/|\b)")
 PRIVATE_SOURCE = re.compile(r"(?<![A-Za-z0-9_])(?:session:|project:/|filesystem:|skill:)")
 PRIVATE_ARTIFACT = re.compile(
-    r"\b(?:session|summary)\s+run\s+\d{8}-\d{6}\b|\boff-wiki\s+(?:grounding\s+)?artifact\b",
+    r"\b(?:session|summary)\s+run\s+\d{8}-\d{6}\b|"
+    r"\boff-wiki\s+(?:grounding\s+)?artifact\b|"
+    r"\blocal\s+`?/?gsummary`?\s+(?:workflow|output|source\s+packet)\b|"
+    r"\blocal\s+(?:output|summary(?:\s+path)?|source\s+packet)\b.{0,80}"
+    r"\b(?:auxiliary\s+evidence|preserved|retained|recorded)\b",
     re.I,
 )
 PERSONAL_ENDPOINT = re.compile(r"(?:telegram:\d{6,}|\bjob_id\s*[:=]\s*[0-9a-f]{8,})", re.I)
@@ -87,6 +91,8 @@ def has_literal_secret(text: str) -> bool:
     for match in SECRET_ASSIGNMENT.finditer(text):
         quoted = match.group(2) is not None
         value = (match.group(2) or match.group(3)).strip().lower()
+        if quoted and value.startswith("$"):
+            continue
         if not quoted and (
             re.fullmatch(r"[a-z_]+", value)
             or re.fullmatch(r"[A-Z][A-Z0-9_]*", match.group(3))

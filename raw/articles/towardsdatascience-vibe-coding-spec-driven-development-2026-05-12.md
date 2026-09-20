@@ -14,9 +14,9 @@ tags: [ai-coding, spec-driven-development, workflow, agent, validation]
 
 ## Source note
 
-This raw page captures Mariya Mansurova's Towards Data Science article about moving from ad-hoc vibe coding to spec-driven development for AI-assisted software projects. The canonical URL was verified from the saved gsummary output and `web_extract` metadata.
+This raw page captures Mariya Mansurova's Towards Data Science article about moving from ad-hoc vibe coding to spec-driven development for AI-assisted software projects. The canonical URL was verified from `web_extract` metadata.
 
-Extraction limitation: `web_extract` returned a structured markdown summary rather than the full article body. No private local summary artifact is retained as public evidence.
+Extraction limitation: `web_extract` returned a structured markdown summary rather than the full article body.
 
 ## Core claim
 

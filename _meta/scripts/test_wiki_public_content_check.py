@@ -49,6 +49,7 @@ class PublicContentCheckTests(unittest.TestCase):
             "WIKI_ROOT=/path/to/wiki\n"
             "Product paths may use ~/.hermes or /home/user/project.\n"
             'api_key = "YOUR_API_KEY"\n'
+            'api_key = "$OPENAI_API_KEY"\n'
             "api_key=OLOSTEP_API_KEY\n"
             'api_key=os.environ["OPENAI_API_KEY"]\n'
             "api_key=credential\n"
@@ -64,6 +65,7 @@ class PublicContentCheckTests(unittest.TestCase):
         self.write("raw/quoted.md", '---\nsources: ["session:private"]\n---\n')
         self.write("raw/singular.md", "---\nsource: session:private\n---\n")
         self.write("raw/artifact.md", "Summary session run " + "20260102-030405 was off-wiki.\n")
+        self.write("raw/local.md", "The local " + "gsummary output is auxiliary evidence.\n")
         self.write("scripts/env.sh", f"export API_KEY={sensitive_value}\n")
 
         report = public_check.build_report(self.root)
@@ -73,6 +75,7 @@ class PublicContentCheckTests(unittest.TestCase):
         self.assertIn(("raw/quoted.md", "private-provenance"), rules)
         self.assertIn(("raw/singular.md", "private-provenance"), rules)
         self.assertIn(("raw/artifact.md", "private-session-artifact"), rules)
+        self.assertIn(("raw/local.md", "private-session-artifact"), rules)
         self.assertIn(("scripts/env.sh", "literal-secret-assignment"), rules)
         self.assertNotIn(sensitive_value, rendered)
         self.assertFalse(report["pass"])

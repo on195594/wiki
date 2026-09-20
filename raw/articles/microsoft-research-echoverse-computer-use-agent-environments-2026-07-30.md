@@ -9,7 +9,7 @@ source: Microsoft Research
 source_url: https://www.microsoft.com/en-us/research/blog/echoverse-deep-evolving-environments-for-computer-use-agents/
 published: 2026-07-30T10:00:00-07:00
 captured: 2026-08-03
-extraction: Direct fetch returned HTTP 403; browser main DOM extraction recovered the complete rendered article (about 31,494 characters) and retained bounded author/share/site boilerplate; the local gsummary output is auxiliary evidence.
+extraction: Direct fetch returned HTTP 403; browser main DOM extraction recovered the complete rendered article (about 31,494 characters) and retained bounded author/share/site boilerplate.
 tags: [agent, browser, research, evaluation, validation, workflow]
 ---
 

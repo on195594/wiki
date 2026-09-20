@@ -22,7 +22,7 @@ extraction: "Full rendered main article body captured from the public page; site
 - Author: Jeremy Daly
 - Published: 2026-09-05
 - Captured: 2026-09-06
-- Extraction route: rendered public-page main body, cross-checked against the Karakeep-backed summary artifact.
+- Extraction route: rendered public-page main body.
 - Source quality: full main article body. Oracle sponsored the post; it is an experience-based architecture argument without a public dataset, benchmark, production incident record, or independent comparison. Oracle AI Vector Search is a vendor example, not a Hermes technology-selection conclusion.
 
 ## Extracted source

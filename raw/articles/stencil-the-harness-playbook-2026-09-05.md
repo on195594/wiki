@@ -10,7 +10,7 @@ author: Can Bölük
 published: 2026-09-02
 captured: 2026-09-05
 status: captured
-extraction: "Structured capture based on the completed Hermes URL-summary run; the local output is preserved separately. This file is not a byte-for-byte extraction of the publisher page."
+extraction: "Structured capture based on the public article. This file is not a byte-for-byte extraction of the publisher page."
 ---
 
 # The Harness Playbook
@@ -20,7 +20,7 @@ extraction: "Structured capture based on the completed Hermes URL-summary run; t
 - Source URL: https://stencil.so/blog/harness-playbook
 - Publisher/site: Stencil
 - Captured: 2026-09-05
-- Capture type: structured source capture derived from the completed URL-summary run.
+- Capture type: structured source capture derived from the public article.
 - Source limitation: author, publication date, title, and section structure were checked against the publisher page on 2026-09-06, but byte-level full article text is not stored here; numerical claims and implementation details remain source claims.
 - Hermes boundary: this source supports concept-level architecture review, not authorization for runtime, skill, MCP, cron, gateway, or configuration changes.
 

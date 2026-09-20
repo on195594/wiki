@@ -10,7 +10,7 @@ authors: [Ankit Jain, Patrick Dubois]
 published: 2026-08-31
 captured: 2026-09-01
 status: captured
-extraction: "Full main article body recovered from the Karakeep-backed source packet and cross-checked against the public page extraction; site navigation, subscription UI, recommendations, sponsor module and footer were omitted."
+extraction: "Full main article body captured from the public page; site navigation, subscription UI, recommendations, sponsor module and footer were omitted."
 ---
 
 # Your agent context needs a development lifecycle
@@ -22,7 +22,7 @@ extraction: "Full main article body recovered from the Karakeep-backed source pa
 - Authors: Ankit Jain and Patrick Dubois
 - Published: 2026-08-31
 - Captured: 2026-09-01
-- Extraction route: reused the full Karakeep capture identified in the source packet and cross-checked the clean main body against the public page extraction.
+- Extraction route: full public-page capture with the clean main body cross-checked against the page extraction.
 - Source quality: full main article body. Aviator sponsored the article; it presents an experience-based operating framework rather than independent comparative evidence, and its metrics have no reported baseline or universal threshold.
 
 ## Extracted source

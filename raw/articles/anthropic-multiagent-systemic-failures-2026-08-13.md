@@ -16,7 +16,7 @@ status: captured
 - Published: 2026-08-13
 - Captured: 2026-08-17
 - URL: https://www.anthropic.com/research/multiagent-systems
-- Extraction: Full rendered browser DOM captured by the local `/gsummary` workflow; related-content and subscription boilerplate removed.
+- Extraction: Full rendered browser DOM captured from the public article; related-content and subscription boilerplate removed.
 - Source quality: Official first-party research article.
 - Limitations: Experiments, prompts, environments and several model variants are Anthropic-controlled; the article does not provide an independently reproduced cross-provider benchmark or establish universal production failure rates.
 

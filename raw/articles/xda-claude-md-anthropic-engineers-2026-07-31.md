@@ -9,7 +9,7 @@ source: XDA Developers
 source_url: https://www.xda-developers.com/your-claude-md-is-probably-wrong-how-anthropics-engineers-structure/
 published: 2026-07-31T19:36:46Z
 captured: 2026-08-01
-extraction: Jina Reader fallback; generated-summary widget, navigation, image-only gallery lines, ads, related cards and footer boilerplate removed; local gsummary source packet and summary retained separately
+extraction: Jina Reader fallback; generated-summary widget, navigation, image-only gallery lines, ads, related cards and footer boilerplate removed
 tags: [claude-code, workflow, governance, context-engineering]
 ---
 

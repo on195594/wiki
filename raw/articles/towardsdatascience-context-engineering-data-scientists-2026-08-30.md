@@ -10,7 +10,7 @@ author: Piero Paialunga
 published: 2026-08-30
 captured: 2026-09-01
 status: captured
-extraction: "Full main article body reused from the Karakeep capture used by gsummary and cross-checked against the public page metadata; site navigation, image binaries, recommendations and author-promotion footer were omitted."
+extraction: "Full main article body captured from the public page and cross-checked against its metadata; site navigation, image binaries, recommendations and author-promotion footer were omitted."
 ---
 
 # Context Engineering Is Changing. Here’s What It Means for Data Scientists
@@ -22,7 +22,7 @@ extraction: "Full main article body reused from the Karakeep capture used by gsu
 - Author: Piero Paialunga
 - Published: 2026-08-30
 - Captured: 2026-09-01
-- Extraction route: full Karakeep content reused from the gsummary source packet; title, author and publication date cross-checked against the public page.
+- Extraction route: full public article capture; title, author and publication date cross-checked against the public page.
 - Source quality: full substantive article body. The article is a practitioner interpretation of Anthropic guidance and the author's Claude Code experience; it does not provide a controlled comparison or universal thresholds.
 
 ## Extracted source
