@@ -3,9 +3,10 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-20 | Indexed pages: 110
+> Last updated: 2026-09-21 | Indexed pages: 111
 
 ## Entities
+- [[flutter]] — Google 管理的开源跨平台 UI 框架：Dart/Engine/Embedder 分层、声明式 Widget 模型、平台互操作、工程实践与采用边界
 
 ## Concepts
 - [[local-first-sync-confirmed-mirror-outbox-conflict-policy]] — Local-First 同步中的确认镜像、持久化 Outbox、乐观视图、游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
