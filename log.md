@@ -14,6 +14,13 @@
 - Added the canonical index entry and a bounded backlink from `[[software-engineering-laws-architecture]]`; retained official live URLs as canonical provenance instead of creating a raw documentation mirror.
 - Validation: citation-ledger strict verification passed at 77% sentence coverage (40/52); Wiki health P0/P1/P2=`0/0/0`; tag audit undeclared count=`0`; public-content violations=`0`; `git diff --check` passed.
 
+## [2026-09-21] ingest | Entropy and entropy increase
+- Added `[[entropy-and-entropy-increase]]` to distinguish thermodynamic, statistical and Shannon entropy; documented the isolated/open-system boundary and the limits of “disorder” shorthand.
+- Grounded the page in MIT OpenCourseWare, OpenStax, Shannon's 1948 paper and a narrow NIST nonequilibrium caveat; connected the existing software-entropy metaphor without treating it as a physical law.
+- Tightened source boundaries by limiting `k_B` to the cited Boltzmann/Gibbs formulas, using Shannon's sourced “natural unit” wording, and marking management/software transfer as synthesis.
+- Added the canonical index entry and a backlink from `[[software-engineering-laws-quality]]`; no raw source or active runtime layer changed.
+- Validation: citation ledger strict verification passed at 66% sentence coverage (27/41); Wiki health P0/P1/P2=`0/0/0`; tag audit undeclared count=`0`; public-content violations=`0`; the public Harvard-hosted source URL candidate was reviewed as provenance, not a private path; `git diff --check` passed.
+
 ## [2026-09-20] governance | Public knowledge boundary remediation
 - Applied the public boundary to formal pages, raw sources, `_meta`, operations, scripts and repository logs before content is admitted.
 - Removed personal instance-state dashboards, private session/task artifacts and local-only provenance pointers; generalized mixed pages without promoting private observations to public facts.

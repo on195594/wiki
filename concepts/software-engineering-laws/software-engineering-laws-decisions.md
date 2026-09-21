@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Decisions
 created: 2026-08-10
-updated: 2026-08-10
+updated: 2026-09-21
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md]
@@ -52,6 +52,7 @@ aliases: [software-engineering-laws-decisions]
 ### First Principles Thinking
 
 - **ID**：lse-first-principles-thinking
+- **中文别名**：第一性原理
 - **原陈述**：Breaking a complex problem into its most basic blocks and then building up from there.
 - **核心机制**：把复杂问题拆成基础需求、固有组成和真实约束，区分事实与沿袭的假设，再从这些基础重新构造方案，而不是直接复制既有实现或估算。
 - **适用与评审问题**：[综合] 我们真正要实现的目标是什么？哪些条件是硬约束，哪些只是惯例或类比？从基本工作项重新估算后，既有框架或方案仍然必要吗？

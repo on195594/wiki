@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Quality
 created: 2026-08-10
-updated: 2026-08-10
+updated: 2026-09-21
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md]
@@ -41,6 +41,7 @@ aliases: [software-engineering-laws-quality]
 - **核心机制**：可见但长期未处理的缺陷、失败测试、过时代码或文档会传递“质量并不重要”的信号，促使更多绕过流程和草率修改，形成代码健康度下降的循环；及时修复小问题有助于维持质量规范。
 - **适用与评审问题**：[综合] 当前可见的小缺陷是否正在降低团队对测试、设计或维护标准的预期，并可能诱发进一步退化？
 - **误用与限制**：来源未系统给出反例；该条目描述的是质量问题可能滚雪球的机制，不应被写成每个小问题都会必然导致系统性衰退的保证。
+- **相关概念**：[[entropy-and-entropy-increase|Entropy and Entropy Increase]] 区分物理熵、信息熵与 “software entropy” 工程类比。
 - **来源**：[[broken-windows-theory]]；[canonical](https://lawsofsoftwareengineering.com/laws/broken-windows-theory/)
 
 ### Kernighan's Law

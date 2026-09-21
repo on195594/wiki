@@ -3,12 +3,13 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-21 | Indexed pages: 111
+> Last updated: 2026-09-21 | Indexed pages: 112
 
 ## Entities
 - [[flutter]] — Google 管理的开源跨平台 UI 框架：Dart/Engine/Embedder 分层、声明式 Widget 模型、平台互操作、工程实践与采用边界
 
 ## Concepts
+- [[entropy-and-entropy-increase]] — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [[local-first-sync-confirmed-mirror-outbox-conflict-policy]] — Local-First 同步中的确认镜像、持久化 Outbox、乐观视图、游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [[software-engineering-laws-architecture]] — 软件工程 Architecture 法则地图：分布式取舍、抽象边界、复杂度分配、兼容性与系统演化风险
 - [[software-engineering-laws-teams]] — 软件工程 Teams 法则地图：团队规模、知识集中、组织结构、晋升机制与协作成本
