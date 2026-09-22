@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-09-20
+updated: 2026-09-22
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, note]
 sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md]
@@ -187,9 +187,9 @@ status: draft | stable | active | closed | current
 > 已核验的具体行为及版本/环境范围。
 ```
 
-其余易变段落仍待验证；稳定方法论可独立使用。第一阶段 health check 不解析局部 block，由 Agent 按检索契约判断。
+其余易变段落仍待验证；稳定方法论可独立使用。Health check 会忽略代码示例，并逐 block 检查三个 metadata 字段、日期格式与顺序、未来日期、到期提醒和来源包含关系；不支持的 block 格式显式报 P1。到期当天仍有效，次日起只产生该 claim 范围的 P2 提醒，不证明内容错误，也不阻断无关修改。
 
-添加 block 前先检查页面级 `sources`：block 使用的新来源必须同步加入，已有来源不重复添加。页面级 `sources` 是 canonical provenance；加入局部来源只表示页面包含依赖该来源的 claim，不表示来源支撑整页，也不能据此刷新整页 `verified_at`。因此 `block source ⊆ page sources`，block `source:` 不得成为页面唯一的来源记录。
+添加 block 前先检查页面级 `sources`：block 使用的新来源必须同步加入，已有来源不重复添加。页面级 `sources` 是 canonical provenance；加入局部来源只表示页面包含依赖该来源的 claim，不表示来源支撑整页，也不能据此刷新整页 `verified_at`。因此 `block source ⊆ page sources`，block `source:` 不得成为页面唯一的来源记录。block 可选；一旦使用，受支持格式要求 `verified_at`、`review_by`、`source` 各出现一次，并用带 `>` 的空行分隔 metadata 与 claim。
 
 ## Relationship to other rules
 这页定义“怎么写页面”，不是“信息该放哪里”。

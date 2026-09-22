@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-09-20
+updated: 2026-09-22
 type: meta
 status: current
 ---
@@ -36,7 +36,19 @@ python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v
 git diff --check
 ```
 
-`wiki_health_check.py` and `wiki_tag_audit.py` are read-only. `wiki_public_content_check.py` scans every repository file outside `.git` and `__pycache__`; it does not exempt code blocks, `raw/` or `_meta/`.
+`wiki_health_check.py` and `wiki_tag_audit.py` are read-only. `wiki_public_content_check.py` scans every repository file outside `.git` and `__pycache__`; it does not exempt code blocks, `raw/` or `_meta/`. Local `git diff --check` covers uncommitted changes; CI separately checks the event commit range so a clean checkout cannot hide whitespace errors already committed.
+
+## Local `[!volatile]` result contract
+
+For each supported local block, `wiki_health_check.py` validates real `YYYY-MM-DD` values, `verified_at <= review_by`, non-future verification, expiry, and exact membership of the local `source` in page frontmatter `sources`.
+
+- P1: malformed/unsupported block, malformed date, future `verified_at`, invalid date order, or undeclared local source.
+- P2: `review_by` is earlier than the injected/current date. The due date itself remains valid; expiry begins the next day.
+- Multiple blocks are independent. Fenced, inline and indented code examples are ignored.
+- A passing block validates only that claim scope. It does not set or refresh page-level `verified_at` and does not imply that the whole page is current.
+- The block and page-level freshness fields remain optional. Existing pages are not required to add or refresh them.
+
+Unsupported block syntax is reported rather than treated as success. The supported syntax is defined in `SCHEMA.md`.
 
 ## Public-content result contract
 
@@ -76,6 +88,18 @@ _meta/scripts/wiki_link_check.sh --root "$WIKI_ROOT"
 ```
 
 Extra arguments are passed through to `lychee`.
+
+## Minimal CI
+
+`.github/workflows/wiki-checks.yml` runs on pull requests and pushes to `main` with read-only repository permission. It uses only repository scripts and the Python standard library:
+
+1. unit tests;
+2. Wiki health check;
+3. tag audit;
+4. public-content check;
+5. `git diff --check` over the pull-request merge base or pushed commit range.
+
+The workflow does not use secrets, `pull_request_target`, write permissions, metadata/raw-hash writers, network link checks or AI review. External-link liveness remains the separate operator command above because it is network-dependent.
 
 ## Exit codes
 

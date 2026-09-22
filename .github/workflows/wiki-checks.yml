@@ -1,0 +1,42 @@
+name: Wiki checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Unit tests
+        run: python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v
+      - name: Wiki health
+        run: python3 _meta/scripts/wiki_health_check.py --root "$GITHUB_WORKSPACE" --format markdown
+      - name: Tag audit
+        run: python3 _meta/scripts/wiki_tag_audit.py --root "$GITHUB_WORKSPACE"
+      - name: Public-content check
+        run: python3 _meta/scripts/wiki_public_content_check.py --root "$GITHUB_WORKSPACE"
+      - name: Commit-range whitespace check
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base=$(git merge-base "$PR_BASE_SHA" "$GITHUB_SHA")
+          elif [[ -n "$PUSH_BEFORE" && ! "$PUSH_BEFORE" =~ ^0+$ ]]; then
+            base="$PUSH_BEFORE"
+          else
+            base=$(git hash-object -t tree /dev/null)
+          fi
+          git diff --check "$base" "$GITHUB_SHA"

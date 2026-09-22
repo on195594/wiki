@@ -75,6 +75,23 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         report = wiki_health_check.build_report(self.root)
         return {item["code"] for item in report["issues"][severity]}
 
+    @staticmethod
+    def volatile_block(
+        *,
+        verified_at: str = "2026-09-09",
+        review_by: str = "2026-09-10",
+        source: str = "docs:test",
+        claim: str = "This claim is verified only for the stated local scope.",
+    ) -> str:
+        return (
+            "> [!volatile]\n"
+            f"> verified_at: {verified_at}\n"
+            f"> review_by: {review_by}\n"
+            f"> source: {source}\n"
+            ">\n"
+            f"> {claim}\n"
+        )
+
     def test_optional_freshness_and_date_boundaries(self):
         p = self.add_formal("freshness")
         self.add_formal("freshness-owner", body="# Freshness owner\n\n" + "context " * 20 + "[[freshness]]\n")
@@ -104,6 +121,85 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
                     self.assertEqual(self.issue_codes("P1"), p1)
                     report = wiki_health_check.build_report(self.root)
                     self.assertEqual({i["code"] for i in report["issues"]["P2"] if i["path"] == "concepts/freshness.md"}, p2)
+
+    def test_local_volatile_dates_and_injected_today(self) -> None:
+        path = self.add_formal("local-freshness")
+        self.add_formal("local-freshness-owner", body="# Owner\n\n" + "context " * 20 + "[[local-freshness]]\n")
+        original = path.read_text(encoding="utf-8")
+        cases = [
+            ("2026-09-09", "2026-09-10", date(2026, 9, 9), set(), set()),
+            ("2026-02-30", "2026-09-10", date(2026, 9, 9), {"malformed_volatile_verified_at"}, set()),
+            ("2026-09-09", "20260910", date(2026, 9, 9), {"malformed_volatile_review_by"}, set()),
+            ("2026-09-10", "2026-09-11", date(2026, 9, 9), {"future_volatile_verified_at"}, set()),
+            ("2026-09-09", "2026-09-08", date(2026, 9, 9), {"invalid_volatile_date_range"}, {"volatile_block_due_for_review"}),
+            ("2026-09-01", "2026-09-09", date(2026, 9, 9), set(), set()),
+            ("2026-09-01", "2026-09-09", date(2026, 9, 10), set(), {"volatile_block_due_for_review"}),
+        ]
+        for verified_at, review_by, today, expected_p1, expected_p2 in cases:
+            with self.subTest(verified_at=verified_at, review_by=review_by, today=today):
+                path.write_text(original + "\n" + self.volatile_block(verified_at=verified_at, review_by=review_by), encoding="utf-8")
+                report = wiki_health_check.build_report(self.root, today=today)
+                self.assertEqual(
+                    {item["code"] for item in report["issues"]["P1"] if item["path"] == "concepts/local-freshness.md"},
+                    expected_p1,
+                )
+                self.assertEqual(
+                    {item["code"] for item in report["issues"]["P2"] if item["path"] == "concepts/local-freshness.md"},
+                    expected_p2,
+                )
+
+    def test_local_volatile_source_must_be_declared(self) -> None:
+        body = "# Local source\n\n## Summary\n\n" + "context " * 20 + "\n\n" + self.volatile_block(source="docs:missing")
+        self.add_formal("local-source", body=body)
+        report = wiki_health_check.build_report(self.root, today=date(2026, 9, 9))
+        issues = [item for item in report["issues"]["P1"] if item["path"] == "concepts/local-source.md"]
+        self.assertEqual([item["code"] for item in issues], ["volatile_source_not_declared"])
+        self.assertEqual(issues[0]["block"], 1)
+
+    def test_multiple_volatile_blocks_are_independent_and_code_examples_are_ignored(self) -> None:
+        code_example = (
+            "```markdown\n"
+            "> [!volatile]\n"
+            "> verified_at: not-a-date\n"
+            "> review_by: also-not-a-date\n"
+            "> source: docs:missing\n"
+            ">\n"
+            "> This is only a template.\n"
+            "```\n"
+        )
+        body = (
+            "# Multiple local claims\n\n## Summary\n\n"
+            + "context " * 20
+            + "\n\n"
+            + self.volatile_block()
+            + "\n"
+            + self.volatile_block(verified_at="2026-09-01", review_by="2026-09-08", source="docs:missing")
+            + "\n"
+            + code_example
+        )
+        self.add_formal("multiple-local-claims", body=body)
+        self.add_formal("multiple-local-claims-owner", body="# Owner\n\n" + "context " * 20 + "[[multiple-local-claims]]\n")
+        report = wiki_health_check.build_report(self.root, today=date(2026, 9, 9))
+        p1 = [item for item in report["issues"]["P1"] if item["path"] == "concepts/multiple-local-claims.md"]
+        p2 = [item for item in report["issues"]["P2"] if item["path"] == "concepts/multiple-local-claims.md"]
+        self.assertEqual([(item["code"], item["block"]) for item in p1], [("volatile_source_not_declared", 2)])
+        self.assertEqual([(item["code"], item["block"]) for item in p2], [("volatile_block_due_for_review", 2)])
+
+    def test_unsupported_volatile_block_format_is_reported(self) -> None:
+        body = (
+            "# Unsupported local claim\n\n## Summary\n\n"
+            + "context " * 20
+            + "\n\n> [!volatile] custom title\n"
+            + "> verified_at: 2026-09-09\n"
+            + "> review_by: 2026-09-10\n"
+            + "> unsupported: value\n"
+            + "> Claim without the required separator.\n"
+        )
+        self.add_formal("unsupported-local-claim", body=body)
+        report = wiki_health_check.build_report(self.root, today=date(2026, 9, 9))
+        issues = [item for item in report["issues"]["P1"] if item["path"] == "concepts/unsupported-local-claim.md"]
+        self.assertEqual([item["code"] for item in issues], ["unsupported_volatile_block"])
+        self.assertEqual(issues[0]["block"], 1)
 
     def test_multiline_sources_read_all_items(self):
         p = self.add_formal("block-sources")

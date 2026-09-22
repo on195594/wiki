@@ -76,8 +76,8 @@
 - [[hermes-model-specific-harness-profiles]] — Hermes 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
 - [[hermes-memory-skills-wiki-boundaries]] — Hermes 内容归属主规则：用正反例区分 memory、skills、wiki、sessions/project state 与历史证据
 - [[hermes-retrieval-priority-and-answer-path]] — Hermes 检索优先级与回答路径：先查 wiki，再按 memory/skills/sessions/external 补全
-- [[hermes-wiki-lint-and-health-check-standards]] — Hermes wiki lint / 健康检查规范：链接、索引、frontmatter、标签、陈旧性与结构健康
-- [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查
+- [[hermes-wiki-lint-and-health-check-standards]] — Hermes wiki lint / 健康检查规范：链接、索引、frontmatter、标签、页面及局部 claim 新鲜度与结构健康
+- [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks、局部 `[!volatile]` claim 与质量检查
 - [[lifeos-overview]] — LifeOS 可配置总览模板：定义可选领域、系统层次、公开/私有边界和 Hermes 的可选执行角色
 - [[llm-context-engineering-layer]] — Context engineering 管理 memory、compression、re-ranking 与 token budget，并定义 Agentic RAG 的可重放检索证据、权限硬约束和主张支撑边界
 - [[llm-engineering-knowledge-map]] — LLM 工程知识地图：从文本表示、Transformer、训练对齐、推理优化、RAG、Prompt 到评估监控的系统分层导航

@@ -3,6 +3,14 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-22] governance | Claim-scoped freshness checks and minimal CI
+- Extended the read-only health check to validate each supported local `[!volatile]` block independently: required block fields and format, real dates, `verified_at <= review_by`, future verification dates, claim-scoped expiry and `block source ⊆ page sources`.
+- Kept local blocks and page-level freshness metadata optional. Malformed/unsupported blocks, invalid/future dates and undeclared local sources are P1; expiry begins the day after `review_by` and remains a non-blocking P2 reminder for that claim only.
+- Added synthetic temporary-fixture coverage with an injected date for valid/invalid/future dates, due-date boundary, source omission, multiple blocks, unsupported syntax and ignored code examples.
+- Added a read-only GitHub Actions workflow for unit, health, tag, public-content and commit-range whitespace checks. Network link checking remains separate; CI does not use secrets, write permissions, `pull_request_target`, raw-hash writers or AI review.
+- Aligned Schema, runbook, writing/lint standards and index descriptions; no raw source, raw hash, historical freshness date, similarity threshold or Hermes runtime configuration changed.
+- Validation: baseline and candidate Wiki health P0/P1/P2=`0/0/0`; unit tests increased from 41 to 45 and passed; tag audit undeclared count=`0`; public-content violations=`0` with the same 16 non-blocking candidates; external links reported 0 errors with 21 configured exclusions; `git diff --check` passed.
+
 ## [2026-09-22] refactor | Knowledge-layer rule maintenance boundaries
 - Kept the existing five-dimension composable routing model and consolidated only full-rule duplication: architecture now provides navigation, content ownership remains in `[[hermes-memory-skills-wiki-boundaries]]`, quick composition and synthetic cases remain in `[[hermes-layer-routing-decision-checklist]]`, and context assembly plus long-task state remain in `[[hermes-context-layer-operating-rules]]`.
 - Left the canonical Freshness Gate in `[[hermes-retrieval-priority-and-answer-path]]` unchanged; retained short local safety and time-sensitive boundaries where removing them would increase lookup cost.
