@@ -105,6 +105,27 @@ Allowed `sources` forms:
 
 页面级 `sources` 是 canonical provenance，也是 source reverse lookup 与来源失效传播的唯一确定性入口。局部 `[!volatile]` block 的 `source:` 只标识该 claim 的具体证据，并且必须同时存在于页面 frontmatter 的 `sources` 中，即 `block source ⊆ page sources`；不得把 block `source:` 作为页面唯一的来源记录。
 
+### Local `[!volatile]` claims
+
+局部 block 本身可选，不要求历史页面添加。使用时只支持以下 claim-scoped 形式；三个 metadata 字段各出现一次，metadata 与正文之间保留一个带 `>` 的空行：
+
+```markdown
+> [!volatile]
+> verified_at: YYYY-MM-DD
+> review_by: YYYY-MM-DD
+> source: docs:具体来源
+>
+> 已核验的具体 claim、版本和环境范围。
+```
+
+确定性检查规则：
+
+- `verified_at` 与 `review_by` 必须为真实的 `YYYY-MM-DD` 日期，且 `verified_at <= review_by`；未来 `verified_at`、非法日期、非法顺序和不支持的 block 格式为 P1。
+- `review_by` 到期当天仍有效，次日起产生 claim-scoped P2 复核提醒；提醒不证明内容错误，也不阻断无关修改。
+- `source` 必须逐字符串包含于页面 frontmatter `sources`；遗漏为 P1。页面级 `sources` 仍是 canonical provenance。
+- 多个 block 独立检查；fenced、inline 或 indented code 中的示例忽略。局部 block 通过只说明该 claim 的结构与日期窗口通过，不刷新或验证整页。
+- 页面级可选字段继续可选；本规则不要求批量补 block、刷新日期或迁移历史页面。
+
 本机路径、私有会话、私有 skill 和未公开项目不得列为公共 provenance。可复用但不可公开复验的内容必须在正文中明确标为有限经验或推论；失去依据的事实断言应删除或降级，不得用无关公开链接、`source_policy: normative`、清空 `sources` 或刷新 `verified_at` 掩盖缺口。
 
 ## Tag Taxonomy

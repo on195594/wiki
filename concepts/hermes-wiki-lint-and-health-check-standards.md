@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-09-20
+updated: 2026-09-22
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, debugging]
 sources: [repository:SCHEMA.md, repository:_meta/scripts/wiki_health_check.py, repository:_meta/scripts/wiki_tag_audit.py]
@@ -140,7 +140,7 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
 - 校验：正式知识页（formal page）中的非法 `volatility`、非法/未来 `verified_at`、非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
 
-以上为脚本已实现的日期/枚举检查；局部 volatile block、语义冲突和当前适用性由检索 Agent 判断，不设固定 stale 天数。关系目标缺失继续归现有 `broken_wikilink` P0。
+以上页面级日期/枚举检查继续生效。脚本还逐个检查局部 `[!volatile]` block 的支持格式、日期格式与顺序、未来验证日期、到期提醒和 `block source ⊆ page sources`；代码示例忽略。局部通过不提升整页资格，到期只产生该 claim 范围的 P2 复核提醒。语义冲突和当前适用性仍由检索 Agent 判断，不设固定 stale 天数。关系目标缺失继续归现有 `broken_wikilink` P0。
 
 ## Severity levels
 建议把 lint 结果按严重性分级：

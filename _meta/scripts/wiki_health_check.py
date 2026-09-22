@@ -56,6 +56,9 @@ ALLOWED_FORMAL_TYPES = {
 ALLOWED_FORMAL_STATUSES = {"draft", "stable", "active", "closed", "current"}
 ALLOWED_RELATION_KEYS = {"depends_on", "refines", "conflicts_with", "supersedes", "related"}
 RELATION_VALUE_PATTERN = re.compile(r"^(\[\]|\[\[[^\]]+\]\](?:\s*,\s*\[\[[^\]]+\]\])*)$")
+VOLATILE_MARKER = re.compile(r"^>[ \t]*\[!volatile\][ \t]*$")
+VOLATILE_MARKER_START = re.compile(r"^>.*\[!volatile(?:\]|[ \t]|$)", re.I)
+VOLATILE_FIELDS = {"verified_at", "review_by", "source"}
 
 
 def rel(root: Path, path: Path) -> str:
@@ -185,7 +188,7 @@ def declared_tags(root: Path) -> set[str]:
 
 
 def parse_review_by(value: str) -> date | None:
-    """Parse a `review_by` value, or None if it is not a plain YYYY-MM-DD date.
+    """Parse a date value, or None if it is not a plain YYYY-MM-DD date.
 
     The regex is not redundant: `date.fromisoformat` also accepts `20261111`
     and ISO week forms, and SCHEMA.md declares one written format.
@@ -196,6 +199,53 @@ def parse_review_by(value: str) -> date | None:
         return date.fromisoformat(value.strip())
     except ValueError:
         return None
+
+
+def volatile_blocks(text: str) -> list[dict[str, Any]]:
+    """Parse supported claim-scoped callouts after removing code examples."""
+    lines = strip_code(text).splitlines()
+    blocks: list[dict[str, Any]] = []
+    index = 0
+    while index < len(lines):
+        if not VOLATILE_MARKER_START.match(lines[index]):
+            index += 1
+            continue
+        start = index
+        index += 1
+        quoted: list[str] = []
+        while index < len(lines) and lines[index].startswith(">"):
+            quoted.append(lines[index][1:].lstrip(" \t"))
+            index += 1
+        errors: list[str] = []
+        fields: dict[str, str] = {}
+        if not VOLATILE_MARKER.fullmatch(lines[start]):
+            errors.append("marker must be exactly '> [!volatile]'")
+        try:
+            separator = quoted.index("")
+        except ValueError:
+            separator = -1
+            errors.append("metadata and claim must be separated by a quoted blank line")
+        metadata = quoted[:separator] if separator >= 0 else quoted
+        claim = quoted[separator + 1 :] if separator >= 0 else []
+        if not any(line.strip() for line in claim):
+            errors.append("block must contain a claim after metadata")
+        for line in metadata:
+            match = re.fullmatch(r"(verified_at|review_by|source):[ \t]*(.*)", line)
+            if not match:
+                errors.append(f"unsupported metadata line: {line!r}")
+                continue
+            key, value = match.groups()
+            if key in fields:
+                errors.append(f"duplicate metadata field: {key}")
+            else:
+                fields[key] = value.strip()
+        missing = sorted(VOLATILE_FIELDS - fields.keys())
+        if missing:
+            errors.append("missing metadata fields: " + ", ".join(missing))
+        if "source" in fields and not fields["source"]:
+            errors.append("source must not be empty")
+        blocks.append({"block": len(blocks) + 1, "fields": fields, "error": "; ".join(errors) or None})
+    return blocks
 
 
 def content_tokens(text: str) -> set[str]:
@@ -311,7 +361,7 @@ def git_status(root: Path) -> dict[str, Any]:
     }
 
 
-def build_report(root: Path) -> dict[str, Any]:
+def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
     root = root.expanduser().resolve()
     if not root.exists() or not root.is_dir():
         raise FileNotFoundError(f"wiki root does not exist or is not a directory: {root}")
@@ -335,7 +385,7 @@ def build_report(root: Path) -> dict[str, Any]:
 
     issues: dict[str, list[dict[str, Any]]] = {"P0": [], "P1": [], "P2": []}
     notes: list[str] = []
-    today = date.today()
+    today = today or date.today()
     taxonomy = declared_tags(root)
     if not taxonomy:
         add_issue(issues, "P1", "unreadable_tag_taxonomy", "SCHEMA.md", "Tag Taxonomy section missing or unparseable; tag registration is not being enforced")
@@ -383,6 +433,7 @@ def build_report(root: Path) -> dict[str, Any]:
             if not text.startswith("---\n"):
                 add_issue(issues, "P1", "missing_frontmatter", r, "Formal page missing YAML frontmatter")
             frontmatter = extract_frontmatter(text)
+            page_sources: set[str] = set()
             if frontmatter is not None:
                 values = {field: frontmatter_value(frontmatter, field) for field in REQUIRED_FORMAL_FIELDS}
                 for field, value in values.items():
@@ -446,11 +497,40 @@ def build_report(root: Path) -> dict[str, Any]:
                 if sources_value is None:
                     add_issue(issues, "P2", "missing_sources", r, "Formal page missing sources frontmatter")
                 else:
-                    for source in parse_inline_list(sources_value):
+                    page_sources = set(parse_inline_list(sources_value))
+                    for source in page_sources:
                         if "/tmp/" in source or source.startswith("/tmp/"):
                             add_issue(issues, "P2", "tmp_source", r, "Source uses non-durable /tmp path", source=source)
                         if not is_allowed_source(source):
                             add_issue(issues, "P2", "unexpected_source_form", r, "Source does not match SCHEMA.md allowed source forms", source=source)
+            for block in volatile_blocks(body):
+                block_number = block["block"]
+                if block["error"]:
+                    add_issue(
+                        issues,
+                        "P1",
+                        "unsupported_volatile_block",
+                        r,
+                        "Local [!volatile] block does not match the supported claim-scoped format",
+                        block=block_number,
+                        detail=block["error"],
+                    )
+                    continue
+                fields = block["fields"]
+                verified = parse_review_by(fields["verified_at"])
+                review_by = parse_review_by(fields["review_by"])
+                if verified is None:
+                    add_issue(issues, "P1", "malformed_volatile_verified_at", r, "Local verified_at is not a YYYY-MM-DD date", block=block_number, value=fields["verified_at"])
+                elif verified > today:
+                    add_issue(issues, "P1", "future_volatile_verified_at", r, "Local verified_at cannot record a future verification", block=block_number, value=fields["verified_at"])
+                if review_by is None:
+                    add_issue(issues, "P1", "malformed_volatile_review_by", r, "Local review_by is not a YYYY-MM-DD date", block=block_number, value=fields["review_by"])
+                elif review_by < today:
+                    add_issue(issues, "P2", "volatile_block_due_for_review", r, "Local review_by date has passed; only this claim scope is due for review", block=block_number, review_by=fields["review_by"])
+                if verified is not None and review_by is not None and verified > review_by:
+                    add_issue(issues, "P1", "invalid_volatile_date_range", r, "Local verified_at must not be later than review_by", block=block_number)
+                if fields["source"] not in page_sources:
+                    add_issue(issues, "P1", "volatile_source_not_declared", r, "Local source must also appear in page frontmatter sources", block=block_number, source=fields["source"])
             clean_body = strip_code(body)
             rel_match = re.search(r"^##\s+Relations\s*$", clean_body, flags=re.M)
             if rel_match:
@@ -600,6 +680,7 @@ def build_report(root: Path) -> dict[str, Any]:
     notes.append("Inline-code and fenced-code wikilink examples are ignored during link checks.")
     notes.append("Root core files and _meta/ pages are excluded from formal frontmatter/H1 requirements.")
     notes.append(f"Freshness dates are evaluated against today's date ({today.isoformat()}); expiry starts the day after review_by.")
+    notes.append("Passing a local [!volatile] block check validates only that claim scope, not the whole page.")
 
     result = {
         "root": str(root),
@@ -646,7 +727,8 @@ def markdown_report(result: dict[str, Any]) -> str:
             for item in items:
                 target = f" target=`{item['target']}`" if "target" in item else ""
                 extra = f" count=`{item['count']}`" if "count" in item else ""
-                lines.append(f"- `{item['code']}` `{item['path']}` — {item['message']}{target}{extra}")
+                block = f" block=`{item['block']}`" if "block" in item else ""
+                lines.append(f"- `{item['code']}` `{item['path']}` — {item['message']}{target}{extra}{block}")
         lines.append("")
     lines.append("## Notes")
     for note in result["notes"]:
