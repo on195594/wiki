@@ -1,7 +1,7 @@
 ---
 title: Hermes Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-07-11
+updated: 2026-09-22
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md]
@@ -13,8 +13,9 @@ aliases: [layer-boundaries, memory-skill-wiki-boundaries]
 # Hermes Memory Skills Wiki Boundaries
 
 ## Summary
-`memory`、`skills`、`wiki` 都是 Hermes 的长期能力组成部分，但三者职责完全不同。
-判断边界的核心原则不是“这个信息重不重要”，而是“它属于偏好与事实、可复用流程，还是正式知识资产”。
+`memory`、`skills`、`wiki` 都是 Hermes 的长期能力组成部分，但三者职责完全不同。本页集中维护内容归属、正反例和从认知记忆术语到本地载体的映射。
+
+判断边界的核心原则不是“这个信息重不重要”，而是“它属于偏好与事实、可复用流程，还是正式知识资产”。组合触发与外部能力见 [[hermes-layer-routing-decision-checklist]]；上下文加载与长任务状态见 [[hermes-context-layer-operating-rules]]；当前适用性见 [[hermes-retrieval-priority-and-answer-path]]。
 
 ## One-line definitions
 - `memory`：短小、稳定、长期有效的偏好与事实
@@ -127,7 +128,7 @@ Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-d
 |---|---|---|---|
 | Working memory | 当前轮次或会话状态、工具中间结果 | 当前 session；长任务的 project state | 长期 `memory`、wiki |
 | Semantic memory | 当前有效、稳定、跨任务复用的事实与偏好 | 短小事实进入 `USER.md` / `MEMORY.md`；需来源和结构的知识进入 wiki | 原始事件日志 |
-| Episodic memory | 历史事件、决策、交互和运行证据 | session history、project logs、run artifacts、wiki raw source | 默认注入的长期 `memory` |
+| Episodic memory | 历史事件、决策、交互和运行证据 | session history、project logs、run artifacts；只有适合公开且有长期价值的材料才可能进入 wiki raw source | 默认注入的长期 `memory` |
 | Procedural memory | 已验证、可重复执行的规程 | skills、references、项目 SOP 和 fixtures | 单次成功日志、未经验证的经验 |
 
 映射原则：
@@ -137,24 +138,16 @@ Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-d
 - 程序内存不是自动从成功日志升级而来；只有触发条件、步骤、失败边界和验证方式稳定后，才进入 skill/reference。
 - Zep、Mem0、Memory Bank 等是来源中的实现示例，不是 Hermes 默认技术选型。
 
-## Five-step routing questions
+## Scope handoff
 
-对每类候选信息依次判断：
+本页只裁决内容是什么、应由哪类载体长期承担：
 
-1. **是否需要跨轮保留？** 一次性中间输出留在当前步骤，不持久化。
-2. **是否需要跨会话？** 仅本会话有效的状态留在 session/project state。
-3. **是当前稳定事实还是历史事件？** 当前事实进入结构化 memory 或 wiki；历史事件进入日志、session history 或 raw evidence。
-4. **应全量读取还是按需检索？** 小而有界的 profile 可全量读取；大规模历史应检索、裁剪后再进入 context。
-5. **是否已成熟为可复用规程？** 只有重复验证后的方法才进入 skill/reference。
+- 是否需要跨轮或跨会话保留，以及它是稳定事实、历史事件还是可复用规程，属于内容归属判断。
+- 是否在本轮全量加载、检索裁剪或压缩后注入，属于 [[hermes-context-layer-operating-rules]] 的上下文装配判断。
+- 是否定时触发、接入外部工具或与其他层组合，属于 [[hermes-layer-routing-decision-checklist]]。
+- 历史记录是否仍能回答当前问题，属于 [[hermes-retrieval-priority-and-answer-path]] 的 Freshness Gate。
 
-这五问补充下面的 Hermes 层间清单，不替代 `[[hermes-context-layer-operating-rules]]` 的完整路由规则。
-
-## Decision checklist
-遇到一个新信息时，依次问：
-1. 这是不是用户偏好或稳定事实？是 → `memory`
-2. 这是不是一套可重复执行的方法？是 → `skills`
-3. 这是不是值得长期查阅和扩写的知识？是 → `wiki`
-4. 如果三者都不是，大概率只该留在 `sessions`
+因此，内容被检索到、被本轮加载或被定时任务使用，都不会自动改变它的长期归属。
 
 ## Operational policy
 实际工作中默认遵循：

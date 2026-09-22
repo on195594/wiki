@@ -1,7 +1,7 @@
 ---
 title: Hermes Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-09-20
+updated: 2026-09-22
 type: concept
 tags: [hermes, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -13,7 +13,7 @@ aliases: [context-layer-rules]
 # Hermes Context Layer Operating Rules
 
 ## Summary
-这页把 context engineering 文章对当前 Hermes Agent 的启发压成一套可执行分层规则。核心判断：Hermes 不应靠更长 prompt 变稳，而应靠清晰的上下文调度变稳；每条信息进入 `memory`、`skill`、`wiki`、project state、`cron/log`、subagent 或当前 session 前，都必须先按职责裁决。
+这页把 context engineering 文章对当前 Hermes Agent 的启发压成一套上下文装配规则：在资产归属已经确定后，决定本轮加载什么、压缩什么、如何保持长任务状态。内容应进入 memory、skill、wiki 还是 session 由 [[hermes-memory-skills-wiki-boundaries]] 维护；组合路由由 [[hermes-layer-routing-decision-checklist]] 维护。
 
 Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口不是资料仓库，而是每轮推理的工作内存。Hermes 的 wiki、文件、日志和项目状态应承担外部长期资产角色；当前 session 只承担即时工作内存角色。
 
@@ -44,183 +44,64 @@ Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口�
 
 启用条件：任务确实长程且状态密集、存在有界领域 Schema、patch 可确定性校验、历史轨迹不是任务输出。跳过或采用混合模式：动态 Schema、延迟相关观察、审计/解释型任务、并发写状态、无界状态或低可靠结构化输出。不得把论文中的 Token/准确率结果直接设为 Hermes 阈值。
 
-## Layer map
+## Context assembly by source
+
 ### 1. Current session
-职责：承载当前对话里的临时推理、探索、未验证想法和一次性中间状态。
-
-允许进入：
-- 当前任务的临时假设
-- 尚未验证的方向
-- 工具调用中间结果
-- 一次性说明和澄清
-
-禁止升级：
-- 未稳定的偏好
-- 尚未复用过的方法
-- 没有长期检索价值的聊天结论
-
-判定句：如果它只服务于这次对话，默认留在 session。
+只保留当前目标、必要假设、最新工具观察和尚未收敛的工作集。已解决分支、重复说明和过期结果应移出，而不是靠完整对话维持状态。
 
 ### 2. Memory
-职责：短小、稳定、值得默认注入上下文的长期事实、偏好和环境约束。
-
-允许进入：
-- 用户长期偏好
-- 稳定环境事实
-- 已验证工具 quirk
-- 未来多类任务都需要默认知道的一句话规则
-
-禁止进入：
-- 文章摘要
-- 项目进度
-- 临时 workaround
-- 长段方法论
-- 需要来源和上下文才能解释清楚的内容
-
-判定句：如果不能压成一句稳定事实，就不要进 memory。
+只注入与当前任务相关的短小稳定约束；memory 的内容资格由 [[hermes-memory-skills-wiki-boundaries]] 裁决。默认可见不等于全部相关，也不允许用 memory 中的旧环境事实替代实时检查。
 
 ### 3. Skill
-职责：承载可重复执行的方法；回答“以后这类事怎么做”。
+只加载与当前操作匹配的程序性资产，并保留其触发条件、边界和验证步骤。skill 是否应存在属于内容与执行方法路由；本页只决定它是否需要进入本轮上下文。
 
-允许进入：
-- 多步 SOP
-- 工具使用流程
-- 需要触发条件、边界、坑点和验证的工作流
-- 经过实际跑通后值得复用的方法
-
-禁止进入：
-- 概念解释
-- 文章观点
-- 个人偏好本体
-- 纯调度需求
-
-判定句：如果它是做事方法，写 skill；如果只是知识，别塞进 skill。
-
-### 4. Wiki
-职责：承载正式知识资产；回答“这是什么、为什么、和其他知识如何关联”。
-
-允许进入：
-- 架构原则
-- 概念页
-- 领域模型
-- 外部文章编译后的长期结论
-- 比较分析
-- 可复盘样板案例
-
-禁止进入：
-- 原样聊天记录
-- 未整理 raw dump
-- 临时任务状态
-- SOP 本体
-- secrets
-
-判定句：如果需要标题、小节、来源、链接和未来扩写，优先进入 wiki。
+### 4. Wiki and raw
+按问题范围检索少量正式页面或段落，先执行 [[hermes-retrieval-priority-and-answer-path]] 的 Freshness Gate。只有需要原始措辞、证据范围或 Wiki 缺口时才补 raw；命中不等于全部注入。
 
 ### 5. Project state
-职责：承载一个长期任务的当前状态，避免依赖聊天历史推进。
+长任务的当前状态应成为聊天历史之外的经校验投影。建议只保留：
 
-适用任务：
-- Hermes LifeOS 架构推进
-- wiki 整合
-- skill 审计或重构
-- 小项目 workflow 验证
-- 家庭教育路径比较
-- Gemini wrapper / quick command 优化
+- 当前目标和不可变契约 / Skill / Spec 版本
+- 已确认决策与已验证事实的证据指针
+- 未决问题、已完成步骤和下一步
+- 风险、约束、状态版本、最近 patch 与回滚点
+- 相关文件、skill 与 Wiki 页面
 
-建议结构：
-- 当前目标
-- 不可变契约 / Skill / Spec 版本
-- 已确认决策
-- 已验证事实及证据指针
-- 未决问题
-- 已完成步骤
-- 下一步
-- 风险与约束
-- 状态版本、最近 patch 与回滚点
-- 相关文件 / skill / wiki 页面
-
-判定句：如果它是“这个项目现在推进到哪了”，写 project state，不写 memory。
+下一步默认消费这份状态、最新观察和不可变契约；完整历史留作审计与恢复证据，不作为每轮运行时真相源。
 
 ### 6. Cron and logs
-职责：`cron` 负责在 fresh session 中定时运行已经稳定的方法；logs 负责记录可审计结果。
-
-允许进入 cron：
-- 已经有稳定 skill 或自包含 prompt 的周期任务
-- 输入输出明确、失败可观察的任务
-
-禁止进入 cron：
-- 还没跑顺的方法
-- 依赖当前聊天隐含上下文的任务
-- 需要人工频繁改 prompt 的流程
-
-判定句：cron 只回答“什么时候跑”，不回答“怎么做”。
+若目标版本和部署支持周期触发，每次运行按 fresh context 重新装配稳定方法、必要状态和输入；logs 只在与当前判断相关时裁剪进入上下文。调度资格与组合方式由 [[hermes-layer-routing-decision-checklist]] 维护。
 
 ### 7. Subagent
-职责：为复杂任务隔离上下文，避免主对话背负全部细节。
-
-适用任务：
-- 代码审查
-- 多来源资料收集
-- skill overlap 审计
-- 独立验证步骤
-- 长文档抽取
-- 多方案比较
-
-主 agent 保留：
-- 总目标
-- 约束
-- 决策权
-- 验证责任
-
-subagent 返回：
-- 结论
-- 证据
-- 文件路径 / URL / 命令结果
-- 风险和未决点
-
-判定句：如果子任务可以独立完成并只需要返回结论，就用 subagent 隔离。
+子任务适合独立完成且能返回有界结果时，用 subagent 隔离细节。主 agent 保留目标、约束、决策权和验证责任；subagent 返回结论、证据指针、风险和未决点，而不是完整过程。
 
 生命周期复杂度规则见 `[[subagent-orchestration-patterns]]`：默认把 subagent 当作一次性 inline tool；只有在任务真正独立且并发有收益时才 fan-out；agent pool 和 team 模式需要项目级验证、清理机制和可观测性后再考虑。
 
-## Memory-strategy pre-routing gate
+## Retrieval and history budget
 
-[[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 补充了进入具体 Hermes 层之前的语义判断：先分清信息是当前状态、稳定事实、历史事件还是可复用规程，再选择存储层。完整映射由 `[[hermes-memory-skills-wiki-boundaries]]` 维护；本页只保留 context 装配相关约束：
+[[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 的本地内容映射由 [[hermes-memory-skills-wiki-boundaries]] 维护；本页只保留装配约束：
 
 - session 是当前工作内存，不是档案；
 - 历史事件只有在当前步骤相关时才检索进入 context，不默认注入；
-- 稳定事实应优先读取当前有效版本，旧版本仅在查询历史时暴露；
+- 稳定事实优先读取当前有效版本，旧版本仅在查询历史时暴露；
 - 检索规模由 context budget 约束，大历史库不能因为“命中”就全量注入；
-- 规程只有经过验证后才作为 skill/reference 按需加载。
+- 程序性资产只在任务匹配时按需加载，不把整个 skill 库塞入上下文。
 
-## One-screen routing checklist
-遇到新信息、新方法或新需求时，按顺序问：
+## One-screen assembly checklist
 
-1. 只是当前任务临时需要吗？是 → session
-2. 是项目推进状态吗？是 → project state
-3. 是短小稳定事实或偏好吗？是 → memory
-4. 是可复用操作流程吗？是 → skill
-5. 是正式知识资产吗？是 → wiki
-6. 是稳定方法的定时执行吗？是 → skill + cron
-7. 是外部实时能力接入吗？是 → MCP
-8. 是可并行或应隔离的复杂子任务吗？是 → subagent
+1. 固定当前目标、不可变约束和验收标准。
+2. 长任务先读取并校验 project state；短任务只保留必要 session 工作集。
+3. 注入与任务相关的短小 memory 约束，不加载无关 profile 历史。
+4. 检索少量相关 Wiki 段落并执行 Freshness Gate；只在需要时补 raw 或 live evidence。
+5. 操作任务加载匹配的 skill；复杂独立子任务才隔离给 subagent。
+6. 加入最新工具观察，移除过期输出、已解决分支和重复背景。
+7. 用 probe 检查目标、关键决策、已处理对象和下一步是否仍完整。
 
-如果多个层都适合，按职责拆分，不要复制粘贴到多个层。
+若问题是“内容长期放哪”或“是否组合 cron/MCP”，分别回到 [[hermes-memory-skills-wiki-boundaries]] 与 [[hermes-layer-routing-decision-checklist]]，不在本页另维护一套晋升规则。
 
-## Promotion rules
-### Session -> memory
-只有当信息短小、稳定、跨任务长期有效，并且默认注入有收益时才升级。
+## Promotion is separate from assembly
 
-### Session -> wiki
-只有当内容已经被整理成正式知识，有来源、结构、链接和长期复用价值时才升级。
-
-### Session -> skill
-只有当同类任务未来会重复执行，并且步骤、坑点、验证条件已经跑通时才升级。对于用户纠错类反馈，先参考 [[agent-closed-loop-learning-from-corrections-to-rules]]：单次纠正不能直接变成全局 skill 规则，必须先证明它是可复现、可泛化、可验证的模式。
-
-### Project state -> wiki
-项目结束或阶段收敛后，把可复用结论编译成 wiki；不要把整个过程日志原样搬进 wiki。
-
-### Skill -> cron
-方法先稳定，调度后发生；不要用 cron prompt 代替 skill。
+内容被加载、压缩或写入 project state，不自动获得进入 memory、skill 或公共 Wiki 的资格。阶段收敛后只提炼可复用结论；完整过程日志仍留在原有项目或审计载体。
 
 ## Drift signals
 出现这些信号时，说明上下文治理需要介入：
@@ -234,20 +115,19 @@ subagent 返回：
 - Hermes 重复读取已处理文件或重述旧决策
 
 ## Repair actions
-- 重复偏好 → 压成一句 memory
-- 重复方法 → 写 skill
-- 长期知识 → 写 wiki
-- 项目进度 → 写 project state
-- 定时执行 → skill 稳定后加 cron
-- 外部实时能力 → MCP
-- 上下文过载 → 总结状态后开 fresh session
-- 复杂任务串味 → 拆 subagent
+- 过期工具输出或已解决分支 → 移出当前上下文
+- 检索结果过多 → 按范围、可信度和 token 预算裁剪
+- 长任务依赖聊天回放 → 重建并校验 project state
+- 操作步骤反复解释 → 按需加载已有 skill；是否新建 skill 交给路由规则
+- 上下文过载 → 保留状态与验收后开 fresh session
+- 独立复杂子任务串味 → 用有界 handoff 隔离 subagent
+
+需要把发现持久化或增加调度/外部接入时，转到对应规则页，不在修复上下文时顺手晋升。
 
 ## Reference deployment policy
 在目标 Hermes 版本支持相关能力时，可采用以下保守策略：
 - 没有明确隔离收益时不增加 profile；协调 profile 的名称由部署者决定
 - 消息入口、CLI 或其他 gateway 只是可选接入面，不应成为知识正确性的前提
-- wiki 承载正式知识，memory 只存短小稳定事实
 - 新 workflow 先用公开或合成 fixture 验证，再决定是否 skill 化或调度
 - 修改 Hermes 本体前先核对目标版本和升级覆盖风险，必要时走上游 issue/PR
 
@@ -257,7 +137,7 @@ subagent 返回：
 Machine Learning Mastery 文章的处理结果：
 - 原文和 Gemini 摘要保存在 `[[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]`，作为可追溯 raw source。
 - 可复用原则已整合进本页 Summary、Goal 和 Core principles，不再作为独立文章摘要重复出现。
-- “memory 只放短小稳定事实”是本页的方法建议；是否写入某个部署的 memory 需要独立授权。
+- memory 的内容资格由 [[hermes-memory-skills-wiki-boundaries]] 维护；本页只约束相关条目何时进入当前 context。
 - 若未来多次需要执行上下文审计，再提炼为专门 skill；当前不提前创建。
 
 ## Relations

@@ -62,19 +62,19 @@
 - [[hermes-agent-workflow-layering-and-adoption-order]] — Hermes 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
 - [[hermes-ai-workflow-formalization-principles]] — 将形式化与 specification engineering 落实到 Hermes：自然语言表达意图，按反悔成本分配前置验证，风险触发的规格定义正确性边界，验证闭环负责验收
 - [[hermes-context-engineering-design-priorities]] — 面向 Hermes 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
-- [[hermes-context-layer-operating-rules]] — Hermes 上下文分层操作规则：层间职责、长程任务的不可变契约/经校验状态/最新观察输入，以及历史证据的外置边界
+- [[hermes-context-layer-operating-rules]] — Hermes 上下文装配规则：控制检索与注入预算、历史压缩、长任务 project state、最新观察和隔离 handoff
 - [[hermes-active-surface-lifecycle-governance]] — Hermes 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
-- [[hermes-knowledge-architecture]] — Hermes 知识库整体架构：运行时知识栈、冲突感知对象、证据/知识路由、实体对齐、关系遍历与检索回写闭环
+- [[hermes-knowledge-architecture]] — Hermes 知识库总体架构与导航：连接运行时知识栈、Wiki 文件层、冲突感知对象及各分层规则入口
 - [[hermes-knowledge-freshness-and-claim-evidence]] — Hermes 知识新鲜度与来源精度：复用 sources、review_by、updated 和 [推论] 改善可复用 Wiki 知识
 - [[hermes-knowledge-base-operating-flow]] — 当前知识库的端到端操作流：输入、分类、raw、编译、检索、维护
 - [[hermes-python-engineering-capability-checklist]] — Hermes Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环
 - [[hermes-skill-refactoring-methodology]] — Hermes Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
 - [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
 - [[hermes-lifeos-layer-boundary-contract]] — Hermes LifeOS 的层边界契约：以 default profile 为主脑，明确 wiki、memory、skill、cron、MCP、profile 与 session 的职责和越界规则
-- [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：按内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度拆分需求
+- [[hermes-layer-routing-decision-checklist]] — Hermes 快速组合路由：按内容归属、执行方法、触发方式、外部能力和运行状态拆分需求并用合成案例校准
 - [[hermes-memory-governance-notes]] — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [[hermes-model-specific-harness-profiles]] — Hermes 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
-- [[hermes-memory-skills-wiki-boundaries]] — Hermes memory / skills / wiki 的边界规范：把当前状态、稳定事实、历史事件和可复用规程路由到不同层，而不是全部写进 memory
+- [[hermes-memory-skills-wiki-boundaries]] — Hermes 内容归属主规则：用正反例区分 memory、skills、wiki、sessions/project state 与历史证据
 - [[hermes-retrieval-priority-and-answer-path]] — Hermes 检索优先级与回答路径：先查 wiki，再按 memory/skills/sessions/external 补全
 - [[hermes-wiki-lint-and-health-check-standards]] — Hermes wiki lint / 健康检查规范：链接、索引、frontmatter、标签、陈旧性与结构健康
 - [[hermes-wiki-page-writing-standards]] — Hermes wiki 页面写作规范：命名、frontmatter、结构、wikilinks 与质量检查
