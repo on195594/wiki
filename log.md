@@ -3,6 +3,13 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-22] review-fix | Experience consolidation and layer-routing semantics
+- Clarified that private state, session/execution evidence and one-off closeouts remain in their original private or project carriers; only public, durable findings and reusable public historical decisions enter the corresponding formal Wiki owner.
+- Scoped the Hermes capability assessment title, section headings and action wording to its 2026-05-11 / v0.13.0 evidence window without rewriting that historical snapshot as current behavior.
+- Recast layer routing as five composable dimensions—content ownership, execution method, trigger, external capability and runtime state—and replaced exclusive examples with bounded synthetic combinations.
+- Updated the three index descriptions; no raw source, `verified_at`, runtime layer or Hermes configuration changed.
+- Validation: baseline and candidate Wiki health P0/P1/P2=`0/0/0`; tag audit undeclared count=`0`; public-content violations=`0`; 41 unit tests passed; external links reported 0 errors with 21 configured exclusions; `git diff --check` passed. The candidate retained the baseline 15 review candidates and added one touched-page phrase candidate, manually adjudicated as a public-boundary warning rather than an instance record.
+
 ## [2026-09-21] review-fix | Flutter source attribution and platform scope
 - Applied a read-only Pi review of `[[flutter]]`: distinguished native Dart VM development from Web `dartdevc`, removed an under-sourced Web characterization, and corrected the `flutter create` citation.
 - Marked project-fit, plugin-validation and minimum-adoption guidance as `[推论]`, and narrowed the accessibility wording to the support described by the official architecture and accessibility pages.

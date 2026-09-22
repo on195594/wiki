@@ -32,7 +32,7 @@
 - [[loop-engineering-hermes-agent-workflow]] — Loop Engineering 在 Hermes 中的映射：以类型化信号、确定性 dispatcher、有界重试和可审计状态差异组织 agent 工作闭环，同时保留 active-layer 审批边界
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [[ai-agent-human-outcome-design-principle]] — AI Agent 项目设计的人类结果优先原则：先验证真实问题、可衡量结果和人类信任边界，再决定模型、自动化和 human-in-the-loop 范围
-- [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：分离不可变证据、持续累积知识和可回滚 Skill，治理候选验证、角色访问、跨模型迁移、准入、退役与回滚
+- [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：只把适合公开且长期可复用的发现编译进正式知识页，私有或一次性证据留在原载体，并治理候选验证、准入、退役与回滚
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-evaluation-rubric-calibration]] — Agent 评测 Rubric 校准：聚合分数只作诊断指针；分数、评语、人工复核或 Trace 冲突时，先审计评分维度、锚点和错误激励
 - [[first-edit-economy-for-coding-agents]] — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
@@ -71,7 +71,7 @@
 - [[hermes-skill-refactoring-methodology]] — Hermes Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
 - [[hermes-lifeos-executable-architecture]] — Hermes 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
 - [[hermes-lifeos-layer-boundary-contract]] — Hermes LifeOS 的层边界契约：以 default profile 为主脑，明确 wiki、memory、skill、cron、MCP、profile 与 session 的职责和越界规则
-- [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：什么进 wiki、memory、skill、cron、MCP，按官方定义和本地知识层分开判断
+- [[hermes-layer-routing-decision-checklist]] — Hermes 的层间路由判定清单：按内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度拆分需求
 - [[hermes-memory-governance-notes]] — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [[hermes-model-specific-harness-profiles]] — Hermes 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
 - [[hermes-memory-skills-wiki-boundaries]] — Hermes memory / skills / wiki 的边界规范：把当前状态、稳定事实、历史事件和可复用规程路由到不同层，而不是全部写进 memory
@@ -110,7 +110,7 @@
 - [[software-engineering-laws-decision-map]] — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [[okf-for-hermes-wiki-governance-assessment]] — OKF/LLM-wiki 在 Hermes wiki 中的采纳边界，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
 - [[hermes-wiki-knowledge-freshness-improvement-plan]] — 已执行的 Wiki 知识新鲜度改造决策：复用 sources、review_by、updated 和 [推论]，不引入新状态机或验证项目
-- [[hermes-agent-experience-consolidation-capability-assessment]] — 2026-05-11 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验
+- [[hermes-agent-experience-consolidation-capability-assessment]] — 2026-05-11 / v0.13.0 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验
 - [[hermes-layer-routing-edge-cases]] — Hermes 层间路由的边界误判案例：当两个层都像能放时，如何按职责而不是重要性裁决
 - [[hermes-layer-routing-sample-cases]] — Hermes 层间路由的样板案例：用真实场景判断什么该进 wiki、memory、skill、cron、MCP 或 session
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] — Hermes AI 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署
