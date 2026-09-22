@@ -1,7 +1,7 @@
 ---
 title: Agent 闭环学习：从用户纠错到规则升级
 created: 2026-05-18
-updated: 2026-05-18
+updated: 2026-09-22
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, hermes, governance]
 sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md]
@@ -201,14 +201,14 @@ candidate correction pattern
 
 ## Local operating rule
 
-在 Hermes 中处理用户纠正时，按 [[hermes-context-layer-operating-rules]] 的 one-screen routing checklist 裁决层级，再参考本页 “When to promote a correction” 判断是否满足晋升条件。
+在 Hermes 中处理用户纠正时，先按 [[hermes-memory-skills-wiki-boundaries]] 裁决纠正内容的归属；若还涉及执行方法、触发、外部能力或运行状态，再按 [[hermes-layer-routing-decision-checklist]] 组合路由；最后参考本页 “When to promote a correction” 判断是否满足晋升条件。
 
 ## Related pages
 
 - [[agent-experience-consolidation-loops]]
 - [[production-ai-agent-evaluation-framework]]
 - [[agent-self-validation-loops]]
-- [[hermes-context-layer-operating-rules]]
+- [[hermes-layer-routing-decision-checklist]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[wiki-ingestion-workflow]]
 - [[index]]

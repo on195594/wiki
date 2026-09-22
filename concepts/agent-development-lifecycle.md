@@ -1,7 +1,7 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-09-20
+updated: 2026-09-22
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, hermes]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md]
@@ -159,7 +159,7 @@ Hermes 映射：
 - `[[subagent-orchestration-patterns]]`：落在 Build 阶段的 agent 生命周期复杂度选择
 - `[[agent-orchestration-production-tradeoffs]]`：落在 Build / Deploy 阶段的成本、延迟、准确率和复杂度取舍
 - `[[hermes-model-specific-harness-profiles]]`：落在 Build 阶段的模型与 harness 适配
-- `[[hermes-context-layer-operating-rules]]`：落在 Govern 层的 context、memory、skill、wiki、cron 分层
+- `[[hermes-layer-routing-decision-checklist]]`：落在 Govern 层的内容归属、执行方法、触发、外部能力和运行状态组合路由
 - `[[agent-experience-consolidation-loops]]`：落在 Monitor 之后，把失败、反馈和经验回灌成未来资产
 
 ## What not to copy blindly

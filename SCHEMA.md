@@ -66,9 +66,10 @@ review_by: YYYY-MM-DD
 ```
 
 Rules:
+- 日期比较统一使用 UTC 日历日；下文的 `today` 均指 UTC 当日。
 - `description` is a routing aid, not a substitute for the page `## Summary`.
 - `volatility` 可选，取 `low | medium | high`，表达现实变化速度，不是质量评分。缺失不代表 low：当前外部事实或适用性未知按 YELLOW，明确稳定方法或时间范围内的历史知识可为 GREEN。
-- `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于今天；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
+- `verified_at` 可选，必须为合法的 `YYYY-MM-DD` 且不晚于 UTC 当日；只在实际核对所有页面级易变结论后填写。普通编辑只更新 `updated`。只验证局部时使用局部标记，不刷新页面级验证日期。
 - `review_by` 可用于任何外部变化可能导致 Agent 错误行动的知识。`verified_at <= today <= review_by` 才在日期窗口内；到期当天仍有效，次日起需复核。无法验证时不得删除到期字段来消除告警。
 - `status` 仅表达生命周期，`stable` 不等于当前可信。实时核验要求优先于未到期日期；运行时资格见 [[hermes-retrieval-priority-and-answer-path]]。
 - 校验：正式知识页（formal page）中的非法 `volatility`、非法/未来 `verified_at`、非法 `review_by` 为 P1；到期 `review_by`、high 页有 `verified_at` 却无 `review_by`、`verified_at > updated` 为 P2。缺省字段兼容历史页面，不批量迁移。
@@ -120,7 +121,7 @@ Allowed `sources` forms:
 
 确定性检查规则：
 
-- `verified_at` 与 `review_by` 必须为真实的 `YYYY-MM-DD` 日期，且 `verified_at <= review_by`；未来 `verified_at`、非法日期、非法顺序和不支持的 block 格式为 P1。
+- `verified_at` 与 `review_by` 必须为真实的 `YYYY-MM-DD` 日期，且 `verified_at <= review_by`；晚于 UTC 当日的 `verified_at`、非法日期、非法顺序和不支持的 block 格式为 P1。
 - `review_by` 到期当天仍有效，次日起产生 claim-scoped P2 复核提醒；提醒不证明内容错误，也不阻断无关修改。
 - `source` 必须逐字符串包含于页面 frontmatter `sources`；遗漏为 P1。页面级 `sources` 仍是 canonical provenance。
 - 多个 block 独立检查；fenced、inline 或 indented code 中的示例忽略。局部 block 通过只说明该 claim 的结构与日期窗口通过，不刷新或验证整页。

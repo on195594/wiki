@@ -1,7 +1,7 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-09-15
+updated: 2026-09-22
 type: concept
 tags: [agent, llm, context-engineering, hermes, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
@@ -111,7 +111,7 @@ Hermes 映射：
 - project logs / run artifacts 保存可审计过程证据。
 - cron/log 保存 recurring 运行结果，不等于默认上下文。
 
-这只是 Agent 运行状态视角下的简要映射；Hermes 全局层间路由规则以 `[[hermes-context-layer-operating-rules]]` 为准。
+这只是 Agent 运行状态视角下的简要映射；内容归属以 `[[hermes-memory-skills-wiki-boundaries]]` 为准，跨执行方法、触发、外部能力和运行状态的组合路由以 `[[hermes-layer-routing-decision-checklist]]` 为准。
 
 #### SKILL.state：状态成为执行真相源，而不是历史摘要
 
@@ -206,7 +206,8 @@ Hermes 的对应规则：
 
 - `[[llm-context-engineering-layer]]`：讲 context engineering 作为 RAG 与 prompt 之间的系统层；本页讲 Agent 多步执行中各类上下文面的即时装配。
 - `[[hermes-context-engineering-design-priorities]]`：讲 Hermes 应先做 budget、ranking、compression、history decay；本页补充为什么这些能力对 Agent prompt/context 稳定性必要。
-- `[[hermes-context-layer-operating-rules]]`：定义 Hermes 全局层间路由规则；本页聚焦 Agent 执行过程中 prompt 四个上下文面的即时装配设计，而非通用层路由决策。
+- `[[hermes-context-layer-operating-rules]]`：把通用原则落实为 Hermes 的上下文装配、历史压缩和长任务状态规则；本页聚焦 Agent 执行过程中 prompt 四个上下文面的即时装配设计。
+- `[[hermes-layer-routing-decision-checklist]]`：定义内容归属之外的组合路由；本页不重复维护通用层路由决策。
 - `[[typed-ai-agent-boundaries]]`：讲 typed output、typed tools、dependency injection；本页只引用工具边界原则，不重复展开实现细节。
 - `[[ai-coding-assistant-context-budget-management]]`：讲工具输出、日志、文件和历史如何占用上下文预算；本页补充工具是否能被发现和正确选择的 upstream 级联。
 - `[[agent-development-lifecycle]]`：把 context、tool、prompt、monitor 放进 Build/Test/Deploy/Monitor/Govern 生命周期；本页提供 Build/Test 阶段的上下文装配原则。
@@ -262,6 +263,7 @@ Hermes 的对应规则：
 - [[codex-agent-workflow-layering]]
 - [[hermes-memory-skills-wiki-boundaries]]
 - [[hermes-context-layer-operating-rules]]
+- [[hermes-layer-routing-decision-checklist]]
 - [[ai-assumption-challenger-before-execution]]
 - [[wiki-ingestion-workflow]]
 - [[index]]

@@ -1,7 +1,7 @@
 ---
 title: Hermes Active-Surface Lifecycle Governance
 created: 2026-08-01
-updated: 2026-08-01
+updated: 2026-09-22
 type: concept
 tags: [hermes, governance, workflow, context-engineering]
 sources: [raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md, concepts/system-governance-operating-model.md, concepts/hermes-context-layer-operating-rules.md, concepts/agent-failure-closed-loop-evaluation.md]
@@ -29,7 +29,7 @@ Hermes 的 active surface 不是只增不减的配置集合。`SOUL.md`、USER/M
 - 项目局部规则：项目 context、README、ADR、spec；
 - Wiki 不直接执行，但可能成为检索与晋升候选，应治理重复和陈旧概念。
 
-这与 [[hermes-context-layer-operating-rules]] 的分层边界互补：分层规则回答“放在哪里”，生命周期回答“进入该层后如何演化和退出”。
+这与 [[hermes-context-layer-operating-rules]] 的上下文装配边界互补：装配规则回答“哪些资产进入本轮上下文”，生命周期回答“活跃治理面如何演化和退出”。
 
 ## Why active surfaces accumulate debt
 

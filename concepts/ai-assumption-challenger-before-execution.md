@@ -1,7 +1,7 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-08-04
+updated: 2026-09-22
 type: concept
 tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
 sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
@@ -20,7 +20,7 @@ XDA 文章 `[[xda-claude-creative-workflow-reframe-2026-06-20]]` 的经验来自
 
 Wonder Tools 的 `[[wondertools-writers-toolkit-2026-08-01]]` 提供了写作场景中的第二个实践来源：AI 更适合帮助作者发现注意力流失、论证缺口和证据不足，而不是代写成稿。它还明确提醒，通用模型可能顺着作者已有判断作答，因此需要主动要求批评，并由作者保留最终表达和核验责任。
 
-这页补充 `[[agent-context-engineering]]`、`[[claude-code-practical-workflow-tips]]` 和 `[[hermes-context-layer-operating-rules]]`：那些页面分别约束上下文装配、Claude Code 执行工作流和 Hermes 层间路由；本页聚焦执行前的假设挑战角色。
+这页补充 `[[agent-context-engineering]]`、`[[claude-code-practical-workflow-tips]]` 和 `[[hermes-context-layer-operating-rules]]`：那些页面分别约束 Agent 通用上下文设计、Claude Code 执行工作流和 Hermes 当前轮次的上下文装配；本页聚焦执行前的假设挑战角色。
 
 ## Core principle
 

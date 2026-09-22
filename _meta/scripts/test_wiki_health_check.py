@@ -5,7 +5,7 @@ import importlib.util
 import json
 import tempfile
 import unittest
-from datetime import date
+from datetime import date, timezone
 from unittest.mock import patch
 from pathlib import Path
 
@@ -113,14 +113,18 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
             ("volatility: low\nreview_by: bad", {"malformed_review_by"}, set()),
             ("volatility: high\nverified_at: 2026-01-01\nreview_by: 2026-09-10", set(), set()),
         ]
-        with patch.object(wiki_health_check, "date", wraps=date) as clock:
-            clock.today.return_value = date(2026, 9, 9)
-            for metadata, p1, p2 in cases:
-                with self.subTest(metadata=metadata):
-                    p.write_text(original.replace("status: stable\n", "status: stable\n" + metadata + "\n"))
-                    self.assertEqual(self.issue_codes("P1"), p1)
-                    report = wiki_health_check.build_report(self.root)
-                    self.assertEqual({i["code"] for i in report["issues"]["P2"] if i["path"] == "concepts/freshness.md"}, p2)
+        for metadata, p1, p2 in cases:
+            with self.subTest(metadata=metadata):
+                p.write_text(original.replace("status: stable\n", "status: stable\n" + metadata + "\n"))
+                report = wiki_health_check.build_report(self.root, today=date(2026, 9, 9))
+                self.assertEqual({i["code"] for i in report["issues"]["P1"]}, p1)
+                self.assertEqual({i["code"] for i in report["issues"]["P2"] if i["path"] == "concepts/freshness.md"}, p2)
+
+    def test_default_today_uses_utc(self) -> None:
+        with patch.object(wiki_health_check, "datetime") as clock:
+            clock.now.return_value.date.return_value = date(2026, 9, 9)
+            wiki_health_check.build_report(self.root)
+        clock.now.assert_called_once_with(timezone.utc)
 
     def test_local_volatile_dates_and_injected_today(self) -> None:
         path = self.add_formal("local-freshness")
@@ -184,6 +188,19 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         p2 = [item for item in report["issues"]["P2"] if item["path"] == "concepts/multiple-local-claims.md"]
         self.assertEqual([(item["code"], item["block"]) for item in p1], [("volatile_source_not_declared", 2)])
         self.assertEqual([(item["code"], item["block"]) for item in p2], [("volatile_block_due_for_review", 2)])
+
+    def test_quoted_volatile_text_is_not_treated_as_a_callout(self) -> None:
+        body = (
+            "# Quoted prose\n\n## Summary\n\n"
+            + "context " * 20
+            + "\n\n> This quote discusses [!volatile] syntax but is not a callout.\n"
+        )
+        self.add_formal("quoted-volatile-prose", body=body)
+        report = wiki_health_check.build_report(self.root, today=date(2026, 9, 9))
+        self.assertNotIn(
+            "unsupported_volatile_block",
+            {item["code"] for item in report["issues"]["P1"]},
+        )
 
     def test_unsupported_volatile_block_format_is_reported(self) -> None:
         body = (

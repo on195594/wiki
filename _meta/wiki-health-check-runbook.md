@@ -40,10 +40,10 @@ git diff --check
 
 ## Local `[!volatile]` result contract
 
-For each supported local block, `wiki_health_check.py` validates real `YYYY-MM-DD` values, `verified_at <= review_by`, non-future verification, expiry, and exact membership of the local `source` in page frontmatter `sources`.
+For each supported local block, `wiki_health_check.py` validates real `YYYY-MM-DD` values, `verified_at <= review_by`, non-future verification, expiry, and exact membership of the local `source` in page frontmatter `sources`. Unless a date is injected by the Python API for testing, date comparisons use the UTC calendar date.
 
-- P1: malformed/unsupported block, malformed date, future `verified_at`, invalid date order, or undeclared local source.
-- P2: `review_by` is earlier than the injected/current date. The due date itself remains valid; expiry begins the next day.
+- P1: malformed/unsupported block, malformed date, `verified_at` later than the UTC date, invalid date order, or undeclared local source.
+- P2: `review_by` is earlier than the injected/current UTC date. The due date itself remains valid; expiry begins the next day.
 - Multiple blocks are independent. Fenced, inline and indented code examples are ignored.
 - A passing block validates only that claim scope. It does not set or refresh page-level `verified_at` and does not imply that the whole page is current.
 - The block and page-level freshness fields remain optional. Existing pages are not required to add or refresh them.

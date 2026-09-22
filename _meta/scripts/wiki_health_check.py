@@ -18,7 +18,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -57,7 +57,7 @@ ALLOWED_FORMAL_STATUSES = {"draft", "stable", "active", "closed", "current"}
 ALLOWED_RELATION_KEYS = {"depends_on", "refines", "conflicts_with", "supersedes", "related"}
 RELATION_VALUE_PATTERN = re.compile(r"^(\[\]|\[\[[^\]]+\]\](?:\s*,\s*\[\[[^\]]+\]\])*)$")
 VOLATILE_MARKER = re.compile(r"^>[ \t]*\[!volatile\][ \t]*$")
-VOLATILE_MARKER_START = re.compile(r"^>.*\[!volatile(?:\]|[ \t]|$)", re.I)
+VOLATILE_MARKER_START = re.compile(r"^>[ \t]*\[!volatile(?:\]|[ \t]|$)", re.I)
 VOLATILE_FIELDS = {"verified_at", "review_by", "source"}
 
 
@@ -385,7 +385,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
 
     issues: dict[str, list[dict[str, Any]]] = {"P0": [], "P1": [], "P2": []}
     notes: list[str] = []
-    today = today or date.today()
+    today = today or datetime.now(timezone.utc).date()
     taxonomy = declared_tags(root)
     if not taxonomy:
         add_issue(issues, "P1", "unreadable_tag_taxonomy", "SCHEMA.md", "Tag Taxonomy section missing or unparseable; tag registration is not being enforced")
@@ -679,7 +679,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
         notes.append(f"{known_unindexed_drafts} draft query page(s) are intentionally outside index.md.")
     notes.append("Inline-code and fenced-code wikilink examples are ignored during link checks.")
     notes.append("Root core files and _meta/ pages are excluded from formal frontmatter/H1 requirements.")
-    notes.append(f"Freshness dates are evaluated against today's date ({today.isoformat()}); expiry starts the day after review_by.")
+    notes.append(f"Freshness dates are evaluated against the UTC date ({today.isoformat()}); expiry starts the day after review_by.")
     notes.append("Passing a local [!volatile] block check validates only that claim scope, not the whole page.")
 
     result = {

@@ -3,6 +3,13 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-22] review-fix | Routing references and deterministic freshness dates
+- Redirected stale consumers of `[[hermes-context-layer-operating-rules]]` to the content-ownership or composable-routing owners, while retaining that page only for context assembly, history compression and long-task state.
+- Restricted local `[!volatile]` marker detection to the start of a blockquote so ordinary quoted prose can mention the syntax without becoming an unsupported block.
+- Standardized page-level and claim-level freshness comparisons on the UTC calendar date and documented that contract in Schema, the runbook and the writing/lint standards.
+- Added regression coverage for quoted marker prose and UTC default-date selection. No index membership, raw source, historical verification date or runtime configuration changed.
+- Validation: 47 unit tests passed; Wiki health P0/P1/P2=`0/0/0`; tag audit undeclared count=`0`; public-content violations=`0`; `git diff --check` passed.
+
 ## [2026-09-22] governance | Claim-scoped freshness checks and minimal CI
 - Extended the read-only health check to validate each supported local `[!volatile]` block independently: required block fields and format, real dates, `verified_at <= review_by`, future verification dates, claim-scoped expiry and `block source ⊆ page sources`.
 - Kept local blocks and page-level freshness metadata optional. Malformed/unsupported blocks, invalid/future dates and undeclared local sources are P1; expiry begins the day after `review_by` and remains a non-blocking P2 reminder for that claim only.
