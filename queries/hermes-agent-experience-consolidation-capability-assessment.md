@@ -1,7 +1,7 @@
 ---
-title: Hermes Agent Experience Consolidation Capability Assessment
+title: Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot
 created: 2026-05-11
-updated: 2026-09-20
+updated: 2026-09-22
 type: query
 tags: [hermes, agent, research, memory, skills, orchestration, cron, validation]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -9,7 +9,7 @@ status: closed
 description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当前能力需重新核验。
 ---
 
-# Hermes Agent Experience Consolidation Capability Assessment
+# Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot
 
 ## Summary
 
@@ -17,13 +17,13 @@ description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当
 
 > Historical snapshot closed on 2026-08-18. Version、命令和原生能力结论不得作为当前状态直接复用，需重新查官方文档与目标部署证据。
 
-## Question
-结合 Anthropic `dreaming` / `outcomes` / multi-agent orchestration 这篇文章，Hermes 当前是否原生具备类似能力？哪些是当前原生能力，哪些是可组合实现，哪些只是未来可能支持？
+## Question recorded for the 2026-05-11 / v0.13.0 snapshot
+结合 Anthropic `dreaming` / `outcomes` / multi-agent orchestration 这篇文章，当时评估的 Hermes Agent v0.13.0 是否原生具备类似能力？哪些在该版本中有公开原生证据，哪些只能组合实现，哪些尚未确认？
 
-## Short answer
-截至该历史快照，公开文档描述了 memory、session search、skills、skill curator、cron、subagent delegation、goal/judge loop 和工具验证面；公开证据没有证明存在完整等价 Anthropic Dreaming 的一键原生闭环，也没有证明 `/dreaming` 或 Auto Dream 已成为该版本的公开能力。
+## Snapshot answer
+截至 2026-05-11 / v0.13.0 这一历史快照，公开文档描述了 memory、session search、skills、skill curator、cron、subagent delegation、goal/judge loop 和工具验证面；公开证据没有证明存在完整等价 Anthropic Dreaming 的一键原生闭环，也没有证明 `/dreaming` 或 Auto Dream 已成为该版本的公开能力。
 
-本地应采用人工可审计版经验固化闭环：
+该历史评估当时建议采用人工可审计版经验固化闭环：
 
 ```text
 session/project evidence
@@ -34,9 +34,11 @@ session/project evidence
 → cron/runtime only after separate approval
 ```
 
-## Evidence checked
+## Evidence checked for the 2026-05-11 / v0.13.0 snapshot
 
-### Official Hermes docs
+以下条目记录当时检查到的材料，不声明当前版本仍具备相同行为。
+
+### Official Hermes docs reviewed for the 2026-05-11 / v0.13.0 snapshot
 - Main docs describe Hermes as having a closed learning loop: agent-curated memory, skill creation from experience, skill self-improvement, FTS5 session search, and Honcho user modeling.
 - Persistent Memory docs confirm bounded `MEMORY.md` / `USER.md`, injected at session start, managed through the `memory` tool.
 - Skills docs confirm agent-managed procedural memory through `skill_manage` create / patch / edit / delete.
@@ -45,18 +47,18 @@ session/project evidence
 - Cron docs confirm scheduled agent sessions, skill-backed jobs, fresh sessions, `context_from`, script gates, and no-agent mode.
 - Slash command docs confirm `/goal`, where a judge model checks multi-turn goal completion and can auto-continue.
 
-### Community signals
-Relevant public issues found:
+### Community signals recorded for the 2026-05-11 / v0.13.0 snapshot
+Relevant public issues found during that assessment:
 
-- `NousResearch/hermes-agent#10771` — Automatic Memory Consolidation / Auto Dream: open. Proposes scheduled memory cleanup, deduplication, contradiction handling, and pruning.
-- `NousResearch/hermes-agent#5533` — first-class Dreaming reflection mode: open. Proposes `/dreaming` across CLI and gateway; not present in local checkout evidence.
-- `NousResearch/hermes-agent#18885` — allow memory provider tools in cron jobs: open. Shows cron-based memory maintenance is a desired but currently constrained path.
-- `NousResearch/hermes-agent#7816` — skill lifecycle management: largely landed through curator-side work, with remaining gaps around negative-claim revalidation / stale prompt filtering.
+- `NousResearch/hermes-agent#10771` — Automatic Memory Consolidation / Auto Dream: open when checked on 2026-05-11. Proposed scheduled memory cleanup, deduplication, contradiction handling, and pruning.
+- `NousResearch/hermes-agent#5533` — first-class Dreaming reflection mode: open when checked on 2026-05-11. Proposed `/dreaming` across CLI and gateway; it was not present in the snapshot's reviewed checkout evidence.
+- `NousResearch/hermes-agent#18885` — allow memory provider tools in cron jobs: open when checked on 2026-05-11. It indicated that cron-based memory maintenance was desired but constrained in that evidence window.
+- `NousResearch/hermes-agent#7816` — skill lifecycle management: the snapshot recorded curator-side work as largely landed, with remaining gaps around negative-claim revalidation / stale prompt filtering.
 
 ## Capability classification
 
-### Native today
-Hermes currently has these native primitives:
+### Native in the 2026-05-11 / v0.13.0 snapshot
+The reviewed public materials described these primitives for that snapshot:
 
 - **Persistent memory**: bounded, curated cross-session facts in `MEMORY.md` / `USER.md`.
 - **Session search**: full-text search over past sessions with summarization.
@@ -68,8 +70,8 @@ Hermes currently has these native primitives:
 - **Goal/judge loop**: `/goal` provides a native target-completion judge loop.
 - **Tool-based verification**: terminal, file, browser, web, and code execution tools support external evidence gathering.
 
-### Composable today, but not first-class
-These can be built with existing Hermes primitives but are not currently one named native product layer:
+### Composable in the 2026-05-11 / v0.13.0 snapshot, but not first-class
+The assessment judged these composable from the primitives documented for v0.13.0, rather than one named native product layer:
 
 - **Dreaming-like cross-session review**:
   ```text
@@ -89,8 +91,8 @@ These can be built with existing Hermes primitives but are not currently one nam
 - **Playbook synthesis**:
   Create or patch a class-level skill after a repeated workflow is validated.
 
-### Future / not confirmed as native
-These are not confirmed in the current local install and should be treated as future or community-proposed:
+### Not confirmed in the 2026-05-11 / v0.13.0 snapshot
+The assessment did not confirm these in its then-reviewed evidence and classified them as future or community-proposed:
 
 - first-class `/dreaming` command
 - automatic memory consolidation / Auto Dream
@@ -99,10 +101,10 @@ These are not confirmed in the current local install and should be treated as fu
 - automatic promotion of repeated lessons into playbooks without review
 - full Anthropic-style managed-agent product abstraction where users need not choose one-agent vs multi-agent architecture
 
-## Decision
-Use [[agent-experience-consolidation-loops]] as the local concept page for this pattern.
+## Decision recorded by the 2026-05-11 / v0.13.0 snapshot
+The historical assessment selected [[agent-experience-consolidation-loops]] as the concept page for this pattern.
 
-For Hermes practice, treat the current safe implementation as:
+It recorded the following conservative implementation for that evidence window:
 
 ```text
 manual or project-local evidence review
@@ -113,10 +115,10 @@ manual or project-local evidence review
 → no runtime/cron promotion without separate approval
 ```
 
-Do not write this article's conclusion to memory. Do not create an `anthropic-dreaming` skill. Do not start an automatic Dreaming cron job yet.
+The decision at that time was not to write the article's conclusion to memory, create an `anthropic-dreaming` skill, or start an automatic Dreaming cron job.
 
-## Follow-up option
-A later validation project could test a read-only weekly review job:
+## Follow-up option recorded by the 2026-05-11 / v0.13.0 snapshot
+The historical assessment proposed that a later validation project could test a read-only weekly review job:
 
 ```text
 cron scheduled job

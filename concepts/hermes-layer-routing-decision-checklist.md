@@ -1,42 +1,41 @@
 ---
 title: Hermes Layer Routing Decision Checklist
 created: 2026-04-17
-updated: 2026-05-18
+updated: 2026-09-22
 type: concept
 tags: [hermes, knowledge-base, workflow, configuration, decision, automation, mcp]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
 status: stable
-description: 提供判断内容应进入 wiki、memory、skill、cron、MCP 或 session 的路由检查清单。
+description: 以内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度判断 Hermes 层间路由。
 aliases: [layer-routing-checklist]
 ---
 
 # Hermes Layer Routing Decision Checklist
 
 ## Summary
-这页把 `[[hermes-agent-workflow-layering-and-adoption-order]]` 再往前推进一层，变成可执行的路由判定清单：一个新信息、方法、能力或自动化需求出现时，应该进入 `wiki`、`memory`、`skill`、`cron` 还是 `MCP`。这页显式以 Hermes 官方文档为校准基线：`memory`、`skills`、`cron`、`MCP` 的定义与边界，优先对齐官方；`wiki` 则是当前这套 Hermes 知识库架构里的本地长期知识层，不是 Hermes 官方内置 primitive。
+这页把 `[[hermes-agent-workflow-layering-and-adoption-order]]` 再往前推进一层，变成可执行的路由判定清单。它不是要求在 `wiki`、`memory`、`skill`、`cron` 与 `MCP` 中五选一，而是把需求拆成五个可组合维度：内容归属、执行方法、触发方式、外部能力和运行状态。`memory`、`skills`、`cron`、`MCP` 的角色以目标 Hermes 版本的官方文档和实际工具列表为准；`wiki` 是这套知识库架构里的本地长期知识层，不是 Hermes 官方内置 primitive。
 
 ## Official baseline first
-先明确哪些是 Hermes 官方概念，哪些是我们本地扩展层：
+本页引用的 Hermes 文档把这些角色区分为：
 
-- `memory`：官方内置，受字符预算约束的持久记忆层，用于用户偏好、环境事实、长期约束
-- `skills`：官方内置，按需加载的程序化知识与方法文档，是 agent 的 procedural memory
-- `cron`：官方内置，定时运行的 fresh-session 调度层，用于稳定重复任务
-- `MCP`：官方内置，连接外部工具服务器与实时能力的集成层
+- `memory`：受预算约束的持久记忆层，用于短小偏好、环境事实和长期约束
+- `skills`：按需加载的程序化知识与方法文档
+- `cron`：为稳定重复任务提供定时触发
+- `MCP`：连接外部工具服务器与动态能力
 - `wiki`：不是 Hermes 官方原生特性；它是当前这套本地知识库架构中的正式知识资产层
 
-这意味着：
-- 讨论 `memory / skills / cron / MCP` 时，应优先遵守官方定义
-- 讨论 `wiki` 时，应遵守当前本地知识库规则，不要误说成 Hermes 官方 feature
+这些是路由角色，不证明目标部署当前已启用、支持或授权对应能力。执行前应核对目标版本的官方文档与实际工具列表；讨论 `wiki` 时则遵守本仓库规则。
 
 ## One-screen routing rule
-看到一个新东西时，按这个顺序判断：
+对同一需求分别回答五个问题，不在第一个“是”处停止：
 
-1. 这是外部实时工具或数据接入需求吗？是 → `MCP`
-2. 这是稳定重复执行的方法吗？是 → `skill`
-3. 这是已经跑稳、需要按时间自动执行的方法吗？是 → `cron`
-4. 这是短小、稳定、长期有效的偏好或环境事实吗？是 → `memory`
-5. 这是值得长期查阅、扩展、交叉引用的正式知识吗？是 → `wiki`
-6. 如果都不是，大概率只该留在当前 session / thread
+1. **内容归属**：公开且长期可复用的正式知识进 `wiki`；短小稳定且适合默认保留的事实进 `memory`；项目局部内容进项目文档或状态；临时、私有或一次性内容留在 session、项目记录或 Git 历史。
+2. **执行方法**：重复、已验证的方法可形成 `skill`；一次性操作不必为了留痕而 skill 化。
+3. **触发方式**：默认人工或按需触发；只有方法稳定、失败边界清楚且目标部署确认支持并授权时，才考虑 `cron`。
+4. **外部能力**：需要动态外部数据或操作时，先确认已有且获准的连接方式；只有目标部署实际支持且适配时才选择 `MCP`。
+5. **运行状态**：当前结果、队列、故障和执行进度从 live system、project state 或 logs 读取，不写成 Wiki 当前事实。
+
+一个场景可以同时得到 `wiki + skill + cron + MCP`，但每层只承载自己的部分；组合不等于复制同一内容。
 
 ## Layer-by-layer checklist
 ### 1. Put it in memory when
@@ -61,10 +60,10 @@ aliases: [layer-routing-checklist]
 - 一次性任务结果
 - 大段原始资料
 
-官方对齐点：
-- 官方文档把 `memory` 定义为有严格字符预算的 curated persistent memory
-- 适合放 user preferences、environment facts、conventions、长期 lessons learned
-- 不适合把它当无限知识库或长文档仓库
+来源边界：
+- 本页引用的文档把 `memory` 描述为有字符预算的 curated persistent memory
+- 其中列举 user preferences、environment facts、conventions 和长期 lessons learned
+- 具体预算与当前行为需按目标版本复核；无论版本如何，都不把它当无限知识库或长文档仓库
 
 ### 2. Put it in a skill when
 只要核心问题变成“以后要按这套方法做”，优先考虑 `skill`。
@@ -87,10 +86,10 @@ aliases: [layer-routing-checklist]
 - 只出现一次的临时过程
 - 只是“每天跑一次”的调度需求
 
-官方对齐点：
-- 官方文档把 `skills` 定义为 on-demand knowledge documents
-- 本质是 agent 的 procedural memory
-- 适合沉淀复杂任务、纠错后形成的稳定工作流
+来源边界：
+- 本页引用的文档把 `skills` 描述为 on-demand knowledge documents 和 procedural memory
+- 这里据此承载复杂任务与纠错后形成的稳定工作流
+- 目标版本是否支持相同加载与管理行为，执行前另行复核
 
 ### 3. Put it in cron when
 `cron` 不是方法层，而是调度层。只有方法先稳定，才值得升级到 `cron`。
@@ -114,10 +113,10 @@ aliases: [layer-routing-checklist]
 - 只是在脑中有概念、方法还没收敛的事情
 - 严重依赖当前线程隐含上下文的任务
 
-官方对齐点：
-- 官方文档明确说明 cron jobs 在 fresh agent sessions 里运行
-- prompt 必须 self-contained，或配合 attached skills
-- cron 负责 schedule，不负责定义方法本身
+来源边界：
+- 本页引用的文档将 cron 描述为在 fresh agent sessions 中运行，prompt 自包含或配合 attached skills
+- 这里据此只把 cron 当触发方式，不把它当方法或内容归属层
+- 目标版本的会话、附加 skill 与调度行为必须在实际启用前复核
 
 ### 4. Put it in MCP when
 `MCP` 解决的是“能力接入”，不是知识沉淀，也不是方法沉淀。
@@ -139,10 +138,10 @@ aliases: [layer-routing-checklist]
 - 稳定流程说明
 - 调度逻辑
 
-官方对齐点：
-- 官方文档把 MCP 定义为外部 tool servers 接入层
-- 支持 stdio / HTTP server
-- 强调 per-server filtering 与最小暴露面
+来源边界：
+- 本页引用的文档把 MCP 描述为外部 tool servers 接入层，并提到 stdio / HTTP 与 per-server filtering
+- 这里据此把 MCP 视为外部能力维度，而不是知识或方法载体
+- 可用传输、过滤和权限以目标版本与部署配置为准
 
 ### 5. Put it in wiki when
 `wiki` 是本地知识资产层，适合正式知识，不适合任务态缓存。
@@ -151,8 +150,8 @@ aliases: [layer-routing-checklist]
 - 这是概念、架构、比较、案例、长期问答或外部文章编译结果吗？
 - 未来回答问题时，值得被检索、引用、扩写吗？
 - 它是否需要与其他页面建立链接？
-- 它是否比 session 记录更稳定、更结构化？
-- 它是否已经整理成正式页面，而不是原始聊天或 raw dump？
+- 它是否适合公开，且脱离作者私有环境仍可理解？
+- 它是否已经整理成正式页面，而不是私有会话、一次性 closeout、执行记录或 raw dump？
 
 适合：
 - 架构分层规则
@@ -170,18 +169,17 @@ aliases: [layer-routing-checklist]
 - 它服务于长期检索、交叉链接、后续增量维护
 - 它不是 Hermes 官方替代 memory 的 built-in store
 
-## Decision order that avoids drift
-为了避免层间串味，实际判断顺序建议固定成：
+## Five independent decisions
 
-1. 先问：这是能力接入问题吗？是 → `MCP`
-2. 再问：这是执行方法问题吗？是 → `skill`
-3. 再问：这是已稳定方法的调度问题吗？是 → `cron`
-4. 再问：这是短小稳定事实吗？是 → `memory`
-5. 最后问：这是正式知识资产吗？是 → `wiki`
+| 维度 | 要回答的问题 | 可能结果 |
+|---|---|---|
+| 内容归属 | 哪些内容值得持久化，公开边界允许放在哪里？ | `wiki`、`memory`、项目文档/状态、session/history |
+| 执行方法 | 是否已有可重复、可验证的做法？ | `skill` 或当前任务内指令 |
+| 触发方式 | 谁在何时启动？ | 人工、按需，或经核验与授权的 `cron` |
+| 外部能力 | 是否需要动态外部数据或动作？ | 已有获准工具、经核验的 `MCP`，或不接入 |
+| 运行状态 | 当前发生了什么，真相源在哪里？ | live system、project state、logs；不是 Wiki 推断 |
 
-为什么把 `wiki` 放在后面：
-- 很多东西看起来“值得记”，但其实是方法或偏好，不是知识页
-- 很多东西看起来“需要保存”，但其实只该在 session 里短期保留
+判断可以有多个结果，也可以某些维度为空。先拆职责，再检查组合是否必要；不要因为需要调度就自动创建 skill，也不要因为使用 MCP 就把外部状态写进 Wiki。
 
 ## Anti-confusion rules
 ### memory vs wiki
@@ -205,35 +203,36 @@ aliases: [layer-routing-checklist]
 - 接工具能力 → `MCP`
 - 用这能力怎么稳定做一类事 → `skill`
 
-## Practical examples
-### 例 1：用户说“以后 Hermes 相关设计要参考官方文档”
-- 归类：`memory`
-- 原因：这是稳定工作偏好与校准规则，短而长期有效
+## Synthetic examples
+以下只演示职责组合，不表示某个连接器、任务或调度已经部署或获批。
 
-### 例 2：总结出“如何把外部 agent 架构文章转成 Hermes 知识资产”
-- 归类：`skill` + `wiki`
-- 原因：方法本身可做 skill；沉淀后的架构结论可进 wiki
+### 例 1：周期性检查外部 CI 并形成摘要
+- **内容归属**：通用且适合公开的判定原则可进 `wiki`；目标仓库配置和收件人留在项目或私有配置
+- **执行方法**：重复且验证过的检查步骤可进 `skill`
+- **触发方式**：先人工或按需运行；目标版本支持、风险可控且另有授权时才使用 `cron`
+- **外部能力**：按实际部署选择已获准的工具；需要且已核验时才可能是 `MCP`
+- **运行状态**：每次 CI 结果留在 CI、project state 或运行日志，不写成 Wiki 当前事实
 
-### 例 3：接 GitHub issue / CI / 监控系统
-- 归类：`MCP`
-- 原因：这是外部实时能力接入，不是知识页，也不是记忆条目
+### 例 2：一次私有故障暴露出通用恢复原则
+- **内容归属**：私有日志、会话和 closeout 留在原载体；只有去标识化、适合公开且长期可复用的原则才编译进对应 Wiki 正式页
+- **执行方法**：若恢复步骤重复验证后稳定，可另行形成 `skill`
+- **触发与外部能力**：没有独立需求就保持为空，不为凑齐层次而增加 `cron` 或 `MCP`
+- **运行状态**：故障是否仍存在必须实时核验
 
-### 例 4：每天早上自动检查失败流水线并发回摘要
-- 归类：`skill` + `cron`
-- 原因：先有检查方法，再用 cron 定时调度
-
-### 例 5：把“层间路由边界”写成正式规则页
-- 归类：`wiki`
-- 原因：这是长期查阅与交叉引用的正式知识资产
+### 例 3：整理一篇公开 agent 架构文章
+- **内容归属**：有长期价值的来源与综合结论可进入 `wiki`
+- **执行方法**：只有文章整理流程确实重复且已验证时才需要 `skill`
+- **其余维度**：没有定时、外部动态操作或运行状态需求时，不需要 `cron`、`MCP` 或状态页
 
 ## Minimal operating checklist
-每次遇到“这个该放哪儿”时，快速过一遍：
-- 外部实时工具接入？→ `MCP`
-- 固定方法 / SOP？→ `skill`
-- 稳定定时任务？→ `cron`
-- 短小稳定偏好或事实？→ `memory`
-- 正式知识资产？→ `wiki`
-- 都不是？→ 留在 session
+每次遇到“这个该放哪儿”时，分别记录：
+- 内容归属：`wiki`、`memory`、项目载体还是 session/history？
+- 执行方法：需要 `skill`，还是一次性指令已足够？
+- 触发方式：人工、按需，还是经核验与授权的 `cron`？
+- 外部能力：已有工具是否足够；是否确实需要且支持 `MCP`？
+- 运行状态：应从哪个 live source、project state 或 log 读取？
+
+没有需求的维度留空；多个维度命中时按职责组合，不做互斥单选。
 
 ## Relations
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]

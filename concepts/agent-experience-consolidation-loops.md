@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-09-02
+updated: 2026-09-22
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, hermes, multi-agent]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, docs:https://agentskills.io/specification]
@@ -12,9 +12,9 @@ description: 定义把 Agent 历史经验提炼为可复用知识、持续整合
 # Agent Experience Consolidation Loops
 
 ## Summary
-Agent experience consolidation loop 是一种让 agent 从历史任务、失败、成功路径和用户纠正中提取可复用经验，并将其路由到 memory、skills、wiki、project closeout、evaluator 或 runtime automation 的闭环。它的目标不是把更多历史塞进上下文，而是把经验转成可审计、可复用、可验证的未来任务支撑。
+Agent experience consolidation loop 是一种让 agent 从历史任务、失败、成功路径和用户纠正中提取可复用经验，并将其路由到 memory、skills、公共 Wiki 正式页、项目内状态、evaluator 或 runtime automation 的闭环。它的目标不是把更多历史塞进上下文，而是把经验转成可审计、可复用、可验证的未来任务支撑。
 
-一句话原则：**不要把所有历史经验直接写进 memory；先复盘，再按层路由。**
+一句话原则：**不要把所有历史经验直接写进 memory 或公共 Wiki；先复盘，再按职责与公开边界路由。** 私有状态、会话记录、执行记录和一次性 closeout 仍留在原有私有或项目载体；只有适合公开且长期可复用的发现才编译进对应正式页面。
 
 ## Source anchor
 本页由 VentureBeat 对 Anthropic Claude Managed Agents `dreaming`、`outcomes` 与 multi-agent orchestration 的报道触发：[[venturebeat-anthropic-dreaming-ai-agents-2026-05-07]]。
@@ -46,7 +46,7 @@ Anthropic 发布的 Warp 案例 [[claude-warp-self-improving-agent-skills-2026-0
 - evaluator / reviewer notes
 - runtime incidents and recovery evidence
 
-Hermes 对应入口：`session_search`、project closeout、wiki query pages、logs、git diffs、test artifacts。
+这些证据可以来自 `session_search`、项目 closeout、logs、git diffs 或 test artifacts，但证据可用不等于有资格公开。私有或一次性材料只在原授权范围内参与复盘，不因“经验固化”而进入公共 Wiki；公开、长期可复用的结论应去标识化后编译进对应正式 owner，具有长期检索价值的公共历史决策可以保留。
 
 ### 2. Detect recurring failures and successful workflows
 复盘的重点不是“发生了什么”，而是识别可以改变未来行为的模式。
@@ -72,9 +72,9 @@ Hermes 对应入口：`session_search`、project closeout、wiki query pages、l
 常见 artifact：
 - **memory**：短小、稳定、每个 session 都值得看到的事实
 - **skill**：可重复执行的方法、命令、坑点和验证步骤
-- **wiki concept**：跨工具、跨项目的长期知识模式
-- **wiki query / closeout**：一次验证或判断的证据结论
-- **project context**：某个 repo / workspace 的局部规则
+- **wiki concept**：符合公共边界、跨工具或跨项目复用的长期知识模式
+- **wiki query**：适合公开、带时间范围且有长期检索价值的问题答案或历史决策；一次性验证记录与任务 closeout 不因此进入公共 Wiki
+- **project context / closeout**：某个 repo / workspace 的局部规则、状态和一次性收尾记录，留在项目载体或 Git 历史
 - **evaluator rubric**：判断结果是否合格的标准
 - **cron candidate report**：周期性提醒或只读复盘报告
 - **runtime automation**：已验证、可回滚、低噪音的稳定流程
@@ -176,7 +176,7 @@ WikiSkill 将每轮状态表示为活动 Skill 集合与持久 Wiki 的组合。
 rollback(active candidate) != erase(evidence and rejected reasoning)
 ```
 
-[推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先作为证据进入可审计知识层；Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令。
+[推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先留在其原有会话、项目或评估载体中；只有通过公共边界且长期可复用的发现才编译进公共 Wiki 的正式 owner。Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，在合适的项目证据载体中保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令，也不把“保留证据”误读为“公开全部执行记录”。
 
 #### Role-specific knowledge access
 
@@ -205,8 +205,9 @@ WikiSkill 报告跨模型正迁移，也报告明显负迁移：Qwen-3.6-27B 演
 lesson candidate
 → Is it always-needed stable context? → memory
 → Is it repeatable procedure? → skill
-→ Is it durable concept/evidence? → wiki
-→ Is it project-local? → project docs / AGENTS.md
+→ Is it a public-eligible, durable conclusion? → corresponding wiki formal owner
+→ Is it private or project-local? → authorized session/project carrier, not public wiki
+→ Is it a one-off closeout? → project state/history, not public wiki
 → Is it a quality gate? → evaluator / test / rubric
 → Is it scheduled and stable? → cron/runtime after approval
 → Otherwise → leave in session history
@@ -239,7 +240,7 @@ lesson candidate
 - cron 是否仍低噪音、低风险
 - runtime automation 是否有 rollback path
 
-Hermes 的 curator 已经覆盖部分 skill lifecycle；memory consolidation / Auto Dream 类型能力仍需谨慎验证。
+2026-05-11 / v0.13.0 的历史快照记录过部分 skill lifecycle 能力；curator、memory consolidation / Auto Dream 等能力的当前状态仍需按目标版本重新核验。
 
 ### Evaluation boundary for evolving knowledge
 
@@ -251,11 +252,13 @@ EvoLib 博客报告了数学、代码效率约束和长程环境交互三类实�
 
 ## Hermes mapping
 
-Hermes 已具备 `session_search`、skills、memory、验证工具、`/goal`、`delegate_task` 和 cron 等底层能力，但没有在本地证实存在完整原生 Auto Dream。详细能力状态由 [[hermes-agent-experience-consolidation-capability-assessment]] 维护，本页只保留知识闭环边界：
+[[hermes-agent-experience-consolidation-capability-assessment]] 仅记录 2026-05-11 / v0.13.0 的历史能力快照，不是当前能力清单。目标部署是否具有 `session_search`、skills、memory、验证工具、`/goal`、`delegate_task`、cron 或 Auto Dream，必须按当前官方文档与实际工具列表重新核验；本页只保留知识闭环边界：
 
 ```text
 session_search / project evidence → audited review
-→ wiki concept/query or project closeout
+→ public, durable finding → corresponding wiki formal owner
+→ private or project-local record → original authorized session/project carrier
+→ one-off closeout → project state/history, not public wiki
 → narrow skill patch only when a reusable procedure changed
 → memory only for compact stable facts
 → runtime/cron only after separate approval
@@ -272,6 +275,7 @@ session_search / project evidence → audited review
 - 用“Dreaming”包装不可审计的自动自改。
 - 让 cron 无人确认地修改 durable knowledge layers。
 - 把一次任务的进展日志当作长期经验。
+- 以“经验固化”或“保留证据”为由，把私有状态、会话记录、执行记录或一次性 closeout 写入公共 Wiki。
 - 用多 agent 取代明确验收标准。
 - [推论] 把语义相似但适用边界不同的知识强行合并。
 - [推论] 让同一个模型同时负责提炼、加权和验收，再把其自评分数当作有效性证明。
@@ -281,8 +285,8 @@ session_search / project evidence → audited review
 ## Operating rules
 1. 经验候选必须先问：未来会在哪类任务中复用？
 2. 能写成验证步骤的，优先进入 skill 或 project gate，而不是 memory。
-3. 能作为跨项目概念复用的，进入 wiki concept。
-4. 一次能力判断或验证结果进入 query / closeout。
+3. 能作为跨项目概念复用且符合公共边界的，进入对应 wiki concept。
+4. 公开、带必要时间范围且有长期检索价值的能力判断可进入 query；一次性验证记录和任务 closeout 留在项目载体或 Git 历史。
 5. 只有稳定、短小、经常需要的事实进入 memory。
 6. 自动化只读复盘可以先做；自动写入 durable layer 要等真实验证和单独批准。
 7. 所有经验固化都要保留 provenance 和 rollback path。
