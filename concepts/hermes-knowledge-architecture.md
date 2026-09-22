@@ -1,12 +1,12 @@
 ---
 title: Hermes Knowledge Architecture
 created: 2026-04-16
-updated: 2026-08-17
+updated: 2026-09-22
 type: concept
 tags: [hermes, knowledge-base, agent, mcp, workflow, configuration]
 sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md]
 status: stable
-description: 定义 Hermes 长期知识系统的 canonical 分层，包括 memory、skills、sessions、wiki、raw 与 MCP/tools 的职责边界。
+description: 定义 Hermes 长期知识系统的总体架构、层间关系与分层规则导航。
 aliases: [knowledge-architecture, hermes-wiki-architecture]
 ---
 
@@ -23,6 +23,18 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 2. Wiki 文件系统结构
 
 二者关系是：Hermes 通过工具和流程读写 wiki，而不是把长期知识直接塞进 prompt memory。
+
+## Continue by question
+
+本页维护总体结构和层间关系；具体规则按问题进入对应页面：
+
+- 内容属于 memory、skill、wiki 还是 session：[[hermes-memory-skills-wiki-boundaries]]
+- 一个需求如何组合内容、方法、触发、外部能力和运行状态：[[hermes-layer-routing-decision-checklist]]
+- 哪些材料进入当前上下文、如何压缩历史、长任务状态如何推进：[[hermes-context-layer-operating-rules]]
+- Wiki 结论能否用于当前回答、何时必须实时核验：[[hermes-retrieval-priority-and-answer-path]]
+- 内容能否进入公共 Wiki：`SCHEMA.md`
+
+各页可以保留理解当前主题所需的短定义和安全边界，但详细规则只在上述对应页面维护。
 
 ## Layer 1: Hermes runtime knowledge stack
 ### 1. memory
@@ -96,53 +108,24 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 - `[推论]` 术语漂移应通过一个 canonical entity page 及其 `aliases` 对齐，避免同一概念拆成多个互相遗漏的页面。
 - `[推论]` 多跳解释应沿 `refines`、`depends_on`、`conflicts_with`、`supersedes` 等类型化关系遍历；top-k 相似度排序只能排名，不能替代关系链遍历。
 
-## Canonical rule
-在 Hermes 的长期知识体系里：
-- `memory` 是偏好与稳定事实层
-- `wiki` 是正式知识层
-- `raw` 是来源层
-- `sessions` 是回忆层
-- `skills` 是方法层
+## Cross-layer invariants
 
-因此：
-- 长期知识以 wiki 为准
-- 短期对话上下文不等于知识资产
-- raw 来源不能代替整理后的知识页
-- 技能不能代替概念/实体知识页
+- 内容归属先按 [[hermes-memory-skills-wiki-boundaries]] 判定；同一主题可以产生不同职责的资产，但不复制同一正文。
+- 执行方法、触发方式和外部能力可按 [[hermes-layer-routing-decision-checklist]] 组合；skill、cron、MCP 与 wiki 不是互斥层。
+- 上下文装配只决定本轮加载什么，不改变资产归属；长任务状态按 [[hermes-context-layer-operating-rules]] 维护。
+- Wiki 是正式知识层，但不是当前事实的豁免证据；回答前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate。
+- raw 保存合格来源，sessions 保存历史轨迹；二者都不能自动替代编译后的正式知识。
 
 ## Retrieval and write-back loop
 标准闭环如下：
 1. 用户提出问题、链接、文档或主题
-2. Hermes 先查 `[[index]]` 与相关页面
-3. 若 wiki 不足，再去读取 raw 或外部资料
-4. 经过提炼后，更新正式页面或新增页面
+2. 按 [[hermes-retrieval-priority-and-answer-path]] 查找并检查现有知识的当前适用性
+3. 若 Wiki 不足，再读取合格 raw 或外部资料
+4. 经提炼且符合公共准入时，更新对应正式页面
 5. 同步更新 `[[index]]` 与 `[[log]]`
-6. 后续问题继续优先使用 wiki 中已编译的知识
+6. 后续问题继续复用经过范围与新鲜度检查的知识
 
-这就是 `[[wiki-ingestion-workflow]]` 的落地方式。
-
-## What goes where
-### 应进入 memory 的内容
-- 用户长期偏好
-- 机器环境中的稳定事实
-- 持续适用的工作规则
-
-### 应进入 skills 的内容
-- 一套稳定可复用的流程
-- 明确的命令序列
-- 容易遗忘、但可标准化的操作手册
-
-### 应进入 wiki 的内容
-- 概念解释
-- 架构设计
-- 对比分析
-- 研究结论
-- 值得长期复用的问题与答案
-
-### 只应留在 sessions 的内容
-- 某次会话中的临时尝试
-- 中间过程
-- 短期任务状态
+摄取细节由 `[[wiki-ingestion-workflow]]` 维护；内容归属不在本页重复展开。
 
 ## Design constraints
 - 不把长文档直接塞进 memory
@@ -160,21 +143,6 @@ Hermes 的知识体系不是单一“记忆库”，而是分层协作系统。
 ### MCP / native tools
 - 当 wiki 规模扩大后，可把 search/read/write 封装成原生工具
 - 让 Hermes 不是“知道 wiki 在哪里”，而是“可以直接调用 wiki 能力”
-
-## Practical interpretation
-如果把 Hermes 看成一个系统：
-- memory = 用户与环境的稳定配置层
-- skills = 可执行经验层
-- sessions = 会话轨迹层
-- wiki = 正式知识层
-- MCP/tools = 外部能力接入层
-
-如果把 wiki 看成一个系统：
-- SCHEMA/index/log = 导航与治理层
-- raw = 原始来源层
-- entities/concepts/comparisons/queries = 编译后的知识层
-
-这两套结构叠在一起，才构成完整的 Hermes 知识库整体架构。
 
 ## Relations
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]

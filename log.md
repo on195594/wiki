@@ -3,6 +3,13 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-22] refactor | Knowledge-layer rule maintenance boundaries
+- Kept the existing five-dimension composable routing model and consolidated only full-rule duplication: architecture now provides navigation, content ownership remains in `[[hermes-memory-skills-wiki-boundaries]]`, quick composition and synthetic cases remain in `[[hermes-layer-routing-decision-checklist]]`, and context assembly plus long-task state remain in `[[hermes-context-layer-operating-rules]]`.
+- Left the canonical Freshness Gate in `[[hermes-retrieval-priority-and-answer-path]]` unchanged; retained short local safety and time-sensitive boundaries where removing them would increase lookup cost.
+- Removed duplicate layer-by-layer checklists and promotion rules while preserving unique source-scoped cron/MCP constraints, content examples, project-state structure and provenance.
+- Updated the four affected index descriptions; no Schema, raw source, `verified_at`, similarity threshold, runtime layer or Hermes configuration changed.
+- Validation: the four required reading paths passed semantic checks; baseline and candidate Wiki health P0/P1/P2=`0/0/0`; tag audit undeclared count=`0`; public-content violations=`0` with the same 16 non-blocking candidates; 41 unit tests passed; external links reported 0 errors with 21 configured exclusions; `git diff --check` passed.
+
 ## [2026-09-22] review-fix | Experience consolidation and layer-routing semantics
 - Clarified that private state, session/execution evidence and one-off closeouts remain in their original private or project carriers; only public, durable findings and reusable public historical decisions enter the corresponding formal Wiki owner.
 - Scoped the Hermes capability assessment title, section headings and action wording to its 2026-05-11 / v0.13.0 evidence window without rewriting that historical snapshot as current behavior.
