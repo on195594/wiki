@@ -3,6 +3,11 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-25] update | Task-specific interfaces over repeated agent-mediated operations
+- Added a bounded interface-selection note to `[[hermes-ai-workflow-formalization-principles]]`, citing Burke Holland's GitHub Blog article “When chat is the wrong UI” (2026-09-24).
+- Kept the product example and unmeasured token-savings claim separate from the reusable principle; the screenshot's AI praise is not independent workflow evidence. Updated the existing index entry; no new concept page, raw copy of the copyrighted article, or active workflow change.
+- Validation: Wiki health P0/P1/P2=`0/0/0`; `git diff --check` passed.
+
 ## [2026-09-22] review-fix | Routing references and deterministic freshness dates
 - Redirected stale consumers of `[[hermes-context-layer-operating-rules]]` to the content-ownership or composable-routing owners, while retaining that page only for context assembly, history compression and long-task state.
 - Restricted local `[!volatile]` marker detection to the start of a blockquote so ordinary quoted prose can mention the syntax without becoming an unsupported block.

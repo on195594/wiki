@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-09-06
+updated: 2026-09-25
 type: concept
 tags: [hermes, llm, workflow, decision, note, skills, governance]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/]
 status: stable
 description: 把形式化思想转译为 Hermes AI 工作流中的规格、边界、验证和可回滚原则。
 ---
@@ -22,6 +22,12 @@ Hermes 不应把对话本身当作最终控制面，而应不断把模糊意图�
 实践含义：
 - 用户消息是起点，不是终点
 - 长任务要转成 todo、wiki 页面、skills、配置项或明确检查项
+
+### 交互面也应按任务收窄
+
+GitHub Blog 的 [When chat is the wrong UI](https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/)（Burke Holland，2026-09-24）从界面角度补充了这条原则：聊天适合提出意图和探索未知任务；任务及操作明确、又需要反复执行时，继续让模型代点按钮或代跑固定命令未必合算。文中用 Copilot app 的 Canvas 演示包管理、SQLite 查询和写作界面。可迁移的判断是**优先复用已有确定性工具或窄界面；确有反复交互缺口时，才考虑生成新界面**，而不是把 Canvas 产品形态当作通用要求。
+
+证据边界：这是一篇产品实践与观点文章，没有成本或效率的对照测量；只有无需再次调用 Agent 的常规 UI 操作才可能不消耗模型 Token，生成、维护工具及再次调用 Agent 仍有成本。文中展示的 AI 对工作流截图的赞语不能证明 GitHub Issue、确定性协调器或人工门禁已经作为完整架构得到验证。此处仅沉淀界面选择的判断，不引入新默认工作流、权限或自动化。
 
 ## Principle 2: prefer narrow interfaces
 接口越宽，歧义越多，返工越多。
