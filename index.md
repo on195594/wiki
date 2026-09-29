@@ -3,7 +3,7 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-21 | Indexed pages: 112
+> Last updated: 2026-09-29 | Indexed pages: 113
 
 ## Entities
 - [[flutter]] — Google 管理的开源跨平台 UI 框架：Dart/Engine/Embedder 分层、声明式 Widget 模型、平台互操作、工程实践与采用边界
@@ -33,6 +33,7 @@
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [[ai-agent-human-outcome-design-principle]] — AI Agent 项目设计的人类结果优先原则：先验证真实问题、可衡量结果和人类信任边界，再决定模型、自动化和 human-in-the-loop 范围
 - [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：只把适合公开且长期可复用的发现编译进正式知识页，私有或一次性证据留在原载体，并治理候选验证、准入、退役与回滚
+- [[agent-harness-search-regularization]] — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
 - [[agent-failure-closed-loop-evaluation]] — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [[agent-evaluation-rubric-calibration]] — Agent 评测 Rubric 校准：聚合分数只作诊断指针；分数、评语、人工复核或 Trace 冲突时，先审计评分维度、锚点和错误激励
 - [[first-edit-economy-for-coding-agents]] — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证

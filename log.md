@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-29] ingest | RRSI harness search regularization
+- Added structured project-homepage capture `raw/articles/rrsi-harness-search-regularization-2026-09.md` and [[agent-harness-search-regularization]]; linked the new concept from [[production-ai-agent-evaluation-framework]] and the index.
+- Kept homepage results and arXiv v2 abstract separately attributed where their OOD counts and token savings differ; clarified the noise-band exception and distinct per-edit/final-harness token comparisons. External benchmark findings are not active Agent rules or universal thresholds.
+- Validation: raw hash manifest added one entry without changing existing hashes; Wiki health P0/P1/P2=`0/0/0`, tag audit undeclared=`0`, public-content violations=`0`, and `git diff --check` passed. Existing unrelated worktree changes were preserved.
+- Independent AGY read-only review flagged the “new structural component” noise-band exception as a likely proposer/selector conflation. Direct readback of the project's evolution-explorer footer explicitly states it as a candidate-admission exception, so the proposed removal was rejected; the raw capture now quotes that passage and the concept distinguishes it from proposer-side exploration.
+
 ## [2026-09-25] update | Task-specific interfaces over repeated agent-mediated operations
 - Added a bounded interface-selection note to `[[hermes-ai-workflow-formalization-principles]]`, citing Burke Holland's GitHub Blog article “When chat is the wrong UI” (2026-09-24).
 - Kept the product example and unmeasured token-savings claim separate from the reusable principle; the screenshot's AI praise is not independent workflow evidence. Updated the existing index entry; no new concept page, raw copy of the copyrighted article, or active workflow change.

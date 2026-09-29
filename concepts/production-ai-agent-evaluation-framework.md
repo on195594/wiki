@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-09-04
+updated: 2026-09-29
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -234,6 +234,7 @@ aliases: [agent-evaluation-framework]
 `[[stateful-agent-environments-and-grounded-verification]]` narrows the Agent behavior layer for stateful computer-use workflows: evaluate environment behavior, task depth and authoritative outcome verification together, then separate model, environment, task and verifier failures. It does not make synthetic worlds, RL or database graders a production default.
 
 ## Related
+- [[agent-harness-search-regularization]] — RRSI 补充自我演化期间的候选准入视角：在冻结的评测条件下，同时观察未见任务迁移、基线方差和 token 成本；其来源特定门槛不成为本页的生产默认阈值。
 - [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
 - [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]
 - [[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]
