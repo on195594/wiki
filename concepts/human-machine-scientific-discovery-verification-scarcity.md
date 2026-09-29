@@ -1,10 +1,10 @@
 ---
 title: Human-Machine Scientific Discovery and Verification Scarcity
 created: 2026-08-18
-updated: 2026-08-18
+updated: 2026-09-28
 type: concept
 tags: [agent, research, workflow, evaluation, verification, decision]
-sources: [raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md]
+sources: [raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md, https://arxiv.org/pdf/2609.19644]
 status: stable
 description: 当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。
 aliases: [verification-scarcity, abundant-experiments-scarce-review, human-machine-mathematical-discovery]
@@ -18,7 +18,7 @@ aliases: [verification-scarcity, abundant-experiments-scarce-review, human-machi
 
 这不是“AI 已经自动化科学发现”的结论，而是一条更窄的工作原则：**实验产量增加不会自动增加可信知识；验证器、形式化工具和同行评审各自只覆盖不同的证明义务。**
 
-本页编译自 Sean Moran 的个人数学实验。原文是高价值工作流案例，但不是同行评审研究；其 Hadamard 搜索范围和四平衡点 Maxwell 候选均保留为作者自述，不能升级为数学事实。
+原有数学案例来自 Sean Moran 的个人实验：原文不是同行评审研究，其 Hadamard 搜索范围和四平衡点 Maxwell 候选均保留为作者自述，不能升级为数学事实。下文另以 ScientistTwo 预印本提供机器学习研究闭环的实证案例，同样区分作者报告与独立验证。
 
 ## Core distinction: abundance is not acceptance
 
@@ -164,6 +164,14 @@ known_failures
 - 面向专家与普通读者的不同解释层。
 
 这与 [[agent-research-evidence-gate]] 的“证据达标后再综合”、[[agent-self-validation-loops]] 的“目标—反馈—迭代—停止”、[[constrained-toolbox-evaluator-loop]] 的“受限候选空间加客观 evaluator”互补。本页只负责**科学候选丰沛后，知识准入与评审注意力变得稀缺**这一层，不复制这些页面的工程规则。
+
+## Empirical case: ScientistTwo and the cost of closing the loop
+
+Jaehyun Nam 等人的 [ScientistTwo 预印本](https://arxiv.org/pdf/2609.19644)（arXiv:2609.19644v1，2026-09-17）研究的是给定已有顶会论文对应的问题后，自动提出改进方案，而不是由系统独立选择值得研究的问题。其流程将局限诊断、假设生成、子集筛选与完整基准测试、消融剪枝、模拟同行评审及补充实验串成有界循环；这为“候选生成之后，验证和评审仍是瓶颈”提供一个具体工程案例，不替代本页对知识准入的分层判断。
+
+**作者报告的范围内结果**：在选取的 107 个机器学习研究问题中，86 个相对原有人类方法取得改进（80.4%），平均相对提升 25.2%。论文用 ScholarPeer 和开发时未使用的 Stanford Agentic Reviewer 评估生成论文，分别报告 91.9% 和 72.1% 的模拟接受率；这不是实际会议录用率，前者还参与了论文迭代。另有 9 名人类评审者评价 33 篇生成论文：整体成熟度单独评分为 3.7/5，与人类论文比较的整体偏好为 3.0/5（持平），不能概括为“超越人类评审”。同一批 NeurIPS 来源问题的成本分析报告平均每项约 2.5 天、3,765 美元（模型调用及虚拟机），说明多轮实验和评审反馈并非低成本默认流程。
+
+**证据边界**：上述数字是作者在自选任务、模型和评审器下的报告；本页未重跑代码、核查全部 71 页附录，亦未获得真实会议录用结果。PDF 正文至结论已核读，图表及嵌入的样例论文页存在文本提取局限；早先自动摘要误称正文没有成本分析和人类评审，不能将该摘要当作原始证据。可迁移的是“子集筛选后再扩大实验、把消融和反驳落成可执行验证、区分模拟评分与专家/共同体认可”的判断框架，不是其成功率、评审阈值或整套昂贵多智能体流程。
 
 ## Evidence boundary
 

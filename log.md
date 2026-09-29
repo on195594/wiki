@@ -9,6 +9,10 @@
 - Validation: raw hash manifest added one entry without changing existing hashes; Wiki health P0/P1/P2=`0/0/0`, tag audit undeclared=`0`, public-content violations=`0`, and `git diff --check` passed. Existing unrelated worktree changes were preserved.
 - Independent AGY read-only review flagged the “new structural component” noise-band exception as a likely proposer/selector conflation. Direct readback of the project's evolution-explorer footer explicitly states it as a candidate-admission exception, so the proposed removal was rejected; the raw capture now quotes that passage and the concept distinguishes it from proposer-side exploration.
 
+## [2026-09-28] update | ScientistTwo as a bounded scientific-discovery case
+- Updated [[human-machine-scientific-discovery-verification-scarcity]] with a source-linked ScientistTwo preprint case: hypothesis screening, full experiments, ablation and simulated review/rebuttal, plus the authors' bounded task outcomes, human-review evidence and per-task cost.
+- Kept AI-review acceptance distinct from real conference acceptance and author-reported results distinct from independent reproduction. Refreshed the existing index entry; no new concept or raw copy of the 71-page PDF, and no active workflow or runtime change.
+
 ## [2026-09-25] update | Task-specific interfaces over repeated agent-mediated operations
 - Added a bounded interface-selection note to `[[hermes-ai-workflow-formalization-principles]]`, citing Burke Holland's GitHub Blog article “When chat is the wrong UI” (2026-09-24).
 - Kept the product example and unmeasured token-savings claim separate from the reusable principle; the screenshot's AI praise is not independent workflow evidence. Updated the existing index entry; no new concept page, raw copy of the copyrighted article, or active workflow change.
