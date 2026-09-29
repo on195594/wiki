@@ -1,10 +1,10 @@
 ---
 title: Hermes AI Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-09-25
+updated: 2026-09-27
 type: concept
 tags: [hermes, llm, workflow, decision, note, skills, governance]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/, raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md]
 status: stable
 description: 把形式化思想转译为 Hermes AI 工作流中的规格、边界、验证和可回滚原则。
 ---
@@ -21,7 +21,7 @@ Hermes 不应把对话本身当作最终控制面，而应不断把模糊意图�
 
 实践含义：
 - 用户消息是起点，不是终点
-- 长任务要转成 todo、wiki 页面、skills、配置项或明确检查项
+- 只有当任务需要跨会话交接、共享决策或可复核的验收边界时，才把必要结论留在其现有 owner（如项目 spec / todo）；任务长短本身不要求新建 wiki、skill 或配置
 
 ### 交互面也应按任务收窄
 
@@ -38,7 +38,7 @@ GitHub Blog 的 [When chat is the wrong UI](https://github.blog/ai-and-ml/github
 - 明确的验收标准
 
 实践含义：
-- 能落文件就别只停留在对话里
+- 需要跨会话维护的决策和契约落到现有文件；局部、可回滚的短任务可在对话中澄清并验证，不为留痕而造文档
 - 能拆成小页面、小技能、小检查项就不要做成大杂烩
 
 ## Principle 2.5: durable projects need a spec source of truth
@@ -65,6 +65,14 @@ Hermes 映射：
 这是一条风险比例原则，不是“消除全部不确定性”的硬门禁，也不意味着默认增加多 Agent 审查。文章主要提供工程师经验案例与假设性推演，没有受控数据证明工时不增加或返工必然下降；其中“理想情况下不会花更多时间”不能转写成 Hermes 的效果承诺或阈值。
 
 证据边界：原文是二手工程综述；ROPE、SWE-bench/SWT-Bench 和 DORA 数字在成为强制门禁或本地阈值前，需要回到原论文或官方报告核验。
+
+### 规划是过程，不必总有计划文档
+
+[Plan mode is dead](https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html)（Ayman Nadeem，2026-09-24；2026-09-26 直接提取到完整可读正文，图片仅有替代文本）复盘其 AI 编程工具 Nuanced：早期用户不愿阅读长篇 AI 生成规格，Spec Tour 又增加一层文本；强制“澄清 → 生成规格 → 审批 → 实现”的单向流程，令实现中发现的新问题难以自然回到讨论。作者因此主张在“理解 → 行动 → 检查 → 澄清 → 调整”的循环里持续规划，而非默认生成静态计划。文章同时指出，多 Agent 并行时如何保持人的系统理解仍未解决。
+
+Hermes 应用建议（推论，非原文结论或现行 Skill 行为证明）：在对话中持续规划，仅当用户要求留档或存在真实跨会话交接需求时保存计划；清楚、局部且可验证的修复不必为写计划而暂停执行。跨 Agent 契约、难以反悔的架构决定、生产数据、安全或权限边界仍需按各自现行规则保留必要的 spec、验收、独立验证和授权。这里反对的是**无必要的长篇产物与强制模式切换**，不是取消思考或风险门禁。
+
+证据局限与沉淀级别：这是作者对自身产品和早期用户的定性复盘，没有跨团队对照数据；“计划模式已死”不能外推到所有项目。此处只作 Wiki 反例及比例原则说明，不因单篇文章修改 active skill、默认门禁或运行配置；若未来发现现行路由反复制造无用文档，再按实际案例定向删改。
 
 ## Principle 3: formal artifacts are the real memory of work
 真正可靠的长期资产不是聊天记录，而是形式化产物：
@@ -105,7 +113,7 @@ Hermes 的更优路径不是无限追加聊天，而是持续压缩。
 实践含义：
 - 复杂对话结论写回 wiki
 - 重复流程沉淀为 skills
-- 多步骤任务写入 todo
+- 需要跨回合跟踪且步骤确有依赖的任务才写入 todo；其余保留在当前对话
 - 历史事项用 session_search 回忆，而不是把整段旧上下文塞回来
 
 ## Principle 7: skills should be executable workflows, not explanatory prose
@@ -188,6 +196,7 @@ LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量�
 不要让 AI 直接统治模糊上下文；要让 AI 帮你更快地产出、维护和验证形式化结构。
 
 ## Related
+- [[aymannadeem-plan-mode-is-dead-2026-09-24]]
 - [[dijkstra-ai-programming-formalization]]
 - [[dijkstra-ewd667-vs-ai-programming-article]]
 - [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]

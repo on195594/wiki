@@ -13,6 +13,11 @@
 - Updated [[human-machine-scientific-discovery-verification-scarcity]] with a source-linked ScientistTwo preprint case: hypothesis screening, full experiments, ablation and simulated review/rebuttal, plus the authors' bounded task outcomes, human-review evidence and per-task cost.
 - Kept AI-review acceptance distinct from real conference acceptance and author-reported results distinct from independent reproduction. Refreshed the existing index entry; no new concept or raw copy of the 71-page PDF, and no active workflow or runtime change.
 
+## [2026-09-27] update | Planning as a process, not a mandatory artifact
+- Added a structured source capture at `raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md` (without reproducing the full article) and Ayman Nadeem's first-hand Nuanced retrospective (2026-09-24) to `[[hermes-ai-workflow-formalization-principles]]` as a bounded counterexample to mandatory long AI-generated plans; recorded provenance, retrieval quality, limitations, and the unchanged high-risk approval boundary.
+- Narrowed three blanket artifact/todo statements to cross-session or verifiable-need triggers and refreshed the existing index description. Pi read-only review found and prompted removal of a private-Skill behavior claim from public provenance; no new concept, active skill, or runtime change.
+- Validation after repair: Wiki health P0/P1/P2=`0/0/0`; `git diff --check` passed; tag audit undeclared count=`0`; public-content check violations=`0` (17 pre-existing review candidates).
+
 ## [2026-09-25] update | Task-specific interfaces over repeated agent-mediated operations
 - Added a bounded interface-selection note to `[[hermes-ai-workflow-formalization-principles]]`, citing Burke Holland's GitHub Blog article “When chat is the wrong UI” (2026-09-24).
 - Kept the product example and unmeasured token-savings claim separate from the reusable principle; the screenshot's AI praise is not independent workflow evidence. Updated the existing index entry; no new concept page, raw copy of the copyrighted article, or active workflow change.
