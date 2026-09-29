@@ -113,6 +113,17 @@ For the Python checks:
 
 The structural health check covers core files, frontmatter, type/status/tag enums, wikilinks, relative Markdown links, index coverage, semantic inbound links, log order, raw references, raw hashes, duplicate-page signals, freshness metadata and Relations syntax. It does not replace content review for public suitability, source quality, contradictions or current product behavior.
 
+## Content-change readback
+
+After changing governance content, read the changed passages and their direct quick paths, templates and examples. A disclaimer at the top does not repair a contradictory instruction below. In particular:
+
+- Keep template dates as placeholders; edit actual page metadata only in its opening frontmatter, without changing fenced examples or historical verification dates.
+- Check the log header and format example separately from real dated entries; confirm index descriptions match the revised pages.
+- Check evidence scope, public intake and optional capabilities in both full rules and abbreviated routes.
+- Report deterministic checks, semantic review and independent-review coverage separately. A focused re-review only clears its named findings.
+
+Before an authorized commit or publish, inspect effective Git hooks and invoked scripts for cross-repository writes, pushes or deployment triggers. Wiki editing permission alone does not authorize those effects; establish the exact authorized scope before running the trigger.
+
 ## Related
 
 - [[hermes-wiki-lint-and-health-check-standards]]

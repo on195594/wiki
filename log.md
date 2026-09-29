@@ -3,6 +3,14 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-29] governance | Align content rules and quick reading paths
+- Replaced fixed dates in the actual page template with placeholders; aligned Inbox intake with authorization and public suitability before raw capture.
+- Aligned routing examples and quick rules with optional external access, reusable SOPs and public operations guides. Environment memory no longer substitutes for current-system verification; private execution history does not become eligible raw through context compression.
+- Moved freshness checks before knowledge reuse, aligned abbreviated write-back paths with public/authorization boundaries, and marked the closed freshness plan as historical with current-rule links. Updated index descriptions without renaming historical paths.
+- Added focused template/log/example readback and review-scope guidance to the existing health runbook, including checking hook-triggered effects before an authorized commit or publication. No new policy artifact, script, raw source or runtime change.
+- Validation: Wiki health P0/P1/P2=`0/0/0`, undeclared tags=`0`, public-content violations=`0`, all 47 existing tests and `git diff --check` passed. Template placeholders, log header and unchanged raw/manifest were checked directly. The same 17 public-content candidates remain unadjudicated; no whole-Wiki privacy or current-product audit is claimed.
+- Independent Pi review covered this change set and relevant owner pages; it found remaining method-to-Skill shortcuts and missing validation reporting. Corrected those shortcuts and recorded the actual validation scope. Pi follow-up returned PASS for those two findings and the related passages; it did not independently rerun deterministic checks or audit the entire Wiki.
+
 ## [2026-09-29] update | Shared human and AI Agent knowledge
 - Generalized reusable Hermes-oriented concepts and their dependent pages into capability-based AI Agent knowledge. Updated titles, descriptions, tags, aliases and index display names; retained historical paths to preserve existing links and immutable raw snapshots.
 - Made human and AI Agent readership explicit in `SCHEMA.md`, added task navigation to [[index]], and aligned [[agent-shared-wiki-index]], writing, retrieval and ingestion rules around shared content, evidence and authorized contribution. Public runbooks remain valid Wiki content; optional runtime capabilities are not assumed to exist.

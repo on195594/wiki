@@ -1,16 +1,18 @@
 ---
 title: Hermes Wiki 知识新鲜度改造计划
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-09-29
 type: query
 tags: [hermes, governance, knowledge-base, verification, workflow, architecture]
 sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
 status: closed
-description: 直接复用现有 Wiki 规范，改善来源精度、易变信息复查和事实推论边界，不另设验证项目。
+description: 保留 2026-08-26 已关闭的新鲜度改造决策；当前执行以 Schema、写作规范和 Freshness Gate 为准。
 aliases: [wiki freshness plan, claim evidence workflow]
 ---
 
 # Hermes Wiki 知识新鲜度改造计划
+
+> 历史范围：本页保留 2026-08-26 的已关闭决策，下文“立即生效”等措辞仅描述当时约定。当前规则见 [SCHEMA.md](../SCHEMA.md)、[[hermes-wiki-page-writing-standards]] 与 [[hermes-retrieval-priority-and-answer-path]]；易变性不再仅限外部厂商产品，局部 claim 可使用现行 volatile block。不要将本页当作当前执行入口。
 
 ## Summary
 
