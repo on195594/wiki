@@ -3,6 +3,13 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-29] governance | Clarify Schema authority and evidence scope
+- Clarified current project authority, single-owner rule maintenance, evidence/time boundaries, partial or failed verification, and the distinction between lifecycle closure and demonstrated effectiveness.
+- Replaced automatic page-creation and historical cleanup instructions with need-based maintenance. Clarified retirement/link preservation, public Git provenance, current-rule correction and the boundary between Wiki editing and operational authorization.
+- Added a human-facing Schema navigation entry. These are Wiki normative choices; no private project material, deployment claim, new metadata, validator change or bulk migration was introduced.
+- Validation: health P0/P1/P2=`0/0/0`, undeclared tags=`0`, public-content violations=`0` and `git diff --check` passed. The same 17 public-content candidates remain; no whole-Wiki privacy or product-fact audit is claimed.
+- Independent Pi read-only review returned PASS for the Schema diff, related Wiki rules and validator-contract consistency; it did not rerun checks or inspect external project material.
+
 ## [2026-09-29] governance | Align content rules and quick reading paths
 - Replaced fixed dates in the actual page template with placeholders; aligned Inbox intake with authorization and public suitability before raw capture.
 - Aligned routing examples and quick rules with optional external access, reusable SOPs and public operations guides. Environment memory no longer substitutes for current-system verification; private execution history does not become eligible raw through context compression.

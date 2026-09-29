@@ -14,6 +14,7 @@
 | 理解知识库如何分层 | [共享知识架构](concepts/hermes-knowledge-architecture.md) |
 | 找概念、方法或决策 | 下方分类目录；先读页面 Summary，再按需要追来源 |
 | 判断知识是否仍适用 | [检索与新鲜度规则](concepts/hermes-retrieval-priority-and-answer-path.md) |
+| 判断内容与证据是否可入库 | [Wiki Schema](SCHEMA.md)：准入、主维护位置、证据范围与历史保留 |
 | 新增或更新知识 | [入库流程](concepts/wiki-ingestion-workflow.md) · [写作规范](concepts/hermes-wiki-page-writing-standards.md) |
 | 检查链接、来源与结构 | [健康检查操作指南](_meta/wiki-health-check-runbook.md) |
 | 接入 AI Agent | [Agent 按需检索入口](operations/agent-shared-wiki-index.md) |
