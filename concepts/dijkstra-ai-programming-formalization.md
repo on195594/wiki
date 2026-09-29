@@ -1,7 +1,7 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-08-04
+updated: 2026-09-29
 type: concept
 tags: [llm, workflow, research, note]
 sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
@@ -75,7 +75,7 @@ InfoWorld 的文章 `[[infoworld-ai-coding-three-skills-2026-04-16]]` 补充了�
 
 这不是和“形式化约束仍是核心”相冲突，而是它的实践后果：prompt/context 可以作为意图入口，但真正承担工程可靠性的仍然是 spec、测试、接口、review 和可回滚验证。
 
-## Why it matters for Hermes
+## Why it matters for AI Agent
 这篇文章的观点和 `[[hermes-knowledge-architecture]]` 很一致：
 - 长期知识不能只停留在聊天层
 - 模糊输入需要被压缩成稳定结构

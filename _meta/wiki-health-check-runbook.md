@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-09-22
+updated: 2026-09-29
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 ## Summary
 
-Use the repository-local scripts for deterministic structure, tag, public-boundary, provenance and raw-integrity checks. The scripts do not modify Hermes runtime layers. Only `wiki_raw_hashes.py` writes, and only to the raw hash manifest.
+Use the repository-local scripts for deterministic structure, tag, public-boundary, provenance and raw-integrity checks. The scripts do not modify Agent runtime layers. Only `wiki_raw_hashes.py` writes, and only to the raw hash manifest.
 
 ## Root resolution
 

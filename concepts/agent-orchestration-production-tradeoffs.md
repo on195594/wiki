@@ -1,9 +1,9 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-09-04
+updated: 2026-09-29
 type: concept
-tags: [agent, multi-agent, orchestration, architecture, evaluation, hermes, workflow, governance]
+tags: [agent, multi-agent, orchestration, architecture, evaluation, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
 status: stable
 description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
@@ -35,7 +35,7 @@ The Nature study `[[nature-capable-language-models-can-outgrow-the-benefits-of-c
 
 [推论] Multi-agent evaluation should compare against the single-agent baseline and record communication, extra inference, latency, merge quality, and whether multiple workers repeat the same mistake. Do not treat worker count or agreement as a quality or independence metric.
 
-The study's fixed thresholds and benchmark-specific percentages remain descriptive evidence only. [推论] Hermes should use them as questions for local experiments, not as global routing gates or default team sizes.
+The study's fixed thresholds and benchmark-specific percentages remain descriptive evidence only. [推论] AI Agent should use them as questions for local experiments, not as global routing gates or default team sizes.
 
 ## Language-native durable execution before platform orchestration
 
@@ -43,9 +43,9 @@ The study's fixed thresholds and benchmark-specific percentages remain descripti
 
 The article's strongest reusable evidence is not the claim that one product is the “best” engine. It is the boundary exposed by long-running workflow evolution: replay/checkpoint support is incomplete unless an in-flight run can still reach compatible code. Vercel addresses this by pinning each run to its original immutable deployment; its official Postgres backend did not yet provide equivalent version routing at publication time. A unified Hook/Webhook API may improve developer experience, but it does not prove idempotency, compensation, schema migration or exactly-once external effects.
 
-Hermes interpretation: escalate from scripts and authoritative project artifacts only for a concrete need such as cross-process persistence, durable external waits, in-flight version routing, operational visibility or protected irreversible side effects. Prefer a language-native/library-first carrier before a dedicated platform, then verify a worker loss immediately after one side effect succeeds but before the next checkpoint. Keep receipts, Git state and external readback authoritative over runtime checkpoints.
+AI Agent interpretation: escalate from scripts and authoritative project artifacts only for a concrete need such as cross-process persistence, durable external waits, in-flight version routing, operational visibility or protected irreversible side effects. Prefer a language-native/library-first carrier before a dedicated platform, then verify a worker loss immediately after one side effect succeeds but before the next checkpoint. Keep receipts, Git state and external readback authoritative over runtime checkpoints.
 
-Limits: this is a Vercel vendor article, deployment pinning depends on infrastructure that retains and routes immutable versions, and the reported Workflow v5 performance gain was not independently reproduced here. It is selection evidence, not a Hermes default or a reason to adopt the TypeScript SDK.
+Limits: this is a Vercel vendor article, deployment pinning depends on infrastructure that retains and routes immutable versions, and the reported Workflow v5 performance gain was not independently reproduced here. It is selection evidence, not a AI Agent default or a reason to adopt the TypeScript SDK.
 
 ## Four production orchestration patterns
 
@@ -70,7 +70,7 @@ Failure modes:
 - early mistakes propagate downstream
 - no natural correction point unless one is deliberately inserted
 
-Hermes interpretation: this maps to ordinary tool/skill pipelines and should remain the default for stable cron, extraction, cleanup, and low-risk repeated work.
+AI Agent interpretation: this maps to ordinary tool/skill pipelines and should remain the default for stable cron, extraction, cleanup, and low-risk repeated work.
 
 ### 2. Parallel fan-out with merge: latency first
 
@@ -92,7 +92,7 @@ Failure modes:
 - workers may return conflicting or assumption-mismatched outputs
 - the merge agent may not have enough evidence to decide which output is correct
 
-Hermes interpretation: batch `delegate_task` fan-out is valuable for independent research/review, but parent synthesis and verification are mandatory. Subagent self-reports are claims, not facts.
+AI Agent interpretation: host-supported batch delegation is valuable for independent research/review, but parent synthesis and verification are mandatory. Subagent self-reports are claims, not facts.
 
 ### 3. Hierarchical supervisor-worker: balanced production default
 
@@ -115,7 +115,7 @@ Failure modes:
 - message contracts must be tight or workers return unusable outputs
 - debugging is harder than a linear pipeline because the execution path is conditional
 
-Hermes interpretation: this is the right shape for non-trivial project execution lanes: parent agent owns the goal, decomposition, and final verification; workers stay narrow; promotion requires project-local evidence.
+AI Agent interpretation: this is the right shape for non-trivial project execution lanes: parent agent owns the goal, decomposition, and final verification; workers stay narrow; promotion requires project-local evidence.
 
 ### 4. Reflexive self-correcting loop: high-stakes accuracy first
 
@@ -138,7 +138,7 @@ Failure modes:
 - over-revision can make ambiguous outputs less stable
 - without hard checks, the loop becomes aesthetic rewriting rather than validation
 
-Hermes interpretation: this maps to `[[agent-self-validation-loops]]`, code review gates, browser/test verification, and promotion audits. It should not become the default for low-risk bulk work.
+AI Agent interpretation: this maps to `[[agent-self-validation-loops]]`, code review gates, browser/test verification, and promotion audits. It should not become the default for low-risk bulk work.
 
 ## Benchmark claims to preserve
 
@@ -155,9 +155,9 @@ Treat these as source-backed directional claims, not as universal constants. The
 
 ## Conversation programming is one orchestration abstraction
 
-AutoGen models LLMs, humans, tools and code executors as conversable agents connected by programmable message patterns. Its application cases support role separation and dynamic interaction as useful design options, but the paper is early, uses heterogeneous evaluations, and leaves optimal topology, efficiency, safety and accountability open. Hermes should reuse the abstraction only when role separation or dynamic coordination solves an observed problem; it does not overturn the sequential-first and smallest-sufficient-topology rules on this page. See [[agent-architecture-primary-paper-map]].
+AutoGen models LLMs, humans, tools and code executors as conversable agents connected by programmable message patterns. Its application cases support role separation and dynamic interaction as useful design options, but the paper is early, uses heterogeneous evaluations, and leaves optimal topology, efficiency, safety and accountability open. AI Agent should reuse the abstraction only when role separation or dynamic coordination solves an observed problem; it does not overturn the sequential-first and smallest-sufficient-topology rules on this page. See [[agent-architecture-primary-paper-map]].
 
-## Hermes mapping
+## AI Agent mapping
 
 ### Wiki
 
@@ -175,7 +175,7 @@ New orchestration patterns should be validated in project-local lanes before pro
 
 Cron jobs should default to sequential or narrow pipeline designs. Fan-out or reflexive loops are justified only when missed changes, wrong alerts, or high-risk outputs make the overhead worthwhile.
 
-## Operating rules for future Hermes workflows
+## Operating rules for future AI Agent workflows
 
 - Choose orchestration by dominant constraint, not by architectural ambition.
 - Start sequential unless independence, routing, or verification risk proves otherwise.
@@ -205,7 +205,7 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - The article is a secondary write-up of benchmark results, not the benchmark paper itself.
 - The benchmark task type was document/SEC filing extraction; the exact numbers may not transfer to coding, research, wiki ingestion, or Telegram workflows.
 - Cost and latency depend heavily on model pricing, context size, retries, tool latency, and implementation details.
-- Hermes should treat this as a decision framework, then validate locally before changing defaults.
+- AI Agent should treat this as a decision framework, then validate locally before changing defaults.
 
 ## Related
 

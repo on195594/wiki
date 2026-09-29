@@ -3,6 +3,14 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-29] update | Shared human and AI Agent knowledge
+- Generalized reusable Hermes-oriented concepts and their dependent pages into capability-based AI Agent knowledge. Updated titles, descriptions, tags, aliases and index display names; retained historical paths to preserve existing links and immutable raw snapshots.
+- Made human and AI Agent readership explicit in `SCHEMA.md`, added task navigation to [[index]], and aligned [[agent-shared-wiki-index]], writing, retrieval and ingestion rules around shared content, evidence and authorized contribution. Public runbooks remain valid Wiki content; optional runtime capabilities are not assumed to exist.
+- Removed unsupported private validation/promotion claims and private Skill dependencies from general guidance. Kept source attribution and closed historical records; scoped the Hermes/SRE comparison as a dated qualitative discussion rather than a current product ranking.
+- Validation: Wiki health P0/P1/P2=`0/0/0`, undeclared tags=`0`, public-content violations=`0`, all 47 existing tests passed, and `git diff --check` passed. All 166 raw Markdown snapshots and their hash manifest were unchanged. Public scanning retained 17 pre-existing review candidates; this change does not claim a full manual privacy or current-product fact audit.
+- Independent read-only review identified four groups of semantic issues; the affected passages were corrected and the focused re-review passed. No runtime, global configuration, external publishing or new infrastructure was introduced.
+- A separate Pi review found a malformed log header, a fixed date in the writing template, residual private reference/promotion claims, and unsupported product comparisons. Restored the log/template structure, made first-edit adoption a project-owned candidate, and replaced Hermes capability/ranking assertions with sourced case facts and explicit design inferences. Health, tags, public-content and whitespace checks passed after repair. Pi independently re-read the four repaired areas and returned PASS; the follow-up was limited to those findings and their necessary sources.
+
 ## [2026-09-29] ingest | RRSI harness search regularization
 - Added structured project-homepage capture `raw/articles/rrsi-harness-search-regularization-2026-09.md` and [[agent-harness-search-regularization]]; linked the new concept from [[production-ai-agent-evaluation-framework]] and the index.
 - Kept homepage results and arXiv v2 abstract separately attributed where their OOD counts and token savings differ; clarified the noise-band exception and distinct per-edit/final-harness token comparisons. External benchmark findings are not active Agent rules or universal thresholds.
