@@ -3,6 +3,11 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-29] ingest | Nimbus documentation framework
+- Added [[nimbus-docs]] as a product page grounded in four first-party Markdown pages, added its index entry, and linked it from [[agentic-content-pipeline-design-patterns]]. The page separates product claims, public-content boundaries and selection inferences; it is a partial documentation review, not an installation or independent evaluation.
+- Used the live official URLs as provenance rather than mirroring a changing documentation site into raw. No active Agent workflow, runtime, configuration or external publishing was changed.
+- Validation: Wiki health P0/P1/P2=`0/0/0`, undeclared tags=`0`, public-content violations=`0`, and `git diff --check` passed. The existing 17 public-content candidates remain outside this page's review scope.
+
 ## [2026-09-29] governance | Clarify Schema authority and evidence scope
 - Clarified current project authority, single-owner rule maintenance, evidence/time boundaries, partial or failed verification, and the distinction between lifecycle closure and demonstrated effectiveness.
 - Replaced automatic page-creation and historical cleanup instructions with need-based maintenance. Clarified retirement/link preservation, public Git provenance, current-rule correction and the boundary between Wiki editing and operational authorization.
