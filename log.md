@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-30] ingest | LLM SPOC extraction as candidate knowledge
+- Captured MachineLearningMastery's 2026-09-29 tutorial at `raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md`; added its source and a bounded extraction-entry section to [[hermes-knowledge-architecture]], with an updated [[index]] description rather than a new concept page.
+- Distinguished parseable structure, identifiable source and validated knowledge; kept controller-provided Context separate from claim-level evidence, and extraction failures separate from successful empty results. Source mechanisms and local inferences are labeled separately.
+- The article's roughly 11 records and list-based storage are an author-reported teaching example, not accuracy or hallucination-reduction evidence. Raw capture retains code text but not executable indentation; no model execution, graph runtime or automatic Wiki writing is implied.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and public-content violations were zero, catalog synchronization and `git diff --check` passed. The raw manifest added one source with no existing hash changes; reverse lookup resolves it to the existing architecture page. The 17 pre-existing public-content review candidates remain outside this ingestion's scope.
+
 ## [2026-09-30] automation | End-to-end automated maintenance and quality gates
 - Tooling: Implemented `_meta/scripts/wiki_maintain.py` providing unified one-stop verification (`--check`), auto-syncing of catalog and raw hashes (`--fix`), proactive freshness horizon scanning (`--freshness`), and local pre-commit hook installation (`--install-hooks`). Added unit tests in `_meta/scripts/test_wiki_maintain.py` (total 54 tests across suite).
 - Local Gate: Installed `.git/hooks/pre-commit` to prevent committing invalid links, out-of-sync catalogs, unhashed raw captures, or privacy violations.

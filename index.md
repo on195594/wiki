@@ -3,7 +3,7 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-29 | Indexed pages: 114
+> Last updated: 2026-09-30 | Indexed pages: 114
 
 ## 按任务进入
 
@@ -91,7 +91,7 @@
 - [[agent-skill-provider-governance-boundary]] — Agent Skill Provider 治理边界：把文件、类和内联技能统一到 provider 抽象下，同时用分层来源、过滤、去重、审批和沙箱控制 active skill 风险
 - [[hermes-active-surface-lifecycle-governance|AI Agent Active-Surface Lifecycle Governance]] — AI Agent 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
 - [[hermes-context-layer-operating-rules|AI Agent Context Layer Operating Rules]] — AI Agent 上下文装配规则：控制检索与注入预算、历史压缩、长任务 project state、最新观察和隔离 handoff
-- [[hermes-knowledge-architecture|Human and AI Agent Shared Knowledge Architecture]] — 人类与 AI Agent 共享知识架构与导航：连接运行时知识栈、Wiki 文件层、冲突感知对象及各分层规则入口
+- [[hermes-knowledge-architecture|Human and AI Agent Shared Knowledge Architecture]] — 人类与 AI Agent 共享知识架构与导航：连接运行时知识栈、Wiki 文件层、冲突感知对象、LLM 候选事实抽取与证据边界及各分层规则入口
 - [[hermes-knowledge-base-operating-flow|Shared Wiki Operating Flow]] — 共享知识库端到端操作流：公开准入、可选能力、operations、检索门禁与授权回写
 - [[hermes-memory-governance-notes|AI Agent Memory Governance Notes]] — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [[hermes-retrieval-priority-and-answer-path|AI Agent Retrieval Priority and Answer Path]] — 人类与 Agent 检索路径：先判断范围与新鲜度，按需补证据，公开且授权才回写
