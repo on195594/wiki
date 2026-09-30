@@ -933,7 +933,7 @@
       "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
       "type": "concept",
       "title": "Deterministic Analytics and LLM Reasoning Boundary",
-      "description": "划分确定性分析与 LLM 推理的职责边界，避免把可计算事实交给模型猜测。",
+      "description": "区分概率性语义判断与确定性分析，将有界分类结果复用、复核，不把结构化标签当作已验证事实。",
       "status": "stable",
       "tags": [
         "agent",
@@ -948,7 +948,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "relations": {}
     },
     {

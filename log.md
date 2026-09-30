@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-30] ingest | Bounded semantic classification before deterministic analytics
+- Captured Mehdi Ouazza's MotherDuck article (2026-09-29) at `raw/articles/motherduck-jev-for-analytics-2026-09-29.md`; retained main prose, static tables, source links and SQL, with explicit exclusions for interactive diagrams. Updated [[deterministic-analytics-llm-reasoning-boundary]] and its [[index]] entry rather than creating a product concept.
+- Distinguished format-based extraction from probabilistic semantic classification, reusable persisted labels from validated facts, and deterministic aggregation from input correctness. Preserved benchmark scopes and the selected-subset nature of model agreement; labeled human-ground-truth checks, high-confidence sampling, result lineage and end-to-end costing as engineering inferences.
+- No product installation, active Skill change, model routing, scheduler, runtime or external publishing is implied.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the existing analysis-boundary page; the raw manifest added one entry without changing or removing existing hashes, and the catalog diff is limited to this page. These checks do not validate model quality or reproduce the external benchmarks.
+
 ## [2026-09-30] ingest | One-bug agentic delivery loop
 - Added the original body-text snapshot `raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md`, with Alice Moore / Builder.io provenance, verified publication date, capture limitations and key source links; extended [[loop-engineering-hermes-agent-workflow]] rather than creating a new concept, and refreshed its [[index]] description.
 - Preserved full user-behavior verification, repeatable test environments, PR follow-up and human rescue burden. Distinguished an imagined card-order example from empirical evidence; marked worktree/shared-resource isolation as an engineering inference. The live page's feedback-image alt text explains both intake and historical lookback, correcting the earlier text-only capture's apparent gap.
