@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-30] ingest | AI Engineer Notebooks practice entry points
+- Captured the complete README and LICENSE at commit `50bbea81c369a22242e901f90b5848078842c34d` in `raw/articles/github-calmrocks-ai-engineer-notebooks-readme-2026-09-30.md`; resolved relative Markdown links to the captured revision and retained original external links. Updated [[llm-engineering-knowledge-map]] and its [[index]] description without creating a duplicate concept page.
+- Added problem-oriented practice entry points for evaluation, RAG, tool loops, pipeline-versus-agent comparison and scoped delivery. Kept course descriptions, free API availability, T4 verification and production-case claims separate from independent evidence; no Notebook or benchmark was executed.
+- No installation, active Skill, model routing, scheduler or runtime change is implied.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. README-linked repository paths were checked at the captured revision, source reverse lookup resolves to the existing knowledge map, and the raw manifest adds one source without changing existing source hashes. These checks validate the documentation capture and structure, not Notebook execution or course effectiveness.
+
 ## [2026-09-30] ingest | Bounded semantic classification before deterministic analytics
 - Captured Mehdi Ouazza's MotherDuck article (2026-09-29) at `raw/articles/motherduck-jev-for-analytics-2026-09-29.md`; retained main prose, static tables, source links and SQL, with explicit exclusions for interactive diagrams. Updated [[deterministic-analytics-llm-reasoning-boundary]] and its [[index]] entry rather than creating a product concept.
 - Distinguished format-based extraction from probabilistic semantic classification, reusable persisted labels from validated facts, and deterministic aggregation from input correctness. Preserved benchmark scopes and the selected-subset nature of model agreement; labeled human-ground-truth checks, high-confidence sampling, result lineage and end-to-end costing as engineering inferences.
