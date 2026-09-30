@@ -166,6 +166,10 @@ aliases: [leontraveller-investment-system]
 
 先避免大亏，再追求盈利；先尊重市场，再表达观点；先建立可执行系统，再谈更高收益。
 
+## Relations
+
+- related: [[ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[personal-investment-operating-rules]]
+
 ## Related
 - [[ordinary-investor-investment-system]]
 - [[money-as-tool-and-investment-vs-consumption-framework]]

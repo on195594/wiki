@@ -6,6 +6,8 @@ type: concept
 tags: [agent, mcp, workflow, tool, research]
 sources: [raw/articles/google-sre-gemini-cli-outages-2026-01-22.md]
 status: stable
+volatility: medium
+review_by: 2026-12-31
 description: 总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、工具约束和生产协作模式。
 aliases: [gemini-cli-incident-response, sre-agentic-incident-response]
 ---
@@ -193,6 +195,10 @@ Gemini CLI 的作用不是只参与某一环，而是尽量横跨整条链：
 - 更快选出标准缓解动作
 - 更快通过审批并执行
 - 更快收尾、修复和复盘
+
+## Relations
+
+- related: [[hermes-vs-google-sre-agentic-incident-response]], [[wiki-ingestion-workflow]], [[hermes-knowledge-base-operating-flow]]
 
 ## Related
 - [[hermes-knowledge-base-operating-flow]]

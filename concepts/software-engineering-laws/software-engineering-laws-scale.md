@@ -4,7 +4,7 @@ created: 2026-08-10
 updated: 2026-08-10
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/amdahls-law.md, raw/articles/laws-of-software-engineering/gustafsons-law.md, raw/articles/laws-of-software-engineering/metcalfes-law.md]
 status: stable
 description: 用于检索和比较软件系统扩展中的串行瓶颈、工作负载增长与网络效应。
 aliases: [software-engineering-laws-scale]

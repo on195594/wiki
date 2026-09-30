@@ -3,6 +3,30 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-09-30] automation | End-to-end automated maintenance and quality gates
+- Tooling: Implemented `_meta/scripts/wiki_maintain.py` providing unified one-stop verification (`--check`), auto-syncing of catalog and raw hashes (`--fix`), proactive freshness horizon scanning (`--freshness`), and local pre-commit hook installation (`--install-hooks`). Added unit tests in `_meta/scripts/test_wiki_maintain.py` (total 54 tests across suite).
+- Local Gate: Installed `.git/hooks/pre-commit` to prevent committing invalid links, out-of-sync catalogs, unhashed raw captures, or privacy violations.
+- Remote CI: Enhanced `.github/workflows/wiki-checks.yml` with weekly scheduled cron (`0 0 * * 1`) for proactive freshness monitoring, alongside catalog synchronization validation on push and pull requests.
+- Documentation: Updated `_meta/wiki-health-check-runbook.md` with the new automated commands.
+- Validation: `wiki_maintain.py --check` passed across all 6 gates; 54 unit tests passed; health P0/P1/P2=`0/0/0`; public content check passed with 0 violations (17 pre-existing candidates); `git diff --check` passed.
+
+## [2026-09-30] governance | P2-P3 OKF catalog generation, attestation schema and topic domains
+- Schema & Provenance (P2): Documented optional OKF v0.2 `attestation` metadata (`generated_by`, `verified_by`) in `SCHEMA.md` for verifiable agent authorship and review tracking without forcing retroactive migrations.
+- Tooling (P2): Implemented `_meta/scripts/wiki_catalog.py` and unit tests in `_meta/scripts/test_wiki_catalog.py`; generated `_meta/catalog.json` for single-read agent context budgeting across all 114 formal pages.
+- Navigation & Lineage (P3): Structured `index.md` concept navigation into five logical virtual topic domains (Agent Architecture, Workflows & Coding, Evaluation & Governance, LifeOS & Systems, Software Engineering Laws); refined granular raw source mapping in `concepts/software-engineering-laws/` to achieve 100% (167/167) raw file referencing in formal pages.
+- Validation: Wiki health check passed with P0/P1/P2=`0/0/0`; `wiki_catalog.py --check` passed; tag audit undeclared tags=`0`; public content check passed with 0 violations (17 pre-existing candidates); 49 unit tests passed; `git diff --check` passed.
+
+## [2026-09-30] governance | P1 wiki graph relations and freshness backfill
+- Backfilled standard `## Relations` blocks across 30 formal pages previously lacking relations, bringing canonical relations coverage from 68 to 98/114 (86.0%). Refined relation semantics following Codex review to ensure external research concepts use `related` instead of artificial `depends_on` prerequisites.
+- Added `volatility: medium` and quarterly `review_by: 2026-12-31` freshness gates to 14 high/medium-churn tooling and AI agent workflow concepts.
+- Cleaned up retired empty directories (`docs/records`, `docs`, `_meta/reviews`).
+- Validation: Wiki health check passed with P0/P1/P2=`0/0/0`; canonical relations coverage 98/114 (86.0%); tag audit undeclared tags=`0`; public content check passed with 0 violations (17 pre-existing candidates); all 47 unit tests passed; `git diff --check` passed. Codex review passed with actionable findings resolved.
+
+## [2026-09-29] ingest | Tetral cloud-agent runtime boundaries
+- Captured Yang Li's Tetral article as a bounded public source note at `raw/articles/tetral-next-scaling-problem-2026-09-06.md`; added its runtime/sandbox split, write-before-execute recovery, delivery, authorization and maturity limits to [[agent-development-lifecycle]] rather than making a near-duplicate concept. Refreshed its [[index]] entry.
+- The source is a first-hand description of a personal-cluster Alpha, not independent production validation. Diagram details were not visually verified. The raw capture distinguishes a rejected invalid selected credential from a session with no selection that may use the platform key pool; no active Agent workflow, configuration or runtime behavior was changed.
+- Validation: raw hash manifest added one entry with no existing hash changes; Wiki health P0/P1/P2=`0/0/0`, undeclared tags=`0`, public-content violations=`0`, and `git diff --check` passed. The 17 pre-existing public-content review candidates are outside this source's scope.
+
 ## [2026-09-29] ingest | Nimbus documentation framework
 - Added [[nimbus-docs]] as a product page grounded in four first-party Markdown pages, added its index entry, and linked it from [[agentic-content-pipeline-design-patterns]]. The page separates product claims, public-content boundaries and selection inferences; it is a partial documentation review, not an installation or independent evaluation.
 - Used the live official URLs as provenance rather than mirroring a changing documentation site into raw. No active Agent workflow, runtime, configuration or external publishing was changed.

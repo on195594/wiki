@@ -118,6 +118,11 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 - 用更窄的接口替代无边界上下文
 - 让知识库越来越依赖 durable artifacts，而不是聊天记忆
 
+## Relations
+
+- depends_on: [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]]
+- related: [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]], [[wiki-ingestion-workflow]]
+
 ## Related
 - [[hermes-ai-workflow-formalization-principles]]
 - [[hermes-knowledge-architecture]]

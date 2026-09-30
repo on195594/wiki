@@ -70,7 +70,7 @@ def is_live_file(root: Path, path: Path) -> bool:
         parts = path.relative_to(root).parts
     except ValueError:
         return False
-    if ".git" in parts:
+    if ".git" in parts or ".pytest_cache" in parts:
         return False
     if parts and parts[0] == "_backups":
         return False

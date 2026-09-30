@@ -4,7 +4,7 @@ created: 2026-08-10
 updated: 2026-08-10
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/dry-principle.md, raw/articles/laws-of-software-engineering/kiss-principle.md, raw/articles/laws-of-software-engineering/law-of-demeter.md, raw/articles/laws-of-software-engineering/principle-of-least-astonishment.md, raw/articles/laws-of-software-engineering/solid-principles.md, raw/articles/laws-of-software-engineering/yagni.md]
 status: stable
 description: 用于检索和比较软件设计中控制重复、复杂度、耦合、意外行为与过度实现的经验法则。
 aliases: [software-engineering-laws-design]

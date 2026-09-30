@@ -28,8 +28,23 @@ From the repository root:
 
 ```bash
 WIKI_ROOT=/path/to/wiki
+
+# 一键自动化质量门禁（单测、catalog.json、健康检查、标签审计、公开边界、git diff）：
+python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --check
+
+# 一键自动同步清册与原始素材哈希：
+python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --fix
+
+# 知识时效与到期预警扫描（默认未来 30 天）：
+python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --freshness --days 30
+
+# 安装本地 Git pre-commit 钩子：
+python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --install-hooks
+
+# 单独调用细分工具：
 python3 _meta/scripts/wiki_health_check.py --root "$WIKI_ROOT"
 python3 _meta/scripts/wiki_health_check.py --root "$WIKI_ROOT" --format markdown
+python3 _meta/scripts/wiki_catalog.py --root "$WIKI_ROOT" --check
 python3 _meta/scripts/wiki_tag_audit.py --root "$WIKI_ROOT"
 python3 _meta/scripts/wiki_public_content_check.py --root "$WIKI_ROOT"
 python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v

@@ -6,6 +6,8 @@ type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
 sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
 status: stable
+volatility: medium
+review_by: 2026-12-31
 description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
 aliases: [subagent-patterns]
 ---
@@ -204,6 +206,10 @@ Those still require verification gates, project-local tests, and parent-agent sy
 ## Evidence boundary for adoption
 
 An earlier version cited a private search-workflow trial as validation. No publicly reproducible experiment supports that claim here, so it is not evidence for a universal default. Treat inline review, fan-out and persistent teams as design candidates: select them only when task independence, source risk and measurable coordination benefit justify the cost. Runtime or messaging changes still require the applicable authorization and target-system verification.
+
+## Relations
+
+- related: [[hermes-context-layer-operating-rules]], [[agent-orchestration-production-tradeoffs]], [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[multiagent-systemic-failure-modes]]
 
 ## Related
 

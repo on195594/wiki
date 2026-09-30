@@ -4,7 +4,7 @@ created: 2026-08-10
 updated: 2026-09-21
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/boy-scout-rule.md, raw/articles/laws-of-software-engineering/broken-windows-theory.md, raw/articles/laws-of-software-engineering/kernighans-law.md, raw/articles/laws-of-software-engineering/lehmans-laws.md, raw/articles/laws-of-software-engineering/linuss-law.md, raw/articles/laws-of-software-engineering/murphys-law.md, raw/articles/laws-of-software-engineering/pesticide-paradox.md, raw/articles/laws-of-software-engineering/postels-law.md, raw/articles/laws-of-software-engineering/sturgeons-law.md, raw/articles/laws-of-software-engineering/technical-debt.md, raw/articles/laws-of-software-engineering/testing-pyramid.md]
 status: stable
 description: 汇总软件质量、演化、测试与技术债相关经验法则，供设计和评审时快速检索。
 aliases: [software-engineering-laws-quality]

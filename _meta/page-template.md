@@ -14,6 +14,13 @@ status: draft
 
 ## Key points
 
+## Relations
+- refines: []
+- depends_on: []
+- conflicts_with: []
+- supersedes: []
+- related: []
+
 ## Links
 - [[index]]
 - [[log]]

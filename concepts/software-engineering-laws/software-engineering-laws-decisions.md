@@ -4,7 +4,7 @@ created: 2026-08-10
 updated: 2026-09-21
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/confirmation-bias.md, raw/articles/laws-of-software-engineering/cunninghams-law.md, raw/articles/laws-of-software-engineering/dunning-kruger-effect.md, raw/articles/laws-of-software-engineering/first-principles-thinking.md, raw/articles/laws-of-software-engineering/hanlons-razor.md, raw/articles/laws-of-software-engineering/hype-cycle-amaras-law.md, raw/articles/laws-of-software-engineering/inversion.md, raw/articles/laws-of-software-engineering/lindy-effect.md, raw/articles/laws-of-software-engineering/map-is-not-the-territory.md, raw/articles/laws-of-software-engineering/occams-razor.md, raw/articles/laws-of-software-engineering/pareto-principle.md, raw/articles/laws-of-software-engineering/sunk-cost-fallacy.md]
 status: stable
 description: 汇总软件工程决策类经验法则，供方案评审、风险检查与技术选择时检索。
 aliases: [software-engineering-laws-decisions]

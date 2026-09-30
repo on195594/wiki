@@ -9,6 +9,7 @@ _backups/
 
 # Python bytecode from importing _meta/scripts/ (running them as scripts does not produce it)
 __pycache__/
+.pytest_cache/
 
 # lychee's on-disk request cache (see _meta/lychee.toml)
 .lycheecache

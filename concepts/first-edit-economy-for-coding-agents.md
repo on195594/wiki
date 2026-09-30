@@ -6,6 +6,8 @@ type: concept
 tags: [agent, ai-coding, workflow, optimization, evaluation]
 sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md]
 status: stable
+volatility: medium
+review_by: 2026-12-31
 source_policy: source_backed
 aliases: [first-edit-economy, economical-search-and-edit, 少探索早验证]
 description: 把 VS Code GPT-5.5 prompt tuning 案例抽象成 coding agent 的“首次编辑经济性”原则：有锚点时少做宽泛探索，尽早形成可证伪假设、小步编辑并立即验证。
@@ -122,6 +124,10 @@ concrete anchor
 2. 该模式减少无效探索或延迟。
 3. 没有因为过早编辑导致误改、返工或跳过必要上下文。
 4. 默认化带来的收益大于额外 ceremony、token 和误跳过上下文的风险。
+
+## Relations
+
+- related: [[loop-engineering-hermes-agent-workflow]], [[agent-self-validation-loops]], [[agent-context-engineering]], [[ai-coding-agent-workflow-types]]
 
 ## Related
 

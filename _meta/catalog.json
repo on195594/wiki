@@ -1,0 +1,3236 @@
+{
+  "format": "okf-bundle-catalog",
+  "version": "0.2",
+  "total_pages": 114,
+  "pages": [
+    {
+      "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
+      "type": "comparison",
+      "title": "Dijkstra EWD667 vs 2026 AI Programming Article",
+      "description": "比较 Dijkstra EWD667 与 2026 AI 编程观点在自然语言、形式化和程序可靠性上的异同。",
+      "status": "stable",
+      "tags": [
+        "comparison",
+        "llm",
+        "workflow",
+        "research"
+      ],
+      "aliases": [
+        "ewd667-vs-ai-programming"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-04-16",
+      "relations": {
+        "refines": [
+          "dijkstra-ai-programming-formalization"
+        ],
+        "related": [
+          "hermes-knowledge-architecture",
+          "hermes-retrieval-priority-and-answer-path"
+        ]
+      }
+    },
+    {
+      "path": "comparisons/hermes-vs-google-sre-agentic-incident-response.md",
+      "type": "comparison",
+      "title": "Hermes vs Google SRE Agentic Incident Response",
+      "description": "保留 Hermes/SRE 历史对照主题，区分来源中的事故响应模式、本仓库知识设计和待验证的 Agent 接入建议。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "mcp",
+        "workflow",
+        "tool",
+        "comparison"
+      ],
+      "aliases": [
+        "hermes-vs-google-sre"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "google-sre-gemini-cli-incident-response",
+          "hermes-knowledge-architecture",
+          "hermes-knowledge-base-operating-flow"
+        ]
+      }
+    },
+    {
+      "path": "comparisons/leontraveller-vs-ordinary-investor-investment-system.md",
+      "type": "comparison",
+      "title": "Leontraveller vs Ordinary Investor Investment System",
+      "description": "比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的分工和冲突边界。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "comparison",
+        "trading",
+        "position-sizing"
+      ],
+      "aliases": [
+        "leontraveller-vs-ordinary-investor"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-04-17",
+      "relations": {
+        "depends_on": [
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+      "type": "concept",
+      "title": "Agent Autonomy Ladder for AI Agent Workflows",
+      "description": "用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 AI Agent 任务应给 agent 多少自主权。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "workflow",
+        "orchestration",
+        "multi-agent",
+        "subagent",
+        "governance"
+      ],
+      "aliases": [
+        "agent-autonomy-ladder",
+        "hermes-agent-autonomy",
+        "agent-autonomy-ladder-for-agent-workflows"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "subagent-orchestration-patterns",
+          "loop-engineering-hermes-agent-workflow"
+        ],
+        "depends_on": [
+          "hermes-context-layer-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-closed-loop-learning-from-corrections-to-rules.md",
+      "type": "concept",
+      "title": "Agent 闭环学习：从用户纠错到规则升级",
+      "description": "说明如何把用户纠错转化为可验证的 Agent 规则升级闭环。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "optimization",
+        "evaluation",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "closed-loop-learning"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-experience-consolidation-loops"
+        ],
+        "related": [
+          "agent-self-validation-loops",
+          "production-ai-agent-evaluation-framework",
+          "hermes-context-layer-operating-rules",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-context-engineering.md",
+      "type": "concept",
+      "title": "Agent Context Engineering",
+      "description": "定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "context-engineering",
+        "workflow"
+      ],
+      "aliases": [
+        "agent-context-engineering",
+        "context-engineering-for-agents"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "llm-context-engineering-layer",
+          "hermes-context-engineering-design-priorities"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-development-lifecycle.md",
+      "type": "concept",
+      "title": "Agent Development Lifecycle",
+      "description": "定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "lifecycle",
+        "evaluation",
+        "deployment",
+        "monitoring",
+        "governance"
+      ],
+      "aliases": [
+        "agent-lifecycle"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-context-layer-operating-rules",
+          "local-first-sync-confirmed-mirror-outbox-conflict-policy",
+          "agent-orchestration-production-tradeoffs",
+          "production-ai-agent-evaluation-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-evaluation-rubric-calibration.md",
+      "type": "concept",
+      "title": "Agent Evaluation Rubric Calibration",
+      "description": "说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，避免聚合分数把正常改进误判为回归。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "validation",
+        "harness",
+        "workflow"
+      ],
+      "aliases": [
+        "rubric-calibration",
+        "evaluator-calibration"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "production-ai-agent-evaluation-framework"
+        ],
+        "depends_on": [
+          "agent-failure-closed-loop-evaluation",
+          "langchain-similarweb-long-form-agent-report-evaluation-2026-07-29"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-experience-consolidation-loops.md",
+      "type": "concept",
+      "title": "Agent Experience Consolidation Loops",
+      "description": "定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "skills",
+        "knowledge-base",
+        "validation",
+        "workflow",
+        "multi-agent"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "agent-self-validation-loops",
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-failure-closed-loop-evaluation.md",
+      "type": "concept",
+      "title": "Agent 失败闭环评估",
+      "description": "说明如何把可复发 Agent 失败转化为 evaluator、fixture 或防回归工件。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "monitoring",
+        "closeout",
+        "workflow"
+      ],
+      "aliases": [
+        "failure-loop-evaluation"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "production-ai-agent-evaluation-framework",
+          "agent-self-validation-loops",
+          "agent-experience-consolidation-loops"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-harness-search-regularization.md",
+      "type": "concept",
+      "title": "Agent Harness 搜索正则化",
+      "description": "区分可编辑的 Agent harness 与受约束的候选搜索、评估和采纳过程，避免演化基准过拟合。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "harness",
+        "optimization",
+        "evaluation",
+        "validation"
+      ],
+      "aliases": [
+        "agent-harness-search-regularization",
+        "RRSI"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "production-ai-agent-evaluation-framework",
+          "agent-experience-consolidation-loops",
+          "agent-self-validation-loops"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-memory-reflection-planning-pipeline.md",
+      "type": "concept",
+      "title": "Agent Memory–Reflection–Planning Pipeline",
+      "description": "将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，同时区分应用事件存储与 AI Agent 默认 memory。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "architecture",
+        "research"
+      ],
+      "aliases": [
+        "agent-memory-pipeline",
+        "memory-reflection-planning"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-context-engineering"
+        ],
+        "related": [
+          "agent-experience-consolidation-loops",
+          "agent-self-validation-loops",
+          "agent-architecture-primary-paper-map"
+        ],
+        "conflicts_with": [],
+        "supersedes": []
+      }
+    },
+    {
+      "path": "concepts/agent-orchestration-production-tradeoffs.md",
+      "type": "concept",
+      "title": "Agent Orchestration Production Tradeoffs",
+      "description": "比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "multi-agent",
+        "orchestration",
+        "architecture",
+        "evaluation",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "agent-orchestration-tradeoffs"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/agent-research-evidence-gate.md",
+      "type": "concept",
+      "title": "Agent Research Evidence Gate",
+      "description": "定义研究型 Agent 在最终综合前必须通过的证据收集和质量判断门。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "multi-agent",
+        "evaluation",
+        "workflow",
+        "research",
+        "governance"
+      ],
+      "aliases": [
+        "evidence-gated-research"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/agent-resource-optimization.md",
+      "type": "concept",
+      "title": "Agent Resource Optimization",
+      "description": "说明如何把多 Agent 和自动化规划视为预算、能力、容量和风险约束下的优化问题。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "multi-agent",
+        "orchestration",
+        "optimization",
+        "architecture",
+        "evaluation"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/agent-self-validation-loops.md",
+      "type": "concept",
+      "title": "Agent Self-Validation Loops",
+      "description": "定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "validation",
+        "claude-code",
+        "mcp",
+        "browser",
+        "workflow"
+      ],
+      "aliases": [
+        "self-validation-loop"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/agent-skill-provider-governance-boundary.md",
+      "type": "concept",
+      "title": "Agent Skill Provider Governance Boundary",
+      "description": "说明多形态 Agent skill 进入统一 provider 前需要保持的命名、暴露和审批边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "skills",
+        "governance",
+        "architecture"
+      ],
+      "aliases": [],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-context-layer-operating-rules",
+          "hermes-memory-skills-wiki-boundaries"
+        ],
+        "refines": [
+          "hermes-skill-refactoring-methodology"
+        ],
+        "related": [
+          "typed-ai-agent-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agentic-content-pipeline-design-patterns.md",
+      "type": "concept",
+      "title": "Agentic Content Pipeline Design Patterns",
+      "description": "总结用 skill files、数据源、中间产物和人工审核构建 Agent 内容流水线的模式。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "claude-code",
+        "workflow",
+        "skills",
+        "content-engineering",
+        "mcp"
+      ],
+      "aliases": [],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-agent-workflow-layering-and-adoption-order"
+        ],
+        "related": [
+          "hermes-ai-workflow-formalization-principles",
+          "nimbus-docs",
+          "claude-code-practical-workflow-tips",
+          "audience-situation-content-briefs"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agentic-programming-system-engineering.md",
+      "type": "concept",
+      "title": "Agentic Programming as System Engineering",
+      "description": "定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "architecture",
+        "tool",
+        "context-engineering",
+        "governance",
+        "debugging"
+      ],
+      "aliases": [
+        "agentic-programming"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "agent-context-engineering",
+          "typed-ai-agent-boundaries",
+          "agent-development-lifecycle"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-agent-document-fidelity-risk.md",
+      "type": "concept",
+      "title": "AI Agent Document Fidelity Risk",
+      "description": "说明 AI Agent 处理文档时的保真风险以及需要的证据、验证和人工边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "workflow",
+        "research",
+        "risk-control",
+        "evaluation",
+        "verification",
+        "ai-coding"
+      ],
+      "aliases": [
+        "document-fidelity-risk"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/ai-agent-human-outcome-design-principle.md",
+      "type": "concept",
+      "title": "AI Agent Human Outcome Design Principle",
+      "description": "用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，避免从模型能力出发制造漂亮但不可用的自动化。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "product",
+        "workflow",
+        "decision",
+        "governance",
+        "debugging"
+      ],
+      "aliases": [
+        "human-outcome-first-ai-agent-design",
+        "ai-automation-human-needs"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "agentic-programming-system-engineering",
+          "typed-ai-agent-boundaries",
+          "agent-development-lifecycle"
+        ],
+        "related": [
+          "agent-context-engineering",
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "production-ai-agent-evaluation-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-agent-tool-selection-architecture.md",
+      "type": "concept",
+      "title": "AI Agent Tool Selection Architecture",
+      "description": "区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "tool",
+        "context-engineering",
+        "evaluation",
+        "workflow"
+      ],
+      "aliases": [
+        "agent-tool-selection",
+        "tool-routing-for-ai-agents"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-context-engineering"
+        ],
+        "depends_on": [
+          "typed-ai-agent-boundaries",
+          "production-ai-agent-evaluation-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-assistance-cognitive-substitution-and-skill-formation.md",
+      "type": "concept",
+      "title": "AI Assistance, Cognitive Substitution, and Skill Formation",
+      "description": "用补偿、支架、替代和撤除辅助后的能力，判断 AI 是扩展人的思考还是跳过能力形成过程。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "research",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "ai-scaffolding-vs-substitution",
+        "cognitive-offloading-with-ai",
+        "accomplishment-hallucination"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "ai-assumption-challenger-before-execution",
+          "ai-agent-human-outcome-design-principle",
+          "dijkstra-ai-programming-formalization",
+          "production-ai-agent-evaluation-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-assumption-challenger-before-execution.md",
+      "type": "concept",
+      "title": "AI Assumption Challenger Before Execution",
+      "description": "把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "workflow",
+        "ai-coding",
+        "content-engineering",
+        "orchestration",
+        "governance"
+      ],
+      "aliases": [
+        "ai-assumption-challenger",
+        "pre-execution-red-team",
+        "claude-creative-sounding-board"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-context-engineering"
+        ],
+        "related": [
+          "claude-code-practical-workflow-tips",
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "hermes-context-layer-operating-rules",
+          "subagent-orchestration-patterns"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-coding-agent-workflow-types.md",
+      "type": "concept",
+      "title": "AI Coding Agent Workflow Types",
+      "description": "分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "workflow",
+        "tool",
+        "deployment",
+        "governance"
+      ],
+      "aliases": [
+        "coding-agent-workflow-types"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "codex-agent-workflow-layering",
+          "subagent-orchestration-patterns",
+          "claude-code-practical-workflow-tips"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-coding-assistant-context-budget-management.md",
+      "type": "concept",
+      "title": "AI Coding Assistant Context Budget Management",
+      "description": "总结 coding assistant 控制上下文预算、压缩历史和减少无效 token 消耗的方法。",
+      "status": "stable",
+      "tags": [
+        "ai-coding",
+        "agent",
+        "context-engineering",
+        "optimization",
+        "claude-code"
+      ],
+      "aliases": [],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md",
+      "type": "concept",
+      "title": "AI Task Delegation Patterns from Local-Cloud Hybrid LLMs",
+      "description": "将端云混合 LLM 的 5 种模式抽象为 AI Agent PM/subagent/外部 AI 调度模式：任务包、计划落地、困难升级、草稿精修、交叉审查。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "orchestration",
+        "subagent",
+        "decision",
+        "workflow",
+        "llm"
+      ],
+      "aliases": [
+        "ai-delegation-patterns",
+        "local-cloud-llm-delegation-patterns",
+        "pm-agent-delegation-patterns"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "agent-autonomy-ladder-for-hermes-workflows",
+          "subagent-orchestration-patterns",
+          "agent-context-engineering",
+          "ai-coding-assistant-context-budget-management"
+        ]
+      }
+    },
+    {
+      "path": "concepts/audience-situation-content-briefs.md",
+      "type": "concept",
+      "title": "Audience-Situation Content Briefs",
+      "description": "用受众真实情境、Category Entry Points 和 7W 框架重构内容简报，避免把搜索量直接当成内容需求。",
+      "status": "draft",
+      "tags": [
+        "workflow",
+        "research",
+        "decision",
+        "note"
+      ],
+      "aliases": [
+        "audience situations",
+        "audience-situation briefs",
+        "受众情境内容简报"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-ai-workflow-formalization-principles",
+          "agentic-content-pipeline-design-patterns",
+          "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/claude-code-practical-workflow-tips.md",
+      "type": "concept",
+      "title": "Claude Code Practical Workflow Tips",
+      "description": "沉淀 Claude Code 在侧问、浏览器验证、多目录和任务自动化中的实用工作流技巧。",
+      "status": "stable",
+      "tags": [
+        "claude-code",
+        "agent",
+        "workflow",
+        "automation",
+        "browser"
+      ],
+      "aliases": [
+        "claude-code-tips"
+      ],
+      "volatility": "high",
+      "review_by": "2026-11-11",
+      "verified_at": null,
+      "updated": "2026-09-09",
+      "relations": {}
+    },
+    {
+      "path": "concepts/codex-agent-workflow-layering.md",
+      "type": "concept",
+      "title": "Codex Agent Workflow Layering",
+      "description": "说明 Codex agent 工作流中 prompt、计划、AGENTS、skills、MCP 和自动化的分层职责。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "mcp",
+        "automation",
+        "workflow",
+        "configuration",
+        "tool"
+      ],
+      "aliases": [
+        "codex-workflow-layering"
+      ],
+      "volatility": "high",
+      "review_by": "2026-11-11",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/companyos-to-lifeos-filesystem-philosophy.md",
+      "type": "concept",
+      "title": "CompanyOS to LifeOS Filesystem Philosophy",
+      "description": "提炼从 CompanyOS 到 LifeOS 的文件系统即状态、共享命名空间和权限治理思想。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "workflow",
+        "research",
+        "note"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-knowledge-architecture",
+          "hermes-ai-workflow-formalization-principles",
+          "hermes-knowledge-base-operating-flow",
+          "lifeos-overview"
+        ]
+      }
+    },
+    {
+      "path": "concepts/constrained-toolbox-evaluator-loop.md",
+      "type": "concept",
+      "title": "Constrained Toolbox Evaluator Loop",
+      "description": "定义受限工具箱配合 evaluator 的多 Agent 闭环，用于降低高风险任务的错误扩散。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "multi-agent",
+        "evaluation",
+        "workflow",
+        "structured-output",
+        "governance"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/coping-skill-application-and-imaginal-exposure.md",
+      "type": "concept",
+      "title": "From Coping Skill Acquisition to Real-World Application",
+      "description": "区分情绪调节技能的习得与现实应用，并用有界想象暴露检验练习是否真正减少回避。",
+      "status": "draft",
+      "tags": [
+        "lifeos",
+        "evaluation",
+        "monitoring",
+        "decision"
+      ],
+      "aliases": [
+        "coping-skill-transfer",
+        "imaginal-exposure-and-avoidance",
+        "应对技能迁移"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-08-20",
+      "relations": {
+        "refines": [
+          "personal-growth-operating-model"
+        ]
+      }
+    },
+    {
+      "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+      "type": "concept",
+      "title": "Deterministic Analytics and LLM Reasoning Boundary",
+      "description": "划分确定性分析与 LLM 推理的职责边界，避免把可计算事实交给模型猜测。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "architecture",
+        "structured-output",
+        "verification"
+      ],
+      "aliases": [
+        "deterministic-llm-boundary"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/dijkstra-ai-programming-formalization.md",
+      "type": "concept",
+      "title": "Dijkstra on AI Programming Formalization",
+      "description": "整理 Dijkstra 思想对 AI 编程中规格化、形式化和自然语言边界的启发。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "workflow",
+        "research",
+        "note"
+      ],
+      "aliases": [
+        "dijkstra-ai-programming"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-knowledge-architecture",
+          "dijkstra-ewd667-vs-ai-programming-article",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
+        ]
+      }
+    },
+    {
+      "path": "concepts/entropy-and-entropy-increase.md",
+      "type": "concept",
+      "title": "Entropy and Entropy Increase",
+      "description": "区分热力学熵、统计熵与信息熵，说明熵增成立的系统边界以及软件和组织类比的使用限制。",
+      "status": "stable",
+      "tags": [
+        "research"
+      ],
+      "aliases": [
+        "熵",
+        "熵增",
+        "entropy",
+        "entropy increase"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": "2026-09-21",
+      "updated": "2026-09-21",
+      "relations": {
+        "related": [
+          "software-engineering-laws-quality",
+          "llm-engineering-knowledge-map"
+        ],
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/family-education-operating-model.md",
+      "type": "concept",
+      "title": "Family Education Operating Model",
+      "description": "提供可跨家庭复用的教育决策变量、适用条件与可持续性边界。",
+      "status": "stable",
+      "tags": [
+        "lifeos",
+        "operating-model",
+        "decision"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "lifeos-overview",
+          "hermes-lifeos-executable-architecture"
+        ]
+      }
+    },
+    {
+      "path": "concepts/first-edit-economy-for-coding-agents.md",
+      "type": "concept",
+      "title": "First-edit Economy for Coding Agents",
+      "description": "把 VS Code GPT-5.5 prompt tuning 案例抽象成 coding agent 的“首次编辑经济性”原则：有锚点时少做宽泛探索，尽早形成可证伪假设、小步编辑并立即验证。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "workflow",
+        "optimization",
+        "evaluation"
+      ],
+      "aliases": [
+        "first-edit-economy",
+        "economical-search-and-edit",
+        "少探索早验证"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "loop-engineering-hermes-agent-workflow",
+          "agent-self-validation-loops",
+          "agent-context-engineering",
+          "ai-coding-agent-workflow-types"
+        ]
+      }
+    },
+    {
+      "path": "concepts/google-sre-gemini-cli-incident-response.md",
+      "type": "concept",
+      "title": "Google SRE Gemini CLI Incident Response Pattern",
+      "description": "总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、工具约束和生产协作模式。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "mcp",
+        "workflow",
+        "tool",
+        "research"
+      ],
+      "aliases": [
+        "gemini-cli-incident-response",
+        "sre-agentic-incident-response"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-04-16",
+      "relations": {
+        "related": [
+          "hermes-vs-google-sre-agentic-incident-response",
+          "wiki-ingestion-workflow",
+          "hermes-knowledge-base-operating-flow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-active-surface-lifecycle-governance.md",
+      "type": "concept",
+      "title": "AI Agent Active-Surface Lifecycle Governance",
+      "description": "定义 AI Agent 活跃治理面的基线、校准、晋升、验证、运行、重基线与退役生命周期，避免规则和自动化只增不减。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "governance",
+        "workflow",
+        "context-engineering"
+      ],
+      "aliases": [
+        "active-surface-lifecycle",
+        "hermes-governance-lifecycle",
+        "agent-active-surface-lifecycle-governance"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "system-governance-operating-model"
+        ],
+        "depends_on": [
+          "hermes-context-layer-operating-rules",
+          "agent-failure-closed-loop-evaluation"
+        ],
+        "related": [
+          "agent-context-engineering",
+          "ai-coding-assistant-context-budget-management"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-agent-workflow-layering-and-adoption-order.md",
+      "type": "concept",
+      "title": "AI Agent Workflow Layering and Adoption Order",
+      "description": "定义 AI Agent 采用 Agent 工作流分层时的优先顺序和落地边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "mcp",
+        "automation",
+        "workflow",
+        "configuration",
+        "decision"
+      ],
+      "aliases": [
+        "hermes-agent-layering",
+        "agent-workflow-layering-and-adoption-order"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-knowledge-architecture"
+        ],
+        "related": [
+          "codex-agent-workflow-layering",
+          "deterministic-analytics-llm-reasoning-boundary",
+          "hermes-retrieval-priority-and-answer-path"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-ai-workflow-formalization-principles.md",
+      "type": "concept",
+      "title": "AI Agent Workflow Formalization Principles",
+      "description": "把形式化思想转译为 AI Agent 工作流中的规格、边界、验证和可回滚原则。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "workflow",
+        "decision",
+        "note",
+        "skills",
+        "governance"
+      ],
+      "aliases": [
+        "agent-ai-workflow-formalization-principles"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-knowledge-architecture",
+          "dijkstra-ai-programming-formalization",
+          "typed-ai-agent-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-context-engineering-design-priorities.md",
+      "type": "concept",
+      "title": "AI Agent Context Engineering Design Priorities",
+      "description": "定义 AI Agent 上下文工程的预算控制、排序、压缩和历史衰减优先级。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "workflow",
+        "decision"
+      ],
+      "aliases": [
+        "hermes-context-engineering",
+        "agent-context-engineering-design-priorities"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "llm-context-engineering-layer"
+        ],
+        "related": [
+          "hermes-retrieval-priority-and-answer-path",
+          "hermes-knowledge-architecture",
+          "agent-context-engineering"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-context-layer-operating-rules.md",
+      "type": "concept",
+      "title": "AI Agent Context Layer Operating Rules",
+      "description": "定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "lifeos",
+        "context-engineering",
+        "knowledge-base",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "context-layer-rules",
+        "agent-context-layer-operating-rules"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-context-engineering-design-priorities",
+          "hermes-lifeos-executable-architecture",
+          "hermes-layer-routing-decision-checklist",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-knowledge-architecture.md",
+      "type": "concept",
+      "title": "Human and AI Agent Shared Knowledge Architecture",
+      "description": "定义 AI Agent 长期知识系统的总体架构、层间关系与分层规则导航。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "mcp",
+        "workflow",
+        "configuration"
+      ],
+      "aliases": [
+        "knowledge-architecture",
+        "hermes-wiki-architecture",
+        "agent-knowledge-architecture"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-memory-skills-wiki-boundaries",
+          "wiki-ingestion-workflow",
+          "hermes-retrieval-priority-and-answer-path"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-knowledge-base-operating-flow.md",
+      "type": "concept",
+      "title": "Shared Wiki Operating Flow",
+      "description": "定义人类与 AI Agent 共享知识库从摄取、分类、编译、检索到维护的端到端运行流程。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "note"
+      ],
+      "aliases": [
+        "knowledge-base-operating-flow",
+        "agent-knowledge-base-operating-flow"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-knowledge-architecture",
+          "hermes-wiki-page-writing-standards"
+        ],
+        "related": [
+          "hermes-wiki-lint-and-health-check-standards",
+          "hermes-memory-skills-wiki-boundaries",
+          "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-knowledge-freshness-and-claim-evidence.md",
+      "type": "concept",
+      "title": "Wiki 知识新鲜度与断言证据绑定",
+      "description": "用现有来源、复查日期和推论标记改善 AI Agent Wiki 的知识新鲜度。",
+      "status": "draft",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "memory",
+        "verification",
+        "architecture",
+        "workflow"
+      ],
+      "aliases": [
+        "knowledge freshness",
+        "claim evidence",
+        "stale knowledge",
+        "agent-knowledge-freshness-and-claim-evidence"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-architecture",
+          "hermes-wiki-page-writing-standards"
+        ],
+        "depends_on": [
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-layer-routing-decision-checklist.md",
+      "type": "concept",
+      "title": "AI Agent Layer Routing Decision Checklist",
+      "description": "以内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度判断 AI Agent 层间路由。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "configuration",
+        "decision",
+        "automation",
+        "mcp"
+      ],
+      "aliases": [
+        "layer-routing-checklist",
+        "agent-layer-routing-decision-checklist"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-lifeos-executable-architecture.md",
+      "type": "concept",
+      "title": "AI Agent LifeOS Executable Architecture",
+      "description": "定义 AI Agent LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "lifeos",
+        "architecture",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "lifeos-executable-architecture",
+        "agent-lifeos-executable-architecture"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "companyos-to-lifeos-filesystem-philosophy",
+          "hermes-knowledge-architecture",
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-layer-routing-edge-cases"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-lifeos-layer-boundary-contract.md",
+      "type": "concept",
+      "title": "AI Agent LifeOS Layer Boundary Contract",
+      "description": "规定 AI Agent LifeOS 各层之间的职责、准入和越界判断契约。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "lifeos",
+        "architecture",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "lifeos-layer-boundary",
+        "agent-lifeos-layer-boundary-contract"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-lifeos-executable-architecture",
+          "hermes-context-layer-operating-rules",
+          "hermes-layer-routing-decision-checklist",
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-knowledge-architecture"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-memory-governance-notes.md",
+      "type": "concept",
+      "title": "AI Agent Memory Governance Notes",
+      "description": "记录 AI Agent memory 的写入、更新、遗忘和跨层治理注意事项。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "governance",
+        "orchestration",
+        "knowledge-base"
+      ],
+      "aliases": [
+        "memory-governance",
+        "agent-memory-governance-notes"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-layer-routing-decision-checklist"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-memory-skills-wiki-boundaries.md",
+      "type": "concept",
+      "title": "AI Agent Memory Skills Wiki Boundaries",
+      "description": "定义 AI Agent memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "configuration"
+      ],
+      "aliases": [
+        "layer-boundaries",
+        "memory-skill-wiki-boundaries",
+        "agent-memory-skills-wiki-boundaries"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-architecture"
+        ],
+        "depends_on": [
+          "wiki-ingestion-workflow",
+          "hermes-wiki-page-writing-standards"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-model-specific-harness-profiles.md",
+      "type": "concept",
+      "title": "AI Agent Model-Specific Harness Profiles",
+      "description": "定义 AI Agent 针对不同模型配置 harness profile 的适配原则和验证路径。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "harness",
+        "model-profiles",
+        "skills",
+        "context-engineering",
+        "verification"
+      ],
+      "aliases": [
+        "model-specific-harness",
+        "harness-profiles",
+        "agent-model-specific-harness-profiles"
+      ],
+      "volatility": "high",
+      "review_by": "2026-11-11",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "hermes-context-layer-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-python-engineering-capability-checklist.md",
+      "type": "concept",
+      "title": "AI Agent Python Engineering Capability Checklist",
+      "description": "列出 AI Agent 执行 Python 工程任务时需要检查的语言、测试、工具和交付能力。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "tool",
+        "ai-coding",
+        "workflow",
+        "governance",
+        "optimization",
+        "architecture",
+        "validation"
+      ],
+      "aliases": [
+        "agent-python-engineering-capability-checklist"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-ai-workflow-formalization-principles",
+          "agentic-programming-system-engineering",
+          "agent-context-engineering",
+          "typed-ai-agent-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-retrieval-priority-and-answer-path.md",
+      "type": "concept",
+      "title": "AI Agent Retrieval Priority and Answer Path",
+      "description": "定义 AI Agent 回答问题时 wiki、memory、skills、sessions、raw 和外部检索的优先级。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "tool",
+        "configuration"
+      ],
+      "aliases": [
+        "retrieval-priority",
+        "answer-path",
+        "agent-retrieval-priority-and-answer-path"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/hermes-skill-refactoring-methodology.md",
+      "type": "concept",
+      "title": "AI Agent Skill Refactoring Methodology",
+      "description": "总结 AI Agent skill 重构时从边界收敛、分层到回归验证的可移植方法。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "skills",
+        "workflow",
+        "governance",
+        "verification",
+        "ai-coding",
+        "subagent"
+      ],
+      "aliases": [
+        "skill-refactoring",
+        "agent-skill-refactoring-methodology"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "agent-self-validation-loops",
+          "subagent-orchestration-patterns"
+        ],
+        "related": [
+          "hermes-context-layer-operating-rules",
+          "hermes-knowledge-architecture"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-wiki-lint-and-health-check-standards.md",
+      "type": "concept",
+      "title": "Wiki Lint and Health Check Standards",
+      "description": "定义 AI Agent wiki 的只读健康检查范围、严重性、通过标准，以及可选 metadata/Relations 的验证方向。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "configuration",
+        "debugging"
+      ],
+      "aliases": [
+        "wiki-health-check",
+        "wiki-lint-standards",
+        "agent-wiki-lint-and-health-check-standards"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-wiki-page-writing-standards"
+        ],
+        "depends_on": [
+          "hermes-knowledge-architecture",
+          "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/hermes-wiki-page-writing-standards.md",
+      "type": "concept",
+      "title": "Wiki Page Writing Standards",
+      "description": "定义 AI Agent wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "workflow",
+        "configuration",
+        "note"
+      ],
+      "aliases": [
+        "page-writing-standards",
+        "wiki-writing-standards",
+        "agent-wiki-page-writing-standards"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-architecture"
+        ],
+        "depends_on": [
+          "wiki-ingestion-workflow",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/human-machine-scientific-discovery-verification-scarcity.md",
+      "type": "concept",
+      "title": "Human-Machine Scientific Discovery and Verification Scarcity",
+      "description": "当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "research",
+        "workflow",
+        "evaluation",
+        "verification",
+        "decision"
+      ],
+      "aliases": [
+        "verification-scarcity",
+        "abundant-experiments-scarce-review",
+        "human-machine-mathematical-discovery"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-self-validation-loops"
+        ],
+        "related": [
+          "constrained-toolbox-evaluator-loop",
+          "agent-research-evidence-gate",
+          "production-ai-agent-evaluation-framework",
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "hermes-knowledge-architecture"
+        ]
+      }
+    },
+    {
+      "path": "concepts/leontraveller-trading-and-investment-system.md",
+      "type": "concept",
+      "title": "Leontraveller Trading and Investment System",
+      "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "workflow",
+        "risk-control"
+      ],
+      "aliases": [
+        "leontraveller-investment-system"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "related": [
+          "ordinary-investor-investment-system",
+          "money-as-tool-and-investment-vs-consumption-framework",
+          "leontraveller-vs-ordinary-investor-investment-system",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "concepts/lifeos-overview.md",
+      "type": "concept",
+      "title": "LifeOS Overview",
+      "description": "概述可配置 LifeOS 的核心层次、可选领域和治理边界，不保存个人状态。",
+      "status": "stable",
+      "tags": [
+        "lifeos",
+        "operating-model",
+        "agent",
+        "governance"
+      ],
+      "aliases": [
+        "lifeos"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "companyos-to-lifeos-filesystem-philosophy",
+          "hermes-lifeos-executable-architecture"
+        ]
+      }
+    },
+    {
+      "path": "concepts/llm-context-engineering-layer.md",
+      "type": "concept",
+      "title": "LLM Context Engineering Layer",
+      "description": "定义 LLM 检索和 prompt 之间的上下文工程层，包括记忆、压缩、排序和预算控制。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "agent",
+        "workflow",
+        "research"
+      ],
+      "aliases": [
+        "context-engineering-layer"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/llm-engineering-knowledge-map.md",
+      "type": "concept",
+      "title": "LLM Engineering Knowledge Map",
+      "description": "提供 LLM 工程知识主题地图，用于定位模型、数据、评估、部署和治理能力。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "architecture",
+        "workflow",
+        "evaluation",
+        "deployment"
+      ],
+      "aliases": [
+        "llm-knowledge-map"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/llm-summary-identification-step.md",
+      "type": "concept",
+      "title": "LLM Summary Identification Step",
+      "description": "说明摘要任务前先识别文档类型、意图和证据边界的必要步骤。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "workflow",
+        "validation",
+        "risk-control",
+        "architecture"
+      ],
+      "aliases": [
+        "summary-identification"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md",
+      "type": "concept",
+      "title": "Local-First 同步中的确认镜像、Outbox 与冲突政策",
+      "description": "用确认镜像、持久化待提交事务、乐观内存视图和单调游标组织可恢复客户端同步，并显式选择幂等与冲突政策。",
+      "status": "stable",
+      "tags": [
+        "architecture",
+        "workflow",
+        "research",
+        "verification"
+      ],
+      "aliases": [
+        "local-first-sync-recoverable-transactions"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agent-development-lifecycle"
+        ],
+        "related": [
+          "production-ai-agent-evaluation-framework",
+          "stateful-agent-environments-and-grounded-verification"
+        ],
+        "conflicts_with": [],
+        "supersedes": [],
+        "depends_on": []
+      }
+    },
+    {
+      "path": "concepts/loop-engineering-hermes-agent-workflow.md",
+      "type": "concept",
+      "title": "Loop Engineering for AI Agent Workflows",
+      "description": "定义 AI Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "workflow",
+        "automation",
+        "subagent",
+        "orchestration"
+      ],
+      "aliases": [
+        "loop-engineering",
+        "loop-engineering-agent-workflow"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "agent-autonomy-ladder-for-hermes-workflows",
+          "agent-self-validation-loops",
+          "subagent-orchestration-patterns",
+          "agent-context-engineering"
+        ]
+      }
+    },
+    {
+      "path": "concepts/money-as-tool-and-investment-vs-consumption-framework.md",
+      "type": "concept",
+      "title": "Money as Tool and Investment-vs-Consumption Framework",
+      "description": "区分钱作为自由工具、投资资产和消费支出的判断框架。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "note"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-04-17",
+      "relations": {
+        "related": [
+          "ordinary-investor-investment-system",
+          "leontraveller-trading-and-investment-system",
+          "personal-finance-and-education-fund-model"
+        ]
+      }
+    },
+    {
+      "path": "concepts/multiagent-systemic-failure-modes.md",
+      "type": "concept",
+      "title": "多智能体系统性失效模式",
+      "description": "从行为低方差、认识论失调、共谋和目标冲突升级理解多智能体群体为何会在单体正常时仍产生系统性失败。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "multi-agent",
+        "orchestration",
+        "risk-control",
+        "governance"
+      ],
+      "aliases": [
+        "multiagent-systemic-failures",
+        "correlated-agent-failures"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "subagent-orchestration-patterns"
+        ],
+        "related": [
+          "agent-orchestration-production-tradeoffs",
+          "repeated-measures-statistical-power-for-ai-evaluation",
+          "agent-evaluation-rubric-calibration",
+          "agent-research-evidence-gate"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ordinary-investor-investment-system.md",
+      "type": "concept",
+      "title": "Ordinary Investor Investment System",
+      "description": "整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "note"
+      ],
+      "aliases": [
+        "ordinary-investor-system"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-04-16",
+      "relations": {
+        "related": [
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system",
+          "money-as-tool-and-investment-vs-consumption-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/personal-finance-and-education-fund-model.md",
+      "type": "concept",
+      "title": "Personal Finance and Education Fund Model",
+      "description": "提供家庭财务与教育目标资金的参数化分层、约束和风险边界模板。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "lifeos",
+        "operating-model"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "personal-investment-operating-rules",
+          "money-as-tool-and-investment-vs-consumption-framework",
+          "family-education-operating-model"
+        ]
+      }
+    },
+    {
+      "path": "concepts/personal-growth-operating-model.md",
+      "type": "concept",
+      "title": "Personal Growth Operating Model",
+      "description": "定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。",
+      "status": "stable",
+      "tags": [
+        "lifeos",
+        "operating-model",
+        "optimization",
+        "evaluation"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "lifeos-overview",
+          "work-and-career-operating-model"
+        ]
+      }
+    },
+    {
+      "path": "concepts/personal-investment-operating-rules.md",
+      "type": "concept",
+      "title": "Investment Risk Control Framework",
+      "description": "汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "governance",
+        "risk-control"
+      ],
+      "aliases": [
+        "investment-operating-rules"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "concepts/production-agent-evaluation-baselines.md",
+      "type": "concept",
+      "title": "Production Agent Evaluation Baselines",
+      "description": "定义生产 Agent 的延迟、成本、调用和缓存观测基线，并约束外部经验阈值与控制层边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "validation",
+        "monitoring",
+        "optimization"
+      ],
+      "aliases": [
+        "agent-production-baselines",
+        "llm-latency-cost-baselines"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "production-ai-agent-evaluation-framework"
+        ],
+        "related": [
+          "agent-resource-optimization",
+          "agent-evaluation-rubric-calibration"
+        ]
+      }
+    },
+    {
+      "path": "concepts/production-ai-agent-evaluation-framework.md",
+      "type": "concept",
+      "title": "Production AI Agent Evaluation Framework",
+      "description": "定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "validation",
+        "monitoring",
+        "harness",
+        "workflow"
+      ],
+      "aliases": [
+        "agent-evaluation-framework"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/progressive-knowledge-system-growth.md",
+      "type": "concept",
+      "title": "Progressive Knowledge System Growth",
+      "description": "说明个人知识系统应通过渐进生长和真实使用扩展，而不是预先重构成复杂体系。",
+      "status": "stable",
+      "tags": [
+        "knowledge-base",
+        "workflow",
+        "note"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-knowledge-architecture",
+          "wiki-ingestion-workflow",
+          "hermes-wiki-page-writing-standards",
+          "hermes-context-layer-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "concepts/public-info-monitoring-automation-methodology.md",
+      "type": "concept",
+      "title": "Public Info Monitoring Automation Methodology",
+      "description": "总结只读公共信息监控自动化项目的范围、边界、验证和推广方法。",
+      "status": "stable",
+      "tags": [
+        "monitoring",
+        "automation",
+        "research",
+        "cron",
+        "tool",
+        "agent",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-context-layer-operating-rules",
+          "hermes-layer-routing-decision-checklist",
+          "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+      "type": "concept",
+      "title": "少样本 AI 评测中的重复任务、伪重复与统计功效",
+      "description": "区分参与主体数、任务数与有效独立证据，说明何时重复任务能提高统计功效，以及如何避免把相关观测误当独立样本。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "validation",
+        "research"
+      ],
+      "aliases": [
+        "repeated-measures-power",
+        "pseudo-replication-in-ai-evaluation"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "production-ai-agent-evaluation-framework"
+        ],
+        "related": [
+          "stateful-agent-environments-and-grounded-verification",
+          "agent-evaluation-rubric-calibration"
+        ]
+      }
+    },
+    {
+      "path": "concepts/repository-level-code-intelligence-layer.md",
+      "type": "concept",
+      "title": "Repository-Level Code Intelligence Layer",
+      "description": "定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。",
+      "status": "stable",
+      "tags": [
+        "ai-coding",
+        "architecture",
+        "workflow",
+        "context-engineering",
+        "agent"
+      ],
+      "aliases": [
+        "repo-code-intelligence"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {}
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-architecture.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Architecture",
+      "description": "用于检索分布式权衡、复杂性演化、抽象边界与架构范围控制相关的软件工程经验法则。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-architecture"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-21",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map",
+          "flutter"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-decisions.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Decisions",
+      "description": "汇总软件工程决策类经验法则，供方案评审、风险检查与技术选择时检索。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-decisions"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-21",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-design.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Design",
+      "description": "用于检索和比较软件设计中控制重复、复杂度、耦合、意外行为与过度实现的经验法则。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-design"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-08-10",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "agentic-programming-system-engineering"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-planning.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Planning",
+      "description": "用于检索软件工程规划中关于度量、估算、期限、收尾成本与优化时机的经验法则。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-planning"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-08-10",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-quality.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Quality",
+      "description": "汇总软件质量、演化、测试与技术债相关经验法则，供设计和评审时快速检索。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-quality"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-21",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-scale.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Scale",
+      "description": "用于检索和比较软件系统扩展中的串行瓶颈、工作负载增长与网络效应。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-scale"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-08-10",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/software-engineering-laws/software-engineering-laws-teams.md",
+      "type": "concept",
+      "title": "Software Engineering Laws — Teams",
+      "description": "用于检索和评审团队规模、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-teams"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-08-10",
+      "relations": {
+        "refines": [
+          "software-engineering-laws-decision-map"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map"
+        ]
+      }
+    },
+    {
+      "path": "concepts/stateful-agent-environments-and-grounded-verification.md",
+      "type": "concept",
+      "title": "Stateful Agent Environments and Grounded Verification",
+      "description": "用 environment + tasks + verifier 评估有状态 Agent 的行为保真、工作流深度与权威结果校验，并区分模型、环境、任务和验证器失败。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "browser",
+        "evaluation",
+        "verification",
+        "workflow",
+        "research"
+      ],
+      "aliases": [
+        "grounded-agent-environment"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "production-ai-agent-evaluation-framework",
+          "agent-development-lifecycle",
+          "agent-self-validation-loops",
+          "subagent-orchestration-patterns",
+          "agent-failure-closed-loop-evaluation"
+        ]
+      }
+    },
+    {
+      "path": "concepts/subagent-orchestration-patterns.md",
+      "type": "concept",
+      "title": "Subagent Orchestration Patterns",
+      "description": "分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "subagent",
+        "multi-agent",
+        "orchestration",
+        "workflow",
+        "governance"
+      ],
+      "aliases": [
+        "subagent-patterns"
+      ],
+      "volatility": "medium",
+      "review_by": "2026-12-31",
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "hermes-context-layer-operating-rules",
+          "agent-orchestration-production-tradeoffs",
+          "ai-coding-agent-workflow-types",
+          "agent-context-engineering",
+          "multiagent-systemic-failure-modes"
+        ]
+      }
+    },
+    {
+      "path": "concepts/system-governance-operating-model.md",
+      "type": "concept",
+      "title": "System Governance Operating Model",
+      "description": "定义 LifeOS 和 AI Agent 系统治理中的层级边界、变更控制和长期维护模型。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "governance",
+        "lifeos",
+        "operating-model"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "lifeos-overview",
+          "hermes-lifeos-executable-architecture",
+          "hermes-knowledge-architecture",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "concepts/typed-ai-agent-boundaries.md",
+      "type": "concept",
+      "title": "Typed AI Agent Boundaries",
+      "description": "说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "typed-boundary",
+        "structured-output",
+        "pydantic",
+        "governance"
+      ],
+      "aliases": [
+        "typed-agent-boundaries"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "dijkstra-ai-programming-formalization",
+          "hermes-ai-workflow-formalization-principles"
+        ]
+      }
+    },
+    {
+      "path": "concepts/wiki-ingestion-workflow.md",
+      "type": "concept",
+      "title": "Wiki Ingestion Workflow",
+      "description": "定义公开材料进入 AI Agent wiki 的标准路径：先过公开边界，再保存 raw、提炼正式页面、补链接并验证。",
+      "status": "stable",
+      "tags": [
+        "knowledge-base",
+        "workflow",
+        "research",
+        "automation"
+      ],
+      "aliases": [
+        "wiki-ingestion",
+        "knowledge-ingestion"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-architecture"
+        ],
+        "depends_on": [
+          "hermes-wiki-page-writing-standards",
+          "hermes-retrieval-priority-and-answer-path"
+        ]
+      }
+    },
+    {
+      "path": "concepts/work-and-career-operating-model.md",
+      "type": "concept",
+      "title": "Work and Career Operating Model",
+      "description": "定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。",
+      "status": "stable",
+      "tags": [
+        "lifeos",
+        "operating-model",
+        "workflow",
+        "decision"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "lifeos-overview",
+          "hermes-lifeos-executable-architecture"
+        ]
+      }
+    },
+    {
+      "path": "entities/flutter.md",
+      "type": "entity",
+      "title": "Flutter Open-Source UI Framework",
+      "description": "Flutter 的定位、分层架构、UI 模型、跨平台互操作、工程实践、适用边界与最小采用路径。",
+      "status": "current",
+      "tags": [
+        "product",
+        "architecture",
+        "tool"
+      ],
+      "aliases": [
+        "Flutter",
+        "Flutter SDK",
+        "Flutter framework",
+        "Google Flutter"
+      ],
+      "volatility": "high",
+      "review_by": "2026-12-20",
+      "verified_at": "2026-09-21",
+      "updated": "2026-09-21",
+      "relations": {
+        "related": [
+          "software-engineering-laws-architecture",
+          "software-engineering-laws-quality"
+        ]
+      }
+    },
+    {
+      "path": "entities/nimbus-docs.md",
+      "type": "entity",
+      "title": "Nimbus 文档站点框架",
+      "description": "Nimbus 基于 Astro 的文档站点方案：可编辑文件、Agent 可读端点、内容校验、公开边界与采用限制。",
+      "status": "current",
+      "tags": [
+        "product",
+        "agent",
+        "content-engineering"
+      ],
+      "aliases": [
+        "Nimbus",
+        "Nimbus Docs"
+      ],
+      "volatility": "high",
+      "review_by": "2026-12-28",
+      "verified_at": "2026-09-29",
+      "updated": "2026-09-29",
+      "relations": {
+        "related": [
+          "agentic-content-pipeline-design-patterns",
+          "agent-shared-wiki-index"
+        ]
+      }
+    },
+    {
+      "path": "operations/agent-shared-wiki-index.md",
+      "type": "operation",
+      "title": "Agent Shared Wiki Index",
+      "description": "多种 coding/agent 客户端共用 Markdown 知识库时的可移植路由入口与读写边界。",
+      "status": "active",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "context-engineering",
+        "multi-agent"
+      ],
+      "aliases": [
+        "shared-agent-context",
+        "cross-agent-wiki-index"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-30",
+      "relations": {
+        "depends_on": [
+          "hermes-context-layer-operating-rules"
+        ],
+        "refines": [
+          "hermes-retrieval-priority-and-answer-path"
+        ],
+        "related": [
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "queries/agent-architecture-primary-paper-map.md",
+      "type": "query",
+      "title": "Agent Architecture Primary-Paper Map",
+      "description": "按 Agent 设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "agent-primary-paper-map",
+        "agent-architecture-paper-map"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "agentic-programming-system-engineering"
+        ],
+        "related": [
+          "agent-development-lifecycle",
+          "production-ai-agent-evaluation-framework",
+          "llm-engineering-knowledge-map"
+        ],
+        "conflicts_with": [],
+        "supersedes": []
+      }
+    },
+    {
+      "path": "queries/hermes-agent-experience-consolidation-capability-assessment.md",
+      "type": "query",
+      "title": "Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot",
+      "description": "2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当前能力需重新核验。",
+      "status": "closed",
+      "tags": [
+        "hermes",
+        "agent",
+        "research",
+        "memory",
+        "skills",
+        "orchestration",
+        "cron",
+        "validation"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-22",
+      "relations": {
+        "depends_on": [
+          "agent-experience-consolidation-loops"
+        ],
+        "related": [
+          "agent-self-validation-loops",
+          "subagent-orchestration-patterns",
+          "agent-orchestration-production-tradeoffs"
+        ]
+      }
+    },
+    {
+      "path": "queries/hermes-layer-routing-edge-cases.md",
+      "type": "query",
+      "title": "AI Agent Layer Routing Edge Cases",
+      "description": "沉淀 AI Agent layer routing 中容易混淆的边界案例和判定结果。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "workflow",
+        "decision",
+        "configuration",
+        "automation",
+        "mcp"
+      ],
+      "aliases": [
+        "layer-routing-edge-cases",
+        "agent-layer-routing-edge-cases"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-layer-routing-decision-checklist",
+          "hermes-layer-routing-sample-cases"
+        ]
+      }
+    },
+    {
+      "path": "queries/hermes-layer-routing-sample-cases.md",
+      "type": "query",
+      "title": "AI Agent Layer Routing Sample Cases",
+      "description": "提供 AI Agent layer routing 的典型样例，用于校准 wiki、memory、skill、cron 和 MCP 归类。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "workflow",
+        "decision",
+        "configuration",
+        "automation",
+        "mcp"
+      ],
+      "aliases": [
+        "layer-routing-samples",
+        "agent-layer-routing-sample-cases"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "hermes-layer-routing-decision-checklist",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "queries/hermes-wiki-knowledge-freshness-improvement-plan.md",
+      "type": "query",
+      "title": "Hermes Wiki 知识新鲜度改造计划",
+      "description": "保留 2026-08-26 已关闭的新鲜度改造决策；当前执行以 Schema、写作规范和 Freshness Gate 为准。",
+      "status": "closed",
+      "tags": [
+        "hermes",
+        "governance",
+        "knowledge-base",
+        "verification",
+        "workflow",
+        "architecture"
+      ],
+      "aliases": [
+        "wiki freshness plan",
+        "claim evidence workflow"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-freshness-and-claim-evidence"
+        ],
+        "depends_on": [
+          "hermes-wiki-page-writing-standards",
+          "hermes-wiki-lint-and-health-check-standards"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-build-a-post-trade-review-loop.md",
+      "type": "query",
+      "title": "Building a Post-Trade Review Loop",
+      "description": "回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "validation",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "how-i-should-review-a-losing-position",
+          "how-i-should-handle-a-winning-position",
+          "how-i-should-decide-between-doing-nothing-and-taking-action",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-convert-trading-lessons-into-hard-rules.md",
+      "type": "query",
+      "title": "Converting Trading Lessons into Hard Rules",
+      "description": "回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "governance",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "how-i-should-detect-repeat-mistakes-in-my-trading",
+          "how-i-should-build-a-post-trade-review-loop",
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-decide-between-doing-nothing-and-taking-action.md",
+      "type": "query",
+      "title": "Deciding Between Inaction and Action",
+      "description": "回答投资交易中如何判断等待是否优于立即行动。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "decision",
+        "risk-control",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "how-i-should-handle-a-winning-position",
+          "how-i-should-size-a-position",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-detect-repeat-mistakes-in-my-trading.md",
+      "type": "query",
+      "title": "Detecting Repeat Trading Mistakes",
+      "description": "回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "validation",
+        "debugging"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "how-i-should-build-a-post-trade-review-loop",
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "how-i-should-review-a-losing-position",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-handle-a-winning-position.md",
+      "type": "query",
+      "title": "Managing a Winning Position",
+      "description": "回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "how-i-should-size-a-position",
+          "how-i-should-scale-into-and-out-of-a-position",
+          "when-i-should-not-trade",
+          "leontraveller-trading-and-investment-system",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-keep-my-trading-system-small-and-executable.md",
+      "type": "query",
+      "title": "Keeping a Trading System Small and Executable",
+      "description": "回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "architecture",
+        "governance"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "how-i-should-convert-trading-lessons-into-hard-rules",
+          "how-i-should-detect-repeat-mistakes-in-my-trading",
+          "how-i-should-build-a-post-trade-review-loop",
+          "my-investment-pre-trade-checklist",
+          "personal-investment-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-review-a-losing-position.md",
+      "type": "query",
+      "title": "Reviewing a Losing Position",
+      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "validation",
+        "risk-control"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "how-i-should-use-these-two-investment-frameworks",
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-scale-into-and-out-of-a-position.md",
+      "type": "query",
+      "title": "Scaling Into and Out of a Position",
+      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "how-i-should-review-a-losing-position",
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-size-a-position.md",
+      "type": "query",
+      "title": "Position Sizing by Risk Budget",
+      "description": "回答如何根据风险预算和 setup 质量决定单笔仓位大小。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "risk-control"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "when-i-should-not-trade",
+          "how-i-should-scale-into-and-out-of-a-position",
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md",
+      "type": "query",
+      "title": "Using AI Agent for AI Coding with Typed Boundaries",
+      "description": "回答如何用 AI Agent 以 typed boundaries、窄工具面和验证门执行 AI 编程任务。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "typed-boundary",
+        "workflow",
+        "verification"
+      ],
+      "aliases": [
+        "how-i-should-use-agent-for-ai-coding-with-typed-boundaries"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "typed-ai-agent-boundaries",
+          "hermes-ai-workflow-formalization-principles",
+          "ai-coding-agent-workflow-types",
+          "hermes-context-layer-operating-rules"
+        ]
+      }
+    },
+    {
+      "path": "queries/how-i-should-use-these-two-investment-frameworks.md",
+      "type": "query",
+      "title": "Combining Two Investment Frameworks",
+      "description": "回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "decision",
+        "comparison",
+        "lifeos"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "ordinary-investor-investment-system",
+          "leontraveller-trading-and-investment-system",
+          "personal-investment-operating-rules",
+          "leontraveller-vs-ordinary-investor-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/my-investment-pre-trade-checklist.md",
+      "type": "query",
+      "title": "Investment Pre-Trade Risk Checklist",
+      "description": "提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "risk-control",
+        "trading",
+        "decision"
+      ],
+      "aliases": [
+        "pre-trade-checklist"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system",
+          "how-i-should-use-these-two-investment-frameworks"
+        ]
+      }
+    },
+    {
+      "path": "queries/okf-for-hermes-wiki-governance-assessment.md",
+      "type": "query",
+      "title": "OKF Concepts for AI Agent Wiki Governance Assessment",
+      "description": "评估 OKF/LLM-wiki 思路如何作为 AI Agent wiki 的机器可读治理增强，而不是替代现有 wiki 架构。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "governance",
+        "context-engineering"
+      ],
+      "aliases": [
+        "okf",
+        "open-knowledge-format",
+        "knowledge-object",
+        "llm-wiki",
+        "okf-for-agent-wiki-governance-assessment"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-architecture"
+        ],
+        "depends_on": [
+          "hermes-wiki-page-writing-standards",
+          "hermes-wiki-lint-and-health-check-standards",
+          "hermes-memory-skills-wiki-boundaries"
+        ]
+      }
+    },
+    {
+      "path": "queries/software-engineering-laws-decision-map.md",
+      "type": "query",
+      "title": "Software Engineering Laws Decision Map",
+      "description": "按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。",
+      "status": "stable",
+      "tags": [
+        "research",
+        "architecture",
+        "decision"
+      ],
+      "aliases": [
+        "software-engineering-laws-decision-map"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-29",
+      "relations": {
+        "depends_on": [
+          "software-engineering-laws-architecture",
+          "software-engineering-laws-teams",
+          "software-engineering-laws-planning",
+          "software-engineering-laws-quality",
+          "software-engineering-laws-scale",
+          "software-engineering-laws-design",
+          "software-engineering-laws-decisions"
+        ],
+        "related": [
+          "llm-engineering-knowledge-map",
+          "agentic-programming-system-engineering"
+        ]
+      }
+    },
+    {
+      "path": "queries/when-i-should-not-trade.md",
+      "type": "query",
+      "title": "When Not to Trade",
+      "description": "回答哪些情境下默认不交易、不加仓或先暂停决策。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "risk-control",
+        "decision"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "my-investment-pre-trade-checklist",
+          "how-i-should-use-these-two-investment-frameworks",
+          "personal-investment-operating-rules",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    }
+  ]
+}

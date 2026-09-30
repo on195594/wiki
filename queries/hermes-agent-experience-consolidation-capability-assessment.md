@@ -130,6 +130,11 @@ cron scheduled job
 
 This would be an audited precursor to Auto Dream and should not mutate durable layers automatically in the first version.
 
+## Relations
+
+- depends_on: [[agent-experience-consolidation-loops]]
+- related: [[agent-self-validation-loops]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]]
+
 ## Links
 - Source: [[venturebeat-anthropic-dreaming-ai-agents-2026-05-07]]
 - Concept: [[agent-experience-consolidation-loops]]

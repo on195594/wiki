@@ -4,7 +4,7 @@ created: 2026-08-10
 updated: 2026-08-10
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/brooks-law.md, raw/articles/laws-of-software-engineering/bus-factor.md, raw/articles/laws-of-software-engineering/conways-law.md, raw/articles/laws-of-software-engineering/dilbert-principle.md, raw/articles/laws-of-software-engineering/dunbars-number.md, raw/articles/laws-of-software-engineering/peter-principle.md, raw/articles/laws-of-software-engineering/prices-law.md, raw/articles/laws-of-software-engineering/putts-law.md, raw/articles/laws-of-software-engineering/ringelmann-effect.md]
 status: stable
 description: 用于检索和评审团队规模、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。
 aliases: [software-engineering-laws-teams]

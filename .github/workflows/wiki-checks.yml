@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  schedule:
+    # Run weekly on Monday at 00:00 UTC to proactively monitor freshness and review_by expiry
+    - cron: '0 0 * * 1'
 
 permissions:
   contents: read
@@ -21,8 +24,12 @@ jobs:
           python-version: "3.13"
       - name: Unit tests
         run: python3 -m unittest discover -s _meta/scripts -p 'test_*.py' -v
+      - name: Catalog synchronization check
+        run: python3 _meta/scripts/wiki_catalog.py --root "$GITHUB_WORKSPACE" --check
       - name: Wiki health
         run: python3 _meta/scripts/wiki_health_check.py --root "$GITHUB_WORKSPACE" --format markdown
+      - name: Freshness scan
+        run: python3 _meta/scripts/wiki_maintain.py --root "$GITHUB_WORKSPACE" --freshness --days 30
       - name: Tag audit
         run: python3 _meta/scripts/wiki_tag_audit.py --root "$GITHUB_WORKSPACE"
       - name: Public-content check
