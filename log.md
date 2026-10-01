@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-01] ingest | Meta-skills for executable Agent support
+- Added `raw/papers/arxiv-2609-38143-meta-skills-harness-design.md` as a selected, paraphrased source note grounded in arXiv v1 (Cheng Qian et al., 2026-09-29), with original excerpts, versioned links and explicit capture limitations; it is not a full-paper mirror or independent reproduction.
+- Extended [[agent-experience-consolidation-loops]] with the task-skill versus support-design distinction, `when / provide / use`, the frozen-bank construction protocol and an artifact-validation example. Refreshed its [[index]] entry and the existing boundary link in [[agent-harness-search-regularization]], without creating a new concept.
+- Preserved author-reported comparisons, excluded Builder costs, non-monotonic refinement, uncertain transfer/component effects and within-category generalization. Knowledge capture does not establish a combined method or authorize active Skill, runtime or default-gate changes.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the existing experience-consolidation page; the raw manifest adds one entry without changing existing hashes, and catalog changes are limited to the two touched concepts. The 17 pre-existing public-content candidates remain outside this ingestion's scope. These checks validate knowledge structure and source routing, not the external benchmark results.
+
 ## [2026-10-01] ingest | UI design context and focused intent
 - Extended [[agent-context-engineering]] with a bounded Impeccable documentation example: audience and goals, focused UI improvement intent, decisions to preserve, and the documented comp-led/code-led tradeoff. Updated its [[index]] entry rather than creating a product page or copying the full command reference.
 - Cited the directly retrieved official documentation homepage; publication date and applicable version are not displayed. Linked child pages were not reviewed. Distinguished documented product behavior from transferable inferences, command intent from deterministic results, and product workflow claims from independently measured effectiveness.

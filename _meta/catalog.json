@@ -244,7 +244,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义把 Agent 历史经验提炼为可复用知识、持续整合重验证，并路由到 memory、skills、wiki 或评估资产的闭环。",
+      "description": "定义 Agent 经验的提炼、验证与层间路由，区分指导解题的任务技能与指导可执行环境支持的元技能。",
       "status": "stable",
       "tags": [
         "agent",
@@ -259,12 +259,13 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-01",
       "relations": {
         "related": [
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
-          "hermes-memory-skills-wiki-boundaries"
+          "hermes-memory-skills-wiki-boundaries",
+          "agent-harness-search-regularization"
         ]
       }
     },
@@ -317,7 +318,7 @@
       "volatility": "medium",
       "review_by": "2026-12-31",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-01",
       "relations": {
         "related": [
           "production-ai-agent-evaluation-framework",

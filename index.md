@@ -32,7 +32,7 @@
 - [[agent-closed-loop-learning-from-corrections-to-rules]] — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广，升级为默认行为
 - [[agent-context-engineering]] — Agent 上下文工程：用最小必要上下文、工具反向边界和显式长程状态防止偏航；以 Impeccable 为 UI 产品背景与定向设计意图的实例，不把命令意图当作执行或效果保证；过程记录仍受公开准入约束
 - [[agent-development-lifecycle]] — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理；涵盖 harness 权威状态与 Tetral 云端运行时、持久投递、沙箱解耦的边界
-- [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：只把适合公开且长期可复用的发现编译进正式知识页，私有或一次性证据留在原载体，并治理候选验证、准入、退役与回滚
+- [[agent-experience-consolidation-loops]] — Agent 经验与 Skill 生命周期闭环：区分任务技能与支持设计元技能；只把公开、长期可复用的发现编译进正式页，治理候选验证、准入与回滚，不把研究增益当作默认执行授权
 - [[agent-harness-search-regularization]] — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
 - [[agent-resource-optimization]] — Agent 资源优化：用集合覆盖、分配、背包和网络流视角建模多 Agent 的能力覆盖、预算选择、任务分派与路由成本
 - [[agentic-programming-system-engineering]] — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
