@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-01] ingest | UI design context and focused intent
+- Extended [[agent-context-engineering]] with a bounded Impeccable documentation example: audience and goals, focused UI improvement intent, decisions to preserve, and the documented comp-led/code-led tradeoff. Updated its [[index]] entry rather than creating a product page or copying the full command reference.
+- Cited the directly retrieved official documentation homepage; publication date and applicable version are not displayed. Linked child pages were not reviewed. Distinguished documented product behavior from transferable inferences, command intent from deterministic results, and product workflow claims from independently measured effectiveness.
+- Reused [[agent-self-validation-loops]] for result verification. No product installation, active Skill, global instruction, configuration or runtime change is implied; no raw source or hash-manifest change is needed for this live-document reference.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves the official URL to the existing context-engineering page; the catalog diff is limited to that page, and raw sources and their hash manifest are unchanged. Focused source/content review preserves product-versus-inference boundaries. These checks validate documentation structure and routing, not product effectiveness.
+
 ## [2026-10-01] ingest | Code review beyond automated verification
 - Added `raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md` as a structured source note from the complete readable article, with Ankit Jain / The New Stack provenance, verified publication date, Aviator sponsorship and author affiliation. The note is a paraphrased capture linked to the original, not a full-article mirror or a generated-summary substitute.
 - Extended [[hermes-ai-workflow-formalization-principles]] and its [[index]] description rather than creating a duplicate concept. Preserved shared system understanding, decision reasons, deterministic checks and human responsibility; linked existing validation, assumption-challenge and correction-learning concepts without duplicating their rules.

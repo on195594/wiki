@@ -156,7 +156,7 @@
       "path": "concepts/agent-context-engineering.md",
       "type": "concept",
       "title": "Agent Context Engineering",
-      "description": "定义 Agent 执行过程中的上下文装配原则，用于控制工具、示例、状态和历史可见性。",
+      "description": "定义 Agent 执行过程中的上下文装配原则，控制工具、示例、状态和历史可见性，并以 UI 设计说明产品背景与定向改进意图。",
       "status": "stable",
       "tags": [
         "agent",
@@ -171,7 +171,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-01",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
