@@ -3,7 +3,7 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-09-30 | Indexed pages: 114
+> Last updated: 2026-10-01 | Indexed pages: 114
 
 ## 按任务进入
 
@@ -77,7 +77,7 @@
 - [[first-edit-economy-for-coding-agents]] — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
 - [[google-sre-gemini-cli-incident-response]] — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
 - [[hermes-agent-workflow-layering-and-adoption-order|AI Agent Workflow Layering and Adoption Order]] — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
-- [[hermes-ai-workflow-formalization-principles|AI Agent Workflow Formalization Principles]] — AI Agent 的规格与规划按风险留痕：不强制长篇计划；重复操作优先窄界面或确定性工具，验证闭环负责验收
+- [[hermes-ai-workflow-formalization-principles|AI Agent Workflow Formalization Principles]] — AI Agent 的规格与规划按风险留痕；重复规范优先确定性检查，自动验证不替代共享理解、决策理由与人工责任
 - [[hermes-python-engineering-capability-checklist|AI Agent Python Engineering Capability Checklist]] — AI Agent Python 工程能力检查清单：流式输入、资源生命周期、有界并发、类型化工具边界与验证闭环
 - [[loop-engineering-hermes-agent-workflow|Loop Engineering for AI Agent Workflows]] — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher 和有界重试组织工作闭环；从单个缺陷验证完整用户行为链、可重复环境与人工补救负担，保留 active-layer 审批边界
 - [[multiagent-systemic-failure-modes]] — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
