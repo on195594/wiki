@@ -411,7 +411,7 @@
       "path": "concepts/agent-resource-optimization.md",
       "type": "concept",
       "title": "Agent Resource Optimization",
-      "description": "说明如何把多 Agent 和自动化规划视为预算、能力、容量和风险约束下的优化问题。",
+      "description": "说明预算与能力约束下的 Agent 资源规划，并以 Open SWE 案例解释任务上下文驱动的模型分层及证据边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -425,7 +425,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-02",
       "relations": {}
     },
     {
@@ -2076,7 +2076,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"

@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-02] ingest | Task-context model routing in Open SWE
+- Added `raw/articles/langchain-model-router-in-harness-2026-10-01.md` as a selected, paraphrased source note from the complete readable LangChain blog article by Sydney Runkle and Eugene Yurtsev (2026-10-01), with extraction scope, vendor provenance and author-reported evidence limitations; not a full-article mirror or independent reproduction.
+- Extended [[agent-resource-optimization]] with task-context model selection, the online A/B case and the early-stopped fast-model counterexample; added a narrow metric-interpretation note to [[production-agent-evaluation-baselines]] and refreshed their [[index]] descriptions. No duplicate concept page was created.
+- Kept quality proxies separate from equivalence, thread-level LLM costs separate from total budget, and context ownership separate from a blanket gateway prohibition. Static selection, independent subagents and proposed future evaluations remain explicit; no active Skill, default model, runtime routing or external publication change is implied.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the two intended concepts; the raw manifest adds one entry without changing prior hashes, and catalog changes are limited to the two touched concepts. These checks validate knowledge structure and source routing, not the external experiment results.
+
 ## [2026-10-01] ingest | Meta-skills for executable Agent support
 - Added `raw/papers/arxiv-2609-38143-meta-skills-harness-design.md` as a selected, paraphrased source note grounded in arXiv v1 (Cheng Qian et al., 2026-09-29), with original excerpts, versioned links and explicit capture limitations; it is not a full-paper mirror or independent reproduction.
 - Extended [[agent-experience-consolidation-loops]] with the task-skill versus support-design distinction, `when / provide / use`, the frozen-bank construction protocol and an artifact-validation example. Refreshed its [[index]] entry and the existing boundary link in [[agent-harness-search-regularization]], without creating a new concept.
