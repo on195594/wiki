@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 114,
+  "total_pages": 115,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -807,6 +807,36 @@
           "hermes-ai-workflow-formalization-principles",
           "agentic-content-pipeline-design-patterns",
           "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/chat-to-agent-session-routing.md",
+      "type": "concept",
+      "title": "Chat to Agent Session Routing",
+      "description": "\"[有限经验] 聊天平台到有状态 AI Agent 运行时的会话路由与边界隔离设计原则。\"",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "architecture",
+        "workflow",
+        "context-engineering"
+      ],
+      "aliases": [
+        "chat-agent-session-routing",
+        "chat-to-agent-routing"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-08",
+      "relations": {
+        "depends_on": [
+          "hermes-context-layer-operating-rules"
+        ],
+        "related": [
+          "hermes-memory-skills-wiki-boundaries",
+          "subagent-orchestration-patterns"
         ]
       }
     },

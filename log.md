@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-08] migration | Chat to Agent Session Routing concept
+- Migrated durable architecture principles from the retired `chat-agent-session-routing` skill to formal concept page `[[chat-to-agent-session-routing]]`.
+- Covers platform-native conversation container mapping, lifecycle tracing, minimal state boundaries, reply ownership, and restart-safety semantics.
+- Updated `index.md`, added inbound wikilink from `[[hermes-memory-skills-wiki-boundaries]]`, and synchronized `_meta/catalog.json`.
+- Validation: Unit tests 54 passed; Wiki health P0/P1/P2=0/0/0; tag audit undeclared count=0; catalog.json synchronized.
+
 ## [2026-10-02] ingest | Task-context model routing in Open SWE
 - Added `raw/articles/langchain-model-router-in-harness-2026-10-01.md` as a selected, paraphrased source note from the complete readable LangChain blog article by Sydney Runkle and Eugene Yurtsev (2026-10-01), with extraction scope, vendor provenance and author-reported evidence limitations; not a full-article mirror or independent reproduction.
 - Extended [[agent-resource-optimization]] with task-context model selection, the online A/B case and the early-stopped fast-model counterexample; added a narrow metric-interpretation note to [[production-agent-evaluation-baselines]] and refreshed their [[index]] descriptions. No duplicate concept page was created.
