@@ -3,7 +3,7 @@
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate；摄取分类见 [[wiki-ingestion-workflow]]。
-> Last updated: 2026-10-02 | Indexed pages: 114
+> Last updated: 2026-10-09 | Indexed pages: 116
 
 ## 按任务进入
 
@@ -45,6 +45,7 @@
 - [[constrained-toolbox-evaluator-loop]] — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [[coping-skill-application-and-imaginal-exposure]] — 应对技能从习得到现实应用：识别伪应对，以有界想象暴露检验技能是否减少回避并提升不适中的行动能力
 - [[deterministic-analytics-llm-reasoning-boundary]] — 确定性分析与语义推理边界：区分概率性分类与可复现计算，复用落表标签、分流不确定样本，不把类型或模型共识当作真实性证明
+- [[document-parsing-structural-fidelity|文档解析的结构保真与中间表示]] — 检查内容与章节、表头、单位、脚注的关系；按职责组合 Markdown、HTML、JSON、图片与坐标，不把格式正确当作语义正确
 - [[dijkstra-ai-programming-formalization]] — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [[entropy-and-entropy-increase]] — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [[family-education-operating-model]] — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，而不是单点名校最优化

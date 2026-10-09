@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-09] ingest | Document parsing structural fidelity
+- Added [[document-parsing-structural-fidelity]] with a selected, paraphrased source note from Murtaza Khomusi's LlamaIndex article (2026-10-08), retrieved from the original site; the note is not a full-article mirror or a generated-summary substitute.
+- Preserved content-versus-relationship fidelity, Markdown/HTML/JSON responsibilities, images and layout metadata, direct-extraction applicability, and source-backed header/unit/footnote checks. Error-tracing and regression-example suggestions are labeled as inferences, not measured results.
+- Updated index navigation and added a scoped inbound link from [[ai-agent-document-fidelity-risk]]. The source is a vendor explanation, not independent performance or cost evidence; no product adoption, active Skill or parsing-runtime change is implied.
+- Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the new concept; the raw manifest adds one source with existing hashes unchanged, and the catalog changes are limited to the new concept and its adjacent backlink page. Checks validate repository structure and source routing, not parsing effectiveness.
+
 ## [2026-10-08] migration | Chat to Agent Session Routing concept
 - Migrated durable architecture principles from the retired `chat-agent-session-routing` skill to formal concept page `[[chat-to-agent-session-routing]]`.
 - Covers platform-native conversation container mapping, lifecycle tracing, minimal state boundaries, reply ownership, and restart-safety semantics.

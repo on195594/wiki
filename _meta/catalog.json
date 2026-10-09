@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 115,
+  "total_pages": 116,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -565,7 +565,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-09",
       "relations": {}
     },
     {
@@ -1006,6 +1006,35 @@
           "hermes-knowledge-architecture",
           "dijkstra-ewd667-vs-ai-programming-article",
           "ai-assistance-cognitive-substitution-and-skill-formation"
+        ]
+      }
+    },
+    {
+      "path": "concepts/document-parsing-structural-fidelity.md",
+      "type": "concept",
+      "title": "文档解析的结构保真与中间表示",
+      "description": "解释文档解析中内容与关系的保真边界，以及 Markdown、HTML、JSON、图片和版面元数据的职责分工。",
+      "status": "stable",
+      "tags": [
+        "llm",
+        "architecture",
+        "content-engineering",
+        "verification",
+        "structured-output"
+      ],
+      "aliases": [
+        "document-parsing-structural-fidelity",
+        "文档结构保真",
+        "文档中间表示"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-09",
+      "relations": {
+        "related": [
+          "ai-agent-document-fidelity-risk",
+          "deterministic-analytics-llm-reasoning-boundary"
         ]
       }
     },
