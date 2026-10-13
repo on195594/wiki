@@ -859,7 +859,7 @@
       "volatility": "high",
       "review_by": "2026-11-11",
       "verified_at": null,
-      "updated": "2026-09-09",
+      "updated": "2026-10-10",
       "relations": {}
     },
     {
@@ -883,7 +883,7 @@
       "volatility": "high",
       "review_by": "2026-11-11",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-10",
       "relations": {}
     },
     {
@@ -2638,7 +2638,7 @@
       "path": "entities/flutter.md",
       "type": "entity",
       "title": "Flutter Open-Source UI Framework",
-      "description": "Flutter 的定位、分层架构、UI 模型、跨平台互操作、工程实践、适用边界与最小采用路径。",
+      "description": "Flutter 的架构与采用边界、问题导向选型入口、真实纵切验收，以及设计系统、SwiftPM、Wasm、原生绑定和可选 AI 生态的版本边界。",
       "status": "current",
       "tags": [
         "product",
@@ -2654,11 +2654,13 @@
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-09-21",
-      "updated": "2026-09-21",
+      "updated": "2026-10-13",
       "relations": {
         "related": [
           "software-engineering-laws-architecture",
-          "software-engineering-laws-quality"
+          "software-engineering-laws-quality",
+          "software-engineering-laws-decisions",
+          "typed-ai-agent-boundaries"
         ]
       }
     },
