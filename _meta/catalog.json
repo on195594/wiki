@@ -1700,7 +1700,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-17",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
@@ -1732,7 +1732,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-17",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -2709,7 +2709,7 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-30",
+      "updated": "2026-10-17",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"

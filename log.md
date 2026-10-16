@@ -9,6 +9,16 @@
 - Reused the existing validation concept and PR/spec carriers. No new concept page, generated-summary copy, raw capture, mandatory template, active Skill, runtime or external publication change is included.
 - Validation: all 54 existing tests and six maintenance gates passed, with zero structural health issues, undeclared tags or blocking public-content violations. Source reverse lookup resolves to the single intended concept. Catalog metadata is synchronized; raw sources and their hash manifest are unchanged. Scoped source comparison checks documentary fidelity and repository consistency, not workflow effectiveness or independent verification of cited studies.
 
+## [2026-10-17] governance | Align writing standards, lint checks, and shared index navigation
+- **Scope:** `concepts/hermes-wiki-page-writing-standards.md`, `concepts/hermes-wiki-lint-and-health-check-standards.md`, `operations/agent-shared-wiki-index.md`, `_meta/inbox.md`, `_meta/catalog.json`, `index.md`, `log.md`
+- **Summary:**
+  - 在写作规范中补齐 `related` 关系键定义及 `## Relations` 值格式约束，与 `SCHEMA.md` 完全对齐。
+  - 更新健康检查规范，纳入 `wiki_maintain.py`、`raw_source_drift`、`catalog.json` 同步与公开内容边界检查。
+  - 明确 catalog 只包含受支持字段和声明关系，公开检查 PASS 不代表候选或附件已审查，`--fix` 会写入清册与 raw 哈希清单并移除缺失 raw 的清单项。
+  - 为 `agent-shared-wiki-index.md` 补充标准 `## Related` 导航区块，为 `_meta/inbox.md` 补齐 `type: meta` Frontmatter 与自动化门禁提示。
+  - 同步更新 `index.md` 的最后更新时间。
+- **Validation:** Independent read-only diff review identified three documentation/implementation mismatches; all three were corrected and parent-rechecked against the unchanged scripts and Schema. Isolated fixtures confirmed selected catalog fields versus ordinary outlinks, violations versus nonblocking candidates, and raw-manifest deletion versus drift rejection. All 54 existing tests and six repository maintenance gates passed, with zero structural issues, undeclared tags or blocking public-content violations; the 17 pre-existing public-content candidates are not certified as adjudicated. These checks do not certify complete knowledge graphs, source authenticity or absolute public safety.
+
 ## [2026-10-16] ingest | Input offloading versus history summarization
 - Added `raw/articles/langchain-context-engineering-deep-agents-remember.md` as a selected, paraphrased source note with original excerpts from Jess Weng's LangChain article. The original page confirms publication on 2026-10-14; retrieval was on 2026-10-16. Retained five mechanisms, six source strategies, source-specific thresholds and capture limitations; this is not a full-article mirror or independent reproduction.
 - Extended only [[agent-context-engineering]] with input spikes versus cumulative history growth, intervention points and original-evidence recovery. Updated its existing index entry without adding a concept page or duplicating budget, evaluation or content-placement rules.
@@ -55,9 +65,9 @@
 - Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the new concept; the raw manifest adds one source with existing hashes unchanged, and the catalog changes are limited to the new concept and its adjacent backlink page. Checks validate repository structure and source routing, not parsing effectiveness.
 
 ## [2026-10-08] migration | Chat to Agent Session Routing concept
-- Migrated durable architecture principles from the retired `chat-agent-session-routing` skill to formal concept page `[[chat-to-agent-session-routing]]`.
+- Migrated durable architecture principles from the retired `chat-agent-session-routing` skill to formal concept page [[chat-to-agent-session-routing]].
 - Covers platform-native conversation container mapping, lifecycle tracing, minimal state boundaries, reply ownership, and restart-safety semantics.
-- Updated `index.md`, added inbound wikilink from `[[hermes-memory-skills-wiki-boundaries]]`, and synchronized `_meta/catalog.json`.
+- Updated `index.md`, added inbound wikilink from [[hermes-memory-skills-wiki-boundaries]], and synchronized `_meta/catalog.json`.
 - Validation: Unit tests 54 passed; Wiki health P0/P1/P2=0/0/0; tag audit undeclared count=0; catalog.json synchronized.
 
 ## [2026-10-02] ingest | Task-context model routing in Open SWE

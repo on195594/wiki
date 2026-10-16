@@ -1,7 +1,7 @@
 ---
 title: Agent Shared Wiki Index
 created: 2026-08-04
-updated: 2026-09-30
+updated: 2026-10-17
 type: operation
 tags: [agent, knowledge-base, context-engineering, multi-agent]
 sources: [repository:SCHEMA.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-retrieval-priority-and-answer-path.md]
@@ -80,3 +80,14 @@ aliases: [shared-agent-context, cross-agent-wiki-index]
 - depends_on: [[hermes-context-layer-operating-rules]]
 - refines: [[hermes-retrieval-priority-and-answer-path]]
 - related: [[hermes-memory-skills-wiki-boundaries]]
+
+## Related
+
+- [[index]]
+- [[hermes-knowledge-architecture]]
+- [[hermes-retrieval-priority-and-answer-path]]
+- [[hermes-context-layer-operating-rules]]
+- [[hermes-memory-skills-wiki-boundaries]]
+- [[hermes-wiki-lint-and-health-check-standards]]
+- [[wiki-health-check-runbook]]
+- [[log]]
