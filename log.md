@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-17] extend | Evidence-based code review and blast-radius boundaries
+- Extended [[hermes-ai-workflow-formalization-principles]] and its [[index]] entry with bidirectional behavior traceability, shared implementation/test misunderstandings, assertion and acceptance-baseline checks, revision-bound evidence, and risk-proportionate direct inspection.
+- Cited Markus Eisele's O’Reilly Radar article, published 2026-10-16, directly; checked its readable original prose on 2026-10-17 without claiming image verification. The refund example and threshold are fictional, cited guides and research are not independently verified, and no measured workflow benefit or payment-safety guarantee is implied.
+- Reused the existing validation concept and PR/spec carriers. No new concept page, generated-summary copy, raw capture, mandatory template, active Skill, runtime or external publication change is included.
+- Validation: all 54 existing tests and six maintenance gates passed, with zero structural health issues, undeclared tags or blocking public-content violations. Source reverse lookup resolves to the single intended concept. Catalog metadata is synchronized; raw sources and their hash manifest are unchanged. Scoped source comparison checks documentary fidelity and repository consistency, not workflow effectiveness or independent verification of cited studies.
+
 ## [2026-10-16] ingest | Input offloading versus history summarization
 - Added `raw/articles/langchain-context-engineering-deep-agents-remember.md` as a selected, paraphrased source note with original excerpts from Jess Weng's LangChain article. The original page confirms publication on 2026-10-14; retrieval was on 2026-10-16. Retained five mechanisms, six source strategies, source-specific thresholds and capture limitations; this is not a full-article mirror or independent reproduction.
 - Extended only [[agent-context-engineering]] with input spikes versus cumulative history growth, intervention points and original-evidence recovery. Updated its existing index entry without adding a concept page or duplicating budget, evaluation or content-placement rules.
