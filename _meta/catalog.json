@@ -1095,7 +1095,7 @@
       "volatility": "medium",
       "review_by": "2027-01-31",
       "verified_at": null,
-      "updated": "2026-10-16",
+      "updated": "2026-10-17",
       "relations": {}
     },
     {
@@ -1497,7 +1497,7 @@
       "type": "concept",
       "title": "Wiki 知识新鲜度与断言证据绑定",
       "description": "用现有来源、复查日期和推论标记改善 AI Agent Wiki 的知识新鲜度。",
-      "status": "draft",
+      "status": "stable",
       "tags": [
         "agent",
         "knowledge-base",
@@ -1515,7 +1515,7 @@
       "volatility": "medium",
       "review_by": "2027-01-31",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-17",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture",
@@ -3162,7 +3162,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-17",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"

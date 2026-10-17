@@ -1,8 +1,7 @@
 ---
 title: Deterministic Analytics and LLM Reasoning Boundary
-author: Hermes Agent
 created: 2026-05-25
-updated: 2026-10-16
+updated: 2026-10-17
 type: concept
 tags: [agent, llm, architecture, structured-output, verification]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md]
@@ -184,3 +183,5 @@ AI Agent 迁移原则：
 - [[agent-self-validation-loops]]
 - [[production-agent-evaluation-baselines]]
 - [[motherduck-jev-for-analytics-2026-09-29]]
+- [[index]]
+- [[log]]

@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-09-29
+updated: 2026-10-17
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 ## Summary
 
-Use the repository-local scripts for deterministic structure, tag, public-boundary, provenance and raw-integrity checks. The scripts do not modify Agent runtime layers. Only `wiki_raw_hashes.py` writes, and only to the raw hash manifest.
+Use the repository-local scripts for deterministic structure, tag, catalog, public-boundary, provenance and raw-integrity checks. The scripts do not modify Agent runtime layers. Check-mode commands (`wiki_maintain.py --check`, `wiki_health_check.py`, `wiki_catalog.py --check`, `wiki_tag_audit.py`, `wiki_public_content_check.py` and `wiki_reverse_lookup.py`) are read-only; write modes (`wiki_maintain.py --fix`, `wiki_catalog.py`, `wiki_raw_hashes.py` and `wiki_maintain.py --install-hooks`) update only `_meta/catalog.json`, `_meta/raw-source-hashes.json` or the local Git pre-commit hook.
 
 ## Root resolution
 
@@ -110,9 +110,10 @@ Extra arguments are passed through to `lychee`.
 
 1. unit tests;
 2. Wiki health check;
-3. tag audit;
-4. public-content check;
-5. `git diff --check` over the pull-request merge base or pushed commit range.
+3. catalog synchronization check (`wiki_catalog.py --check`);
+4. tag audit;
+5. public-content check;
+6. `git diff --check` over the pull-request merge base or pushed commit range.
 
 The deterministic job does not use secrets, `pull_request_target`, write permissions, metadata/raw-hash writers, network link checks or AI review. The whitespace step runs only for push and pull_request events because it needs a commit range. External-link liveness is network-dependent, so it runs in a separate `external-links` job on the weekly schedule or manual dispatch only, and as the operator command above.
 

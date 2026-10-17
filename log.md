@@ -4,6 +4,12 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] maintenance | Align three core pages and health-check runbook
+- 将 [[hermes-knowledge-freshness-and-claim-evidence]] 标为 stable，调整 Relations / Related 顺序、现行规则落点及 index / log 导航；清理 [[deterministic-analytics-llm-reasoning-boundary]] 的 author 字段并补齐导航，两页 updated 均为 2026-10-17。
+- 更新 [[okf-for-hermes-wiki-governance-assessment]] 的日期、Relations 示例、本地 `_meta/catalog.json` 与可选 attestation 边界，将五个治理核心页试点标为已完成，并同步 [[index]] 的现有条目。
+- 纳入此前已由 MCP 完成的 [[wiki-health-check-runbook]] 修复：更新日期，纠正读写命令边界，并在 CI 门禁清单中补上 catalog 同步检查。
+- 验证：`wiki_maintain.py --fix` 已同步 catalog 与 raw 哈希清单，raw 内容与哈希无变化；`--check` 全部六道确定性门禁通过，54 个单元测试通过，结构问题、未注册标签与阻断性公开内容违规均为零。该验证不等于外部来源或页面事实的全面核验。
+
 ## [2026-10-17] review-fix | Correct issues found in a review of this session's wiki changes
 - Restored the 2026-09-20 public-boundary baseline record to `log.md`: trimming the log had removed the entry that documents the original boundary remediation and raw-source removals, which SCHEMA expects to stay in the public log.
 - Corrected the runbook sentence that still said the workflow has no network link checks (now: deterministic job unchanged, whitespace step limited to push and pull_request events, weekly `external-links` job).
