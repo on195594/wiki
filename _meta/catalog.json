@@ -2351,7 +2351,7 @@
       "path": "concepts/llm-context-engineering-layer.md",
       "type": "concept",
       "title": "LLM Context Engineering Layer",
-      "description": "定义 LLM 检索和 prompt 之间的上下文工程层，包括记忆、压缩、排序和预算控制。",
+      "description": "定义检索与 prompt 之间的上下文工程层，以及 Agentic RAG 的证据信任、语义漂移和未知候选处理边界。",
       "status": "stable",
       "tags": [
         "llm",
@@ -2365,12 +2365,13 @@
       "volatility": "medium",
       "review_by": "2027-02-14",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-17",
       "relations": {
         "related": [
           "hermes-knowledge-architecture",
           "hermes-retrieval-priority-and-answer-path",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "agent-closed-loop-learning-from-corrections-to-rules"
         ]
       }
     },
