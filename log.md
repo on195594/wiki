@@ -3,6 +3,12 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-17] governance | Neutralize first-person and personal-named investment pages
+- Public-boundary review found 12 investment query pages and two concepts named with first-person or `personal-` slugs (`how-i-should-*`, `my-*`, `when-i-should-not-trade`, `personal-investment-operating-rules`, `personal-finance-and-education-fund-model`) although their content was already generic and parameterized.
+- Renamed them to neutral topical slugs (for example `position-sizing-method`, `pre-trade-risk-checklist`, `investment-risk-control-framework`, `household-fund-layering-model`), kept each old slug as an alias, and rewrote every link, `sources` entry, index entry and the catalog.
+- Added a note to the query pages that first-person phrasing is a reusable self-check script. Retitled the Leontraveller page as an attributed summary of the author's public notes (raw captures carry author and source URL); its slug and raw files are unchanged, so raw hashes are unaffected.
+- Not changed: the `personal-financial-record` heuristic stays a review candidate, not a blocker, because it also matches governance text that is not financial.
+
 ## [2026-10-17] extend | Evidence-based code review and blast-radius boundaries
 - Extended [[hermes-ai-workflow-formalization-principles]] and its [[index]] entry with bidirectional behavior traceability, shared implementation/test misunderstandings, assertion and acceptance-baseline checks, revision-bound evidence, and risk-proportionate direct inspection.
 - Cited Markus Eisele's O’Reilly Radar article, published 2026-10-16, directly; checked its readable original prose on 2026-10-17 without claiming image verification. The refund example and threshold are fictional, cited guides and research are not independently verified, and no measured workflow benefit or payment-safety guarantee is implied.

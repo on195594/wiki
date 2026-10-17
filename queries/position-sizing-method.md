@@ -4,9 +4,10 @@ created: 2026-04-17
 updated: 2026-09-20
 type: query
 tags: [investment, trading, position-sizing, risk-control]
-sources: [queries/my-investment-pre-trade-checklist.md, queries/when-i-should-not-trade.md, queries/how-i-should-scale-into-and-out-of-a-position.md, concepts/personal-investment-operating-rules.md, concepts/leontraveller-trading-and-investment-system.md]
+sources: [queries/pre-trade-risk-checklist.md, queries/when-not-to-trade.md, queries/position-scaling-method.md, concepts/investment-risk-control-framework.md, concepts/leontraveller-trading-and-investment-system.md]
 status: stable
 description: 回答如何根据风险预算和 setup 质量决定单笔仓位大小。
+aliases: [how-i-should-size-a-position]
 ---
 
 # Position Sizing by Risk Budget
@@ -14,6 +15,7 @@ description: 回答如何根据风险预算和 setup 质量决定单笔仓位大
 ## Summary
 这页回答的不是“这票有多好”，而是“就算它很好，我最多能下多大”。目标是把仓位从主观兴奋里拿出来，重新放回风险预算里。因为大多数重伤，不是来自看错一次，而是来自在看错时下得太大。
 Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+First-person wording in checklists and questions is a reusable self-check script, not a record of any author's experience.
 
 
 ## Question
@@ -179,16 +181,16 @@ Public boundary: this is educational risk-control material, not investment advic
 - 即使连续错，我也还能继续活在系统里
 
 ## Relations
-- depends_on: [[my-investment-pre-trade-checklist]]
-- depends_on: [[when-i-should-not-trade]]
-- depends_on: [[how-i-should-scale-into-and-out-of-a-position]]
-- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[pre-trade-risk-checklist]]
+- depends_on: [[when-not-to-trade]]
+- depends_on: [[position-scaling-method]]
+- depends_on: [[investment-risk-control-framework]]
 - depends_on: [[leontraveller-trading-and-investment-system]]
 
 ## Related
-- [[my-investment-pre-trade-checklist]]
-- [[when-i-should-not-trade]]
-- [[how-i-should-scale-into-and-out-of-a-position]]
-- [[personal-investment-operating-rules]]
+- [[pre-trade-risk-checklist]]
+- [[when-not-to-trade]]
+- [[position-scaling-method]]
+- [[investment-risk-control-framework]]
 - [[index]]
 - [[log]]

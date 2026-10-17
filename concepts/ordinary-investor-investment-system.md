@@ -169,7 +169,7 @@ aliases: [ordinary-investor-system]
 
 ## Relations
 
-- related: [[personal-investment-operating-rules]], [[leontraveller-trading-and-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]]
+- related: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]]
 
 ## Related
 - [[wiki-ingestion-workflow]]

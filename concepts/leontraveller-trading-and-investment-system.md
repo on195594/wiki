@@ -1,5 +1,5 @@
 ---
-title: Leontraveller Trading and Investment System
+title: Trend-Following Trading System (Summary of Leontraveller Public Notes)
 created: 2026-04-17
 updated: 2026-09-20
 type: concept
@@ -10,10 +10,12 @@ description: 整理 Leontraveller 主动交易和投资系统中的仓位、纪�
 aliases: [leontraveller-investment-system]
 ---
 
-# Leontraveller Trading and Investment System
+# Trend-Following Trading System (Summary of Leontraveller Public Notes)
 
 ## Summary
 这两篇笔记可以压缩成一套很鲜明的交易框架：放弃抄底、预测和复杂花活，转向顺势、止损、控回撤、尊重价格行为，并把主动交易限制在自己真正能执行的系统内。
+
+来源：leontraveller.com 公开投资笔记（见 sources 中的 raw 摘录，含原文 URL 与署名）。
 
 证据边界：本页是对公开来源观点的教育性整理，不构成投资建议，也不包含 Wiki 作者的真实账户、持仓或交易记录。
 
@@ -168,7 +170,7 @@ aliases: [leontraveller-investment-system]
 
 ## Relations
 
-- related: [[ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[personal-investment-operating-rules]]
+- related: [[ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[investment-risk-control-framework]]
 
 ## Related
 - [[ordinary-investor-investment-system]]

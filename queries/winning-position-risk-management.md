@@ -4,9 +4,10 @@ created: 2026-04-17
 updated: 2026-09-20
 type: query
 tags: [investment, trading, position-sizing, workflow]
-sources: [queries/how-i-should-size-a-position.md, queries/how-i-should-scale-into-and-out-of-a-position.md, queries/when-i-should-not-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/personal-investment-operating-rules.md]
+sources: [queries/position-sizing-method.md, queries/position-scaling-method.md, queries/when-not-to-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/investment-risk-control-framework.md]
 status: stable
 description: 回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。
+aliases: [how-i-should-handle-a-winning-position]
 ---
 
 # Managing a Winning Position
@@ -14,6 +15,7 @@ description: 回答盈利仓位应如何在保护利润和避免过早卖飞之�
 ## Summary
 这页不讨论怎么找到赢家，而是讨论找到之后最容易做错的部分：赚一点就想跑、稍微回撤就慌、明明该让利润奔跑却被浮盈情绪驱动乱减仓。目标是把盈利仓位从“让我舒服一点”的对象，重新变回一个需要按规则管理的头寸。
 Public boundary: this is educational risk-control material, not investment advice or a record of any real account, holding or trade.
+First-person wording in checklists and questions is a reusable self-check script, not a record of any author's experience.
 
 
 ## Question
@@ -180,16 +182,16 @@ Public boundary: this is educational risk-control material, not investment advic
 - 结构失效时退得出
 
 ## Relations
-- depends_on: [[how-i-should-size-a-position]]
-- depends_on: [[how-i-should-scale-into-and-out-of-a-position]]
-- depends_on: [[when-i-should-not-trade]]
+- depends_on: [[position-sizing-method]]
+- depends_on: [[position-scaling-method]]
+- depends_on: [[when-not-to-trade]]
 - depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[personal-investment-operating-rules]]
+- depends_on: [[investment-risk-control-framework]]
 
 ## Related
-- [[how-i-should-size-a-position]]
-- [[how-i-should-scale-into-and-out-of-a-position]]
-- [[when-i-should-not-trade]]
-- [[personal-investment-operating-rules]]
+- [[position-sizing-method]]
+- [[position-scaling-method]]
+- [[when-not-to-trade]]
+- [[investment-risk-control-framework]]
 - [[index]]
 - [[log]]

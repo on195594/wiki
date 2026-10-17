@@ -121,6 +121,6 @@ Leontraveller 更适合：
 ## Related
 - [[ordinary-investor-investment-system]]
 - [[leontraveller-trading-and-investment-system]]
-- [[personal-investment-operating-rules]]
+- [[investment-risk-control-framework]]
 - [[index]]
 - [[log]]

@@ -102,7 +102,7 @@ description: 区分钱作为自由工具、投资资产和消费支出的判断�
 
 ## Relations
 
-- related: [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]], [[personal-finance-and-education-fund-model]]
+- related: [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]]
 
 ## Related
 - [[ordinary-investor-investment-system]]

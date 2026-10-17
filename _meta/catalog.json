@@ -1744,6 +1744,32 @@
       }
     },
     {
+      "path": "concepts/household-fund-layering-model.md",
+      "type": "concept",
+      "title": "Personal Finance and Education Fund Model",
+      "description": "提供家庭财务与教育目标资金的参数化分层、约束和风险边界模板。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "lifeos",
+        "operating-model"
+      ],
+      "aliases": [
+        "personal-finance-and-education-fund-model"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "investment-risk-control-framework",
+          "money-as-tool-and-investment-vs-consumption-framework",
+          "family-education-operating-model"
+        ]
+      }
+    },
+    {
       "path": "concepts/human-machine-scientific-discovery-verification-scarcity.md",
       "type": "concept",
       "title": "Human-Machine Scientific Discovery and Verification Scarcity",
@@ -1780,9 +1806,35 @@
       }
     },
     {
+      "path": "concepts/investment-risk-control-framework.md",
+      "type": "concept",
+      "title": "Investment Risk Control Framework",
+      "description": "汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "governance",
+        "risk-control"
+      ],
+      "aliases": [
+        "investment-operating-rules",
+        "personal-investment-operating-rules"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system"
+        ]
+      }
+    },
+    {
       "path": "concepts/leontraveller-trading-and-investment-system.md",
       "type": "concept",
-      "title": "Leontraveller Trading and Investment System",
+      "title": "Trend-Following Trading System (Summary of Leontraveller Public Notes)",
       "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则。",
       "status": "stable",
       "tags": [
@@ -1803,7 +1855,7 @@
           "ordinary-investor-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework",
           "leontraveller-vs-ordinary-investor-investment-system",
-          "personal-investment-operating-rules"
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1980,7 +2032,7 @@
         "related": [
           "ordinary-investor-investment-system",
           "leontraveller-trading-and-investment-system",
-          "personal-finance-and-education-fund-model"
+          "household-fund-layering-model"
         ]
       }
     },
@@ -2036,33 +2088,9 @@
       "updated": "2026-04-16",
       "relations": {
         "related": [
-          "personal-investment-operating-rules",
+          "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework"
-        ]
-      }
-    },
-    {
-      "path": "concepts/personal-finance-and-education-fund-model.md",
-      "type": "concept",
-      "title": "Personal Finance and Education Fund Model",
-      "description": "提供家庭财务与教育目标资金的参数化分层、约束和风险边界模板。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "lifeos",
-        "operating-model"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "personal-investment-operating-rules",
-          "money-as-tool-and-investment-vs-consumption-framework",
-          "family-education-operating-model"
         ]
       }
     },
@@ -2087,31 +2115,6 @@
         "depends_on": [
           "lifeos-overview",
           "work-and-career-operating-model"
-        ]
-      }
-    },
-    {
-      "path": "concepts/personal-investment-operating-rules.md",
-      "type": "concept",
-      "title": "Investment Risk Control Framework",
-      "description": "汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "governance",
-        "risk-control"
-      ],
-      "aliases": [
-        "investment-operating-rules"
-      ],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "leontraveller-trading-and-investment-system",
-          "ordinary-investor-investment-system"
         ]
       }
     },
@@ -2756,6 +2759,34 @@
       }
     },
     {
+      "path": "queries/combining-two-investment-frameworks.md",
+      "type": "query",
+      "title": "Combining Two Investment Frameworks",
+      "description": "回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "decision",
+        "comparison",
+        "lifeos"
+      ],
+      "aliases": [
+        "how-i-should-use-these-two-investment-frameworks"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "ordinary-investor-investment-system",
+          "leontraveller-trading-and-investment-system",
+          "investment-risk-control-framework",
+          "leontraveller-vs-ordinary-investor-investment-system"
+        ]
+      }
+    },
+    {
       "path": "queries/hermes-agent-experience-consolidation-capability-assessment.md",
       "type": "query",
       "title": "Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot",
@@ -2878,249 +2909,6 @@
       }
     },
     {
-      "path": "queries/how-i-should-build-a-post-trade-review-loop.md",
-      "type": "query",
-      "title": "Building a Post-Trade Review Loop",
-      "description": "回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "validation",
-        "workflow"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "how-i-should-review-a-losing-position",
-          "how-i-should-handle-a-winning-position",
-          "how-i-should-decide-between-doing-nothing-and-taking-action",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-convert-trading-lessons-into-hard-rules.md",
-      "type": "query",
-      "title": "Converting Trading Lessons into Hard Rules",
-      "description": "回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "governance",
-        "workflow"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "how-i-should-detect-repeat-mistakes-in-my-trading",
-          "how-i-should-build-a-post-trade-review-loop",
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-decide-between-doing-nothing-and-taking-action.md",
-      "type": "query",
-      "title": "Deciding Between Inaction and Action",
-      "description": "回答投资交易中如何判断等待是否优于立即行动。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "decision",
-        "risk-control",
-        "workflow"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "how-i-should-handle-a-winning-position",
-          "how-i-should-size-a-position",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-detect-repeat-mistakes-in-my-trading.md",
-      "type": "query",
-      "title": "Detecting Repeat Trading Mistakes",
-      "description": "回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "validation",
-        "debugging"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "how-i-should-build-a-post-trade-review-loop",
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "how-i-should-review-a-losing-position",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-handle-a-winning-position.md",
-      "type": "query",
-      "title": "Managing a Winning Position",
-      "description": "回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "position-sizing",
-        "workflow"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "how-i-should-size-a-position",
-          "how-i-should-scale-into-and-out-of-a-position",
-          "when-i-should-not-trade",
-          "leontraveller-trading-and-investment-system",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-keep-my-trading-system-small-and-executable.md",
-      "type": "query",
-      "title": "Keeping a Trading System Small and Executable",
-      "description": "回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "architecture",
-        "governance"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "how-i-should-convert-trading-lessons-into-hard-rules",
-          "how-i-should-detect-repeat-mistakes-in-my-trading",
-          "how-i-should-build-a-post-trade-review-loop",
-          "my-investment-pre-trade-checklist",
-          "personal-investment-operating-rules"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-review-a-losing-position.md",
-      "type": "query",
-      "title": "Reviewing a Losing Position",
-      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "validation",
-        "risk-control"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "how-i-should-use-these-two-investment-frameworks",
-          "personal-investment-operating-rules",
-          "leontraveller-trading-and-investment-system"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-scale-into-and-out-of-a-position.md",
-      "type": "query",
-      "title": "Scaling Into and Out of a Position",
-      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "position-sizing",
-        "workflow"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "how-i-should-review-a-losing-position",
-          "personal-investment-operating-rules",
-          "leontraveller-trading-and-investment-system"
-        ]
-      }
-    },
-    {
-      "path": "queries/how-i-should-size-a-position.md",
-      "type": "query",
-      "title": "Position Sizing by Risk Budget",
-      "description": "回答如何根据风险预算和 setup 质量决定单笔仓位大小。",
-      "status": "stable",
-      "tags": [
-        "investment",
-        "trading",
-        "position-sizing",
-        "risk-control"
-      ],
-      "aliases": [],
-      "volatility": null,
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-09-20",
-      "relations": {
-        "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "when-i-should-not-trade",
-          "how-i-should-scale-into-and-out-of-a-position",
-          "personal-investment-operating-rules",
-          "leontraveller-trading-and-investment-system"
-        ]
-      }
-    },
-    {
       "path": "queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md",
       "type": "query",
       "title": "Using AI Agent for AI Coding with Typed Boundaries",
@@ -3150,45 +2938,48 @@
       }
     },
     {
-      "path": "queries/how-i-should-use-these-two-investment-frameworks.md",
+      "path": "queries/inaction-vs-action-decision-framework.md",
       "type": "query",
-      "title": "Combining Two Investment Frameworks",
-      "description": "回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。",
+      "title": "Deciding Between Inaction and Action",
+      "description": "回答投资交易中如何判断等待是否优于立即行动。",
       "status": "stable",
       "tags": [
         "investment",
         "decision",
-        "comparison",
-        "lifeos"
+        "risk-control",
+        "workflow"
       ],
-      "aliases": [],
+      "aliases": [
+        "how-i-should-decide-between-doing-nothing-and-taking-action"
+      ],
       "volatility": null,
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
       "relations": {
         "depends_on": [
-          "ordinary-investor-investment-system",
-          "leontraveller-trading-and-investment-system",
-          "personal-investment-operating-rules",
-          "leontraveller-vs-ordinary-investor-investment-system"
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "winning-position-risk-management",
+          "position-sizing-method",
+          "investment-risk-control-framework"
         ]
       }
     },
     {
-      "path": "queries/my-investment-pre-trade-checklist.md",
+      "path": "queries/losing-position-review-method.md",
       "type": "query",
-      "title": "Investment Pre-Trade Risk Checklist",
-      "description": "提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。",
+      "title": "Reviewing a Losing Position",
+      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。",
       "status": "stable",
       "tags": [
         "investment",
-        "risk-control",
         "trading",
-        "decision"
+        "validation",
+        "risk-control"
       ],
       "aliases": [
-        "pre-trade-checklist"
+        "how-i-should-review-a-losing-position"
       ],
       "volatility": null,
       "review_by": null,
@@ -3196,10 +2987,40 @@
       "updated": "2026-09-20",
       "relations": {
         "depends_on": [
-          "personal-investment-operating-rules",
-          "leontraveller-trading-and-investment-system",
-          "ordinary-investor-investment-system",
-          "how-i-should-use-these-two-investment-frameworks"
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "combining-two-investment-frameworks",
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/minimal-executable-trading-system.md",
+      "type": "query",
+      "title": "Keeping a Trading System Small and Executable",
+      "description": "回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "architecture",
+        "governance"
+      ],
+      "aliases": [
+        "how-i-should-keep-my-trading-system-small-and-executable"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "trading-lessons-to-hard-rules",
+          "repeat-mistake-detection-in-trading",
+          "post-trade-review-loop",
+          "pre-trade-risk-checklist",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -3238,6 +3059,151 @@
       }
     },
     {
+      "path": "queries/position-scaling-method.md",
+      "type": "query",
+      "title": "Scaling Into and Out of a Position",
+      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "workflow"
+      ],
+      "aliases": [
+        "how-i-should-scale-into-and-out-of-a-position"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "losing-position-review-method",
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/position-sizing-method.md",
+      "type": "query",
+      "title": "Position Sizing by Risk Budget",
+      "description": "回答如何根据风险预算和 setup 质量决定单笔仓位大小。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "risk-control"
+      ],
+      "aliases": [
+        "how-i-should-size-a-position"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "position-scaling-method",
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/post-trade-review-loop.md",
+      "type": "query",
+      "title": "Building a Post-Trade Review Loop",
+      "description": "回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "validation",
+        "workflow"
+      ],
+      "aliases": [
+        "how-i-should-build-a-post-trade-review-loop"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "pre-trade-risk-checklist",
+          "losing-position-review-method",
+          "winning-position-risk-management",
+          "inaction-vs-action-decision-framework",
+          "investment-risk-control-framework"
+        ]
+      }
+    },
+    {
+      "path": "queries/pre-trade-risk-checklist.md",
+      "type": "query",
+      "title": "Investment Pre-Trade Risk Checklist",
+      "description": "提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "risk-control",
+        "trading",
+        "decision"
+      ],
+      "aliases": [
+        "pre-trade-checklist",
+        "my-investment-pre-trade-checklist"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system",
+          "combining-two-investment-frameworks"
+        ]
+      }
+    },
+    {
+      "path": "queries/repeat-mistake-detection-in-trading.md",
+      "type": "query",
+      "title": "Detecting Repeat Trading Mistakes",
+      "description": "回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "validation",
+        "debugging"
+      ],
+      "aliases": [
+        "how-i-should-detect-repeat-mistakes-in-my-trading"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "post-trade-review-loop",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "losing-position-review-method",
+          "investment-risk-control-framework"
+        ]
+      }
+    },
+    {
       "path": "queries/software-engineering-laws-decision-map.md",
       "type": "query",
       "title": "Software Engineering Laws Decision Map",
@@ -3272,7 +3238,36 @@
       }
     },
     {
-      "path": "queries/when-i-should-not-trade.md",
+      "path": "queries/trading-lessons-to-hard-rules.md",
+      "type": "query",
+      "title": "Converting Trading Lessons into Hard Rules",
+      "description": "回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "governance",
+        "workflow"
+      ],
+      "aliases": [
+        "how-i-should-convert-trading-lessons-into-hard-rules"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "repeat-mistake-detection-in-trading",
+          "post-trade-review-loop",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "investment-risk-control-framework"
+        ]
+      }
+    },
+    {
+      "path": "queries/when-not-to-trade.md",
       "type": "query",
       "title": "When Not to Trade",
       "description": "回答哪些情境下默认不交易、不加仓或先暂停决策。",
@@ -3283,17 +3278,48 @@
         "risk-control",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "when-i-should-not-trade"
+      ],
       "volatility": null,
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
       "relations": {
         "depends_on": [
-          "my-investment-pre-trade-checklist",
-          "how-i-should-use-these-two-investment-frameworks",
-          "personal-investment-operating-rules",
+          "pre-trade-risk-checklist",
+          "combining-two-investment-frameworks",
+          "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/winning-position-risk-management.md",
+      "type": "query",
+      "title": "Managing a Winning Position",
+      "description": "回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "position-sizing",
+        "workflow"
+      ],
+      "aliases": [
+        "how-i-should-handle-a-winning-position"
+      ],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-09-20",
+      "relations": {
+        "depends_on": [
+          "position-sizing-method",
+          "position-scaling-method",
+          "when-not-to-trade",
+          "leontraveller-trading-and-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     }
