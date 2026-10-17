@@ -47,11 +47,7 @@ ALLOWED_FORMAL_TYPES = {
     "concept",
     "comparison",
     "query",
-    "plan",
-    "closeout",
-    "validation-case",
     "operation",
-    "summary",
 }
 ALLOWED_FORMAL_STATUSES = {"draft", "stable", "active", "closed", "current"}
 ALLOWED_RELATION_KEYS = {"depends_on", "refines", "conflicts_with", "supersedes", "related"}

@@ -330,6 +330,11 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("invalid-status", status="current-as-of-2026-01-01")
         self.assertIn("invalid_formal_status", self.issue_codes("P1"))
 
+    def test_reports_retired_formal_type(self) -> None:
+        path = self.add_formal("retired-type")
+        path.write_text(path.read_text(encoding="utf-8").replace("type: concept", "type: plan"), encoding="utf-8")
+        self.assertIn("invalid_formal_type", self.issue_codes("P1"))
+
     def test_allows_closed_query_outside_main_index(self) -> None:
         path = self.add_formal("closed-record", status="closed")
         query = self.root / "queries" / path.name

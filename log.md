@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] governance | Prune unused SCHEMA entries and align the type enum with the checker
+- Removed the formal-page `type` values `plan`, `closeout`, `validation-case` and `summary` from SCHEMA and from `ALLOWED_FORMAL_TYPES` in `wiki_health_check.py`; no formal page used them. A new unit test pins that a retired type is P1 `invalid_formal_type`; it fails against the previous checker and passes now.
+- Removed the retired "Reconciliation tags" paragraph (history stays in Git), merged Core navigation into Operating Rule, shortened the raw-hash convention (commands live in [[wiki-health-check-runbook]]), compressed the local `[!volatile]` check rules from five bullets to three, and moved the `sources` P2 note into the Sources section. No rule was loosened.
+- Verification: `wiki_maintain.py --check` passed all six gates (55 unit tests).
+
 ## [2026-10-17] maintenance | Slim the lint and page-writing standards to method pages
 - [[hermes-wiki-lint-and-health-check-standards]] (255 → 84 lines): removed the 14-item check list, the severity list (which had drifted from the script, e.g. log rotation and yearly archiving that no longer exist) and the freshness rules copied from SCHEMA. The page now keeps the questions a health check must answer, a table of automated, network and human checks, severity principles, workflow and pass criteria; check codes and their severities are owned by the scripts and [[wiki-health-check-runbook]].
 - [[hermes-wiki-page-writing-standards]] (214 → 171 lines): the frontmatter block (which still listed the legacy type enum) and the freshness field rules now point to SCHEMA; only writing guidance stays.
