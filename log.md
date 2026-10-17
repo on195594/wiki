@@ -4,6 +4,9 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01 were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] governance | Fix weekly CI failing on the commit-range whitespace step
+- The scheduled workflow runs on 2026-10-05 and 2026-10-12 failed because the whitespace check had no commit range outside push and pull_request events and fell back to diffing the whole tree, which includes raw captures with trailing whitespace. The step now runs only for push and pull_request events; all other steps still run on every trigger.
+
 ## [2026-10-17] governance | Remove personal email addresses from raw captures; add weekly external-link CI job
 - Public-boundary exception: replaced the author contact email addresses in three raw article captures (InfoWorld, Phil Schmid, Towards Data Science) with `[email removed]`. Only these three manifest entries in `_meta/raw-source-hashes.json` changed; no article claim or citation depends on the addresses.
 - Added an `external-links` job to the wiki checks workflow, run only on the weekly schedule or manually, using the pinned `lycheeverse/lychee-action` (lychee v0.24.2) with the existing `_meta/lychee.toml` scope. The deterministic job is unchanged. A local run of the same scope found 0 dead links.

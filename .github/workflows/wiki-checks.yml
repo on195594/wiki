@@ -36,6 +36,9 @@ jobs:
       - name: Public-content check
         run: python3 _meta/scripts/wiki_public_content_check.py --root "$GITHUB_WORKSPACE"
       - name: Commit-range whitespace check
+        # Needs a commit range; on schedule/manual runs there is none and the
+        # fallback would diff the whole tree, including raw captures.
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         env:
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PUSH_BEFORE: ${{ github.event.before }}
