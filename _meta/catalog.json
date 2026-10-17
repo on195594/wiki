@@ -767,8 +767,8 @@
         "cognitive-offloading-with-ai",
         "accomplishment-hallucination"
       ],
-      "volatility": "low",
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1417,8 +1417,8 @@
         "context-layer-rules",
         "agent-context-layer-operating-rules"
       ],
-      "volatility": "low",
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1572,8 +1572,8 @@
         "lifeos-executable-architecture",
         "agent-lifeos-executable-architecture"
       ],
-      "volatility": "low",
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1602,8 +1602,8 @@
         "lifeos-layer-boundary",
         "agent-lifeos-layer-boundary-contract"
       ],
-      "volatility": "low",
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2658,8 +2658,8 @@
         "operating-model"
       ],
       "aliases": [],
-      "volatility": "low",
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {

@@ -8,7 +8,8 @@ sources: [concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-con
 status: stable
 description: 规定 AI Agent LifeOS 各层之间的职责、准入和越界判断契约。
 aliases: [lifeos-layer-boundary, agent-lifeos-layer-boundary-contract]
-volatility: low
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # AI Agent LifeOS Layer Boundary Contract

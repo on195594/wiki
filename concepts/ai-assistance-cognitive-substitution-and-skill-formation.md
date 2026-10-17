@@ -8,7 +8,8 @@ sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation
 status: stable
 description: 用补偿、支架、替代和撤除辅助后的能力，判断 AI 是扩展人的思考还是跳过能力形成过程。
 aliases: [ai-scaffolding-vs-substitution, cognitive-offloading-with-ai, accomplishment-hallucination]
-volatility: low
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Assistance, Cognitive Substitution, and Skill Formation

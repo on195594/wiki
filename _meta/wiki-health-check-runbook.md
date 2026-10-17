@@ -114,7 +114,7 @@ Extra arguments are passed through to `lychee`.
 4. public-content check;
 5. `git diff --check` over the pull-request merge base or pushed commit range.
 
-The workflow does not use secrets, `pull_request_target`, write permissions, metadata/raw-hash writers, network link checks or AI review. External-link liveness remains the separate operator command above because it is network-dependent.
+The deterministic job does not use secrets, `pull_request_target`, write permissions, metadata/raw-hash writers, network link checks or AI review. The whitespace step runs only for push and pull_request events because it needs a commit range. External-link liveness is network-dependent, so it runs in a separate `external-links` job on the weekly schedule or manual dispatch only, and as the operator command above.
 
 ## Exit codes
 

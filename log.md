@@ -2,7 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
-> Entries older than 2026-10-01 were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
+> Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
+
+## [2026-10-17] review-fix | Correct issues found in a review of this session's wiki changes
+- Restored the 2026-09-20 public-boundary baseline record to `log.md`: trimming the log had removed the entry that documents the original boundary remediation and raw-source removals, which SCHEMA expects to stay in the public log.
+- Corrected the runbook sentence that still said the workflow has no network link checks (now: deterministic job unchanged, whitespace step limited to push and pull_request events, weekly `external-links` job).
+- Re-classified five pages from `low` to `medium` with a `review_by` date because they describe runtime architecture or recent research rather than stable method; refreshed the two parent index descriptions after the page splits.
 
 ## [2026-10-17] governance | Fix weekly CI failing on the commit-range whitespace step
 - The scheduled workflow runs on 2026-10-05 and 2026-10-12 failed because the whitespace check had no commit range outside push and pull_request events and fell back to diffing the whole tree, which includes raw captures with trailing whitespace. The step now runs only for push and pull_request events; all other steps still run on every trigger.
@@ -119,3 +124,12 @@
 - Extended [[hermes-ai-workflow-formalization-principles]] and its [[index]] description rather than creating a duplicate concept. Preserved shared system understanding, decision reasons, deterministic checks and human responsibility; linked existing validation, assumption-challenge and correction-learning concepts without duplicating their rules.
 - Kept the five-layer workflow as the author's proposal, not mandatory stages. Secondary study/report metrics are unverified here; comment share is not defect-detection value, model agreement is not independent evidence, and high-risk code inspection or necessary specifications are not removed. No active Skill, default review gate, configuration, runtime or external publication change is implied.
 - Validation: all 54 existing tests and six maintenance gates passed; health issues, undeclared tags and blocking public-content violations were zero. Source reverse lookup resolves to the existing formalization page, the raw manifest adds one entry without changing existing hashes, and the catalog diff is limited to that page. The 17 existing public-content candidates remain outside this ingestion's scope. These checks validate documentation structure and source routing, not the proposed workflow's effectiveness or the cited studies.
+
+## [2026-09-20] governance | Public knowledge boundary remediation
+- Applied the public boundary to formal pages, raw sources, `_meta`, operations, scripts and repository logs before content is admitted.
+- Removed personal instance-state dashboards, private session/task artifacts and local-only provenance pointers; generalized mixed pages without promoting private observations to public facts.
+- Made maintenance-script root resolution portable and added deterministic public-content violations plus non-blocking review candidates with synthetic regression tests.
+- Updated indexes, relations, source rules and the raw-source hash manifest for the resulting public set.
+- Classified all 447 baseline tracked files: 170 retained unchanged, 120 generalized and 157 removed; reviewed four new maintenance/test files. All files were readable UTF-8 text, so no attachment remained unreviewed.
+- Validation: 35 unit tests passed; Wiki health P0/P1/P2=`0/0/0`; tag audit found no undeclared tags; public-content violations=`0`; all 65 changed raw sources passed reverse lookup with 88 formal references; `git diff --check` passed.
+- Boundary: this is a local isolated-branch change. It does not publish the branch, change repository visibility, clean Git history, or authorize any Hermes runtime/configuration action.
