@@ -1,5 +1,5 @@
 ---
-title: Agent Context: System Prompt, Tools and Examples
+title: "Agent Context: System Prompt, Tools and Examples"
 created: 2026-10-17
 updated: 2026-10-17
 type: concept

@@ -1,5 +1,5 @@
 ---
-title: Agent Context: History, State and Bounded Processing
+title: "Agent Context: History, State and Bounded Processing"
 created: 2026-10-17
 updated: 2026-10-17
 type: concept
