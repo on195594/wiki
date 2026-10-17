@@ -68,6 +68,12 @@ Text
         self.assertEqual(items[0]["status"], "expired")
         self.assertEqual(items[0]["path"], "concepts/expired-page.md")
 
+        with patch("sys.stdout", new_callable=io.StringIO) as out:
+            report_freshness(self.root, days=30, fmt="json")
+        report = json.loads(out.getvalue())
+        self.assertEqual(report["days"], 30)
+        self.assertEqual(report["items"], items)
+
     def test_fix_all_drift_protection(self) -> None:
         raw_dir = self.root / "raw"
         raw_dir.mkdir(parents=True)

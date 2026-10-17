@@ -235,7 +235,7 @@ def fix_all(root: Path) -> bool:
     return True
 
 
-def report_freshness(root: Path, days: int = 30) -> list[dict[str, Any]]:
+def report_freshness(root: Path, days: int = 30, fmt: str = "text") -> list[dict[str, Any]]:
     today = datetime.now(timezone.utc).date()
     horizon = today + timedelta(days=days)
 
@@ -279,6 +279,11 @@ def report_freshness(root: Path, days: int = 30) -> list[dict[str, Any]]:
                     "review_by": rev_date.isoformat(),
                     "days_left": days_left,
                 })
+
+    if fmt == "json":
+        # Machine-readable for the Wiki MCP server's wiki_check tool.
+        print(json.dumps({"today": today.isoformat(), "days": days, "items": items}, ensure_ascii=False))
+        return items
 
     print(f"=== Wiki Freshness Report (Horizon: {days} days, Today: {today.isoformat()}) ===")
     if not items:
@@ -355,6 +360,7 @@ def main() -> int:
     parser.add_argument("--fix", action="store_true", help="Auto-sync catalog.json and raw hash manifest with drift protection")
     parser.add_argument("--freshness", action="store_true", help="Scan and report pages expiring soon or overdue")
     parser.add_argument("--days", type=int, default=30, help="Days horizon for freshness scan (default 30)")
+    parser.add_argument("--format", choices=["text", "json"], default="text", help="Output format for --freshness")
     parser.add_argument("--install-hooks", action="store_true", help="Install Git pre-commit hook")
     parser.add_argument("--force", action="store_true", help="Force overwrite existing hooks when installing")
     args = parser.parse_args()
@@ -374,7 +380,7 @@ def main() -> int:
         return 0 if success else 1
 
     if args.freshness:
-        report_freshness(root, args.days)
+        report_freshness(root, args.days, args.format)
         return 0
 
     if args.staged:
