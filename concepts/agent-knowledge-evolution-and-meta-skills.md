@@ -7,6 +7,8 @@ tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf]
 status: stable
 description: 说明经验进入持久层后的演化与元技能：知识整合与加权、外部知识复用与权重学习的区别，以及任务技能与支持设计元技能的分工和证据边界。
+volatility: medium
+review_by: 2026-12-31
 ---
 
 # Agent Knowledge Evolution and Meta-Skills

@@ -8,6 +8,8 @@ sources: []
 status: stable
 description: "[有限经验] 聊天平台到有状态 AI Agent 运行时的会话路由与边界隔离设计原则。"
 aliases: [chat-agent-session-routing, chat-to-agent-routing]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # Chat to Agent Session Routing

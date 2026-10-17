@@ -8,6 +8,7 @@ sources: [queries/pre-trade-risk-checklist.md, queries/when-not-to-trade.md, que
 status: stable
 description: 回答如何根据风险预算和 setup 质量决定单笔仓位大小。
 aliases: [how-i-should-size-a-position]
+volatility: low
 ---
 
 # Position Sizing by Risk Budget

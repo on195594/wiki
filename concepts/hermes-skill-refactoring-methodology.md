@@ -9,6 +9,8 @@ sources: [raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, ra
 status: stable
 description: 总结 AI Agent skill 重构时从边界收敛、分层到回归验证的可移植方法。
 aliases: [skill-refactoring, agent-skill-refactoring-methodology]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Skill Refactoring Methodology

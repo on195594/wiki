@@ -8,6 +8,7 @@ sources: [queries/trading-lessons-to-hard-rules.md, queries/repeat-mistake-detec
 status: stable
 description: 回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。
 aliases: [how-i-should-keep-my-trading-system-small-and-executable]
+volatility: low
 ---
 
 # Keeping a Trading System Small and Executable

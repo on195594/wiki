@@ -18,7 +18,7 @@
       "aliases": [
         "ewd667-vs-ai-programming"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-04-16",
@@ -75,7 +75,7 @@
       "aliases": [
         "leontraveller-vs-ordinary-investor"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-04-17",
@@ -105,8 +105,8 @@
         "hermes-agent-autonomy",
         "agent-autonomy-ladder-for-agent-workflows"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -136,8 +136,8 @@
       "aliases": [
         "closed-loop-learning"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -168,8 +168,8 @@
         "agent-context-engineering",
         "context-engineering-for-agents"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -196,8 +196,8 @@
         "workflow"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -222,8 +222,8 @@
         "workflow"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -252,8 +252,8 @@
       "aliases": [
         "agent-lifecycle"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -282,8 +282,8 @@
         "rubric-calibration",
         "evaluator-calibration"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-10",
       "relations": {
@@ -312,8 +312,8 @@
         "multi-agent"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -343,8 +343,8 @@
       "aliases": [
         "failure-loop-evaluation"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -401,8 +401,8 @@
         "multi-agent"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -430,8 +430,8 @@
         "agent-memory-pipeline",
         "memory-reflection-planning"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -465,8 +465,8 @@
       "aliases": [
         "agent-orchestration-tradeoffs"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -488,8 +488,8 @@
       "aliases": [
         "evidence-gated-research"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -509,8 +509,8 @@
         "evaluation"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-02",
       "relations": {}
@@ -533,8 +533,8 @@
       "aliases": [
         "self-validation-loop"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -555,8 +555,8 @@
         "multi-agent"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -647,8 +647,8 @@
       "aliases": [
         "agentic-programming"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -678,8 +678,8 @@
       "aliases": [
         "document-fidelity-risk"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-10-09",
       "relations": {}
@@ -702,8 +702,8 @@
         "human-outcome-first-ai-agent-design",
         "ai-automation-human-needs"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2026-12-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -736,8 +736,8 @@
         "agent-tool-selection",
         "tool-routing-for-ai-agents"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -767,7 +767,7 @@
         "cognitive-offloading-with-ai",
         "accomplishment-hallucination"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -799,8 +799,8 @@
         "pre-execution-red-team",
         "claude-creative-sounding-board"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -914,7 +914,7 @@
         "audience-situation briefs",
         "受众情境内容简报"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -942,8 +942,8 @@
         "chat-agent-session-routing",
         "chat-to-agent-routing"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-10-08",
       "relations": {
@@ -1015,7 +1015,7 @@
         "note"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1043,8 +1043,8 @@
         "governance"
       ],
       "aliases": [],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -1066,7 +1066,7 @@
         "imaginal-exposure-and-avoidance",
         "应对技能迁移"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-08-20",
@@ -1092,8 +1092,8 @@
       "aliases": [
         "deterministic-llm-boundary"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-10-16",
       "relations": {}
@@ -1113,7 +1113,7 @@
       "aliases": [
         "dijkstra-ai-programming"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1195,7 +1195,7 @@
         "decision"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1283,8 +1283,8 @@
         "hermes-governance-lifecycle",
         "agent-active-surface-lifecycle-governance"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1353,8 +1353,8 @@
       "aliases": [
         "agent-ai-workflow-formalization-principles"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1384,8 +1384,8 @@
         "hermes-context-engineering",
         "agent-context-engineering-design-priorities"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1417,7 +1417,7 @@
         "context-layer-rules",
         "agent-context-layer-operating-rules"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1448,8 +1448,8 @@
         "hermes-wiki-architecture",
         "agent-knowledge-architecture"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {
@@ -1476,8 +1476,8 @@
         "knowledge-base-operating-flow",
         "agent-knowledge-base-operating-flow"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1512,8 +1512,8 @@
         "stale knowledge",
         "agent-knowledge-freshness-and-claim-evidence"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1545,8 +1545,8 @@
         "layer-routing-checklist",
         "agent-layer-routing-decision-checklist"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1572,7 +1572,7 @@
         "lifeos-executable-architecture",
         "agent-lifeos-executable-architecture"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1602,7 +1602,7 @@
         "lifeos-layer-boundary",
         "agent-lifeos-layer-boundary-contract"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -1633,8 +1633,8 @@
         "memory-governance",
         "agent-memory-governance-notes"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1661,8 +1661,8 @@
         "memory-skill-wiki-boundaries",
         "agent-memory-skills-wiki-boundaries"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1724,8 +1724,8 @@
       "aliases": [
         "agent-python-engineering-capability-checklist"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1755,8 +1755,8 @@
         "answer-path",
         "agent-retrieval-priority-and-answer-path"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -1780,8 +1780,8 @@
         "skill-refactoring",
         "agent-skill-refactoring-methodology"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1813,8 +1813,8 @@
         "wiki-lint-standards",
         "agent-wiki-lint-and-health-check-standards"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1845,8 +1845,8 @@
         "wiki-writing-standards",
         "agent-wiki-page-writing-standards"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-01-31",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1862,7 +1862,7 @@
     {
       "path": "concepts/household-fund-layering-model.md",
       "type": "concept",
-      "title": "Personal Finance and Education Fund Model",
+      "title": "Household Fund Layering Model",
       "description": "提供家庭财务与教育目标资金的参数化分层、约束和风险边界模板。",
       "status": "stable",
       "tags": [
@@ -1873,7 +1873,7 @@
       "aliases": [
         "personal-finance-and-education-fund-model"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -1904,8 +1904,8 @@
         "abundant-experiments-scarce-review",
         "human-machine-mathematical-discovery"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1936,7 +1936,7 @@
         "investment-operating-rules",
         "personal-investment-operating-rules"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -1962,7 +1962,7 @@
       "aliases": [
         "leontraveller-investment-system"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -1990,7 +1990,7 @@
       "aliases": [
         "lifeos"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -2016,8 +2016,8 @@
       "aliases": [
         "context-engineering-layer"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -2038,8 +2038,8 @@
       "aliases": [
         "llm-knowledge-map"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {}
@@ -2060,8 +2060,8 @@
       "aliases": [
         "summary-identification"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -2081,8 +2081,8 @@
       "aliases": [
         "local-first-sync-recoverable-transactions"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2116,8 +2116,8 @@
         "loop-engineering",
         "loop-engineering-agent-workflow"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {
@@ -2140,7 +2140,7 @@
         "note"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-04-17",
@@ -2198,8 +2198,8 @@
       "aliases": [
         "ordinary-investor-system"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-04-16",
       "relations": {
@@ -2223,7 +2223,7 @@
         "evaluation"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -2251,8 +2251,8 @@
         "agent-production-baselines",
         "llm-latency-cost-baselines"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-10-02",
       "relations": {
@@ -2282,8 +2282,8 @@
       "aliases": [
         "agent-evaluation-framework"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-10-16",
       "relations": {}
@@ -2300,7 +2300,7 @@
         "note"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -2357,8 +2357,8 @@
         "repeated-measures-power",
         "pseudo-replication-in-ai-evaluation"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2387,8 +2387,8 @@
       "aliases": [
         "repo-code-intelligence"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
@@ -2407,7 +2407,7 @@
       "aliases": [
         "software-engineering-laws-architecture"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-21",
@@ -2435,7 +2435,7 @@
       "aliases": [
         "software-engineering-laws-decisions"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-21",
@@ -2462,7 +2462,7 @@
       "aliases": [
         "software-engineering-laws-design"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-08-10",
@@ -2489,7 +2489,7 @@
       "aliases": [
         "software-engineering-laws-planning"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-08-10",
@@ -2516,7 +2516,7 @@
       "aliases": [
         "software-engineering-laws-quality"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-21",
@@ -2543,7 +2543,7 @@
       "aliases": [
         "software-engineering-laws-scale"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-08-10",
@@ -2570,7 +2570,7 @@
       "aliases": [
         "software-engineering-laws-teams"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-08-10",
@@ -2658,7 +2658,7 @@
         "operating-model"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -2688,8 +2688,8 @@
       "aliases": [
         "typed-agent-boundaries"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2715,8 +2715,8 @@
         "wiki-ingestion",
         "knowledge-ingestion"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2742,7 +2742,7 @@
         "decision"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -2825,8 +2825,8 @@
         "shared-agent-context",
         "cross-agent-wiki-index"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -2857,8 +2857,8 @@
         "agent-primary-paper-map",
         "agent-architecture-paper-map"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2889,7 +2889,7 @@
       "aliases": [
         "how-i-should-use-these-two-investment-frameworks"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -2919,7 +2919,7 @@
         "validation"
       ],
       "aliases": [],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-22",
@@ -2952,8 +2952,8 @@
         "layer-routing-edge-cases",
         "agent-layer-routing-edge-cases"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2981,8 +2981,8 @@
         "layer-routing-samples",
         "agent-layer-routing-sample-cases"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3010,7 +3010,7 @@
         "wiki freshness plan",
         "claim evidence workflow"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -3040,8 +3040,8 @@
       "aliases": [
         "how-i-should-use-agent-for-ai-coding-with-typed-boundaries"
       ],
-      "volatility": null,
-      "review_by": null,
+      "volatility": "medium",
+      "review_by": "2027-02-28",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3068,7 +3068,7 @@
       "aliases": [
         "how-i-should-decide-between-doing-nothing-and-taking-action"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3097,7 +3097,7 @@
       "aliases": [
         "how-i-should-review-a-losing-position"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3126,7 +3126,7 @@
       "aliases": [
         "how-i-should-keep-my-trading-system-small-and-executable"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3159,7 +3159,7 @@
         "llm-wiki",
         "okf-for-agent-wiki-governance-assessment"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -3189,7 +3189,7 @@
       "aliases": [
         "how-i-should-scale-into-and-out-of-a-position"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3218,7 +3218,7 @@
       "aliases": [
         "how-i-should-size-a-position"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3247,7 +3247,7 @@
       "aliases": [
         "how-i-should-build-a-post-trade-review-loop"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3277,7 +3277,7 @@
         "pre-trade-checklist",
         "my-investment-pre-trade-checklist"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3305,7 +3305,7 @@
       "aliases": [
         "how-i-should-detect-repeat-mistakes-in-my-trading"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3333,7 +3333,7 @@
       "aliases": [
         "software-engineering-laws-decision-map"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-29",
@@ -3368,7 +3368,7 @@
       "aliases": [
         "how-i-should-convert-trading-lessons-into-hard-rules"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3397,7 +3397,7 @@
       "aliases": [
         "when-i-should-not-trade"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",
@@ -3425,7 +3425,7 @@
       "aliases": [
         "how-i-should-handle-a-winning-position"
       ],
-      "volatility": null,
+      "volatility": "low",
       "review_by": null,
       "verified_at": null,
       "updated": "2026-09-20",

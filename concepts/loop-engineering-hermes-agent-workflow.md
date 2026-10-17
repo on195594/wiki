@@ -8,6 +8,8 @@ sources: [raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md,
 status: stable
 description: 定义 AI Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。
 aliases: [loop-engineering, loop-engineering-agent-workflow]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # Loop Engineering for AI Agent Workflows

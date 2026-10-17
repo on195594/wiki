@@ -7,6 +7,7 @@ tags: [hermes, agent, research, memory, skills, orchestration, cron, validation]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: closed
 description: 2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当前能力需重新核验。
+volatility: low
 ---
 
 # Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot

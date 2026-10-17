@@ -8,6 +8,8 @@ sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
+volatility: medium
+review_by: 2026-12-31
 ---
 
 # Agent Development Lifecycle

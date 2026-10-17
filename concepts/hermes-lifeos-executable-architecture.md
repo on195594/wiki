@@ -8,6 +8,7 @@ sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes
 status: stable
 description: 定义 AI Agent LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。
 aliases: [lifeos-executable-architecture, agent-lifeos-executable-architecture]
+volatility: low
 ---
 
 # AI Agent LifeOS Executable Architecture

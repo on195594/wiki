@@ -8,6 +8,8 @@ sources: [raw/articles/langchain-similarweb-long-form-agent-report-evaluation-20
 status: stable
 description: 说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，避免聚合分数把正常改进误判为回归。
 aliases: [rubric-calibration, evaluator-calibration]
+volatility: medium
+review_by: 2026-12-31
 ---
 
 # Agent Evaluation Rubric Calibration

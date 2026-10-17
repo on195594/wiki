@@ -8,6 +8,8 @@ sources: [repository:SCHEMA.md, repository:_meta/wiki-health-check-runbook.md, r
 status: stable
 description: 定义 AI Agent wiki 的只读健康检查范围、严重性、通过标准，以及可选 metadata/Relations 的验证方向。
 aliases: [wiki-health-check, wiki-lint-standards, agent-wiki-lint-and-health-check-standards]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # Wiki Lint and Health Check Standards

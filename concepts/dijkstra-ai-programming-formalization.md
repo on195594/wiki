@@ -8,6 +8,7 @@ sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/artic
 status: stable
 description: 整理 Dijkstra 思想对 AI 编程中规格化、形式化和自然语言边界的启发。
 aliases: [dijkstra-ai-programming]
+volatility: low
 ---
 
 # Dijkstra on AI Programming Formalization

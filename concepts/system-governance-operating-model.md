@@ -7,6 +7,7 @@ tags: [agent, governance, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
 status: stable
 description: 定义 LifeOS 和 AI Agent 系统治理中的层级边界、变更控制和长期维护模型。
+volatility: low
 ---
 
 # System Governance Operating Model

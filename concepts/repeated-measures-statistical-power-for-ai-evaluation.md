@@ -8,6 +8,8 @@ sources: [raw/articles/towardsdatascience-statistical-power-more-problems-2026-0
 status: stable
 description: 区分参与主体数、任务数与有效独立证据，说明何时重复任务能提高统计功效，以及如何避免把相关观测误当独立样本。
 aliases: [repeated-measures-power, pseudo-replication-in-ai-evaluation]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # 少样本 AI 评测中的重复任务、伪重复与统计功效

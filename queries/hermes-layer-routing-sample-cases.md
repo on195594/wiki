@@ -8,6 +8,8 @@ sources: [concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-m
 status: stable
 description: 提供 AI Agent layer routing 的典型样例，用于校准 wiki、memory、skill、cron 和 MCP 归类。
 aliases: [layer-routing-samples, agent-layer-routing-sample-cases]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # AI Agent Layer Routing Sample Cases

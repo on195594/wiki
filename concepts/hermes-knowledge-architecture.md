@@ -8,6 +8,8 @@ sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.
 status: stable
 description: 定义 AI Agent 长期知识系统的总体架构、层间关系与分层规则导航。
 aliases: [knowledge-architecture, hermes-wiki-architecture, agent-knowledge-architecture]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # Human and AI Agent Shared Knowledge Architecture

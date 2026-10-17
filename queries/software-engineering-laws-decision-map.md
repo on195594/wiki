@@ -8,6 +8,7 @@ sources: [concepts/software-engineering-laws/software-engineering-laws-architect
 status: stable
 description: 按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。
 aliases: [software-engineering-laws-decision-map]
+volatility: low
 ---
 
 # Software Engineering Laws Decision Map

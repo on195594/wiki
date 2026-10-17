@@ -8,6 +8,7 @@ sources: [queries/position-sizing-method.md, queries/position-scaling-method.md,
 status: stable
 description: 回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。
 aliases: [how-i-should-handle-a-winning-position]
+volatility: low
 ---
 
 # Managing a Winning Position

@@ -8,6 +8,7 @@ sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes
 status: stable
 description: 概述可配置 LifeOS 的核心层次、可选领域和治理边界，不保存个人状态。
 aliases: [lifeos]
+volatility: low
 ---
 
 # LifeOS Overview

@@ -8,6 +8,8 @@ sources: [repository:SCHEMA.md, concepts/hermes-knowledge-architecture.md, conce
 status: stable
 description: 定义 AI Agent 回答问题时 wiki、memory、skills、sessions、raw 和外部检索的优先级。
 aliases: [retrieval-priority, answer-path, agent-retrieval-priority-and-answer-path]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Retrieval Priority and Answer Path

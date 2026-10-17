@@ -8,6 +8,8 @@ sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-
 status: stable
 description: 定义 AI Agent memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。
 aliases: [layer-boundaries, memory-skill-wiki-boundaries, agent-memory-skills-wiki-boundaries]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Memory Skills Wiki Boundaries

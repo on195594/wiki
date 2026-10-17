@@ -8,6 +8,7 @@ sources: [queries/pre-trade-risk-checklist.md, queries/when-not-to-trade.md, que
 status: stable
 description: 回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。
 aliases: [how-i-should-scale-into-and-out-of-a-position]
+volatility: low
 ---
 
 # Scaling Into and Out of a Position

@@ -8,6 +8,7 @@ sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordi
 status: stable
 description: 汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。
 aliases: [investment-operating-rules, personal-investment-operating-rules]
+volatility: low
 ---
 
 # Investment Risk Control Framework

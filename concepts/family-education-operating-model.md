@@ -7,6 +7,7 @@ tags: [lifeos, operating-model, decision]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
 description: 提供可跨家庭复用的教育决策变量、适用条件与可持续性边界。
+volatility: low
 ---
 
 # Family Education Operating Model

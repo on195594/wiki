@@ -8,6 +8,7 @@ sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-
 status: stable
 description: 汇总软件工程决策类经验法则，供方案评审、风险检查与技术选择时检索。
 aliases: [software-engineering-laws-decisions]
+volatility: low
 ---
 
 # Software Engineering Laws — Decisions

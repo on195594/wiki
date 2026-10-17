@@ -8,6 +8,8 @@ sources: [raw/articles/towardsdatascience-mathematical-experiments-human-machine
 status: stable
 description: 当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。
 aliases: [verification-scarcity, abundant-experiments-scarce-review, human-machine-mathematical-discovery]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # Human-Machine Scientific Discovery and Verification Scarcity

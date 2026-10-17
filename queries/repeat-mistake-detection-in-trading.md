@@ -8,6 +8,7 @@ sources: [queries/post-trade-review-loop.md, queries/pre-trade-risk-checklist.md
 status: stable
 description: 回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。
 aliases: [how-i-should-detect-repeat-mistakes-in-my-trading]
+volatility: low
 ---
 
 # Detecting Repeat Trading Mistakes

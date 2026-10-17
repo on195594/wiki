@@ -8,6 +8,8 @@ sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/a
 status: stable
 description: 把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Assumption Challenger Before Execution

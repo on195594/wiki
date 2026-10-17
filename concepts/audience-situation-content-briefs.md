@@ -8,6 +8,7 @@ sources: [raw/articles/searchengineland-content-briefs-audience-situations-2026-
 status: draft
 description: 用受众真实情境、Category Entry Points 和 7W 框架重构内容简报，避免把搜索量直接当成内容需求。
 aliases: [audience situations, audience-situation briefs, 受众情境内容简报]
+volatility: low
 ---
 
 # Audience-Situation Content Briefs

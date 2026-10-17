@@ -8,6 +8,8 @@ status: stable
 description: 回答如何用 AI Agent 以 typed boundaries、窄工具面和验证门执行 AI 编程任务。
 tags: [agent, ai-coding, typed-boundary, workflow, verification]
 sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # Using AI Agent for AI Coding with Typed Boundaries

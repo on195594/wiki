@@ -3,6 +3,10 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-17] governance | Add volatility and staggered review dates to formal pages
+- Added `volatility` to the 99 formal pages that lacked it: `low` for stable methods, investment and LifeOS frameworks, the software-engineering-laws set and closed or dated historical records; `medium` for fast-moving agent and LLM topics and internal governance pages. `review_by` was added only to `medium` pages and staggered across 2026-12-31, 2027-01-31 and 2027-02-28 so expiries do not land on one day.
+- `verified_at` was deliberately not set: these are scheduling and classification fields, not a claim that each page was re-verified. Retitled the household fund layering page to match its renamed slug.
+
 ## [2026-10-17] restructure | Split two oversized concept pages into parent plus focused sub-pages
 - Split [[agent-context-engineering]] (33 KB) into a parent (core principle, context rot and JIT defense, context vs memory boundary, provenance debt) plus [[agent-context-prompt-tools-and-examples]] and [[agent-context-history-state-and-bounded-processing]]; split [[agent-experience-consolidation-loops]] (27 KB) into a workflow parent plus [[agent-skill-governance-and-reversible-state]] and [[agent-knowledge-evolution-and-meta-skills]]. Parent slugs are unchanged, so no inbound link changed.
 - Moved text verbatim except headings, step-number prefixes and three cross-references rewritten to explicit links; coverage was verified line by line against the pre-split pages (no content dropped). `sources` are now assigned per page by what each page cites. Each parent carries a short digest of its sub-pages.

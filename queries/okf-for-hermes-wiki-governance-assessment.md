@@ -8,6 +8,7 @@ sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:ht
 status: stable
 description: 评估 OKF/LLM-wiki 思路如何作为 AI Agent wiki 的机器可读治理增强，而不是替代现有 wiki 架构。
 aliases: [okf, open-knowledge-format, knowledge-object, llm-wiki, okf-for-agent-wiki-governance-assessment]
+volatility: low
 ---
 
 # OKF Concepts for AI Agent Wiki Governance Assessment

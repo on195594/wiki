@@ -8,6 +8,8 @@ sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/herme
 status: stable
 description: 以内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度判断 AI Agent 层间路由。
 aliases: [layer-routing-checklist, agent-layer-routing-decision-checklist]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Layer Routing Decision Checklist

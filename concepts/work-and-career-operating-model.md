@@ -7,6 +7,7 @@ tags: [lifeos, operating-model, workflow, decision]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
 description: 定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。
+volatility: low
 ---
 
 # Work and Career Operating Model

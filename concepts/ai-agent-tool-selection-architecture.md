@@ -8,6 +8,8 @@ sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-0
 status: stable
 description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。
 aliases: [agent-tool-selection, tool-routing-for-ai-agents]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Tool Selection Architecture

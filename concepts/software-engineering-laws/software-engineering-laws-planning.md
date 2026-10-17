@@ -8,6 +8,7 @@ sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-
 status: stable
 description: 用于检索软件工程规划中关于度量、估算、期限、收尾成本与优化时机的经验法则。
 aliases: [software-engineering-laws-planning]
+volatility: low
 ---
 
 # Software Engineering Laws — Planning

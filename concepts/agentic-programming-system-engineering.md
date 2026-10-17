@@ -8,6 +8,8 @@ sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-0
 status: stable
 description: 定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。
 aliases: [agentic-programming]
+volatility: medium
+review_by: 2026-12-31
 ---
 
 # Agentic Programming as System Engineering

@@ -8,6 +8,7 @@ sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-a
 status: stable
 description: 定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则。
 aliases: [context-layer-rules, agent-context-layer-operating-rules]
+volatility: low
 ---
 
 # AI Agent Context Layer Operating Rules

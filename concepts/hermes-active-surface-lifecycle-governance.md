@@ -8,6 +8,8 @@ sources: [raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md, concepts
 status: stable
 description: 定义 AI Agent 活跃治理面的基线、校准、晋升、验证、运行、重基线与退役生命周期，避免规则和自动化只增不减。
 aliases: [active-surface-lifecycle, hermes-governance-lifecycle, agent-active-surface-lifecycle-governance]
+volatility: medium
+review_by: 2027-01-31
 ---
 
 # AI Agent Active-Surface Lifecycle Governance

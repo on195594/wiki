@@ -7,6 +7,8 @@ tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf]
 status: stable
 description: 定义 Agent 经验固化闭环：证据收集、模式识别、按层职责路由、复用与重验证；Skill 治理与知识演化/元技能细节见两个子页。
+volatility: medium
+review_by: 2026-12-31
 ---
 
 # Agent Experience Consolidation Loops

@@ -8,6 +8,8 @@ sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, ra
 status: stable
 description: 定义 LLM 检索和 prompt 之间的上下文工程层，包括记忆、压缩、排序和预算控制。
 aliases: [context-engineering-layer]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # LLM Context Engineering Layer

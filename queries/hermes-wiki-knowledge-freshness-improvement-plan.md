@@ -8,6 +8,7 @@ sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/article
 status: closed
 description: 保留 2026-08-26 已关闭的新鲜度改造决策；当前执行以 Schema、写作规范和 Freshness Gate 为准。
 aliases: [wiki freshness plan, claim evidence workflow]
+volatility: low
 ---
 
 # Hermes Wiki 知识新鲜度改造计划

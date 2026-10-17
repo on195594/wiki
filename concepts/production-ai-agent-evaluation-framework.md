@@ -8,6 +8,8 @@ sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
+volatility: medium
+review_by: 2027-02-28
 ---
 
 # Production AI Agent Evaluation Framework

@@ -7,6 +7,7 @@ tags: [lifeos, operating-model, optimization, evaluation]
 sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md]
 status: stable
 description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。
+volatility: low
 ---
 
 # Personal Growth Operating Model
