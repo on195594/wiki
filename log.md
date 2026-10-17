@@ -3,6 +3,11 @@
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 > Format: `## [YYYY-MM-DD] action | subject`
 
+## [2026-10-17] restructure | Split two oversized concept pages into parent plus focused sub-pages
+- Split [[agent-context-engineering]] (33 KB) into a parent (core principle, context rot and JIT defense, context vs memory boundary, provenance debt) plus [[agent-context-prompt-tools-and-examples]] and [[agent-context-history-state-and-bounded-processing]]; split [[agent-experience-consolidation-loops]] (27 KB) into a workflow parent plus [[agent-skill-governance-and-reversible-state]] and [[agent-knowledge-evolution-and-meta-skills]]. Parent slugs are unchanged, so no inbound link changed.
+- Moved text verbatim except headings, step-number prefixes and three cross-references rewritten to explicit links; coverage was verified line by line against the pre-split pages (no content dropped). `sources` are now assigned per page by what each page cites. Each parent carries a short digest of its sub-pages.
+- The other three pages above 20 KB are intentionally left unchanged pending evaluation of this pilot; no size gate was added.
+
 ## [2026-10-17] governance | Neutralize first-person and personal-named investment pages
 - Public-boundary review found 12 investment query pages and two concepts named with first-person or `personal-` slugs (`how-i-should-*`, `my-*`, `when-i-should-not-trade`, `personal-investment-operating-rules`, `personal-finance-and-education-fund-model`) although their content was already generic and parameterized.
 - Renamed them to neutral topical slugs (for example `position-sizing-method`, `pre-trade-risk-checklist`, `investment-risk-control-framework`, `household-fund-layering-model`), kept each old slug as an alias, and rewrote every link, `sources` entry, index entry and the catalog.

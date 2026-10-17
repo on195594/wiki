@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 116,
+  "total_pages": 120,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -156,7 +156,7 @@
       "path": "concepts/agent-context-engineering.md",
       "type": "concept",
       "title": "Agent Context Engineering",
-      "description": "定义 Agent 执行过程中的上下文装配原则，控制工具、示例、状态和历史可见性，涵盖定向设计意图及有界上下文加工的来源、恢复与评测边界。",
+      "description": "定义 Agent 执行过程中的上下文装配总原则：最小可见信息、上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面与历史/状态加工见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -171,11 +171,67 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-16",
+      "updated": "2026-10-17",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
           "hermes-context-engineering-design-priorities"
+        ],
+        "related": [
+          "agent-context-prompt-tools-and-examples",
+          "agent-context-history-state-and-bounded-processing"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-context-history-state-and-bounded-processing.md",
+      "type": "concept",
+      "title": "Agent Context: History, State and Bounded Processing",
+      "description": "说明 Agent 消息历史与运行状态如何裁剪：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型承担的有界上下文加工及其恢复与评测边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "context-engineering",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-17",
+      "relations": {
+        "refines": [
+          "agent-context-engineering"
+        ],
+        "depends_on": [
+          "hermes-context-engineering-design-priorities"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-context-prompt-tools-and-examples.md",
+      "type": "concept",
+      "title": "Agent Context: System Prompt, Tools and Examples",
+      "description": "说明 Agent 静态上下文面的设计：system prompt 作为操作简报、窄工具面与反向边界、可见不等于可用的级联，以及以行为为主的示例。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "llm",
+        "context-engineering",
+        "workflow"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-17",
+      "relations": {
+        "refines": [
+          "agent-context-engineering"
+        ],
+        "depends_on": [
+          "typed-ai-agent-boundaries"
         ]
       }
     },
@@ -244,7 +300,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验的提炼、验证与层间路由，区分指导解题的任务技能与指导可执行环境支持的元技能。",
+      "description": "定义 Agent 经验固化闭环：证据收集、模式识别、按层职责路由、复用与重验证；Skill 治理与知识演化/元技能细节见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -259,9 +315,11 @@
       "volatility": null,
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-01",
+      "updated": "2026-10-17",
       "relations": {
         "related": [
+          "agent-skill-governance-and-reversible-state",
+          "agent-knowledge-evolution-and-meta-skills",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "hermes-memory-skills-wiki-boundaries",
@@ -324,6 +382,35 @@
           "production-ai-agent-evaluation-framework",
           "agent-experience-consolidation-loops",
           "agent-self-validation-loops"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-knowledge-evolution-and-meta-skills.md",
+      "type": "concept",
+      "title": "Agent Knowledge Evolution and Meta-Skills",
+      "description": "说明经验进入持久层后的演化与元技能：知识整合与加权、外部知识复用与权重学习的区别，以及任务技能与支持设计元技能的分工和证据边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "skills",
+        "knowledge-base",
+        "validation",
+        "workflow",
+        "multi-agent"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-17",
+      "relations": {
+        "refines": [
+          "agent-experience-consolidation-loops"
+        ],
+        "related": [
+          "agent-skill-governance-and-reversible-state"
         ]
       }
     },
@@ -451,6 +538,35 @@
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {}
+    },
+    {
+      "path": "concepts/agent-skill-governance-and-reversible-state.md",
+      "type": "concept",
+      "title": "Agent Skill Governance and Reversible Skill State",
+      "description": "说明如何把 Skill 作为受治理的程序性资产：使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "skills",
+        "knowledge-base",
+        "validation",
+        "workflow",
+        "multi-agent"
+      ],
+      "aliases": [],
+      "volatility": null,
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-10-17",
+      "relations": {
+        "refines": [
+          "agent-experience-consolidation-loops"
+        ],
+        "related": [
+          "agent-knowledge-evolution-and-meta-skills"
+        ]
+      }
     },
     {
       "path": "concepts/agent-skill-provider-governance-boundary.md",
