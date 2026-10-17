@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] maintenance | Slim the lint and page-writing standards to method pages
+- [[hermes-wiki-lint-and-health-check-standards]] (255 → 84 lines): removed the 14-item check list, the severity list (which had drifted from the script, e.g. log rotation and yearly archiving that no longer exist) and the freshness rules copied from SCHEMA. The page now keeps the questions a health check must answer, a table of automated, network and human checks, severity principles, workflow and pass criteria; check codes and their severities are owned by the scripts and [[wiki-health-check-runbook]].
+- [[hermes-wiki-page-writing-standards]] (214 → 171 lines): the frontmatter block (which still listed the legacy type enum) and the freshness field rules now point to SCHEMA; only writing guidance stays.
+- Verification: `wiki_maintain.py --check` passed all six gates; the severity principles were checked against the `add_issue` calls in `wiki_health_check.py`.
+
 ## [2026-10-17] restructure | Fold Related link lists into Relations
 - Merged the plain `## Related` / `## Related pages` / `## Links` link lists of 111 formal pages into `## Relations` as `related:` entries and removed the duplicated lists; links to `[[index]]` and `[[log]]` were dropped because they carry no relationship. Seven pages keep a short `## Related` list for links that carry an explanatory sentence, and those links are also listed in Relations.
 - Effect: every formal page now has `## Relations`; `_meta/catalog.json` relation edges went from 368 to 744, because 376 links that existed only in the old Related lists were invisible to the catalog. Markdown pages: +126 / −1074 lines.
