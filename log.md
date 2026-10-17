@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] governance | Replace the look-alike OKF attestation field with a field mapping table
+- Removed the optional `attestation{generated_by, verified_by}` field from SCHEMA: it was described as following OKF v0.2, but its shape differs from OKF's native `generated{by, at}` / `verified[]{by, at}`, and no page or script used it.
+- Added a "Local fields vs OKF v0.2" table to SCHEMA as the single place that maps local fields (`status`, `sources`, `verified_at`, `review_by`, `## Relations`) to the OKF v0.2 SPEC; local field names are unchanged. [[okf-for-hermes-wiki-governance-assessment]] now points to the table and cites the SPEC; the [[index]] entry was updated to match.
+- Verification: `wiki_maintain.py --check` passed all six deterministic gates. This is a structural check only; it does not verify OKF facts beyond the SPEC text read on 2026-10-17.
+
 ## [2026-10-17] maintenance | Align three core pages and health-check runbook
 - 将 [[hermes-knowledge-freshness-and-claim-evidence]] 标为 stable，调整 Relations / Related 顺序、现行规则落点及 index / log 导航；清理 [[deterministic-analytics-llm-reasoning-boundary]] 的 author 字段并补齐导航，两页 updated 均为 2026-10-17。
 - 更新 [[okf-for-hermes-wiki-governance-assessment]] 的日期、Relations 示例、本地 `_meta/catalog.json` 与可选 attestation 边界，将五个治理核心页试点标为已完成，并同步 [[index]] 的现有条目。
