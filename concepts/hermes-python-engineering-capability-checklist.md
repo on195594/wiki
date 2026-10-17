@@ -192,10 +192,3 @@ AI Agent 映射：
 ## Relations
 
 - related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]]
-
-## Related pages
-
-- [[hermes-ai-workflow-formalization-principles]]
-- [[agentic-programming-system-engineering]]
-- [[agent-context-engineering]]
-- [[typed-ai-agent-boundaries]]

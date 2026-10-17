@@ -171,9 +171,4 @@ review_by: 2027-02-28
 
 ## Relations
 
-- related: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]]
-
-## Related
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[wiki-ingestion-workflow]]

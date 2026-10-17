@@ -80,11 +80,3 @@ volatility: low
 ## Relations
 
 - related: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]], [[hermes-context-layer-operating-rules]]
-
-## Related
-- [[hermes-knowledge-architecture]]
-- [[wiki-ingestion-workflow]]
-- [[hermes-wiki-page-writing-standards]]
-- [[hermes-context-layer-operating-rules]]
-- [[index]]
-- [[log]]

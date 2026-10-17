@@ -101,7 +101,4 @@ Wiki health check 继续负责现有的 frontmatter、链接、索引、标签�
 - refines: [[hermes-knowledge-freshness-and-claim-evidence]]
 - depends_on: [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-wiki-lint-and-health-check-standards]]
-
-## Related
-
-- [[hermes-knowledge-architecture]]
+- related: [[hermes-knowledge-architecture]]

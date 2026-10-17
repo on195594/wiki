@@ -136,15 +136,4 @@ P2 需要单独审批、备份、diff、验证和回滚。
 - refines: [[subagent-orchestration-patterns]]
 - refines: [[loop-engineering-hermes-agent-workflow]]
 - depends_on: [[hermes-context-layer-operating-rules]]
-
-## Related
-
-- [[subagent-orchestration-patterns]]
-- [[loop-engineering-hermes-agent-workflow]]
-- [[agent-self-validation-loops]]
-- [[agent-context-engineering]]
-- [[ai-coding-agent-workflow-types]]
-- [[hermes-context-layer-operating-rules]]
-- [[hermes-layer-routing-decision-checklist]]
-- [[index]]
-- [[log]]
+- related: [[agent-self-validation-loops]], [[agent-context-engineering]], [[ai-coding-agent-workflow-types]], [[hermes-layer-routing-decision-checklist]]

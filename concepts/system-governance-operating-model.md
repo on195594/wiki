@@ -112,16 +112,4 @@ system governance 的核心目标是：
 - depends_on: [[hermes-lifeos-executable-architecture]]
 - depends_on: [[hermes-knowledge-architecture]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
-
-## Related
-- [[lifeos-overview]]
-- [[hermes-lifeos-executable-architecture]]
-- [[hermes-knowledge-architecture]]
-- [[hermes-memory-skills-wiki-boundaries]]
-- [[family-education-operating-model]]
-- [[household-fund-layering-model]]
-- [[work-and-career-operating-model]]
-- [[personal-growth-operating-model]]
-- [[index]]
-- [[log]]
-- [[hermes-active-surface-lifecycle-governance]]
+- related: [[family-education-operating-model]], [[household-fund-layering-model]], [[work-and-career-operating-model]], [[personal-growth-operating-model]], [[hermes-active-surface-lifecycle-governance]]

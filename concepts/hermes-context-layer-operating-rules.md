@@ -149,17 +149,4 @@ Machine Learning Mastery 文章的处理结果：
 - depends_on: [[hermes-lifeos-executable-architecture]]
 - depends_on: [[hermes-layer-routing-decision-checklist]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
-
-## Related
-- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
-- [[agent-context-engineering]]
-- [[hermes-context-engineering-design-priorities]]
-- [[llm-context-engineering-layer]]
-- [[hermes-lifeos-executable-architecture]]
-- [[ai-assumption-challenger-before-execution]]
-- [[hermes-layer-routing-decision-checklist]]
-- [[subagent-orchestration-patterns]]
-- [[hermes-memory-skills-wiki-boundaries]]
-- [[hermes-knowledge-architecture]]
-- [[index]]
-- [[log]]
+- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[hermes-knowledge-architecture]]

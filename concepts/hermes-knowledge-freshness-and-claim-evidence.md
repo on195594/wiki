@@ -57,6 +57,7 @@ review_by: 2027-01-31
 - refines: [[hermes-knowledge-architecture]]
 - refines: [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- related: [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]], [[hermes-wiki-knowledge-freshness-improvement-plan]]
 
 ## Related
 
@@ -66,6 +67,3 @@ review_by: 2027-01-31
 - [[hermes-wiki-lint-and-health-check-standards]]：现行验证与健康检查落点。
 - [[wiki-ingestion-workflow]]：现行入库流程落点。
 - [[hermes-retrieval-priority-and-answer-path]]：现行检索与 Freshness Gate 落点。
-- [[hermes-wiki-knowledge-freshness-improvement-plan]]
-- [[index]]
-- [[log]]

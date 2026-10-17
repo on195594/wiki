@@ -123,16 +123,4 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 ## Relations
 
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]]
-- related: [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]], [[wiki-ingestion-workflow]]
-
-## Related
-- [[hermes-ai-workflow-formalization-principles]]
-- [[hermes-knowledge-architecture]]
-- [[hermes-memory-skills-wiki-boundaries]]
-
-- [[hermes-retrieval-priority-and-answer-path]]
-- [[hermes-wiki-page-writing-standards]]
-- [[hermes-wiki-lint-and-health-check-standards]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]], [[wiki-ingestion-workflow]], [[hermes-ai-workflow-formalization-principles]], [[hermes-retrieval-priority-and-answer-path]]

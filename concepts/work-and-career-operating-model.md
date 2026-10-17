@@ -92,12 +92,4 @@ volatility: low
 ## Relations
 - depends_on: [[lifeos-overview]]
 - depends_on: [[hermes-lifeos-executable-architecture]]
-
-## Related
-- [[lifeos-overview]]
-- [[family-education-operating-model]]
-- [[household-fund-layering-model]]
-- [[personal-growth-operating-model]]
-- [[hermes-lifeos-executable-architecture]]
-- [[index]]
-- [[log]]
+- related: [[family-education-operating-model]], [[household-fund-layering-model]], [[personal-growth-operating-model]]

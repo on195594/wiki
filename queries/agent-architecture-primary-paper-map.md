@@ -67,17 +67,8 @@ AutoGen shows that roles and message patterns can modularize applications, while
 ## Relations
 
 - refines: [[agentic-programming-system-engineering]]
-- related: [[agent-development-lifecycle]]
+- related: [[agent-development-lifecycle]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[ai-agent-tool-selection-architecture]], [[agent-orchestration-production-tradeoffs]]
 - related: [[production-ai-agent-evaluation-framework]]
 - related: [[llm-engineering-knowledge-map]]
 - conflicts_with: []
 - supersedes: []
-
-## Related
-
-- [[agent-memory-reflection-planning-pipeline]]
-- [[agent-self-validation-loops]]
-- [[ai-agent-tool-selection-architecture]]
-- [[agent-orchestration-production-tradeoffs]]
-- [[index]]
-- [[log]]

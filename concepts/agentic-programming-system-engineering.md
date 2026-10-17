@@ -116,17 +116,4 @@ ReAct provides primary evidence for interleaving language reasoning with task-sp
 - depends_on: [[agent-context-engineering]]
 - depends_on: [[typed-ai-agent-boundaries]]
 - depends_on: [[agent-development-lifecycle]]
-
-## Related
-
-- [[machinelearningmastery-agentic-programming-roadmap-2026-05-20]]
-- [[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]]
-- [[agent-context-engineering]]
-- [[typed-ai-agent-boundaries]]
-- [[production-ai-agent-evaluation-framework]]
-- [[agent-orchestration-production-tradeoffs]]
-- [[agent-development-lifecycle]]
-- [[agent-failure-closed-loop-evaluation]]
-- [[hermes-context-layer-operating-rules]]
-- [[subagent-orchestration-patterns]]
-- [[agent-architecture-primary-paper-map]]
+- related: [[machinelearningmastery-agentic-programming-roadmap-2026-05-20]], [[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-failure-closed-loop-evaluation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[agent-architecture-primary-paper-map]]

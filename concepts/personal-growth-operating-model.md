@@ -83,13 +83,4 @@ volatility: low
 ## Relations
 - depends_on: [[lifeos-overview]]
 - depends_on: [[work-and-career-operating-model]]
-
-## Related
-- [[lifeos-overview]]
-- [[work-and-career-operating-model]]
-- [[family-education-operating-model]]
-- [[household-fund-layering-model]]
-- [[hermes-lifeos-executable-architecture]]
-- [[index]]
-- [[log]]
-- [[coping-skill-application-and-imaginal-exposure]]
+- related: [[family-education-operating-model]], [[household-fund-layering-model]], [[hermes-lifeos-executable-architecture]], [[coping-skill-application-and-imaginal-exposure]]

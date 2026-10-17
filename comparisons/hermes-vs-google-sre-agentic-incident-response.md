@@ -67,11 +67,4 @@ aliases: [hermes-vs-google-sre]
 - depends_on: [[google-sre-gemini-cli-incident-response]]
 - depends_on: [[hermes-knowledge-architecture]]
 - depends_on: [[hermes-knowledge-base-operating-flow]]
-
-## Related
-- [[google-sre-gemini-cli-incident-response]]
-- [[hermes-knowledge-architecture]]
-- [[hermes-knowledge-base-operating-flow]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[wiki-ingestion-workflow]]

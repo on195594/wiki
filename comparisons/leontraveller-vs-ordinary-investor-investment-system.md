@@ -118,10 +118,4 @@ Leontraveller 更适合：
 ## Relations
 - depends_on: [[leontraveller-trading-and-investment-system]]
 - depends_on: [[ordinary-investor-investment-system]]
-
-## Related
-- [[ordinary-investor-investment-system]]
-- [[leontraveller-trading-and-investment-system]]
-- [[investment-risk-control-framework]]
-- [[index]]
-- [[log]]
+- related: [[investment-risk-control-framework]]

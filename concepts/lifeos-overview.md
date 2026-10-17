@@ -103,14 +103,4 @@ LifeOS 当前按以下层次运行：
 ## Relations
 - depends_on: [[companyos-to-lifeos-filesystem-philosophy]]
 - depends_on: [[hermes-lifeos-executable-architecture]]
-
-## Related
-- [[hermes-lifeos-executable-architecture]]
-- [[companyos-to-lifeos-filesystem-philosophy]]
-- [[family-education-operating-model]]
-- [[household-fund-layering-model]]
-- [[work-and-career-operating-model]]
-- [[personal-growth-operating-model]]
-- [[system-governance-operating-model]]
-- [[index]]
-- [[log]]
+- related: [[family-education-operating-model]], [[household-fund-layering-model]], [[work-and-career-operating-model]], [[personal-growth-operating-model]], [[system-governance-operating-model]]

@@ -244,13 +244,4 @@ Anti-boundary-crossing summary:
 - depends_on: [[hermes-knowledge-architecture]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
 - depends_on: [[hermes-layer-routing-edge-cases]]
-
-## Related
-- [[hermes-lifeos-layer-boundary-contract]]
-- [[companyos-to-lifeos-filesystem-philosophy]]
-- [[hermes-knowledge-architecture]]
-- [[hermes-memory-skills-wiki-boundaries]]
-- [[hermes-layer-routing-edge-cases]]
-- [[hermes-knowledge-base-operating-flow]]
-- [[index]]
-- [[log]]
+- related: [[hermes-lifeos-layer-boundary-contract]], [[hermes-knowledge-base-operating-flow]]

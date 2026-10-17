@@ -260,27 +260,10 @@ review_by: 2027-02-28
 
 `[[stateful-agent-environments-and-grounded-verification]]` narrows the Agent behavior layer for stateful computer-use workflows: evaluate environment behavior, task depth and authoritative outcome verification together, then separate model, environment, task and verifier failures. It does not make synthetic worlds, RL or database graders a production default.
 
+## Relations
+
+- related: [[agent-harness-search-regularization]], [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]], [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]], [[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]], [[kdnuggets-llm-latency-inference-cost-2026-07-18]], [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[agent-research-evidence-gate]], [[stateful-agent-environments-and-grounded-verification]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-development-lifecycle]], [[agent-orchestration-production-tradeoffs]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[ai-agent-tool-selection-architecture]], [[hermes-ai-workflow-formalization-principles]], [[deterministic-analytics-llm-reasoning-boundary]]
+
 ## Related
+
 - [[agent-harness-search-regularization]] — RRSI 补充自我演化期间的候选准入视角：在冻结的评测条件下，同时观察未见任务迁移、基线方差和 token 成本；其来源特定门槛不成为本页的生产默认阈值。
-- [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]]
-- [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]]
-- [[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]]
-- [[kdnuggets-llm-latency-inference-cost-2026-07-18]]
-- [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]]
-- [[agent-evaluation-rubric-calibration]]
-- [[production-agent-evaluation-baselines]]
-- [[agent-research-evidence-gate]]
-- [[stateful-agent-environments-and-grounded-verification]]
-- [[agent-self-validation-loops]]
-- [[agent-closed-loop-learning-from-corrections-to-rules]]
-- [[agent-development-lifecycle]]
-- [[agent-orchestration-production-tradeoffs]]
-- [[llm-summary-identification-step]]
-- [[typed-ai-agent-boundaries]]
-- [[ai-agent-document-fidelity-risk]]
-- [[constrained-toolbox-evaluator-loop]]
-- [[ai-agent-tool-selection-architecture]]
-- [[hermes-ai-workflow-formalization-principles]]
-- [[deterministic-analytics-llm-reasoning-boundary]]
-- [[index]]
-- [[log]]

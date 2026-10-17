@@ -186,14 +186,4 @@ Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-d
 - refines: [[hermes-knowledge-architecture]]
 - depends_on: [[wiki-ingestion-workflow]]
 - depends_on: [[hermes-wiki-page-writing-standards]]
-
-## Related
-- [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]]
-- [[hermes-context-layer-operating-rules]]
-- [[hermes-memory-governance-notes]]
-- [[hermes-knowledge-architecture]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
-- [[agent-skill-provider-governance-boundary]]
-- [[chat-to-agent-session-routing]]
+- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[hermes-context-layer-operating-rules]], [[hermes-memory-governance-notes]], [[agent-skill-provider-governance-boundary]], [[chat-to-agent-session-routing]]

@@ -139,11 +139,4 @@ review_by: 2027-02-28
 ## Relations
 - depends_on: [[hermes-layer-routing-decision-checklist]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
-
-## Related
-- [[hermes-layer-routing-decision-checklist]]
-- [[hermes-agent-workflow-layering-and-adoption-order]]
-- [[hermes-memory-skills-wiki-boundaries]]
-- [[hermes-retrieval-priority-and-answer-path]]
-- [[index]]
-- [[log]]
+- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-retrieval-priority-and-answer-path]]

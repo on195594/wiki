@@ -111,12 +111,4 @@ volatility: low
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[hermes-ai-workflow-formalization-principles]], [[hermes-knowledge-base-operating-flow]], [[lifeos-overview]]
-
-## Related
-- [[hermes-knowledge-architecture]]
-- [[hermes-ai-workflow-formalization-principles]]
-- [[hermes-knowledge-base-operating-flow]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[hermes-knowledge-architecture]], [[hermes-ai-workflow-formalization-principles]], [[hermes-knowledge-base-operating-flow]], [[lifeos-overview]], [[wiki-ingestion-workflow]]

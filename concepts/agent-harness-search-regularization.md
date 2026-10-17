@@ -41,10 +41,3 @@ aliases: [agent-harness-search-regularization, RRSI]
 ## Relations
 
 - related: [[production-ai-agent-evaluation-framework]], [[agent-experience-consolidation-loops]], [[agent-self-validation-loops]]
-
-## Related
-
-- [[agent-experience-consolidation-loops]]
-- [[production-ai-agent-evaluation-framework]]
-- [[agent-self-validation-loops]]
-- [[index]]

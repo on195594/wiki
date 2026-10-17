@@ -144,22 +144,4 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]]
 - depends_on: [[hermes-ai-workflow-formalization-principles]]
-
-## Related
-
-- [[dijkstra-ai-programming-formalization]]
-- [[hermes-ai-workflow-formalization-principles]]
-- [[ai-coding-agent-workflow-types]]
-- [[agent-context-engineering]]
-- [[ai-coding-assistant-context-budget-management]]
-- [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]
-- [[hermes-context-layer-operating-rules]]
-- [[hermes-layer-routing-decision-checklist]]
-- [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
-- [[ai-agent-document-fidelity-risk]]
-- [[constrained-toolbox-evaluator-loop]]
-- [[kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13]]
-- [[deterministic-analytics-llm-reasoning-boundary]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]]

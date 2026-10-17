@@ -114,14 +114,6 @@ review_by: 2026-12-31
 - 把 DELEGATE-52 数字硬编码成 AI Agent 阈值。
 - 只因这篇文章就修改 runtime、cron、MCP、gateway 或 active skill。
 
-## Related
+## Relations
 
-- [[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]]
-- [[production-ai-agent-evaluation-framework]]
-- [[agent-self-validation-loops]]
-- [[typed-ai-agent-boundaries]]
-- [[hermes-ai-workflow-formalization-principles]]
-- [[llm-summary-identification-step]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[typed-ai-agent-boundaries]], [[hermes-ai-workflow-formalization-principles]], [[llm-summary-identification-step]], [[wiki-ingestion-workflow]]

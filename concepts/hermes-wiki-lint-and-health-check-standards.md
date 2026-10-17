@@ -251,12 +251,4 @@ lint 的目标是尽早发现知识孤岛、结构漂移、标签失控、索引
 - refines: [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-knowledge-architecture]]
 - depends_on: [[wiki-ingestion-workflow]]
-
-## Related
-- [[hermes-knowledge-architecture]]
-- [[hermes-retrieval-priority-and-answer-path]]
-- [[hermes-wiki-page-writing-standards]]
-- [[wiki-ingestion-workflow]]
-- [[wiki-health-check-runbook]]
-- [[index]]
-- [[log]]
+- related: [[hermes-retrieval-priority-and-answer-path]], [[wiki-health-check-runbook]]

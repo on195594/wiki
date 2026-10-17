@@ -100,11 +100,4 @@ review_by: 2027-02-28
 - refines: [[hermes-knowledge-architecture]]
 - depends_on: [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-retrieval-priority-and-answer-path]]
-
-## Related
-- [[hermes-knowledge-architecture]]
-- [[hermes-knowledge-base-operating-flow]]
-- [[hermes-retrieval-priority-and-answer-path]]
-- [[hermes-wiki-page-writing-standards]]
-- [[index]]
-- [[log]]
+- related: [[hermes-knowledge-base-operating-flow]]

@@ -4,6 +4,12 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] restructure | Fold Related link lists into Relations
+- Merged the plain `## Related` / `## Related pages` / `## Links` link lists of 111 formal pages into `## Relations` as `related:` entries and removed the duplicated lists; links to `[[index]]` and `[[log]]` were dropped because they carry no relationship. Seven pages keep a short `## Related` list for links that carry an explanatory sentence, and those links are also listed in Relations.
+- Effect: every formal page now has `## Relations`; `_meta/catalog.json` relation edges went from 368 to 744, because 376 links that existed only in the old Related lists were invisible to the catalog. Markdown pages: +126 / −1074 lines.
+- Updated the rule in SCHEMA, [[hermes-wiki-page-writing-standards]] and `_meta/page-template.md`: Relations is the single page-level link list. This follows OKF v0.2 §6.1, where links are untyped edges and any explanation of a relationship belongs in prose.
+- Verification: `wiki_maintain.py --check` passed all six gates (health check 0 issues, including the minimum-wikilink and semantic-inbound-link checks).
+
 ## [2026-10-17] governance | Replace the look-alike OKF attestation field with a field mapping table
 - Removed the optional `attestation{generated_by, verified_by}` field from SCHEMA: it was described as following OKF v0.2, but its shape differs from OKF's native `generated{by, at}` / `verified[]{by, at}`, and no page or script used it.
 - Added a "Local fields vs OKF v0.2" table to SCHEMA as the single place that maps local fields (`status`, `sources`, `verified_at`, `review_by`, `## Relations`) to the OKF v0.2 SPEC; local field names are unchanged. [[okf-for-hermes-wiki-governance-assessment]] now points to the table and cites the SPEC; the [[index]] entry was updated to match.

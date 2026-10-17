@@ -162,16 +162,5 @@ XDA 原文讨论的是 Claude Code 的项目上下文文件，并转述 Boris Ch
 - refines: [[system-governance-operating-model]]
 - depends_on: [[hermes-context-layer-operating-rules]]
 - depends_on: [[agent-failure-closed-loop-evaluation]]
-- related: [[agent-context-engineering]]
+- related: [[agent-context-engineering]], [[hermes-context-engineering-design-priorities]]
 - related: [[ai-coding-assistant-context-budget-management]]
-
-## Related
-
-- [[system-governance-operating-model]]
-- [[hermes-context-layer-operating-rules]]
-- [[agent-context-engineering]]
-- [[ai-coding-assistant-context-budget-management]]
-- [[agent-failure-closed-loop-evaluation]]
-- [[hermes-context-engineering-design-priorities]]
-- [[index]]
-- [[log]]

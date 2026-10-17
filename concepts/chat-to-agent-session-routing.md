@@ -66,7 +66,3 @@ review_by: 2027-01-31
 - depends_on: [[hermes-context-layer-operating-rules]]
 - related: [[hermes-memory-skills-wiki-boundaries]]
 - related: [[subagent-orchestration-patterns]]
-
-## Links
-- [[index]]
-- [[log]]

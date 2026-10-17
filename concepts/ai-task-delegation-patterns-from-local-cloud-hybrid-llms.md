@@ -151,16 +151,4 @@ AI Agent 先给可用草稿 / plan / patch
 
 ## Relations
 
-- related: [[agent-autonomy-ladder-for-hermes-workflows]], [[subagent-orchestration-patterns]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]]
-
-## Related
-
-- [[towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02]]
-- [[agent-autonomy-ladder-for-hermes-workflows]]
-- [[subagent-orchestration-patterns]]
-- [[agent-context-engineering]]
-- [[ai-coding-assistant-context-budget-management]]
-- [[codex-agent-workflow-layering]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
+- related: [[agent-autonomy-ladder-for-hermes-workflows]], [[subagent-orchestration-patterns]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02]], [[codex-agent-workflow-layering]], [[wiki-ingestion-workflow]]

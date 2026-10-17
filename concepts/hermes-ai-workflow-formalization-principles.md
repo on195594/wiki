@@ -239,23 +239,4 @@ LangChain 的 `[[langchain-interpreter-skills-2026-05-30]]` 对本页的增量�
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[dijkstra-ai-programming-formalization]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[ai-assumption-challenger-before-execution]]
-
-## Related
-- [[aymannadeem-plan-mode-is-dead-2026-09-24]]
-- [[dijkstra-ai-programming-formalization]]
-- [[dijkstra-ewd667-vs-ai-programming-article]]
-- [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]]
-- [[llm-summary-identification-step]]
-- [[hermes-knowledge-architecture]]
-- [[hermes-knowledge-base-operating-flow]]
-- [[hermes-memory-skills-wiki-boundaries]]
-- [[hermes-retrieval-priority-and-answer-path]]
-- [[deterministic-analytics-llm-reasoning-boundary]]
-- [[langchain-interpreter-skills-2026-05-30]]
-- [[kdnuggets-specification-engineering-2026-08-10]]
-- [[towardsdatascience-right-problem-agentic-ai-2026-09-03]]
-- [[wiki-ingestion-workflow]]
-- [[index]]
-- [[log]]
-- [[hermes-python-engineering-capability-checklist]]
+- related: [[hermes-knowledge-architecture]], [[dijkstra-ai-programming-formalization]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[ai-assumption-challenger-before-execution]], [[aymannadeem-plan-mode-is-dead-2026-09-24]], [[dijkstra-ewd667-vs-ai-programming-article]], [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]], [[llm-summary-identification-step]], [[hermes-knowledge-base-operating-flow]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-retrieval-priority-and-answer-path]], [[deterministic-analytics-llm-reasoning-boundary]], [[langchain-interpreter-skills-2026-05-30]], [[kdnuggets-specification-engineering-2026-08-10]], [[towardsdatascience-right-problem-agentic-ai-2026-09-03]], [[wiki-ingestion-workflow]], [[hermes-python-engineering-capability-checklist]]

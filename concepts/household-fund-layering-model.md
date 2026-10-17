@@ -101,12 +101,4 @@ volatility: low
 - depends_on: [[investment-risk-control-framework]]
 - depends_on: [[money-as-tool-and-investment-vs-consumption-framework]]
 - depends_on: [[family-education-operating-model]]
-
-## Related
-- [[lifeos-overview]]
-- [[family-education-operating-model]]
-- [[investment-risk-control-framework]]
-- [[money-as-tool-and-investment-vs-consumption-framework]]
-- [[work-and-career-operating-model]]
-- [[index]]
-- [[log]]
+- related: [[lifeos-overview]], [[work-and-career-operating-model]]
