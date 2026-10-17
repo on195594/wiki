@@ -205,7 +205,7 @@ Add true multilevel analysis (I recommend R’s lme4) instead of the f-test appr
 Add an option for a one-tailed test.
 Model tasks that come in type clusters, requiring additional nesting layers.
 
-Now that you have the back story and the recipe, if you find it useful please drop me a note. nathanbos@gmail.com
+Now that you have the back story and the recipe, if you find it useful please drop me a note. [email removed]
 
 References
 

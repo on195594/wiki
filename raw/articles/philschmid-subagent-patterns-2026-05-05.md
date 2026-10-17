@@ -304,4 +304,4 @@ For patterns 2-4, `spawn_agent` always returns immediately and `wait_agent` coll
 
 theme
 
-[Mail](mailto:schmidphilipp1995@gmail.com)[Twitter](https://twitter.com/_philschmid)[LinkedIn](https://www.linkedin.com/in/philipp-schmid-a6a2bb196/)[GitHub](https://github.com/philschmid)
+[Mail](mailto:[email removed])[Twitter](https://twitter.com/_philschmid)[LinkedIn](https://www.linkedin.com/in/philipp-schmid-a6a2bb196/)[GitHub](https://github.com/philschmid)

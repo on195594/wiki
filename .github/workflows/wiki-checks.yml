@@ -2,6 +2,7 @@ name: Wiki checks
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
   schedule:
@@ -47,3 +48,27 @@ jobs:
             base=$(git hash-object -t tree /dev/null)
           fi
           git diff --check "$base" "$GITHUB_SHA"
+
+  # Network-dependent, so kept out of the deterministic job above and run only
+  # on the weekly schedule or by hand. Scope and tolerances: _meta/lychee.toml.
+  external-links:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache lychee results
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+          restore-keys: lychee-
+      - name: External link liveness (formal pages)
+        # lycheeverse/lychee-action v2.9.0, pinned by commit SHA
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8
+        with:
+          lycheeVersion: v0.24.2
+          jobSummary: true
+          args: >-
+            -c _meta/lychee.toml
+            'concepts/**/*.md' 'queries/**/*.md' 'comparisons/**/*.md' 'operations/**/*.md'

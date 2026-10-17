@@ -96,7 +96,7 @@ python3 _meta/scripts/wiki_raw_hashes.py --root "$WIKI_ROOT"
 
 ## External-link check
 
-`_meta/scripts/wiki_link_check.sh` uses `lychee` and the repository's `_meta/lychee.toml`. It needs network access and is separate from deterministic health checks. Install a supported `lychee` version through the operator's package or release-verification process; the repository does not claim a machine-local installation.
+`_meta/scripts/wiki_link_check.sh` uses `lychee` and the repository's `_meta/lychee.toml`. It needs network access and is separate from deterministic health checks. The weekly scheduled CI workflow also runs it as a separate `external-links` job (lychee pinned in `.github/workflows/wiki-checks.yml`); a red run means dead links, not a broken pipeline. Install a supported `lychee` version through the operator's package or release-verification process; the repository does not claim a machine-local installation.
 
 ```bash
 _meta/scripts/wiki_link_check.sh --root "$WIKI_ROOT"

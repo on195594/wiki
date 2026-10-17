@@ -4,6 +4,10 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01 were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] governance | Remove personal email addresses from raw captures; add weekly external-link CI job
+- Public-boundary exception: replaced the author contact email addresses in three raw article captures (InfoWorld, Phil Schmid, Towards Data Science) with `[email removed]`. Only these three manifest entries in `_meta/raw-source-hashes.json` changed; no article claim or citation depends on the addresses.
+- Added an `external-links` job to the wiki checks workflow, run only on the weekly schedule or manually, using the pinned `lycheeverse/lychee-action` (lychee v0.24.2) with the existing `_meta/lychee.toml` scope. The deterministic job is unchanged. A local run of the same scope found 0 dead links.
+
 ## [2026-10-17] governance | Trim log.md to recent entries
 - Removed the 24 entries dated 2026-09 (log.md was 54 KB); they remain in Git history. Did not add an in-tree archive because the health check deliberately treats `_meta/log-archive/` as a retired location.
 

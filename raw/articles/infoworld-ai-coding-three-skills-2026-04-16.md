@@ -120,5 +120,5 @@ AI cannot be a silver bullet because of software’s inherent complexity. Even i
 
 _—_
 
-[**_New Tech Forum_**](https://www.infoworld.com/blogs/new-tech-forum)_**provides a venue for technology leaders—including vendors and other outside contributors—to explore and discuss emerging enterprise technology in unprecedented depth and breadth. The selection is subjective, based on our pick of the technologies we believe to be important and of greatest interest to InfoWorld readers. InfoWorld does not accept marketing collateral for publication and reserves the right to edit all contributed content. Send all**_ _**inquiries to**_[**_doug\_dineley@foundryco.com_**](mailto:doug_dineley@foundryco.com)_**.**_
+[**_New Tech Forum_**](https://www.infoworld.com/blogs/new-tech-forum)_**provides a venue for technology leaders—including vendors and other outside contributors—to explore and discuss emerging enterprise technology in unprecedented depth and breadth. The selection is subjective, based on our pick of the technologies we believe to be important and of greatest interest to InfoWorld readers. InfoWorld does not accept marketing collateral for publication and reserves the right to edit all contributed content. Send all**_ _**inquiries to**_[**_[email removed]_**](mailto:[email removed])_**.**_
 
