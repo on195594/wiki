@@ -7,7 +7,7 @@ tags: [agent, ai-coding, workflow, optimization, evaluation]
 sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md]
 status: stable
 volatility: medium
-review_by: 2026-12-31
+review_by: 2027-01-03
 source_policy: source_backed
 aliases: [first-edit-economy, economical-search-and-edit, 少探索早验证]
 description: 把 VS Code GPT-5.5 prompt tuning 案例抽象成 coding agent 的“首次编辑经济性”原则：有锚点时少做宽泛探索，尽早形成可证伪假设、小步编辑并立即验证。

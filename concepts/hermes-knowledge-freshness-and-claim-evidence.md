@@ -9,7 +9,7 @@ status: stable
 description: 用现有来源、复查日期和推论标记改善 AI Agent Wiki 的知识新鲜度。
 aliases: [knowledge freshness, claim evidence, stale knowledge, agent-knowledge-freshness-and-claim-evidence]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-24
 ---
 
 # Wiki 知识新鲜度与断言证据绑定

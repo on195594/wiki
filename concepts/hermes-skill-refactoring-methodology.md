@@ -10,7 +10,7 @@ status: stable
 description: 总结 AI Agent skill 重构时从边界收敛、分层到回归验证的可移植方法。
 aliases: [skill-refactoring, agent-skill-refactoring-methodology]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-02-07
 ---
 
 # AI Agent Skill Refactoring Methodology

@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-17] governance | Spread page review dates across weekly slots
+- The 75 `medium` pages whose `review_by` was set earlier today to one of three placeholder dates (2026-12-31: 36 pages, 2027-01-31: 20, 2027-02-28: 19) now fall on 13 weekly Sundays from 2026-12-06 to 2027-02-28, five or six pages per week. Each page keeps its previous order (pages that were due earliest are still due earliest), and the last date is unchanged, so no review window extends past the original 2027-02-28. Because the weekly CI runs on Mondays, it sees one batch at a time instead of 36 P2 reminders in the same week.
+- Five dates set from actual review windows (three pages due 2026-11-11, plus `flutter` and `nimbus-docs`) were left unchanged. No content was re-verified, and `verified_at` / `updated` were not changed.
+- Verification: `wiki_maintain.py --check` passed all six gates.
+
 ## [2026-10-17] governance | Prune unused SCHEMA entries and align the type enum with the checker
 - Removed the formal-page `type` values `plan`, `closeout`, `validation-case` and `summary` from SCHEMA and from `ALLOWED_FORMAL_TYPES` in `wiki_health_check.py`; no formal page used them. A new unit test pins that a retired type is P1 `invalid_formal_type`; it fails against the previous checker and passes now.
 - Removed the retired "Reconciliation tags" paragraph (history stays in Git), merged Core navigation into Operating Rule, shortened the raw-hash convention (commands live in [[wiki-health-check-runbook]]), compressed the local `[!volatile]` check rules from five bullets to three, and moved the `sources` P2 note into the Sources section. No rule was loosened.

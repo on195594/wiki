@@ -9,7 +9,7 @@ status: stable
 description: 用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，避免从模型能力出发制造漂亮但不可用的自动化。
 aliases: [human-outcome-first-ai-agent-design, ai-automation-human-needs]
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-27
 ---
 
 # AI Agent Human Outcome Design Principle

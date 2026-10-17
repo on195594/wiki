@@ -9,7 +9,7 @@ status: stable
 description: 定义 AI Agent 长期知识系统的总体架构、层间关系与分层规则导航。
 aliases: [knowledge-architecture, hermes-wiki-architecture, agent-knowledge-architecture]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-24
 ---
 
 # Human and AI Agent Shared Knowledge Architecture

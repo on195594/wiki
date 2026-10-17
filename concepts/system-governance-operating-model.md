@@ -8,7 +8,7 @@ sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-archite
 status: stable
 description: 定义 LifeOS 和 AI Agent 系统治理中的层级边界、变更控制和长期维护模型。
 volatility: medium
-review_by: 2026-12-31
+review_by: 2027-01-10
 ---
 
 # System Governance Operating Model

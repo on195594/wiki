@@ -9,7 +9,7 @@ status: stable
 description: 规定 AI Agent LifeOS 各层之间的职责、准入和越界判断契约。
 aliases: [lifeos-layer-boundary, agent-lifeos-layer-boundary-contract]
 volatility: medium
-review_by: 2027-02-28
+review_by: 2027-02-07
 ---
 
 # AI Agent LifeOS Layer Boundary Contract

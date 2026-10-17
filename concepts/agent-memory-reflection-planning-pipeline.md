@@ -9,7 +9,7 @@ status: stable
 description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-20
 ---
 
 # Agent Memory–Reflection–Planning Pipeline

@@ -9,7 +9,7 @@ status: stable
 description: 定义 AI Agent wiki 健康检查要回答的问题、自动检查与人工审查的分工、严重性原则和通过标准；具体检查码与命令见 runbook 和脚本。
 aliases: [wiki-health-check, wiki-lint-standards, agent-wiki-lint-and-health-check-standards]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-02-07
 ---
 
 # Wiki Lint and Health Check Standards

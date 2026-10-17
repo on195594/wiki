@@ -8,7 +8,7 @@ sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026
 status: stable
 description: 说明 Agent 静态上下文面的设计：system prompt 作为操作简报、窄工具面与反向边界、可见不等于可用的级联，以及以行为为主的示例。
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-06
 ---
 
 # Agent Context: System Prompt, Tools and Examples

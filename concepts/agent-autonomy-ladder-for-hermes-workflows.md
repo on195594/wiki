@@ -9,7 +9,7 @@ status: stable
 description: 用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 AI Agent 任务应给 agent 多少自主权。
 aliases: [agent-autonomy-ladder, hermes-agent-autonomy, agent-autonomy-ladder-for-agent-workflows]
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-06
 ---
 
 # Agent Autonomy Ladder for AI Agent Workflows

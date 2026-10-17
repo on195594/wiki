@@ -9,7 +9,7 @@ status: stable
 description: 定义 AI Agent wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。
 aliases: [page-writing-standards, wiki-writing-standards, agent-wiki-page-writing-standards]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-02-07
 ---
 
 # Wiki Page Writing Standards

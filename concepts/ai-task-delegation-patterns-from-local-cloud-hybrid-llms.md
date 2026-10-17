@@ -7,7 +7,7 @@ tags: [agent, orchestration, subagent, decision, workflow, llm]
 sources: [raw/articles/towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02.md, concepts/agent-autonomy-ladder-for-hermes-workflows.md, concepts/subagent-orchestration-patterns.md, concepts/agent-context-engineering.md]
 status: stable
 volatility: medium
-review_by: 2026-12-31
+review_by: 2027-01-03
 description: 将端云混合 LLM 的 5 种模式抽象为 AI Agent PM/subagent/外部 AI 调度模式：任务包、计划落地、困难升级、草稿精修、交叉审查。
 aliases: [ai-delegation-patterns, local-cloud-llm-delegation-patterns, pm-agent-delegation-patterns]
 ---

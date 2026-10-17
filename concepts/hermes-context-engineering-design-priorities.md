@@ -9,7 +9,7 @@ status: stable
 description: 定义 AI Agent 上下文工程的预算控制、排序、压缩和历史衰减优先级。
 aliases: [hermes-context-engineering, agent-context-engineering-design-priorities]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-24
 ---
 
 # AI Agent Context Engineering Design Priorities

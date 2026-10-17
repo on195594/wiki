@@ -50,7 +50,7 @@
         "hermes-vs-google-sre"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -113,7 +113,7 @@
         "agent-autonomy-ladder-for-agent-workflows"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -150,7 +150,7 @@
         "closed-loop-learning"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -184,7 +184,7 @@
         "context-engineering-for-agents"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -227,7 +227,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -264,7 +264,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-06",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -306,7 +306,7 @@
         "agent-lifecycle"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -349,7 +349,7 @@
         "evaluator-calibration"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-10-10",
       "relations": {
@@ -379,7 +379,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -418,7 +418,7 @@
         "failure-loop-evaluation"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -448,7 +448,7 @@
         "RRSI"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-10-01",
       "relations": {
@@ -476,7 +476,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-13",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -509,7 +509,7 @@
         "memory-reflection-planning"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -548,7 +548,7 @@
         "agent-orchestration-tradeoffs"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -588,7 +588,7 @@
         "evidence-gated-research"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -620,7 +620,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-10-02",
       "relations": {
@@ -655,7 +655,7 @@
         "self-validation-loop"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -691,7 +691,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-20",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -722,7 +722,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -754,7 +754,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -791,7 +791,7 @@
         "agentic-programming"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -832,7 +832,7 @@
         "document-fidelity-risk"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-10-09",
       "relations": {
@@ -866,7 +866,7 @@
         "ai-automation-human-needs"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -900,7 +900,7 @@
         "tool-routing-for-ai-agents"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -939,7 +939,7 @@
         "accomplishment-hallucination"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -971,7 +971,7 @@
         "claude-creative-sounding-board"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1004,7 +1004,7 @@
         "coding-agent-workflow-types"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2026-12-27",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1035,7 +1035,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-03",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1071,7 +1071,7 @@
         "pm-agent-delegation-patterns"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-03",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1132,7 +1132,7 @@
         "chat-to-agent-routing"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-10-08",
       "relations": {
@@ -1253,7 +1253,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1318,7 +1318,7 @@
         "deterministic-llm-boundary"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-17",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1472,7 +1472,7 @@
         "少探索早验证"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-03",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1505,7 +1505,7 @@
         "sre-agentic-incident-response"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-03",
       "verified_at": null,
       "updated": "2026-04-16",
       "relations": {
@@ -1534,7 +1534,7 @@
         "agent-active-surface-lifecycle-governance"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1571,7 +1571,7 @@
         "agent-workflow-layering-and-adoption-order"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-03",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1607,7 +1607,7 @@
         "agent-ai-workflow-formalization-principles"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1651,7 +1651,7 @@
         "agent-context-engineering-design-priorities"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1685,7 +1685,7 @@
         "agent-context-layer-operating-rules"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1724,7 +1724,7 @@
         "agent-knowledge-architecture"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {
@@ -1756,7 +1756,7 @@
         "agent-knowledge-base-operating-flow"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -1794,7 +1794,7 @@
         "agent-knowledge-freshness-and-claim-evidence"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-01-24",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -1899,7 +1899,7 @@
         "agent-lifeos-layer-boundary-contract"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2071,7 +2071,7 @@
         "agent-retrieval-priority-and-answer-path"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2103,7 +2103,7 @@
         "agent-skill-refactoring-methodology"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2136,7 +2136,7 @@
         "agent-wiki-lint-and-health-check-standards"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -2172,7 +2172,7 @@
         "agent-wiki-page-writing-standards"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-10-17",
       "relations": {
@@ -2239,7 +2239,7 @@
         "human-machine-mathematical-discovery"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-07",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2363,7 +2363,7 @@
         "context-engineering-layer"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2391,7 +2391,7 @@
         "llm-knowledge-map"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {
@@ -2422,7 +2422,7 @@
         "summary-identification"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2450,7 +2450,7 @@
         "local-first-sync-recoverable-transactions"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2486,7 +2486,7 @@
         "loop-engineering-agent-workflow"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-09-30",
       "relations": {
@@ -2546,7 +2546,7 @@
         "correlated-agent-failures"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2575,7 +2575,7 @@
         "ordinary-investor-system"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-14",
       "verified_at": null,
       "updated": "2026-04-16",
       "relations": {
@@ -2635,7 +2635,7 @@
         "llm-latency-cost-baselines"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-10-02",
       "relations": {
@@ -2668,7 +2668,7 @@
         "agent-evaluation-framework"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-10-16",
       "relations": {
@@ -2739,7 +2739,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2767,7 +2767,7 @@
         "pseudo-replication-in-ai-evaluation"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -2798,7 +2798,7 @@
         "repo-code-intelligence"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3021,7 +3021,7 @@
         "grounded-agent-environment"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3054,7 +3054,7 @@
         "subagent-patterns"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3091,7 +3091,7 @@
       ],
       "aliases": [],
       "volatility": "medium",
-      "review_by": "2026-12-31",
+      "review_by": "2027-01-10",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3128,7 +3128,7 @@
         "typed-agent-boundaries"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {
@@ -3169,7 +3169,7 @@
         "knowledge-ingestion"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
+      "review_by": "2027-02-21",
       "verified_at": null,
       "updated": "2026-09-29",
       "relations": {

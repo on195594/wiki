@@ -9,7 +9,7 @@ status: stable
 description: 说明如何把可复发 Agent 失败转化为 evaluator、fixture 或防回归工件。
 aliases: [failure-loop-evaluation]
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-13
 ---
 
 # Agent 失败闭环评估

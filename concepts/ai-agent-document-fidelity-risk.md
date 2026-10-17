@@ -9,7 +9,7 @@ status: stable
 description: 说明 AI Agent 处理文档时的保真风险以及需要的证据、验证和人工边界。
 aliases: [document-fidelity-risk]
 volatility: medium
-review_by: 2026-12-31
+review_by: 2026-12-27
 ---
 
 # AI Agent Document Fidelity Risk

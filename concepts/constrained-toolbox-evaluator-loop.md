@@ -8,7 +8,7 @@ sources: [raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.
 status: stable
 description: 定义受限工具箱配合 evaluator 的多 Agent 闭环，用于降低高风险任务的错误扩散。
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-17
 ---
 
 # Constrained Toolbox Evaluator Loop

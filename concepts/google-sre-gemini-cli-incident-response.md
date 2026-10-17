@@ -7,7 +7,7 @@ tags: [agent, mcp, workflow, tool, research]
 sources: [raw/articles/google-sre-gemini-cli-outages-2026-01-22.md]
 status: stable
 volatility: medium
-review_by: 2026-12-31
+review_by: 2027-01-03
 description: 总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、工具约束和生产协作模式。
 aliases: [gemini-cli-incident-response, sre-agentic-incident-response]
 ---

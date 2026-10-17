@@ -9,7 +9,7 @@ status: stable
 description: 区分概率性语义判断与确定性分析，将有界分类结果复用、复核，不把结构化标签当作已验证事实。
 aliases: [deterministic-llm-boundary]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-17
 ---
 
 # Deterministic Analytics and LLM Reasoning Boundary

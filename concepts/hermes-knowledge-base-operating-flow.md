@@ -9,7 +9,7 @@ status: stable
 description: 定义人类与 AI Agent 共享知识库从摄取、分类、编译、检索到维护的端到端运行流程。
 aliases: [knowledge-base-operating-flow, agent-knowledge-base-operating-flow]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-01-24
 ---
 
 # Shared Wiki Operating Flow
