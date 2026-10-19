@@ -235,6 +235,28 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("broken-markdown", body="# Broken markdown\n\n" + "context " * 20 + "[missing](missing.md)\n")
         self.assertIn("broken_markdown_link", self.issue_codes("P1"))
 
+    def test_markdown_index_links_cover_pages_and_inbound(self) -> None:
+        self.add_formal("standard-link")
+        index = self.root / "index.md"
+        index.write_text(index.read_text().replace("[[standard-link]]", "[Standard link](concepts/standard-link.md#summary)"))
+        report = wiki_health_check.build_report(self.root)
+        self.assertNotIn("unexpected_unindexed_formal_page", {i["code"] for i in report["issues"]["P1"]})
+        self.assertIn("index_only_inbound", {i["code"] for i in report["issues"]["P2"]})
+        self.add_formal("reader", body="# Reader\n\n## Summary\n" + "context " * 20 + "[Standard link](standard-link.md)")
+        report = wiki_health_check.build_report(self.root)
+        self.assertFalse(any(i["path"] == "concepts/standard-link.md" and i["code"] in {"index_only_inbound", "orphan_formal_page"} for i in report["issues"]["P2"]))
+
+    def test_markdown_index_does_not_count_examples_or_external_links(self) -> None:
+        self.add_formal("unindexed")
+        index = self.root / "index.md"
+        index.write_text("# Index\n[External](https://example.org/concepts/unindexed.md)\n```markdown\n[Example](concepts/unindexed.md)\n```\n")
+        self.assertIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+
+    def test_broken_markdown_index_target_is_p0(self) -> None:
+        index = self.root / "index.md"
+        index.write_text(index.read_text() + "\n[Missing page](concepts/missing.md)\n")
+        self.assertIn("broken_index_target", self.issue_codes("P0"))
+
     def test_reports_index_only_inbound(self) -> None:
         self.add_formal("index-only")
         log = self.root / "log.md"

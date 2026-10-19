@@ -38,6 +38,7 @@ fi
 cd "$ROOT"
 
 exec lychee -c _meta/lychee.toml "${LYCHEE_ARGS[@]}" \
+  'entities/**/*.md' \
   'concepts/**/*.md' \
   'queries/**/*.md' \
   'comparisons/**/*.md' \

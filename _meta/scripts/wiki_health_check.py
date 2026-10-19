@@ -579,7 +579,10 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
             except OSError:
                 inside = False
             if inside and not candidate.exists():
-                add_issue(issues, "P1", "broken_markdown_link", r, "Broken relative Markdown link", target=url)
+                severity, code = ("P0", "broken_index_target") if r == "index.md" else ("P1", "broken_markdown_link")
+                add_issue(issues, severity, code, r, "Broken relative Markdown link", target=url)
+            if candidate in formal_paths:
+                inbound[candidate].add(p)
 
     for target_path, sources in inbound.items():
         target_rel = rel(root, target_path)
@@ -593,7 +596,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
         if root / "index.md" in sources:
             add_issue(issues, "P2", "index_only_inbound", target_rel, "Formal page is linked only from administrative files")
         else:
-            add_issue(issues, "P2", "orphan_formal_page", target_rel, "Formal page has no inbound wikilinks from another formal page")
+            add_issue(issues, "P2", "orphan_formal_page", target_rel, "Formal page has no inbound links from another formal page")
 
     index_path = root / "index.md"
     index_links: set[str] = set()
@@ -612,7 +615,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
     for p in formal:
         r = rel(root, p)
         no_ext = r[:-3] if r.endswith(".md") else r
-        if p.stem in index_links or no_ext in index_links:
+        if p.stem in index_links or no_ext in index_links or index_path in inbound[p]:
             continue
         text = read_text(p)
         status_match = re.search(r"^status:\s*(.+)$", text, flags=re.M)

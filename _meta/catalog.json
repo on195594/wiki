@@ -1164,7 +1164,7 @@
       "volatility": "high",
       "review_by": "2026-11-11",
       "verified_at": null,
-      "updated": "2026-10-10",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "ai-coding-assistant-context-budget-management",
@@ -1198,7 +1198,7 @@
       "volatility": "high",
       "review_by": "2026-11-11",
       "verified_at": null,
-      "updated": "2026-10-10",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2174,7 +2174,7 @@
       "volatility": "medium",
       "review_by": "2027-02-07",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3235,7 +3235,7 @@
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-09-21",
-      "updated": "2026-10-13",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "software-engineering-laws-architecture",
@@ -3291,7 +3291,7 @@
       "volatility": "medium",
       "review_by": "2027-02-28",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"

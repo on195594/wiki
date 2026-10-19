@@ -74,4 +74,4 @@ jobs:
           jobSummary: true
           args: >-
             -c _meta/lychee.toml
-            'concepts/**/*.md' 'queries/**/*.md' 'comparisons/**/*.md' 'operations/**/*.md'
+            'entities/**/*.md' 'concepts/**/*.md' 'queries/**/*.md' 'comparisons/**/*.md' 'operations/**/*.md'

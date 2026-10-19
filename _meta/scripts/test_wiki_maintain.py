@@ -4,10 +4,11 @@ import io
 import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from wiki_maintain import fix_all, install_git_hook, report_freshness
+from wiki_maintain import check_all, fix_all, install_git_hook, report_freshness
 
 
 class WikiMaintainTests(unittest.TestCase):
@@ -90,6 +91,55 @@ Text
         with patch("sys.stdout", new_callable=io.StringIO), patch("sys.stderr", new_callable=io.StringIO):
             success = fix_all(self.root)
         self.assertFalse(success)
+
+    def test_check_all_preserves_health_severity_contract(self) -> None:
+        for severity in ("P0", "P1", "P2"):
+            with self.subTest(severity=severity):
+                issues = {key: [] for key in ("P0", "P1", "P2")}
+                issues[severity] = [{"code": "test-finding", "path": "concepts/test.md", "message": "Review needed"}]
+                with (
+                    patch("wiki_maintain.run_unit_tests", return_value=True),
+                    patch("wiki_maintain.check_catalog", return_value=True),
+                    patch("wiki_maintain.build_health_report", return_value={"issues": issues, "pass": severity == "P2"}),
+                    patch("wiki_maintain.build_tag_report", return_value={}),
+                    patch("wiki_maintain.build_public_content_report", return_value={"candidates": [{"path": "concepts/test.md"}]}),
+                    patch("wiki_maintain.check_git_diff", return_value=True),
+                    patch("sys.stdout", new_callable=io.StringIO) as out,
+                    patch("sys.stderr", new_callable=io.StringIO) as err,
+                ):
+                    self.assertEqual(check_all(self.root), severity == "P2")
+                self.assertIn("test-finding", out.getvalue() + err.getvalue())
+                self.assertIn("1 public-content candidates need review", out.getvalue())
+
+    def test_freshness_includes_local_claims_without_page_deadline(self) -> None:
+        path = self.root / "concepts" / "claims.md"
+        path.parent.mkdir()
+
+        def block(due: str) -> str:
+            return (
+                "> [!volatile]\n> verified_at: 2026-10-01\n"
+                f"> review_by: {due}\n> source: docs:test\n>\n> Scoped claim.\n\n"
+            )
+
+        path.write_text(
+            "---\ntitle: Claims\nvolatility: low\n---\n# Claims\n"
+            + block("2026-10-18") + block("2026-10-19")
+            + block("2026-11-18") + block("2026-11-19")
+            + "```markdown\n" + block("2026-10-18") + "```\n",
+            encoding="utf-8",
+        )
+        with patch("wiki_maintain.datetime") as clock, patch("sys.stdout", new_callable=io.StringIO) as out:
+            clock.now.return_value = datetime(2026, 10, 19, tzinfo=timezone.utc)
+            items = report_freshness(self.root, days=30, fmt="json")
+        self.assertEqual([(i["block"], i["status"], i["days_left"]) for i in items], [
+            (1, "expired", -1), (2, "expiring_soon", 0), (3, "expiring_soon", 30),
+        ])
+        self.assertEqual(json.loads(out.getvalue())["items"], items)
+        self.assertTrue(all(i["source"] == "docs:test" for i in items))
+        with patch("wiki_maintain.datetime") as clock, patch("sys.stdout", new_callable=io.StringIO) as out:
+            clock.now.return_value = datetime(2026, 10, 19, tzinfo=timezone.utc)
+            report_freshness(self.root)
+        self.assertIn("concepts/claims.md (block 1)", out.getvalue())
 
     def test_fix_all_structural_invalid_manifest_rejected(self) -> None:
         raw_dir = self.root / "raw"

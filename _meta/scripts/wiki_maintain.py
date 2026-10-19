@@ -21,6 +21,7 @@ from wiki_health_check import (
     is_live_file,
     parse_review_by,
     rel,
+    volatile_blocks,
 )
 from wiki_public_content_check import build_report as build_public_content_report
 from wiki_raw_hashes import MANIFEST as RAW_HASH_MANIFEST, build_manifest as build_raw_manifest
@@ -87,10 +88,11 @@ def check_all(root: Path, is_staged: bool = False) -> bool:
     p1 = health["issues"]["P1"]
     p2 = health["issues"]["P2"]
     if p0 or p1 or p2:
-        print(f"FAIL: Health check found issues: P0={len(p0)}, P1={len(p1)}, P2={len(p2)}", file=sys.stderr)
+        level = "WARN" if health["pass"] else "FAIL"
+        print(f"{level}: Health check found issues: P0={len(p0)}, P1={len(p1)}, P2={len(p2)}", file=sys.stderr)
         for issue in p0 + p1 + p2:
             print(f"  - [{issue.get('code')}] {issue.get('path')}: {issue.get('message')}", file=sys.stderr)
-        all_ok = False
+        all_ok = all_ok and health["pass"]
     else:
         print("PASS: Health check passed with 0 issues.")
 
@@ -113,6 +115,8 @@ def check_all(root: Path, is_staged: bool = False) -> bool:
         all_ok = False
     else:
         print("PASS: Public boundary check passed (0 violations).")
+    if public_rep.get("candidates"):
+        print(f"WARN: {len(public_rep['candidates'])} public-content candidates need review; run wiki_public_content_check.py for details.")
 
     # 6. Git diff check
     if not is_staged:
@@ -126,7 +130,7 @@ def check_all(root: Path, is_staged: bool = False) -> bool:
 
     print("========================================")
     if all_ok:
-        print("ALL CHECKS PASSED: Wiki is fully healthy and synchronized.")
+        print("ALL REQUIRED CHECKS PASSED: Any warnings above still need review; structural checks do not verify facts.")
     else:
         print("CHECKS FAILED: Please fix reported issues above.", file=sys.stderr)
     return all_ok
@@ -247,37 +251,32 @@ def report_freshness(root: Path, days: int = 30, fmt: str = "text") -> list[dict
         fm = extract_frontmatter(text) or ""
         rev_val = frontmatter_value(fm, "review_by")
         vol_val = frontmatter_value(fm, "volatility")
-        if not rev_val and vol_val != "high":
-            continue
-
-        rev_date = parse_review_by(rev_val) if rev_val else None
         p_rel = rel(root, path)
-
-        if rev_date is None and vol_val == "high":
-            items.append({
-                "path": p_rel,
-                "status": "missing_review_by",
-                "volatility": vol_val,
-                "review_by": None,
-                "days_left": None,
-            })
-        elif rev_date is not None:
-            days_left = (rev_date - today).days
-            if days_left < 0:
+        review_points = [(rev_val, {})]
+        for block in volatile_blocks(text):
+            if not block["error"]:
+                review_points.append((block["fields"]["review_by"], {
+                    "block": block["block"], "source": block["fields"]["source"],
+                }))
+        for due, scope in review_points:
+            rev_date = parse_review_by(due) if due else None
+            if rev_date is None and vol_val == "high" and not scope:
                 items.append({
                     "path": p_rel,
-                    "status": "expired",
+                    "status": "missing_review_by",
                     "volatility": vol_val,
-                    "review_by": rev_date.isoformat(),
-                    "days_left": days_left,
+                    "review_by": None,
+                    "days_left": None,
                 })
-            elif rev_date <= horizon:
+            elif rev_date is not None and rev_date <= horizon:
+                days_left = (rev_date - today).days
                 items.append({
                     "path": p_rel,
-                    "status": "expiring_soon",
+                    "status": "expired" if days_left < 0 else "expiring_soon",
                     "volatility": vol_val,
                     "review_by": rev_date.isoformat(),
                     "days_left": days_left,
+                    **scope,
                 })
 
     if fmt == "json":
@@ -287,16 +286,17 @@ def report_freshness(root: Path, days: int = 30, fmt: str = "text") -> list[dict
 
     print(f"=== Wiki Freshness Report (Horizon: {days} days, Today: {today.isoformat()}) ===")
     if not items:
-        print("All pages with review_by are within safe date windows.")
+        print("No page or supported local claim deadlines within the scan window. Run --check for metadata validity; this scan does not verify facts.")
     else:
         for it in items:
             stat = it["status"]
+            location = it["path"] + (f" (block {it['block']})" if "block" in it else "")
             if stat == "expired":
-                print(f"[EXPIRED] {it['path']}: expired {abs(it['days_left'])} days ago (due {it['review_by']})")
+                print(f"[EXPIRED] {location}: expired {abs(it['days_left'])} days ago (due {it['review_by']})")
             elif stat == "expiring_soon":
-                print(f"[EXPIRING SOON] {it['path']}: {it['days_left']} days left (due {it['review_by']})")
+                print(f"[EXPIRING SOON] {location}: {it['days_left']} days left (due {it['review_by']})")
             elif stat == "missing_review_by":
-                print(f"[MISSING REVIEW_BY] {it['path']}: high volatility without review_by")
+                print(f"[MISSING REVIEW_BY] {location}: high volatility without review_by")
     return items
 
 

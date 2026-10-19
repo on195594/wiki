@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-10-17
+updated: 2026-10-19
 type: meta
 status: current
 ---
@@ -35,7 +35,7 @@ python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --check
 # 一键自动同步清册与原始素材哈希：
 python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --fix
 
-# 知识时效与到期预警扫描（默认未来 30 天）：
+# 页面与局部断言的到期预警扫描（默认未来 30 天）：
 python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --freshness --days 30
 
 # 安装本地 Git pre-commit 钩子：
@@ -52,6 +52,10 @@ git diff --check
 ```
 
 `wiki_health_check.py` and `wiki_tag_audit.py` are read-only. `wiki_public_content_check.py` scans every repository file outside `.git` and `__pycache__`; it does not exempt code blocks, `raw/` or `_meta/`. Local `git diff --check` covers uncommitted changes; CI separately checks the event commit range so a clean checkout cannot hide whitespace errors already committed.
+
+`wiki_maintain.py --check` preserves the health check's severity contract: P0/P1 fail, while P2 findings remain visible warnings. Public-content candidates are also reported for review without failing the check by themselves. A passing command establishes only the checks' coverage, not factual accuracy or completion of candidate review.
+
+`--freshness` scans both page-level `review_by` and supported local `[!volatile]` deadlines, including claims on pages without a page-level deadline. Local results add `block` (one-based callout number, excluding code examples) and `source` in JSON; text output shows the block number. Page-level result fields remain unchanged. The due date is valid through that UTC day. The scan reports deadlines only; use `--check` for malformed metadata and review sources to establish factual currency.
 
 ## Local `[!volatile]` result contract
 
@@ -96,7 +100,9 @@ python3 _meta/scripts/wiki_raw_hashes.py --root "$WIKI_ROOT"
 
 ## External-link check
 
-`_meta/scripts/wiki_link_check.sh` uses `lychee` and the repository's `_meta/lychee.toml`. It needs network access and is separate from deterministic health checks. The weekly scheduled CI workflow also runs it as a separate `external-links` job (lychee pinned in `.github/workflows/wiki-checks.yml`); a red run means dead links, not a broken pipeline. Install a supported `lychee` version through the operator's package or release-verification process; the repository does not claim a machine-local installation.
+`_meta/scripts/wiki_link_check.sh` uses `lychee` and the repository's `_meta/lychee.toml`. It needs network access and is separate from deterministic health checks. The weekly scheduled CI workflow also runs it as a separate `external-links` job (lychee pinned in `.github/workflows/wiki-checks.yml`); inspect failed requests to distinguish dead links from network restrictions, rate limits or temporary service failures. The current configuration accepts HTTP 429 to avoid blocking on rate limits, so a passing run does not establish every URL's liveness. Install a supported `lychee` version through the operator's package or release-verification process; the repository does not claim a machine-local installation.
+
+Both entrypoints cover `entities/`, `concepts/`, `queries/`, `comparisons/` and `operations/`.
 
 ```bash
 _meta/scripts/wiki_link_check.sh --root "$WIKI_ROOT"
@@ -128,6 +134,8 @@ For the Python checks:
 ## Health-check scope
 
 The structural health check covers core files, frontmatter, type/status/tag enums, wikilinks, relative Markdown links, index coverage, semantic inbound links, log order, raw references, raw hashes, duplicate-page signals, freshness metadata and Relations syntax. It does not replace content review for public suitability, source quality, contradictions or current product behavior.
+
+Index coverage and semantic inbound links recognize both wikilinks and standard relative Markdown links. Catalog relations still come only from explicit `## Relations`; ordinary navigation links are not inferred as typed relations.
 
 ## Content-change readback
 
