@@ -131,7 +131,5 @@ Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Mark
 ## Relations
 
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-wiki-page-writing-standards]]
-- depends_on: [[hermes-wiki-lint-and-health-check-standards]]
-- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]], [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]]
 - related: [[agent-context-engineering]], [[progressive-knowledge-system-growth]]

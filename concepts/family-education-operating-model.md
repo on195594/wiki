@@ -1,7 +1,7 @@
 ---
 title: Family Education Operating Model
 created: 2026-04-21
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [lifeos, operating-model, decision]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md]
@@ -96,6 +96,5 @@ volatility: low
 - 家庭教育问题能与财务、职业、成长三个域联动判断
 
 ## Relations
-- depends_on: [[lifeos-overview]]
-- depends_on: [[hermes-lifeos-executable-architecture]]
+- depends_on: [[lifeos-overview]], [[hermes-lifeos-executable-architecture]]
 - related: [[household-fund-layering-model]], [[work-and-career-operating-model]], [[personal-growth-operating-model]]

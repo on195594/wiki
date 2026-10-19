@@ -1,7 +1,7 @@
 ---
 title: AI Agent LifeOS Layer Boundary Contract
 created: 2026-05-18
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, lifeos, architecture, workflow, governance]
 sources: [concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-knowledge-architecture.md]
@@ -187,9 +187,5 @@ Example: a weekly school-information review may have a domain model in `wiki`, a
 This page should remain the LifeOS architecture contract, especially around `profile` as runtime-state isolation. If it drifts into a generic routing checklist, merge useful pieces back into adjacent pages instead of keeping a redundant page.
 
 ## Relations
-- depends_on: [[hermes-lifeos-executable-architecture]]
-- depends_on: [[hermes-context-layer-operating-rules]]
-- depends_on: [[hermes-layer-routing-decision-checklist]]
-- depends_on: [[hermes-memory-skills-wiki-boundaries]]
-- depends_on: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-lifeos-executable-architecture]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]]
 - related: [[hermes-knowledge-base-operating-flow]]

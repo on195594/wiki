@@ -1,7 +1,7 @@
 ---
 title: Leontraveller vs Ordinary Investor Investment System
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-10-19
 type: comparison
 tags: [investment, comparison, trading, position-sizing]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
@@ -116,6 +116,5 @@ Leontraveller 更适合：
 - Leontraveller 解决“主动交易时怎么少犯大错”
 
 ## Relations
-- depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[ordinary-investor-investment-system]]
+- depends_on: [[leontraveller-trading-and-investment-system]], [[ordinary-investor-investment-system]]
 - related: [[investment-risk-control-framework]]

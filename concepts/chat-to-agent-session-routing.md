@@ -1,7 +1,7 @@
 ---
 title: Chat to Agent Session Routing
 created: 2026-10-08
-updated: 2026-10-08
+updated: 2026-10-19
 type: concept
 tags: [agent, architecture, workflow, context-engineering]
 sources: []
@@ -64,5 +64,4 @@ review_by: 2027-01-17
 
 ## Relations
 - depends_on: [[hermes-context-layer-operating-rules]]
-- related: [[hermes-memory-skills-wiki-boundaries]]
-- related: [[subagent-orchestration-patterns]]
+- related: [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]]

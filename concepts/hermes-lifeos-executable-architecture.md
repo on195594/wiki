@@ -1,7 +1,7 @@
 ---
 title: AI Agent LifeOS Executable Architecture
 created: 2026-04-21
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, lifeos, architecture, workflow, governance]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -240,8 +240,5 @@ Anti-boundary-crossing summary:
 - skill 变成概念散文
 
 ## Relations
-- depends_on: [[companyos-to-lifeos-filesystem-philosophy]]
-- depends_on: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-memory-skills-wiki-boundaries]]
-- depends_on: [[hermes-layer-routing-edge-cases]]
+- depends_on: [[companyos-to-lifeos-filesystem-philosophy]], [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-edge-cases]]
 - related: [[hermes-lifeos-layer-boundary-contract]], [[hermes-knowledge-base-operating-flow]]

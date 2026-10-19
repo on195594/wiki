@@ -1,13 +1,12 @@
 ---
 title: Software Engineering Laws Decision Map
 created: 2026-08-10
-updated: 2026-09-29
+updated: 2026-10-19
 type: query
 tags: [research, architecture, decision]
 sources: [concepts/software-engineering-laws/software-engineering-laws-architecture.md, concepts/software-engineering-laws/software-engineering-laws-teams.md, concepts/software-engineering-laws/software-engineering-laws-planning.md, concepts/software-engineering-laws/software-engineering-laws-quality.md, concepts/software-engineering-laws/software-engineering-laws-scale.md, concepts/software-engineering-laws/software-engineering-laws-design.md, concepts/software-engineering-laws/software-engineering-laws-decisions.md]
 status: stable
 description: 按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。
-aliases: [software-engineering-laws-decision-map]
 volatility: low
 ---
 
@@ -145,12 +144,5 @@ volatility: low
 
 ## Relations
 
-- depends_on: [[software-engineering-laws-architecture]]
-- depends_on: [[software-engineering-laws-teams]]
-- depends_on: [[software-engineering-laws-planning]]
-- depends_on: [[software-engineering-laws-quality]]
-- depends_on: [[software-engineering-laws-scale]]
-- depends_on: [[software-engineering-laws-design]]
-- depends_on: [[software-engineering-laws-decisions]]
-- related: [[llm-engineering-knowledge-map]]
-- related: [[agentic-programming-system-engineering]]
+- depends_on: [[software-engineering-laws-architecture]], [[software-engineering-laws-teams]], [[software-engineering-laws-planning]], [[software-engineering-laws-quality]], [[software-engineering-laws-scale]], [[software-engineering-laws-design]], [[software-engineering-laws-decisions]]
+- related: [[llm-engineering-knowledge-map]], [[agentic-programming-system-engineering]]

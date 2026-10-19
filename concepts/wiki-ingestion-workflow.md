@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -98,6 +98,5 @@ review_by: 2027-02-21
 
 ## Relations
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-wiki-page-writing-standards]]
-- depends_on: [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-knowledge-base-operating-flow]]
+- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-knowledge-base-operating-flow]], [[hermes-wiki-lint-and-health-check-standards]]

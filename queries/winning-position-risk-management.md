@@ -1,7 +1,7 @@
 ---
 title: Managing a Winning Position
 created: 2026-04-17
-updated: 2026-09-20
+updated: 2026-10-19
 type: query
 tags: [investment, trading, position-sizing, workflow]
 sources: [queries/position-sizing-method.md, queries/position-scaling-method.md, queries/when-not-to-trade.md, concepts/leontraveller-trading-and-investment-system.md, concepts/investment-risk-control-framework.md]
@@ -183,8 +183,4 @@ First-person wording in checklists and questions is a reusable self-check script
 - 结构失效时退得出
 
 ## Relations
-- depends_on: [[position-sizing-method]]
-- depends_on: [[position-scaling-method]]
-- depends_on: [[when-not-to-trade]]
-- depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[investment-risk-control-framework]]
+- depends_on: [[position-sizing-method]], [[position-scaling-method]], [[when-not-to-trade]], [[leontraveller-trading-and-investment-system]], [[investment-risk-control-framework]]

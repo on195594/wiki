@@ -1,7 +1,7 @@
 ---
 title: Public Info Monitoring Automation Methodology
 created: 2026-05-06
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [monitoring, automation, research, cron, tool, agent, workflow]
 sources: [concepts/agent-development-lifecycle.md, concepts/stateful-agent-environments-and-grounded-verification.md, concepts/deterministic-analytics-llm-reasoning-boundary.md]
@@ -367,4 +367,5 @@ scripts/project-uv run <worker> health --config config/watchlist.json --max-age-
 
 ## Relations
 
+- depends_on: [[agent-development-lifecycle]], [[stateful-agent-environments-and-grounded-verification]], [[deterministic-analytics-llm-reasoning-boundary]]
 - related: [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]]

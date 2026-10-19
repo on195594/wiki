@@ -1,7 +1,7 @@
 ---
 title: Keeping a Trading System Small and Executable
 created: 2026-04-17
-updated: 2026-09-20
+updated: 2026-10-19
 type: query
 tags: [investment, trading, architecture, governance]
 sources: [queries/trading-lessons-to-hard-rules.md, queries/repeat-mistake-detection-in-trading.md, queries/post-trade-review-loop.md, queries/pre-trade-risk-checklist.md, concepts/investment-risk-control-framework.md]
@@ -194,8 +194,4 @@ First-person wording in checklists and questions is a reusable self-check script
 - 把无效的删掉
 
 ## Relations
-- depends_on: [[trading-lessons-to-hard-rules]]
-- depends_on: [[repeat-mistake-detection-in-trading]]
-- depends_on: [[post-trade-review-loop]]
-- depends_on: [[pre-trade-risk-checklist]]
-- depends_on: [[investment-risk-control-framework]]
+- depends_on: [[trading-lessons-to-hard-rules]], [[repeat-mistake-detection-in-trading]], [[post-trade-review-loop]], [[pre-trade-risk-checklist]], [[investment-risk-control-framework]]

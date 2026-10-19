@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki 知识新鲜度改造计划
 created: 2026-08-26
-updated: 2026-09-29
+updated: 2026-10-19
 type: query
 tags: [hermes, governance, knowledge-base, verification, workflow, architecture]
 sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -99,6 +99,5 @@ Wiki health check 继续负责现有的 frontmatter、链接、索引、标签�
 ## Relations
 
 - refines: [[hermes-knowledge-freshness-and-claim-evidence]]
-- depends_on: [[hermes-wiki-page-writing-standards]]
-- depends_on: [[hermes-wiki-lint-and-health-check-standards]]
-- related: [[hermes-knowledge-architecture]]
+- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-wiki-lint-and-health-check-standards]]
+- related: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

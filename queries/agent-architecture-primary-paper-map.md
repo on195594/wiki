@@ -1,7 +1,7 @@
 ---
 title: Agent Architecture Primary-Paper Map
 created: 2026-08-15
-updated: 2026-09-29
+updated: 2026-10-19
 type: query
 tags: [agent, research, architecture, decision]
 sources: [raw/papers/arxiv-2210-03629-react.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/papers/arxiv-2304-03442-generative-agents.md, raw/papers/arxiv-2305-16291-voyager.md, raw/papers/arxiv-2308-08155-autogen.md]
@@ -67,8 +67,4 @@ AutoGen shows that roles and message patterns can modularize applications, while
 ## Relations
 
 - refines: [[agentic-programming-system-engineering]]
-- related: [[agent-development-lifecycle]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[ai-agent-tool-selection-architecture]], [[agent-orchestration-production-tradeoffs]]
-- related: [[production-ai-agent-evaluation-framework]]
-- related: [[llm-engineering-knowledge-map]]
-- conflicts_with: []
-- supersedes: []
+- related: [[agent-development-lifecycle]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[ai-agent-tool-selection-architecture]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[llm-engineering-knowledge-map]], [[stateful-agent-environments-and-grounded-verification]], [[typed-ai-agent-boundaries]], [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]]

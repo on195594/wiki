@@ -1,7 +1,7 @@
 ---
 title: System Governance Operating Model
 created: 2026-04-21
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, governance, lifeos, operating-model]
 sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -108,8 +108,5 @@ system governance 的核心目标是：
 - wiki 的 index/log/related links 能持续支撑导航和审计
 
 ## Relations
-- depends_on: [[lifeos-overview]]
-- depends_on: [[hermes-lifeos-executable-architecture]]
-- depends_on: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- depends_on: [[lifeos-overview]], [[hermes-lifeos-executable-architecture]], [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]]
 - related: [[family-education-operating-model]], [[household-fund-layering-model]], [[work-and-career-operating-model]], [[personal-growth-operating-model]], [[hermes-active-surface-lifecycle-governance]]

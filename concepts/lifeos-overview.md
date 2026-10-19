@@ -101,6 +101,5 @@ LifeOS 当前按以下层次运行：
 - 重要决策会自然跨到相邻领域回看，而不是单点局部最优
 
 ## Relations
-- depends_on: [[companyos-to-lifeos-filesystem-philosophy]]
-- depends_on: [[hermes-lifeos-executable-architecture]]
+- depends_on: [[companyos-to-lifeos-filesystem-philosophy]], [[hermes-lifeos-executable-architecture]]
 - related: [[family-education-operating-model]], [[household-fund-layering-model]], [[work-and-career-operating-model]], [[personal-growth-operating-model]], [[system-governance-operating-model]]

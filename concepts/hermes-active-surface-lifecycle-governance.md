@@ -1,7 +1,7 @@
 ---
 title: AI Agent Active-Surface Lifecycle Governance
 created: 2026-08-01
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, governance, workflow, context-engineering]
 sources: [raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md, concepts/system-governance-operating-model.md, concepts/hermes-context-layer-operating-rules.md, concepts/agent-failure-closed-loop-evaluation.md]
@@ -160,7 +160,5 @@ XDA 原文讨论的是 Claude Code 的项目上下文文件，并转述 Boris Ch
 ## Relations
 
 - refines: [[system-governance-operating-model]]
-- depends_on: [[hermes-context-layer-operating-rules]]
-- depends_on: [[agent-failure-closed-loop-evaluation]]
-- related: [[agent-context-engineering]], [[hermes-context-engineering-design-priorities]]
-- related: [[ai-coding-assistant-context-budget-management]]
+- depends_on: [[hermes-context-layer-operating-rules]], [[agent-failure-closed-loop-evaluation]]
+- related: [[agent-context-engineering]], [[hermes-context-engineering-design-priorities]], [[ai-coding-assistant-context-budget-management]]

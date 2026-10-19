@@ -1,7 +1,7 @@
 ---
 title: Combining Two Investment Frameworks
 created: 2026-04-17
-updated: 2026-09-20
+updated: 2026-10-19
 type: query
 tags: [investment, decision, comparison, lifeos]
 sources: [concepts/ordinary-investor-investment-system.md, concepts/leontraveller-trading-and-investment-system.md, concepts/investment-risk-control-framework.md, comparisons/leontraveller-vs-ordinary-investor-investment-system.md]
@@ -171,7 +171,4 @@ Leontraveller 主要防我：
 如果做不到严格分层，宁可少做主动交易，也不要让主动交易去污染核心资产系统。
 
 ## Relations
-- depends_on: [[ordinary-investor-investment-system]]
-- depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[investment-risk-control-framework]]
-- depends_on: [[leontraveller-vs-ordinary-investor-investment-system]]
+- depends_on: [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]], [[investment-risk-control-framework]], [[leontraveller-vs-ordinary-investor-investment-system]]

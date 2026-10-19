@@ -1,7 +1,7 @@
 ---
 title: Investment Pre-Trade Risk Checklist
 created: 2026-04-17
-updated: 2026-09-20
+updated: 2026-10-19
 type: query
 tags: [investment, risk-control, trading, decision]
 sources: [concepts/investment-risk-control-framework.md, concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, queries/combining-two-investment-frameworks.md]
@@ -155,7 +155,4 @@ First-person wording in checklists and questions is a reusable self-check script
 真正有问题的交易，往往就死在这几句问答里。
 
 ## Relations
-- depends_on: [[investment-risk-control-framework]]
-- depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[ordinary-investor-investment-system]]
-- depends_on: [[combining-two-investment-frameworks]]
+- depends_on: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[ordinary-investor-investment-system]], [[combining-two-investment-frameworks]]

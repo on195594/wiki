@@ -1,7 +1,7 @@
 ---
 title: Investment Risk Control Framework
 created: 2026-04-17
-updated: 2026-09-20
+updated: 2026-10-19
 type: concept
 tags: [investment, governance, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md]
@@ -130,6 +130,5 @@ volatility: low
 - 能把配置和交易分开处理
 
 ## Relations
-- depends_on: [[leontraveller-trading-and-investment-system]]
-- depends_on: [[ordinary-investor-investment-system]]
+- depends_on: [[leontraveller-trading-and-investment-system]], [[ordinary-investor-investment-system]]
 - related: [[money-as-tool-and-investment-vs-consumption-framework]], [[minimal-executable-trading-system]]

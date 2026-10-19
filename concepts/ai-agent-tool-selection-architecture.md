@@ -1,7 +1,7 @@
 ---
 title: AI Agent Tool Selection Architecture
 created: 2026-07-11
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, tool, context-engineering, evaluation, workflow]
 sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
@@ -144,6 +144,5 @@ Toolformer learns tool-call behavior by sampling candidate API calls, executing 
 ## Relations
 
 - refines: [[agent-context-engineering]]
-- depends_on: [[typed-ai-agent-boundaries]]
-- depends_on: [[production-ai-agent-evaluation-framework]]
+- depends_on: [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]]
 - related: [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]], [[constrained-toolbox-evaluator-loop]], [[agent-orchestration-production-tradeoffs]], [[hermes-context-engineering-design-priorities]], [[agent-architecture-primary-paper-map]], [[thenewstack-ard-agent-discovery-specification-2026-08-31]]

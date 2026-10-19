@@ -1,7 +1,7 @@
 ---
 title: "Agent Context: History, State and Bounded Processing"
 created: 2026-10-17
-updated: 2026-10-17
+updated: 2026-10-19
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -30,7 +30,7 @@ AI Agent 映射：
 - project logs / run artifacts 保存可审计过程证据。
 - cron/log 保存 recurring 运行结果，不等于默认上下文。
 
-这只是 Agent 运行状态视角下的简要映射；内容归属以 `[[hermes-memory-skills-wiki-boundaries]]` 为准，跨执行方法、触发、外部能力和运行状态的组合路由以 `[[hermes-layer-routing-decision-checklist]]` 为准。
+这只是 Agent 运行状态视角下的简要映射；内容归属以 [[hermes-memory-skills-wiki-boundaries]] 为准，跨执行方法、触发、外部能力和运行状态的组合路由以 [[hermes-layer-routing-decision-checklist]] 为准。
 
 ### 转储控制输入尖峰，摘要控制历史累积
 
