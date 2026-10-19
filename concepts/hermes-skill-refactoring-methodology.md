@@ -1,8 +1,7 @@
 ---
 title: AI Agent Skill Refactoring Methodology
-author: Hermes Agent
 created: 2026-05-15
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, skills, workflow, governance, verification, ai-coding, subagent]
 sources: [raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/papers/arxiv-2608-27454-wikiskill.md, concepts/agent-self-validation-loops.md, concepts/subagent-orchestration-patterns.md, docs:https://hermes-agent.nousresearch.com/docs]

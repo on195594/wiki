@@ -1,7 +1,7 @@
 ---
 title: AI Assistance, Cognitive Substitution, and Skill Formation
 created: 2026-08-04
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [llm, research, workflow, governance]
 sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md]
@@ -34,7 +34,7 @@ AI 可以同时提高当前任务表现、缩短等待时间并降低认知负�
 - 撤除 AI 后，人能否在相近任务上独立完成；
 - AI 的贡献是否可见，还是被误记成自己的理解与成就。
 
-文章把最后一种错觉称为 **Accomplishment Hallucination（成就幻觉）**：工具产出了计划、句子或解释，使用者因此误以为自己完成了对应的思考过程。
+文章 [[psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03]] 把最后一种错觉称为 **Accomplishment Hallucination（成就幻觉）**：工具产出了计划、句子或解释，使用者因此误以为自己完成了对应的思考过程。
 
 ## Four modes of assistance
 
@@ -135,8 +135,3 @@ AI 可以同时提高当前任务表现、缩短等待时间并降低认知负�
 - related: [[ai-agent-human-outcome-design-principle]]
 - related: [[dijkstra-ai-programming-formalization]]
 - related: [[production-ai-agent-evaluation-framework]]
-
-## Related sources
-
-- [[psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03]]
-- [[psychologytoday-ai-two-forms-authorship-2026-07-30]]

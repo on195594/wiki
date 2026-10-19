@@ -1,13 +1,13 @@
 ---
 title: 文档解析的结构保真与中间表示
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-10-19
 type: concept
 tags: [llm, architecture, content-engineering, verification, structured-output]
 sources: [raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md]
 status: stable
 description: 解释文档解析中内容与关系的保真边界，以及 Markdown、HTML、JSON、图片和版面元数据的职责分工。
-aliases: [document-parsing-structural-fidelity, 文档结构保真, 文档中间表示]
+aliases: [文档结构保真, 文档中间表示]
 volatility: low
 ---
 

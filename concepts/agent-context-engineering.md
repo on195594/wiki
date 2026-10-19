@@ -1,13 +1,13 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-10-17
+updated: 2026-10-19
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配总原则：最小可见信息、上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面与历史/状态加工见两个子页。
-aliases: [agent-context-engineering, context-engineering-for-agents]
+aliases: [context-engineering-for-agents]
 volatility: medium
 review_by: 2026-12-06
 ---

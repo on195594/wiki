@@ -180,13 +180,12 @@
         "workflow"
       ],
       "aliases": [
-        "agent-context-engineering",
         "context-engineering-for-agents"
       ],
       "volatility": "medium",
       "review_by": "2026-12-06",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
@@ -351,13 +350,15 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-10",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
         ],
         "depends_on": [
-          "agent-failure-closed-loop-evaluation",
+          "agent-failure-closed-loop-evaluation"
+        ],
+        "related": [
           "langchain-similarweb-long-form-agent-report-evaluation-2026-07-29"
         ]
       }
@@ -381,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "agent-skill-governance-and-reversible-state",
@@ -397,7 +398,8 @@
           "agent-orchestration-production-tradeoffs",
           "hermes-context-layer-operating-rules",
           "agentic-content-pipeline-design-patterns",
-          "progressive-knowledge-system-growth"
+          "progressive-knowledge-system-growth",
+          "hermes-agent-experience-consolidation-capability-assessment"
         ]
       }
     },
@@ -420,7 +422,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "agent-closed-loop-learning-from-corrections-to-rules",
@@ -444,13 +446,12 @@
         "validation"
       ],
       "aliases": [
-        "agent-harness-search-regularization",
         "RRSI"
       ],
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-01",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "production-ai-agent-evaluation-framework",
@@ -834,10 +835,11 @@
       "volatility": "medium",
       "review_by": "2026-12-27",
       "verified_at": null,
-      "updated": "2026-10-09",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "venturebeat-frontier-ai-document-fidelity-risk-2026-05-13",
+          "document-parsing-structural-fidelity",
           "production-ai-agent-evaluation-framework",
           "agent-self-validation-loops",
           "typed-ai-agent-boundaries",
@@ -868,7 +870,7 @@
       "volatility": "medium",
       "review_by": "2026-12-27",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -941,7 +943,7 @@
       "volatility": "medium",
       "review_by": "2027-01-17",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "ai-assumption-challenger-before-execution",
@@ -973,7 +975,7 @@
       "volatility": "medium",
       "review_by": "2027-01-17",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1380,14 +1382,13 @@
         "structured-output"
       ],
       "aliases": [
-        "document-parsing-structural-fidelity",
         "文档结构保真",
         "文档中间表示"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-09",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "ai-agent-document-fidelity-risk",
@@ -1474,7 +1475,7 @@
       "volatility": "medium",
       "review_by": "2027-01-03",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "loop-engineering-hermes-agent-workflow",
@@ -1609,7 +1610,7 @@
       "volatility": "medium",
       "review_by": "2027-01-24",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "hermes-knowledge-architecture",
@@ -1617,8 +1618,12 @@
           "typed-ai-agent-boundaries",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
+          "agent-failure-closed-loop-evaluation",
+          "subagent-orchestration-patterns",
+          "loop-engineering-hermes-agent-workflow",
           "ai-assumption-challenger-before-execution",
           "aymannadeem-plan-mode-is-dead-2026-09-24",
+          "claude-dev-solving-code-review-at-anthropic-2026-10-15",
           "dijkstra-ewd667-vs-ai-programming-article",
           "towardsdatascience-vibe-coding-spec-driven-development-2026-05-12",
           "llm-summary-identification-step",
@@ -2105,7 +2110,7 @@
       "volatility": "medium",
       "review_by": "2027-02-07",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",
@@ -2327,12 +2332,13 @@
         "governance"
       ],
       "aliases": [
-        "lifeos"
+        "life-operating-system",
+        "lifeos-framework"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2940,13 +2946,14 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-21",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
         ],
         "related": [
-          "llm-engineering-knowledge-map"
+          "llm-engineering-knowledge-map",
+          "entropy-and-entropy-increase"
         ]
       }
     },
@@ -3392,7 +3399,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-22",
+      "updated": "2026-10-19",
       "relations": {
         "depends_on": [
           "agent-experience-consolidation-loops"
@@ -3649,7 +3656,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"

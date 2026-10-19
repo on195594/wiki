@@ -1,7 +1,7 @@
 ---
 title: OKF Concepts for AI Agent Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-10-17
+updated: 2026-10-19
 type: query
 tags: [agent, knowledge-base, governance, context-engineering]
 sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, repository:SCHEMA.md, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_maintain.py, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -64,10 +64,10 @@ OKF 对 AI Agent wiki 有用，但只应作为机器可读治理增强参考，�
 先扩展只读健康检查，再决定是否把新约定变成强规则。
 
 首批检查重点：
-- `Relations` 中的 wikilinks 是否可解析；
+- `Relations` 中的受控关系键与 wikilinks 是否可解析；
 - `description` 是否短且具体；
 - `aliases` 是否与 tags 或文件命名冲突；
-- context pack 引用是否存在；
+- `_meta/catalog.json` 是否与正式页 metadata 及 `Relations` 保持同步；
 - `sources` 是否可复验。
 
 ## 企业规模化实现证据：Google Cloud Knowledge Catalog

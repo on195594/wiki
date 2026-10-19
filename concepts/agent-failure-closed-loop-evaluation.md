@@ -1,7 +1,7 @@
 ---
 title: Agent 失败闭环评估
 created: 2026-05-20
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [agent, evaluation, monitoring, closeout, workflow]
 sources: [docs:https://venturebeat.com/orchestration/langsmith-engine-closes-the-agent-debugging-loop-automatically-but-multi-model-enterprises-still-need-a-neutral-layer]
@@ -83,14 +83,14 @@ Agent 失败闭环评估是指：当 AI Agent 工作流出现可复发失败时�
 是否需要用户审批：
 ```
 
+## 边界
+
+本页是概念页，不授权修改 active skills、memory、cron、MCP、profile、runtime config 或 AI Agent core。
+
 ## Relations
 
 - related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-experience-consolidation-loops]]
 
-## Related pages
+## Related
 
 - [[agent-closed-loop-learning-from-corrections-to-rules]]：相邻但不同；该页关注“用户纠错 → 规则沉淀”，本页关注“失败 → regression artifact”。
-
-## 边界
-
-本页是概念页，不授权修改 active skills、memory、cron、MCP、profile、runtime config 或 AI Agent core。

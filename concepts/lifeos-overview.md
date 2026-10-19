@@ -1,13 +1,13 @@
 ---
 title: LifeOS Overview
 created: 2026-04-21
-updated: 2026-09-29
+updated: 2026-10-19
 type: concept
 tags: [lifeos, operating-model, agent, governance]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-lifeos-executable-architecture.md]
 status: stable
 description: 概述可配置 LifeOS 的核心层次、可选领域和治理边界，不保存个人状态。
-aliases: [lifeos]
+aliases: [life-operating-system, lifeos-framework]
 volatility: low
 ---
 
