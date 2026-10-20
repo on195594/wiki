@@ -1,7 +1,7 @@
 ---
 title: AI Agent Workflow Layering and Adoption Order
 created: 2026-04-17
-updated: 2026-10-19
+updated: 2026-10-20
 type: concept
 tags: [agent, mcp, automation, workflow, configuration, decision]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md]
@@ -72,7 +72,7 @@ AI Agent 的外部实时能力由两部分组成：
 
 ### 6. Programmatic execution layer: Code Mode
 
-`[[x-lanlance-code-mode-json-plumbing-2026-08-24]]` 补充了 live capability 与 verification 之间缺失的一层：工具负责提供能力和权限边界，代码负责把这些能力组合成一次可重跑、可检查的执行。
+[[x-lanlance-code-mode-json-plumbing-2026-08-24]] 补充了 live capability 与 verification 之间缺失的一层：工具负责提供能力和权限边界，代码负责把这些能力组合成一次可重跑、可检查的执行。
 
 职责分工：
 

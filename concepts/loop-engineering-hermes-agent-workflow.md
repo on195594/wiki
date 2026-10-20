@@ -1,7 +1,7 @@
 ---
 title: Loop Engineering for AI Agent Workflows
 created: 2026-06-10
-updated: 2026-09-30
+updated: 2026-10-20
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration]
 sources: [raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md, raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, docs:https://www.langchain.com/blog/the-art-of-loop-engineering]

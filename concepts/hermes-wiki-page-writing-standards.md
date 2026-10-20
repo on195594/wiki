@@ -1,10 +1,10 @@
 ---
 title: Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-10-20
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, note]
-sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, https://diataxis.fr/]
+sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, docs:https://diataxis.fr/]
 status: stable
 description: 定义 AI Agent wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。
 aliases: [page-writing-standards, wiki-writing-standards, agent-wiki-page-writing-standards]

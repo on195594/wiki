@@ -1,10 +1,10 @@
 ---
 title: AI Agent Layer Routing Edge Cases
 created: 2026-04-17
-updated: 2026-10-19
+updated: 2026-10-20
 type: query
 tags: [agent, workflow, decision, configuration, automation, mcp]
-sources: [concepts/hermes-layer-routing-decision-checklist.md, queries/hermes-layer-routing-sample-cases.md, docs:hermes-agent/user-guide/features/memory, docs:hermes-agent/user-guide/features/skills, docs:hermes-agent/user-guide/features/cron, docs:hermes-agent/user-guide/features/mcp]
+sources: [concepts/hermes-layer-routing-decision-checklist.md, queries/hermes-layer-routing-sample-cases.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/memory, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/skills, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/cron, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp]
 status: stable
 description: 沉淀 AI Agent layer routing 中容易混淆的边界案例和判定结果。
 aliases: [layer-routing-edge-cases, agent-layer-routing-edge-cases]

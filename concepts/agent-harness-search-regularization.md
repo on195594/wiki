@@ -1,7 +1,7 @@
 ---
 title: Agent Harness 搜索正则化
 created: 2026-09-29
-updated: 2026-10-19
+updated: 2026-10-20
 type: concept
 tags: [agent, harness, optimization, evaluation, validation]
 sources: [raw/articles/rrsi-harness-search-regularization-2026-09.md, docs:https://arxiv.org/abs/2609.24972v2]
