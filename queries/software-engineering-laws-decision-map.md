@@ -145,4 +145,4 @@ volatility: low
 ## Relations
 
 - depends_on: [[software-engineering-laws-architecture]], [[software-engineering-laws-teams]], [[software-engineering-laws-planning]], [[software-engineering-laws-quality]], [[software-engineering-laws-scale]], [[software-engineering-laws-design]], [[software-engineering-laws-decisions]]
-- related: [[llm-engineering-knowledge-map]], [[agentic-programming-system-engineering]]
+- related: [[llm-engineering-knowledge-map]], [[agentic-programming-system-engineering]], [[entropy-and-entropy-increase]]

@@ -182,3 +182,4 @@ First-person wording in checklists and questions is a reusable self-check script
 
 ## Relations
 - depends_on: [[post-trade-review-loop]], [[pre-trade-risk-checklist]], [[when-not-to-trade]], [[losing-position-review-method]], [[investment-risk-control-framework]]
+- related: [[trading-lessons-to-hard-rules]], [[minimal-executable-trading-system]]

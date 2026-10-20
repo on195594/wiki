@@ -128,6 +128,7 @@
           "agent-self-validation-loops",
           "agent-context-engineering",
           "ai-coding-agent-workflow-types",
+          "ai-task-delegation-patterns-from-local-cloud-hybrid-llms",
           "hermes-layer-routing-decision-checklist"
         ]
       }
@@ -194,6 +195,7 @@
         "related": [
           "agent-context-prompt-tools-and-examples",
           "agent-context-history-state-and-bounded-processing",
+          "agent-memory-reflection-planning-pipeline",
           "ai-coding-assistant-context-budget-management",
           "machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19",
           "machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28",
@@ -604,6 +606,7 @@
           "llm-summary-identification-step",
           "typed-ai-agent-boundaries",
           "constrained-toolbox-evaluator-loop",
+          "human-machine-scientific-discovery-verification-scarcity",
           "hermes-layer-routing-decision-checklist"
         ]
       }
@@ -667,6 +670,7 @@
           "claude-code-practical-workflow-tips",
           "agentic-content-pipeline-design-patterns",
           "ai-coding-agent-workflow-types",
+          "first-edit-economy-for-coding-agents",
           "hermes-ai-workflow-formalization-principles",
           "typed-ai-agent-boundaries",
           "ai-agent-document-fidelity-risk",
@@ -674,7 +678,9 @@
           "wiki-ingestion-workflow",
           "constrained-toolbox-evaluator-loop",
           "agent-architecture-primary-paper-map",
-          "stateful-agent-environments-and-grounded-verification"
+          "stateful-agent-environments-and-grounded-verification",
+          "human-machine-scientific-discovery-verification-scarcity",
+          "google-sre-gemini-cli-incident-response"
         ]
       }
     },
@@ -697,13 +703,16 @@
       "volatility": "medium",
       "review_by": "2026-12-20",
       "verified_at": null,
-      "updated": "2026-10-17",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
         ],
         "related": [
           "agent-knowledge-evolution-and-meta-skills",
+          "agent-skill-provider-governance-boundary",
+          "hermes-active-surface-lifecycle-governance",
+          "hermes-agent-experience-consolidation-capability-assessment",
           "arxiv-2608-14036-demystifying-agent-skills",
           "arxiv-2608-27454-wikiskill",
           "microsoft-research-evolib-evolving-knowledge-2026-07-30",
@@ -760,7 +769,7 @@
       "volatility": "medium",
       "review_by": "2026-12-27",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -952,7 +961,8 @@
           "ai-assumption-challenger-before-execution",
           "ai-agent-human-outcome-design-principle",
           "dijkstra-ai-programming-formalization",
-          "production-ai-agent-evaluation-framework"
+          "production-ai-agent-evaluation-framework",
+          "coping-skill-application-and-imaginal-exposure"
         ]
       }
     },
@@ -987,7 +997,8 @@
           "claude-code-practical-workflow-tips",
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "hermes-context-layer-operating-rules",
-          "subagent-orchestration-patterns"
+          "subagent-orchestration-patterns",
+          "audience-situation-content-briefs"
         ]
       }
     },
@@ -1021,7 +1032,9 @@
           "towardsdatascience-work-with-ai-coding-agents-2026-08-27",
           "hermes-layer-routing-decision-checklist",
           "wiki-ingestion-workflow",
-          "first-edit-economy-for-coding-agents"
+          "first-edit-economy-for-coding-agents",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
+          "hermes-python-engineering-capability-checklist"
         ]
       }
     },
@@ -1096,26 +1109,29 @@
       "type": "concept",
       "title": "Audience-Situation Content Briefs",
       "description": "用受众真实情境、Category Entry Points 和 7W 框架重构内容简报，避免把搜索量直接当成内容需求。",
-      "status": "draft",
+      "status": "stable",
       "tags": [
         "workflow",
+        "content-engineering",
         "research",
         "decision",
         "note"
       ],
       "aliases": [
-        "audience situations",
-        "audience-situation briefs",
+        "audience-situations",
+        "audience-situation-briefs",
         "受众情境内容简报"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-19",
       "relations": {
         "related": [
           "hermes-ai-workflow-formalization-principles",
           "agentic-content-pipeline-design-patterns",
+          "ai-assumption-challenger-before-execution",
+          "ai-agent-human-outcome-design-principle",
           "wiki-ingestion-workflow"
         ]
       }
@@ -1167,9 +1183,9 @@
         "claude-code-tips"
       ],
       "volatility": "high",
-      "review_by": "2026-11-11",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2026-12-20",
+      "verified_at": "2026-10-20",
+      "updated": "2026-10-20",
       "relations": {
         "related": [
           "ai-coding-assistant-context-budget-management",
@@ -1202,9 +1218,9 @@
         "codex-workflow-layering"
       ],
       "volatility": "high",
-      "review_by": "2026-11-11",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2026-12-20",
+      "verified_at": "2026-10-20",
+      "updated": "2026-10-20",
       "relations": {
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -1296,15 +1312,14 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-08-20",
+      "updated": "2026-10-19",
       "relations": {
         "refines": [
           "personal-growth-operating-model"
         ],
         "related": [
           "ai-assistance-cognitive-substitution-and-skill-formation",
-          "inaction-vs-action-decision-framework",
-          "donald-robertson-mentally-rehearse-coping-2026-08-18"
+          "inaction-vs-action-decision-framework"
         ]
       }
     },
@@ -1338,6 +1353,8 @@
           "agent-self-validation-loops",
           "production-agent-evaluation-baselines",
           "llm-context-engineering-layer",
+          "document-parsing-structural-fidelity",
+          "public-info-monitoring-automation-methodology",
           "motherduck-jev-for-analytics-2026-09-29"
         ]
       }
@@ -1588,6 +1605,7 @@
         ],
         "related": [
           "codex-agent-workflow-layering",
+          "hermes-model-specific-harness-profiles",
           "deterministic-analytics-llm-reasoning-boundary",
           "hermes-retrieval-priority-and-answer-path",
           "x-lanlance-code-mode-json-plumbing-2026-08-24",
@@ -1712,6 +1730,9 @@
           "llm-context-engineering-layer",
           "ai-assumption-challenger-before-execution",
           "subagent-orchestration-patterns",
+          "chat-to-agent-session-routing",
+          "hermes-active-surface-lifecycle-governance",
+          "hermes-model-specific-harness-profiles",
           "hermes-knowledge-architecture",
           "hermes-retrieval-priority-and-answer-path"
         ]
@@ -1784,7 +1805,9 @@
           "hermes-memory-skills-wiki-boundaries",
           "wiki-ingestion-workflow",
           "hermes-ai-workflow-formalization-principles",
-          "hermes-retrieval-priority-and-answer-path"
+          "hermes-retrieval-priority-and-answer-path",
+          "google-sre-gemini-cli-incident-response",
+          "hermes-vs-google-sre-agentic-incident-response"
         ]
       }
     },
@@ -1858,6 +1881,9 @@
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
           "hermes-knowledge-architecture",
+          "hermes-memory-governance-notes",
+          "hermes-layer-routing-sample-cases",
+          "hermes-layer-routing-edge-cases",
           "wiki-ingestion-workflow"
         ]
       }
@@ -2022,9 +2048,9 @@
         "agent-model-specific-harness-profiles"
       ],
       "volatility": "high",
-      "review_by": "2026-11-11",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2026-12-20",
+      "verified_at": "2026-10-20",
+      "updated": "2026-10-20",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2131,7 +2157,9 @@
         ],
         "related": [
           "hermes-context-layer-operating-rules",
-          "hermes-knowledge-architecture"
+          "hermes-knowledge-architecture",
+          "agent-skill-provider-governance-boundary",
+          "agent-skill-governance-and-reversible-state"
         ]
       }
     },
@@ -2167,6 +2195,8 @@
         ],
         "related": [
           "hermes-retrieval-priority-and-answer-path",
+          "hermes-knowledge-freshness-and-claim-evidence",
+          "okf-for-hermes-wiki-governance-assessment",
           "wiki-health-check-runbook"
         ]
       }
@@ -2203,7 +2233,8 @@
         ],
         "related": [
           "hermes-retrieval-priority-and-answer-path",
-          "hermes-wiki-lint-and-health-check-standards"
+          "hermes-wiki-lint-and-health-check-standards",
+          "hermes-knowledge-freshness-and-claim-evidence"
         ]
       }
     },
@@ -2427,7 +2458,11 @@
           "llm-summary-identification-step",
           "hermes-ai-workflow-formalization-principles",
           "hermes-context-engineering-design-priorities",
-          "agent-orchestration-production-tradeoffs"
+          "agent-orchestration-production-tradeoffs",
+          "software-engineering-laws-design",
+          "software-engineering-laws-planning",
+          "software-engineering-laws-scale",
+          "software-engineering-laws-teams"
         ]
       }
     },
@@ -2517,6 +2552,7 @@
         "related": [
           "agent-autonomy-ladder-for-hermes-workflows",
           "agent-self-validation-loops",
+          "first-edit-economy-for-coding-agents",
           "subagent-orchestration-patterns",
           "agent-context-engineering",
           "deterministic-analytics-llm-reasoning-boundary",
@@ -2705,6 +2741,7 @@
           "langchain-similarweb-long-form-agent-report-evaluation-2026-07-29",
           "agent-evaluation-rubric-calibration",
           "production-agent-evaluation-baselines",
+          "repeated-measures-statistical-power-for-ai-evaluation",
           "agent-research-evidence-gate",
           "stateful-agent-environments-and-grounded-verification",
           "agent-self-validation-loops",
@@ -2892,7 +2929,8 @@
           "software-engineering-laws-decision-map"
         ],
         "related": [
-          "llm-engineering-knowledge-map"
+          "llm-engineering-knowledge-map",
+          "flutter"
         ]
       }
     },
@@ -2968,7 +3006,8 @@
         ],
         "related": [
           "llm-engineering-knowledge-map",
-          "entropy-and-entropy-increase"
+          "entropy-and-entropy-increase",
+          "flutter"
         ]
       }
     },
@@ -3050,6 +3089,9 @@
           "agent-self-validation-loops",
           "subagent-orchestration-patterns",
           "agent-failure-closed-loop-evaluation",
+          "local-first-sync-confirmed-mirror-outbox-conflict-policy",
+          "public-info-monitoring-automation-methodology",
+          "chat-to-agent-session-routing",
           "stencil-the-harness-playbook-2026-09-05",
           "human-machine-scientific-discovery-verification-scarcity"
         ]
@@ -3158,6 +3200,7 @@
         ],
         "related": [
           "ai-coding-agent-workflow-types",
+          "hermes-python-engineering-capability-checklist",
           "agent-context-engineering",
           "ai-coding-assistant-context-budget-management",
           "microsoft-developer-ai-coding-agents-use-technology-2026-05-27",
@@ -3323,6 +3366,9 @@
           "hermes-memory-skills-wiki-boundaries",
           "hermes-knowledge-architecture",
           "hermes-wiki-lint-and-health-check-standards",
+          "okf-for-hermes-wiki-governance-assessment",
+          "hermes-wiki-knowledge-freshness-improvement-plan",
+          "nimbus-docs",
           "wiki-health-check-runbook"
         ]
       }
@@ -3773,6 +3819,11 @@
           "winning-position-risk-management",
           "inaction-vs-action-decision-framework",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "repeat-mistake-detection-in-trading",
+          "trading-lessons-to-hard-rules",
+          "minimal-executable-trading-system"
         ]
       }
     },
@@ -3831,6 +3882,10 @@
           "when-not-to-trade",
           "losing-position-review-method",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "trading-lessons-to-hard-rules",
+          "minimal-executable-trading-system"
         ]
       }
     },
@@ -3862,7 +3917,8 @@
         ],
         "related": [
           "llm-engineering-knowledge-map",
-          "agentic-programming-system-engineering"
+          "agentic-programming-system-engineering",
+          "entropy-and-entropy-increase"
         ]
       }
     },

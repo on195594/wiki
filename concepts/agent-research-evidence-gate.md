@@ -131,4 +131,4 @@ Do not create cron jobs, MCP servers, wrappers, or runtime changes from this art
 
 ## Relations
 
-- related: [[machinelearningmastery-multi-agent-research-assistant-2026-05-21]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-self-validation-loops]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[constrained-toolbox-evaluator-loop]], [[hermes-layer-routing-decision-checklist]]
+- related: [[machinelearningmastery-multi-agent-research-assistant-2026-05-21]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-self-validation-loops]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[constrained-toolbox-evaluator-loop]], [[human-machine-scientific-discovery-verification-scarcity]], [[hermes-layer-routing-decision-checklist]]

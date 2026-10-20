@@ -144,4 +144,4 @@ volatility: low
 ## Relations
 
 - refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]], [[entropy-and-entropy-increase]]
+- related: [[llm-engineering-knowledge-map]], [[entropy-and-entropy-increase]], [[flutter]]

@@ -146,4 +146,4 @@ Machine Learning Mastery 文章的处理结果：
 
 ## Relations
 - depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-lifeos-executable-architecture]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

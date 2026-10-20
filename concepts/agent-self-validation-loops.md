@@ -153,4 +153,4 @@ UI/Web 任务追加：
 
 ## Relations
 
-- related: [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[hermes-ai-workflow-formalization-principles]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]]
+- related: [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[hermes-ai-workflow-formalization-principles]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]]

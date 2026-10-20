@@ -146,4 +146,4 @@ volatility: low
 ## Relations
 
 - refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]]
+- related: [[llm-engineering-knowledge-map]], [[flutter]]

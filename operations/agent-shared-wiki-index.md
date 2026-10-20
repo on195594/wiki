@@ -81,4 +81,4 @@ review_by: 2027-02-28
 
 - depends_on: [[hermes-context-layer-operating-rules]]
 - refines: [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-health-check-runbook]]
+- related: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]], [[hermes-wiki-lint-and-health-check-standards]], [[okf-for-hermes-wiki-governance-assessment]], [[hermes-wiki-knowledge-freshness-improvement-plan]], [[nimbus-docs]], [[wiki-health-check-runbook]]

@@ -99,4 +99,4 @@ review_by: 2027-01-31
 
 ## Relations
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
-- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]]
+- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-knowledge-architecture]], [[hermes-memory-governance-notes]], [[hermes-layer-routing-sample-cases]], [[hermes-layer-routing-edge-cases]], [[wiki-ingestion-workflow]]
