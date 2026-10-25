@@ -153,7 +153,7 @@
       "volatility": "medium",
       "review_by": "2026-12-06",
       "verified_at": null,
-      "updated": "2026-10-20",
+      "updated": "2026-10-25",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -596,7 +596,7 @@
       "volatility": "medium",
       "review_by": "2026-12-20",
       "verified_at": null,
-      "updated": "2026-10-20",
+      "updated": "2026-10-25",
       "relations": {
         "related": [
           "machinelearningmastery-multi-agent-research-assistant-2026-05-21",
@@ -2068,7 +2068,7 @@
       "path": "concepts/hermes-python-engineering-capability-checklist.md",
       "type": "concept",
       "title": "AI Agent Python Engineering Capability Checklist",
-      "description": "列出 AI Agent 执行 Python 工程任务时需要检查的语言、测试、工具和交付能力。",
+      "description": "列出 AI Agent 执行 Python 工程任务时的流式处理、资源、并发、类型边界，以及测量驱动的性能优化检查项。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2086,13 +2086,16 @@
       "volatility": "medium",
       "review_by": "2027-01-31",
       "verified_at": null,
-      "updated": "2026-09-29",
+      "updated": "2026-10-22",
       "relations": {
         "related": [
           "hermes-ai-workflow-formalization-principles",
           "agentic-programming-system-engineering",
           "agent-context-engineering",
-          "typed-ai-agent-boundaries"
+          "typed-ai-agent-boundaries",
+          "software-engineering-laws-planning",
+          "agent-self-validation-loops",
+          "production-agent-evaluation-baselines"
         ]
       }
     },
@@ -2324,7 +2327,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2569,7 +2572,7 @@
       "path": "concepts/money-as-tool-and-investment-vs-consumption-framework.md",
       "type": "concept",
       "title": "Money as Tool and Investment-vs-Consumption Framework",
-      "description": "区分钱作为自由工具、投资资产和消费支出的判断框架。",
+      "description": "区分钱作为自由工具、投资资产和消费支出，并检查现金缓冲与自我投资失败风险的判断框架。",
       "status": "stable",
       "tags": [
         "research",
@@ -2579,7 +2582,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-04-17",
+      "updated": "2026-10-25",
       "relations": {
         "related": [
           "ordinary-investor-investment-system",
@@ -3235,7 +3238,7 @@
       "volatility": "medium",
       "review_by": "2027-02-21",
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3357,7 +3360,7 @@
       "volatility": "medium",
       "review_by": "2027-02-28",
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -3688,7 +3691,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "depends_on": [
           "trading-lessons-to-hard-rules",
@@ -3721,7 +3724,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3972,7 +3975,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-10-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",

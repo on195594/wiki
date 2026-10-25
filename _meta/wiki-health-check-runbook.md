@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-10-19
+updated: 2026-10-25
 type: meta
 status: current
 ---
@@ -24,6 +24,19 @@ The fallback is independent of the caller's working directory and does not depen
 
 ## Core commands
 
+### Safe metadata synchronization
+
+Before any `wiki_maintain.py --fix` run:
+
+1. Compare the current raw paths with `_meta/raw-source-hashes.json` and the pre-change working tree. Review additions and deletions against the authorized change; stop and investigate unexplained missing sources rather than treating them as cleanup.
+2. Explain existing raw hash changes under `SCHEMA.md` before updating the manifest. `--fix` rejects changed existing hashes, but it removes manifest entries for raw files that no longer exist; it does not determine whether a deletion was authorized.
+3. Run `--fix` only after that review, then read back the catalog and manifest diff against the pre-sync baseline. Confirm every added or removed entry is intended; this also applies when the working tree already contains uncommitted ingestion changes.
+4. Run `--check` separately. A pass does not validate deletion intent or make lost source material recoverable; unresolved deletions must be resolved before accepting the maintenance result.
+
+Use these same pre-write and diff-review conditions for direct catalog/raw-manifest writers below. Do not regenerate a baseline to silence an unexplained deletion or content drift.
+
+### Commands
+
 From the repository root:
 
 ```bash
@@ -32,7 +45,7 @@ WIKI_ROOT=/path/to/wiki
 # 一键自动化质量门禁（单测、catalog.json、健康检查、标签审计、公开边界、git diff）：
 python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --check
 
-# 一键自动同步清册与原始素材哈希：
+# 先完成上面的 raw 新增/删除授权审查；同步后回读清单差异，再单独 --check：
 python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --fix
 
 # 页面与局部断言的到期预警扫描（默认未来 30 天）：

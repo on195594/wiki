@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-10-25
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -43,7 +43,7 @@ review_by: 2027-02-21
 6. 为页面补充正文 `[[wikilinks]]`（正式页链接不用反引号包裹）与按需 `## Relations`（同类关系键合并为单行逗号分隔列表、省略空 `[]` 占位、`depends_on` / `refines` 仅指向正式知识页）
 7. 更新 `[[index]]`（使用标准相对 Markdown 链接并同步 `Indexed pages` 计数；`status: draft` 标注草稿，已关闭的历史 plan/audit 不必进入主索引）
 8. 在 `[[log]]` 顶部按日期倒序记录公共仓库的 durable delta、证据边界和验证结果
-9. 同步 `_meta/catalog.json` 与 `_meta/raw-source-hashes.json`（`wiki_maintain.py --fix`），并运行 `wiki_maintain.py --check`（覆盖单测、health check、catalog 同步、标签审计、公开内容检查与 `git diff --check`）
+9. 按 [[wiki-health-check-runbook]] 的 Safe metadata synchronization 主步骤，先核对 raw 新增、删除及其授权，排除误删，再用 `wiki_maintain.py --fix` 同步 `_meta/catalog.json` 与 `_meta/raw-source-hashes.json`；该命令会移除不存在的 raw 对应清单项，不能用同步掩盖误删。回读清单差异后单独运行 `wiki_maintain.py --check`（覆盖单测、health check、catalog 同步、标签审计、公开内容检查与 `git diff --check`）；通过不证明删除合理或已获授权。
 
 ## 来源变化与候选发现
 

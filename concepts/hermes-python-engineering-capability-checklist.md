@@ -1,13 +1,13 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-09-29
+updated: 2026-10-22
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation]
-sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md]
+sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md]
 aliases: [agent-python-engineering-capability-checklist]
 status: stable
-description: 列出 AI Agent 执行 Python 工程任务时需要检查的语言、测试、工具和交付能力。
+description: 列出 AI Agent 执行 Python 工程任务时的流式处理、资源、并发、类型边界，以及测量驱动的性能优化检查项。
 volatility: medium
 review_by: 2027-01-31
 ---
@@ -16,9 +16,9 @@ review_by: 2027-01-31
 
 ## Summary
 
-AI Agent 的 AI 能力提升不只来自更强模型，也来自更可靠的 Python 工程边界：大输入要流式处理，资源要有生命周期管理，网络型任务要支持有界并发，工具参数要结构化校验，自定义对象要遵守 Python 协议。
+AI Agent 的 AI 能力提升不只来自更强模型，也来自更可靠的 Python 工程边界：大输入要流式处理，资源要有生命周期管理，网络型任务要支持有界并发，工具参数要结构化校验，自定义对象要遵守 Python 协议；性能改动先测量、定位，再做最小优化并复测。
 
-这页把 MachineLearningMastery 文章 `Python Concepts Every AI Engineer Must Master` 转换为 AI Agent 工作流检查清单。原文是 Python 教学文章；本页只保留对 AI Agent 有长期价值的工程原则，不把示例性能数据当作生产基准。
+这页把 MachineLearningMastery 文章 `Python Concepts Every AI Engineer Must Master` 转换为 AI Agent 工作流检查清单，并用 Real Python 的 `Python Performance Optimization: A Practical Guide` 补充性能诊断顺序。两者都是教学来源；本页只保留可复用工程原则，不把示例性能数据当作生产基准。
 
 ## Core principle
 
@@ -160,6 +160,31 @@ AI Agent 映射：
 - 不要为一次性脚本过度设计 magic methods；
 - 当对象进入框架、模板、队列、runner 时，再补协议边界。
 
+### 6. Performance work should be measurement-led
+
+来源：[[realpython-python-performance-optimization-guide-2026-10-21]]（Mostafa Ibrahim，Real Python，页面更新于 2026-10-21）。它补充的是性能诊断与优化顺序，不替代前述资源、并发和类型边界。
+
+**原文原则：**
+
+- **先区分定位与计时。** 不知道程序哪里慢时，用 `cProfile` 等 profiler 找热点；已怀疑某段函数时，再用 `timeit` 比较候选。微基准不能单独证明该函数是端到端瓶颈。
+- **按成本逐级处理，够用就停。** 先检查算法和数据结构，再找内置函数/标准库，随后考虑重复计算缓存；内存布局、并发和 C 扩展留给简单修复不足的情况，不是必须走完的步骤。
+- **数据结构看访问模式与总成本。** `list` 成员查找通常为 O(n)，`set` 平均为 O(1)，但构建集合有成本；单次查询不应假定转换一定获益。原文的构建成本估算不作为通用盈亏平衡点。
+- **标准库不等于自动提速。** 原文中 CPython 的 `Counter` 可把逐项计数交给 C helper，但把循环改写为 `any()` 仍可能保留 Python 层逐项工作；替换后照样测量。
+- **缓存先保正确，再看速度。** 重复参数且结果稳定时才考虑缓存；原例读取全局列表，但 key 只有 `target`，列表改变后会返回陈旧答案。`cache` 无界保留条目；有容量约束时考虑有界 `lru_cache`，不照抄示例容量。
+- **冷启动与命中分开。** 原文缓存计时前已调用一次函数；测到的是热缓存命中，而非第一次计算变快。不可把两种工作量的比较描述为算法本身加速。
+
+**[推论] 项目落地的最小检查闭环：**
+
+1. 先定义要改善的端到端指标与可接受目标，保留正确性基线；区分 CPU、I/O、等待和内存压力。
+2. 使用有代表性的输入、相同解释器/环境建立基线；记录总耗时、调用次数和单次耗时，不混淆量纲。重复测量，并分别说明数据结构构建、I/O 与缓存预热是否计入。
+3. 一次只改一个已测热点，优先消除重复工作、选择现成容器或标准库；复用现有测试验证输出、异常和资源生命周期不变。
+4. 如需缓存，核对参数可哈希、隐藏状态/外部数据变化、失效与容量，以及返回可变对象的共享风险；测冷缓存、热缓存和实际命中率，不只测理想命中路径。
+5. 在相同条件下复测微基准与端到端指标；达标即停止。并发仍受第 3 节的超时、限流、失败隔离约束，不能为提速删除这些边界。
+
+**适用边界：** 原文是概念性教程，不是生产基准研究；本页未运行示例或复现加速倍数。生成器主要降低峰值内存，并不保证更快；线程、进程和异步的收益受解释器构建、原生库、任务粒度及通信成本影响，不能只凭 CPU/I/O 标签定方案。这里的检查闭环是本页推导，不声称原文已证明项目收益，也不授权增加依赖、改生产代码或运行配置。
+
+这与 [[software-engineering-laws-planning]] 中“避免过早优化”的原则一致；结果验收沿用 [[agent-self-validation-loops]]，缓存命中与端到端成本的评估范围另见 [[production-agent-evaluation-baselines]]。
+
 ## AI Agent adoption matrix
 
 | Capability | Primary layer | Recommended artifact | Priority |
@@ -188,7 +213,8 @@ AI Agent 映射：
 4. 参数：是否有 typed validation？
 5. 抽象：是否遵守必要 Python protocol？
 6. 验证：是否有测试、readback 或 smoke evidence？
+7. 性能：是否已定位热点、保留基线，并区分冷/热缓存、微基准与端到端复测？
 
 ## Relations
 
-- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]]
+- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[software-engineering-laws-planning]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]]
