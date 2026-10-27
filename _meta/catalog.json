@@ -2068,7 +2068,7 @@
       "path": "concepts/hermes-python-engineering-capability-checklist.md",
       "type": "concept",
       "title": "AI Agent Python Engineering Capability Checklist",
-      "description": "列出 AI Agent 执行 Python 工程任务时的流式处理、资源、并发、类型边界，以及测量驱动的性能优化检查项。",
+      "description": "列出 AI Agent 执行 Python 工程任务时的输入、资源、并发、类型与性能检查项，并按真实变更压力选择最小设计边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2086,7 +2086,7 @@
       "volatility": "medium",
       "review_by": "2027-01-31",
       "verified_at": null,
-      "updated": "2026-10-22",
+      "updated": "2026-10-27",
       "relations": {
         "related": [
           "hermes-ai-workflow-formalization-principles",
@@ -2094,6 +2094,7 @@
           "agent-context-engineering",
           "typed-ai-agent-boundaries",
           "software-engineering-laws-planning",
+          "software-engineering-laws-design",
           "agent-self-validation-loops",
           "production-agent-evaluation-baselines"
         ]

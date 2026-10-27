@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-10-25
+updated: 2026-10-27
 type: meta
 status: current
 ---
@@ -11,7 +11,7 @@ status: current
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-10-25 | Indexed pages: 120
+> Last updated: 2026-10-27 | Indexed pages: 120
 
 ## 按任务进入
 
@@ -95,7 +95,7 @@ status: current
 - [Google SRE Gemini CLI Incident Response Pattern](concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
 - [AI Agent Workflow Layering and Adoption Order](concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；结合双向追溯、分层验证、审查收敛与风险分级审批分配人类注意力，以回滚与事故率为护栏并保留共享理解与人工责任
-- [AI Agent Python Engineering Capability Checklist](concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式输入、资源生命周期、有界并发、类型边界，以及测量驱动的性能优化、缓存正确性与端到端复测
+- [AI Agent Python Engineering Capability Checklist](concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式输入、资源生命周期、有界并发、类型边界、测量驱动的性能优化，以及按真实变更压力选择七类最小设计边界与失效检查
 - [Loop Engineering for AI Agent Workflows](concepts/loop-engineering-hermes-agent-workflow.md) — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher 和有界重试组织工作闭环；从单个缺陷验证完整用户行为链、可重复环境与人工补救负担，保留 active-layer 审批边界
 - [多智能体系统性失效模式](concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
 - [Subagent Orchestration Patterns](concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：先验证单 Agent 基线、真实瓶颈和可分解性，再选择 inline tool、fan-out、agent pool 或 team

@@ -1,13 +1,13 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-10-22
+updated: 2026-10-27
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation]
-sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md]
+sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md, raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md]
 aliases: [agent-python-engineering-capability-checklist]
 status: stable
-description: 列出 AI Agent 执行 Python 工程任务时的流式处理、资源、并发、类型边界，以及测量驱动的性能优化检查项。
+description: 列出 AI Agent 执行 Python 工程任务时的输入、资源、并发、类型与性能检查项，并按真实变更压力选择最小设计边界。
 volatility: medium
 review_by: 2027-01-31
 ---
@@ -16,9 +16,9 @@ review_by: 2027-01-31
 
 ## Summary
 
-AI Agent 的 AI 能力提升不只来自更强模型，也来自更可靠的 Python 工程边界：大输入要流式处理，资源要有生命周期管理，网络型任务要支持有界并发，工具参数要结构化校验，自定义对象要遵守 Python 协议；性能改动先测量、定位，再做最小优化并复测。
+AI Agent 的 AI 能力提升不只来自更强模型，也来自更可靠的 Python 工程边界：大输入要流式处理，资源要有生命周期管理，网络型任务要支持有界并发，工具参数要结构化校验，自定义对象要遵守 Python 协议；性能改动先测量、定位，再做最小优化并复测。设计模式按真实变更压力选择，以调用方更简单、边界更容易测试衡量价值，不作为项目必须采用的架构清单。
 
-这页把 MachineLearningMastery 文章 `Python Concepts Every AI Engineer Must Master` 转换为 AI Agent 工作流检查清单，并用 Real Python 的 `Python Performance Optimization: A Practical Guide` 补充性能诊断顺序。两者都是教学来源；本页只保留可复用工程原则，不把示例性能数据当作生产基准。
+这页把 MachineLearningMastery 文章 `Python Concepts Every AI Engineer Must Master` 转换为 AI Agent 工作流检查清单，用 Real Python 的 `Python Performance Optimization: A Practical Guide` 补充性能诊断顺序，并用 Nahla Davies 的 KDnuggets 文章 `7 Advanced Python Design Patterns for Data Scientists` 补充代码边界的选择方法。这些都是教学来源；本页只保留可复用工程原则，不把示例性能数据当作生产基准，也不声称模式已证明项目收益。
 
 ## Core principle
 
@@ -185,6 +185,31 @@ AI Agent 映射：
 
 这与 [[software-engineering-laws-planning]] 中“避免过早优化”的原则一致；结果验收沿用 [[agent-self-validation-loops]]，缓存命中与端到端成本的评估范围另见 [[production-agent-evaluation-baselines]]。
 
+### 7. 按变更压力选择最小设计边界
+
+来源：[[kdnuggets-advanced-python-design-patterns-for-data-scientists]]（Nahla Davies，KDnuggets；保留七项原文摘录，未确定发布日期）。原文讨论的是 Notebook 演进为多人依赖的 Python 代码时的选择方法，不是必须引入类层次的要求。
+
+**先回答原文三个问题：** 什么在反复变化？什么契约必须保持稳定？新抽象会引入什么失效方式？判断收益看调用方是否更简单、边界是否更容易独立测试，而不是模式数量。
+
+**七类压力、最小形态与边界：**
+
+1. **Strategy（策略）**：评估指标或验证策略不断增加分支 → 把评分行为作为 callable 传给 `evaluate(y_true, y_pred, scorer)`。无状态行为保持普通函数；只有配置或相关方法需要随行为一起传递时，再考虑对象。
+2. **Adapter（适配器）**：不同模型库的方法或输出结构不一致 → 定义一个本地 `typing.Protocol` 与薄包装，隔离下游对库接口的判断。协议主要提供静态约束，`@runtime_checkable` 不校验方法签名；输出形状一致仍不证明类别顺序、阈值或概率校准一致。结构与语义验证的区别见 [[typed-ai-agent-boundaries]]。
+3. **Template Method（模板方法）**：同类实验复制编排代码后顺序漂移 → 基类集中维护 `run()` 的固定步骤，子类只实现差异钩子。继承会耦合变体与生命周期；步骤需要独立变化或自由组合时，优先比较策略组合，而不是继续加深继承树。
+4. **Observer（观察者）**：训练循环硬编码日志、仪表盘或其他消费者 → 发送事件给显式回调列表，消费者各自处理。原文使用字段为标量的 `frozen` dataclass；回调增多前需明确执行顺序、异常处理与单次成本，不让简单列表变成不可追踪的事件总线。
+5. **Command（命令）**：运行请求需要延后、排队、重试或跨机器执行 → 用包含数据集、模型与配置标识的 dataclass 表示请求，由 `execute(runner)` 交给执行器。它分离“做什么”与“何时、何处做”，不自动保存执行环境；精确复现仍要绑定数据与代码版本、随机种子及平台假设。
+6. **Facade（外观）**：调用一个任务需要反复导入、装配多个组件 → 用薄的任务级入口委托预处理、训练与报告组件。它简化的是整个子系统的使用，不是转换单个不兼容对象；不要让入口吞并业务验证、重试策略与状态，形成新单体。
+7. **Proxy（代理）**：昂贵模型或数据在尚未使用时就加载 → 保持调用契约，在第一次实际访问时加载并复用实例。它控制访问时机，不解决失效、线程/进程安全或加载失败；缓存正确性沿用第 6 节，不能以静默使用陈旧产物换取启动速度。
+
+**[推论] 对原文示例的工程校准：**
+
+- “没有其他调用者就不需要模式”是克制抽象的启发式，不是绝对门禁；单一调用者仍可能有真实资源生命周期或变更隔离需求。与 [[software-engineering-laws-design]] 的 KISS/YAGNI 一样，判断当前必要性，不压制必要边界。
+- `ABC` 与集中维护 `run()` 不会自动禁止子类覆写，也不会自动处理异常清理；原文仅列出调用顺序，没有实现清理保障。资源释放仍按第 2 节显式设计与验证。
+- `frozen=True` 不代表深度不可变；若事件或命令以后包含可变容器，其内部仍可能变化，不能据此保证消费隔离或记录与执行完全一致。
+- 命令可转为数据不等于安全重试、幂等或完整复现；这些需要执行器与业务契约单独保证。
+
+**适用边界：** 本节未运行示例，也未验证生产效果。将数据科学示例用于其他 Python 工作流属于条件性迁移；先确认真实压力，再选一个足够的边界，不要求七种模式全部落地，不由此授权新增依赖、改 active workflow 或运行配置。新增边界的项目验证仍沿用 [[agent-self-validation-loops]]。
+
 ## AI Agent adoption matrix
 
 | Capability | Primary layer | Recommended artifact | Priority |
@@ -214,7 +239,8 @@ AI Agent 映射：
 5. 抽象：是否遵守必要 Python protocol？
 6. 验证：是否有测试、readback 或 smoke evidence？
 7. 性能：是否已定位热点、保留基线，并区分冷/热缓存、微基准与端到端复测？
+8. 设计边界：是否存在具体变更压力、稳定契约和新增失效风险？普通函数是否已足够，所选边界是否让调用方更简单且更容易测试？
 
 ## Relations
 
-- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[software-engineering-laws-planning]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]]
+- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]]
