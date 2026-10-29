@@ -310,7 +310,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-20",
+      "updated": "2026-10-29",
       "relations": {
         "related": [
           "hermes-context-layer-operating-rules",
@@ -327,6 +327,7 @@
           "subagent-orchestration-patterns",
           "hermes-model-specific-harness-profiles",
           "agent-experience-consolidation-loops",
+          "hermes-knowledge-architecture",
           "hermes-agent-workflow-layering-and-adoption-order",
           "typed-ai-agent-boundaries",
           "wiki-ingestion-workflow",

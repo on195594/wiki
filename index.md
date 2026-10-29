@@ -45,7 +45,7 @@ status: current
 - [Agent Context Engineering](concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面（prompt/工具/示例）与历史、状态及有界加工分别见两个子页；产品示例不是默认依赖，过程记录仍受公开准入约束
 - [Agent Context: System Prompt, Tools and Examples](concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报、窄工具面与反向边界、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型的有界加工与恢复边界
-- [Agent Development Lifecycle](concepts/agent-development-lifecycle.md) — Agent 开发生命周期：连接 Build → Test → Deploy → Monitor，以 Govern 横切治理；涵盖 harness 权威状态与 Tetral 云端运行时、持久投递、沙箱解耦的边界
+- [Agent Development Lifecycle](concepts/agent-development-lifecycle.md) — Agent 开发生命周期：Build → Test → Deploy → Monitor 与横切治理；软件交付的阶段契约、知识效果评估，以及 harness 权威状态和云端运行时边界
 - [Agent Experience Consolidation Loops](concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：证据收集、模式识别、按层职责路由、复用与重验证；只把公开、长期可复用的发现编译进正式页；Skill 治理与知识演化/元技能分别见两个子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离、演化知识评估边界
 - [Agent Knowledge Evolution and Meta-Skills](concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：整合与加权、外部知识复用 vs 权重学习、任务技能 vs 支持设计元技能

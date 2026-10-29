@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-29] ingestion | Agentic delivery contracts and knowledge evaluation
+- Extended [[agent-development-lifecycle]] and its [[index]] entry with stage handoff contracts and task-level knowledge evaluation, citing Microsoft's public article directly. Distinguished software delivery from the Agent development lifecycle and linked existing experience consolidation and knowledge architecture owners; no duplicate concept, raw capture or active workflow was added.
+- The source presents an architecture perspective, not a controlled end-to-end efficacy study. The local reuse and comparable-evaluation guidance is explicitly inferred; no deployment or knowledge-effect experiment is claimed.
+- Validation: 60 maintenance tests, catalog synchronization, health (zero issues), tag audit, public-content blocking checks and `git diff --check` passed. Source reverse lookup resolves to the intended owner; 14 public-content review candidates are outside the changed files and were not re-adjudicated. Existing raw captures and their hash manifest were unchanged.
+
 ## [2026-10-27] ingestion | Pressure-led Python design boundaries
 - Captured selected original-English passages from Nahla Davies's KDnuggets article in `raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md`; the capture date is not a publication date. All seven patterns are represented; this is not a full-text archive or generated-summary substitute.
 - NEW within [[hermes-python-engineering-capability-checklist]]: the three selection questions and seven pressure → Python shape → failure-boundary mappings. CONFIRM only for the existing restraint against unnecessary abstraction in [[software-engineering-laws-design]]; linked that owner and [[typed-ai-agent-boundaries]] without duplicating their rules or changing them. Updated [[index]] without adding a formal page or tag.

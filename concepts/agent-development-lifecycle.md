@@ -1,10 +1,10 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
@@ -155,6 +155,16 @@ Anthropic 的 AI-native SDLC playbook 把 Plan、Design、Build、Test、Deploy�
 
 [推论] 对 AI Agent，价值不在于强制采用这些文件名或新增一套总工作流，而在于保持现有 owner 间的可审查交接：用户请求或项目问题承载 intent，项目规格定义契约，必要的计划承载依赖步骤，既有开发流程负责实现与验证路由，active-layer/runtime owner 负责发布、回滚和生产权限。只有跨会话、委派或多阶段任务才值得保存独立工件；清晰、局部、可逆且有便宜验证的小改动继续走 Direct。
 
+#### 阶段契约与共享知识的效果
+
+[微软对智能体软件交付的讨论](https://commandline.microsoft.com/new-agentic-software-delivery-primitives/)（Tim Bozarth，2026-10-27）以 `Plan → Build → Verify → Observe` 描述软件交付，而本页的 `Build → Test → Deploy → Monitor` 侧重 Agent 系统的工程生命周期；两者关注对象和阶段划分不同，并非必须互相替换。前者建议明确各阶段的输入、人和 Agent 的职责、输出工件与成功标准；交接时传递产物、支撑证据和尚未解决的问题。Verify 包含验证与交付，Observe 将使用和运行结果反馈到下一轮目标。
+
+文章将目标、设计决策、实现背景、验证证据、发布记录和生产信号连接为共享知识，并要求保留来源与版本、区分观察和解释、按权限提供上下文。文章还提出用具体任务比较**有与无合成知识**时的效果、速度和效率，而不是以数据量代替价值判断；经验如何路由、复用和重验证由 [[agent-experience-consolidation-loops]] 维护，知识层归属见 [[hermes-knowledge-architecture]]。
+
+[证据边界] 这是微软的架构主张及产品实践介绍，原文未提供支持普遍提效的端到端对照实验；该比较是评估问题，不是已证实的效果。人类与自动化验证的具体分工应按风险和真实证据决定，不能据此免除必要的人类审查。
+
+[推论] 先复用现有项目文档、测试和运行证据，在实际交接或检索出现问题时再补机制；简单任务仍可直接完成并验证，不必为四阶段新建流程、统一数据库或自动总结器。评估知识增益时应尽量保持任务和条件可比，同时观察正确性、耗时与成本，避免只看命中率或速度。
+
 ## AI Agent interpretation
 这篇文章给 AI Agent 的价值，是把已有零散原则放进一条生命周期总线。
 
@@ -211,4 +221,4 @@ AI Agent 映射：
 
 ## Relations
 
-- related: [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[langchain-agent-development-lifecycle-2026-05-09]], [[anthropic-ai-native-sdlc-playbook-2026-08-21]], [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]], [[thenewstack-agent-context-development-lifecycle-2026-08-31]], [[stencil-the-harness-playbook-2026-09-05]], [[claude-abc-legal-managed-agents-2026-08-17]], [[agent-self-validation-loops]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[hermes-layer-routing-decision-checklist]]
+- related: [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[langchain-agent-development-lifecycle-2026-05-09]], [[anthropic-ai-native-sdlc-playbook-2026-08-21]], [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]], [[thenewstack-agent-context-development-lifecycle-2026-08-31]], [[stencil-the-harness-playbook-2026-09-05]], [[claude-abc-legal-managed-agents-2026-08-17]], [[agent-self-validation-loops]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[hermes-layer-routing-decision-checklist]]
