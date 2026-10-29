@@ -4,6 +4,10 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-29] ingestion | Document parsing protocol as evaluation reference
+- Extended [[document-parsing-structural-fidelity]] and [[index]] with DPP's structural adjudication, explicit field states, equivalent forms and traceability; distinguished faithful representation from downstream normalization.
+- Cited the public vendor article and protocol directly. DPP 0.1 is a working draft and its checker provides review guidance, not an automated conformance suite; no parser performance or workflow improvement is claimed.
+
 ## [2026-10-29] correction | Downgrade unsupported local benchmark claims and clarify relation direction
 - Corrected [[hermes-knowledge-freshness-and-claim-evidence]], [[production-agent-evaluation-baselines]] and [[index]]: the earlier evaluation entry below is superseded. Its claimed reproducibility and measured improvements lack committed scripts, fixed snapshots and per-question run artifacts; the retained eight-pair question set is now a NOT_RUN evaluation proposal, not a verified baseline.
 - Separated full reachable-set overlap from repeated-answer citation consistency; required independent gold sets, precision/recall, explicit empty-set handling and complete loaded-context accounting before publishing results.

@@ -61,7 +61,7 @@ status: current
 - [Constrained Toolbox Evaluator Loop](concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
 - [From Coping Skill Acquisition to Real-World Application（草稿）](concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：识别伪应对，以有界想象暴露检验技能是否减少回避并提升不适中的行动能力
 - [Deterministic Analytics and LLM Reasoning Boundary](concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；多源证据先对齐共同对象，不把类型、模型共识、落表标签或透明融合当作真实性证明
-- [文档解析的结构保真与中间表示](concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合 Markdown、HTML、JSON、图片与坐标，不把格式正确当作语义正确
+- [文档解析的结构保真与中间表示](concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合表示，并以 DPP 工作草案参考解析裁决与等价形式，不把格式正确当作语义正确
 - [Dijkstra on AI Programming Formalization](concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [Entropy and Entropy Increase](concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [Family Education Operating Model](concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，而不是单点名校最优化
