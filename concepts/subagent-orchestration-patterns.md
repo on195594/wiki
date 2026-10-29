@@ -1,7 +1,7 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
 sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
@@ -18,7 +18,7 @@ aliases: [subagent-patterns]
 
 Subagent orchestration should be chosen by lifecycle complexity, not by how impressive the architecture sounds. The useful ladder is: one-shot subagent calls, parallel fan-out, persistent agent pools, and direct agent teams. AI Agent should default to the simplest mode that gives isolation and verifiable output, then only move up the ladder when the task has real concurrency or stateful-collaboration needs.
 
-This page synthesizes Phil Schmid's 2026 article [[philschmid-subagent-patterns-2026-05-05]] into AI Agent operating knowledge, and is complemented by AlphaSignal's benchmark-oriented trade-off page [[agent-orchestration-production-tradeoffs]]. It complements [[hermes-context-layer-operating-rules]], which says when to use subagents, and [[ai-coding-agent-workflow-types]], which classifies external coding-agent interaction modes.
+This page synthesizes Phil Schmid's 2026 article [[philschmid-subagent-patterns-2026-05-05]] into AI Agent operating knowledge, and is complemented by AlphaSignal's benchmark-oriented trade-off analysis ([[alphasignal-agent-orchestration-patterns-2026-05-05]], [[agent-orchestration-production-tradeoffs]]). It complements [[hermes-context-layer-operating-rules]], which says when to use subagents, and [[ai-coding-agent-workflow-types]], which classifies external coding-agent interaction modes.
 
 ## Core pattern
 
@@ -209,4 +209,5 @@ An earlier version cited a private search-workflow trial as validation. No publi
 
 ## Relations
 
-- related: [[hermes-context-layer-operating-rules]], [[agent-orchestration-production-tradeoffs]], [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[multiagent-systemic-failure-modes]], [[philschmid-subagent-patterns-2026-05-05]], [[alphasignal-agent-orchestration-patterns-2026-05-05]], [[gptcentral-ultimate-guide-building-ai-agents-2026-06-05]], [[langchain-organizing-context-multi-agent-harness-2026-09-08]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- depends_on: [[hermes-context-layer-operating-rules]], [[agent-context-engineering]]
+- related: [[agent-orchestration-production-tradeoffs]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]]

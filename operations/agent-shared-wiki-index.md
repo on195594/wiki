@@ -1,7 +1,7 @@
 ---
 title: Agent Shared Wiki Index
 created: 2026-08-04
-updated: 2026-10-25
+updated: 2026-10-29
 type: operation
 tags: [agent, knowledge-base, context-engineering, multi-agent]
 sources: [repository:SCHEMA.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-retrieval-priority-and-answer-path.md]
@@ -37,7 +37,7 @@ review_by: 2027-02-28
 - 当前项目文档引用某个 Wiki 概念；
 - 外部检索前，需要确认仓库是否已有可复用结论。
 
-普通编码、明确的一次性任务、实时系统状态和当前会话已提供的事实，不要求先查 Wiki。
+普通编码、明确的一次性任务、单源简单查找、实时系统状态和当前会话已提供的事实，不要求先查 Wiki 或强制展开多跳关系（跨源推理与证据导航边界见 [[hermes-knowledge-freshness-and-claim-evidence]]）。
 
 ## Retrieval procedure
 
@@ -81,4 +81,4 @@ review_by: 2027-02-28
 
 - depends_on: [[hermes-context-layer-operating-rules]]
 - refines: [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]], [[hermes-wiki-lint-and-health-check-standards]], [[okf-for-hermes-wiki-governance-assessment]], [[hermes-wiki-knowledge-freshness-improvement-plan]], [[nimbus-docs]], [[wiki-health-check-runbook]]
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]], [[hermes-wiki-lint-and-health-check-standards]], [[okf-for-hermes-wiki-governance-assessment]], [[hermes-wiki-knowledge-freshness-improvement-plan]], [[nimbus-docs]], [[wiki-health-check-runbook]]

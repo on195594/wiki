@@ -1,7 +1,7 @@
 ---
 title: "Agent Context: History, State and Bounded Processing"
 created: 2026-10-17
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -88,5 +88,5 @@ The article argues that prompt caching can make full-context forks cheaper than 
 
 ## Relations
 - refines: [[agent-context-engineering]]
-- depends_on: [[hermes-context-engineering-design-priorities]]
-- related: [[agent-context-prompt-tools-and-examples]], [[langchain-context-engineering-deep-agents-remember]], [[arxiv-2608-26263-skill-state]], [[langchain-organizing-context-multi-agent-harness-2026-09-08]], [[langchain-scaledown-deep-agents-2026-10-13]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-programming-system-engineering]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[agent-context-prompt-tools-and-examples]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-programming-system-engineering]], [[hermes-layer-routing-decision-checklist]]

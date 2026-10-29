@@ -1,7 +1,7 @@
 ---
 title: Progressive Knowledge System Growth
 created: 2026-05-11
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [knowledge-base, workflow, note]
 sources: [raw/articles/makeuseof-obsidian-perfect-vault-one-thing-2026-05-08.md]
@@ -13,7 +13,7 @@ volatility: low
 # Progressive Knowledge System Growth
 
 ## Summary
-知识系统应该先服务真实使用，再追求结构完善。核心原则是：先用真实问题产生内容，再让结构、链接、插件和自动化从反复出现的摩擦中生长。
+知识系统应该先服务真实使用，再追求结构完善（[[makeuseof-obsidian-perfect-vault-one-thing-2026-05-08]]）。核心原则是：先用真实问题产生内容，再让结构、链接、插件和自动化从反复出现的摩擦中生长。
 
 ## Core principle
 **先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长。**
@@ -79,4 +79,5 @@ volatility: low
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]], [[hermes-context-layer-operating-rules]]
+- depends_on: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]]
+- related: [[hermes-context-layer-operating-rules]]

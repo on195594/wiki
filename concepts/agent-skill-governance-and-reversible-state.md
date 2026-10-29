@@ -1,7 +1,7 @@
 ---
 title: Agent Skill Governance and Reversible Skill State
 created: 2026-10-17
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification]
@@ -67,7 +67,7 @@ observed evidence
 
 ## Separate persistent knowledge from reversible Skill state
 
-WikiSkill 将每轮状态表示为活动 Skill 集合与持久 Wiki 的组合。Raw Layer 保存不可变轨迹，Wiki Layer 汇总成功策略、失败模式、演化日志、被拒绝方案和 Skill 影响，Skill Layer 承载实际执行指令。候选 Skill 因验证分数下降而回滚时，Wiki 不回滚；后续提案仍可读取失败证据和拒绝理由，避免重复搜索同一无效路径。
+WikiSkill（[[arxiv-2608-27454-wikiskill]]）将每轮状态表示为活动 Skill 集合与持久 Wiki 的组合。Raw Layer 保存不可变轨迹，Wiki Layer 汇总成功策略、失败模式、演化日志、被拒绝方案和 Skill 影响，Skill Layer 承载实际执行指令。候选 Skill 因验证分数下降而回滚时，Wiki 不回滚；后续提案仍可读取失败证据和拒绝理由，避免重复搜索同一无效路径。
 
 这为 AI Agent 增加了一个明确的不变量：
 
@@ -103,8 +103,8 @@ WikiSkill 报告跨模型正迁移，也报告明显负迁移：Qwen-3.6-27B 演
 
 对 Skill 类资产，最低评价面应明确区分：`available`、`identified/loaded`、`applied`、`applicable`、`verified outcome`、`misuse/negative transfer` 与 `cost`。只有在变更声称跨模型或跨 harness 可移植时才扩展矩阵；不能因单一平台 Skill 而默认运行全模型评测。
 
-EvoLib 博客报告了数学、代码效率约束和长程环境交互三类实验，以及 Token 效率和任务顺序鲁棒性，但没有在博客中给出完整数值、超参数、并发成本或生产运行证据。它提供研究方向和评估维度，不能直接证明 AI Agent 应采用该框架。
+EvoLib 博客（[[microsoft-research-evolib-evolving-knowledge-2026-07-30]]）报告了数学、代码效率约束和长程环境交互三类实验，以及 Token 效率和任务顺序鲁棒性，但没有在博客中给出完整数值、超参数、并发成本或生产运行证据。它提供研究方向和评估维度，不能直接证明 AI Agent 应采用该框架。
 
 ## Relations
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[arxiv-2608-14036-demystifying-agent-skills]], [[arxiv-2608-27454-wikiskill]], [[microsoft-research-evolib-evolving-knowledge-2026-07-30]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]]

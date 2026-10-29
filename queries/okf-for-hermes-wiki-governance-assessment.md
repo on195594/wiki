@@ -1,7 +1,7 @@
 ---
 title: OKF Concepts for AI Agent Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-10-25
+updated: 2026-10-29
 type: query
 tags: [agent, knowledge-base, governance, context-engineering]
 sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, repository:SCHEMA.md, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_maintain.py, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -72,7 +72,7 @@ OKF 对 AI Agent wiki 有用，但只应作为机器可读治理增强参考，�
 
 ## 企业规模化实现证据：Google Cloud Knowledge Catalog
 
-Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Markdown/YAML 交付形态的前提下映射到企业 Catalog，但这是供应商特定的规模化方案，不改变 AI Agent 当前的本地架构裁决。
+Google Cloud 的官方实现说明 [[google-cloud-okf-knowledge-catalog-2026-08-26]] 表明，OKF bundle 可以在不改变其 Markdown/YAML 交付形态的前提下映射到企业 Catalog，但这是供应商特定的规模化方案，不改变 AI Agent 当前的本地架构裁决。
 
 ### 来源中的实现事实
 
@@ -132,4 +132,4 @@ Google Cloud 的官方实现说明表明，OKF bundle 可以在不改变其 Mark
 
 - refines: [[hermes-knowledge-architecture]]
 - depends_on: [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]], [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[agent-context-engineering]], [[progressive-knowledge-system-growth]]
+- related: [[agent-shared-wiki-index]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-context-engineering]], [[progressive-knowledge-system-growth]]

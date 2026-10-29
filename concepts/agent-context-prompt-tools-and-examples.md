@@ -1,7 +1,7 @@
 ---
 title: "Agent Context: System Prompt, Tools and Examples"
 created: 2026-10-17
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, docs:https://impeccable.style/docs/, concepts/ai-agent-tool-selection-architecture.md]
@@ -15,7 +15,7 @@ review_by: 2026-12-06
 
 ## Summary
 
-本页是 [[agent-context-engineering]] 的子主题，处理每次运行都要装配的静态上下文面：system prompt、tools 与 examples。核心结论是：system prompt 是保持“恰当高度”的操作简报而非穷举脚本；工具面越窄、边界越清晰越好，且工具“可见”不等于“可用”；示例应展示澄清、停止、失败处理与验证行为。随执行增长的历史与状态见 [[agent-context-history-state-and-bounded-processing]]。
+本页是 [[agent-context-engineering]] 的子主题（综合 [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]] 与 [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]]），处理每次运行都要装配的静态上下文面：system prompt、tools 与 examples。核心结论是：system prompt 是保持“恰当高度”的操作简报而非穷举脚本；工具面越窄、边界越清晰越好，且工具“可见”不等于“可用”；示例应展示澄清、停止、失败处理与验证行为。随执行增长的历史与状态见 [[agent-context-history-state-and-bounded-processing]]。
 
 ## System prompt: operating brief, not exhaustive script
 
@@ -66,7 +66,7 @@ AI Agent 映射：
 
 ### AX 级联补充：可见不等于可用
 
-Microsoft Developer 的 AX 文章补充了一个容易误判的点：工具安装或注册成功，只说明它可能进入 harness 的候选面，不说明模型一定能看到、理解、选择并正确使用它。工具可用性至少经过一条级联链：
+Microsoft Developer 的 AX 文章（[[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]）补充了一个容易误判的点：工具安装或注册成功，只说明它可能进入 harness 的候选面，不说明模型一定能看到、理解、选择并正确使用它。工具可用性至少经过一条级联链：
 
 1. harness 是否把工具描述装进上下文；
 2. 模型是否把用户意图语义匹配到该工具；
@@ -99,5 +99,5 @@ AI Agent 映射：
 
 ## Relations
 - refines: [[agent-context-engineering]]
-- depends_on: [[typed-ai-agent-boundaries]]
-- related: [[agent-context-history-state-and-bounded-processing]], [[machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19]], [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]], [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]], [[towardsdatascience-context-engineering-data-scientists-2026-08-30]], [[langchain-paid-media-agent-2026-09-13]], [[ai-agent-tool-selection-architecture]], [[ai-coding-assistant-context-budget-management]], [[hermes-skill-refactoring-methodology]], [[agent-self-validation-loops]]
+- depends_on: [[typed-ai-agent-boundaries]], [[ai-agent-tool-selection-architecture]]
+- related: [[agent-context-history-state-and-bounded-processing]], [[ai-coding-assistant-context-budget-management]], [[hermes-skill-refactoring-methodology]], [[agent-self-validation-loops]]

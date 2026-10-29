@@ -1,7 +1,7 @@
 ---
 title: AI Agent Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, llm, workflow, decision, note, skills, governance]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, docs:https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/, raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md, raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md]
@@ -17,7 +17,7 @@ review_by: 2027-01-24
 ## Summary
 
 适用范围：本文的 Skill、plan、todo 与历史检索名称仅表示职责或实现示例；按目标宿主和项目现有能力映射，不假定预装同名工具。所有建议服从当前授权与项目规则。
-基于 EWD667 与 2026 AI 编程文章的双来源对照，AI Agent 的工作流应明确采用“自然语言输入 + 形式化约束 + 验证闭环”的路线。
+基于 [[dijkstra-ewd667-natural-language-programming-1978]] 与 2026 AI 编程文章 [[arixzone-dijkstra-ai-programming-2026-03-31]] 的双来源对照，AI Agent 的工作流应明确采用“自然语言输入 + 形式化约束 + 验证闭环”的路线。
 AI Agent 不应把对话本身当作最终控制面，而应不断把模糊意图压缩为 spec、检查清单、测试、结构化知识和可执行约束。
 自动检查通过不能替代团队对目标、关键决策和系统的共享理解；必要的决策理由与责任边界仍应保留在项目既有载体中。
 审查以需求与实现的双向追溯核对行为漂移，以断言和当前修订的证据检验测试，结合前置自验证、审查收敛控制与快速回滚，按影响半径与错误的可逆性分级投入人类注意力，并以回滚与事故率作为护栏。
@@ -75,7 +75,7 @@ AI Agent 映射：
 
 ### 规划是过程，不必总有计划文档
 
-[Plan mode is dead](https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html)（Ayman Nadeem，2026-09-24；2026-09-26 直接提取到完整可读正文，图片仅有替代文本）复盘其 AI 编程工具 Nuanced：早期用户不愿阅读长篇 AI 生成规格，Spec Tour 又增加一层文本；强制“澄清 → 生成规格 → 审批 → 实现”的单向流程，令实现中发现的新问题难以自然回到讨论。作者因此主张在“理解 → 行动 → 检查 → 澄清 → 调整”的循环里持续规划，而非默认生成静态计划。文章同时指出，多 Agent 并行时如何保持人的系统理解仍未解决。
+[Plan mode is dead](https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html)（[[aymannadeem-plan-mode-is-dead-2026-09-24]]，Ayman Nadeem，2026-09-24；2026-09-26 直接提取到完整可读正文，图片仅有替代文本）复盘其 AI 编程工具 Nuanced：早期用户不愿阅读长篇 AI 生成规格，Spec Tour 又增加一层文本；强制“澄清 → 生成规格 → 审批 → 实现”的单向流程，令实现中发现的新问题难以自然回到讨论。作者因此主张在“理解 → 行动 → 检查 → 澄清 → 调整”的循环里持续规划，而非默认生成静态计划。文章同时指出，多 Agent 并行时如何保持人的系统理解仍未解决。
 
 AI Agent 应用建议（推论，非原文结论或现行 Skill 行为证明）：在对话中持续规划，仅当用户要求留档或存在真实跨会话交接需求时保存计划；清楚、局部且可验证的修复不必为写计划而暂停执行。跨 Agent 契约、难以反悔的架构决定、生产数据、安全或权限边界仍需按各自现行规则保留必要的 spec、验收、独立验证和授权。这里反对的是**无必要的长篇产物与强制模式切换**，不是取消思考或风险门禁。
 
@@ -182,7 +182,7 @@ AI Agent 的更优路径不是无限追加聊天，而是持续压缩。
 - 历史事项用 session_search 回忆，而不是把整段旧上下文塞回来
 
 ## Principle 7: skills should be executable workflows, not explanatory prose
-Addy Osmani 的 `Agent Skills` 文章对 AI Agent 的补充是：面向 AI coding agent 的长期规则不能只写成“最佳实践说明书”。如果规则希望约束 agent 行为，它必须变成可触发、可执行、可验证、有退出条件的 workflow。
+Addy Osmani 的 `Agent Skills` 文章 [[addyosmani-agent-skills-2026-05-03]] 对 AI Agent 的补充是：面向 AI coding agent 的长期规则不能只写成“最佳实践说明书”。如果规则希望约束 agent 行为，它必须变成可触发、可执行、可验证、有退出条件的 workflow。
 
 实践含义：
 - `skills` 主路径应优先写触发条件、步骤、检查点、证据和退出条件，而不是堆叠背景理念。
@@ -259,4 +259,6 @@ LangChain 的 [[langchain-interpreter-skills-2026-05-30]] 对本页的增量价�
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[dijkstra-ai-programming-formalization]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]], [[aymannadeem-plan-mode-is-dead-2026-09-24]], [[claude-dev-solving-code-review-at-anthropic-2026-10-15]], [[dijkstra-ewd667-vs-ai-programming-article]], [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]], [[llm-summary-identification-step]], [[hermes-knowledge-base-operating-flow]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-retrieval-priority-and-answer-path]], [[deterministic-analytics-llm-reasoning-boundary]], [[langchain-interpreter-skills-2026-05-30]], [[kdnuggets-specification-engineering-2026-08-10]], [[towardsdatascience-right-problem-agentic-ai-2026-09-03]], [[wiki-ingestion-workflow]], [[hermes-python-engineering-capability-checklist]]
+- refines: [[dijkstra-ai-programming-formalization]]
+- depends_on: [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]], [[dijkstra-ewd667-vs-ai-programming-article]], [[llm-summary-identification-step]], [[hermes-knowledge-base-operating-flow]], [[hermes-retrieval-priority-and-answer-path]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]], [[hermes-python-engineering-capability-checklist]]

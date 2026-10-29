@@ -1,7 +1,7 @@
 ---
 title: Nimbus 文档站点框架
 created: 2026-09-29
-updated: 2026-10-20
+updated: 2026-10-29
 type: entity
 tags: [product, agent, content-engineering]
 sources:
@@ -79,7 +79,8 @@ Nimbus 是基于 Astro 的文档站点方案：运行管线留在 npm 包中，�
 
 ## Relations
 
-- related: [[agentic-content-pipeline-design-patterns]], [[agent-shared-wiki-index]], [[hermes-retrieval-priority-and-answer-path]]
+- depends_on: [[hermes-retrieval-priority-and-answer-path]]
+- related: [[agentic-content-pipeline-design-patterns]], [[agent-shared-wiki-index]]
 
 ## Related
 

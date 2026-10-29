@@ -1,7 +1,7 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
@@ -157,7 +157,7 @@ Treat these as source-backed directional claims, not as universal constants. The
 
 ## Conversation programming is one orchestration abstraction
 
-AutoGen models LLMs, humans, tools and code executors as conversable agents connected by programmable message patterns. Its application cases support role separation and dynamic interaction as useful design options, but the paper is early, uses heterogeneous evaluations, and leaves optimal topology, efficiency, safety and accountability open. AI Agent should reuse the abstraction only when role separation or dynamic coordination solves an observed problem; it does not overturn the sequential-first and smallest-sufficient-topology rules on this page. See [[agent-architecture-primary-paper-map]].
+AutoGen ([[arxiv-2308-08155-autogen]]) models LLMs, humans, tools and code executors as conversable agents connected by programmable message patterns. Its application cases support role separation and dynamic interaction as useful design options, but the paper is early, uses heterogeneous evaluations, and leaves optimal topology, efficiency, safety and accountability open. AI Agent should reuse the abstraction only when role separation or dynamic coordination solves an observed problem; it does not overturn the sequential-first and smallest-sufficient-topology rules on this page. See [[agent-architecture-primary-paper-map]].
 
 ## AI Agent mapping
 
@@ -211,4 +211,6 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 
 ## Relations
 
-- related: [[vercel-best-workflow-engine-programming-language-2026-08-27]], [[alphasignal-agent-orchestration-patterns-2026-05-05]], [[subagent-orchestration-patterns]], [[agent-self-validation-loops]], [[hermes-context-layer-operating-rules]], [[hermes-ai-workflow-formalization-principles]], [[ai-coding-agent-workflow-types]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[production-ai-agent-evaluation-framework]], [[constrained-toolbox-evaluator-loop]], [[public-info-monitoring-automation-methodology]], [[agent-architecture-primary-paper-map]], [[multiagent-systemic-failure-modes]]
+- refines: [[subagent-orchestration-patterns]]
+- depends_on: [[hermes-context-layer-operating-rules]], [[hermes-ai-workflow-formalization-principles]]
+- related: [[agent-self-validation-loops]], [[ai-coding-agent-workflow-types]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[production-ai-agent-evaluation-framework]], [[constrained-toolbox-evaluator-loop]], [[public-info-monitoring-automation-methodology]], [[agent-architecture-primary-paper-map]], [[multiagent-systemic-failure-modes]]

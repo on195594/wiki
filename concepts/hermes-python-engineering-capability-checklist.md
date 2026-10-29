@@ -1,7 +1,7 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-10-27
+updated: 2026-10-29
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation]
 sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md, raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md]
@@ -18,7 +18,7 @@ review_by: 2027-01-31
 
 AI Agent 的 AI 能力提升不只来自更强模型，也来自更可靠的 Python 工程边界：大输入要流式处理，资源要有生命周期管理，网络型任务要支持有界并发，工具参数要结构化校验，自定义对象要遵守 Python 协议；性能改动先测量、定位，再做最小优化并复测。设计模式按真实变更压力选择，以调用方更简单、边界更容易测试衡量价值，不作为项目必须采用的架构清单。
 
-这页把 MachineLearningMastery 文章 `Python Concepts Every AI Engineer Must Master` 转换为 AI Agent 工作流检查清单，用 Real Python 的 `Python Performance Optimization: A Practical Guide` 补充性能诊断顺序，并用 Nahla Davies 的 KDnuggets 文章 `7 Advanced Python Design Patterns for Data Scientists` 补充代码边界的选择方法。这些都是教学来源；本页只保留可复用工程原则，不把示例性能数据当作生产基准，也不声称模式已证明项目收益。
+这页把 MachineLearningMastery 文章 [[machinelearningmastery-python-concepts-ai-engineer-2026-06-12]] 转换为 AI Agent 工作流检查清单，用 Real Python 的 `Python Performance Optimization: A Practical Guide` 补充性能诊断顺序，并用 Nahla Davies 的 KDnuggets 文章 `7 Advanced Python Design Patterns for Data Scientists` 补充代码边界的选择方法。这些都是教学来源；本页只保留可复用工程原则，不把示例性能数据当作生产基准，也不声称模式已证明项目收益。
 
 ## Core principle
 
@@ -243,4 +243,6 @@ AI Agent 映射：
 
 ## Relations
 
-- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]]
+- refines: [[hermes-ai-workflow-formalization-principles]]
+- depends_on: [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]]
+- related: [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[production-agent-evaluation-baselines]]

@@ -1,7 +1,7 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
@@ -16,7 +16,7 @@ review_by: 2027-02-21
 
 ## Summary
 
-Pydantic AI 这篇文章的长期价值，不是“又一个 Python agent 框架教程”，而是给出了一种降低 AI 编程不确定性的工程边界：把 LLM 的自然语言输出、工具调用和外部依赖，压进 typed schema、typed function tools 和 dependency injection 里。模型仍然不确定，但系统边界变得更可验证、可测试、可替换。
+Pydantic AI 这篇文章 [[machinelearningmastery-pydantic-ai-agents-2026-04-29]] 的长期价值，不是“又一个 Python agent 框架教程”，而是给出了一种降低 AI 编程不确定性的工程边界：把 LLM 的自然语言输出、工具调用和外部依赖，压进 typed schema、typed function tools 和 dependency injection 里。模型仍然不确定，但系统边界变得更可验证、可测试、可替换。
 
 这页补充 [[dijkstra-ai-programming-formalization]] 与 [[hermes-ai-workflow-formalization-principles]]：前者说明 AI 编程仍需要形式化，后者说明 AI Agent 应采用“自然语言输入 + 形式化约束 + 验证闭环”；本页把这个原则落到 agent runtime 内部的三个窄接口上。
 
@@ -63,7 +63,7 @@ Agent 需要调用外部世界时，最危险的不是“能不能调工具”�
 - docstring 要说明何时使用、输入含义、限制和失败语义。
 - 工具应尽量小而窄，避免一个函数同时承担查询、修改、删除、推断多种职责。
 
-Microsoft Developer 的 AX 文章补充了工具边界的发现层：好工具不仅要有 typed schema，还要能在 harness 装配、模型语义匹配和真实组合工具面中被正确发现。docstring/description 应优先覆盖“何时使用、何时不用、失败时返回什么”，否则模型可能跳过工具，转而用过时训练知识生成看似合理的错误代码。
+Microsoft Developer 的 AX 文章（[[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]）补充了工具边界的发现层：好工具不仅要有 typed schema，还要能在 harness 装配、模型语义匹配和真实组合工具面中被正确发现。docstring/description 应优先覆盖“何时使用、何时不用、失败时返回什么”，否则模型可能跳过工具，转而用过时训练知识生成看似合理的错误代码。
 
 ### 4. Dependency injection removes hidden global state
 
@@ -143,4 +143,4 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]]
+- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]]

@@ -1,7 +1,7 @@
 ---
 title: Deterministic Analytics and LLM Reasoning Boundary
 created: 2026-05-25
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, llm, architecture, structured-output, verification]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md]
@@ -175,4 +175,6 @@ AI Agent 迁移原则：
 
 ## Relations
 
-- related: [[towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22]], [[typed-ai-agent-boundaries]], [[constrained-toolbox-evaluator-loop]], [[hermes-ai-workflow-formalization-principles]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]], [[llm-context-engineering-layer]], [[document-parsing-structural-fidelity]], [[public-info-monitoring-automation-methodology]], [[motherduck-jev-for-analytics-2026-09-29]]
+- refines: [[hermes-ai-workflow-formalization-principles]]
+- depends_on: [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]]
+- related: [[constrained-toolbox-evaluator-loop]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]], [[llm-context-engineering-layer]], [[document-parsing-structural-fidelity]], [[public-info-monitoring-automation-methodology]]

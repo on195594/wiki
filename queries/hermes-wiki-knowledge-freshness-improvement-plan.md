@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki 知识新鲜度改造计划
 created: 2026-08-26
-updated: 2026-10-19
+updated: 2026-10-29
 type: query
 tags: [hermes, governance, knowledge-base, verification, workflow, architecture]
 sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -22,7 +22,7 @@ volatility: low
 
 ## Decision
 
-立即把 OpenWiki 中有价值的内核吸收到 Hermes Wiki 的日常写作和维护中，但只复用现有 Wiki 机制，不引入新的状态机、正文微语法或验证项目。
+立即把 OpenWiki（[[langchain-self-correcting-memory-openwiki-2026-08-26]]）中有价值的内核吸收到 Hermes Wiki 的日常写作和维护中，但只复用现有 Wiki 机制，不引入新的状态机、正文微语法或验证项目。
 
 具体采用：
 

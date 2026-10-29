@@ -1,7 +1,7 @@
 ---
 title: CompanyOS to LifeOS Filesystem Philosophy
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, workflow, research, note]
 sources: [raw/articles/yibie-companyos-lifeos-filesystem-philosophy-2026-02-12.md]
@@ -13,7 +13,7 @@ volatility: low
 # CompanyOS to LifeOS Filesystem Philosophy
 
 ## Summary
-这篇文章的核心观点是：AI Agent 真正可用的前提，不是模型再聪明一点，而是状态空间要先被整理成统一、可访问、可治理的文件系统。
+这篇文章（[[yibie-companyos-lifeos-filesystem-philosophy-2026-02-12]]）的核心观点是：AI Agent 真正可用的前提，不是模型再聪明一点，而是状态空间要先被整理成统一、可访问、可治理的文件系统。
 作者先借 CompanyOS 说明企业为何难以部署 AI Agent，再把同样的逻辑延伸到个人 LifeOS，提出“人生也应被建模为文件系统”。
 
 ## Core thesis
@@ -111,4 +111,5 @@ volatility: low
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[hermes-ai-workflow-formalization-principles]], [[hermes-knowledge-base-operating-flow]], [[lifeos-overview]], [[wiki-ingestion-workflow]]
+- depends_on: [[hermes-knowledge-architecture]], [[hermes-ai-workflow-formalization-principles]], [[hermes-knowledge-base-operating-flow]]
+- related: [[lifeos-overview]], [[wiki-ingestion-workflow]]

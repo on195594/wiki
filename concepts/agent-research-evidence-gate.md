@@ -2,7 +2,7 @@
 title: Agent Research Evidence Gate
 type: concept
 created: 2026-05-22
-updated: 2026-10-25
+updated: 2026-10-29
 tags: [agent, multi-agent, evaluation, workflow, research, governance]
 sources: [raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md]
 status: stable
@@ -133,4 +133,6 @@ Do not create cron jobs, MCP servers, wrappers, or runtime changes from this art
 
 ## Relations
 
-- related: [[machinelearningmastery-multi-agent-research-assistant-2026-05-21]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-self-validation-loops]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[constrained-toolbox-evaluator-loop]], [[human-machine-scientific-discovery-verification-scarcity]], [[hermes-layer-routing-decision-checklist]]
+- refines: [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]]
+- depends_on: [[agent-self-validation-loops]], [[llm-summary-identification-step]]
+- related: [[typed-ai-agent-boundaries]], [[constrained-toolbox-evaluator-loop]], [[human-machine-scientific-discovery-verification-scarcity]], [[hermes-layer-routing-decision-checklist]]

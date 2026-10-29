@@ -1,7 +1,7 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
 sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
@@ -127,4 +127,5 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 ## Relations
 
 - refines: [[agent-context-engineering]]
-- related: [[claude-code-practical-workflow-tips]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[audience-situation-content-briefs]]
+- depends_on: [[claude-code-practical-workflow-tips]], [[hermes-context-layer-operating-rules]]
+- related: [[ai-assistance-cognitive-substitution-and-skill-formation]], [[subagent-orchestration-patterns]], [[audience-situation-content-briefs]]

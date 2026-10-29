@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md]
 status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
@@ -43,8 +43,9 @@ review_by: 2027-02-21
 - Context Recall：是否取回了回答所需的全部关键信息。
 - Context Precision：最相关片段是否排在前面。
 - Retrieval Latency：检索阶段是否拖慢整体响应。
+- Citation / Evidence Consistency（跨运行引用一致性）：同一问题重复运行多次时，Agent 所引用支撑证据集合的重合度（如 [[langchain-agent-memory-openwiki-graphs-2026-10-28]] 使用的三次运行引用集合平均成对 Jaccard 相似度）。在跨源复杂问题中，仅靠编译知识可能提高平均准确率但出现引用路径漂移（原文合成保险实验中引用重合度从简单查询的 `0.74` 降至跨文档问题的 `0.25`，引入显式证据图边后翻倍）。该指标衡量取证路径的可重复性与可审计性，不直接等同于答案正确性（详见 [[hermes-knowledge-freshness-and-claim-evidence]]）。
 
-工程含义：坏检索不能靠后续 prompt 补救；如果输入上下文错了，生成层只能在噪声上做推断。
+工程含义：坏检索不能靠后续 prompt 补救；如果输入上下文错了，生成层只能在噪声上做推断。对存在版本替代或条款冲突的多源场景，还应同时观察取证集合是否稳定，避免不同运行因随机命中的证据片段不同而翻转结论。
 
 ### 2. Generation layer
 用于评估模型最终回答是否可靠、贴题、少幻觉。
@@ -69,7 +70,7 @@ review_by: 2027-02-21
 
 工程含义：Agent 不只会“答题”，还会行动。工具越多、步骤越长，错误可能断崖式增加，因此要单独评估过程轨迹，而不是只看最终输出。
 
-[推论] 对多智能体任务，先记录单智能体基线，再按任务可分解性决定是否启用并行或协作。文章中的 45% 阈值、推理轮数指数和具体 benchmark 百分比不作为 AI Agent 默认门槛；只有本地对照实验或真实失败案例才足以推动路由规则或 regression artifact。
+[推论] 对多智能体任务，先记录单智能体基线，再按任务可分解性决定是否启用并行或协作。[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]] 中的 45% 阈值、推理轮数指数和具体 benchmark 百分比不作为 AI Agent 默认门槛；只有本地对照实验或真实失败案例才足以推动路由规则或 regression artifact。
 
 #### Tool selection evaluation must separate stages
 
@@ -106,7 +107,7 @@ review_by: 2027-02-21
 用于评估系统是否可持续运行。
 
 检查项：
-- Cost per Query：单次查询的模型、工具、基础设施总成本。
+- Cost per Query / Cost per Correct Answer：单次查询或单次正确回答的模型、工具、基础设施成本；若引入编译知识库或索引，还需区分查询期回答成本与离线编译/增量维护成本的摊销边界（[[langchain-agent-memory-openwiki-graphs-2026-10-28]]）。
 - P99 Latency：尾部延迟是否会伤害用户体验或任务完成率。
 
 工程含义：可用的 Agent 还必须可负担、可观测、可调优。平均延迟和平均成本会隐藏长尾失败。
@@ -262,8 +263,10 @@ review_by: 2027-02-21
 
 ## Relations
 
-- related: [[agent-harness-search-regularization]], [[towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13]], [[towardsdatascience-tool-calling-agent-debugging-2026-08-06]], [[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]], [[kdnuggets-llm-latency-inference-cost-2026-07-18]], [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-research-evidence-gate]], [[stateful-agent-environments-and-grounded-verification]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-development-lifecycle]], [[agent-orchestration-production-tradeoffs]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[ai-agent-tool-selection-architecture]], [[hermes-ai-workflow-formalization-principles]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-failure-closed-loop-evaluation]], [[llm-context-engineering-layer]], [[llm-engineering-knowledge-map]]
+- refines: [[llm-engineering-knowledge-map]], [[agent-development-lifecycle]]
+- depends_on: [[agent-self-validation-loops]], [[deterministic-analytics-llm-reasoning-boundary]]
+- related: [[agent-harness-search-regularization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-research-evidence-gate]], [[stateful-agent-environments-and-grounded-verification]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-orchestration-production-tradeoffs]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[ai-agent-tool-selection-architecture]], [[hermes-ai-workflow-formalization-principles]], [[agent-failure-closed-loop-evaluation]], [[llm-context-engineering-layer]]
 
 ## Related
 
-- [[agent-harness-search-regularization]] — RRSI 补充自我演化期间的候选准入视角：在冻结的评测条件下，同时观察未见任务迁移、基线方差和 token 成本；其来源特定门槛不成为本页的生产默认阈值。
+- [[agent-harness-search-regularization]]（来源见 [[rrsi-harness-search-regularization-2026-09]]）— RRSI 补充自我演化期间的候选准入视角：在冻结的评测条件下，同时观察未见任务迁移、基线方差和 token 成本；其来源特定门槛不成为本页的生产默认阈值。

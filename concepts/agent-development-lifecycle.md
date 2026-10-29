@@ -22,7 +22,7 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 核心原则：可靠 agent 不是一次性 demo，而是一个可循环改进的工程系统：先构建明确边界，再用 eval 和场景测试验证，受控部署到可恢复运行时，用 trace 和反馈监控真实行为，并由治理层管理成本、权限、上下文和资产复用。
 
 ## Source anchor
-本页最初来自 LangChain 文章 [[langchain-agent-development-lifecycle-2026-05-09]]，后续由回归测试、企业案例、[[anthropic-ai-native-sdlc-playbook-2026-08-21]]、Microsoft Agent Framework 的 [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]、The New Stack 的 [[thenewstack-agent-context-development-lifecycle-2026-08-31]] 和 [[stencil-the-harness-playbook-2026-09-05]] 补充。
+本页最初来自 LangChain 文章 [[langchain-agent-development-lifecycle-2026-05-09]]，后续由回归测试 [[machinelearningmastery-agent-regression-tests-2026-08-17]]、企业案例 [[claude-abc-legal-managed-agents-2026-08-17]]、[[anthropic-ai-native-sdlc-playbook-2026-08-21]]、Microsoft Agent Framework 的 [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]、The New Stack 的 [[thenewstack-agent-context-development-lifecycle-2026-08-31]] 和 [[stencil-the-harness-playbook-2026-09-05]] 补充。
 
 该文有产品导向：LangGraph、LangSmith、Deep Agents 等是 LangChain 生态中的参考实现，不应直接等同于 AI Agent 的默认方案。本页只沉淀可迁移的生命周期模型。
 
@@ -221,4 +221,5 @@ AI Agent 映射：
 
 ## Relations
 
-- related: [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[langchain-agent-development-lifecycle-2026-05-09]], [[anthropic-ai-native-sdlc-playbook-2026-08-21]], [[microsoft-devblogs-agent-harness-production-ready-2026-08-27]], [[thenewstack-agent-context-development-lifecycle-2026-08-31]], [[stencil-the-harness-playbook-2026-09-05]], [[claude-abc-legal-managed-agents-2026-08-17]], [[agent-self-validation-loops]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[hermes-layer-routing-decision-checklist]]
+- depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
+- related: [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]

@@ -1,7 +1,7 @@
 ---
 title: AI Agent Workflow Layering and Adoption Order
 created: 2026-04-17
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, mcp, automation, workflow, configuration, decision]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md]
@@ -16,7 +16,7 @@ aliases: [hermes-agent-layering, agent-workflow-layering-and-adoption-order]
 
 ## Summary
 
-本页从 [[codex-agent-workflow-layering]] 等来源提炼可移植的职责分层：指令与任务边界、长期知识、方法、工具、确定性编排、验证和可选调度。它是设计参考，不说明任一 Agent 已具备全部能力；先复用现有组件，有真实缺口才扩展。
+本页从 [[codex-agent-workflow-layering]]（及 [[openai-codex-best-practices-2026-04-17]]）等来源提炼可移植的职责分层：指令与任务边界、长期知识、方法、工具、确定性编排、验证和可选调度。它是设计参考，不说明任一 Agent 已具备全部能力；先复用现有组件，有真实缺口才扩展。
 
 ## Capability-based layer mapping
 ### 1. Instruction layer
@@ -182,4 +182,4 @@ AI Agent 下一阶段更重要的是“层间路由正确”，不是“层数�
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]]
-- related: [[codex-agent-workflow-layering]], [[hermes-model-specific-harness-profiles]], [[deterministic-analytics-llm-reasoning-boundary]], [[hermes-retrieval-priority-and-answer-path]], [[x-lanlance-code-mode-json-plumbing-2026-08-24]], [[wiki-ingestion-workflow]]
+- related: [[codex-agent-workflow-layering]], [[hermes-model-specific-harness-profiles]], [[deterministic-analytics-llm-reasoning-boundary]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]]

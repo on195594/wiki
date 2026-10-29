@@ -1,7 +1,7 @@
 ---
 title: AI Assistance, Cognitive Substitution, and Skill Formation
 created: 2026-08-04
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [llm, research, workflow, governance]
 sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md]
@@ -131,4 +131,5 @@ AI 可以同时提高当前任务表现、缩短等待时间并降低认知负�
 
 ## Relations
 
-- related: [[ai-assumption-challenger-before-execution]], [[ai-agent-human-outcome-design-principle]], [[dijkstra-ai-programming-formalization]], [[production-ai-agent-evaluation-framework]], [[coping-skill-application-and-imaginal-exposure]]
+- depends_on: [[ai-assumption-challenger-before-execution]], [[ai-agent-human-outcome-design-principle]], [[dijkstra-ai-programming-formalization]]
+- related: [[production-ai-agent-evaluation-framework]], [[coping-skill-application-and-imaginal-exposure]]

@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-10-25
+updated: 2026-10-29
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -37,7 +37,7 @@ review_by: 2027-02-21
    - `comparisons/`
    - `queries/`
    - `operations/`（可复用操作指南或维护契约）
-   - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源；本地推导使用 `[推论]`
+   - 重要结论、数字、当前外部行为和规范性规则尽量在同段或相邻句放具体来源（多来源综合页应在对应段落显式链接具体 `[[raw-...]]` 或 `docs:` 来源，避免只在 frontmatter `sources` 汇总导致取证退化，见 [[hermes-knowledge-freshness-and-claim-evidence]]）；本地推导使用 `[推论]`
    - 外部变化可能导致错误行动的知识按需添加 volatility/review_by，真实核验才填写 verified_at
    - NEW / CONFIRM / UPDATE 中若局部 `[!volatile]` claim 写入 `> source: X`，必须同时满足 `X ∈ page.frontmatter.sources`，否则该次 ingest 不算闭环；已有来源不重复添加，也不因此刷新整页 `verified_at`
 6. 为页面补充正文 `[[wikilinks]]`（正式页链接不用反引号包裹）与按需 `## Relations`（同类关系键合并为单行逗号分隔列表、省略空 `[]` 占位、`depends_on` / `refines` 仅指向正式知识页）
@@ -98,5 +98,5 @@ review_by: 2027-02-21
 
 ## Relations
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-knowledge-base-operating-flow]], [[hermes-wiki-lint-and-health-check-standards]]
+- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-retrieval-priority-and-answer-path]], [[hermes-wiki-lint-and-health-check-standards]]
+- related: [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]]

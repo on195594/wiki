@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-10-27
+updated: 2026-10-29
 type: meta
 status: current
 ---
@@ -11,7 +11,7 @@ status: current
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-10-27 | Indexed pages: 120
+> Last updated: 2026-10-29 | Indexed pages: 120
 
 ## 按任务进入
 
@@ -66,7 +66,7 @@ status: current
 - [Entropy and Entropy Increase](concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [Family Education Operating Model](concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，而不是单点名校最优化
 - [AI Agent Context Engineering Design Priorities](concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
-- [Wiki 知识新鲜度与断言证据绑定](concepts/hermes-knowledge-freshness-and-claim-evidence.md) — AI Agent 知识新鲜度与来源精度：复用 sources、review_by、updated 和 [推论] 改善可复用 Wiki 知识
+- [Wiki 知识新鲜度与断言证据绑定](concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：含本仓库 8 组双入口跨源检索待执行评测方案，区分拓扑重合度与真实引用一致性
 - [AI Agent Layer Routing Decision Checklist](concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种职责拆分需求，外部接入优先复用授权工具，MCP 可选
 - [AI Agent Memory Skills Wiki Boundaries](concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：用正反例区分 memory、skills、wiki、sessions/project state 与历史证据
 - [AI Agent Model-Specific Harness Profiles](concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
@@ -112,11 +112,11 @@ status: current
 - [Human and AI Agent Shared Knowledge Architecture](concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：连接运行时知识栈、Wiki 文件层、冲突感知对象、LLM 候选事实抽取与证据边界及各分层规则入口
 - [Shared Wiki Operating Flow](concepts/hermes-knowledge-base-operating-flow.md) — 共享知识库端到端操作流：公开准入、可选能力、operations、检索门禁与授权回写
 - [AI Agent Memory Governance Notes](concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
-- [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：先判断范围与新鲜度，按需补证据，公开且授权才回写
+- [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：区分单源查找与跨源推理，按 `locate` → `expand` 与 Freshness Gate 检查关系出入边与来源证据，公开且授权才回写
 - [Wiki Lint and Health Check Standards](concepts/hermes-wiki-lint-and-health-check-standards.md) — 共享 Wiki lint / 健康检查规范：链接、索引、frontmatter、标签、页面及局部 claim 新鲜度与结构健康
 - [Wiki Page Writing Standards](concepts/hermes-wiki-page-writing-standards.md) — 人类与 AI Agent 共用的 Wiki 页面写作规范：命名、frontmatter、日期模板、结构、wikilinks、可选 Relations、局部 `[!volatile]` claim 与质量检查
-- [Production Agent Evaluation Baselines](concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、缓存与工具耗时；区分路由质量代理、非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
-- [Production AI Agent Evaluation Framework](concepts/production-ai-agent-evaluation-framework.md) — 生产级 AI Agent 评估框架：分层评估检索、生成、行为和运营；结合广覆盖评分、条件性诊断和多 Agent 基线比较，区分 RAG 决策变化与有真实值支持的质量增益
+- [Production Agent Evaluation Baselines](concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、缓存、工具耗时、单次正确回答成本与跨源证据导航待执行评测；区分路由质量代理、非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
+- [Production AI Agent Evaluation Framework](concepts/production-ai-agent-evaluation-framework.md) — 生产级 AI Agent 评估框架：分层评估检索（含跨运行引用一致性）、生成、行为和运营；结合广覆盖评分、条件性诊断和多 Agent 基线比较，区分 RAG 决策变化与有真实值支持的质量增益
 - [Progressive Knowledge System Growth](concepts/progressive-knowledge-system-growth.md) — 知识系统的渐进式生长原则：先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长
 - [少样本 AI 评测中的重复任务、伪重复与统计功效](concepts/repeated-measures-statistical-power-for-ai-evaluation.md) — 少样本 AI 评测的重复测量与统计功效：区分主体、任务和有效独立证据，避免把相关观测当成独立样本
 - [System Governance Operating Model](concepts/system-governance-operating-model.md) — 系统治理域的 operating model：管理 AI Agent LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康

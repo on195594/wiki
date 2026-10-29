@@ -1,7 +1,7 @@
 ---
 title: Agent Resource Optimization
 created: 2026-05-21
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, multi-agent, orchestration, optimization, architecture, evaluation]
 sources: [raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md]
@@ -113,4 +113,5 @@ LangChain 的 Sydney Runkle、Eugene Yurtsev 在 [[langchain-model-router-in-har
 
 ## Relations
 
-- related: [[towardsdatascience-agent-planning-operations-research-2026-05-20]], [[langchain-model-router-in-harness-2026-10-01]], [[production-agent-evaluation-baselines]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[constrained-toolbox-evaluator-loop]], [[subagent-orchestration-patterns]], [[hermes-layer-routing-decision-checklist]]
+- refines: [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]]
+- related: [[production-agent-evaluation-baselines]], [[constrained-toolbox-evaluator-loop]], [[subagent-orchestration-patterns]], [[hermes-layer-routing-decision-checklist]]

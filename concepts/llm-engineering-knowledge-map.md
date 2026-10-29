@@ -1,7 +1,7 @@
 ---
 title: LLM Engineering Knowledge Map
 created: 2026-05-17
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [llm, architecture, workflow, evaluation, deployment]
 sources: [raw/articles/towardsdatascience-must-know-topics-llm-engineer-2026-05-09.md, raw/articles/github-calmrocks-ai-engineer-notebooks-readme-2026-09-30.md]
@@ -181,4 +181,4 @@ LLM 工程不是一次模型调用，也不是单点 prompt 技巧，而是一�
 
 ## Relations
 
-- related: [[towardsdatascience-must-know-topics-llm-engineer-2026-05-09]], [[llm-context-engineering-layer]], [[production-ai-agent-evaluation-framework]], [[llm-summary-identification-step]], [[hermes-ai-workflow-formalization-principles]], [[hermes-context-engineering-design-priorities]], [[agent-orchestration-production-tradeoffs]], [[software-engineering-laws-design]], [[software-engineering-laws-planning]], [[software-engineering-laws-scale]], [[software-engineering-laws-teams]]
+- related: [[llm-context-engineering-layer]], [[production-ai-agent-evaluation-framework]], [[llm-summary-identification-step]], [[hermes-ai-workflow-formalization-principles]], [[hermes-context-engineering-design-priorities]], [[agent-orchestration-production-tradeoffs]], [[software-engineering-laws-design]], [[software-engineering-laws-planning]], [[software-engineering-laws-scale]], [[software-engineering-laws-teams]]

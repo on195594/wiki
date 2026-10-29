@@ -1,7 +1,7 @@
 ---
 title: AI Agent Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -146,4 +146,4 @@ Machine Learning Mastery 文章的处理结果：
 
 ## Relations
 - depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-lifeos-executable-architecture]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

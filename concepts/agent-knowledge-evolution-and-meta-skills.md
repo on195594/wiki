@@ -1,7 +1,7 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-10-17
+updated: 2026-10-29
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf]
@@ -19,7 +19,7 @@ review_by: 2026-12-13
 
 ## Evolve knowledge instead of only appending experience
 
-EvoLib 给出了一个比“保存更多历史”更严格的知识演化模型：
+EvoLib（[[microsoft-research-evolib-evolving-knowledge-2026-07-30]]）给出了一个比“保存更多历史”更严格的知识演化模型：
 
 ```text
 experience → extract skill/insight → retrieve similar knowledge
@@ -32,7 +32,7 @@ experience → extract skill/insight → retrieve similar knowledge
 
 ## Distinguish external consolidation from weight-level learning
 
-Alloomi 报告提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
+Alloomi 报告（[[xudong-han-self-evolving-agent-alloomi-2026-08-13]]）提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
 
 这与 AI Agent 当前知识层互补而非替代：
 
@@ -85,4 +85,4 @@ Builder 在开发集上构建环境并观察执行反馈；测试前冻结经验
 
 ## Relations
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-skill-governance-and-reversible-state]], [[arxiv-2609-38143-meta-skills-harness-design]], [[agent-harness-search-regularization]], [[microsoft-research-evolib-evolving-knowledge-2026-07-30]], [[xudong-han-self-evolving-agent-alloomi-2026-08-13]]
+- related: [[agent-skill-governance-and-reversible-state]], [[agent-harness-search-regularization]]

@@ -1,7 +1,7 @@
 ---
 title: Audience-Situation Content Briefs
 created: 2026-08-26
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [workflow, content-engineering, research, decision, note]
 sources: [raw/articles/searchengineland-content-briefs-audience-situations-2026-08-24.md, concepts/agentic-content-pipeline-design-patterns.md, concepts/ai-assumption-challenger-before-execution.md]
@@ -77,4 +77,5 @@ Category Entry Points（CEP，品类切入点）把抽象主题连接回触发�
 
 ## Relations
 
-- related: [[hermes-ai-workflow-formalization-principles]], [[agentic-content-pipeline-design-patterns]], [[ai-assumption-challenger-before-execution]], [[ai-agent-human-outcome-design-principle]], [[wiki-ingestion-workflow]]
+- depends_on: [[agentic-content-pipeline-design-patterns]], [[ai-assumption-challenger-before-execution]]
+- related: [[hermes-ai-workflow-formalization-principles]], [[ai-agent-human-outcome-design-principle]], [[wiki-ingestion-workflow]]

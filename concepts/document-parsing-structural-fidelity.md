@@ -1,7 +1,7 @@
 ---
 title: 文档解析的结构保真与中间表示
 created: 2026-10-09
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [llm, architecture, content-engineering, verification, structured-output]
 sources: [raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md]
@@ -62,10 +62,8 @@ volatility: low
 
 ## Relations
 
-- related: [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[llamaindex-markdown-is-all-you-need-2026-10-08]]
+- depends_on: [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]]
 
 ## Related
-
-- [[llamaindex-markdown-is-all-you-need-2026-10-08]] — 原文出处、保存范围和保留的参考链接。
 - [[ai-agent-document-fidelity-risk]] — 多轮编辑与委托式文档处理的内容失真风险。
 - [[deterministic-analytics-llm-reasoning-boundary]] — 输入质量、概率性语义判断与可复现计算的区别。

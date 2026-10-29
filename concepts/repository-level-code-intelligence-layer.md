@@ -1,7 +1,7 @@
 ---
 title: Repository-Level Code Intelligence Layer
 created: 2026-05-17
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [ai-coding, architecture, workflow, context-engineering, agent]
 sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md]
@@ -188,4 +188,5 @@ Repowise 文章的示例只覆盖较小的 Python 项目 `itsdangerous`；Contex
 
 ## Relations
 
-- related: [[marktechpost-repowise-repository-code-intelligence-2026-05-15]], [[towardsdatascience-context-compiler-coding-agents-2026-08-01]], [[ai-coding-assistant-context-budget-management]], [[codex-agent-workflow-layering]], [[claude-code-practical-workflow-tips]], [[llm-engineering-knowledge-map]], [[subagent-orchestration-patterns]]
+- refines: [[ai-coding-assistant-context-budget-management]], [[codex-agent-workflow-layering]], [[claude-code-practical-workflow-tips]]
+- related: [[llm-engineering-knowledge-map]], [[subagent-orchestration-patterns]]

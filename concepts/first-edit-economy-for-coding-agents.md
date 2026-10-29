@@ -1,7 +1,7 @@
 ---
 title: First-edit Economy for Coding Agents
 created: 2026-07-07
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, ai-coding, workflow, optimization, evaluation]
 sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md]
@@ -18,7 +18,7 @@ description: 把 VS Code GPT-5.5 prompt tuning 案例抽象成 coding agent 的�
 
 First-edit economy 是 coding agent 的一个轻量工作流控制模式：当任务已经有明确文件、符号、失败行为、失败命令、测试或附近实现面时，Agent 不应无限扩大搜索范围，而应收集刚好足够的局部证据，形成一个可证伪假设，做最小可回滚编辑，并立刻运行最便宜的验证。
 
-这个概念来自 VS Code Team 对 GPT-5.5 coding harness 的线上 A/B 实验。本页将其沉淀为可选设计参考，不证明任何宿主已安装或采纳对应 Skill；它不是默认硬规则，也不授权 runtime 行为。
+这个概念来自 VS Code Team 对 GPT-5.5 coding harness 的线上 A/B 实验（[[vscode-prompt-tuning-gpt55-coding-harness-2026-07-06]]）。本页将其沉淀为可选设计参考，不证明任何宿主已安装或采纳对应 Skill；它不是默认硬规则，也不授权 runtime 行为。
 
 ## Source-backed principle
 
@@ -126,4 +126,6 @@ concrete anchor
 
 ## Relations
 
-- related: [[loop-engineering-hermes-agent-workflow]], [[agent-self-validation-loops]], [[agent-context-engineering]], [[ai-coding-agent-workflow-types]], [[vscode-prompt-tuning-gpt55-coding-harness-2026-07-06]], [[codex-agent-workflow-layering]], [[hermes-layer-routing-decision-checklist]]
+- refines: [[loop-engineering-hermes-agent-workflow]], [[agent-self-validation-loops]]
+- depends_on: [[agent-context-engineering]]
+- related: [[ai-coding-agent-workflow-types]], [[codex-agent-workflow-layering]], [[hermes-layer-routing-decision-checklist]]

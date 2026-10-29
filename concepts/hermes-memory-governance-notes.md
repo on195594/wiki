@@ -1,7 +1,7 @@
 ---
 title: AI Agent Memory Governance Notes
 created: 2026-04-22
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, memory, governance, orchestration, knowledge-base]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
@@ -124,4 +124,4 @@ review_by: 2027-01-31
 
 ## Relations
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]]
-- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[hermes-layer-routing-edge-cases]]
+- related: [[hermes-layer-routing-edge-cases]]

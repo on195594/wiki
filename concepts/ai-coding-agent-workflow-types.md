@@ -1,7 +1,7 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, ai-coding, workflow, tool, deployment, governance]
 sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -16,7 +16,7 @@ aliases: [coding-agent-workflow-types]
 
 ## Summary
 
-AI coding agent 的选型不应先按品牌判断，而应先按交互模式判断：IDE、Terminal、Pull Request、Cloud 四类工作流分别对应不同的控制方式、执行环境、自主程度和风险边界。这个分类补充了 [[codex-agent-workflow-layering]] 和 [[hermes-agent-workflow-layering-and-adoption-order]]：后者回答“agent 工作流内部应如何分层”，本页回答“当前任务该放在哪种 agent 交互模式里执行”。
+AI coding agent 的选型不应先按品牌判断，而应先按交互模式判断（[[realpython-ai-coding-agents-four-workflow-types-2026-04-29]]）：IDE、Terminal、Pull Request、Cloud 四类工作流分别对应不同的控制方式、执行环境、自主程度和风险边界。这个分类补充了 [[codex-agent-workflow-layering]] 和 [[hermes-agent-workflow-layering-and-adoption-order]]：后者回答“agent 工作流内部应如何分层”，本页回答“当前任务该放在哪种 agent 交互模式里执行”。
 
 ## Core thesis
 
@@ -187,4 +187,5 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 
 ## Relations
 
-- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[codex-agent-workflow-layering]], [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[towardsdatascience-work-with-ai-coding-agents-2026-08-27]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]]
+- refines: [[hermes-agent-workflow-layering-and-adoption-order]], [[codex-agent-workflow-layering]]
+- related: [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]]

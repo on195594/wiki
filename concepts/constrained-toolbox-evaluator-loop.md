@@ -1,7 +1,7 @@
 ---
 title: Constrained Toolbox Evaluator Loop
 created: 2026-05-22
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, multi-agent, evaluation, workflow, structured-output, governance]
 sources: [raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.md]
@@ -121,4 +121,6 @@ AI Agent 迁移原则：
 
 ## Relations
 
-- related: [[nvidia-financial-signal-discovery-multi-agent-2026-05-21]], [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[agent-self-validation-loops]], [[deterministic-analytics-llm-reasoning-boundary]]
+- refines: [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]]
+- depends_on: [[typed-ai-agent-boundaries]]
+- related: [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[agent-self-validation-loops]], [[deterministic-analytics-llm-reasoning-boundary]]

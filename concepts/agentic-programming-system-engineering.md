@@ -1,7 +1,7 @@
 ---
 title: Agentic Programming as System Engineering
 created: 2026-05-21
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, ai-coding, architecture, tool, context-engineering, governance, debugging]
 sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
@@ -93,7 +93,7 @@ AI Agent 映射：这类风险应由 [[agent-failure-closed-loop-evaluation]]、
 
 ## Control pattern: reasoning, action, and observation
 
-ReAct provides primary evidence for interleaving language reasoning with task-specific actions and environment observations. Its benchmark results are mixed rather than universal: external interaction can reduce unsupported internal reasoning, but search failures, wrong subgoals and repeated steps create new error paths. AI Agent should therefore treat ReAct as an optional trajectory shape for tasks that need iterative environment evidence, not as a default for deterministic, low-risk or already well-specified work. See [[agent-architecture-primary-paper-map]].
+ReAct ([[arxiv-2210-03629-react]]) provides primary evidence for interleaving language reasoning with task-specific actions and environment observations. Its benchmark results are mixed rather than universal: external interaction can reduce unsupported internal reasoning, but search failures, wrong subgoals and repeated steps create new error paths. AI Agent should therefore treat ReAct as an optional trajectory shape for tasks that need iterative environment evidence, not as a default for deterministic, low-risk or already well-specified work. See [[agent-architecture-primary-paper-map]].
 
 ## AI Agent layer routing
 
@@ -114,4 +114,4 @@ ReAct provides primary evidence for interleaving language reasoning with task-sp
 
 ## Relations
 - depends_on: [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]]
-- related: [[machinelearningmastery-agentic-programming-roadmap-2026-05-20]], [[towardsdatascience-most-ai-agents-built-backwards-2026-05-27]], [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-failure-closed-loop-evaluation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[agent-architecture-primary-paper-map]]
+- related: [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-failure-closed-loop-evaluation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[agent-architecture-primary-paper-map]]

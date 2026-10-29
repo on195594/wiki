@@ -1,7 +1,7 @@
 ---
 title: AI Agent Model-Specific Harness Profiles
 created: 2026-04-30
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [agent, harness, model-profiles, skills, context-engineering, verification]
 sources: [docs:https://docs.langchain.com/oss/python/deepagents/profiles, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
@@ -114,4 +114,4 @@ AI Agent 的 profile 能力、命令和存储位置属于版本化产品接口�
 
 ## Relations
 - depends_on: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-context-layer-operating-rules]]
-- related: [[langchain-tuning-deep-agents-different-models-2026-04-29]], [[hermes-context-engineering-design-priorities]], [[codex-agent-workflow-layering]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-context-engineering-design-priorities]], [[codex-agent-workflow-layering]], [[hermes-retrieval-priority-and-answer-path]]

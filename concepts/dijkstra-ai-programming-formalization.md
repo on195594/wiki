@@ -1,7 +1,7 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-10-20
+updated: 2026-10-29
 type: concept
 tags: [llm, workflow, research, note]
 sources: [raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md]
@@ -14,7 +14,7 @@ volatility: low
 # Dijkstra on AI Programming Formalization
 
 ## Summary
-这篇文章的核心结论是：AI 编程并没有推翻 Dijkstra 对“自然语言编程”的批判，反而再次证明了形式化约束的重要性。
+这篇文章（[[arixzone-dijkstra-ai-programming-2026-03-31]]）的核心结论是：AI 编程并没有推翻 Dijkstra 对“自然语言编程”的批判，反而再次证明了形式化约束的重要性。
 真正可持续的 AI 编程模式不是让自然语言取代规格、测试和接口，而是用 AI 把模糊意图更快地转化为可验证的形式化产物。
 
 ## Core thesis
@@ -91,4 +91,5 @@ AI 没有让形式化消失，而是让形式化变得更便宜。
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[dijkstra-ewd667-vs-ai-programming-article]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[infoworld-ai-coding-three-skills-2026-04-16]], [[towardsdatascience-vibe-coding-spec-driven-development-2026-05-12]], [[hermes-ai-workflow-formalization-principles]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]]
+- depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[dijkstra-ewd667-vs-ai-programming-article]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-ai-workflow-formalization-principles]], [[wiki-ingestion-workflow]]

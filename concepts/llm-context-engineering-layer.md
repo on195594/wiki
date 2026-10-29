@@ -1,7 +1,7 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [llm, agent, workflow, research]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md]
@@ -15,7 +15,7 @@ review_by: 2027-02-14
 # LLM Context Engineering Layer
 
 ## Summary
-这篇文章提出的关键结论是：RAG 只能解决“检索到什么”，但生产级 LLM 系统还必须有一层独立的 context engineering，来决定什么内容真正进入上下文窗口、以什么顺序进入、被压缩成什么形式，以及 token 预算如何分配。
+[[tds-rag-isnt-enough-context-engineering-2026-04-14]] 提出的关键结论是：RAG 只能解决“检索到什么”，但生产级 LLM 系统还必须有一层独立的 context engineering，来决定什么内容真正进入上下文窗口、以什么顺序进入、被压缩成什么形式，以及 token 预算如何分配。
 
 ## Core distinction
 可以把三层职责分开理解：
@@ -86,7 +86,7 @@ Re-ranker 会结合领域标签与相关性，再次决定优先级。
 
 ## Agentic RAG trust boundary
 
-Agentic RAG 不只返回检索结果，还会改写查询、选择数据源、组合检索方式、重排、拒绝候选并循环搜索。来源文章据此主张：可信度需要覆盖这些中间决策，而不能只看最终答案和 Top-k 切片。
+Agentic RAG 不只返回检索结果，还会改写查询、选择数据源、组合检索方式、重排、拒绝候选并循环搜索。[[thenewstack-building-trust-agentic-rag-2026-09-05]] 据此主张：可信度需要覆盖这些中间决策，而不能只看最终答案和 Top-k 切片。
 
 可复用的设计原则（以下为基于来源的 **[推论]**）：
 - **保留可重放的检索证据链**：记录原始请求、查询改写、实际过滤条件、检索方式、候选来源、排名数据、时间戳、接受或拒绝原因、工具分支和未核实项。工程师仅凭请求与 trace 应能回答“为什么选它、当时为何有效、替代项为何被拒绝”。
@@ -136,4 +136,6 @@ RAG 解决“找到信息”，context engineering 解决“让模型在有限�
 
 ## Relations
 
-- related: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]], [[llm-engineering-knowledge-map]]
+- refines: [[llm-engineering-knowledge-map]]
+- depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[wiki-ingestion-workflow]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]]

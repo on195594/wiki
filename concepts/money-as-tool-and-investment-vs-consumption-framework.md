@@ -1,10 +1,10 @@
 ---
 title: Money as Tool and Investment-vs-Consumption Framework
 created: 2026-04-17
-updated: 2026-10-25
+updated: 2026-10-29
 type: concept
 tags: [research, note]
-sources: [raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md, 'https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/']
+sources: [raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md, docs:https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/]
 status: stable
 description: 区分钱作为自由工具、投资资产和消费支出，并检查现金缓冲与自我投资失败风险的判断框架。
 volatility: low
@@ -16,7 +16,7 @@ volatility: low
 本页的核心判断是：把钱当作提高自由度的工具，区分资产投资、自我投资与消费；比较长期回报时，也要检查现金缓冲是否足以保留选择权，以及投入失败后是否仍可承受。这是经验性判断框架，不是增收或投资收益保证。
 
 ## Core thesis
-文章可以压缩成一句话：
+来源文章 [[gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14]] 可以压缩成一句话：
 
 真正会理财的人，不是更激进地下注，而是更清楚地把钱、杠杆和支出放到能长期复利的地方。
 
@@ -111,4 +111,5 @@ Steve Burns 在 New Trader U 的 [《5 High-Income Skills Worth Learning Accordi
 
 ## Relations
 
-- related: [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[wiki-ingestion-workflow]]
+- refines: [[ordinary-investor-investment-system]]
+- related: [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[wiki-ingestion-workflow]]

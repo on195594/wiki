@@ -1,7 +1,7 @@
 ---
 title: AI Agent Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-10-29
 type: concept
 tags: [agent, knowledge-base, workflow, configuration]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md]
@@ -185,4 +185,4 @@ Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-d
 ## Relations
 - refines: [[hermes-knowledge-architecture]]
 - depends_on: [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]]
-- related: [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]], [[hermes-context-layer-operating-rules]], [[hermes-memory-governance-notes]], [[agent-skill-provider-governance-boundary]], [[chat-to-agent-session-routing]], [[hermes-layer-routing-decision-checklist]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-context-layer-operating-rules]], [[hermes-memory-governance-notes]], [[agent-skill-provider-governance-boundary]], [[chat-to-agent-session-routing]], [[hermes-layer-routing-decision-checklist]], [[hermes-retrieval-priority-and-answer-path]]
