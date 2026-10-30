@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-10-30
 type: meta
 status: current
 ---
@@ -11,7 +11,7 @@ status: current
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-10-29 | Indexed pages: 120
+> Last updated: 2026-10-30 | Indexed pages: 120
 
 ## 按任务进入
 
@@ -85,7 +85,7 @@ status: current
 - [Agent Autonomy Ladder for AI Agent Workflows](concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
 - [Agent Memory–Reflection–Planning Pipeline](concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 AI Agent 默认 memory
 - [Agent Orchestration Production Tradeoffs](concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，并验证持久化与副作用恢复语义
-- [Agentic Content Pipeline Design Patterns](concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产 pipeline 的设计模式：专家流程、skill files、MCP 数据源、中间产物、人工审核与可调试迭代
+- [Agentic Content Pipeline Design Patterns](concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、技能、数据源、中间产物与人工审核；视觉设计案例补充低成本迭代、条件性门禁和模型升级后的规则复查
 - [AI Coding Agent Workflow Types](concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
 - [AI Coding Assistant Context Budget Management](concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
 - [AI Task Delegation Patterns from Local-Cloud Hybrid LLMs](concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md) — 从端云混合 LLM 模式抽象出的 AI Agent PM/subagent 调度模式：任务包、计划落地、困难升级、草稿精修和交叉审查

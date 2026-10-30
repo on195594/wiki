@@ -751,7 +751,7 @@
       "volatility": "medium",
       "review_by": "2026-12-27",
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-10-30",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -763,7 +763,9 @@
           "audience-situation-content-briefs",
           "hermes-context-layer-operating-rules",
           "hermes-context-engineering-design-priorities",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "subagent-orchestration-patterns",
+          "agent-experience-consolidation-loops"
         ]
       }
     },

@@ -4,6 +4,11 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-10-30] ingestion | Visual content production and design-agent case
+- Extended [[agentic-content-pipeline-design-patterns]] and [[index]] with LangChain's public Content Studio case: design rationale, inexpensive intermediate artifacts, conditional process constraints, model-specific rule review and bounded asynchronous collaboration. Linked existing orchestration and experience-consolidation owners without introducing another concept page.
+- Preserved the vendor case's evidence limits: reported costs and outcomes are not independent evaluations, visual examples were not independently inspected, and the system was not reproduced. No active workflow or runtime change is implied.
+- Review correction: made intermediate-artifact persistence conditional on handoff, recovery or review needs, and identified which source-specific claims refer to Ahrefs versus Content Studio.
+
 ## [2026-10-29] ingestion | Document parsing protocol as evaluation reference
 - Extended [[document-parsing-structural-fidelity]] and [[index]] with DPP's structural adjudication, explicit field states, equivalent forms and traceability; distinguished faithful representation from downstream normalization.
 - Cited the public vendor article and protocol directly. DPP 0.1 is a working draft and its checker provides review guidance, not an automated conformance suite; no parser performance or workflow improvement is claimed.
