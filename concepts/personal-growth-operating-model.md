@@ -1,13 +1,14 @@
 ---
 title: Personal Growth Operating Model
 created: 2026-04-21
-updated: 2026-10-19
+updated: 2026-11-02
 type: concept
 tags: [lifeos, operating-model, optimization, evaluation]
 sources: [concepts/lifeos-overview.md, concepts/work-and-career-operating-model.md]
 status: stable
 description: 定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。
 volatility: low
+aliases: [personal-growth-model, growth-operating-model]
 ---
 
 # Personal Growth Operating Model

@@ -1,15 +1,16 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
-tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation]
+tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation, pydantic]
 sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md, raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md]
 aliases: [agent-python-engineering-capability-checklist]
 status: stable
 description: 列出 AI Agent 执行 Python 工程任务时的输入、资源、并发、类型与性能检查项，并按真实变更压力选择最小设计边界。
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Python Engineering Capability Checklist

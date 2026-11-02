@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。
 aliases: [agent-evaluation-framework]
 volatility: medium
-review_by: 2027-02-21
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Production AI Agent Evaluation Framework
@@ -43,7 +44,7 @@ review_by: 2027-02-21
 - Context Recall：是否取回了回答所需的全部关键信息。
 - Context Precision：最相关片段是否排在前面。
 - Retrieval Latency：检索阶段是否拖慢整体响应。
-- Citation / Evidence Consistency（跨运行引用一致性）：同一问题重复运行多次时，Agent 所引用支撑证据集合的重合度（如 [[langchain-agent-memory-openwiki-graphs-2026-10-28]] 使用的三次运行引用集合平均成对 Jaccard 相似度）。在跨源复杂问题中，仅靠编译知识可能提高平均准确率但出现引用路径漂移（原文合成保险实验中引用重合度从简单查询的 `0.74` 降至跨文档问题的 `0.25`，引入显式证据图边后翻倍）。该指标衡量取证路径的可重复性与可审计性，不直接等同于答案正确性（详见 [[hermes-knowledge-freshness-and-claim-evidence]]）。
+- Citation / Evidence Consistency（跨运行引用一致性）：同一问题重复运行多次时，Agent 所引用支撑证据集合的重合度（如 [[langchain-agent-memory-openwiki-graphs-2026-10-28]] 使用的三次运行引用集合平均成对 Jaccard 相似度）。在跨源复杂问题中，仅靠编译知识可能提高平均准确率但出现引用路径漂移（原文合成保险实验中引用重合度从简单查询的 `0.74` 降至跨文档问题的 `0.25`，引入显式证据图边后翻倍）。该指标衡量取证路径的可重复性与可审计性，不直接等同于答案正确性（详见 [[hermes-knowledge-freshness-and-claim-evidence]] 与 [[wiki-cross-source-evidence-navigation-benchmark]]）。
 
 工程含义：坏检索不能靠后续 prompt 补救；如果输入上下文错了，生成层只能在噪声上做推断。对存在版本替代或条款冲突的多源场景，还应同时观察取证集合是否稳定，避免不同运行因随机命中的证据片段不同而翻转结论。
 
@@ -239,33 +240,18 @@ review_by: 2027-02-21
 - [[agent-development-lifecycle]] 关注 Build → Test → Deploy → Monitor 的生命周期。
 - [[agent-orchestration-production-tradeoffs]] 关注不同 Agent 编排模式在成本、延迟、准确性和规模之间的取舍。
 - [[llm-summary-identification-step]] 补充摘要/分析类输出在生成前应先判定 claim 是否被来源支持。
+- [[ai-agent-document-fidelity-risk]] 补充长程编辑中的内容保真失败模式：测试不仅要看最终任务是否成功，还要核验源文档在多步编辑中是否发生静默改写、遗漏或幻觉替换。
+- [[agent-closed-loop-learning-from-corrections-to-rules]] 将评测框架从质量测量延伸到行为晋升：用户纠正在通过离线回放、影子评测或等效门禁前，不应直接成为默认 Agent 行为。
+- [[llm-engineering-knowledge-map]] 将评测定位为 LLM 工程栈的最终控制层；本页保留面向检索、生成、工具行为、成本与延迟的生产级检查清单。
+- [[agent-research-evidence-gate]] 将该评测框架应用于研究型工作流：由 Judge 门禁在生成最终报告前先行裁决来源充分性与缺失信息。
+- [[stateful-agent-environments-and-grounded-verification]] 收窄有状态计算机操作工作流的行为层：联合评估环境行为、任务深度与权威状态结果，并将模型、环境、任务和验证器失败解耦。
 - 本页补充生产级 eval 指标层：如何观察和量化一个 Agent 系统是否可靠。
-
-## Relationship to document fidelity risk
-
-[[ai-agent-document-fidelity-risk]] adds a content-preservation failure mode to this evaluation framework: long-horizon Agent tests should not only measure final task success, but also whether source documents survive multi-step edits without silent rewrites, omissions, or hallucinated substitutions.
-
-## Relationship to closed-loop learning
-
-[[agent-closed-loop-learning-from-corrections-to-rules]] extends this evaluation framework from quality measurement into behavior promotion: user corrections should not become default Agent behavior until a candidate rule or prompt passes offline replay, shadow evaluation, or an equivalent scoped gate.
-
-## Relationship to LLM engineering map
-
-[[llm-engineering-knowledge-map]] frames evaluation as the final control layer of the LLM engineering stack. This page keeps the narrower production Agent eval checklist for retrieval, generation, tool behavior, cost, and latency.
-
-## Relationship to research evidence gates
-
-[[agent-research-evidence-gate]] applies this evaluation frame to research workflows: the Judge gate evaluates source sufficiency and missing information before an Analyst produces the final report. It is narrower than this page because it focuses on evidence readiness rather than the whole production evaluation stack.
-
-## Relationship to stateful environments and grounded verification
-
-[[stateful-agent-environments-and-grounded-verification]] narrows the Agent behavior layer for stateful computer-use workflows: evaluate environment behavior, task depth and authoritative outcome verification together, then separate model, environment, task and verifier failures. It does not make synthetic worlds, RL or database graders a production default.
 
 ## Relations
 
 - refines: [[llm-engineering-knowledge-map]], [[agent-development-lifecycle]]
 - depends_on: [[agent-self-validation-loops]], [[deterministic-analytics-llm-reasoning-boundary]]
-- related: [[agent-harness-search-regularization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-research-evidence-gate]], [[stateful-agent-environments-and-grounded-verification]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-orchestration-production-tradeoffs]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[ai-agent-tool-selection-architecture]], [[hermes-ai-workflow-formalization-principles]], [[agent-failure-closed-loop-evaluation]], [[llm-context-engineering-layer]]
+- related: [[agent-harness-search-regularization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[wiki-cross-source-evidence-navigation-benchmark]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-research-evidence-gate]], [[stateful-agent-environments-and-grounded-verification]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-orchestration-production-tradeoffs]], [[llm-summary-identification-step]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[ai-agent-tool-selection-architecture]], [[hermes-ai-workflow-formalization-principles]], [[agent-failure-closed-loop-evaluation]], [[llm-context-engineering-layer]]
 
 ## Related
 

@@ -1,13 +1,14 @@
 ---
 title: Money as Tool and Investment-vs-Consumption Framework
 created: 2026-04-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [research, note]
 sources: [raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md, docs:https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/]
 status: stable
 description: 区分钱作为自由工具、投资资产和消费支出，并检查现金缓冲与自我投资失败风险的判断框架。
 volatility: low
+aliases: [money-as-tool, investment-vs-consumption]
 ---
 
 # Money as Tool and Investment-vs-Consumption Framework

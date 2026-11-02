@@ -1,7 +1,7 @@
 ---
 title: Entropy and Entropy Increase
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-11-02
 type: concept
 tags: [research]
 sources:
@@ -12,7 +12,7 @@ sources:
   - raw/articles/laws-of-software-engineering/broken-windows-theory.md
 status: stable
 description: 区分热力学熵、统计熵与信息熵，说明熵增成立的系统边界以及软件和组织类比的使用限制。
-aliases: [熵, 熵增, entropy, entropy increase]
+aliases: [熵, 熵增, entropy, entropy-increase]
 volatility: low
 verified_at: 2026-09-21
 ---

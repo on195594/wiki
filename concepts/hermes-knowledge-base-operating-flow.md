@@ -1,7 +1,7 @@
 ---
 title: Shared Wiki Operating Flow
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, workflow, note]
 sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, concepts/hermes-knowledge-architecture.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义人类与 AI Agent 共享知识库从摄取、分类、编译、检索到维护的端到端运行流程。
 aliases: [knowledge-base-operating-flow, agent-knowledge-base-operating-flow]
 volatility: medium
-review_by: 2027-01-24
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Shared Wiki Operating Flow

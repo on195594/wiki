@@ -1,7 +1,7 @@
 ---
 title: AI Agent Memory Governance Notes
 created: 2026-04-22
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, memory, governance, orchestration, knowledge-base]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-layer-routing-decision-checklist.md]
@@ -9,7 +9,8 @@ status: stable
 description: 记录 AI Agent memory 的写入、更新、遗忘和跨层治理注意事项。
 aliases: [memory-governance, agent-memory-governance-notes]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Memory Governance Notes

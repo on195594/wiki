@@ -1,7 +1,7 @@
 ---
 title: OKF Concepts for AI Agent Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-10-29
+updated: 2026-11-02
 type: query
 tags: [agent, knowledge-base, governance, context-engineering]
 sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, repository:SCHEMA.md, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_maintain.py, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -43,8 +43,6 @@ OKF 对 AI Agent wiki 有用，但只应作为机器可读治理增强参考，�
 
 - refines: [[hermes-knowledge-architecture]]
 - depends_on: [[hermes-wiki-page-writing-standards]]
-- conflicts_with: []
-- supersedes: []
 - related: [[agent-shared-wiki-index]]
 ```
 

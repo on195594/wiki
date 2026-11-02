@@ -1,13 +1,14 @@
 ---
 title: Progressive Knowledge System Growth
 created: 2026-05-11
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [knowledge-base, workflow, note]
 sources: [raw/articles/makeuseof-obsidian-perfect-vault-one-thing-2026-05-08.md]
 status: stable
 description: 说明个人知识系统应通过渐进生长和真实使用扩展，而不是预先重构成复杂体系。
 volatility: low
+aliases: [progressive-vault-growth, incremental-knowledge-growth]
 ---
 
 # Progressive Knowledge System Growth

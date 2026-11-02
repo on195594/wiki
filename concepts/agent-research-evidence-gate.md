@@ -2,14 +2,15 @@
 title: Agent Research Evidence Gate
 type: concept
 created: 2026-05-22
-updated: 2026-10-29
+updated: 2026-11-02
 tags: [agent, multi-agent, evaluation, workflow, research, governance]
 sources: [raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md]
 status: stable
 description: 定义研究型 Agent 在最终综合前必须通过的证据收集和质量判断门。
 aliases: [evidence-gated-research]
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Research Evidence Gate

@@ -1,7 +1,7 @@
 ---
 title: Agent Evaluation Rubric Calibration
 created: 2026-07-31
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, evaluation, validation, harness, workflow]
 sources: [raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md]
@@ -9,7 +9,8 @@ status: stable
 description: 说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，避免聚合分数把正常改进误判为回归。
 aliases: [rubric-calibration, evaluator-calibration]
 volatility: medium
-review_by: 2026-12-13
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Evaluation Rubric Calibration

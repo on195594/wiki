@@ -1,7 +1,7 @@
 ---
 title: Agent Shared Wiki Index
 created: 2026-08-04
-updated: 2026-10-29
+updated: 2026-11-02
 type: operation
 tags: [agent, knowledge-base, context-engineering, multi-agent]
 sources: [repository:SCHEMA.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-retrieval-priority-and-answer-path.md]
@@ -10,7 +10,8 @@ source_policy: normative
 description: 多种 coding/agent 客户端共用 Markdown 知识库时的可移植路由入口与读写边界。
 aliases: [shared-agent-context, cross-agent-wiki-index]
 volatility: medium
-review_by: 2027-02-28
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Shared Wiki Index

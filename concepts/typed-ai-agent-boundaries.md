@@ -1,7 +1,7 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
@@ -9,7 +9,8 @@ status: stable
 description: 说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。
 aliases: [typed-agent-boundaries]
 volatility: medium
-review_by: 2027-02-21
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Typed AI Agent Boundaries

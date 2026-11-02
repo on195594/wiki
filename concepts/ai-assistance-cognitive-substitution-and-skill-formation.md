@@ -1,7 +1,7 @@
 ---
 title: AI Assistance, Cognitive Substitution, and Skill Formation
 created: 2026-08-04
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [llm, research, workflow, governance]
 sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md]
@@ -9,7 +9,8 @@ status: stable
 description: 用补偿、支架、替代和撤除辅助后的能力，判断 AI 是扩展人的思考还是跳过能力形成过程。
 aliases: [ai-scaffolding-vs-substitution, cognitive-offloading-with-ai, accomplishment-hallucination]
 volatility: medium
-review_by: 2027-01-17
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Assistance, Cognitive Substitution, and Skill Formation

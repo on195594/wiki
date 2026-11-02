@@ -1,7 +1,7 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
 sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
@@ -9,7 +9,8 @@ status: stable
 description: 把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
 volatility: medium
-review_by: 2027-01-17
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Assumption Challenger Before Execution

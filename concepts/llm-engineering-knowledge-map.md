@@ -1,7 +1,7 @@
 ---
 title: LLM Engineering Knowledge Map
 created: 2026-05-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [llm, architecture, workflow, evaluation, deployment]
 sources: [raw/articles/towardsdatascience-must-know-topics-llm-engineer-2026-05-09.md, raw/articles/github-calmrocks-ai-engineer-notebooks-readme-2026-09-30.md]
@@ -9,7 +9,8 @@ status: stable
 description: 提供 LLM 工程知识主题地图，用于定位模型、数据、评估、部署和治理能力。
 aliases: [llm-knowledge-map]
 volatility: medium
-review_by: 2027-02-14
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # LLM Engineering Knowledge Map

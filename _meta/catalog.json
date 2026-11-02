@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 120,
+  "total_pages": 123,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -40,6 +40,7 @@
       "description": "保留 Hermes/SRE 历史对照主题，区分来源中的事故响应模式、本仓库知识设计和待验证的 Agent 接入建议。",
       "status": "stable",
       "tags": [
+        "hermes",
         "agent",
         "mcp",
         "workflow",
@@ -50,9 +51,9 @@
         "hermes-vs-google-sre"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "google-sre-gemini-cli-incident-response",
@@ -113,9 +114,9 @@
         "agent-autonomy-ladder-for-agent-workflows"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns",
@@ -151,9 +152,9 @@
         "closed-loop-learning"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-25",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -184,9 +185,9 @@
         "context-engineering-for-agents"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
@@ -221,11 +222,14 @@
         "context-engineering",
         "workflow"
       ],
-      "aliases": [],
+      "aliases": [
+        "agent-context-history-state",
+        "bounded-context-processing"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -254,11 +258,14 @@
         "context-engineering",
         "workflow"
       ],
-      "aliases": [],
+      "aliases": [
+        "static-agent-context",
+        "prompt-tools-and-examples"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-06",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -293,9 +300,9 @@
         "agent-lifecycle"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-13",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "production-ai-agent-evaluation-framework",
@@ -303,6 +310,7 @@
           "hermes-layer-routing-decision-checklist"
         ],
         "related": [
+          "agent-production-harness-and-cloud-runtime-boundaries",
           "hermes-context-layer-operating-rules",
           "local-first-sync-confirmed-mirror-outbox-conflict-policy",
           "agent-orchestration-production-tradeoffs",
@@ -336,9 +344,9 @@
         "evaluator-calibration"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-13",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -361,13 +369,17 @@
         "knowledge-base",
         "validation",
         "workflow",
-        "multi-agent"
+        "multi-agent",
+        "closeout"
       ],
-      "aliases": [],
+      "aliases": [
+        "experience-consolidation-loop",
+        "agent-experience-consolidation"
+      ],
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -405,9 +417,9 @@
         "failure-loop-evaluation"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-13",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -433,12 +445,13 @@
         "validation"
       ],
       "aliases": [
-        "RRSI"
+        "rrsi",
+        "harness-search-regularization"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-13",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -464,11 +477,14 @@
         "workflow",
         "multi-agent"
       ],
-      "aliases": [],
+      "aliases": [
+        "agent-knowledge-evolution",
+        "meta-skills-evolution"
+      ],
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -496,9 +512,9 @@
         "memory-reflection-planning"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -532,9 +548,9 @@
         "agent-orchestration-tradeoffs"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -557,6 +573,48 @@
       }
     },
     {
+      "path": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
+      "type": "concept",
+      "title": "Agent 生产级 Harness 与云端运行时边界",
+      "description": "定义生产级 Agent Harness 的有状态执行边界、共享定义与薄宿主分层、云端长程运行时与沙箱分离，以及 Agent-as-Code 的 PR 控制面。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "harness",
+        "lifecycle",
+        "deployment",
+        "orchestration",
+        "governance",
+        "verification"
+      ],
+      "aliases": [
+        "production-agent-harness",
+        "cloud-agent-runtime-boundaries",
+        "harness-execution-boundary"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
+      "relations": {
+        "refines": [
+          "agent-development-lifecycle"
+        ],
+        "depends_on": [
+          "stateful-agent-environments-and-grounded-verification",
+          "local-first-sync-confirmed-mirror-outbox-conflict-policy"
+        ],
+        "related": [
+          "agent-orchestration-production-tradeoffs",
+          "hermes-model-specific-harness-profiles",
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "agent-experience-consolidation-loops",
+          "subagent-orchestration-patterns",
+          "chat-to-agent-session-routing"
+        ]
+      }
+    },
+    {
       "path": "concepts/agent-research-evidence-gate.md",
       "type": "concept",
       "title": "Agent Research Evidence Gate",
@@ -574,9 +632,9 @@
         "evidence-gated-research"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -602,17 +660,20 @@
       "status": "stable",
       "tags": [
         "agent",
-        "multi-agent",
-        "orchestration",
+        "llm",
         "optimization",
-        "architecture",
-        "evaluation"
+        "workflow",
+        "research",
+        "model-profiles"
       ],
-      "aliases": [],
+      "aliases": [
+        "agent-resource-routing",
+        "model-routing-optimization"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -645,14 +706,15 @@
         "self-validation-loop"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
         ],
         "related": [
+          "ai-code-review-governance-and-convergence",
           "claude-code-practical-workflow-tips",
           "agentic-content-pipeline-design-patterns",
           "ai-coding-agent-workflow-types",
@@ -682,13 +744,17 @@
         "knowledge-base",
         "validation",
         "workflow",
-        "multi-agent"
+        "multi-agent",
+        "lifecycle"
       ],
-      "aliases": [],
+      "aliases": [
+        "skill-governance",
+        "reversible-skill-state"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-20",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -715,11 +781,14 @@
         "governance",
         "architecture"
       ],
-      "aliases": [],
+      "aliases": [
+        "skill-provider-boundary",
+        "agent-skill-provider"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -747,11 +816,14 @@
         "content-engineering",
         "mcp"
       ],
-      "aliases": [],
+      "aliases": [
+        "agentic-content-pipeline",
+        "content-pipeline-design-patterns"
+      ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-30",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -788,9 +860,9 @@
         "agentic-programming"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agent-context-engineering",
@@ -827,9 +899,9 @@
         "document-fidelity-risk"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -865,9 +937,9 @@
         "ai-automation-human-needs"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -899,9 +971,9 @@
         "tool-routing-for-ai-agents"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -936,9 +1008,9 @@
         "accomplishment-hallucination"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "ai-assumption-challenger-before-execution",
@@ -971,9 +1043,9 @@
         "claude-creative-sounding-board"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -986,6 +1058,46 @@
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "subagent-orchestration-patterns",
           "audience-situation-content-briefs"
+        ]
+      }
+    },
+    {
+      "path": "concepts/ai-code-review-governance-and-convergence.md",
+      "type": "concept",
+      "title": "AI Code Review Governance, Traceability, and Convergence",
+      "description": "定义 AI 生成代码时代的分层审查防线、双向需求追溯、按影响半径分级审批与多 Agent 审查收敛规则。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "ai-coding",
+        "workflow",
+        "governance",
+        "verification",
+        "evaluation"
+      ],
+      "aliases": [
+        "ai-code-review-governance",
+        "code-review-convergence",
+        "agentic-code-review"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
+      "relations": {
+        "refines": [
+          "hermes-ai-workflow-formalization-principles"
+        ],
+        "depends_on": [
+          "agent-self-validation-loops",
+          "subagent-orchestration-patterns"
+        ],
+        "related": [
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "agent-failure-closed-loop-evaluation",
+          "ai-assumption-challenger-before-execution",
+          "ai-coding-agent-workflow-types",
+          "loop-engineering-hermes-agent-workflow"
         ]
       }
     },
@@ -1007,15 +1119,16 @@
         "coding-agent-workflow-types"
       ],
       "volatility": "medium",
-      "review_by": "2026-12-27",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order",
           "codex-agent-workflow-layering"
         ],
         "related": [
+          "ai-code-review-governance-and-convergence",
           "subagent-orchestration-patterns",
           "claude-code-practical-workflow-tips",
           "hermes-layer-routing-decision-checklist",
@@ -1039,11 +1152,14 @@
         "optimization",
         "claude-code"
       ],
-      "aliases": [],
+      "aliases": [
+        "coding-context-budget",
+        "context-budget-management"
+      ],
       "volatility": "medium",
-      "review_by": "2027-01-03",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1078,9 +1194,9 @@
         "pm-agent-delegation-patterns"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-03",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-autonomy-ladder-for-hermes-workflows"
@@ -1147,9 +1263,9 @@
         "chat-to-agent-routing"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -1242,11 +1358,14 @@
         "research",
         "note"
       ],
-      "aliases": [],
+      "aliases": [
+        "companyos-to-lifeos",
+        "filesystem-philosophy"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1273,11 +1392,14 @@
         "structured-output",
         "governance"
       ],
-      "aliases": [],
+      "aliases": [
+        "constrained-toolbox-loop",
+        "toolbox-evaluator-loop"
+      ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -1299,7 +1421,7 @@
       "type": "concept",
       "title": "From Coping Skill Acquisition to Real-World Application",
       "description": "区分情绪调节技能的习得与现实应用，并用有界想象暴露检验练习是否真正减少回避。",
-      "status": "draft",
+      "status": "stable",
       "tags": [
         "lifeos",
         "evaluation",
@@ -1313,8 +1435,8 @@
       ],
       "volatility": "low",
       "review_by": null,
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "personal-growth-operating-model"
@@ -1342,9 +1464,9 @@
         "deterministic-llm-boundary"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-17",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1409,13 +1531,15 @@
         "structured-output"
       ],
       "aliases": [
+        "document-parsing-fidelity",
+        "document-intermediate-representation",
         "文档结构保真",
         "文档中间表示"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "ai-agent-document-fidelity-risk",
@@ -1436,12 +1560,12 @@
         "熵",
         "熵增",
         "entropy",
-        "entropy increase"
+        "entropy-increase"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-09-21",
-      "updated": "2026-09-21",
+      "updated": "2026-11-02",
       "relations": {
         "related": [
           "software-engineering-laws-quality",
@@ -1463,11 +1587,14 @@
         "operating-model",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "family-education-model",
+        "education-operating-model"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -1499,9 +1626,9 @@
         "少探索早验证"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-03",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "loop-engineering-hermes-agent-workflow",
@@ -1535,9 +1662,9 @@
         "sre-agentic-incident-response"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-03",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-knowledge-base-operating-flow",
@@ -1558,7 +1685,8 @@
         "agent",
         "governance",
         "workflow",
-        "context-engineering"
+        "context-engineering",
+        "lifecycle"
       ],
       "aliases": [
         "active-surface-lifecycle",
@@ -1566,9 +1694,9 @@
         "agent-active-surface-lifecycle-governance"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "system-governance-operating-model"
@@ -1603,9 +1731,9 @@
         "agent-workflow-layering-and-adoption-order"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-03",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -1639,9 +1767,9 @@
         "agent-ai-workflow-formalization-principles"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "dijkstra-ai-programming-formalization"
@@ -1651,6 +1779,7 @@
           "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
+          "ai-code-review-governance-and-convergence",
           "typed-ai-agent-boundaries",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
@@ -1685,9 +1814,9 @@
         "agent-context-engineering-design-priorities"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer"
@@ -1719,9 +1848,9 @@
         "agent-context-layer-operating-rules"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-context-engineering-design-priorities",
@@ -1761,9 +1890,9 @@
         "agent-knowledge-architecture"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -1797,9 +1926,9 @@
         "agent-knowledge-base-operating-flow"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1832,15 +1961,15 @@
         "workflow"
       ],
       "aliases": [
-        "knowledge freshness",
-        "claim evidence",
-        "stale knowledge",
+        "knowledge-freshness",
+        "claim-evidence",
+        "stale-knowledge",
         "agent-knowledge-freshness-and-claim-evidence"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-24",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture",
@@ -1853,6 +1982,7 @@
           "hermes-wiki-knowledge-freshness-improvement-plan"
         ],
         "related": [
+          "wiki-cross-source-evidence-navigation-benchmark",
           "hermes-wiki-lint-and-health-check-standards",
           "wiki-ingestion-workflow",
           "hermes-retrieval-priority-and-answer-path",
@@ -1881,9 +2011,9 @@
         "agent-layer-routing-decision-checklist"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -1911,16 +2041,17 @@
         "lifeos",
         "architecture",
         "workflow",
-        "governance"
+        "governance",
+        "model-profiles"
       ],
       "aliases": [
         "lifeos-executable-architecture",
         "agent-lifeos-executable-architecture"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -1952,9 +2083,9 @@
         "agent-lifeos-layer-boundary-contract"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-lifeos-executable-architecture",
@@ -1986,9 +2117,9 @@
         "agent-memory-governance-notes"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2017,9 +2148,9 @@
         "agent-memory-skills-wiki-boundaries"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -2060,13 +2191,14 @@
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-10-20",
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
           "hermes-context-layer-operating-rules"
         ],
         "related": [
+          "agent-production-harness-and-cloud-runtime-boundaries",
           "hermes-context-engineering-design-priorities",
           "codex-agent-workflow-layering",
           "hermes-retrieval-priority-and-answer-path"
@@ -2087,15 +2219,16 @@
         "governance",
         "optimization",
         "architecture",
-        "validation"
+        "validation",
+        "pydantic"
       ],
       "aliases": [
         "agent-python-engineering-capability-checklist"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-31",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -2132,9 +2265,9 @@
         "agent-retrieval-priority-and-answer-path"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2168,9 +2301,9 @@
         "agent-skill-refactoring-methodology"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",
@@ -2203,9 +2336,9 @@
         "agent-wiki-lint-and-health-check-standards"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
@@ -2241,9 +2374,9 @@
         "agent-wiki-page-writing-standards"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-20",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -2310,9 +2443,9 @@
         "human-machine-mathematical-discovery"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-07",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-self-validation-loops"
@@ -2436,9 +2569,9 @@
         "context-engineering-layer"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -2474,9 +2607,9 @@
         "llm-knowledge-map"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "related": [
           "llm-context-engineering-layer",
@@ -2509,9 +2642,9 @@
         "summary-identification"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -2542,9 +2675,9 @@
         "local-first-sync-recoverable-transactions"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -2567,16 +2700,17 @@
         "workflow",
         "automation",
         "subagent",
-        "orchestration"
+        "orchestration",
+        "closeout"
       ],
       "aliases": [
         "loop-engineering",
         "loop-engineering-agent-workflow"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",
@@ -2605,11 +2739,14 @@
         "research",
         "note"
       ],
-      "aliases": [],
+      "aliases": [
+        "money-as-tool",
+        "investment-vs-consumption"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "ordinary-investor-investment-system"
@@ -2639,9 +2776,9 @@
         "correlated-agent-failures"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -2668,9 +2805,9 @@
         "ordinary-investor-system"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-14",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "related": [
           "investment-risk-control-framework",
@@ -2692,11 +2829,14 @@
         "optimization",
         "evaluation"
       ],
-      "aliases": [],
+      "aliases": [
+        "personal-growth-model",
+        "growth-operating-model"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -2728,14 +2868,15 @@
         "llm-latency-cost-baselines"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
         ],
         "related": [
+          "wiki-cross-source-evidence-navigation-benchmark",
           "agent-resource-optimization",
           "hermes-knowledge-freshness-and-claim-evidence",
           "agent-evaluation-rubric-calibration"
@@ -2760,9 +2901,9 @@
         "agent-evaluation-framework"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -2775,6 +2916,7 @@
         "related": [
           "agent-harness-search-regularization",
           "hermes-knowledge-freshness-and-claim-evidence",
+          "wiki-cross-source-evidence-navigation-benchmark",
           "agent-evaluation-rubric-calibration",
           "production-agent-evaluation-baselines",
           "repeated-measures-statistical-power-for-ai-evaluation",
@@ -2804,11 +2946,14 @@
         "workflow",
         "note"
       ],
-      "aliases": [],
+      "aliases": [
+        "progressive-vault-growth",
+        "incremental-knowledge-growth"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2835,11 +2980,14 @@
         "agent",
         "workflow"
       ],
-      "aliases": [],
+      "aliases": [
+        "public-info-monitoring",
+        "monitoring-automation-methodology"
+      ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agent-development-lifecycle",
@@ -2870,9 +3018,9 @@
         "pseudo-replication-in-ai-evaluation"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -2900,9 +3048,9 @@
         "repo-code-intelligence"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "ai-coding-assistant-context-budget-management",
@@ -2926,11 +3074,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-architecture",
+        "architecture-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -2952,11 +3103,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-decisions",
+        "decision-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -2978,11 +3132,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-design",
+        "design-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3003,11 +3160,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-planning",
+        "planning-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3028,11 +3188,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-quality",
+        "quality-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3055,11 +3218,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-scale",
+        "scale-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3080,11 +3246,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-teams",
+        "team-engineering-laws"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3112,9 +3281,9 @@
         "grounded-agent-environment"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -3122,6 +3291,7 @@
         ],
         "related": [
           "agent-development-lifecycle",
+          "agent-production-harness-and-cloud-runtime-boundaries",
           "subagent-orchestration-patterns",
           "agent-failure-closed-loop-evaluation",
           "local-first-sync-confirmed-mirror-outbox-conflict-policy",
@@ -3149,9 +3319,9 @@
         "subagent-patterns"
       ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -3183,11 +3353,14 @@
         "lifeos",
         "operating-model"
       ],
-      "aliases": [],
+      "aliases": [
+        "system-governance-model",
+        "lifeos-governance-model"
+      ],
       "volatility": "medium",
-      "review_by": "2027-01-10",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3222,9 +3395,9 @@
         "typed-agent-boundaries"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -3262,9 +3435,9 @@
         "knowledge-ingestion"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-21",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3292,11 +3465,14 @@
         "workflow",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "work-career-model",
+        "career-operating-model"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3389,9 +3565,9 @@
         "cross-agent-wiki-index"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
-      "verified_at": null,
-      "updated": "2026-10-29",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -3428,9 +3604,9 @@
         "agent-architecture-paper-map"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "agentic-programming-system-engineering"
@@ -3494,11 +3670,14 @@
         "cron",
         "validation"
       ],
-      "aliases": [],
+      "aliases": [
+        "hermes-dreaming-assessment",
+        "hermes-experience-consolidation-snapshot"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "agent-experience-consolidation-loops"
@@ -3531,9 +3710,9 @@
         "agent-layer-routing-edge-cases"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
-      "verified_at": null,
-      "updated": "2026-10-20",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
@@ -3564,9 +3743,9 @@
         "agent-layer-routing-sample-cases"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
-      "verified_at": null,
-      "updated": "2026-10-20",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
@@ -3593,13 +3772,13 @@
         "architecture"
       ],
       "aliases": [
-        "wiki freshness plan",
-        "claim evidence workflow"
+        "wiki-freshness-plan",
+        "claim-evidence-workflow"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence"
@@ -3624,16 +3803,18 @@
         "agent",
         "ai-coding",
         "typed-boundary",
-        "workflow",
-        "verification"
+        "structured-output",
+        "pydantic",
+        "validation",
+        "workflow"
       ],
       "aliases": [
         "how-i-should-use-agent-for-ai-coding-with-typed-boundaries"
       ],
       "volatility": "medium",
-      "review_by": "2027-02-28",
-      "verified_at": null,
-      "updated": "2026-10-19",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
@@ -3755,7 +3936,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-02",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3939,11 +4120,14 @@
         "architecture",
         "decision"
       ],
-      "aliases": [],
+      "aliases": [
+        "se-laws-decision-map",
+        "software-laws-index"
+      ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-02",
       "relations": {
         "depends_on": [
           "software-engineering-laws-architecture",
@@ -4015,6 +4199,70 @@
           "combining-two-investment-frameworks",
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
+        ]
+      }
+    },
+    {
+      "path": "queries/wiki-cross-source-evidence-navigation-benchmark.md",
+      "type": "query",
+      "title": "Wiki 跨源证据导航离线评测方案与拓扑基线",
+      "description": "保存本仓库 8 组双入口跨源证据导航（locate → expand）离线评测方案、黄金正式页与原始证据清单，以及一跳双向关系可达性拓扑基线，区分静态图重合度与重复问答引用一致性。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "knowledge-base",
+        "evaluation",
+        "verification",
+        "architecture",
+        "workflow"
+      ],
+      "aliases": [
+        "cross-source-evidence-benchmark",
+        "evidence-navigation-benchmark",
+        "wiki-evidence-navigation-eval"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-02",
+      "updated": "2026-11-02",
+      "relations": {
+        "refines": [
+          "hermes-knowledge-freshness-and-claim-evidence",
+          "production-agent-evaluation-baselines"
+        ],
+        "depends_on": [
+          "hermes-retrieval-priority-and-answer-path",
+          "production-ai-agent-evaluation-framework"
+        ],
+        "related": [
+          "agent-context-engineering",
+          "agent-context-history-state-and-bounded-processing",
+          "hermes-context-engineering-design-priorities",
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-wiki-knowledge-freshness-improvement-plan",
+          "hermes-knowledge-architecture",
+          "hermes-wiki-page-writing-standards",
+          "repeated-measures-statistical-power-for-ai-evaluation",
+          "agent-evaluation-rubric-calibration",
+          "agent-self-validation-loops",
+          "hermes-ai-workflow-formalization-principles",
+          "hermes-python-engineering-capability-checklist",
+          "ai-code-review-governance-and-convergence",
+          "dijkstra-ai-programming-formalization",
+          "subagent-orchestration-patterns",
+          "agent-orchestration-production-tradeoffs",
+          "agent-resource-optimization",
+          "agent-research-evidence-gate",
+          "hermes-context-layer-operating-rules",
+          "agent-context-prompt-tools-and-examples",
+          "typed-ai-agent-boundaries",
+          "ai-agent-tool-selection-architecture",
+          "agent-experience-consolidation-loops",
+          "agent-skill-governance-and-reversible-state",
+          "agent-knowledge-evolution-and-meta-skills",
+          "document-parsing-structural-fidelity",
+          "ai-agent-document-fidelity-risk",
+          "deterministic-analytics-llm-reasoning-boundary"
         ]
       }
     },

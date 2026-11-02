@@ -1,7 +1,7 @@
 ---
 title: Production Agent Evaluation Baselines
 created: 2026-07-31
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, evaluation, validation, monitoring, optimization]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义生产 Agent 的延迟、成本、调用和缓存观测基线，并约束外部经验阈值与控制层边界。
 aliases: [agent-production-baselines, llm-latency-cost-baselines]
 volatility: medium
-review_by: 2027-02-21
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Production Agent Evaluation Baselines
@@ -46,7 +47,7 @@ review_by: 2027-02-21
 
 ## 知识库跨源证据导航评测方案（待执行）
 
-针对编译型知识库，可用离线图拓扑评测检测断链与候选膨胀（8 组双入口候选问题和验证要求见 [[hermes-knowledge-freshness-and-claim-evidence]]）。当前缺少可复现运行产物，状态为 **NOT_RUN**，不将此前报告的本仓库改善数值视为已验证基线。
+针对编译型知识库，可用离线图拓扑评测检测断链与候选膨胀（8 组双入口候选问题、一跳双向关系可达性拓扑基线和验证要求见 [[wiki-cross-source-evidence-navigation-benchmark]] 与 [[hermes-knowledge-freshness-and-claim-evidence]]）。当前端到端多次问答缺少可复现运行产物，模型层引用一致性状态为 **NOT_RUN**，不将静态图拓扑重合度或此前报告的本仓库改善数值视为已验证的问答基线。
 
 - **结构指标**：完整可达证据集合的跨入口 Jaccard、黄金证据召回率与精确率、实际加载范围的上下文体积。不得先过滤到黄金集再将重合度称作引用一致性。
 - **回答指标**：同一问题重复运行后的实际段落引用集合一致性、引用正确性、Answer Faithfulness 与任务成功率，须独立于静态图遍历测量。
@@ -93,4 +94,4 @@ review_by: 2027-02-21
 ## Relations
 
 - refines: [[production-ai-agent-evaluation-framework]]
-- related: [[agent-resource-optimization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-evaluation-rubric-calibration]]
+- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[agent-resource-optimization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-evaluation-rubric-calibration]]

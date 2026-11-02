@@ -1,7 +1,7 @@
 ---
 title: AI Agent Context Engineering Design Priorities
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, llm, workflow, decision]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 AI Agent 上下文工程的预算控制、排序、压缩和历史衰减优先级。
 aliases: [hermes-context-engineering, agent-context-engineering-design-priorities]
 volatility: medium
-review_by: 2027-01-24
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Context Engineering Design Priorities

@@ -1,7 +1,7 @@
 ---
 title: Agent Memory–Reflection–Planning Pipeline
 created: 2026-08-15
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, memory, architecture, research]
 sources: [raw/papers/arxiv-2304-03442-generative-agents.md]
@@ -9,7 +9,8 @@ status: stable
 description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Memory–Reflection–Planning Pipeline

@@ -1,7 +1,7 @@
 ---
 title: AI Agent Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, lifeos, context-engineering, knowledge-base, workflow, governance]
 sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则。
 aliases: [context-layer-rules, agent-context-layer-operating-rules]
 volatility: medium
-review_by: 2027-01-10
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Context Layer Operating Rules

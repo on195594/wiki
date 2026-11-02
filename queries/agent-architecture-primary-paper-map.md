@@ -1,7 +1,7 @@
 ---
 title: Agent Architecture Primary-Paper Map
 created: 2026-08-15
-updated: 2026-10-19
+updated: 2026-11-02
 type: query
 tags: [agent, research, architecture, decision]
 sources: [raw/papers/arxiv-2210-03629-react.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/papers/arxiv-2304-03442-generative-agents.md, raw/papers/arxiv-2305-16291-voyager.md, raw/papers/arxiv-2308-08155-autogen.md]
@@ -9,7 +9,8 @@ status: stable
 description: 按 Agent 设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界。
 aliases: [agent-primary-paper-map, agent-architecture-paper-map]
 volatility: medium
-review_by: 2027-02-28
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Architecture Primary-Paper Map

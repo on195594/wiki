@@ -1,7 +1,7 @@
 ---
 title: AI Agent Layer Routing Decision Checklist
 created: 2026-04-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, decision, automation, mcp]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/memory, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/skills, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/cron, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp]
@@ -9,7 +9,8 @@ status: stable
 description: 以内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度判断 AI Agent 层间路由。
 aliases: [layer-routing-checklist, agent-layer-routing-decision-checklist]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Layer Routing Decision Checklist

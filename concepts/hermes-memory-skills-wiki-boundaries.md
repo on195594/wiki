@@ -1,7 +1,7 @@
 ---
 title: AI Agent Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, workflow, configuration]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 AI Agent memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。
 aliases: [layer-boundaries, memory-skill-wiki-boundaries, agent-memory-skills-wiki-boundaries]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Memory Skills Wiki Boundaries

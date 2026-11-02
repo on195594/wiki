@@ -1,7 +1,7 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [llm, agent, workflow, research]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义检索与 prompt 之间的上下文工程层，以及 Agentic RAG 的证据信任、语义漂移和未知候选处理边界。
 aliases: [context-engineering-layer]
 volatility: medium
-review_by: 2027-02-14
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # LLM Context Engineering Layer

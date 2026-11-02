@@ -1,15 +1,16 @@
 ---
 title: 多智能体系统性失效模式
 created: 2026-08-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, multi-agent, orchestration, risk-control, governance]
 sources: [raw/articles/anthropic-multiagent-systemic-failures-2026-08-13.md]
 status: stable
 volatility: medium
-review_by: 2027-01-10
+review_by: 2027-03-02
 description: 从行为低方差、认识论失调、共谋和目标冲突升级理解多智能体群体为何会在单体正常时仍产生系统性失败。
 aliases: [multiagent-systemic-failures, correlated-agent-failures]
+verified_at: 2026-11-02
 ---
 
 # 多智能体系统性失效模式

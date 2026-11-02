@@ -1,14 +1,16 @@
 ---
 title: Agent Skill Governance and Reversible Skill State
 created: 2026-10-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
-tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
+tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, lifecycle]
 sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification]
 status: stable
 description: 说明如何把 Skill 作为受治理的程序性资产：使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+aliases: [skill-governance, reversible-skill-state]
+verified_at: 2026-11-02
 ---
 
 # Agent Skill Governance and Reversible Skill State

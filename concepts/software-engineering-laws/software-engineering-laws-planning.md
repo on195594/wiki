@@ -1,13 +1,14 @@
 ---
 title: Software Engineering Laws — Planning
 created: 2026-08-10
-updated: 2026-10-19
+updated: 2026-11-02
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/gilbs-law.md, raw/articles/laws-of-software-engineering/goodharts-law.md, raw/articles/laws-of-software-engineering/hofstadters-law.md, raw/articles/laws-of-software-engineering/ninety-ninety-rule.md, raw/articles/laws-of-software-engineering/parkinsons-law.md, raw/articles/laws-of-software-engineering/premature-optimization.md]
 status: stable
 description: 用于检索软件工程规划中关于度量、估算、期限、收尾成本与优化时机的经验法则。
 volatility: low
+aliases: [se-laws-planning, planning-engineering-laws]
 ---
 
 # Software Engineering Laws — Planning

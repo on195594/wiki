@@ -1,15 +1,16 @@
 ---
 title: Wiki 知识新鲜度与断言证据绑定
 created: 2026-08-26
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, memory, verification, architecture, workflow]
 sources: [raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, repository:_meta/catalog.json, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
 status: stable
 description: 定义 AI Agent Wiki 的知识新鲜度、断言级来源绑定，以及基于 locate/expand 的两步证据导航与编译记忆适用边界。
-aliases: [knowledge freshness, claim evidence, stale knowledge, agent-knowledge-freshness-and-claim-evidence]
+aliases: [knowledge-freshness, claim-evidence, stale-knowledge, agent-knowledge-freshness-and-claim-evidence]
 volatility: medium
-review_by: 2027-01-24
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Wiki 知识新鲜度与断言证据绑定
@@ -45,36 +46,12 @@ review_by: 2027-01-24
 - **[推论] 区分页面关系图与断言证据链**：页面级 `## Relations` 只记录正式知识页之间的语义边，不能把 `raw/` 原始材料塞入 `depends_on` 或 `refines`；多来源综合页应在具体结论或小节旁显式写出对应 `[[raw-...]]` 或 `docs:` 来源，避免只在 frontmatter `sources` 汇总导致取证路径退化为全库重搜。检索门禁与评测指标分别见 [[hermes-retrieval-priority-and-answer-path]] 与 [[production-ai-agent-evaluation-framework]]。
 - **[推论] 跨记忆层的证据锚定边界**：原文提出未来可用“断言 + 类型化证据边 + 变更检测”锚定语义记忆（事实）、情景记忆（事件）与程序记忆（规程）；在本知识库中，三者仍严格按 [[hermes-memory-skills-wiki-boundaries]] 分层治理，不将事件日志或未经验证的单次轨迹自动晋升为长期规则。
 
-### 本仓库跨源检索离线评测方案（待执行）
+### 本仓库跨源检索离线评测方案与拓扑基线（子页导航）
 
-**验证状态：NOT_RUN。** 当前仓库未提供与此前数值对应的可执行评测脚本、治理前后固定快照、逐题结果和运行记录，因此不再将此前报告的改善数值作为已验证结论。下列双入口问题集仅作为待验证方案；外部文章实验不能代替本仓库实测。
+针对本仓库 `locate` → `expand` 两步证据导航的 **8 组双入口跨源候选问题集（Q1–Q8）**、评测口径与一跳双向关系可达性实测基线，已拆分为独立查询页 [[wiki-cross-source-evidence-navigation-benchmark]] 维护（生产指标口径见 [[production-agent-evaluation-baselines]]）：
 
-#### 1. 评测口径与证据边界
-
-- 固定治理前后 commit 或内容哈希清单，提交机器可读的入口、黄金正式页和黄金原始来源集合；黄金集须独立复核，不按治理后遍历结果倒推。
-- 对照无类型关系展开与类型化展开时，统一跳数、边方向、来源提取范围、停止条件和候选预算；若分别测单向与双向遍历，逐项标明。多分支与冲突不能默认为全部适用。
-- 对每个入口保留完整可达正式页及来源集合，不先与黄金集求交再计算 Jaccard。**跨入口可达证据重合度**是图结构指标，不是模型回答的引用一致性；两端皆空时标记 N/A，并报告空结果数，不能记为完全一致。
-- 黄金证据召回率可用可达集合与黄金集的交集计算；另报精确率，防止靠扩大全库候选虚增召回。空黄金集的指标标记 N/A。
-- **引用一致性**必须对同一问题重复运行真实回答流程，保存实际引用的段落 ID，再计算完整引用集合的平均成对 Jaccard；同时独立评估引用正确性和答案正确性。
-- 上下文开销应统计实际加载的全部跳数、正式页与原始证据；仅统计一跳页面字节数时只能称为一跳体积代理，不能推导完整问答的 Token、延迟或成本节省。
-- 发布结论前提交可执行命令、环境版本、逐题候选/来源清单、汇总算法与结果文件；结构健康检查不能替代本评测。
-
-#### 2. 8 组双入口候选问题（黄金集待独立复核）
-
-| 编号与跨源问题域 | 双入口种子页 | 拟用黄金正式页与原始证据 |
-| --- | --- | --- |
-| **Q1：上下文工程 × 状态契约 × 专用模型压缩** | [[agent-context-engineering]] ↔ [[agent-context-history-state-and-bounded-processing]] | 正式页：上述两页 + [[hermes-context-engineering-design-priorities]], [[hermes-memory-skills-wiki-boundaries]]<br>原始源：[[arxiv-2608-26263-skill-state]], [[langchain-scaledown-deep-agents-2026-10-13]], [[machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28]]  |
-| **Q2：知识新鲜度 × 两步证据导航 × 旧计划替代** | [[hermes-knowledge-freshness-and-claim-evidence]] ↔ [[hermes-wiki-knowledge-freshness-improvement-plan]] | 正式页：本页 + [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]], [[hermes-memory-skills-wiki-boundaries]]<br>原始源：[[langchain-agent-memory-openwiki-graphs-2026-10-28]], [[langchain-self-correcting-memory-openwiki-2026-08-26]]  |
-| **Q3：生产级评测 × 统计功效 × Rubric 校准 × 成本基线** | [[production-ai-agent-evaluation-framework]] ↔ [[repeated-measures-statistical-power-for-ai-evaluation]] | 正式页：上述两页 + [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[agent-self-validation-loops]]<br>原始源：[[towardsdatascience-statistical-power-more-problems-2026-08-04]], [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]], [[kdnuggets-llm-latency-inference-cost-2026-07-18]]  |
-| **Q4：形式化工作流 × 分层代码审查 × Python 工程清单** | [[hermes-ai-workflow-formalization-principles]] ↔ [[hermes-python-engineering-capability-checklist]] | 正式页：上述两页 + [[dijkstra-ai-programming-formalization]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]]<br>原始源：[[claude-dev-solving-code-review-at-anthropic-2026-10-15]], [[aymannadeem-plan-mode-is-dead-2026-09-24]], [[realpython-python-performance-optimization-guide-2026-10-21]]  |
-| **Q5：子代理编排 × 生产拓扑取舍 × 资源路由与证据门** | [[subagent-orchestration-patterns]] ↔ [[agent-orchestration-production-tradeoffs]] | 正式页：上述两页 + [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[hermes-context-layer-operating-rules]]<br>原始源：[[philschmid-subagent-patterns-2026-05-05]], [[alphasignal-agent-orchestration-patterns-2026-05-05]], [[langchain-model-router-in-harness-2026-10-01]]  |
-| **Q6：静态工具上下文 × 工具选择架构 × 类型化边界** | [[agent-context-prompt-tools-and-examples]] ↔ [[typed-ai-agent-boundaries]] | 正式页：上述两页 + [[ai-agent-tool-selection-architecture]], [[agent-context-engineering]]<br>原始源：[[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]], [[machinelearningmastery-tool-selection-ai-agents-2026-07-06]], [[langchain-paid-media-agent-2026-09-13]]  |
-| **Q7：经验固化闭环 × Skill 可逆状态机 × 知识演化元技能** | [[agent-experience-consolidation-loops]] ↔ [[agent-skill-governance-and-reversible-state]] | 正式页：上述两页 + [[agent-knowledge-evolution-and-meta-skills]], [[hermes-memory-skills-wiki-boundaries]]<br>原始源：[[arxiv-2608-27454-wikiskill]], [[microsoft-research-evolib-evolving-knowledge-2026-07-30]], [[xudong-han-self-evolving-agent-alloomi-2026-08-13]]  |
-| **Q8：文档解析结构保真 × 文档失真风险 × 确定性计算边界** | [[document-parsing-structural-fidelity]] ↔ [[ai-agent-document-fidelity-risk]] | 正式页：上述两页 + [[deterministic-analytics-llm-reasoning-boundary]], [[typed-ai-agent-boundaries]]<br>原始源：[[llamaindex-markdown-is-all-you-need-2026-10-08]], [[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]], [[motherduck-jev-for-analytics-2026-09-29]]  |
-
-#### 3. 采用边界
-
-类型化关系与正文来源锚定提供可审计导航路径，但其对召回、引用稳定性和成本的改善仍是待验证假设。先用上述固定问题集回归，不能以“链接更多”或结构检查通过宣称任务质量提升。
+- **静态图拓扑可达性（已实测）**：基于 `repository:_meta/catalog.json` 的一跳双向 `## Relations` 展开可确定性检验双入口候选池重合度与黄金正式页/原始源召回率，用于捕获断链、孤岛与候选膨胀。
+- **真实问答引用一致性（状态：NOT_RUN）**：跨运行引用一致性（Citation Consistency）必须对同一问题重复运行真实问答流程并计算实际引用段落集合的平均成对 Jaccard；在提交固定评测脚本、独立复核黄金集与多次运行产物前，不将静态图拓扑重合度视为模型回答引用一致性提升。
 
 ## AI Agent 适用边界
 
@@ -107,10 +84,11 @@ review_by: 2027-01-24
 - refines: [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
 - supersedes: [[hermes-wiki-knowledge-freshness-improvement-plan]]
-- related: [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]], [[production-ai-agent-evaluation-framework]], [[production-agent-evaluation-baselines]]
+- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]], [[production-ai-agent-evaluation-framework]], [[production-agent-evaluation-baselines]]
 
 ## Related
 
+- [[wiki-cross-source-evidence-navigation-benchmark]]：独立保存本仓库 8 组双入口跨源证据导航评测方案（Q1–Q8）与一跳双向关系可达性拓扑基线。
 - [[hermes-knowledge-architecture]]：补充知识对象和证据路由的维护维度。
 - [[hermes-memory-skills-wiki-boundaries]]：补充 Wiki 知识如何保持新鲜，而非改变层边界。
 - [[hermes-wiki-page-writing-standards]]：现行写作规范落点。

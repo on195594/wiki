@@ -1,15 +1,16 @@
 ---
 title: AI Agent LifeOS Executable Architecture
 created: 2026-04-21
-updated: 2026-10-19
+updated: 2026-11-02
 type: concept
-tags: [agent, lifeos, architecture, workflow, governance]
+tags: [agent, lifeos, architecture, workflow, governance, model-profiles]
 sources: [concepts/companyos-to-lifeos-filesystem-philosophy.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, queries/hermes-layer-routing-edge-cases.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 description: 定义 AI Agent LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。
 aliases: [lifeos-executable-architecture, agent-lifeos-executable-architecture]
 volatility: medium
-review_by: 2027-01-31
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent LifeOS Executable Architecture

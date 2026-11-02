@@ -1,7 +1,7 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义公开材料进入 AI Agent wiki 的标准路径：先过公开边界，再保存 raw、提炼正式页面、补链接并验证。
 aliases: [wiki-ingestion, knowledge-ingestion]
 volatility: medium
-review_by: 2027-02-21
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Wiki Ingestion Workflow

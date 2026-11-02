@@ -1,7 +1,7 @@
 ---
 title: Human and AI Agent Shared Knowledge Architecture
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, mcp, workflow, configuration]
 sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 AI Agent 长期知识系统的总体架构、层间关系与分层规则导航。
 aliases: [knowledge-architecture, hermes-wiki-architecture, agent-knowledge-architecture]
 volatility: medium
-review_by: 2027-01-24
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Human and AI Agent Shared Knowledge Architecture

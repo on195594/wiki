@@ -1,13 +1,14 @@
 ---
 title: Software Engineering Laws Decision Map
 created: 2026-08-10
-updated: 2026-10-19
+updated: 2026-11-02
 type: query
 tags: [research, architecture, decision]
 sources: [concepts/software-engineering-laws/software-engineering-laws-architecture.md, concepts/software-engineering-laws/software-engineering-laws-teams.md, concepts/software-engineering-laws/software-engineering-laws-planning.md, concepts/software-engineering-laws/software-engineering-laws-quality.md, concepts/software-engineering-laws/software-engineering-laws-scale.md, concepts/software-engineering-laws/software-engineering-laws-design.md, concepts/software-engineering-laws/software-engineering-laws-decisions.md]
 status: stable
 description: 按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。
 volatility: low
+aliases: [se-laws-decision-map, software-laws-index]
 ---
 
 # Software Engineering Laws Decision Map

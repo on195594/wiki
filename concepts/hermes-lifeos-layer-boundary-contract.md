@@ -1,7 +1,7 @@
 ---
 title: AI Agent LifeOS Layer Boundary Contract
 created: 2026-05-18
-updated: 2026-10-19
+updated: 2026-11-02
 type: concept
 tags: [agent, lifeos, architecture, workflow, governance]
 sources: [concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-knowledge-architecture.md]
@@ -9,7 +9,8 @@ status: stable
 description: 规定 AI Agent LifeOS 各层之间的职责、准入和越界判断契约。
 aliases: [lifeos-layer-boundary, agent-lifeos-layer-boundary-contract]
 volatility: medium
-review_by: 2027-02-07
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent LifeOS Layer Boundary Contract

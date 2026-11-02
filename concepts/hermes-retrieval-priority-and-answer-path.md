@@ -1,7 +1,7 @@
 ---
 title: AI Agent Retrieval Priority and Answer Path
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, knowledge-base, workflow, tool, configuration]
 sources: [repository:SCHEMA.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-context-layer-operating-rules.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 AI Agent 回答问题时的检索优先级、Freshness Gate，以及按简单查找与跨源推理分流的 locate/expand 证据导航路径。
 aliases: [retrieval-priority, answer-path, agent-retrieval-priority-and-answer-path]
 volatility: medium
-review_by: 2027-02-07
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Retrieval Priority and Answer Path

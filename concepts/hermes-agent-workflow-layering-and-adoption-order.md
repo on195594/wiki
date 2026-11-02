@@ -1,15 +1,16 @@
 ---
 title: AI Agent Workflow Layering and Adoption Order
 created: 2026-04-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, mcp, automation, workflow, configuration, decision]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md]
 status: stable
 volatility: medium
-review_by: 2027-01-03
+review_by: 2027-03-02
 description: 定义 AI Agent 采用 Agent 工作流分层时的优先顺序和落地边界。
 aliases: [hermes-agent-layering, agent-workflow-layering-and-adoption-order]
+verified_at: 2026-11-02
 ---
 
 # AI Agent Workflow Layering and Adoption Order

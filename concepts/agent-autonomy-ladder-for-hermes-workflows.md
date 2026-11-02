@@ -1,7 +1,7 @@
 ---
 title: Agent Autonomy Ladder for AI Agent Workflows
 created: 2026-07-01
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, workflow, orchestration, multi-agent, subagent, governance]
 sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md]
@@ -9,7 +9,8 @@ status: stable
 description: 用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 AI Agent 任务应给 agent 多少自主权。
 aliases: [agent-autonomy-ladder, hermes-agent-autonomy, agent-autonomy-ladder-for-agent-workflows]
 volatility: medium
-review_by: 2026-12-06
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Autonomy Ladder for AI Agent Workflows

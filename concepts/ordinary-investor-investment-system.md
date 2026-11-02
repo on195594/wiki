@@ -1,7 +1,7 @@
 ---
 title: Ordinary Investor Investment System
 created: 2026-04-16
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [research, note]
 sources: [raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md]
@@ -9,7 +9,8 @@ status: stable
 description: 整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。
 aliases: [ordinary-investor-system]
 volatility: medium
-review_by: 2027-02-14
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Ordinary Investor Investment System

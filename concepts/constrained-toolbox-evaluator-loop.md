@@ -1,14 +1,16 @@
 ---
 title: Constrained Toolbox Evaluator Loop
 created: 2026-05-22
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, multi-agent, evaluation, workflow, structured-output, governance]
 sources: [raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.md]
 status: stable
 description: 定义受限工具箱配合 evaluator 的多 Agent 闭环，用于降低高风险任务的错误扩散。
 volatility: medium
-review_by: 2027-01-17
+review_by: 2027-03-02
+aliases: [constrained-toolbox-loop, toolbox-evaluator-loop]
+verified_at: 2026-11-02
 ---
 
 # Constrained Toolbox Evaluator Loop

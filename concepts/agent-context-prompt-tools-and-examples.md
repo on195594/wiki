@@ -1,14 +1,16 @@
 ---
 title: "Agent Context: System Prompt, Tools and Examples"
 created: 2026-10-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, docs:https://impeccable.style/docs/, concepts/ai-agent-tool-selection-architecture.md]
 status: stable
 description: 说明 Agent 静态上下文面的设计：system prompt 作为操作简报、窄工具面与反向边界、可见不等于可用的级联，以及以行为为主的示例。
 volatility: medium
-review_by: 2026-12-06
+review_by: 2027-03-02
+aliases: [static-agent-context, prompt-tools-and-examples]
+verified_at: 2026-11-02
 ---
 
 # Agent Context: System Prompt, Tools and Examples
@@ -47,7 +49,7 @@ AI Agent 映射：
 
 [推论] 当 UI 任务的设计意图不清楚时，可将任务上下文组织为“受众与目标 + 本轮改进维度 + 应保留的决策”，而不是反复要求“再好看一点”。产品背景优先复用现有项目文档，不因该产品采用 `PRODUCT.md` 就新增平行文件；是否先看效果图，应由当前任务需要决定，不强制增加阶段。结果验证沿用 [[agent-self-validation-loops]] 的浏览器、截图与交互反馈；设计意图不能替代功能、可访问性和性能验收。
 
-来源范围：2026-10-01 通过直接网页提取核对 Impeccable 的 “Start with Impeccable” 文档首页正文及命令概览；站点署名创建者 Paul Bakaus，页面未显示发布日期或适用版本。未将其链接的子页面视为已核验，也未安装产品、执行命令或复现实效。这里只保留上下文组织实例，不镜像完整命令清单、安装配置或客户端支持说明；实际采用前应重新核对官方文档。该来源不授权修改全局指令、Skill 或运行时。
+来源范围：2026-10-01 首次提取并于 2026-11-02 重新在线核对 Impeccable 的 “Start with Impeccable” 文档首页正文及命令概览（`Create` / `Evaluate` / `Refine` / `Simplify` / `Harden` / `System` 共 24 个命令）；站点署名创建者 Paul Bakaus，页面未显示发布日期或适用版本。未将其链接的子页面视为已核验，也未安装产品、执行命令或复现实效。这里只保留上下文组织实例，不镜像完整命令清单、安装配置或客户端支持说明；实际采用前应重新核对官方文档。该来源不授权修改全局指令、Skill 或运行时。
 
 ### On-demand skill decomposition, not one microtask per file
 

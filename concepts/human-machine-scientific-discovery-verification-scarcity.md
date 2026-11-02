@@ -1,7 +1,7 @@
 ---
 title: Human-Machine Scientific Discovery and Verification Scarcity
 created: 2026-08-18
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, research, workflow, evaluation, verification, decision]
 sources: [raw/articles/towardsdatascience-mathematical-experiments-human-machine-teaming-2026-08-15.md, docs:https://arxiv.org/pdf/2609.19644]
@@ -9,7 +9,8 @@ status: stable
 description: 当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。
 aliases: [verification-scarcity, abundant-experiments-scarce-review, human-machine-mathematical-discovery]
 volatility: medium
-review_by: 2027-02-07
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Human-Machine Scientific Discovery and Verification Scarcity
@@ -173,7 +174,7 @@ Jaehyun Nam 等人的 [ScientistTwo 预印本](https://arxiv.org/pdf/2609.19644)
 
 **作者报告的范围内结果**：在选取的 107 个机器学习研究问题中，86 个相对原有人类方法取得改进（80.4%），平均相对提升 25.2%。论文用 ScholarPeer 和开发时未使用的 Stanford Agentic Reviewer 评估生成论文，分别报告 91.9% 和 72.1% 的模拟接受率；这不是实际会议录用率，前者还参与了论文迭代。另有 9 名人类评审者评价 33 篇生成论文：整体成熟度单独评分为 3.7/5，与人类论文比较的整体偏好为 3.0/5（持平），不能概括为“超越人类评审”。同一批 NeurIPS 来源问题的成本分析报告平均每项约 2.5 天、3,765 美元（模型调用及虚拟机），说明多轮实验和评审反馈并非低成本默认流程。
 
-**证据边界**：上述数字是作者在自选任务、模型和评审器下的报告；本页未重跑代码、核查全部 71 页附录，亦未获得真实会议录用结果。PDF 正文至结论已核读，图表及嵌入的样例论文页存在文本提取局限；早先自动摘要误称正文没有成本分析和人类评审，不能将该摘要当作原始证据。可迁移的是“子集筛选后再扩大实验、把消融和反驳落成可执行验证、区分模拟评分与专家/共同体认可”的判断框架，不是其成功率、评审阈值或整套昂贵多智能体流程。
+**证据边界**：上述数字是作者在自选任务、模型和评审器下的报告；本页未重跑代码、核查全部 71 页附录，亦未获得真实会议录用结果。2026-11-02 在线复核了 `raw/` 快照及 arXiv:2609.19644v1 摘要与第 3 节方法描述，实验比例与成本数值沿用入库时对 PDF 正文至结论的核读记录（图表及嵌入的样例论文页存在文本提取局限）；早先自动摘要误称正文没有成本分析和人类评审，不能将该摘要当作原始证据。可迁移的是“子集筛选后再扩大实验、把消融和反驳落成可执行验证、区分模拟评分与专家/共同体认可”的判断框架，不是其成功率、评审阈值或整套昂贵多智能体流程。
 
 ## Evidence boundary
 

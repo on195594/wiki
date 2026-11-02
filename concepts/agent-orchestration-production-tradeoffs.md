@@ -1,7 +1,7 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md]
@@ -9,7 +9,8 @@ status: stable
 description: 比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。
 aliases: [agent-orchestration-tradeoffs]
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Orchestration Production Tradeoffs
@@ -193,14 +194,8 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 - Connects [[agent-self-validation-loops]] to the narrower case where reflexive verification is worth its cost.
 - Reinforces [[hermes-ai-workflow-formalization-principles]]: reliable AI workflows need explicit structure, validation, and stop conditions, not just stronger models.
 - Gives [[public-info-monitoring-automation-methodology]] a useful constraint: monitoring jobs should stay sequential/narrow unless fan-out or verification reduces real alert risk.
-
-## Relationship to resource optimization
-
-[[agent-resource-optimization]] adds the planning layer before orchestration topology selection: ability coverage, budget-constrained selection, task assignment, and route cost should be modeled explicitly before deciding whether a workflow deserves sequential, fan-out, supervisor-worker, or reflexive execution.
-
-## Relationship to research evidence gates
-
-[[agent-research-evidence-gate]] is a concrete supervisor/Judge specialization of the hierarchical and reflexive patterns described here. It keeps the parent/Manager responsible for routing and final synthesis while using a Judge gate to decide whether research evidence is sufficient or needs targeted evidence backfilling.
+- Connects to [[agent-resource-optimization]], which adds the planning layer before orchestration topology selection (modeling ability coverage, budget-constrained selection, task assignment, and route cost explicitly).
+- Connects to [[agent-research-evidence-gate]], a concrete supervisor/Judge specialization of the hierarchical and reflexive patterns described here that decides whether research evidence is sufficient or needs targeted backfilling.
 
 ## Limits
 

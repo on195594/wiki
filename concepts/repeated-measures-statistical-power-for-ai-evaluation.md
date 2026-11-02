@@ -1,7 +1,7 @@
 ---
 title: 少样本 AI 评测中的重复任务、伪重复与统计功效
 created: 2026-08-09
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, evaluation, validation, research]
 sources: [raw/articles/towardsdatascience-statistical-power-more-problems-2026-08-04.md]
@@ -9,7 +9,8 @@ status: stable
 description: 区分参与主体数、任务数与有效独立证据，说明何时重复任务能提高统计功效，以及如何避免把相关观测误当独立样本。
 aliases: [repeated-measures-power, pseudo-replication-in-ai-evaluation]
 volatility: medium
-review_by: 2027-02-21
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # 少样本 AI 评测中的重复任务、伪重复与统计功效

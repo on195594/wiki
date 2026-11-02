@@ -1,15 +1,16 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, ai-coding, workflow, tool, deployment, governance]
 sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 volatility: medium
-review_by: 2026-12-27
+review_by: 2027-03-02
 description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
 aliases: [coding-agent-workflow-types]
+verified_at: 2026-11-02
 ---
 
 # AI Coding Agent Workflow Types
@@ -188,4 +189,4 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 ## Relations
 
 - refines: [[hermes-agent-workflow-layering-and-adoption-order]], [[codex-agent-workflow-layering]]
-- related: [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]]
+- related: [[ai-code-review-governance-and-convergence]], [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]]

@@ -1,7 +1,7 @@
 ---
 title: Agent 闭环学习：从用户纠错到规则升级
 created: 2026-05-18
-updated: 2026-10-25
+updated: 2026-11-02
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, governance]
 sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md]
@@ -9,7 +9,8 @@ status: stable
 description: 说明如何把用户纠错转化为可验证的 Agent 规则升级闭环。
 aliases: [closed-loop-learning]
 volatility: medium
-review_by: 2026-12-06
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent 闭环学习：从用户纠错到规则升级

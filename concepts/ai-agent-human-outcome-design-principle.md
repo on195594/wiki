@@ -1,7 +1,7 @@
 ---
 title: AI Agent Human Outcome Design Principle
 created: 2026-06-20
-updated: 2026-10-19
+updated: 2026-11-02
 type: concept
 tags: [agent, product, workflow, decision, governance, debugging]
 sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
@@ -9,7 +9,8 @@ status: stable
 description: 用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，避免从模型能力出发制造漂亮但不可用的自动化。
 aliases: [human-outcome-first-ai-agent-design, ai-automation-human-needs]
 volatility: medium
-review_by: 2026-12-27
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Human Outcome Design Principle

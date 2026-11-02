@@ -1,14 +1,16 @@
 ---
 title: Agent Resource Optimization
 created: 2026-05-21
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
-tags: [agent, multi-agent, orchestration, optimization, architecture, evaluation]
+tags: [agent, llm, optimization, workflow, research, model-profiles]
 sources: [raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md]
 status: stable
 description: 说明预算与能力约束下的 Agent 资源规划，并以 Open SWE 案例解释任务上下文驱动的模型分层及证据边界。
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+verified_at: 2026-11-02
+aliases: [agent-resource-routing, model-routing-optimization]
 ---
 
 # Agent Resource Optimization

@@ -1,14 +1,16 @@
 ---
 title: Agentic Content Pipeline Design Patterns
 created: 2026-04-30
-updated: 2026-10-30
+updated: 2026-11-02
 type: concept
 tags: [agent, claude-code, workflow, skills, content-engineering, mcp]
-sources: [raw/articles/ahrefs-content-engineering-claude-code-2026-04-28.md, https://www.langchain.com/blog/design-agent]
+sources: [raw/articles/ahrefs-content-engineering-claude-code-2026-04-28.md, docs:https://www.langchain.com/blog/design-agent]
 status: stable
 volatility: medium
-review_by: 2026-12-27
+review_by: 2027-03-02
 description: 总结用 skill files、数据源、中间产物和人工审核构建 Agent 内容流水线的模式。
+aliases: [agentic-content-pipeline, content-pipeline-design-patterns]
+verified_at: 2026-11-02
 ---
 
 # Agentic Content Pipeline Design Patterns

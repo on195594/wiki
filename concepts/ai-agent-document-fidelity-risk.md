@@ -1,7 +1,7 @@
 ---
 title: AI Agent Document Fidelity Risk
 created: 2026-05-17
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, llm, workflow, research, risk-control, evaluation, verification, ai-coding]
 sources: [raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md]
@@ -9,7 +9,8 @@ status: stable
 description: 说明 AI Agent 处理文档时的保真风险以及需要的证据、验证和人工边界。
 aliases: [document-fidelity-risk]
 volatility: medium
-review_by: 2026-12-27
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Document Fidelity Risk

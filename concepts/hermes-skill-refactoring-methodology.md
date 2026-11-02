@@ -1,7 +1,7 @@
 ---
 title: AI Agent Skill Refactoring Methodology
 created: 2026-05-15
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, skills, workflow, governance, verification, ai-coding, subagent]
 sources: [raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/papers/arxiv-2608-27454-wikiskill.md, concepts/agent-self-validation-loops.md, concepts/subagent-orchestration-patterns.md, docs:https://hermes-agent.nousresearch.com/docs]
@@ -9,7 +9,8 @@ status: stable
 description: 总结 AI Agent skill 重构时从边界收敛、分层到回归验证的可移植方法。
 aliases: [skill-refactoring, agent-skill-refactoring-methodology]
 volatility: medium
-review_by: 2027-02-07
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Skill Refactoring Methodology

@@ -1,14 +1,16 @@
 ---
 title: Agent Skill Provider Governance Boundary
 created: 2026-05-25
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, skills, governance, architecture]
 sources: [raw/articles/microsoft-devblogs-agent-skills-python-provider-2026-05-24.md, docs:https://devblogs.microsoft.com/agent-framework/agent-skills-for-python-file-code-and-class-composed-in-one-provider/]
 status: stable
 volatility: medium
-review_by: 2026-12-27
+review_by: 2027-03-02
 description: 说明多形态 Agent skill 进入统一 provider 前需要保持的命名、暴露和审批边界。
+aliases: [skill-provider-boundary, agent-skill-provider]
+verified_at: 2026-11-02
 ---
 
 # Agent Skill Provider Governance Boundary
@@ -52,7 +54,8 @@ Agent skill 系统的长期价值不在于把所有技能塞进同一个目录�
 
 - Microsoft Agent Framework Python Skills 支持 file-based、class-based、inline/code-defined 三种技能形态。
 - 多来源 skill 可以通过 aggregation、deduplication、filtering 组合成统一 provider。
-- `require_script_approval` 体现了高风险脚本执行前的人类审批模式。
+- 历史 `raw/` 快照中的 `require_script_approval=True` 是显式开启脚本执行审批的开关，不能据此推断 `load_skill`、`read_skill_resource` 也受该开关保护。
+- 2026-11-02 核对的当前官方文章则说明：`load_skill`、`read_skill_resource`、`run_skill_script` 全部默认需要宿主审批；该段已不使用旧的 `require_script_approval` 参数。接入时应按实际 SDK 版本核对工具审批接口，不混用历史开关与当前默认行为。
 - 官方示例仍明确提示：生产执行器不能只用简单 `subprocess.run`，必须补沙箱、资源限制、输入验证和日志。
 
 ## What not to promote

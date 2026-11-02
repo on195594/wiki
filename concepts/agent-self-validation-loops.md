@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/papers/arxiv-2305-16291-voyager.md]
@@ -9,7 +9,8 @@ status: stable
 description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。
 aliases: [self-validation-loop]
 volatility: medium
-review_by: 2026-12-20
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Self-Validation Loops
@@ -154,4 +155,4 @@ UI/Web 任务追加：
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- related: [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]]
+- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]]

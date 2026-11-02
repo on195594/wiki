@@ -1,7 +1,7 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/]
@@ -9,7 +9,8 @@ status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
 aliases: [agent-lifecycle]
 volatility: medium
-review_by: 2026-12-13
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # Agent Development Lifecycle
@@ -28,27 +29,14 @@ Agent 工程化的核心不是让模型一次跑通，而是建立 `Build → Te
 
 ## Core lifecycle
 
-### Harness as a stateful execution boundary
+### 生产级 Harness、薄宿主与云端运行时边界（子页导航）
 
-The Stencil article [[stencil-the-harness-playbook-2026-09-05]] is best absorbed here as an architecture supplement, not a new AI Agent workflow. Its reusable claim is that an Agent Harness is a stateful execution boundary around the model/tool loop: it owns authoritative session state, control-plane policy, bounded work units, child-agent/job lifecycles, compatibility rules, observability, and views derived from state.
+围绕模型/工具循环的有状态执行边界、共享 Agent 定义与薄宿主分层、云端长程运行时与沙箱计算分离，以及 Agent-as-Code 的 PR 变更控制面已拆分为独立子概念页 [[agent-production-harness-and-cloud-runtime-boundaries]]，核心约束包括：
 
-[推论] AI Agent mapping
-
-- **Single authoritative state:** state that affects rewind, fork, resume, retry, child-agent lifecycle, or recovery must be persisted or reconstructible from the authoritative run/session state; do not rely on plugin closures, process-local counters, or in-memory tool registries. For recoverable client synchronization, see [[local-first-sync-confirmed-mirror-outbox-conflict-policy]].
-- **Control plane vs execution plane:** the trusted parent/host owns state, routing, approvals, policy, credentials, and audit evidence. Workers and sandboxes execute bounded instructions and do not become policy authorities.
-- **Bounded work units:** shell commands, child agents, background jobs, and long-lived services need explicit ownership, timeout, cancellation, resource limits, cleanup, and observable terminal states.
-- **Projection and verification:** TUI, Web, Telegram, logs, and inspection views are projections. Completion, cancellation, resume, cleanup, and external side effects should be read back from the strongest available authoritative state when the task has such a contract.
-- **Smallest sufficient surface:** do not adopt a new state tree, Director, dynamic CLI, tool-count target, sandbox implementation, or rendering protocol from the article without a concrete local failure, a project owner, and an independent validation path.
-
-[证据边界] The article's architecture, benchmark, latency, plugin-count, and technology-choice claims remain source claims. The AI Agent rules above are bounded local inferences; they do not authorize runtime/config, active Skill, MCP, cron, gateway, or provider changes.
-
-### 云端长程 Agent：运行时与计算机分离
-
-Yang Li 的 Tetral 架构叙述 [[tetral-next-scaling-problem-2026-09-06]] 为上面的 harness 边界提供了具体的云端实例：Agent 循环作为可替换的计算运行时，沙箱/计算机按需调用而非承载会话身份。Gateway 持有模型连接与凭据，Bridge 负责 PostgreSQL 中的状态提交和回执，Queue/Inbox 负责持久投递，Sandbox Service 负责执行环境。会话中的 thread 是独立有序的执行路径；跨 thread 的并行不等于共享上下文，跨 session 共享 workspace 也不等于共享执行历史。
-
-关键失败窗口是“外部操作已经发生，但运行时未收到确认”。Tetral 的设计先提交带稳定身份的声明、取得回执，才调度模型或工具；结果也须先提交，reducer 才能用它继续。输入与投递作业同事务登记，丢失唤醒通知靠轮询补偿，接受投递与实际处理分开记录，并用运行时绑定代际防止超时后旧 Pod 仍在处理时错误重投。[推论] 若项目确有跨进程恢复需求，应逐个核对**意图提交、外部效果、结果确认、重试身份及旧执行者隔离**的故障窗口，而非仅增加一个队列或保存聊天记录。此机制不让任意外部系统具有事务性，也不保证副作用恰好执行一次；参见 [[agent-orchestration-production-tradeoffs]] 的持久化载体取舍。
-
-凭据隔离也不等于操作授权：Tetral 将模型/MCP 凭据留在连接服务，由 Tool Gate 在执行前评估操作，需审查的提议必须先记录决定，才能成为可调度工具调用。作者还提出以候选产物的对抗复核和人工接受代替无边界的多 Agent 聊天；这是设计主张，不能从并行线程数量推断质量提升。**适用限制**：原文是作者对个人 k3s 集群 Alpha 的描述，未证明持续多节点恢复、容量感知调度或端到端反压，滚动发布尚会中断进行中的轮次；不是已验证的生产架构，也不是单机/短任务应照搬的默认拓扑。架构与局限详见来源；不由此推广任何 active workflow 或运行时改动。
+1. **Harness 作为有状态执行边界**（[[stencil-the-harness-playbook-2026-09-05]]）：持久化单一权威会话状态（客户端同步见 [[local-first-sync-confirmed-mirror-outbox-conflict-policy]]），分离父级控制面与沙箱执行面，为后台作业设置显式超时、取消与清理契约，并从权威状态而非 UI 投影回读完成与副作用。
+2. **共享 Agent 定义与薄宿主**（[[microsoft-devblogs-agent-harness-production-ready-2026-08-27]]）：将指令、工具、权限与生命周期集中在单一 factory，由 CLI、托管服务与评测器作为薄宿主按环境策略消费同一定义；子进程执行器（如 `LocalCodeAct`）不等于安全沙箱。
+3. **云端长程运行时与计算机分离**（[[tetral-next-scaling-problem-2026-09-06]]）：解耦 Gateway、Bridge、Queue 与 Sandbox，跨进程恢复需逐项核对**意图提交、外部效果、结果确认、重试身份与旧执行者代际隔离**五个故障窗口（持久化取舍见 [[agent-orchestration-production-tradeoffs]]），并区分凭据隔离与 Tool Gate 操作授权。
+4. **Agent-as-Code 与 PR 控制面**（[[claude-abc-legal-managed-agents-2026-08-17]]）：将 Agent 配置纳入 Git 与人工 PR 审批，通过 `Initial Agent → Harvester → Tuner` 离线提议变更，禁止模型直接在线改写生产规则（晋升与固化边界见 [[agent-closed-loop-learning-from-corrections-to-rules]] 与 [[agent-experience-consolidation-loops]]）。
 
 ### Context Development Lifecycle：上下文资产的聚焦视角
 
@@ -72,13 +60,7 @@ Build 阶段先决定 agent 系统的抽象层级，而不是直接堆 prompt �
 
 可迁移原则：简单任务可以只需要 tool-calling loop；复杂 agent 需要工程师保留 hooks、middleware、auth、approval 和业务规则控制权。
 
-#### 共享 Agent 定义与薄宿主
-
-Microsoft Agent Framework 的生产化示例补充了 Build 与后续阶段之间的结构边界：把 instructions、tools、skills、memory、approvals 和资源生命周期集中到一个共享 Agent factory，再由 console、hosted service 和 eval runner 三个薄宿主消费同一份定义。可迁移的机制不是 Microsoft 的具体 SDK，而是“核心定义一次、宿主只负责运行环境”的分层；这样观测、治理、部署和评测面对的是同一个 Agent，而不是三份逐渐漂移的副本。
-
-宿主差异仍应显式存在，但应表现为环境策略而不是复制业务逻辑：本地宿主可以保留交互式调试能力，托管宿主默认关闭容器文件访问与 shell，需要文件时注入外部持久存储；代码执行只有在外部沙箱成立时才可启用，子进程执行器本身不能被称为沙箱。评测宿主则复用同一 Agent，先运行便宜、确定性的本地检查，再按需增加模型评分；trace 中暴露的真实失败应回流为下一轮 eval，而不是直接在线改写 Agent。
-
-[推论] 对 Agent 应用 项目，只有确实存在 console、runtime、eval 或其他多个载体时才需要共享 factory / thin-host 结构；单入口、局部且可验证的脚本继续保持单一入口，避免为尚不存在的部署形态预建抽象。
+共享 Agent factory 与 console / hosted / eval 薄宿主的分层边界见子页 [[agent-production-harness-and-cloud-runtime-boundaries]]。
 
 ### 2. Test
 Test 阶段必须在生产前发生，但不必等完美评估集。
@@ -135,13 +117,7 @@ Govern 横跨 Build、Test、Deploy、Monitor。
 - 生产行为可见性
 - 多团队、多 agent 之间的一致边界
 
-### 案例补充：Agent-as-code 与 PR 控制面
-
-ABC Legal 的公开案例为这条生命周期提供了一个企业落地样本：每个 Agent 的 prompt、工具列表、调度、凭据引用和 memory 配置都进入 Git；任何行为变更先成为 Pull Request，经人工审批后才部署，因此版本历史、审查、回滚和审计复用同一控制面。其新 Agent 先在 human-in-the-loop 模式中给出建议并积累标注反馈与 eval，只有在特定任务上达到公司设定的表现要求后才逐步获得自动执行权限。
-
-对需要反馈调优的 Agent，ABC Legal 使用 `Initial Agent → Harvester → Tuner`：运行 Agent 留下审计轨迹，Harvester 从 Slack 回复和 Emoji 收集标签，Tuner 周期性提出 prompt 或 YAML 配置 PR；模型不直接在线改写生产规则，合并权仍由人掌握。这一闭环由 [[agent-closed-loop-learning-from-corrections-to-rules]] 解释规则晋升边界，由 [[agent-experience-consolidation-loops]] 解释经验固化，不在本页重复其详细流程。
-
-[推论] 对 Agent 应用项目，可迁移的不是特定托管产品，而是四个控制点：可审查的文本资产、PR/差异作为变更边界、基于真实反馈的 eval、以及人工批准后的分级放权。是否值得 Agent 化还应同时计算业务价值、模型与工具调用成本、验证成本和维护负担；ABC Legal 报告的数量、约 98% 一致性及最高约 50% 成本下降只属于该公司案例，不是 AI Agent 的默认阈值。
+Agent-as-code、Git/PR 变更控制面与 `Initial Agent → Harvester → Tuner` 反馈调优闭环见子页 [[agent-production-harness-and-cloud-runtime-boundaries]]。
 
 ### 补充：提交工件驱动的 AI-native SDLC
 
@@ -222,4 +198,4 @@ AI Agent 映射：
 ## Relations
 
 - depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
-- related: [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]

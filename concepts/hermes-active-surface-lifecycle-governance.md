@@ -1,15 +1,16 @@
 ---
 title: AI Agent Active-Surface Lifecycle Governance
 created: 2026-08-01
-updated: 2026-10-29
+updated: 2026-11-02
 type: concept
-tags: [agent, governance, workflow, context-engineering]
+tags: [agent, governance, workflow, context-engineering, lifecycle]
 sources: [raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md, concepts/system-governance-operating-model.md, concepts/hermes-context-layer-operating-rules.md, concepts/agent-failure-closed-loop-evaluation.md]
 status: stable
 description: 定义 AI Agent 活跃治理面的基线、校准、晋升、验证、运行、重基线与退役生命周期，避免规则和自动化只增不减。
 aliases: [active-surface-lifecycle, hermes-governance-lifecycle, agent-active-surface-lifecycle-governance]
 volatility: medium
-review_by: 2027-01-24
+review_by: 2027-03-02
+verified_at: 2026-11-02
 ---
 
 # AI Agent Active-Surface Lifecycle Governance
