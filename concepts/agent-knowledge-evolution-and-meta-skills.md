@@ -1,7 +1,7 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf]
@@ -42,6 +42,13 @@ Alloomi 报告（[[xudong-han-self-evolving-agent-alloomi-2026-08-13]]；`sea.pd
 - 两者都需要来源、质量筛选、历史回放、独立评估和回滚，不能把模型或知识库的自评分数当作准入证据。
 
 报告给出的同底座 CL-Bench rubric pass rate 从 24.5% 提升至 47.6%，可作为方向性系统证据，但不能直接成为 AI Agent 基线：主要结果只有 3 个 seeds，集中在一个 Qwen MoE 底座，教师蒸馏依赖付费外部模型；超过 10 个连续任务的长期效果、更多 seeds、无教师消融和更强对抗实验仍被列为待完成工作。
+
+> [!volatile]
+> verified_at: 2026-08-14
+> review_by: 2026-12-13
+> source: docs:https://alloomi.ai/reports/sea.pdf
+>
+> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；外部 PDF 直链待 `review_by` 前在线复核，未重抓前不刷新整页 `verified_at`。
 
 [推论] 对当前 AI Agent 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
 

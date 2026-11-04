@@ -1,7 +1,7 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation, pydantic]
 sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md, raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md]
@@ -240,10 +240,10 @@ AI Agent 映射：
 5. 抽象：是否遵守必要 Python protocol？
 6. 验证：是否有测试、readback 或 smoke evidence？
 7. 性能：是否已定位热点、保留基线，并区分冷/热缓存、微基准与端到端复测？
-8. 设计边界：是否存在具体变更压力、稳定契约和新增失效风险？普通函数是否已足够，所选边界是否让调用方更简单且更容易测试？
+8. 设计边界：是否存在具体变更压力、稳定契约和新增失效风险？普通函数是否已足够，所选边界是否让调用方更简单且更容易测试（形式化收敛与审查边界见 [[dijkstra-ai-programming-formalization]] 与 [[ai-code-review-governance-and-convergence]]）？
 
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- depends_on: [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]]
-- related: [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[production-agent-evaluation-baselines]]
+- depends_on: [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[dijkstra-ai-programming-formalization]]
+- related: [[ai-code-review-governance-and-convergence]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[production-agent-evaluation-baselines]]

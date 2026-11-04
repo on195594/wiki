@@ -1,7 +1,7 @@
 ---
 title: Production Agent Evaluation Baselines
 created: 2026-07-31
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, evaluation, validation, monitoring, optimization]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md]
@@ -94,4 +94,5 @@ verified_at: 2026-11-02
 ## Relations
 
 - refines: [[production-ai-agent-evaluation-framework]]
-- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[agent-resource-optimization]], [[hermes-knowledge-freshness-and-claim-evidence]], [[agent-evaluation-rubric-calibration]]
+- depends_on: [[hermes-knowledge-freshness-and-claim-evidence]]
+- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[agent-resource-optimization]], [[agent-evaluation-rubric-calibration]]

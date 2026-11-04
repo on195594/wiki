@@ -1,7 +1,7 @@
 ---
 title: Hermes Wiki 知识新鲜度改造计划
 created: 2026-08-26
-updated: 2026-11-02
+updated: 2026-11-04
 type: query
 tags: [hermes, governance, knowledge-base, verification, workflow, architecture]
 sources: [concepts/hermes-knowledge-freshness-and-claim-evidence.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md]
@@ -80,7 +80,7 @@ OpenWiki 的可迁移价值是“知识要能回到证据，来源变化应促�
 - 不新增 `verified`、`stale`、`unverified`、`inferred` 等正文状态枚举；
 - 不新增 `## Evidence` / `## Verification` 强制章节；
 - 不引入数据库、向量库、知识图谱运行时、claims sidecar、watcher 或全库扫描；
-- 不修改 memory、active skills、runtime、cron、MCP、wrapper、gateway 或 provider。
+- 不修改 memory、active skills、runtime、cron、MCP、wrapper、gateway 或 provider（知识层与 memory/skills 的职责边界见 [[hermes-memory-skills-wiki-boundaries]]）。
 
 ## 维护责任
 
@@ -99,5 +99,5 @@ Wiki health check 继续负责现有的 frontmatter、链接、索引、标签�
 ## Relations
 
 - refines: [[hermes-knowledge-freshness-and-claim-evidence]]
-- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-wiki-lint-and-health-check-standards]]
+- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]]
 - related: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

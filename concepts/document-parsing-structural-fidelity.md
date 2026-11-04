@@ -1,7 +1,7 @@
 ---
 title: 文档解析的结构保真与中间表示
 created: 2026-10-09
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [llm, architecture, content-engineering, verification, structured-output]
 sources: [raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, docs:https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol, docs:https://www.parseprotocol.com/]
@@ -32,7 +32,7 @@ volatility: low
 - **Markdown：正文与简单结构。** 标题层级、段落、嵌套列表、简单表格和链接易于阅读与检查。标题可用于分块边界，并随切片保留章节上下文。相对复杂对象包装可能减少格式开销，但节省幅度取决于文档和对照表示。
 - **展平表格：能可靠归一化的简单情况。** 例如把多层表头展成“FY2026 Revenue”，另设 Region 列；只有能明确保留原始关联时，展平才有意义。
 - **HTML：复杂表格的结构补充。** 在 Markdown 中使用 `colspan`、`rowspan`、`<thead>` 保留合并单元格和多层表头。它提供表达关系的能力，不替解析器证明关系正确。
-- **JSON：应用字段和元素元数据。** 适合返回有明确 Schema 的抽取记录，或保存文档元素及其属性。它与可读中间文本互补；类型正确不等于字段含义、单位或来源绑定正确。
+- **JSON：应用字段和元素元数据。** 适合返回有明确 Schema 的抽取记录，或保存文档元素及其属性。它与可读中间文本互补；类型正确不等于字段含义、单位或来源绑定正确（结构与语义边界见 [[typed-ai-agent-boundaries]]）。
 - **图片、页码与包围盒：视觉及溯源信息。** 图表可以结合数值和描述；空间关系图可能仍需原图。页码和坐标可关联解析元素，供引用、高亮及视觉对齐使用，不能把所有视觉信息默认压成文字。
 
 ## 何时需要独立中间层
@@ -75,7 +75,7 @@ LlamaIndex 的 [DPP 工作草案和示例](https://www.parseprotocol.com/)将“
 
 ## Relations
 
-- depends_on: [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]]
+- depends_on: [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[typed-ai-agent-boundaries]]
 
 ## Related
 - [[ai-agent-document-fidelity-risk]] — 多轮编辑与委托式文档处理的内容失真风险。

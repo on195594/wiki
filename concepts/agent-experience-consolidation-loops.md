@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf]
@@ -29,6 +29,13 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。
 
 Xudong Han 的 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 及其链接的 Alloomi 技术报告（`sea.pdf` 保留自 2026-08 采集快照，本页 5 份本地 `raw/` 快照已于 2026-11-02 复核，因外部 PDF 直链未在线重抓故页面级 `verified_at` 保持留空）进一步区分了外部知识复用与模型权重学习：前者依赖 memory、skills、向量检索或上下文注入，后者把筛选后的任务轨迹用于 LoRA、跨任务 replay 和教师蒸馏，并以评测准入与回滚控制更新。
+
+> [!volatile]
+> verified_at: 2026-08-14
+> review_by: 2026-12-13
+> source: docs:https://alloomi.ai/reports/sea.pdf
+>
+> Alloomi Self-Evolving Agent 技术报告（经 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 于 2026-08-14 采集记录）将真实任务上下文、专家修改与反馈组织为轨迹，经筛选与后训练后在 CL-Bench 上报告同底座成绩从 24.5% 升至 47.6%（3 seeds 第一方报告，长周期与更强消融列为待完成工作）；外部 PDF 直链待 `review_by` 前在线复核，未重抓前不刷新整页 `verified_at`。
 
 [[arxiv-2608-27454-wikiskill]] 进一步用受控实验区分不可变执行轨迹、持续累积的 Wiki 知识和可回滚的 Skill 状态。它补充的关键不是另一种存储格式，而是：候选 Skill 可以回滚，支持后续搜索的证据、拒绝原因和结构化知识不能随之丢失。
 

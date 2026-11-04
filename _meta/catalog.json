@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 123,
+  "total_pages": 124,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -379,7 +379,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -484,7 +484,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -569,6 +569,44 @@
           "public-info-monitoring-automation-methodology",
           "agent-architecture-primary-paper-map",
           "multiagent-systemic-failure-modes"
+        ]
+      }
+    },
+    {
+      "path": "concepts/agent-pre-deploy-regression-and-trace-debugging.md",
+      "type": "concept",
+      "title": "Agent 部署前结构回归与工具轨迹调试",
+      "description": "从生产评估主干页拆出工具调用六步调试证据链、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "evaluation",
+        "validation",
+        "debugging",
+        "harness",
+        "workflow"
+      ],
+      "aliases": [
+        "agent-pre-deploy-regression",
+        "tool-call-trace-debugging"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-02",
+      "verified_at": "2026-11-04",
+      "updated": "2026-11-04",
+      "relations": {
+        "refines": [
+          "production-ai-agent-evaluation-framework"
+        ],
+        "depends_on": [
+          "typed-ai-agent-boundaries",
+          "agent-failure-closed-loop-evaluation",
+          "deterministic-analytics-llm-reasoning-boundary"
+        ],
+        "related": [
+          "agent-development-lifecycle",
+          "llm-context-engineering-layer",
+          "agent-self-validation-loops"
         ]
       }
     },
@@ -708,7 +746,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -727,7 +765,8 @@
           "agent-architecture-primary-paper-map",
           "stateful-agent-environments-and-grounded-verification",
           "human-machine-scientific-discovery-verification-scarcity",
-          "google-sre-gemini-cli-incident-response"
+          "google-sre-gemini-cli-incident-response",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -901,7 +940,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -913,6 +952,7 @@
         ],
         "related": [
           "document-parsing-structural-fidelity",
+          "deterministic-analytics-llm-reasoning-boundary",
           "llm-summary-identification-step",
           "wiki-ingestion-workflow"
         ]
@@ -994,7 +1034,7 @@
       "path": "concepts/ai-assistance-cognitive-substitution-and-skill-formation.md",
       "type": "concept",
       "title": "AI Assistance, Cognitive Substitution, and Skill Formation",
-      "description": "用补偿、支架、替代和撤除辅助后的能力，判断 AI 是扩展人的思考还是跳过能力形成过程。",
+      "description": "区分 AI 辅助的即时表现、独立能力与持续委派中的理解所有权，以撤除测试和按需重建判断能力形成及责任边界。",
       "status": "stable",
       "tags": [
         "llm",
@@ -1005,12 +1045,13 @@
       "aliases": [
         "ai-scaffolding-vs-substitution",
         "cognitive-offloading-with-ai",
-        "accomplishment-hallucination"
+        "accomplishment-hallucination",
+        "cognitive-surrender"
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "relations": {
         "depends_on": [
           "ai-assumption-challenger-before-execution",
@@ -1019,7 +1060,9 @@
         ],
         "related": [
           "production-ai-agent-evaluation-framework",
-          "coping-skill-application-and-imaginal-exposure"
+          "coping-skill-application-and-imaginal-exposure",
+          "ai-code-review-governance-and-convergence",
+          "agent-self-validation-loops"
         ]
       }
     },
@@ -1065,7 +1108,7 @@
       "path": "concepts/ai-code-review-governance-and-convergence.md",
       "type": "concept",
       "title": "AI Code Review Governance, Traceability, and Convergence",
-      "description": "定义 AI 生成代码时代的分层审查防线、双向需求追溯、按影响半径分级审批与多 Agent 审查收敛规则。",
+      "description": "定义 AI 生成代码时代的分层审查、双向追溯、风险分级、证据阅读与注意力容量边界，以及多 Agent 审查收敛规则。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1078,12 +1121,13 @@
       "aliases": [
         "ai-code-review-governance",
         "code-review-convergence",
-        "agentic-code-review"
+        "agentic-code-review",
+        "orchestration-tax"
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1097,7 +1141,8 @@
           "agent-failure-closed-loop-evaluation",
           "ai-assumption-challenger-before-execution",
           "ai-coding-agent-workflow-types",
-          "loop-engineering-hermes-agent-workflow"
+          "loop-engineering-hermes-agent-workflow",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -1265,12 +1310,10 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
-          "hermes-context-layer-operating-rules"
-        ],
-        "related": [
+          "hermes-context-layer-operating-rules",
           "hermes-memory-skills-wiki-boundaries",
           "subagent-orchestration-patterns"
         ]
@@ -1287,7 +1330,8 @@
         "agent",
         "workflow",
         "automation",
-        "browser"
+        "browser",
+        "cron"
       ],
       "aliases": [
         "claude-code-tips"
@@ -1295,7 +1339,7 @@
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-10-20",
-      "updated": "2026-10-29",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "ai-coding-assistant-context-budget-management",
@@ -1458,7 +1502,8 @@
         "llm",
         "architecture",
         "structured-output",
-        "verification"
+        "verification",
+        "typed-boundary"
       ],
       "aliases": [
         "deterministic-llm-boundary"
@@ -1466,7 +1511,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1539,11 +1584,12 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "ai-agent-document-fidelity-risk",
-          "deterministic-analytics-llm-reasoning-boundary"
+          "deterministic-analytics-llm-reasoning-boundary",
+          "typed-ai-agent-boundaries"
         ]
       }
     },
@@ -1594,7 +1640,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -2228,16 +2274,18 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
         ],
         "depends_on": [
           "typed-ai-agent-boundaries",
-          "agent-self-validation-loops"
+          "agent-self-validation-loops",
+          "dijkstra-ai-programming-formalization"
         ],
         "related": [
+          "ai-code-review-governance-and-convergence",
           "agentic-programming-system-engineering",
           "agent-context-engineering",
           "software-engineering-laws-planning",
@@ -2508,11 +2556,13 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-04",
       "relations": {
+        "depends_on": [
+          "money-as-tool-and-investment-vs-consumption-framework"
+        ],
         "related": [
           "ordinary-investor-investment-system",
-          "money-as-tool-and-investment-vs-consumption-framework",
           "leontraveller-vs-ordinary-investor-investment-system",
           "investment-risk-control-framework",
           "wiki-ingestion-workflow"
@@ -2609,14 +2659,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
+        "depends_on": [
+          "hermes-ai-workflow-formalization-principles",
+          "hermes-context-engineering-design-priorities"
+        ],
         "related": [
           "llm-context-engineering-layer",
           "production-ai-agent-evaluation-framework",
           "llm-summary-identification-step",
-          "hermes-ai-workflow-formalization-principles",
-          "hermes-context-engineering-design-priorities",
           "agent-orchestration-production-tradeoffs",
           "software-engineering-laws-design",
           "software-engineering-laws-planning",
@@ -2798,21 +2850,26 @@
       "description": "整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。",
       "status": "stable",
       "tags": [
+        "investment",
+        "risk-control",
+        "operating-model",
         "research",
         "note"
       ],
       "aliases": [
         "ordinary-investor-system"
       ],
-      "volatility": "medium",
-      "review_by": "2027-03-02",
+      "volatility": "low",
+      "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
+        "depends_on": [
+          "money-as-tool-and-investment-vs-consumption-framework"
+        ],
         "related": [
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system",
-          "money-as-tool-and-investment-vs-consumption-framework",
           "wiki-ingestion-workflow"
         ]
       }
@@ -2836,7 +2893,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -2870,15 +2927,17 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
         ],
+        "depends_on": [
+          "hermes-knowledge-freshness-and-claim-evidence"
+        ],
         "related": [
           "wiki-cross-source-evidence-navigation-benchmark",
           "agent-resource-optimization",
-          "hermes-knowledge-freshness-and-claim-evidence",
           "agent-evaluation-rubric-calibration"
         ]
       }
@@ -2887,7 +2946,7 @@
       "path": "concepts/production-ai-agent-evaluation-framework.md",
       "type": "concept",
       "title": "Production AI Agent Evaluation Framework",
-      "description": "定义生产级 AI Agent 的任务成功、成本、延迟、风险和回归评估框架。",
+      "description": "定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2903,7 +2962,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -2914,6 +2973,7 @@
           "deterministic-analytics-llm-reasoning-boundary"
         ],
         "related": [
+          "agent-pre-deploy-regression-and-trace-debugging",
           "agent-harness-search-regularization",
           "hermes-knowledge-freshness-and-claim-evidence",
           "wiki-cross-source-evidence-navigation-benchmark",
@@ -3020,14 +3080,18 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
         ],
+        "depends_on": [
+          "agent-self-validation-loops"
+        ],
         "related": [
           "stateful-agent-environments-and-grounded-verification",
-          "agent-evaluation-rubric-calibration"
+          "agent-evaluation-rubric-calibration",
+          "production-agent-evaluation-baselines"
         ]
       }
     },
@@ -3321,7 +3385,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -3329,6 +3393,7 @@
         ],
         "related": [
           "agent-orchestration-production-tradeoffs",
+          "agent-research-evidence-gate",
           "ai-coding-agent-workflow-types",
           "multiagent-systemic-failure-modes",
           "ai-assumption-challenger-before-execution",
@@ -3472,7 +3537,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3505,7 +3570,7 @@
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-10-20",
-      "updated": "2026-10-29",
+      "updated": "2026-11-04",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
@@ -3778,14 +3843,15 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence"
         ],
         "depends_on": [
           "hermes-wiki-page-writing-standards",
-          "hermes-wiki-lint-and-health-check-standards"
+          "hermes-wiki-lint-and-health-check-standards",
+          "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
           "hermes-knowledge-architecture",
@@ -4224,7 +4290,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",

@@ -1,7 +1,7 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
 sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
@@ -202,7 +202,7 @@ Those still require verification gates, project-local tests, and parent-agent sy
 
 - Extends [[hermes-context-layer-operating-rules]] from “when to use subagents” to “which subagent lifecycle mode to use”.
 - Complements [[ai-coding-agent-workflow-types]] by describing internal orchestration topology rather than external user interaction mode.
-- Gives a conservative design rule: prefer one-shot delegation; use fan-out only for independent tasks, and validate pools or teams before adoption.
+- Gives a conservative design rule: prefer one-shot delegation; use fan-out only for independent tasks (with sufficiency checked before final synthesis when applicable, see [[agent-research-evidence-gate]]), and validate pools or teams before adoption.
 
 ## Evidence boundary for adoption
 
@@ -211,4 +211,4 @@ An earlier version cited a private search-workflow trial as validation. No publi
 ## Relations
 
 - depends_on: [[hermes-context-layer-operating-rules]], [[agent-context-engineering]]
-- related: [[agent-orchestration-production-tradeoffs]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- related: [[agent-orchestration-production-tradeoffs]], [[agent-research-evidence-gate]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]]

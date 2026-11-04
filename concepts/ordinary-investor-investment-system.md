@@ -1,15 +1,14 @@
 ---
 title: Ordinary Investor Investment System
 created: 2026-04-16
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
-tags: [research, note]
+tags: [investment, risk-control, operating-model, research, note]
 sources: [raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md]
 status: stable
 description: 整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。
 aliases: [ordinary-investor-system]
-volatility: medium
-review_by: 2027-03-02
+volatility: low
 verified_at: 2026-11-02
 ---
 
@@ -172,4 +171,5 @@ verified_at: 2026-11-02
 
 ## Relations
 
-- related: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[wiki-ingestion-workflow]]
+- depends_on: [[money-as-tool-and-investment-vs-consumption-framework]]
+- related: [[investment-risk-control-framework]], [[leontraveller-trading-and-investment-system]], [[wiki-ingestion-workflow]]

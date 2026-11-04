@@ -1,9 +1,9 @@
 ---
 title: Deterministic Analytics and LLM Reasoning Boundary
 created: 2026-05-25
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
-tags: [agent, llm, architecture, structured-output, verification]
+tags: [agent, llm, architecture, structured-output, verification, typed-boundary]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md]
 status: stable
 description: 区分概率性语义判断与确定性分析，将有界分类结果复用、复核，不把结构化标签当作已验证事实。

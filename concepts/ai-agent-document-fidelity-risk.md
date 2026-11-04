@@ -1,7 +1,7 @@
 ---
 title: AI Agent Document Fidelity Risk
 created: 2026-05-17
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, llm, workflow, research, risk-control, evaluation, verification, ai-coding]
 sources: [raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md]
@@ -96,6 +96,7 @@ verified_at: 2026-11-02
 - [[production-ai-agent-evaluation-framework]] 说明生产 Agent 要评估检索、生成、工具行为和运营指标；本页补充“文档内容保真”这一长链路风险维度。
 - [[agent-self-validation-loops]] 说明单个任务如何形成目标-反馈-迭代闭环；本页强调验证目标必须覆盖文档内容是否被悄悄改写。
 - [[typed-ai-agent-boundaries]] 说明用 typed schema 和窄工具降低接口不确定性；本页说明为什么宽泛文件工具会放大内容损坏。
+- [[deterministic-analytics-llm-reasoning-boundary]] 说明把过滤、聚合与格式抽取交给确定性执行器、仅让模型承担规约与解释；本页进一步说明在多轮文档变换中，通用代码执行或整文件重写仍可能引入静默改写，需改用受限领域函数与可逆往返校验。
 - [[hermes-ai-workflow-formalization-principles]] 说明自然语言任务要转成形式化产物和验证闭环；本页提供了可逆任务和往返评估的具体评估思路。
 
 ## What to preserve, what not to preserve
@@ -119,4 +120,4 @@ verified_at: 2026-11-02
 
 - refines: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]]
 - depends_on: [[typed-ai-agent-boundaries]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[document-parsing-structural-fidelity]], [[llm-summary-identification-step]], [[wiki-ingestion-workflow]]
+- related: [[document-parsing-structural-fidelity]], [[deterministic-analytics-llm-reasoning-boundary]], [[llm-summary-identification-step]], [[wiki-ingestion-workflow]]

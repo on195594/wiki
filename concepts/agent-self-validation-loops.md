@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-11-02
+updated: 2026-11-03
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/papers/arxiv-2305-16291-voyager.md]
@@ -91,6 +91,8 @@ Agent 应被明确要求：验证失败就修改，再运行验证，直到通�
 - 复杂视觉判断的主观差异
 - LLM 输出的长期漂移和成本问题
 
+人的理解重建与责任归属见 [[ai-assistance-cognitive-substitution-and-skill-formation]]；如何阅读验证证据并让产出量匹配可核验的处理能力，见 [[ai-code-review-governance-and-convergence]]。本页维护验证回路，不重复这些人的判断与审查职责。
+
 ## Environment-grounded skill admission
 
 Voyager（[[arxiv-2305-16291-voyager]]）展示了比纯文本自我批评（prose self-critique）更强的闭环：生成可执行代码、在环境中运行、反馈中间状态与执行报错、校验任务完成度，仅在验证通过后才将程序沉淀至可检索的技能库。同时其自身的失败案例也表明验证器不可被盲目视为权威：课程可能生成不可能完成的任务，程序可能调用不存在的 API，自我验证 critic 亦会漏判真实成功。可迁移原则是“先有环境证据再做技能准入”；AI Agent active skill 的自主修改仍被严格排除在本模式之外。参见 [[agent-architecture-primary-paper-map]] 与 [[stateful-agent-environments-and-grounded-verification]]。
@@ -155,4 +157,4 @@ UI/Web 任务追加：
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]]
+- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]]

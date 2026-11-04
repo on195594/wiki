@@ -1,9 +1,9 @@
 ---
 title: Claude Code Practical Workflow Tips
 created: 2026-04-17
-updated: 2026-10-29
+updated: 2026-11-04
 type: concept
-tags: [claude-code, agent, workflow, automation, browser]
+tags: [claude-code, agent, workflow, automation, browser, cron]
 sources: [docs:https://code.claude.com/docs/en/commands, docs:https://code.claude.com/docs/en/memory, docs:https://code.claude.com/docs/en/scheduled-tasks, raw/articles/xda-claude-code-practical-tips-2026-04-13.md, raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md]
 status: stable
 volatility: high

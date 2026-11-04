@@ -1,13 +1,13 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
-sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md]
+sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md]
 status: stable
-description: 定义 AI 生成代码时代的分层审查防线、双向需求追溯、按影响半径分级审批与多 Agent 审查收敛规则。
-aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review]
+description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、证据阅读与注意力容量边界，以及多 Agent 审查收敛规则。
+aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review, orchestration-tax]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -77,8 +77,20 @@ Addy Osmani、Morgan Westlee Lunt 与 Qing Wang 在 Anthropic 工程博客 [[cla
 - 原文明确指出团队尚未实现当回滚率或事故率波动时自动收紧审批层级的熔断器（circuit breakers）；在缺少阻断式 CI/安全检查、合并队列、特性开关、内部灰度与快速回滚能力前，不得照搬“低风险变更零人工审批合并”。
 - `CLAUDE.md`、`REVIEW.md`、`Code Review for Claude Code`、`/code-review` 与 `/security-review` 是来源中的产品与仓库约定；本节仅补充可检索的审查分层与收敛原则，不新增默认自动合并、强制文件模板、active Skill、权限放宽或运行时改动。
 
+## 4. 先读证据，并让生成吞吐服从可承担责任的处理能力
+
+Addy Osmani 的 [[addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03]]（“Verification as a habit”与“Actually paying attention to what's generated”）补充了证据消费与注意力容量两个侧面，而不是另一套审查防线：
+
+1. **先看执行证据，再看完成摘要。** 作者建议收到 Agent 完成通知时，先读实际运行的命令及其输出，再读汇报，并追问检查证明了什么、没有证明什么。这是核对关键证据的阅读顺序建议，不要求所有任务生成固定报告，也不能用命令返回成功代替对目标行为的观察。代码与测试共享误解的问题由本页第 2 节解释，不重复扩展成新检查表。
+2. **查看 Agent 替人作出的决定。** 原文建议让 Agent 列出默认值、排除范围和冲突需求取舍，而不只汇报改动成功；关键决定仍应对照实际 diff 和需求。本页第 1 节已有决策理由的维护位置，此处不新增独立文档。
+3. **生成吞吐不等于可接受吞吐。** 作者以“编排税”（orchestration tax）描述 Agent 产量与人敢于署名承担责任的产量之间的落差。完成项积压超出核查能力时，继续增加会话不能解决瓶颈；应先改进检查以减少必要人工量，或放慢生成。
+
+[推论] 将第三点用于任务组织时，可先缩小批次或降低并发，直到现有核验和责任承接能够跟上；自动检查应覆盖真实风险，而不是为了减少积压而降低证据标准。这是容量判断，不是固定并发上限，也不证明人工参与越多越好。人的理解与责任诊断见 [[ai-assistance-cognitive-substitution-and-skill-formation]]，Agent 自行运行与反馈的机制仍由 [[agent-self-validation-loops]] 维护。
+
+证据与采用边界：文章是实践反思，没有给出审查产能阈值或受控效果数据；不能将“编排税”当作已经测得的通用指标。本文确认已有的测试边界与责任原则，新增的是阅读顺序和容量视角；不据此启用默认子代理审查、答题后合并、必填 PR 模板、Skill、自动化或权限变更。
+
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
 - depends_on: [[agent-self-validation-loops]], [[subagent-orchestration-patterns]]
-- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]]
+- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]]

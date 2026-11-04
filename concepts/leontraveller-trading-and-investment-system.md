@@ -1,7 +1,7 @@
 ---
 title: Trend-Following Trading System (Summary of Leontraveller Public Notes)
 created: 2026-04-17
-updated: 2026-10-29
+updated: 2026-11-04
 type: concept
 tags: [investment, trading, workflow, risk-control]
 sources: [raw/articles/leontraveller-investment-notes-1-2026-04-17.md, raw/articles/leontraveller-investment-notes-2-2026-04-17.md]
@@ -171,4 +171,5 @@ volatility: low
 
 ## Relations
 
-- related: [[ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[investment-risk-control-framework]], [[wiki-ingestion-workflow]]
+- depends_on: [[money-as-tool-and-investment-vs-consumption-framework]]
+- related: [[ordinary-investor-investment-system]], [[leontraveller-vs-ordinary-investor-investment-system]], [[investment-risk-control-framework]], [[wiki-ingestion-workflow]]

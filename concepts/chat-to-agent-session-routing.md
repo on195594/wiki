@@ -1,7 +1,7 @@
 ---
 title: Chat to Agent Session Routing
 created: 2026-10-08
-updated: 2026-11-02
+updated: 2026-11-04
 type: concept
 tags: [agent, architecture, workflow, context-engineering]
 sources: [concepts/hermes-context-layer-operating-rules.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/subagent-orchestration-patterns.md]
@@ -64,5 +64,4 @@ verified_at: 2026-11-02
 - 仅当明确的并行需求出现时，才引入进程监控、资源隔离、工作目录隔离及并发控制。
 
 ## Relations
-- depends_on: [[hermes-context-layer-operating-rules]]
-- related: [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]]
+- depends_on: [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]]
