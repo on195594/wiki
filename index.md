@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-11-04
+updated: 2026-11-05
 type: meta
 status: current
 ---
@@ -11,7 +11,7 @@ status: current
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-11-04 | Indexed pages: 124
+> Last updated: 2026-11-05 | Indexed pages: 124
 
 ## 按任务进入
 
@@ -104,7 +104,7 @@ status: current
 - [Chat to Agent Session Routing](concepts/chat-to-agent-session-routing.md) — 聊天平台到有状态 AI Agent 运行时的会话路由与边界隔离设计原则
 
 ### 3. 评测、验证与知识治理 (Evaluation, Verification & Governance)
-- [Agent Evaluation Rubric Calibration](concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；效率判断尊重必要前置与结果核验，分数与证据冲突时先审计锚点和错误激励
+- [Agent Evaluation Rubric Calibration](concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；尊重必要前置与结果核验，用相关会话、工具证据和专家评分理由校准评测器并沉淀回归案例，不把人工标签当绝对真值
 - [Agent 失败闭环评估](concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [Agent Research Evidence Gate](concepts/agent-research-evidence-gate.md) — 研究型 Agent 的证据质量闸门：最终复核通过才综合，否则明确不足并停止；这是加固建议，来源教程仍有未复核就出报告的旁路
 - [Agent Self-Validation Loops](concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件形成可验证迭代回路；人的理解与证据审查职责链接至对应主维护页

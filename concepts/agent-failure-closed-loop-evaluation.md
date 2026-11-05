@@ -1,10 +1,10 @@
 ---
 title: Agent 失败闭环评估
 created: 2026-05-20
-updated: 2026-11-02
+updated: 2026-11-05
 type: concept
 tags: [agent, evaluation, monitoring, closeout, workflow]
-sources: [docs:https://venturebeat.com/orchestration/langsmith-engine-closes-the-agent-debugging-loop-automatically-but-multi-model-enterprises-still-need-a-neutral-layer]
+sources: [docs:https://venturebeat.com/orchestration/langsmith-engine-closes-the-agent-debugging-loop-automatically-but-multi-model-enterprises-still-need-a-neutral-layer, concepts/agent-evaluation-rubric-calibration.md]
 status: stable
 description: 说明如何把可复发 Agent 失败转化为 evaluator、fixture 或防回归工件。
 aliases: [failure-loop-evaluation]
@@ -28,6 +28,8 @@ Agent 失败闭环评估是指：当 AI Agent 工作流出现可复发失败时�
 源自 LangSmith Engine 文章中的工程闭环：失败信号 → 中立证据 → 根因分类 → 候选修复 → 防回归 evaluator → 人类审批。文章里的生产准确率和产品能力主张应保留为厂商发布语境下的未独立验证信息；AI Agent 只迁移方法论，不迁移产品依赖。
 
 多模型/多工具工作流还需要可复验的审计链：证据不能只停留在某一个模型或厂商后台，否则跨模型失败会形成审计断层。
+
+人工审查的理由既可能形成 Agent 的回归案例，也可能暴露 evaluator 或 Rubric 的问题；相关上下文、评分与理由如何成为可复用评估数据，由 [[agent-evaluation-rubric-calibration]] 维护，本页不重复建立标注流程。
 
 ## AI Agent 适配原则
 
@@ -91,7 +93,7 @@ Agent 失败闭环评估是指：当 AI Agent 工作流出现可复发失败时�
 ## Relations
 
 - refines: [[production-ai-agent-evaluation-framework]]
-- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-self-validation-loops]], [[agent-experience-consolidation-loops]]
+- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-self-validation-loops]], [[agent-experience-consolidation-loops]], [[agent-evaluation-rubric-calibration]]
 
 ## Related
 

@@ -330,7 +330,7 @@
       "path": "concepts/agent-evaluation-rubric-calibration.md",
       "type": "concept",
       "title": "Agent Evaluation Rubric Calibration",
-      "description": "说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，避免聚合分数把正常改进误判为回归。",
+      "description": "说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，并把有上下文和理由的专家反馈转化为可复用评估数据。",
       "status": "stable",
       "tags": [
         "agent",
@@ -346,7 +346,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-05",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -419,7 +419,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-05",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -427,7 +427,8 @@
         "related": [
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-self-validation-loops",
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "agent-evaluation-rubric-calibration"
         ]
       }
     },

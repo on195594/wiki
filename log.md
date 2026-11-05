@@ -4,6 +4,13 @@
 > Format: `## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
+## [2026-11-05] ingestion | Human review as reusable evaluation data
+
+- Captured the original English prose of LangChain's public human-insight article, preserving its three principles and Fetch Rewards case. Capture date is not a publication date; images, linked pages, generated summaries and backend instructions are excluded.
+- Classification: [[agent-evaluation-rubric-calibration]] was a heuristic candidate by evaluator/rubric calibration, human judgments and reusable cases. NEW within this existing owner: context-scoped expert review, scores plus reasons/uncertainty, and reusable labeled cases; CONFIRM for auditing the evaluator before changing the Agent. The failure-loop owner receives a scoped cross-reference only. No conflicting or superseded claim was identified in this scope.
+- Kept vendor-case limitations and marked the workflow transfer as inference. No human-label infallibility, quantified benefit, default full-thread review, LangSmith adoption or active workflow change is implied. Page-level verification dates are unchanged; this ingestion adds no formal page.
+- Validation: 60 maintenance tests, catalog synchronization, health (zero issues), registered tags, public-content blocking checks and Git whitespace checks passed. The 14 pre-existing public-content candidates are outside the changed files and were not re-adjudicated. Original prose matches the captured source with all three principles preserved; raw pre-sync review and manifest diff show only the authorized addition, with no existing capture changed or removed. Source reverse lookup resolves to the rubric-calibration owner; unrelated pending ingestion content was preserved.
+
 ## [2026-11-04] review-fix | Correct navigation measurements and LifeOS parameter evidence boundaries
 
 Reviewed the pending changes against local source captures and the repository schema. Recomputed the navigation benchmark with its documented read-only command and corrected the input fingerprint plus six raw-source Jaccard values; golden-set recall remains unchanged. Marked the three new LifeOS parameter blocks as optional inferences, separated education cash-flow ratios from fund-stock targets, and defined a consistent input cohort for the growth conversion ratio. Corrected the evaluation-hub byte reduction recorded below. No raw captures were modified.
