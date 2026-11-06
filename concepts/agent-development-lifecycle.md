@@ -1,7 +1,7 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-11-02
+updated: 2026-11-05
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/]
@@ -75,7 +75,7 @@ Test 阶段必须在生产前发生，但不必等完美评估集。
 
 多轮 agent 不能只靠单轮问答测试。客服、编程、检索、操作型 agent 都需要场景模拟，因为它们的关键能力是追问、查状态、调用工具、从歧义中恢复并完成端到端任务。
 
-进入 Deploy 前，按系统实际能力选用 [[production-ai-agent-evaluation-framework]] 的结构性回归矩阵：上下文裁剪、外部写入、非可信检索、结构化输出、循环编排、RAG 和持久状态分别触发对应测试；不存在该能力时跳过，不把七项清单机械升级为所有 Agent 的统一门禁。真实失败再交给 [[agent-failure-closed-loop-evaluation]] 形成回归工件。
+进入 Deploy 前，按系统实际能力选用 [[production-ai-agent-evaluation-framework]]（子页 [[agent-pre-deploy-regression-and-trace-debugging]]）的结构性回归矩阵：上下文裁剪、外部写入、非可信检索、结构化输出、循环编排、RAG 和持久状态分别触发对应测试；不存在该能力时跳过，不把七项清单机械升级为所有 Agent 的统一门禁。真实失败再交给 [[agent-failure-closed-loop-evaluation]] 形成回归工件。
 
 ### 3. Deploy
 Deploy 阶段不同于普通无状态应用部署。
@@ -198,4 +198,4 @@ AI Agent 映射：
 ## Relations
 
 - depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-pre-deploy-regression-and-trace-debugging]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]

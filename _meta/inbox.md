@@ -1,7 +1,7 @@
 ---
 title: Inbox
 created: 2026-04-16
-updated: 2026-10-19
+updated: 2026-11-05
 type: meta
 status: current
 ---
@@ -11,9 +11,14 @@ status: current
 只有已获保存授权且适合公开的待处理材料才记在这里；私有任务、会话和个人材料留在原载体。入库规则见 [[wiki-ingestion-workflow]]。
 
 ## 待入库
+
+当前无待入库公开材料；新增待处理材料时按以下模板记录：
+
+```markdown
 - [ ] 粘贴一个链接，存入 `raw/articles/`
 - [ ] 上传一个 PDF，存入 `raw/papers/`
 - [ ] 记录一个值得长期保存的问题，整理到 `queries/`
+```
 
 ## 入库检查清单
 - 写入授权与公开准入已确认（先于 Inbox 和 raw 保存）

@@ -1,7 +1,7 @@
 ---
 title: Wiki 跨源证据导航离线评测方案与拓扑基线
 created: 2026-11-02
-updated: 2026-11-04
+updated: 2026-11-05
 type: query
 tags: [agent, knowledge-base, evaluation, verification, architecture, workflow]
 sources: [repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md]
@@ -44,20 +44,20 @@ aliases: [cross-source-evidence-benchmark, evidence-navigation-benchmark, wiki-e
 | **Q7：经验固化闭环 × Skill 可逆状态机 × 知识演化元技能** | [[agent-experience-consolidation-loops]] ↔ [[agent-skill-governance-and-reversible-state]] | 正式页：上述两页 + [[agent-knowledge-evolution-and-meta-skills]], [[hermes-memory-skills-wiki-boundaries]]<br>原始源：[[arxiv-2608-27454-wikiskill]], [[microsoft-research-evolib-evolving-knowledge-2026-07-30]], [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] |
 | **Q8：文档解析结构保真 × 文档失真风险 × 确定性计算边界** | [[document-parsing-structural-fidelity]] ↔ [[ai-agent-document-fidelity-risk]] | 正式页：上述两页 + [[deterministic-analytics-llm-reasoning-boundary]], [[typed-ai-agent-boundaries]]<br>原始源：[[llamaindex-markdown-is-all-you-need-2026-10-08]], [[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]], [[motherduck-jev-for-analytics-2026-09-29]] |
 
-## 3. 静态图谱一跳双向可达性基线（2026-11-04 实测）
+## 3. 静态图谱一跳双向可达性基线（2026-11-05 实测）
 
 基于 `repository:_meta/catalog.json` 的显式 `## Relations` 边（含出边与 `wiki_reverse_lookup` 入边），对每个入口做 1 跳展开，**包含种子自身，并从图中排除本评测页及其关联边**，得到正式页集合 $P_A, P_B$，避免评测页的回链污染候选集合。$R_A, R_B$ 是这些正式页 frontmatter `sources` 中的直接 `raw/` 路径与非代码区原始源 wikilink 的并集，不递归扩展原始源。黄金集取第 2 节表格；集合指标按此口径重算如下。
 
-有效输入（各正式页的 Relations 与上述直接原始源集合，排除本页）规范化后的 SHA256 为 `0b92952dac6ec689799e1162a7ae3aaa3a471587f002515815267cbcf90f6567`。该指纹固定测量输入，不代表模型问答评测通过。
+有效输入（各正式页的 Relations 与上述直接原始源集合，排除本页）规范化后的 SHA256 为 `d644e62fff8102efcbaf1ed3b9d2d00eddaf9ea858a446e6150680876f7bbbb8`。该指纹固定测量输入，不代表模型问答评测通过。
 
 | 题号 | $|P_A|$ / $|P_B|$（一跳正式页数） | 正式页跨入口重合度 $J(P_A, P_B)$ | 黄金正式页召回率（Seed A / Seed B） | 黄金原始源召回率（Seed A / Seed B） | 原始源跨入口重合度 $J(R_A, R_B)$ | 结构诊断结论 |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Q1** | 26 / 8 | 0.259 | 1.00 / 1.00 | 1.00 / 1.00 | 0.322 | 双入口一跳均 100% 覆盖黄金正式页与原始源；Seed A 为高入度枢纽页，候选池较宽 |
-| **Q2** | 14 / 8 | 0.571 | 1.00 / 1.00 | 1.00 / 1.00 | 0.273 | 补齐旧计划页与 [[hermes-memory-skills-wiki-boundaries]] 依赖边后，双入口一跳均 100% 覆盖黄金正式页与原始源 |
-| **Q3** | 31 / 7 | 0.188 | 1.00 / 1.00 | 1.00 / 1.00 | 0.265 | 统计功效页补齐 [[agent-self-validation-loops]] 与 [[production-agent-evaluation-baselines]] 关联后，双入口一跳均 100% 覆盖黄金集 |
+| **Q2** | 14 / 8 | 0.571 | 1.00 / 1.00 | 1.00 / 1.00 | 0.238 | 补齐旧计划页与 [[hermes-memory-skills-wiki-boundaries]] 依赖边并消除 `index` 同名原始源碰撞后，双入口一跳均 100% 覆盖黄金正式页与原始源 |
+| **Q3** | 32 / 7 | 0.182 | 1.00 / 1.00 | 1.00 / 1.00 | 0.275 | 统计功效页补齐 [[agent-self-validation-loops]] 与 [[production-agent-evaluation-baselines]] 关联后，双入口一跳均 100% 覆盖黄金集 |
 | **Q4** | 29 / 12 | 0.171 | 1.00 / 1.00 | 1.00 / 1.00 | 0.291 | Python 清单页补齐 [[dijkstra-ai-programming-formalization]] 与 [[ai-code-review-governance-and-convergence]] 后，双入口一跳均 100% 覆盖黄金集 |
 | **Q5** | 31 / 20 | 0.417 | 1.00 / 1.00 | 1.00 / 1.00 | 0.560 | 子代理编排页补齐 [[agent-research-evidence-gate]] 关联后，双入口一跳均 100% 覆盖黄金正式页与原始源（原始源重合度 `0.560`） |
-| **Q6** | 8 / 27 | 0.207 | 1.00 / 1.00 | 1.00 / 1.00 | 0.254 | 静态上下文子页与类型化边界页一跳均 100% 覆盖黄金正式页与原始源 |
+| **Q6** | 8 / 28 | 0.200 | 1.00 / 1.00 | 1.00 / 1.00 | 0.254 | 静态上下文子页与类型化边界页一跳均 100% 覆盖黄金正式页与原始源 |
 | **Q7** | 18 / 9 | 0.286 | 1.00 / 1.00 | 1.00 / 1.00 | 0.306 | 经验固化主干页与两个子页（Skill 状态机、知识演化元技能）形成完整三角互链 |
 | **Q8** | 4 / 9 | 0.444 | 1.00 / 1.00 | 1.00 / 1.00 | 0.303 | 文档解析页与文档保真风险页双向补齐 [[typed-ai-agent-boundaries]] 及 [[deterministic-analytics-llm-reasoning-boundary]] 后，全表 Q1–Q8 双入口一跳黄金正式页与原始源召回率全部达 `1.00 / 1.00` |
 
@@ -82,7 +82,7 @@ benchmark = 'queries/wiki-cross-source-evidence-navigation-benchmark.md'
 catalog = json.loads((root / '_meta/catalog.json').read_text())
 pages = {Path(p['path']).stem: p for p in catalog['pages'] if p['path'] != benchmark}
 raw = {p.stem: p.relative_to(root).as_posix() for p in markdown_pages(root)
-       if p.relative_to(root).parts[0] == 'raw'}
+       if p.relative_to(root).parts[0] == 'raw' and p.stem != 'index'}
 graph = {slug: set() for slug in pages}
 evidence, inputs = {}, {}
 for slug, page in pages.items():

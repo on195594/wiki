@@ -1,7 +1,7 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-11-02
+updated: 2026-11-05
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
 sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
@@ -113,7 +113,7 @@ Pydantic AI 的 `RunContext` 模式把依赖作为运行时参数注入工具函
 
 ### Verification
 
-AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输出进入业务系统前必须经过 schema validation；工具调用必须有类型边界；依赖必须能在测试环境替换。
+AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输出进入业务系统前必须经过 schema validation；工具调用必须有类型边界；依赖必须能在测试环境替换（单次工具调用六步调试证据链与结构化输出依从性回归探针见 [[agent-pre-deploy-regression-and-trace-debugging]]）。
 
 如果未来 AI Agent 项目确实出现本地、高频、固定标签分类瓶颈，最低成本验证是用同一代表性标注集对比自由生成、schema/enum 约束生成和候选 Logits 打分，并分别记录准确率、解析失败率、P50/P95 延迟、吞吐、校准和人工复核成本。没有该需求时不创建新分类器项目，也不修改 active workflow。
 
@@ -141,7 +141,8 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 ## Applied AI Agent practice
 
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 将本页原则转成使用 AI Agent 编程时的可选方法指南：先压 contract，再选择 execution lane，再用 typed output、窄工具、显式依赖和分层验证控制不确定性。
+- [[flutter-version-evolution-and-platform-boundaries]] 将类型化协议与客户端凭证隔离原则延伸至跨平台 UI 的原生互操作（Pigeon / FFI）与可选 AI 生态（GenUI / Genkit Dart）评估边界。
 
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]]
+- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[wiki-ingestion-workflow]]

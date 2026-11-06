@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 124,
+  "total_pages": 126,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -302,7 +302,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-05",
       "relations": {
         "depends_on": [
           "production-ai-agent-evaluation-framework",
@@ -311,6 +311,7 @@
         ],
         "related": [
           "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-pre-deploy-regression-and-trace-debugging",
           "hermes-context-layer-operating-rules",
           "local-first-sync-confirmed-mirror-outbox-conflict-policy",
           "agent-orchestration-production-tradeoffs",
@@ -428,7 +429,8 @@
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-self-validation-loops",
           "agent-experience-consolidation-loops",
-          "agent-evaluation-rubric-calibration"
+          "agent-evaluation-rubric-calibration",
+          "agent-pre-deploy-regression-and-trace-debugging"
         ]
       }
     },
@@ -452,7 +454,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-04",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -460,6 +462,9 @@
         "depends_on": [
           "agent-experience-consolidation-loops",
           "agent-self-validation-loops"
+        ],
+        "related": [
+          "fixed-budget-optimizer-selection-aca-case"
         ]
       }
     },
@@ -1688,6 +1693,72 @@
           "ai-coding-agent-workflow-types",
           "codex-agent-workflow-layering",
           "hermes-layer-routing-decision-checklist"
+        ]
+      }
+    },
+    {
+      "path": "concepts/fixed-budget-optimizer-selection-aca-case.md",
+      "type": "concept",
+      "title": "ACA 源码：有效参数与评估预算",
+      "description": "依据固定 GitHub 提交解析 ACA 的参数校验、移动算子和调用示例，说明如何核对生效种群、实际评估预算与坐标尺度。",
+      "status": "stable",
+      "tags": [
+        "optimization",
+        "evaluation",
+        "research",
+        "validation"
+      ],
+      "aliases": [
+        "aca-optimizer-case",
+        "andean-condor-algorithm"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": "2026-11-04",
+      "updated": "2026-11-05",
+      "relations": {
+        "depends_on": [
+          "production-ai-agent-evaluation-framework"
+        ],
+        "related": [
+          "agent-harness-search-regularization"
+        ]
+      }
+    },
+    {
+      "path": "concepts/flutter-version-evolution-and-platform-boundaries.md",
+      "type": "concept",
+      "title": "Flutter 版本演进、平台编译与可选 AI 生态边界",
+      "description": "从 Flutter 实体页拆出独立设计系统包、SwiftPM 默认集成与 CocoaPods 只读期限、WebAssembly 编译与 iOS WebKit 限制、原生 FFI 绑定、实验桌面多窗口，以及 GenUI/Genkit Dart 可选 AI 生态的版本与采用边界。",
+      "status": "stable",
+      "tags": [
+        "product",
+        "architecture",
+        "tool",
+        "deployment",
+        "validation"
+      ],
+      "aliases": [
+        "flutter-version-boundaries",
+        "flutter-platform-compilation",
+        "flutter-3-47-migration-boundaries"
+      ],
+      "volatility": "high",
+      "review_by": "2026-12-20",
+      "verified_at": "2026-10-20",
+      "updated": "2026-11-05",
+      "relations": {
+        "refines": [
+          "flutter"
+        ],
+        "depends_on": [
+          "typed-ai-agent-boundaries",
+          "hermes-retrieval-priority-and-answer-path"
+        ],
+        "related": [
+          "software-engineering-laws-architecture",
+          "software-engineering-laws-quality",
+          "software-engineering-laws-decisions"
         ]
       }
     },
@@ -3463,7 +3534,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-05",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -3480,6 +3551,8 @@
           "ai-agent-document-fidelity-risk",
           "constrained-toolbox-evaluator-loop",
           "deterministic-analytics-llm-reasoning-boundary",
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "flutter-version-evolution-and-platform-boundaries",
           "wiki-ingestion-workflow"
         ]
       }
@@ -3555,7 +3628,7 @@
       "path": "entities/flutter.md",
       "type": "entity",
       "title": "Flutter Open-Source UI Framework",
-      "description": "Flutter 的架构与采用边界、问题导向选型入口、真实纵切验收，以及设计系统、SwiftPM、Wasm、原生绑定和可选 AI 生态的版本边界。",
+      "description": "Flutter 的分层架构、Impeller 渲染矩阵、适用边界、问题导向选型入口与真实纵切验收；设计系统独立包、SwiftPM、Wasm、FFI、桌面多窗口与 AI 生态版本边界见子页。",
       "status": "current",
       "tags": [
         "product",
@@ -3563,21 +3636,21 @@
         "tool"
       ],
       "aliases": [
-        "Flutter",
-        "Flutter SDK",
-        "Flutter framework",
-        "Google Flutter"
+        "flutter-sdk",
+        "flutter-framework",
+        "google-flutter"
       ],
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-10-20",
-      "updated": "2026-11-04",
+      "updated": "2026-11-05",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
           "hermes-retrieval-priority-and-answer-path"
         ],
         "related": [
+          "flutter-version-evolution-and-platform-boundaries",
           "software-engineering-laws-architecture",
           "software-engineering-laws-quality",
           "software-engineering-laws-decisions",
@@ -3597,13 +3670,13 @@
         "content-engineering"
       ],
       "aliases": [
-        "Nimbus",
-        "Nimbus Docs"
+        "nimbus-framework",
+        "cloudflare-nimbus"
       ],
       "volatility": "high",
       "review_by": "2026-12-20",
       "verified_at": "2026-10-20",
-      "updated": "2026-10-29",
+      "updated": "2026-11-05",
       "relations": {
         "depends_on": [
           "hermes-retrieval-priority-and-answer-path"
@@ -3633,7 +3706,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-05",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -4291,7 +4364,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-05",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",
