@@ -1,7 +1,7 @@
 ---
 title: Inbox
 created: 2026-04-16
-updated: 2026-11-05
+updated: 2026-11-06
 type: meta
 status: current
 ---
@@ -26,6 +26,6 @@ status: current
 - 已用 `wiki_reverse_lookup.py --source` 与窄词检索现有页面，按 `NEW / CONFIRM / UPDATE / CONFLICT / SUPERSEDE` 优先并入现有 owner，避免重复建页
 - 已创建或更新正式页面：含一句话 `description`，`aliases` 无自身文件名（slug）重复或已登记标签冲突，局部 `[!volatile]` block 的 `source` 已同步列入页面 `sources`
 - 已补充可点击 `[[wikilinks]]`（正式页链接不用反引号包裹）与规范 `## Relations`（同类关系键单行逗号分隔、省略空 `[]` 占位、`depends_on` / `refines` 仅指向正式页）
-- 已更新 `index.md`（使用标准相对 Markdown 链接、同步 `Indexed pages` 计数；`draft` 标草稿，`closed` 历史计划可退出主索引）
+- 已更新[主题目录](topic-index.md)的页面条目与 `Indexed pages` 计数；任务入口变化时同步 `index.md`（`draft` 标草稿，`closed` 历史计划可退出主索引）
 - 已在 `log.md` 顶部按日期倒序追加本次公共仓库的 durable delta、证据边界与验证结果
-- 已按 [[wiki-health-check-runbook]] 完成适用检查与修改段落回读。需要同步时，先核对 raw 新增、删除及其授权，再执行 `python3 _meta/scripts/wiki_maintain.py --fix`；该命令会写入 `_meta/catalog.json` 与 `_meta/raw-source-hashes.json`，并移除已不存在的 raw 文件对应的清单项，不能用同步掩盖误删。回读清单差异后，单独运行 `python3 _meta/scripts/wiki_maintain.py --check`（或 `wiki_check`）；它只验证检查范围，不替代删除合理性和公开适宜性审查。
+- 已按[健康检查操作指南](wiki-health-check-runbook.md)完成适用检查与修改段落回读；同步清单前审查 raw 新增、删除及其授权，具体同步与验证步骤见 [Safe metadata synchronization](wiki-health-check-runbook.md#safe-metadata-synchronization)。

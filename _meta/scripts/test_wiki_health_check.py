@@ -257,6 +257,34 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         index.write_text(index.read_text() + "\n[Missing page](concepts/missing.md)\n")
         self.assertIn("broken_index_target", self.issue_codes("P0"))
 
+    def test_secondary_index_requires_reachable_entry_and_checks_links(self) -> None:
+        self.add_formal("secondary")
+        index = self.root / "index.md"
+        index.write_text("# Index\n")
+        topic = self.root / "_meta/topic-index.md"
+        topic.write_text("# Topics\n[Page](../concepts/secondary.md)\n")
+        self.assertIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+        index.write_text("# Index\n<!-- [Topics](_meta/topic-index.md) -->\n")
+        self.assertIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+        index.write_text("# Index\n[Topics](_meta/topic-index.md)\n")
+        self.assertNotIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+        self.assertIn("index_only_inbound", self.issue_codes("P2"))
+        topic.write_text("# Topics\n<!-- [Page](../concepts/secondary.md) -->\n")
+        self.assertIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+        topic.write_text("# Topics\n[Page](../concepts/secondary.md)\n")
+        topic.write_text(topic.read_text() + "[Missing](../concepts/missing.md)\n")
+        self.assertIn("broken_index_target", self.issue_codes("P0"))
+
+    def test_secondary_index_accepts_relative_prefix_and_wikilinks(self) -> None:
+        self.add_formal("secondary")
+        (self.root / "_meta/topic-index.md").write_text("# Topics\n[Page](../concepts/secondary.md)\n")
+        for link in ("[Topics](./_meta/topic-index.md#concepts)", "[[topic-index]]", "[[_meta/topic-index.md|Topics]]"):
+            with self.subTest(link=link):
+                (self.root / "index.md").write_text("# Index\n" + link + "\n")
+                self.assertNotIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+                (self.root / "index.md").write_text("# Index\n<!-- " + link + " -->\n")
+                self.assertIn("unexpected_unindexed_formal_page", self.issue_codes("P1"))
+
     def test_reports_index_only_inbound(self) -> None:
         self.add_formal("index-only")
         log = self.root / "log.md"

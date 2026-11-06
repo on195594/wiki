@@ -74,6 +74,28 @@ Text
         report = json.loads(out.getvalue())
         self.assertEqual(report["days"], 30)
         self.assertEqual(report["items"], items)
+        self.assertEqual(report["summary"]["high_volatility_expired"], 1)
+        with patch("sys.stdout", new_callable=io.StringIO) as out:
+            markdown_items = report_freshness(self.root, days=30, fmt="markdown")
+        self.assertEqual(markdown_items, items)
+        self.assertIn("Owner: repository maintainer", out.getvalue())
+        self.assertIn("concepts/expired-page.md", out.getvalue())
+        self.assertIn("high_volatility_expired=1", out.getvalue())
+
+    def test_expired_local_claims_are_visible_on_non_high_pages(self) -> None:
+        (self.root / "concepts").mkdir()
+        for volatility in ("low", "medium"):
+            (self.root / f"concepts/{volatility}.md").write_text(
+                f"---\ntitle: Local deadline\nvolatility: {volatility}\nsources: [docs:test]\n---\n"
+                "> [!volatile]\n> verified_at: 2020-01-01\n> review_by: 2020-02-01\n"
+                "> source: docs:test\n>\n> An independently expiring claim.\n"
+            )
+        with patch("sys.stdout", new_callable=io.StringIO) as out:
+            report_freshness(self.root, fmt="json")
+        report = json.loads(out.getvalue())
+        self.assertEqual(report["summary"]["expired_local_claims"], 2)
+        self.assertEqual(report["summary"]["high_volatility_expired"], 0)
+        self.assertEqual({it["volatility"] for it in report["items"]}, {"low", "medium"})
 
     def test_fix_all_drift_protection(self) -> None:
         raw_dir = self.root / "raw"

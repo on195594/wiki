@@ -279,9 +279,28 @@ def report_freshness(root: Path, days: int = 30, fmt: str = "text") -> list[dict
                     **scope,
                 })
 
+    summary = {
+        "expired": sum(it["status"] == "expired" for it in items),
+        "high_volatility_expired": sum(it["status"] == "expired" and it["volatility"] == "high" for it in items),
+        "expired_local_claims": sum(it["status"] == "expired" and "block" in it for it in items),
+        "expiring_soon": sum(it["status"] == "expiring_soon" for it in items),
+        "missing_review_by": sum(it["status"] == "missing_review_by" for it in items),
+    }
+    if fmt == "markdown":
+        print("## Wiki freshness review\n")
+        print(f"UTC date: {today}; horizon: {days} days. Owner: repository maintainer.\n")
+        print("Scope counts (a page and its local claims count separately): " + ", ".join(f"{k}={v}" for k, v in summary.items()) + ".\n")
+        print("| Page / local block | Status | Due | Page volatility |\n|---|---|---|---|")
+        for it in items:
+            location = it["path"] + (f" (block {it['block']})" if "block" in it else "")
+            print(f"| {location} | {it['status']} | {it['review_by'] or 'missing'} | {it['volatility'] or 'unknown'} |")
+        print("\nReview each scope against its source: verify, mark pending, or retire with a replacement. "
+              "A green workflow does not close these items. High volatility is a triage signal, not an impact rating. "
+              "See _meta/wiki-health-check-runbook.md, Freshness ownership and disposition.")
+        return items
     if fmt == "json":
         # Machine-readable for the Wiki MCP server's wiki_check tool.
-        print(json.dumps({"today": today.isoformat(), "days": days, "items": items}, ensure_ascii=False))
+        print(json.dumps({"today": today.isoformat(), "days": days, "items": items, "summary": summary}, ensure_ascii=False))
         return items
 
     print(f"=== Wiki Freshness Report (Horizon: {days} days, Today: {today.isoformat()}) ===")
@@ -360,7 +379,7 @@ def main() -> int:
     parser.add_argument("--fix", action="store_true", help="Auto-sync catalog.json and raw hash manifest with drift protection")
     parser.add_argument("--freshness", action="store_true", help="Scan and report pages expiring soon or overdue")
     parser.add_argument("--days", type=int, default=30, help="Days horizon for freshness scan (default 30)")
-    parser.add_argument("--format", choices=["text", "json"], default="text", help="Output format for --freshness")
+    parser.add_argument("--format", choices=["text", "json", "markdown"], default="text", help="Output format for --freshness")
     parser.add_argument("--install-hooks", action="store_true", help="Install Git pre-commit hook")
     parser.add_argument("--force", action="store_true", help="Force overwrite existing hooks when installing")
     args = parser.parse_args()

@@ -1,7 +1,7 @@
 ---
 title: Wiki 知识新鲜度与断言证据绑定
 created: 2026-08-26
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
 tags: [agent, knowledge-base, memory, verification, architecture, workflow]
 sources: [raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, repository:_meta/catalog.json, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -51,7 +51,7 @@ verified_at: 2026-11-02
 针对本仓库 `locate` → `expand` 两步证据导航的 **8 组双入口跨源候选问题集（Q1–Q8）**、评测口径与一跳双向关系可达性实测基线，已拆分为独立查询页 [[wiki-cross-source-evidence-navigation-benchmark]] 维护（生产指标口径见 [[production-agent-evaluation-baselines]]）：
 
 - **静态图拓扑可达性（已实测）**：基于 `repository:_meta/catalog.json` 的一跳双向 `## Relations` 展开可确定性检验双入口候选池重合度与黄金正式页/原始源召回率，用于捕获断链、孤岛与候选膨胀。
-- **真实问答引用一致性（状态：NOT_RUN）**：跨运行引用一致性（Citation Consistency）必须对同一问题重复运行真实问答流程并计算实际引用段落集合的平均成对 Jaccard；在提交固定评测脚本、独立复核黄金集与多次运行产物前，不将静态图拓扑重合度视为模型回答引用一致性提升。
+- **受控真实问答（已执行）**：子页第 5 节保存三策略、8 题、各两次固定证据包回答的聚合基线。指标覆盖候选召回、证据体积与实际引用集合 Jaccard；固定包结果不代表自由检索端到端稳定性，后者仍为 **NOT_RUN**，也不证明事实正确率或生产收益。
 
 ## AI Agent 适用边界
 
@@ -96,4 +96,4 @@ verified_at: 2026-11-02
 - [[wiki-ingestion-workflow]]：现行入库流程落点。
 - [[hermes-retrieval-priority-and-answer-path]]：现行检索与 Freshness Gate 落点。
 - [[production-ai-agent-evaluation-framework]]：补充跨源问答中的引用一致性（Citation Consistency）与编译成本摊销评估维度。
-- [[production-agent-evaluation-baselines]]：区分跨源证据导航的待执行拓扑评测与真实回答引用一致性。
+- [[production-agent-evaluation-baselines]]：区分静态拓扑、固定证据包重复回答与自由检索端到端评测。

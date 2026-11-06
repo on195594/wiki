@@ -554,10 +554,25 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
                         add_issue(issues, "P2", "invalid_relation_value", r, "Relations value must be '[]' or a comma-separated list of [[wikilinks]]", value=v)
 
     formal_paths = set(formal)
+    def navigation_text(path: Path) -> str:
+        return re.sub(r"<!--.*?-->", "", strip_code(read_text(path)), flags=re.S)
+
+    # Only the explicitly linked secondary directory counts as index coverage.
+    # Arbitrary administrative pages must not hide an unreachable formal page.
+    index_path = root / "index.md"
+    navigation_paths = {index_path}
+    if index_path.exists():
+        entry = navigation_text(index_path)
+        topic_path = root / "_meta/topic-index.md"
+        if re.search(r"(?<!!)\[[^\]]+\]\((?:\./)?_meta/topic-index\.md(?:#[^)]*)?\)", entry) or any(
+            resolve_wikilink_path(root, index_path, match.group(1), stems) == topic_path
+            for match in re.finditer(r"\[\[([^\]]+)\]\]", entry)
+        ):
+            navigation_paths.add(topic_path)
     inbound: dict[Path, set[Path]] = {p: set() for p in formal}
     for p in live_md:
         r = rel(root, p)
-        text = strip_code(read_text(p))
+        text = navigation_text(p) if p in navigation_paths else strip_code(read_text(p))
         for match in re.finditer(r"\[\[([^\]]+)\]\]", text):
             target = match.group(1).split("|", 1)[0].split("#", 1)[0].strip()
             if not resolve_wikilink(root, p, target, stems):
@@ -579,7 +594,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
             except OSError:
                 inside = False
             if inside and not candidate.exists():
-                severity, code = ("P0", "broken_index_target") if r == "index.md" else ("P1", "broken_markdown_link")
+                severity, code = ("P0", "broken_index_target") if p in navigation_paths else ("P1", "broken_markdown_link")
                 add_issue(issues, severity, code, r, "Broken relative Markdown link", target=url)
             if candidate in formal_paths:
                 inbound[candidate].add(p)
@@ -593,21 +608,23 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
         semantic_sources = sources & formal_paths
         if semantic_sources:
             continue
-        if root / "index.md" in sources:
+        if sources & navigation_paths:
             add_issue(issues, "P2", "index_only_inbound", target_rel, "Formal page is linked only from administrative files")
         else:
             add_issue(issues, "P2", "orphan_formal_page", target_rel, "Formal page has no inbound links from another formal page")
 
-    index_path = root / "index.md"
     index_links: set[str] = set()
     if index_path.exists():
-        index_text = strip_code(read_text(index_path))
-        for match in re.finditer(r"\[\[([^\]]+)\]\]", index_text):
-            target = match.group(1).split("|", 1)[0].split("#", 1)[0].strip()
-            if target:
-                index_links.add(target)
-                if not resolve_wikilink(root, index_path, target, stems):
-                    add_issue(issues, "P0", "broken_index_target", "index.md", "Index target does not resolve", target=target)
+        for navigation in navigation_paths:
+            if not navigation.exists():
+                continue  # The relative-link check above reports the missing directory.
+            index_text = navigation_text(navigation)
+            for match in re.finditer(r"\[\[([^\]]+)\]\]", index_text):
+                target = match.group(1).split("|", 1)[0].split("#", 1)[0].strip()
+                if target:
+                    index_links.add(target)
+                    if not resolve_wikilink(root, navigation, target, stems):
+                        add_issue(issues, "P0", "broken_index_target", rel(root, navigation), "Index target does not resolve", target=target)
     else:
         add_issue(issues, "P0", "missing_index", "index.md", "Missing index.md")
 
@@ -615,7 +632,7 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
     for p in formal:
         r = rel(root, p)
         no_ext = r[:-3] if r.endswith(".md") else r
-        if p.stem in index_links or no_ext in index_links or index_path in inbound[p]:
+        if p.stem in index_links or no_ext in index_links or navigation_paths & inbound[p]:
             continue
         text = read_text(p)
         status_match = re.search(r"^status:\s*(.+)$", text, flags=re.M)

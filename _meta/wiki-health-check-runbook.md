@@ -82,6 +82,38 @@ For each supported local block, `wiki_health_check.py` validates real `YYYY-MM-D
 
 Unsupported block syntax is reported rather than treated as success. The supported syntax is defined in `SCHEMA.md`.
 
+## Freshness ownership and disposition
+
+The repository maintainer owns the weekly review of the existing CI freshness summary; no new scheduler, notification recipient or per-page owner registry is required. A deployment with multiple maintainers must name its responsible reviewer in its own workflow. Agent authors do not automatically become accountable human reviewers.
+
+Use `python3 _meta/scripts/wiki_maintain.py --root "$WIKI_ROOT" --freshness --days 30 --format markdown` for the same table locally. CI writes this table into the workflow summary. JSON adds `summary` counts for expired scopes, high-volatility expired scopes, expired local claims regardless of page volatility, approaching deadlines and missing high-volatility deadlines; page and local-claim scopes count separately. `volatility` describes the parent page, including on local-claim rows. A local block does not automatically mean `high`; the overlapping `expired_local_claims` count ensures expired local scopes remain visible on low/medium pages. High volatility is a triage signal, not a measure of business impact. The command stays advisory and does not turn every expired page into a blocking error.
+
+Review high-impact operational claims first, then frequently reused methods. Resolve each reported scope in its existing page:
+
+- **Verified:** check the relevant evidence, record who/what verified which scope and source version, then set a justified next deadline. A formatting edit cannot renew a deadline.
+- **Pending:** preserve the deadline and explain the unresolved claim next to it. Under the retrieval Freshness Gate it cannot silently regain current-fact eligibility.
+- **Retired:** correct the current entry point and explain the replacement or historical scope; `closed` alone does not prove that a replacement exists.
+
+The two initial scoped-note examples are the [OKF assessment](../queries/okf-for-hermes-wiki-governance-assessment.md#scoped-verification-note) and [Flutter dependency transition](../concepts/flutter-version-evolution-and-platform-boundaries.md#scoped-verification-note). The latter confirms a published plan, retains the 2026-12-02 local deadline, and requires checking the actual transition; it is intentionally still visible in the approaching-deadline report. No human sign-off or SDK migration is inferred from these AI checks. Record reusable corrections in the normal log, not a separate personal task ledger.
+
+## Bounded retrieval benchmark
+
+`_meta/retrieval-benchmark.json` fixes Q1–Q8 questions and candidate gold sets before running any strategy. `wiki_retrieval_benchmark.py` compares full-text keyword matching, catalog metadata matching and bounded typed-relation candidates with the same page and evidence-byte limits. The relation strategy combines metadata seeds with typed expansion and full-text reranking; comparing it with metadata-only ranking does not isolate the benefit of relations. It does not invoke a model, authorize API spend, or install an Agent runtime. Procedures, baseline interpretation and limitations live in [the benchmark page](../queries/wiki-cross-source-evidence-navigation-benchmark.md).
+
+```bash
+# Write evaluation artifacts outside the public Wiki; replace this output directory as needed.
+mkdir -p /tmp/wiki-retrieval-eval
+python3 _meta/scripts/wiki_retrieval_benchmark.py --root "$WIKI_ROOT" --strategy keyword > /tmp/wiki-retrieval-eval/keyword.json
+```
+
+Repeat for `catalog` and `relations`. Each packet’s `input_sha256` identifies its run-level source-content union, not a per-case or full-protocol snapshot. Reordering cases does not change that union; running a subset may. Preserve packets, answers and the runner externally if retaining historical results; a fresh checkout cannot reconstruct a historical source snapshot from hashes alone. Never replace an old answer’s fingerprint with a new retrieval run’s fingerprint. Give an isolated answering session only each case's `id`, `question` and `evidence`, never gold sets, retrieval metrics or another run's answers. Save a JSON array of `{id, answer, citations}`; citations use the exact evidence IDs. Repeat with a fresh answering context, then validate:
+
+```bash
+python3 _meta/scripts/wiki_retrieval_benchmark.py --packet /tmp/wiki-retrieval-eval/keyword.json --answers /tmp/wiki-retrieval-eval/keyword-answers.json --repeat-answers /tmp/wiki-retrieval-eval/keyword-repeat-answers.json
+```
+
+This verifies citation identity and computes two-run fixed-packet citation Jaccard, with both-empty pairs reported as N/A. It does not grade factual support or answer completeness. Read the cited spans separately; record missing answer requirements and unsupported claims even when every ID is valid. The byte count covers the serialized evidence records, not prompt framing, model tokens or network cost. The candidate graph is an experimental retrieval strategy, not an implementation of the full production Freshness Gate.
+
 ## Public-content result contract
 
 - **Violation**: deterministic public-boundary failure; the command exits `1`.
@@ -149,7 +181,7 @@ For the Python checks:
 
 The structural health check covers core files, frontmatter, type/status/tag enums, wikilinks, relative Markdown links, index coverage, semantic inbound links, log order, raw references, raw hashes, duplicate-page signals, freshness metadata and Relations syntax. It does not replace content review for public suitability, source quality, contradictions or current product behavior.
 
-Index coverage and semantic inbound links recognize both wikilinks and standard relative Markdown links. Catalog relations still come only from explicit `## Relations`; ordinary navigation links are not inferred as typed relations.
+Index coverage recognizes both wikilinks and standard relative Markdown links in `index.md` and its explicitly linked `_meta/topic-index.md`; an unlinked topic directory does not establish coverage. Administrative navigation links do not count as semantic inbound links from another formal page. Catalog relations still come only from explicit `## Relations`; ordinary navigation links are not inferred as typed relations.
 
 ## Content-change readback
 

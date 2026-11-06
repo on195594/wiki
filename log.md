@@ -1,7 +1,23 @@
 # Wiki Log
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
-> Format: `## [YYYY-MM-DD] action | subject`
+> Format: `## [2026-11-06] fix | Harden navigation compatibility and clarify retrieval measurement scope
+
+- Secondary navigation now recognizes `./_meta/topic-index.md` and resolvable wikilinks while excluding commented examples. Added regression cases for visible and commented variants.
+- Freshness summaries count expired local claims independently of parent-page volatility, without upgrading local claims to `high` by assumption; the displayed volatility column explicitly names the page scope.
+- Added catalog/typed-relation topology, single-case isolation, reordered-case source-union and CLI error tests. The existing relation strategy remains an explicitly mixed metadata/graph/full-text recipe, not a graph-only ablation.
+- Clarified historical benchmark provenance: retained original answer-associated source fingerprints and published the external archive checksum and replay limits. A fresh checkout cannot recreate the historical source snapshot; replacing fingerprints without rerunning answers would invalidate attribution.
+- Validation: targeted navigation, freshness and retrieval tests passed. Independent AGY review findings were checked against code and fixtures; case ordering does not change a sorted source union, and local deadlines do not imply a high-volatility page. Raw sources and runtime permissions remain unchanged.
+
+## [2026-11-06] improve | Bounded retrieval baseline, scoped review ownership and task-first navigation
+
+- Added fixed Q1–Q8 cases and a standard-library evidence-packet benchmark for keyword, catalog and bounded typed-relation retrieval. Recorded 48 actual answers across two isolated runs per strategy, fixed-packet citation Jaccard and independent AI support/coverage assessment in [[wiki-cross-source-evidence-navigation-benchmark]]. Results do not establish free-search end-to-end accuracy, cost gains or a new default retrieval strategy; raw runtime answers stay outside the public Wiki.
+- Added scoped verification notes to [[okf-for-hermes-wiki-governance-assessment]] and [[flutter-version-evolution-and-platform-boundaries]], identifying AI review, source/version limits and unverified scope. Retained the CocoaPods transition deadline; confirmation of its published plan does not prove the transition occurred.
+- Made the existing freshness scan available as a CI summary with explicit maintainer ownership and disposition rules. Advisory counts distinguish page/claim scopes and high volatility; green CI does not close unresolved items.
+- Moved the complete 126-page listing into [[topic-index]], keeping [[index]] as task navigation. Updated schema, direct intake/write paths and health checks; tests cover an unlinked secondary directory and HTML-comment links. Consolidated raw synchronization instructions in [[wiki-health-check-runbook]] and clarified that completed `closed` records are not uniformly OKF `deprecated`.
+- Validation: 63 unit tests and repository maintenance gates; deterministic checks establish structure and citation identity, while the separate AI assessment covers only provided answer evidence. No raw-source modification or runtime/deployment change.
+
+## [YYYY-MM-DD] action | subject`
 > Entries older than 2026-10-01, except the 2026-09-20 public-boundary baseline record kept below, were removed from this file to keep it short; they remain in Git history (`git log -p -- log.md`). A separate in-tree log archive is intentionally not used (the health check treats `_meta/log-archive/` as a retired artifact location).
 
 ## [2026-11-06] fix | Correct evidence-section references, product boundaries, and public-content review scope

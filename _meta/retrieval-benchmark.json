@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "scope": "Fixed Q1-Q8 candidates; gold sets copied before strategy execution, not independently human-adjudicated.",
+  "cases": [
+    {
+      "id": "Q1",
+      "question": "长程 Agent 如何区分静态上下文、动态状态与专用模型压缩？什么情况下不能用压缩替代状态契约？",
+      "gold_pages": [
+        "concepts/agent-context-engineering.md",
+        "concepts/agent-context-history-state-and-bounded-processing.md",
+        "concepts/hermes-context-engineering-design-priorities.md",
+        "concepts/hermes-memory-skills-wiki-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/langchain-scaledown-deep-agents-2026-10-13.md",
+        "raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md",
+        "raw/papers/arxiv-2608-26263-skill-state.md"
+      ]
+    },
+    {
+      "id": "Q2",
+      "question": "Wiki 知识新鲜度如何结合 locate/expand 证据导航处理被替代的旧计划？图可达性能否证明真实回答稳定？",
+      "gold_pages": [
+        "concepts/hermes-knowledge-architecture.md",
+        "concepts/hermes-knowledge-freshness-and-claim-evidence.md",
+        "concepts/hermes-memory-skills-wiki-boundaries.md",
+        "concepts/hermes-wiki-page-writing-standards.md",
+        "queries/hermes-wiki-knowledge-freshness-improvement-plan.md"
+      ],
+      "gold_raw": [
+        "raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md",
+        "raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md"
+      ]
+    },
+    {
+      "id": "Q3",
+      "question": "生产 Agent 评测如何结合统计功效、Rubric 校准与成本基线？为什么不能只报告一次运行的分数？",
+      "gold_pages": [
+        "concepts/agent-evaluation-rubric-calibration.md",
+        "concepts/agent-self-validation-loops.md",
+        "concepts/production-agent-evaluation-baselines.md",
+        "concepts/production-ai-agent-evaluation-framework.md",
+        "concepts/repeated-measures-statistical-power-for-ai-evaluation.md"
+      ],
+      "gold_raw": [
+        "raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md",
+        "raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md",
+        "raw/articles/towardsdatascience-statistical-power-more-problems-2026-08-04.md"
+      ]
+    },
+    {
+      "id": "Q4",
+      "question": "AI 编程的形式化工作流、分层代码审查和 Python 工程验证分别负责什么？如何避免把所有修改升级成重流程？",
+      "gold_pages": [
+        "concepts/agent-self-validation-loops.md",
+        "concepts/ai-code-review-governance-and-convergence.md",
+        "concepts/dijkstra-ai-programming-formalization.md",
+        "concepts/hermes-ai-workflow-formalization-principles.md",
+        "concepts/hermes-python-engineering-capability-checklist.md",
+        "concepts/typed-ai-agent-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md",
+        "raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md",
+        "raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md"
+      ]
+    },
+    {
+      "id": "Q5",
+      "question": "子代理编排什么时候值得采用？如何结合生产拓扑、资源路由与证据门，避免多 Agent 数量被误当成质量？",
+      "gold_pages": [
+        "concepts/agent-orchestration-production-tradeoffs.md",
+        "concepts/agent-research-evidence-gate.md",
+        "concepts/agent-resource-optimization.md",
+        "concepts/hermes-context-layer-operating-rules.md",
+        "concepts/subagent-orchestration-patterns.md"
+      ],
+      "gold_raw": [
+        "raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md",
+        "raw/articles/langchain-model-router-in-harness-2026-10-01.md",
+        "raw/articles/philschmid-subagent-patterns-2026-05-05.md"
+      ]
+    },
+    {
+      "id": "Q6",
+      "question": "静态工具上下文、工具选择架构与类型化边界如何配合？为什么 schema 正确不能证明工具行为正确？",
+      "gold_pages": [
+        "concepts/agent-context-engineering.md",
+        "concepts/agent-context-prompt-tools-and-examples.md",
+        "concepts/ai-agent-tool-selection-architecture.md",
+        "concepts/typed-ai-agent-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/langchain-paid-media-agent-2026-09-13.md",
+        "raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md",
+        "raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md"
+      ]
+    },
+    {
+      "id": "Q7",
+      "question": "Agent 经验固化、Skill 可逆状态机与知识演化如何衔接？单次成功轨迹能否直接晋升成长期规则？",
+      "gold_pages": [
+        "concepts/agent-experience-consolidation-loops.md",
+        "concepts/agent-knowledge-evolution-and-meta-skills.md",
+        "concepts/agent-skill-governance-and-reversible-state.md",
+        "concepts/hermes-memory-skills-wiki-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md",
+        "raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md",
+        "raw/papers/arxiv-2608-27454-wikiskill.md"
+      ]
+    },
+    {
+      "id": "Q8",
+      "question": "文档解析怎样保持结构保真？多文档比较如何结合文档失真风险与确定性计算边界，避免表格数值被错配？",
+      "gold_pages": [
+        "concepts/ai-agent-document-fidelity-risk.md",
+        "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+        "concepts/document-parsing-structural-fidelity.md",
+        "concepts/typed-ai-agent-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
+        "raw/articles/motherduck-jev-for-analytics-2026-09-29.md",
+        "raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md"
+      ]
+    }
+  ]
+}

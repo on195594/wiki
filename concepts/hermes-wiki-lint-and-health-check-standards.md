@@ -29,7 +29,7 @@ AI Agent wiki 的健康检查不是“看看文件还在不在”，而是持续
 - 哪些页面已经陈旧、过大或相互矛盾
 
 ## Scope
-检查覆盖 `index.md`、`log.md`、`SCHEMA.md` 和全部正式页目录。`raw/` 不套用正式页写作模板，但仍受链接、公开边界和原始快照 hash 检查约束。结构通过不代表事实正确或对两类读者都易用。
+检查覆盖 `index.md`、其链接的 `_meta/topic-index.md`、`log.md`、`SCHEMA.md` 和全部正式页目录。`raw/` 不套用正式页写作模板，但仍受链接、公开边界和原始快照 hash 检查约束。结构通过不代表事实正确或对两类读者都易用。
 
 ## Automated vs human checks
 

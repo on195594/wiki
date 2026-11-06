@@ -2092,7 +2092,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture",
@@ -2501,7 +2501,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3585,7 +3585,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3716,7 +3716,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -4086,7 +4086,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -4356,7 +4356,7 @@
       "path": "queries/wiki-cross-source-evidence-navigation-benchmark.md",
       "type": "query",
       "title": "Wiki 跨源证据导航离线评测方案与拓扑基线",
-      "description": "保存本仓库 8 组双入口跨源证据导航（locate → expand）离线评测方案、黄金正式页与原始证据清单、一跳双向关系可达性拓扑基线（含召回率、精确率与一跳体积代理）及 Q1–Q8 章节级证据映射表，区分静态图重合度与重复问答引用一致性。",
+      "description": "保存 Q1–Q8 检索用例、静态拓扑基线与三策略固定证据包重复问答试验，区分候选召回、引用一致性、回答支持性及自由检索端到端效果。",
       "status": "stable",
       "tags": [
         "agent",

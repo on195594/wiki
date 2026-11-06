@@ -30,7 +30,7 @@ jobs:
       - name: Wiki health
         run: python3 _meta/scripts/wiki_health_check.py --root "$GITHUB_WORKSPACE" --format markdown
       - name: Freshness scan
-        run: python3 _meta/scripts/wiki_maintain.py --root "$GITHUB_WORKSPACE" --freshness --days 30
+        run: python3 _meta/scripts/wiki_maintain.py --root "$GITHUB_WORKSPACE" --freshness --days 30 --format markdown >> "$GITHUB_STEP_SUMMARY"
       - name: Tag audit
         run: python3 _meta/scripts/wiki_tag_audit.py --root "$GITHUB_WORKSPACE"
       - name: Public-content check

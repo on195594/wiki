@@ -47,7 +47,7 @@ verified_at: 2026-11-02
 
 ## 知识库跨源证据导航评测方案（待执行）
 
-针对编译型知识库，可用离线图拓扑评测检测断链与候选膨胀（8 组双入口候选问题、一跳双向关系可达性拓扑基线和验证要求见 [[wiki-cross-source-evidence-navigation-benchmark]] 与 [[hermes-knowledge-freshness-and-claim-evidence]]）。当前端到端多次问答缺少可复现运行产物，模型层引用一致性状态为 **NOT_RUN**，不将静态图拓扑重合度或此前报告的本仓库改善数值视为已验证的问答基线。
+针对编译型知识库，可用离线图拓扑评测检测断链与候选膨胀（8 组双入口候选问题、一跳双向关系可达性拓扑基线和验证要求见 [[wiki-cross-source-evidence-navigation-benchmark]] 与 [[hermes-knowledge-freshness-and-claim-evidence]]）。已有三策略固定证据包重复问答的探索性基线，结果及局限见评测页第 5 节；这是实际回答层试验，自由检索端到端评测仍为 **NOT_RUN**。不将静态图拓扑重合度、固定包引用一致性或候选召回率当作事实正确率及生产收益。
 
 - **结构指标**：完整可达证据集合的跨入口 Jaccard、黄金证据召回率与精确率（$R(P)/P(P)$、$R(R)/P(R)$，用于量化枢纽页候选膨胀）、一跳正式页体积代理（`Seed A / Seed B KiB`）及实际加载范围的上下文体积。不得先过滤到黄金集再将重合度称作引用一致性。
 - **回答指标**：同一问题重复运行后的实际段落引用集合一致性、对照 Q1–Q8 章节级黄金证据映射表（Claim-to-Section Grounding Map）的引用正确性、Answer Faithfulness 与任务成功率，须独立于静态图遍历测量。

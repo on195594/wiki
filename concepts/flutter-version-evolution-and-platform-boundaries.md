@@ -12,6 +12,7 @@ sources:
   - docs:https://flutter.dev/blog/whats-new-in-flutter-3-47
   - docs:https://flutter.dev/blog/decoupling-material-cupertino
   - docs:https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers
+  - docs:https://blog.cocoapods.org/CocoaPods-Specs-Repo/
   - docs:https://docs.flutter.dev/platform-integration/web/wasm
   - docs:https://docs.flutter.dev/platform-integration/bind-native-code
   - docs:https://flutter.dev/blog/desktop-windowing-apis
@@ -58,6 +59,12 @@ review_by: 2027-02-05
 > 所读文档标示适用于 Flutter 3.47，并说明从 3.44 起 SwiftPM 默认启用（因 CocoaPods 已进入维护模式且官方 trunk 仓库定于 2026-12-02 永久转为只读）；升级后运行应用会自动加入集成，但未支持 SwiftPM 的依赖仍回退到 CocoaPods。只有所有插件支持 SwiftPM，且手工 Podfile 依赖/逻辑已处理，才适合移除 CocoaPods 集成。[7]
 
 文档提供项目级关闭配置与完整移除 SwiftPM 集成步骤；关闭开关不等于撤销 Xcode 项目改动。[7] [推论] Apple 平台选型与升级需检查插件、最低 OS、flavor/custom target 和真实构建路径；先验证迁移，再考虑删除旧依赖管理文件，不把默认行为当作所有项目已迁移完成。[1][3][7]
+
+### Scoped verification note
+
+2026-11-06，Codex AI 审查 Agent（底层模型版本未记录，非人类复核）只复核本节的 SwiftPM 默认启用、CocoaPods 回退条件与 trunk 只读计划，依据 [Flutter SwiftPM 文档](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers) 的开篇、How to turn on / remove CocoaPods 小节，以及 [CocoaPods Trunk Read-only Plan](https://blog.cocoapods.org/CocoaPods-Specs-Repo/) 的 Timeline。Flutter 页面给出从 3.44 起默认启用；CocoaPods 原文发布于 2024-11-30、注明 2025-05 更新，本次读取其 2026 时间表，未固定网页提交版本。
+
+**处理结果：公布计划已确认，实际切换仍待确认。** CocoaPods 将 2026-12-02 列为计划永久停止新增 Podspec 的日期，同时说明日期可能调整；这不表示已有依赖或所有构建会停止工作。保留本节局部 `review_by: 2026-12-02`，届时由仓库维护者核对实际公告并更新本节；若提前出现变更则提前复核。未执行 SDK 升级或项目迁移，不因本次局部核对更新整页验证日期，也不替其他章节背书。[7][13]
 
 ## 3. Wasm 是编译与部署条件，不是通用性能保证
 
@@ -116,3 +123,4 @@ review_by: 2027-02-05
 [10] https://flutter.dev/blog/desktop-windowing-apis — Matthew Kosarek，2026-08-24，Introducing the Desktop Windowing API for Flutter；核对实验状态、通道和 API 设计边界。
 [11] https://flutter.dev/blog/announcing-genkit-dart-1-0 — Chris Gill，2026-10-08，Announcing Genkit Dart 1.0；核对稳定核心、实验扩展及客户端凭证边界。
 [12] https://flutter.dev/blog/new-updates-to-a2ui-and-flutters-genui-package — Andrew Brogdon，2026-05-14，New updates to A2UI and Flutter’s GenUI package；历史版本迁移说明，不认定 0.9.0 为当前最新版。
+[13] https://blog.cocoapods.org/CocoaPods-Specs-Repo/ — CocoaPods Trunk Read-only Plan；2026-11-06 核对计划时间表与可调整边界，非实际切换完成证明。
