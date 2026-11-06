@@ -1,9 +1,9 @@
 ---
 title: Local-First 同步中的确认镜像、Outbox 与冲突政策
 created: 2026-09-06
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
-tags: [architecture, workflow, research, verification]
+tags: [architecture, workflow, research, verification, networking]
 sources: [raw/articles/reverse-linear-sync-engine-2026-09-06.md]
 status: stable
 description: 用确认镜像、持久化待提交事务、乐观内存视图和单调游标组织可恢复客户端同步，并显式选择幂等与冲突政策。

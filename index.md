@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-11-05
+updated: 2026-11-06
 type: meta
 status: current
 ---
@@ -11,7 +11,7 @@ status: current
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-11-05 | Indexed pages: 126
+> Last updated: 2026-11-06 | Indexed pages: 126
 
 ## 按任务进入
 
@@ -91,10 +91,10 @@ status: current
 - [AI Coding Agent Workflow Types](concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
 - [AI Coding Assistant Context Budget Management](concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
 - [AI Task Delegation Patterns from Local-Cloud Hybrid LLMs](concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md) — 从端云混合 LLM 模式抽象出的 AI Agent PM/subagent 调度模式：任务包、计划落地、困难升级、草稿精修和交叉审查
-- [Claude Code Practical Workflow Tips](concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、浏览器验证（`/chrome`）、任务调度（`/loop`、`/schedule`）、多目录访问（`--add-dir`）与跨设备接续（`/teleport`、`/remote-control`）；官方接口说明已局部核验，具体客户端运行仍需在目标环境确认
+- [Claude Code Practical Workflow Tips](concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、浏览器验证（`/chrome`）、会话内循环调度（`/loop` / `/proactive`）与云端（`/schedule`）/Desktop 持久任务区分、多目录访问（`--add-dir`）与跨设备接续（`/teleport`、`/remote-control`）；官方接口说明已局部核验，具体客户端运行仍需在目标环境确认
 - [Codex Agent Workflow Layering](concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、AGENTS.md、skill、MCP 与 automation 各司其职；限定指令链的发现、候选文件与拼接覆盖规则
 - [First-edit Economy for Coding Agents](concepts/first-edit-economy-for-coding-agents.md) — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
-- [Flutter 版本演进、平台编译与可选 AI 生态边界](concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限、Wasm 编译与 iOS WebKit 限制、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界
+- [Flutter 版本演进、平台编译与可选 AI 生态边界](concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界
 - [Google SRE Gemini CLI Incident Response Pattern](concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
 - [AI Agent Workflow Layering and Adoption Order](concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，代码审查分层与收敛治理见子页
@@ -163,7 +163,7 @@ status: current
 - [Agent Architecture Primary-Paper Map](queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
 - [Software Engineering Laws Decision Map](queries/software-engineering-laws-decision-map.md) — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [OKF Concepts for AI Agent Wiki Governance Assessment](queries/okf-for-hermes-wiki-governance-assessment.md) — OKF/LLM-wiki 的采纳边界、已完成的核心页试点、本地 catalog 与 OKF 字段对照，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
-- [Wiki 跨源证据导航离线评测方案与拓扑基线](queries/wiki-cross-source-evidence-navigation-benchmark.md) — 本仓库 8 组双入口跨源证据导航（Q1–Q8）离线评测方案、黄金正式页/原始源清单与排除评测页回链的可复算一跳拓扑基线（含输入指纹）；模型问答层引用一致性保持 NOT_RUN
+- [Wiki 跨源证据导航离线评测方案与拓扑基线](queries/wiki-cross-source-evidence-navigation-benchmark.md) — 本仓库 8 组双入口跨源证据导航（Q1–Q8）离线评测方案、黄金正式页/原始源清单、排除评测页回链的可复算一跳拓扑基线（含召回率、精确率与一跳体积代理）及章节级证据映射表；模型问答层引用一致性保持 NOT_RUN
 - [AI Agent Layer Routing Edge Cases](queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：区分可选接入、执行契约与公开操作指南
 - [AI Agent Layer Routing Sample Cases](queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
 - [Using AI Agent for AI Coding with Typed Boundaries](queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署

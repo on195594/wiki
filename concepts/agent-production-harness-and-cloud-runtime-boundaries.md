@@ -1,9 +1,9 @@
 ---
 title: Agent 生产级 Harness 与云端运行时边界
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
-tags: [agent, harness, lifecycle, deployment, orchestration, governance, verification]
+tags: [agent, harness, lifecycle, deployment, orchestration, governance, verification, linux]
 sources: [raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, concepts/agent-development-lifecycle.md]
 status: stable
 volatility: medium

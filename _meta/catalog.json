@@ -45,7 +45,8 @@
         "mcp",
         "workflow",
         "tool",
-        "comparison"
+        "comparison",
+        "devops"
       ],
       "aliases": [
         "hermes-vs-google-sre"
@@ -53,7 +54,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "google-sre-gemini-cli-incident-response",
@@ -294,7 +295,8 @@
         "evaluation",
         "deployment",
         "monitoring",
-        "governance"
+        "governance",
+        "devops"
       ],
       "aliases": [
         "agent-lifecycle"
@@ -302,7 +304,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "production-ai-agent-evaluation-framework",
@@ -380,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -490,7 +492,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -629,7 +631,8 @@
         "deployment",
         "orchestration",
         "governance",
-        "verification"
+        "verification",
+        "linux"
       ],
       "aliases": [
         "production-agent-harness",
@@ -639,7 +642,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -1343,9 +1346,9 @@
         "claude-code-tips"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-11-04",
+      "review_by": "2027-01-15",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "ai-coding-assistant-context-budget-management",
@@ -1380,9 +1383,9 @@
         "codex-workflow-layering"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-10-29",
+      "review_by": "2027-01-20",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-ai-workflow-formalization-principles",
@@ -1729,7 +1732,7 @@
       "path": "concepts/flutter-version-evolution-and-platform-boundaries.md",
       "type": "concept",
       "title": "Flutter 版本演进、平台编译与可选 AI 生态边界",
-      "description": "从 Flutter 实体页拆出独立设计系统包、SwiftPM 默认集成与 CocoaPods 只读期限、WebAssembly 编译与 iOS WebKit 限制、原生 FFI 绑定、实验桌面多窗口，以及 GenUI/Genkit Dart 可选 AI 生态的版本与采用边界。",
+      "description": "从 Flutter 实体页拆出独立设计系统包、SwiftPM 默认集成与 CocoaPods 只读期限、WebAssembly 编译与 wasmAllowList 浏览器门控、原生 FFI 绑定、实验桌面多窗口，以及 GenUI/Genkit Dart 可选 AI 生态的版本与采用边界。",
       "status": "stable",
       "tags": [
         "product",
@@ -1744,9 +1747,9 @@
         "flutter-3-47-migration-boundaries"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-11-05",
+      "review_by": "2027-02-05",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "flutter"
@@ -1773,7 +1776,8 @@
         "mcp",
         "workflow",
         "tool",
-        "research"
+        "research",
+        "devops"
       ],
       "aliases": [
         "gemini-cli-incident-response",
@@ -1782,7 +1786,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-knowledge-base-operating-flow",
@@ -1959,7 +1963,8 @@
         "context-engineering",
         "knowledge-base",
         "workflow",
-        "governance"
+        "governance",
+        "project"
       ],
       "aliases": [
         "context-layer-rules",
@@ -1968,7 +1973,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-context-engineering-design-priorities",
@@ -2307,9 +2312,9 @@
         "agent-model-specific-harness-profiles"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-11-02",
+      "review_by": "2027-01-25",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2458,7 +2463,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
@@ -2597,7 +2602,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2793,7 +2798,8 @@
         "architecture",
         "workflow",
         "research",
-        "verification"
+        "verification",
+        "networking"
       ],
       "aliases": [
         "local-first-sync-recoverable-transactions"
@@ -2801,7 +2807,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -2999,7 +3005,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -3178,7 +3184,8 @@
         "architecture",
         "workflow",
         "context-engineering",
-        "agent"
+        "agent",
+        "project"
       ],
       "aliases": [
         "repo-code-intelligence"
@@ -3186,7 +3193,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "ai-coding-assistant-context-budget-management",
@@ -3208,7 +3215,8 @@
       "tags": [
         "research",
         "architecture",
-        "decision"
+        "decision",
+        "networking"
       ],
       "aliases": [
         "se-laws-architecture",
@@ -3217,7 +3225,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3411,7 +3419,8 @@
         "evaluation",
         "verification",
         "workflow",
-        "research"
+        "research",
+        "linux"
       ],
       "aliases": [
         "grounded-agent-environment"
@@ -3419,7 +3428,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -3602,7 +3611,8 @@
         "lifeos",
         "operating-model",
         "workflow",
-        "decision"
+        "decision",
+        "project"
       ],
       "aliases": [
         "work-career-model",
@@ -3611,7 +3621,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3641,9 +3651,9 @@
         "google-flutter"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-11-05",
+      "review_by": "2027-02-05",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
@@ -3674,9 +3684,9 @@
         "cloudflare-nimbus"
       ],
       "volatility": "high",
-      "review_by": "2026-12-20",
-      "verified_at": "2026-10-20",
-      "updated": "2026-11-05",
+      "review_by": "2027-01-30",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "depends_on": [
           "hermes-retrieval-priority-and-answer-path"
@@ -4346,7 +4356,7 @@
       "path": "queries/wiki-cross-source-evidence-navigation-benchmark.md",
       "type": "query",
       "title": "Wiki 跨源证据导航离线评测方案与拓扑基线",
-      "description": "保存本仓库 8 组双入口跨源证据导航（locate → expand）离线评测方案、黄金正式页与原始证据清单，以及一跳双向关系可达性拓扑基线，区分静态图重合度与重复问答引用一致性。",
+      "description": "保存本仓库 8 组双入口跨源证据导航（locate → expand）离线评测方案、黄金正式页与原始证据清单、一跳双向关系可达性拓扑基线（含召回率、精确率与一跳体积代理）及 Q1–Q8 章节级证据映射表，区分静态图重合度与重复问答引用一致性。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4363,8 +4373,8 @@
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
-      "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "verified_at": "2026-11-06",
+      "updated": "2026-11-06",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",

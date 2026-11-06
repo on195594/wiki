@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-10-25
+updated: 2026-11-06
 type: meta
 status: current
 ---
@@ -90,6 +90,7 @@ Unsupported block syntax is reported rather than treated as success. The support
 - Reports contain only repository-relative paths and rule names, never matched values.
 - Files containing NUL bytes and files that do not decode as UTF-8 are candidates marked `unreviewed-binary-or-non-utf8`; they cannot be counted as reviewed until inspected with an appropriate tool.
 - Generic product paths, configurable examples and obvious credential placeholders are allowed. A synthetic example does not prove deployment or authorization.
+- **Baseline candidate adjudication (2026-11-06)**: The local scan returned 14 non-blocking candidates across 12 files: 11 tracked Markdown pages plus the ignored `.lycheecache`. Content review found public bibliography URL paths in `concepts/entropy-and-entropy-increase.md` and `.lycheecache` (2 candidates); public-boundary exclusions in `SCHEMA.md`, `concepts/agent-experience-consolidation-loops.md`, `concepts/household-fund-layering-model.md`, `concepts/investment-risk-control-framework.md`, `concepts/wiki-ingestion-workflow.md` and `operations/agent-shared-wiki-index.md` (8); and reusable investment examples or self-checks in `concepts/leontraveller-trading-and-investment-system.md` and the three query pages `losing-position-review-method`, `position-sizing-method` and `pre-trade-risk-checklist` (4). These reviewed matches contain no personal instance records; disclaimers alone are not evidence of safety. This is a local scan snapshot, not a portable tracked-file baseline: ignored cache contents can differ between checkouts. Keep the conservative scanner unchanged without path allowlists; re-adjudicate when matched content changes, even if the candidate count and paths remain unchanged.
 
 ## Reverse lookup
 

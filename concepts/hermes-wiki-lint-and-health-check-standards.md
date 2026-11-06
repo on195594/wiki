@@ -1,7 +1,7 @@
 ---
 title: Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, debugging]
 sources: [repository:SCHEMA.md, repository:_meta/wiki-health-check-runbook.md, repository:_meta/scripts/wiki_maintain.py, repository:_meta/scripts/wiki_health_check.py, repository:_meta/scripts/wiki_tag_audit.py, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_public_content_check.py]
@@ -35,7 +35,7 @@ AI Agent wiki 的健康检查不是“看看文件还在不在”，而是持续
 
 | 类别 | 由谁判断 | 说明 |
 |---|---|---|
-| 断链、索引覆盖、语义入链、frontmatter 与枚举、标签登记、Relations 语法、raw hash、catalog 同步、日期字段格式与到期、近重复页、公开边界规则 | 确定性脚本（`wiki_maintain.py --check`） | 只证明脚本覆盖的规则；新增检查前先确认不破坏脚本的确定性、只读、可离线属性 |
+| 断链、索引覆盖、语义入链、frontmatter 与枚举、标签登记、Relations 语法、raw hash、catalog 同步、日期字段格式与到期、近重复页、公开边界规则 | 确定性脚本（`wiki_maintain.py --check`） | 只证明脚本覆盖的规则；公开边界区分阻断性 `violations`（必须为 0）与非阻断 `candidates`（基线误报类别见 [[wiki-health-check-runbook]]）；新增检查前先确认不破坏脚本的确定性、只读、可离线属性 |
 | 外链存活 | 网络检查（lychee，周期运行） | 与确定性门禁分开，结果随网络变化 |
 | 事实陈旧、跨页矛盾、页面是否混合多个职责、description 是否具体、两类读者是否能用 | 人工或审查 Agent | 脚本 PASS 不覆盖这些；结论须回到原文核实 |
 
@@ -60,7 +60,7 @@ AI Agent wiki 的健康检查不是“看看文件还在不在”，而是持续
 在结构检查后抽查真实任务：人类能否从索引找到解释、操作与参考入口，第一屏能否理解范围和结论；Agent 能否凭标题/description 找到同一页、追到来源并识别权限和产品边界。此项是人工语义审查，现有脚本不自动证明通过。
 
 ## Pass criteria
-- 确定性门禁无 P0/P1
+- 确定性门禁无 P0/P1，公开内容阻断违规（`violations`）为 0，新增公开边界候选（`candidates`）已完成人工复核
 - 没有长期只靠索引入链的孤立页
 - 所有非 `closed` 正式页进入 `[[index]]`
 - 到期复核提醒有人处理，而不是通过删除日期字段消除

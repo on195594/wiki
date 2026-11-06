@@ -1,9 +1,9 @@
 ---
 title: Repository-Level Code Intelligence Layer
 created: 2026-05-17
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
-tags: [ai-coding, architecture, workflow, context-engineering, agent]
+tags: [ai-coding, architecture, workflow, context-engineering, agent, project]
 sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md]
 status: stable
 description: 定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。

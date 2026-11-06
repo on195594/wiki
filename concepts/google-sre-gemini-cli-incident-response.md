@@ -1,9 +1,9 @@
 ---
 title: Google SRE Gemini CLI Incident Response Pattern
 created: 2026-04-16
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
-tags: [agent, mcp, workflow, tool, research]
+tags: [agent, mcp, workflow, tool, research, devops]
 sources: [raw/articles/google-sre-gemini-cli-outages-2026-01-22.md]
 status: stable
 volatility: medium

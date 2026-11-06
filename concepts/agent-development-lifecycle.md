@@ -1,9 +1,9 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-11-05
+updated: 2026-11-06
 type: concept
-tags: [agent, lifecycle, evaluation, deployment, monitoring, governance]
+tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, devops]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/]
 status: stable
 description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。

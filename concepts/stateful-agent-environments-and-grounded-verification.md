@@ -1,9 +1,9 @@
 ---
 title: Stateful Agent Environments and Grounded Verification
 created: 2026-08-03
-updated: 2026-11-02
+updated: 2026-11-06
 type: concept
-tags: [agent, browser, evaluation, verification, workflow, research]
+tags: [agent, browser, evaluation, verification, workflow, research, linux]
 sources: [raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md]
 status: stable
 volatility: medium
