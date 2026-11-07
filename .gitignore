@@ -2,6 +2,9 @@
 *.bak.*
 _backups/
 
+# Generated browser inspection artifacts (not Wiki sources)
+/.playwright-mcp/
+
 # Obsidian local workspace state
 .obsidian/workspace*.json
 .obsidian/cache/
