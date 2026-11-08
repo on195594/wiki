@@ -363,7 +363,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：证据收集、模式识别、按层职责路由、复用与重验证；Skill 治理与知识演化/元技能细节见两个子页。",
+      "description": "定义 Agent 经验固化闭环：在线捕捉、离线对账、按层职责路由、复用与选择性重验证；Skill 治理与知识演化/元技能细节见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -382,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-06",
+      "updated": "2026-11-07",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -1520,7 +1520,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-08",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1973,7 +1973,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-07",
       "relations": {
         "depends_on": [
           "hermes-context-engineering-design-priorities",
@@ -1990,7 +1990,8 @@
           "hermes-active-surface-lifecycle-governance",
           "hermes-model-specific-harness-profiles",
           "hermes-knowledge-architecture",
-          "hermes-retrieval-priority-and-answer-path"
+          "hermes-retrieval-priority-and-answer-path",
+          "agent-experience-consolidation-loops"
         ]
       }
     },
@@ -1998,7 +1999,7 @@
       "path": "concepts/hermes-knowledge-architecture.md",
       "type": "concept",
       "title": "Human and AI Agent Shared Knowledge Architecture",
-      "description": "定义 AI Agent 长期知识系统的总体架构、层间关系与分层规则导航。",
+      "description": "定义 AI Agent 长期知识系统的总体架构、层间关系、Wiki 与原始搜索的适用边界及分层规则导航。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2015,7 +2016,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-07",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2028,7 +2029,8 @@
           "agent-shared-wiki-index",
           "hermes-layer-routing-decision-checklist",
           "hermes-context-layer-operating-rules",
-          "progressive-knowledge-system-growth"
+          "progressive-knowledge-system-growth",
+          "agent-experience-consolidation-loops"
         ]
       }
     },
@@ -2273,7 +2275,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-07",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"

@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-08
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-06 | Indexed pages: 126
+> Last updated: 2026-11-08 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -29,7 +29,7 @@ status: current
 - [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：区分即时表现、独立能力与持续委派中的理解所有权；用撤除测试、按需重建和责任归属识别认知替代，不将低风险自动化升级为人工门禁
 - [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：在复杂创意、写作、方案设计或 AI Agent PM 编排前，用反迎合角色澄清意图、挑战假设、发现盲点，再由人或受控工具执行
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
-- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；多源证据先对齐共同对象，不把类型、模型共识、落表标签或透明融合当作真实性证明
+- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；规范多受众配置驱动语义层、比率聚合纪律与输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
 - [Dijkstra on AI Programming Formalization](../concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种职责拆分需求，外部接入优先复用授权工具，MCP 可选
@@ -46,7 +46,7 @@ status: current
 - [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面（prompt/工具/示例）与历史、状态及有界加工分别见两个子页；产品示例不是默认依赖，过程记录仍受公开准入约束
 - [Agent Context: System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报、窄工具面与反向边界、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型的有界加工与恢复边界
-- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：证据收集、模式识别、按层职责路由、复用与重验证；只把公开、长期可复用的发现编译进正式页；Skill 治理与知识演化/元技能分别见两个子页；研究增益不当作默认执行授权
+- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：在线捕捉、离线对账、按任务组织与选择性维护；只把公开、长期可复用的发现编译进正式页；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离、演化知识评估边界
 - [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：整合与加权、外部知识复用 vs 权重学习、任务技能 vs 支持设计元技能
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
@@ -55,7 +55,7 @@ status: current
 - [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合表示，并以 DPP 工作草案参考解析裁决与等价形式，不把格式正确当作语义正确
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分拓扑重合度与真实引用一致性，8 组双入口跨源评测方案与拓扑基线见独立查询页
-- [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：用正反例区分 memory、skills、wiki、sessions/project state 与历史证据
+- [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：区分广义 agent memory 与默认 memory 载体，用正反例路由 skills、wiki、sessions/project state 与历史证据
 - [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
 - [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget；涵盖 Agentic RAG 的证据信任边界，以及语义漂移、未知候选和专家复核的概念级参考，不将 oRAG 设想当作已验证效果
 - [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
@@ -91,8 +91,8 @@ status: current
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件形成可验证迭代回路；人的理解与证据审查职责链接至对应主维护页
 - [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：把文件、类和内联技能统一到 provider 抽象下，同时用分层来源、过滤、去重、审批和沙箱控制 active skill 风险
 - [AI Agent Active-Surface Lifecycle Governance](../concepts/hermes-active-surface-lifecycle-governance.md) — AI Agent 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减
-- [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：控制检索与注入预算、历史压缩、长任务 project state、最新观察和隔离 handoff
-- [Human and AI Agent Shared Knowledge Architecture](../concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：连接运行时知识栈、Wiki 文件层、冲突感知对象、LLM 候选事实抽取与证据边界及各分层规则入口
+- [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：小型默认注入层、按需检索、历史压缩、长任务 project state、最新观察和隔离 handoff
+- [Human and AI Agent Shared Knowledge Architecture](../concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：运行时知识栈、Wiki 文件层、Wiki 与原始搜索的适用边界、冲突感知对象及候选事实证据边界
 - [Shared Wiki Operating Flow](../concepts/hermes-knowledge-base-operating-flow.md) — 共享知识库端到端操作流：公开准入、可选能力、operations、检索门禁与授权回写
 - [AI Agent Memory Governance Notes](../concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [AI Agent Retrieval Priority and Answer Path](../concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：区分单源查找与跨源推理，按 `locate` → `expand` 与 Freshness Gate 检查关系出入边与来源证据，公开且授权才回写

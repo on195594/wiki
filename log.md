@@ -1,6 +1,27 @@
 # Wiki Log
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
+
+## [2026-11-08] ingestion | Multi-tenant configuration-driven semantic model and reporting boundary
+
+- Retained [[towardsdatascience-report-100-clients-one-semantic-model-2026-11-05]] as a structured secondary summary attributed to Val Ye's public Towards Data Science article, not a complete original-text or code capture. Direct access returned HTTP 403 during review; full-text fidelity and companion repository details remain unverified. Author-reported outcomes (70% build time reduction, 33% weekly workload reduction, 100+ clients served) are self-reported practitioner claims, not independent causal benchmarks.
+- Source → heuristic candidate → [[deterministic-analytics-llm-reasoning-boundary]]: UPDATE existing owner. Added multi-audience configuration-driven reporting contracts: metric formula decoupled from client display labels, explicit input dependency declaration (`sends`) with unmeasured field blanking/reason disclosure, ratio rollup from additive components (`sum(num)/nullif(sum(den), 0)` only when both components are additive at the target grain), and prevention of artificial daily spreading of coarse weekly data.
+- Connected the data contracts to [[typed-ai-agent-boundaries]] and [[hermes-ai-workflow-formalization-principles]]: deterministic executors require explicit schema contracts and input verification; missing inputs must be surfaced as explicit gaps rather than fabricated zeros.
+- Clarified the local ratio inference: materializing a ratio is not inherently wrong; unweighted averaging across unequal denominators is. Non-additive components such as distinct users require metric-specific recomputation. The formal owner now exposes the secondary-source limitation rather than presenting the summary as a verified implementation contract.
+- Corrected provenance annotations and editorial ratio guidance in the still-untracked summary before its first commit, updating only its manifest fingerprint; no previously committed raw source was changed or removed.
+- Updated [[topic-index]] description; formal page count remains 126.
+- Validation: vault health checks, catalog synchronization, tag audit, public-content checks and whitespace inspection verified.
+
+## [2026-11-07] ingestion | Agent memory components: selective capture, source-grounded correction and Wiki/search boundaries
+
+- Captured Anthropic's public [[anthropic-components-of-agent-memory-2026-11-07]] as original English article prose, retaining extracted figure descriptions and captions. Capture date is not an asserted publication date; navigation, footer and linked documents are excluded. This is first-party experimental evidence, not independent replication.
+- Source → heuristic candidate → [[agent-experience-consolidation-loops]]: matched dreaming, memory correction and consolidation in the source anchor/body. NEW online/offline timing, transcript-to-observation reconciliation and task-aligned single-writer evidence units; CONFIRM selective revalidation and pruning. Updated this existing owner rather than adding another concept page.
+- Source → heuristic candidate → [[hermes-knowledge-architecture]]: matched Wiki representation, source search and retrieval boundaries in the architecture/body. NEW task-scoped Wiki-only/search-only/combined evidence and cross-document versus single-document fit; retained original search and marked the local reuse heuristic as inference.
+- Source → heuristic candidate → [[hermes-context-layer-operating-rules]]: matched injection budget and promotion/assembly distinction; CONFIRM small default context and on-demand detail. Source → heuristic candidate → [[hermes-memory-skills-wiki-boundaries]]: matched cognitive memory labels and carrier definitions; NEW clarification that broad agent memory is not the default memory tool. No same-scope conflict or superseding claim was identified; unchanged neighboring pages do not require propagation.
+- Kept single-run model-comparison limits, the contract task's joint intervention and criterion-coverage denominator, and the unresolved cost/freshness trade-off. No universal reliability guarantee, numeric injection threshold, default scheduler, Skill or runtime change is introduced. Existing page-level verification dates remain unchanged. Updated topic descriptions and catalog; formal-page count and task navigation are unchanged.
+- Validation: original captured body matches the extraction; critical experimental numbers and section names were checked against that body. Source reverse lookup resolves to the four intended owners. All 68 maintenance tests, catalog synchronization, health (zero issues), tag audit, public-content blocking checks and Git whitespace checks passed. Raw/manifest review shows only the authorized addition, with no previous source modified or removed. The changed experience-loop page's pre-existing public-content candidate was re-reviewed as a generic prohibition on private session/task records; the other unchanged candidates remain covered only by their prior review scope.
+
+
 > Format: `## [2026-11-06] fix | Harden navigation compatibility and clarify retrieval measurement scope
 
 - Secondary navigation now recognizes `./_meta/topic-index.md` and resolvable wikilinks while excluding commented examples. Added regression cases for visible and commented variants.
