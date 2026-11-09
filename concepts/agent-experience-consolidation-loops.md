@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-07
+updated: 2026-11-09
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md]
@@ -209,4 +209,4 @@ session_search / project evidence → audited review
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]]
+- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]]

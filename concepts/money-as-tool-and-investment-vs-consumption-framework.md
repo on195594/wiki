@@ -1,7 +1,7 @@
 ---
 title: Money as Tool and Investment-vs-Consumption Framework
 created: 2026-04-17
-updated: 2026-11-02
+updated: 2026-11-09
 type: concept
 tags: [research, note]
 sources: [raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md, docs:https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/]
@@ -50,9 +50,9 @@ aliases: [money-as-tool, investment-vs-consumption]
 
 ## Cash buffers preserve choices
 
-Steve Burns 在 New Trader U 的 [《5 High-Income Skills Worth Learning According to Charlie Munger》](https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/) 第 5 节建议保留现金缓冲，避免客户流失、失业或经济下行迫使人做出不利决定；原文没有给出统一的储备月数。这里保留的是作者借芒格思想归纳的建议，不将其视为芒格亲自提出的五项技能体系；本文未独立核验其中的芒格引语。
+Steve Burns 在 New Trader U 的 [《5 High-Income Skills Worth Learning According to Charlie Munger》](https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/)（2026-10-23 发布，2026-11-09 在线核对全文）将芒格公开言论归纳为五项高收入与资本配置原则：激励对齐说服（Persuasion Through Incentive Alignment）、高价值机会过滤（High-Value Opportunity Filtering，“too hard” pile）、清单驱动执行（Checklist-Driven Execution）、靠诚信积累定价权（Earning Pricing Power Through Integrity）以及第 5 节的非对称风险管理与资本配置（Asymmetric Risk Management and Capital Allocation）。第 5 节建议通过逆向思考先排除毁灭性债务，并保留充足现金缓冲，避免客户流失、失业或经济下行迫使人做出不利决定；原文没有给出统一的储备月数。这里保留的是作者借芒格思想归纳的建议，不将其视为芒格亲自撰写的五项技能体系；本文未独立核验其中的芒格引语。
 
-[推论] 在比较长期回报之前，先检查收入中断时能否承担必要支出与既有承诺。现金缓冲的价值不仅是应急，也是减少被迫卖出资产、借高成本债务或接受不利条件的压力。不能仅因某项资产可能长期增值，就忽略等待期间的现金流风险；具体资金分层可参见 [[household-fund-layering-model]]。
+[推论] 在比较长期回报之前，先检查收入中断时能否承担必要支出与既有承诺。现金缓冲的价值不仅是应急，也是减少被迫卖出资产、借高成本债务或接受不利条件的压力。不能仅因某项资产可能长期增值，就忽略等待期间的现金流风险；具体资金分层与风控边界可参见 [[household-fund-layering-model]] 与 [[investment-risk-control-framework]]。
 
 ## The real distinction is investment vs consumption
 文章的第二条主线不是资产配置，而是支出分类。
@@ -113,4 +113,4 @@ Steve Burns 在 New Trader U 的 [《5 High-Income Skills Worth Learning Accordi
 ## Relations
 
 - refines: [[ordinary-investor-investment-system]]
-- related: [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[wiki-ingestion-workflow]]
+- related: [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[investment-risk-control-framework]], [[wiki-ingestion-workflow]]

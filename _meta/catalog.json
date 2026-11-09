@@ -382,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-07",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -392,6 +392,7 @@
         "related": [
           "agent-skill-governance-and-reversible-state",
           "agent-knowledge-evolution-and-meta-skills",
+          "hermes-knowledge-architecture",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-harness-search-regularization",
@@ -1575,7 +1576,7 @@
       "path": "concepts/document-parsing-structural-fidelity.md",
       "type": "concept",
       "title": "文档解析的结构保真与中间表示",
-      "description": "解释文档解析中内容与关系的保真边界，以及 Markdown、HTML、JSON、图片和版面元数据的职责分工。",
+      "description": "解释文档解析中内容与关系的保真边界、Markdown/HTML/JSON/视觉坐标的职责分工，以及 DPP 0.1 工作草案的 140 条裁决约定。",
       "status": "stable",
       "tags": [
         "llm",
@@ -1593,7 +1594,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "ai-agent-document-fidelity-risk",
@@ -2523,7 +2524,7 @@
       "path": "concepts/household-fund-layering-model.md",
       "type": "concept",
       "title": "Household Fund Layering Model",
-      "description": "提供家庭财务与教育目标资金的参数化分层、约束和风险边界模板。",
+      "description": "提供家庭财务与教育目标资金的参数化分层、期限桶匹配（Bucket Strategy）和风险边界模板。",
       "status": "stable",
       "tags": [
         "investment",
@@ -2536,7 +2537,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "investment-risk-control-framework",
@@ -2590,7 +2591,7 @@
       "path": "concepts/investment-risk-control-framework.md",
       "type": "concept",
       "title": "Investment Risk Control Framework",
-      "description": "汇总可参数化的长期配置、主动交易、风控和行为纪律运行规则。",
+      "description": "汇总可参数化的长期配置、主动交易、回撤恢复数学边界与行为纪律运行规则。",
       "status": "stable",
       "tags": [
         "investment",
@@ -2604,7 +2605,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-06",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2613,7 +2614,10 @@
         "related": [
           "combining-two-investment-frameworks",
           "money-as-tool-and-investment-vs-consumption-framework",
-          "minimal-executable-trading-system"
+          "minimal-executable-trading-system",
+          "household-fund-layering-model",
+          "pre-trade-risk-checklist",
+          "position-sizing-method"
         ]
       }
     },
@@ -2878,7 +2882,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "ordinary-investor-investment-system"
@@ -2886,6 +2890,7 @@
         "related": [
           "leontraveller-trading-and-investment-system",
           "household-fund-layering-model",
+          "investment-risk-control-framework",
           "wiki-ingestion-workflow"
         ]
       }
@@ -2927,7 +2932,7 @@
       "path": "concepts/ordinary-investor-investment-system.md",
       "type": "concept",
       "title": "Ordinary Investor Investment System",
-      "description": "整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。",
+      "description": "整理普通投资者适用的长期资产配置、日历与阈值混合再平衡、摩擦控制和制度化投资系统。",
       "status": "stable",
       "tags": [
         "investment",
@@ -2942,7 +2947,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -4012,7 +4017,7 @@
       "path": "queries/losing-position-review-method.md",
       "type": "query",
       "title": "Reviewing a Losing Position",
-      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损和结构失效。",
+      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损、处置效应（回本执念）与结构失效。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4026,7 +4031,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4034,6 +4039,10 @@
           "combining-two-investment-frameworks",
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
+        ],
+        "related": [
+          "position-sizing-method",
+          "post-trade-review-loop"
         ]
       }
     },
@@ -4055,7 +4064,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-25",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "trading-lessons-to-hard-rules",
@@ -4063,6 +4072,10 @@
           "post-trade-review-loop",
           "pre-trade-risk-checklist",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "hermes-active-surface-lifecycle-governance",
+          "agent-closed-loop-learning-from-corrections-to-rules"
         ]
       }
     },
@@ -4111,7 +4124,7 @@
       "path": "queries/position-scaling-method.md",
       "type": "query",
       "title": "Scaling Into and Out of a Position",
-      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平。",
+      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平，并给出顺势分层加仓与合并风险约束。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4125,12 +4138,13 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "losing-position-review-method",
+          "position-sizing-method",
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
         ]
@@ -4140,7 +4154,7 @@
       "path": "queries/position-sizing-method.md",
       "type": "query",
       "title": "Position Sizing by Risk Budget",
-      "description": "回答如何根据风险预算和 setup 质量决定单笔仓位大小。",
+      "description": "回答如何根据风险预算、1R 单位风险、固定比例公式与分数凯利边界决定单笔仓位大小。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4154,7 +4168,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4169,7 +4183,7 @@
       "path": "queries/post-trade-review-loop.md",
       "type": "query",
       "title": "Building a Post-Trade Review Loop",
-      "description": "回答如何建立交易后复盘闭环，把单笔感受转化为规则修正输入。",
+      "description": "回答如何建立交易后复盘闭环，结合过程合规性、R 倍数期望值分布与单步规则修正提升系统执行力。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4183,7 +4197,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4193,9 +4207,11 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "position-sizing-method",
           "repeat-mistake-detection-in-trading",
           "trading-lessons-to-hard-rules",
-          "minimal-executable-trading-system"
+          "minimal-executable-trading-system",
+          "agent-closed-loop-learning-from-corrections-to-rules"
         ]
       }
     },
@@ -4203,7 +4219,7 @@
       "path": "queries/pre-trade-risk-checklist.md",
       "type": "query",
       "title": "Investment Pre-Trade Risk Checklist",
-      "description": "提供下单前快速检查清单，用于拦截情绪单、越权单和无退出计划交易。",
+      "description": "提供下单前快速检查清单与参数化风险门禁（1R / R_open / D_max / δ），用于拦截情绪单、越权单和无退出计划交易。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4218,13 +4234,19 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system",
           "ordinary-investor-investment-system",
           "combining-two-investment-frameworks"
+        ],
+        "related": [
+          "position-sizing-method",
+          "when-not-to-trade",
+          "household-fund-layering-model",
+          "money-as-tool-and-investment-vs-consumption-framework"
         ]
       }
     },
@@ -4422,7 +4444,7 @@
       "path": "queries/winning-position-risk-management.md",
       "type": "query",
       "title": "Managing a Winning Position",
-      "description": "回答盈利仓位应如何在保护利润和避免过早卖飞之间按规则管理。",
+      "description": "回答盈利仓位如何克服处置效应过早止盈、用结构移动止损与 R 倍数规则平衡利润保护与趋势延续。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4436,7 +4458,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-09",
       "relations": {
         "depends_on": [
           "position-sizing-method",
@@ -4444,6 +4466,9 @@
           "when-not-to-trade",
           "leontraveller-trading-and-investment-system",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "post-trade-review-loop"
         ]
       }
     }

@@ -1,12 +1,12 @@
 ---
 title: 文档解析的结构保真与中间表示
 created: 2026-10-09
-updated: 2026-11-04
+updated: 2026-11-09
 type: concept
 tags: [llm, architecture, content-engineering, verification, structured-output]
 sources: [raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, docs:https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol, docs:https://www.parseprotocol.com/]
 status: stable
-description: 解释文档解析中内容与关系的保真边界，以及 Markdown、HTML、JSON、图片和版面元数据的职责分工。
+description: 解释文档解析中内容与关系的保真边界、Markdown/HTML/JSON/视觉坐标的职责分工，以及 DPP 0.1 工作草案的 140 条裁决约定。
 aliases: [document-parsing-fidelity, document-intermediate-representation, 文档结构保真, 文档中间表示]
 volatility: low
 ---
@@ -55,22 +55,22 @@ volatility: low
 
 ## 解析裁决与评估参考：DPP
 
-LlamaIndex 的 [DPP 工作草案和示例](https://www.parseprotocol.com/)将“页面应如何表示”写成可讨论的裁决规则，可作为构造解析检查样例的参考，而不只是统计 OCR 字符是否正确：
+LlamaIndex 于 2026-10-28 发布的 [Document Parsing Protocol（DPP）介绍博客](https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol)（Gauthami Polasani、Pierre-Loic Doulcet）及 [DPP 0.1 规范站点](https://www.parseprotocol.com/)（2026-11-09 在线复核，共 13 章、140 条规则与 145 条说明笔记，源码 MIT 许可、协议与示例 CC BY 4.0，源摘要 `b63884001dbc`）将“页面应如何表示”写成可公开讨论的裁决规则（涵盖文档级约定、版面、标题、正文、列表、表格、表单、图表、图像与流程图等），可作为构造解析检查样例的参考，而不只是统计 OCR 字符是否正确：
 
-- **关系正确**：多层表头、跨列归属及数值要对应原页面。文章示例中年份与季度属于不同表头层级；只保留数字或自行拼接原文没有的标签，都不符合该协议对忠实表示的要求。
+- **关系正确**：多层表头、跨列归属、行层级及数值要对应原页面。DPP 博客的同店销售表例子中，年份与季度属于不同表头层级（2023 含 Q1–Q4 与 FY 五列，2024 含 Q1–Q3 三列）；将季度推入正文、丢弃年份或自行拼接原文未印刷的“2024 Q2”标签，在 DPP 下均判为错误。DPP 使用 HTML `<table>` 的 `colspan` 与行缩进 `data-level` 属性保留原印刷层级。
 - **忠实表示与下游归一化分开**：DPP 示例用 HTML 保留原印刷表头层级；本页前述展平可用于后续业务处理，但应明确它是转换，并核对字段与原始表头的映射，不能冒充原样转录。
-- **状态区分**：DPP 用 `[blank]` 表示原文空字段、用 `[illegible]` 表示可见但不可辨认的内容；标记本身不能证明解析器没有遗漏其他内容。
-- **允许等价形式**：评估不必只做字符串完全匹配；DPP 例如允许整个文档一致地使用或不使用 `<thead>`、`<tbody>`，因为两种形式保留相同信息。其他格式差异是否等价，仍需按具体规则判断。
-- **原页核对**：按需保留页面及元素坐标以便回溯；例如检查重复数值是否均保留、会计负数括号是否保留。图表中已印刷的数值须准确复制，不应将此扩展为对所有视觉估计值的精确性保证。
+- **表单、图表、流程图与不可读状态区分**：DPP 规定表单空字段标为 `[blank]`（区分“原本留空”与“解析漏提”），复选框保留为 `[x]` 与 `[ ]`；图表（Charts）转换为每类别一行、每序列一列的数值表并原样复制已印刷数值；流程图与架构图（Diagrams）须按 [§12.2.2](https://www.parseprotocol.com/guide/diagrams-diagrams-and-flowcharts) 选择能忠实编码的语言，以 `diagram/<language>` 围栏输出，并保留标签、连接方向、分组及有意义的空间特征；不能仅因 Mermaid 不适合就降级为文字。仅当没有合适语言能忠实编码时，才允许用完整标签恰为 `description` 的围栏，按规定结构描述所有可读文字与可见关系；PDF 中从未在页面显示的隐藏文本直接忽略，可见但无法辨认的文本标为 `[illegible]`。标记本身不能证明解析器没有遗漏其他内容。
+- **允许文档级一致的等价形式（`doc` / `2 forms`）**：评估不必只做字符串完全匹配；DPP 将部分规则标为单文档内统一即可接受的等价形式（例如整份文档一致地使用或不使用 `<thead>`、`<tbody>`，或单位行与空白分隔行的两种合规编码），因为两种形式保留相同信息。其他格式差异是否等价，仍需按具体规则判断。
+- **原页核对与 Sidecar 坐标溯源**：按需通过可选 sidecar 保留页面及元素包围盒坐标以便回溯；例如在 Apple FY2024 利润表样例中检查两处重复出现的 `6,485` 单元格是否均保留、会计负数括号 `(565)` 是否保留。图表中已印刷的数值须准确复制，不应将此扩展为对所有视觉估计值的精确性保证。
 
 这些是协议提出的表示与审查约定，不是解析器性能测试结果。针对具体任务，可以选取熟悉文档中的复杂表格、空字段或图表作为样例，比较原页、解析结果与下游使用结果；这是本页的工程建议，不是该来源验证过的效果。
 
 ## 证据与采用边界
 
-- 来源为 Murtaza Khomusi 于 2026-10-08 发布的 LlamaIndex 厂商文章。保存的是根据完整可读正文制作的选取式来源笔记，不是全文镜像；未独立测试解析器，也未核验正文链接中的其他产品文档。
+- 来源一为 Murtaza Khomusi 于 2026-10-08 发布的 LlamaIndex 厂商文章（[[llamaindex-markdown-is-all-you-need-2026-10-08]]，选取式来源笔记）；来源二、三为 2026-10-28 发布的 [DPP 介绍博客](https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol) 与 [DPP 0.1 官方网站](https://www.parseprotocol.com/)（2026-11-09 核对博客、站点规则目录与部分条文；并非逐条合规审计）。未独立测试解析器，也未核验正文链接中的其他商业产品（如 OCRia-1、Extract V2.6）。
 - 文章足以支持格式能力、失败机制与检查思路，不足以证明 LlamaParse 优于其他工具、Markdown 对所有任务最佳，或中间层一定降低端到端成本。
 - HTML、JSON 和包围盒都不能单独保证解析或语义正确；纯 Markdown 也不能完整替代复杂表格及视觉信息。
-- DPP 是 LlamaIndex 提出的 0.1 工作草案，源自 ParseBench 的标注约定，并非已独立认证或证明行业普遍采用的标准。官网说明其 checker 是审查指导，不是自动化合规测试套件；没有证据表明采用 DPP 必然提高特定工作流的准确率。
+- DPP 是 LlamaIndex 提出的 0.1 工作草案，源自 ParseBench 的标注约定，“settled”仅代表在该草案内部定稿，并非已独立认证或证明行业普遍采用的标准。官网明确说明其下载包中的 checker 是审查指导 skill，不是自动化合规测试套件；没有证据表明采用 DPP 必然提高特定工作流的准确率。
 - 本页不规定默认解析器、性能阈值或生产门禁，不授权改动 Skill、运行配置或现有解析流程。
 
 ## Relations

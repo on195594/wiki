@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-09
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-08 | Indexed pages: 126
+> Last updated: 2026-11-09 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -52,7 +52,7 @@ status: current
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：用 CEP 与 7W 框架从真实决策场景出发，而不是把搜索量直接当成内容需求
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
-- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合表示，并以 DPP 工作草案参考解析裁决与等价形式，不把格式正确当作语义正确
+- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合 Markdown/HTML/JSON/坐标表示，并以 DPP 0.1 工作草案（140 条规则）参考解析裁决与等价形式，不把格式正确当作语义正确
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分拓扑重合度与真实引用一致性，8 组双入口跨源评测方案与拓扑基线见独立查询页
 - [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：区分广义 agent memory 与默认 memory 载体，用正反例路由 skills、wiki、sessions/project state 与历史证据
@@ -114,10 +114,10 @@ status: current
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
-- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再谈标的、仓位与执行
-- [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，让教育基金按目标导向独立建模
+- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓与行为控制执行
+- [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：把成长作为职业升级、家庭沟通与判断质量的底层引擎，含输入—产出转化与压力下迁移验证的可选推论参数
-- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡，进攻仓按趋势、禁止摊平和止损；先定义风险预算、仓位和适用退出条件
+- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含回撤恢复非对称数学与参数化风控变量（r / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：兼顾现金流缓冲、能力复利、时间预算、转换摩擦与家庭兼容性，决策参数为可选推论
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
@@ -146,14 +146,14 @@ status: current
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
 - [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署
 - [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：长期制度管底盘，主动纪律管进攻
-- [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划，再决定是否出手
+- [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
 - [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：进攻仓摊平亏损、情绪补仓、越权单或无适用退出计划；核心仓制度化再平衡与情绪补仓分开判断
-- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：区分正常回撤、失效判断和伪装成再平衡的情绪补仓
-- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓对了再加、错了不补，进出均受计划与风险预算约束
-- [Position Sizing by Risk Budget](../queries/position-sizing-method.md) — 参数化仓位预算：先限定最大可承受损失，再计算规模
-- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：区分结构、风险预算与利润焦虑
+- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：克服处置效应与回本执念（Get-even-itis），区分正常回撤、失效判断和伪装成再平衡的情绪补仓
+- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓可采用非递增顺势分层，按当前净值核算合并风险，不把浮盈或保本止损当作免费风险资本
+- [Position Sizing by Risk Budget](../queries/position-sizing-method.md) — 参数化仓位预算：基于 1R 单位风险、固定比例仓位公式、R 倍数与分数凯利边界计算规模，防范超仓与跳空风险
+- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：克服处置效应过早止盈，用结构移动止损与固定 1R 分母平衡利润保护与趋势延续
 - [Deciding Between Inaction and Action](../queries/inaction-vs-action-decision-framework.md) — 不行动与行动的裁决框架：动作只是在缓解不适时默认等待
-- [Building a Post-Trade Review Loop](../queries/post-trade-review-loop.md) — 交易后复盘闭环：先评价过程，再把重复问题压成可执行修正
+- [Building a Post-Trade Review Loop](../queries/post-trade-review-loop.md) — 交易后复盘闭环：结合过程合规性与含零收益交易的 R 倍数样本分布，区分执行偏差与风险模型缺口，避免事后归因
 - [Detecting Repeat Trading Mistakes](../queries/repeat-mistake-detection-in-trading.md) — 重复错误识别：只有可命名、可复现、可归因的问题才升级规则
 - [Converting Trading Lessons into Hard Rules](../queries/trading-lessons-to-hard-rules.md) — 教训到硬规则的转化：仅制度化反复、高代价且可执行的问题
 - [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：保留少数高阻断力规则，删除不可快速调用的说明书式规则

@@ -1,12 +1,12 @@
 ---
 title: Ordinary Investor Investment System
 created: 2026-04-16
-updated: 2026-11-04
+updated: 2026-11-09
 type: concept
 tags: [investment, risk-control, operating-model, research, note]
-sources: [raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md]
+sources: [raw/articles/dtdt666-ordinary-investor-how-to-invest-2026-03-10.md, docs:https://investor.vanguard.com/investor-resources-education/portfolio-management/rebalancing-your-portfolio, docs:https://workplace.vanguard.com/insights-and-research/perspective/delivering-on-design-disciplined-implementation-in-index-based-target-date-funds.html]
 status: stable
-description: 整理普通投资者适用的长期资产配置、再平衡、行为控制和制度化投资系统。
+description: 整理普通投资者适用的长期资产配置、日历与阈值混合再平衡、摩擦控制和制度化投资系统。
 aliases: [ordinary-investor-system]
 volatility: low
 verified_at: 2026-11-02
@@ -107,6 +107,18 @@ verified_at: 2026-11-02
 - 组合结构本身决定了大部分风险收益轮廓
 - 再平衡是一种制度化的低买高卖
 - 先把大类资产配对，比纠结单个标的更重要
+
+### 再平衡机制与交易摩擦边界（外部研究补充）
+
+结合 [Vanguard 个人投资者组合再平衡指南](https://investor.vanguard.com/investor-resources-education/portfolio-management/rebalancing-your-portfolio) 与 [Vanguard 指数型目标日期基金（TDF）纪律化执行研究（2026-08-14）](https://workplace.vanguard.com/insights-and-research/perspective/delivering-on-design-disciplined-implementation-in-index-based-target-date-funds.html)，在落地再平衡制度时需补充三项工程边界：
+
+- **核心目标是风险控制而非收益最大化**：再平衡的首要职责是防止资产权重随行情漂移而偏离既定风险承受度（例如股票大涨后组合被动暴露于过高波动），而不是作为一种短线择时手段。
+- **日历、阈值与混合策略（Calendar vs. Threshold vs. Hybrid）的取舍**：
+  - 纯日历策略（如每季或每年固定日）操作简单，但在极端快速波动期可能容忍过大漂移，或在偏离很小时产生不必要交易；
+  - 纯阈值策略（仅当偏离超限时触发）能及时拦截大幅漂移，但需要高频监控；
+  - **[推论] 日历+阈值混合策略**：可按固定周期（如每年或每半年）检查，仅当资产权重偏离目标达预设带宽时调仓。例如目标股票权重 `60%`、带宽 `5` 个百分点，对应 `55%–65%`，不是目标权重的相对 `5%`。检查频率与带宽需按组合风险、监控能力与成本设定，不存在本页规定的通用最优参数。
+- **机构阈值研究不等于个人混合策略验证**：Vanguard 的 10,000 次 10 年期模拟以 60/40 全球股债组合为例，假设无现金流、不使用期货；简单回拨至目标权重的年化成本估计约 `23 bps`，阈值方法可降低约 `70%–80%` 至 `5–6 bps`。文中的 `200 bps` 触发、向偏离目标 `175 bps` 处部分回拨采用持续监控，不是上述每半年或每年检查的混合策略，不能直接用该成本结果证明个人账户的效果或照搬参数。
+- **低摩擦与税效优先执行**：卖出浮盈资产是否产生资本利得税取决于税区、资产与账户类型；交易还可能产生买卖价差与费用。**[推论]** 实务中应优先用**新增流入资金、分红与利息定向买入低配资产**（或提款时优先赎回超配资产），必要时采用部分再平衡（Partially rebalance）回归允许带宽，而非机械追求零偏差。
 
 ## Stocks dominate in the very long run
 文章还用长期历史对比说明：
