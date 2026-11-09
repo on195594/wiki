@@ -112,6 +112,8 @@ Repeat for `catalog` and `relations`. Each packet’s `input_sha256` identifies 
 python3 _meta/scripts/wiki_retrieval_benchmark.py --packet /tmp/wiki-retrieval-eval/keyword.json --answers /tmp/wiki-retrieval-eval/keyword-answers.json --repeat-answers /tmp/wiki-retrieval-eval/keyword-repeat-answers.json
 ```
 
+The public Q5/Q8 subset is retained in `_meta/retrieval-benchmark-q5-q8.json`; the benchmark page records its source scope, separate score corrections and offline verification command. Q5/Q8 `claim_checks` in the case file are post-run review-only annotations, not retrieval seeds or blind-answer inputs; historical questions and gold sets remain unchanged.
+
 This verifies citation identity and computes two-run fixed-packet citation Jaccard, with both-empty pairs reported as N/A. It does not grade factual support or answer completeness. Read the cited spans separately; record missing answer requirements and unsupported claims even when every ID is valid. The byte count covers the serialized evidence records, not prompt framing, model tokens or network cost. The candidate graph is an experimental retrieval strategy, not an implementation of the full production Freshness Gate.
 
 ## Public-content result contract

@@ -1,15 +1,15 @@
 ---
 title: Wiki 跨源证据导航离线评测方案与拓扑基线
 created: 2026-11-02
-updated: 2026-11-06
+updated: 2026-11-09
 type: query
 tags: [agent, knowledge-base, evaluation, verification, architecture, workflow]
-sources: [repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md]
+sources: [repository:_meta/catalog.json, repository:_meta/retrieval-benchmark.json, repository:_meta/retrieval-benchmark-q5-q8.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md, raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md]
 status: stable
 volatility: medium
 verified_at: 2026-11-06
 review_by: 2027-03-02
-description: 保存 Q1–Q8 检索用例、静态拓扑基线与三策略固定证据包重复问答试验，区分候选召回、引用一致性、回答支持性及自由检索端到端效果。
+description: 保存 Q1–Q8 检索基线及 Q5/Q8 公开证据包与评分纠正，区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。
 aliases: [cross-source-evidence-benchmark, evidence-navigation-benchmark, wiki-evidence-navigation-eval]
 ---
 
@@ -156,13 +156,13 @@ PY
 
 ### 方法与复现入口
 
-固定用例在 `_meta/retrieval-benchmark.json`，脚本在 `_meta/scripts/wiki_retrieval_benchmark.py`，操作命令见 [[wiki-health-check-runbook]] 的 Bounded retrieval benchmark。问题与候选黄金集在策略运行前固定，未依据结果调整。黄金集沿用第 2 节，尚未经独立人工裁决；黄金集外页面也可能提供有效证据。
+固定用例在 `_meta/retrieval-benchmark.json`，脚本在 `_meta/scripts/wiki_retrieval_benchmark.py`，操作命令见 [[wiki-health-check-runbook]] 的 Bounded retrieval benchmark。问题与候选黄金集在策略运行前固定，未依据结果调整。黄金集沿用第 2 节，尚未经独立人工裁决；黄金集外页面也可能提供有效证据。2026-11-09 仅为 Q5/Q8 追加事后 `claim_checks`，按断言补可接受来源与章节定位；历史问题、`gold_pages`、`gold_raw` 和指标分母均不变。这些检查项不参与检索，不提供给盲答任务，不构成新的模型实验（见第 6 节）。
 
 三策略统一限制为每题最多 4 个正式候选页、9,000 UTF-8 evidence bytes。关键词策略按全文词项匹配，catalog 策略按标题、摘要、别名和标签匹配；中文使用双字切分，按语料词项稀有度加权。关系策略从 catalog 前 2 个候选展开一跳 `depends_on` / `refines` / `conflicts_with` 出边及 `supersedes` / `conflicts_with` 入边，再按全文匹配取前 4 页，默认不展开 `related`。这里比较的是完整检索配方：关系组同时改变候选池与正文重排，catalog 组只按 metadata 排序，因此存在混杂变量，不能把差异单独归因于关系边。若要判断关系展开的独立收益，需另做同一评分函数与预算下的消融对照。这个实验性候选裁剪不保证保留所有冲突/替代边，不是完整 Freshness Gate，不能直接用于操作授权或当前事实判断。
 
 每页最多取 2 个 12 行证据窗口，再从候选页声明的 raw 来源取最多 3 个窗口，统一按相关性排序并按完整窗口装入字节预算；不在窗口中途截断。证据 ID 使用路径及行范围，由输入哈希约束，行号不作为跨版本永久标识。正文候选召回与实际送入模型的证据覆盖是不同指标。
 
-每策略由两个隔离回答任务分别作答，每个任务仅收到题目与其证据包，不看黄金集、检索指标或另一回答；总计 48 个实际答案。执行工具为当前 Codex 协作 Agent，底层模型版本、采样参数及 API token/cost 未暴露，不能据此建立跨模型或成本优势结论。回答须逐结论引用证据，缺证据明确留白。输入包、实际回答和评分保存在运行方输出目录，公开 Wiki 仅保留方法、用例和聚合结论；同一代码与固定输入包可复算指标，当前工作树重新检索的输入哈希可能不同。
+每策略由两个隔离回答任务分别作答，每个任务仅收到题目与其证据包，不看黄金集、检索指标或另一回答；总计 48 个实际答案。执行工具为当前 Codex 协作 Agent，底层模型版本、采样参数及 API token/cost 未暴露，不能据此建立跨模型或成本优势结论。回答须逐结论引用证据，缺证据明确留白。完整输入包、实际回答和评分保存在外部归档；公开仓库另保留脱敏的 Q5/Q8 子集（第 6 节），不含运行对话。同一代码与固定输入包可复算指标，当前工作树重新检索的输入哈希可能不同。
 
 ### 历史首轮指标（依赖外部运行包）
 
@@ -176,11 +176,11 @@ PY
 
 两次引用皆空时按 N/A 处理，本轮为空的题对数为 0。历史运行级来源指纹（全体正式语料与各题读取 raw 来源的并集；不是单题、问题文本或完整协议的指纹，不同策略读取的来源可能不同）：关键词 `b6384d879a7899c5b7bd1dd6a6e5f6aa12e16b97a36b39af2a9c41ec107857a3`；catalog `d607d5c1c14378edb16de01c350498425e2a9dd3cd8565ab8c8ea14b386f0b45`；关系 `25ffad7a7442bdb7dd3fe470cce98f2ef2e65715cb3eac56f9be6e331849d06e`。
 
-**复算前提：** 上表和上述指纹对应治理编辑前留存的运行包，不能仅凭当前 Git 检出重新生成。外部归档文件名为 `wiki-retrieval-baseline-2026-11-06.tar.gz`，SHA-256 为 `a89aea51f7f8b73535eea0e26b9c497e1bd632d1a82f27e0d63c6785821dca60`；归档包含原始证据包、48 个回答、评分与当时的校验脚本，可据此重算固定包引用指标。归档不包含全部检索语料，不能重放原始检索过程；没有该归档的读者应将这些数值视作尚未独立复算的历史报告。当前脚本重检索得到新指纹属于新运行，不得用它覆盖旧回答的指纹或冒充旧回答已重新执行。公开仓库不保存运行对话；归档持有者负责留存，Git 历史不能替代它。
+**复算前提：** 上表和上述指纹对应治理编辑前留存的运行包，不能仅凭当前 Git 检出重新生成。外部归档文件名为 `wiki-retrieval-baseline-2026-11-06.tar.gz`，SHA-256 为 `a89aea51f7f8b73535eea0e26b9c497e1bd632d1a82f27e0d63c6785821dca60`；归档包含原始证据包、48 个回答、评分与当时的校验脚本，可据此重算固定包引用指标。归档不包含全部检索语料，不能重放原始检索过程；没有该归档的读者可复核第 6 节公开的 Q5/Q8 子集，不能据此独立复算全体 8 题宏平均。当前脚本重检索得到新指纹属于新运行，不得用它覆盖旧回答的指纹或冒充旧回答已重新执行。公开仓库不保存运行对话；归档持有者负责留存，Git 历史不能替代完整运行包。
 
 每个 8 题回答任务墙钟约 38–47 秒（包括工具与调度开销）；不是单题 API latency，不以此比较策略效率。字节数只包含序列化证据记录，不包括题目、提示词与输出，也不等于模型 token。每题仅两次回答，未估计统计显著性。
 
-### 独立 AI 支持性与覆盖评分
+### 独立 AI 支持性与覆盖评分（历史原评分，纠正见第 6 节）
 
 另一个未参与回答的审查 Agent 逐条对照 48 个回答及各自证据包，按 0–2 分评估：支持性 0 为重要断言无支撑或矛盾、1 为轻微推断/过宽表述、2 为实质断言有对应证据或明确留白；覆盖 0 为未回答主旨、1 为缺至少一项关键部分、2 为覆盖题目各关键部分。评分尺在审查前固定，未使用候选黄金集重合度替代回答评分。
 
@@ -200,6 +200,52 @@ PY
 - catalog 的 Q1/Q2 候选混入投资页，Q4 缺少 Python 工程验证页；问题词项与摘要之间的词面相似会产生误召回。关键词 Q5 未召回候选黄金正式页，但部分其他页仍能支撑有限回答，不能机械将黄金集外引用判为错误。
 - 回答 Q3/Q4/Q6 出现具体职责或测量口径留白：候选页命中不代表必要段落已经送入。下一次改动应首先针对失败问题的词项匹配和完整证据窗口，使用新保留题验证，避免只调到这 8 题通过。
 - 本轮固定证据包 Jaccard 是模型回答层的诊断值，不能外推为自由检索稳定性、事实正确率或生产收益；完整多跳 Agent 端到端评测仍为 **NOT_RUN**。保留现有 Freshness Gate 与逐段核证。
+
+## 6. Q5/Q8 有界核验、评分纠正与补证路径（2026-11-09）
+
+本节是复用历史包的 **AI 来源与断言抽查**，不是独立人工裁决，也不是重新回答实验。结论：Q8 的 catalog/relations 包为确定性执行职责提供了更直接的证据；Q5 未显示 relations 的稳定优势。保留现有默认策略，自由检索端到端仍为 **NOT_RUN**。
+
+### 公开最小证据附件
+
+[Q5/Q8 历史证据与回答 JSON](../_meta/retrieval-benchmark-q5-q8.json) 保存 3 策略 × 2 题的原始片段、候选页、来源指纹与 12 个回答、12 条历史评分；另列两条评分纠正。所复制的证据、回答、原评分未改写。附件只保留公开知识片段和实验结果，不含执行日志、凭据或私有身份标识。
+
+附件内每个 `input_sha256` 仍是原始全轮来源并集指纹；`input_hashes` 只保留所选片段所属来源，不能由此重建原指纹或完整检索语料。片段及其 ID 以附件快照为准，不把同一行号当作当前页面的永久定位。维护测试可离线复核 12 个回答的引用 ID、证据预算、重复引用 Jaccard、纠正对应关系和章节存在性，不调用模型：
+
+```bash
+python3 -m unittest discover -s _meta/scripts -p 'test_wiki_retrieval_benchmark.py' -v
+```
+
+### 分开记录覆盖、引用与事实
+
+| 题目 | keyword：正式页 / 实际入包黄金 raw | catalog：正式页 / 实际入包黄金 raw | relations：正式页 / 实际入包黄金 raw |
+|---|---|---|---|
+| Q5 | 0/5、0/3 | 1/5、0/3 | 0/5、0/3 |
+| Q8 | 2/4、0/3 | 3/4、1/3 | 3/4、1/3 |
+
+这里是历史黄金集合交集，不是相关性或正确率的完整真值。Q5 keyword 的黄金页命中虽为零，`production-ai-agent-evaluation-framework.md:L63-L74` 和 `agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38` 等包内片段仍支持单 Agent 基线、协调成本、父级责任等有限断言。黄金页命中也不证明必要段落已经入包。
+
+12 个回答的引用 ID 均存在于各自证据包；这是身份校验。回读引用可以判断其是否支持具体断言，但不能由 ID 有效或两次 Jaccard 高推出外部事实正确。抽查原站只覆盖本节列出的主张，不形成全体答案事实准确率。
+
+### Q5：纠正覆盖满分，补齐证据门与资源路由定位
+
+- **历史覆盖分纠正：** keyword 的 `first`、`repeat` 两个 Q5 回答均由覆盖 **2 改为 1**，支持性仍为 2。回答虽有基线、协调成本及宿主/Worker 边界，却没有说明任务上下文驱动的模型/资源选择机制，也没有研究证据充分性裁决。**Tool Gate 的执行授权不等于研究证据门。** 纠正另记在附件 `review.coverage_corrections`，不覆盖历史评分，不据局部纠正发布新的全库排行榜。
+- **可接受替代证据：** 历史黄金 raw 漏列的 [[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]] 可支持协作适用条件；[[machinelearningmastery-multi-agent-research-assistant-2026-05-21]] 是研究证据门的直接来源。它们记录在 `claim_checks`，不反向修改历史召回分母。
+- **来源与本地推论分开：** 教程第二次 Judge 仍弱时补抓来源后直接写报告，没有最后一次通过判定。[[agent-research-evidence-gate]] 的补证后复判、仍不足则停止是本地加固建议，不冒充教程已经验证的能力。[[langchain-model-router-in-harness-2026-10-01]] 的 64% 是案例相对最强模型基线的会话 LLM 中位成本下降；合并率差异不显著不证明质量等价，不能外推跨项目收益。
+
+### Q8：已有证据漏用与概率性标签仍须分开核对
+
+- catalog/relations 包含 `deterministic-analytics-llm-reasoning-boundary.md:L39-L50`，回答说明确定性执行器的过滤、聚合、计算和显式失败，构成有限的回答覆盖改善。
+- keyword 包其实已有 `ai-agent-document-fidelity-risk.md:L99-L110` 的职责导航摘要，但两个回答未使用其执行职责。该缺口含生成阶段漏用，不能全部归因为检索不到。应先核对已给证据，而不是先增加图展开。
+- Q8 第 4 节目标还包含概率性语义分类。历史回答最多说明数值归属或输入标签可能出错，没有完整说明置信度分流、抽样核验与标签追溯；包中也未送入 MotherDuck 分类段落。**保留历史问题覆盖评分，但不将其满分解释为完整综合断言已通过。** [[motherduck-jev-for-analytics-2026-09-29]] 的 96.9% 是筛选子集的模型一致率，不是全量人工验证准确率。确定性执行器的直接来源也可回读 [[towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22]]。
+- [[llamaindex-markdown-is-all-you-need-2026-10-08]] 支持按职责保留格式、表格关系和溯源；[[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]] 所述多轮编辑失真不能代替 PDF 解析器或真实财报准确率测试。当前结果不证明跨财报年份、单位、币种和口径已正确绑定。
+
+### 有界补证，而不是给历史实验加答案
+
+`_meta/retrieval-benchmark.json` 的 Q5/Q8 `claim_checks` 按断言给出当前正式页章节、可接受 raw 和解释边界。它们是复核/非盲补证清单，不是检索种子、强制黄金命中或答题提示；不注入 `prepare()`，不改 4 页/9,000 字节默认预算，不在历史包内补片段，不改写旧回答。
+
+- Q5 缺资源机制时定点回读 [[agent-resource-optimization]] 的模型分层章节；缺研究证据门时回读 [[agent-research-evidence-gate]] 的 `## Gate contract`，并确认原教程与本地加固边界。
+- Q8 先检查包中已有执行职责是否被回答使用；仍缺语义可靠性时回读 [[deterministic-analytics-llm-reasoning-boundary]] 的概率性分类章节及 MotherDuck 原始段落，再对实际表格逐值核对。必要信息仍缺则明确留白。
+- 任何后续补证回答均须作为新结果单独保存，不计入 2026-11-06 的 48 个回答。无需新增平台、调度器、常驻审查或付费模型运行。
 
 ## Relations
 

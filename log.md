@@ -2,6 +2,14 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-09] fix | Make Q5/Q8 retrieval claims auditable without rerunning models
+
+- Added review-only claim checks and acceptable alternative sources for Q5/Q8 in `_meta/retrieval-benchmark.json`. Preserved all eight historical questions and gold sets; the annotations do not seed retrieval or enter blind-answer inputs.
+- Retained a public Q5/Q8 subset of the archived fixed-packet run: original evidence, 12 answers, selected-source fingerprints and 12 original AI grades. Added two separate Q5 keyword coverage corrections (2 to 1; support remains 2), without rewriting historical results or issuing a recalibrated leaderboard.
+- Expanded [[wiki-cross-source-evidence-navigation-benchmark]] with bounded source checks, evidence-gate versus execution-authorization distinctions, the Q8 unused-evidence diagnosis and the still-incomplete probability-label requirement. Documented targeted follow-up sections instead of increasing graph expansion or claiming end-to-end gains.
+- Updated [[wiki-health-check-runbook]], [[topic-index]] and the catalog. No raw source, default retrieval strategy, evidence budget, runtime, scheduler or paid-model experiment changed; free-search end-to-end remains `NOT_RUN`, and this AI audit is not independent human adjudication.
+- Validation: public subset matches the retained archive exactly; all 70 maintenance tests, catalog, health (zero issues), tags, public blocking checks and whitespace checks passed. No public-content candidate occurs in the changed files; the 14 unchanged baseline candidates are outside this review scope.
+
 ## [2026-11-08] ingestion | Multi-tenant configuration-driven semantic model and reporting boundary
 
 - Retained [[towardsdatascience-report-100-clients-one-semantic-model-2026-11-05]] as a structured secondary summary attributed to Val Ye's public Towards Data Science article, not a complete original-text or code capture. Direct access returned HTTP 403 during review; full-text fidelity and companion repository details remain unverified. Author-reported outcomes (70% build time reduction, 33% weekly workload reduction, 100+ clients served) are self-reported practitioner claims, not independent causal benchmarks.

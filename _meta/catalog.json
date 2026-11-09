@@ -4358,7 +4358,7 @@
       "path": "queries/wiki-cross-source-evidence-navigation-benchmark.md",
       "type": "query",
       "title": "Wiki 跨源证据导航离线评测方案与拓扑基线",
-      "description": "保存 Q1–Q8 检索用例、静态拓扑基线与三策略固定证据包重复问答试验，区分候选召回、引用一致性、回答支持性及自由检索端到端效果。",
+      "description": "保存 Q1–Q8 检索基线及 Q5/Q8 公开证据包与评分纠正，区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4376,7 +4376,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",

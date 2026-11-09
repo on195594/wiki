@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from wiki_retrieval_benchmark import citation_consistency, main, passages, prepare, validate_answers
+from wiki_retrieval_benchmark import STRATEGIES, citation_consistency, main, passages, prepare, ratio, validate_answers
 
 
 class RetrievalBenchmarkTests(unittest.TestCase):
@@ -83,6 +83,81 @@ class RetrievalBenchmarkTests(unittest.TestCase):
             second = prepare(root, cases, "keyword", budget=200)
             self.assertEqual(first["cases"][0]["evidence"], second["cases"][0]["evidence"])
             self.assertEqual(first["input_sha256"], second["input_sha256"])
+            before = {s: prepare(root, cases, s, budget=200) for s in STRATEGIES}
+            cases[0]["claim_checks"] = [{"criterion": "未知词 zxqv", "acceptable_raw": ["raw/review-only.md"]}]
+            # Post-run review annotations must not become retrieval seeds or prompt evidence.
+            for strategy in STRATEGIES:
+                self.assertEqual(before[strategy], prepare(root, cases, strategy, budget=200))
+
+    def test_public_q5_q8_snapshot_and_separate_corrections(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        saved = json.loads((root / "_meta/retrieval-benchmark-q5-q8.json").read_text())
+        gold = {c["id"]: c for c in saved["cases"]}
+        self.assertEqual(set(gold), {"Q5", "Q8"})
+        self.assertEqual([s["strategy"] for s in saved["strategies"]], list(STRATEGIES))
+        expected_jaccard = {"keyword": (1, 1), "catalog": (0.8, 0.8), "relations": (1, 0.6)}
+        originals = {}
+        answer_count = 0
+        for packet in saved["strategies"]:
+            self.assertEqual(packet["page_limit"], 4)
+            self.assertEqual(packet["evidence_byte_budget"], 9000)
+            self.assertRegex(packet["input_sha256"], r"^[0-9a-f]{64}$")
+            used = set()
+            for case in packet["cases"]:
+                self.assertIn(case["id"], gold)
+                self.assertEqual(case["question"], gold[case["id"]]["question"])
+                self.assertLessEqual(len(case["candidates"]), packet["page_limit"])
+                used.update(e["path"] for e in case["evidence"])
+                size = sum(len(json.dumps(e, ensure_ascii=False).encode()) for e in case["evidence"])
+                self.assertEqual(size, case["evidence_bytes"])
+                self.assertLessEqual(size, packet["evidence_byte_budget"])
+                formal = ratio(set(case["candidates"]), set(gold[case["id"]]["gold_pages"]))
+                raw = ratio({e["path"] for e in case["evidence"] if e["path"].startswith("raw/")},
+                            set(gold[case["id"]]["gold_raw"]))
+                self.assertEqual(case["formal_retrieval"], formal)
+                self.assertEqual(case["raw_retrieval"], raw)
+            self.assertEqual(set(packet["input_hashes"]), used)
+            for value in packet["input_hashes"].values():
+                self.assertRegex(value, r"^[0-9a-f]{64}$")
+            for key in ("answers", "repeat_answers"):
+                self.assertEqual(validate_answers(packet, packet[key])["cases"], 2)
+                answer_count += len(packet[key])
+            consistency = citation_consistency(packet, packet["answers"], packet["repeat_answers"])
+            for cid, value in zip(("Q5", "Q8"), expected_jaccard[packet["strategy"]]):
+                self.assertAlmostEqual(consistency["per_case_jaccard"][cid], value)
+            self.assertEqual(len(packet["original_grades"]), 4)
+            for grade in packet["original_grades"]:
+                key = (grade["strategy"], grade["run"], grade["id"])
+                self.assertNotIn(key, originals)
+                originals[key] = grade
+        self.assertEqual(answer_count, 12)
+        self.assertEqual(saved["review"]["end_to_end"], "NOT_RUN")
+        corrections = saved["review"]["coverage_corrections"]
+        self.assertEqual(len(corrections), 2)
+        self.assertEqual({(c["strategy"], c["run"], c["id"]) for c in corrections},
+                         {("keyword", run, "Q5") for run in ("first", "repeat")})
+        for correction in corrections:
+            old = originals[(correction["strategy"], correction["run"], correction["id"])]
+            self.assertEqual(old["coverage"], correction["original_coverage"])
+            self.assertEqual((old["coverage"], correction["reviewed_coverage"]), (2, 1))
+            self.assertEqual((old["support"], correction["support"]), (2, 2))
+
+    def test_review_claim_locations_and_frozen_gold(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        definitions = json.loads((root / "_meta/retrieval-benchmark.json").read_text())
+        snapshot = json.loads((root / "_meta/retrieval-benchmark-q5-q8.json").read_text())
+        current = {c["id"]: c for c in definitions["cases"]}
+        self.assertEqual([c["id"] for c in definitions["cases"]], [f"Q{i}" for i in range(1, 9)])
+        for old in snapshot["cases"]:
+            case = current[old["id"]]
+            self.assertEqual({k: case[k] for k in old}, old)
+            self.assertEqual(len(case["claim_checks"]), 4)
+            self.assertEqual(len({c["id"] for c in case["claim_checks"]}), 4)
+            for check in case["claim_checks"]:
+                for location in check["formal_evidence"]:
+                    self.assertIn(location["heading"], (root / location["path"]).read_text().splitlines())
+                for path in check["acceptable_raw"] + check["acceptable_alternative_pages"]:
+                    self.assertTrue((root / path).is_file(), path)
 
     def test_line_spans_and_answer_validation(self) -> None:
         evidence = passages("concepts/a.md", "---\ntitle: A\n---\n# A\nText\n")

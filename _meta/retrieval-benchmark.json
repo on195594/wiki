@@ -79,6 +79,73 @@
         "raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md",
         "raw/articles/langchain-model-router-in-harness-2026-10-01.md",
         "raw/articles/philschmid-subagent-patterns-2026-05-05.md"
+      ],
+      "claim_checks": [
+        {
+          "id": "Q5-baseline",
+          "criterion": "先比较单 Agent 基线，判断任务可分解性、协调成本与错误相关性；不以人数或多数票证明质量。",
+          "formal_evidence": [
+            {
+              "path": "concepts/subagent-orchestration-patterns.md",
+              "heading": "## Single-agent first escalation rule"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md"
+          ],
+          "acceptable_alternative_pages": [
+            "concepts/production-ai-agent-evaluation-framework.md"
+          ],
+          "boundary": "协作研究只支持其受测条件；不推导通用收益或固定升级阈值。"
+        },
+        {
+          "id": "Q5-topology",
+          "criterion": "按任务依赖选择最小拓扑，明确父级验收、Worker 有界交接及责任边界。",
+          "formal_evidence": [
+            {
+              "path": "concepts/subagent-orchestration-patterns.md",
+              "heading": "## Single-agent first escalation rule"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/philschmid-subagent-patterns-2026-05-05.md",
+            "raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md"
+          ],
+          "acceptable_alternative_pages": [
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md"
+          ],
+          "boundary": "生产控制流、资源优化与研究证据充分性是不同职责。"
+        },
+        {
+          "id": "Q5-routing",
+          "criterion": "按任务上下文选择模型或执行路径，保留跳过、升级与预算约束；不能只说宿主持有路由权。",
+          "formal_evidence": [
+            {
+              "path": "concepts/agent-resource-optimization.md",
+              "heading": "## 任务上下文驱动的模型分层：Open SWE 案例"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/langchain-model-router-in-harness-2026-10-01.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "64% 为特定案例相对最强模型基线的会话 LLM 中位成本下降，不证明质量等价或跨项目收益。"
+        },
+        {
+          "id": "Q5-evidence-gate",
+          "criterion": "判断来源支持了什么、缺什么，按缺口补证；证据不足时限制结论或停止，不用执行授权门替代研究证据门。",
+          "formal_evidence": [
+            {
+              "path": "concepts/agent-research-evidence-gate.md",
+              "heading": "## Gate contract"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "教程第二次 Judge 仍弱时补抓来源后直接写报告；补证后严格复判和停止规则是本地加固建议，不是原教程已验证能力。"
+        }
       ]
     },
     {
@@ -124,7 +191,70 @@
         "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
         "raw/articles/motherduck-jev-for-analytics-2026-09-29.md",
         "raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md"
+      ],
+      "claim_checks": [
+        {
+          "id": "Q8-structure",
+          "criterion": "保存数值与年份、指标、区域、表头、单位、脚注的绑定；按职责选择 Markdown/HTML/JSON，并保留回看原图的路径。",
+          "formal_evidence": [
+            {
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "heading": "## 格式按职责分工"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "格式有效或数字齐全不能证明语义关联正确。"
+        },
+        {
+          "id": "Q8-transform",
+          "criterion": "多轮变换保存原文、输入输出、校验记录及必要的回读与差异证据，识别静默改写。",
+          "formal_evidence": [
+            {
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "heading": "## Reusable pattern"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "多轮编辑研究不是具体 PDF 解析器或真实财报的准确率实测。"
+        },
+        {
+          "id": "Q8-execution",
+          "criterion": "LLM 负责规约与解释，确定性执行器负责结构化输入上的过滤、聚合、计算；缺列、冲突、空数据显式失败。",
+          "formal_evidence": [
+            {
+              "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+              "heading": "### 2. Deterministic engine owns filtering, aggregation, and extraction"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "计算可复现不证明输入关系或标签正确；已有证据未用于回答应记为生成覆盖缺口。"
+        },
+        {
+          "id": "Q8-semantic-labels",
+          "criterion": "语义分类仍是概率性输入：说明置信度分流、抽样核验和标签追溯，不能用确定性聚合证明分类真实。",
+          "formal_evidence": [
+            {
+              "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+              "heading": "## 自由文本的有界语义分类：概率性加工，确定性聚合"
+            }
+          ],
+          "acceptable_raw": [
+            "raw/articles/motherduck-jev-for-analytics-2026-09-29.md"
+          ],
+          "acceptable_alternative_pages": [],
+          "boundary": "96.9% 是筛选子集上的模型一致率，不是全量人工验证准确率。"
+        }
       ]
     }
-  ]
+  ],
+  "annotation_scope": "Post-run Q5/Q8 claim checks added on 2026-11-09 by AI source audit, not independent human adjudication. Historical questions and gold sets are unchanged. Checks and acceptable alternatives are review-only; never inject them into retrieval or answering prompts."
 }

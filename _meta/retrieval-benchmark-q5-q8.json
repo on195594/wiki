@@ -1,0 +1,677 @@
+{
+  "version": 1,
+  "scope": "Public Q5/Q8 subset of the retained 2026-11-06 fixed-packet run. Copied evidence, answers and historical AI grades are unchanged. No new model calls. Not a full retrieval replay or end-to-end Agent evaluation.",
+  "provenance": {
+    "archive_filename": "wiki-retrieval-baseline-2026-11-06.tar.gz",
+    "archive_sha256": "a89aea51f7f8b73535eea0e26b9c497e1bd632d1a82f27e0d63c6785821dca60",
+    "selection": "Only Q5/Q8 packet cases, their questions/gold sets, selected-source hashes, two answers per strategy and original grades; runner logs, local paths, session identifiers and other cases excluded.",
+    "input_hash_scope": "Each retained input_sha256 is the original full-run source-union fingerprint; input_hashes contains selected evidence sources only and cannot reconstruct that fingerprint or the full corpus."
+  },
+  "cases": [
+    {
+      "id": "Q5",
+      "question": "子代理编排什么时候值得采用？如何结合生产拓扑、资源路由与证据门，避免多 Agent 数量被误当成质量？",
+      "gold_pages": [
+        "concepts/agent-orchestration-production-tradeoffs.md",
+        "concepts/agent-research-evidence-gate.md",
+        "concepts/agent-resource-optimization.md",
+        "concepts/hermes-context-layer-operating-rules.md",
+        "concepts/subagent-orchestration-patterns.md"
+      ],
+      "gold_raw": [
+        "raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md",
+        "raw/articles/langchain-model-router-in-harness-2026-10-01.md",
+        "raw/articles/philschmid-subagent-patterns-2026-05-05.md"
+      ]
+    },
+    {
+      "id": "Q8",
+      "question": "文档解析怎样保持结构保真？多文档比较如何结合文档失真风险与确定性计算边界，避免表格数值被错配？",
+      "gold_pages": [
+        "concepts/ai-agent-document-fidelity-risk.md",
+        "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+        "concepts/document-parsing-structural-fidelity.md",
+        "concepts/typed-ai-agent-boundaries.md"
+      ],
+      "gold_raw": [
+        "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
+        "raw/articles/motherduck-jev-for-analytics-2026-09-29.md",
+        "raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md"
+      ]
+    }
+  ],
+  "strategies": [
+    {
+      "strategy": "keyword",
+      "input_sha256": "b6384d879a7899c5b7bd1dd6a6e5f6aa12e16b97a36b39af2a9c41ec107857a3",
+      "page_limit": 4,
+      "evidence_byte_budget": 9000,
+      "input_hashes": {
+        "concepts/agent-production-harness-and-cloud-runtime-boundaries.md": "06839299e7e06197dac0ffad5bcba32d2f836f561ee0da248aa0af20c1ec3b4c",
+        "concepts/ai-agent-document-fidelity-risk.md": "73b4d0699c631f01bda4fbad2f7e33c31d9afaf2c7de9780c99ad0fe6a478ef4",
+        "concepts/ai-code-review-governance-and-convergence.md": "fac3d661b0985883ce172db684e00add71562871b3a36c779c2a1eafc55ef54a",
+        "concepts/document-parsing-structural-fidelity.md": "b567778649036255a192de852439354ee9389619ea860d585379120f1cd20eef",
+        "concepts/production-ai-agent-evaluation-framework.md": "4a4dce4a7a37bb02ce0bb122ac41b01a5ba339781a1f6dd09beb547369dfc25a",
+        "queries/software-engineering-laws-decision-map.md": "7906089361400fdec5e0e43d8e8b55899287291e2983d4122637cedb87b7a186",
+        "raw/articles/tetral-next-scaling-problem-2026-09-06.md": "04dc1a6872ff38950b22a50f454553f90df1e206036838cc93ff4e14cd89b4aa"
+      },
+      "cases": [
+        {
+          "id": "Q5",
+          "question": "子代理编排什么时候值得采用？如何结合生产拓扑、资源路由与证据门，避免多 Agent 数量被误当成质量？",
+          "candidates": [
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
+            "concepts/production-ai-agent-evaluation-framework.md",
+            "concepts/hermes-ai-workflow-formalization-principles.md",
+            "concepts/ai-code-review-governance-and-convergence.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38",
+              "path": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
+              "text": "## 1. Harness 作为有状态执行边界\n\nStencil 的 [[stencil-the-harness-playbook-2026-09-05]] 指出，Agent Harness 不是外围胶水脚本，而是围绕模型与工具循环的有状态执行边界：它持有权威会话状态、控制面策略、有界工作单元、子代理/后台作业生命周期、兼容性规则、可观测性以及由状态派生的投影视图。\n\n**[推论] AI Agent 可迁移映射：**\n\n- **单一权威状态（Single authoritative state）**：凡影响 rewind、fork、resume、retry、子代理生命周期或崩溃恢复的状态，必须持久化或可从权威 run/session 状态重建；不得依赖插件闭包、进程局部计数器或内存级工具注册表。客户端与本地状态同步边界参见 [[local-first-sync-confirmed-mirror-outbox-conflict-policy]]。\n- **控制面与执行面分离（Control plane vs execution plane）**：受信任的父进程/宿主拥有状态、路由、审批、策略、凭据和审计证据；Worker 与沙箱只执行有界指令，不成为策略权威。\n- **有界工作单元（Bounded work units）**：Shell 命令、子代理、后台作业与长生命周期服务必须具备显式归属、超时、取消、资源上限、清理逻辑与可观测终态。\n- **投影视图与权威回读（Projection and verification）**：TUI、Web、聊天消息、日志和检查视图只是状态投影；完成、取消、恢复、清理及外部副作用应优先从最强的可用权威状态回读（参见 [[stateful-agent-environments-and-grounded-verification]]）。\n- **最小充分表面（Smallest sufficient surface）**：在没有具体本地故障、明确项目 owner 与独立验证路径前，不因单篇架构文章引入新的状态树、Director、动态 CLI、工具数量指标、沙箱实现或渲染协议。\n"
+            },
+            {
+              "id": "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+              "path": "concepts/production-ai-agent-evaluation-framework.md",
+              "text": "\n检查项：\n- Tool Selection Accuracy：是否为当前意图选择了正确工具。\n- Tool Execution Success：工具调用参数、格式、返回是否成功。\n- Multi-Step Coherence：多步执行是否保持逻辑、状态和目标一致。\n- Multi-Agent Baseline Delta: 多智能体相对单智能体是否有可验证的增益。\n- Coordination Cost: 额外消息、Token、调用、延迟和合并成本是否超过收益。\n- Error Correlation: 多个 Agent 是否重复同一种错误，导致“多数意见”被误当成独立证据。\n\n工程含义：Agent 不只会“答题”，还会行动。工具越多、步骤越长，错误可能断崖式增加，因此要单独评估过程轨迹，而不是只看最终输出。\n\n[推论] 对多智能体任务，先记录单智能体基线，再按任务可分解性决定是否启用并行或协作。[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]] 中的 45% 阈值、推理轮数指数和具体 benchmark 百分比不作为 AI Agent 默认门槛；只有本地对照实验或真实失败案例才足以推动路由规则或 regression artifact。"
+            },
+            {
+              "id": "raw/articles/tetral-next-scaling-problem-2026-09-06.md:L23-L29",
+              "path": "raw/articles/tetral-next-scaling-problem-2026-09-06.md",
+              "text": "- **可靠投递与隔离**：输入、Inbox 项与 Queue 作业在同一 PostgreSQL 事务登记；`pg_notify` 只作唤醒提示，轮询兜底。运行时接受输入与线程实际处理分开记录，绑定 generation 和 Pod UID 防止超时后仍活跃的旧运行时被误判为失效。Gateway 在运行时/沙箱之外注入提供方凭据；已选凭据缺失、撤销、归档或无法解密时拒绝，不静默回退；未选择凭据的会话可使用平台密钥池。\n- **两种并行与授权**：同一 session 内的 child thread 拥有独立有序上下文；多个 session 可选用同一 workspace 的资源但不共享执行历史。凭据隔离不等于授权。`approve_for_me` 先把操作作为提议评估，提交审查决定后再由 Tool Gate 决定是否接受为可调度工具调用；审查失败不能自行变成许可。\n- **产物与瓶颈**：作者主张其他 Agent 对候选产物和证据提出对抗性质疑，再由人决定是否并入共享 workspace；这是一项产品设想，不是已证实的协作增益。增长压力还会转向编译/验证、沙箱激活、存储、Git 托管及模型调用周边。作者举例称其开发机某条集成路径耗时约 7–8 分钟、完整验证约半小时；这不是跨环境基准。\n\n## 成熟度与适用限制\n\n作者明确称 Tetral 仍是个人 k3s 集群上的 Alpha：运行时放置尚不感知容量，准入—队列压力—扩容反压未打通，持续多节点恢复未被证明，滚动发布缺乏优雅排空并会中断进行中的轮次。本文可用于识别云端长程 Agent 的边界与失败窗口，不能作为生产可靠性证明，也不要求一般单机 Agent 复制整套服务拓扑。"
+            },
+            {
+              "id": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L63-L74",
+              "path": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
+              "text": "\n此机制不让任意外部系统自动具备事务性，也不保证副作用恰好执行一次；持久化载体的成本与复杂度取舍见 [[agent-orchestration-production-tradeoffs]]。\n\n### 凭据隔离与 Tool Gate 授权分离\n\nTetral 将模型与 MCP 凭据留在连接服务，由 Tool Gate 在执行前评估操作，需审查的提议必须先记录决定，才能成为可调度工具调用。作者还提出以候选产物的对抗复核和人工接受代替无边界的多 Agent 聊天（这属于设计主张，不能从并行线程数量推断质量提升，编排边界见 [[subagent-orchestration-patterns]]）。\n\n**[适用限制]** 原文是作者对个人 k3s 集群 Alpha 的描述，未证明持续多节点恢复、容量感知调度或端到端反压，滚动发布尚会中断进行中的轮次；不是已验证的生产标准架构，也不是单机或短任务应照搬的默认拓扑。\n\n## 4. Agent-as-Code 与 PR 变更控制面\n\nABC Legal 的企业案例 [[claude-abc-legal-managed-agents-2026-08-17]] 展示了如何用现有软件工程控制面治理生产 Agent：每个 Agent 的 prompt、工具列表、调度、凭据引用和 memory 配置都进入 Git；任何行为变更先成为 Pull Request，经人工审批后才部署，使版本历史、审查、回滚和审计复用同一控制面。新 Agent 先在 human-in-the-loop 模式中给出建议并积累标注反馈与 eval，只有在特定任务上达到设定门槛后才逐步获得自动执行权限。"
+            },
+            {
+              "id": "concepts/ai-code-review-governance-and-convergence.md:L87-L96",
+              "path": "concepts/ai-code-review-governance-and-convergence.md",
+              "text": "\n[推论] 将第三点用于任务组织时，可先缩小批次或降低并发，直到现有核验和责任承接能够跟上；自动检查应覆盖真实风险，而不是为了减少积压而降低证据标准。这是容量判断，不是固定并发上限，也不证明人工参与越多越好。人的理解与责任诊断见 [[ai-assistance-cognitive-substitution-and-skill-formation]]，Agent 自行运行与反馈的机制仍由 [[agent-self-validation-loops]] 维护。\n\n证据与采用边界：文章是实践反思，没有给出审查产能阈值或受控效果数据；不能将“编排税”当作已经测得的通用指标。本文确认已有的测试边界与责任原则，新增的是阅读顺序和容量视角；不据此启用默认子代理审查、答题后合并、必填 PR 模板、Skill、自动化或权限变更。\n\n## Relations\n\n- refines: [[hermes-ai-workflow-formalization-principles]]\n- depends_on: [[agent-self-validation-loops]], [[subagent-orchestration-patterns]]\n- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]]"
+            }
+          ],
+          "evidence_bytes": 8347,
+          "formal_retrieval": {
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "raw_retrieval": {
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        {
+          "id": "Q8",
+          "question": "文档解析怎样保持结构保真？多文档比较如何结合文档失真风险与确定性计算边界，避免表格数值被错配？",
+          "candidates": [
+            "concepts/document-parsing-structural-fidelity.md",
+            "concepts/production-ai-agent-evaluation-framework.md",
+            "concepts/ai-agent-document-fidelity-risk.md",
+            "queries/software-engineering-laws-decision-map.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L37-L48",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n## 何时需要独立中间层\n\n原文支持的主要适用条件是：多个下游问题或抽取 Schema 共享同一份文档内容，并且需要可读的解析结果来检查或定位错误。这样可以复用表示，而不是为每个任务重新处理来源。\n\n直接从文档抽取字段也可以奏效。单一、边界明确的任务不因这篇文章就必须增加 Markdown 转换步骤；中间层不是越多越可靠，也不能代替抽取结果的验证。\n\n与 [[deterministic-analytics-llm-reasoning-boundary]] 的衔接是：本页关注计算之前的输入结构是否正确；该页关注语义判断与确定性计算的职责。确定性程序可以稳定地计算被错配的数据，却无法仅凭计算可复现证明输入关系正确。\n\n## 最小质量检查\n\n原文建议从熟悉的文档开始，检查每个数值的表头、单位和脚注，而不是只看输出整齐程度。可围绕以下关系阅读解析结果："
+            },
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L13-L24",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n# 文档解析的结构保真与中间表示\n\n## Summary\n\n文档解析的可靠性不只取决于文字和数值是否提取正确，还取决于它们是否保留正确的章节、表头、单位、脚注及空间关系。**可读、可复用的中间表示有助于检查这些关系，但格式本身不保证语义正确。**\n\n本页基于 LlamaIndex 的 [[llamaindex-markdown-is-all-you-need-2026-10-08]] 和 [Document Parsing Protocol（DPP）介绍](https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol)，适用于 PDF 入库、文档搜索、RAG 和字段抽取的表示选择与质量检查。Markdown 可作为正文的实用起点，复杂表格可补充 HTML，应用字段可用 JSON，视觉信息及溯源需求则按需保留图片、页码与坐标；这不是产品选型或统一格式的强制要求。\n\n## 失败机制：内容留下了，关系丢失了\n\n原文以两年度营收与利润率、按区域分组的表格为例：所有字词和数字都能保留，但普通 Markdown 管道表格无法原样表达跨行跨列。年份与两个指标之间的从属关系不再显式，第二层表头可能变成普通数据行，区域标签也可能只剩一个需要猜测的空行。"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L87-L98",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "\n- 对真实文件写入任务保留 read-back 和 diff 证据。\n- 对长文档变换任务保留原文、清洗输入、输出和校验记录。\n- 对工具权限采用窄工具、typed result 和 explicit dependency。\n- 对 RAG/context-heavy 任务做多步验证，而不是只测单轮检索。\n\n## Relationship to existing concepts\n\n- [[document-parsing-structural-fidelity]] 解释解析阶段的章节、表头及数值关系丢失；本页讨论其后的多轮编辑失真，两者分别需要检查输入表示与变换过程。\n- [[production-ai-agent-evaluation-framework]] 说明生产 Agent 要评估检索、生成、工具行为和运营指标；本页补充“文档内容保真”这一长链路风险维度。\n- [[agent-self-validation-loops]] 说明单个任务如何形成目标-反馈-迭代闭环；本页强调验证目标必须覆盖文档内容是否被悄悄改写。\n- [[typed-ai-agent-boundaries]] 说明用 typed schema 和窄工具降低接口不确定性；本页说明为什么宽泛文件工具会放大内容损坏。"
+            },
+            {
+              "id": "queries/software-engineering-laws-decision-map.md:L37-L48",
+              "path": "queries/software-engineering-laws-decision-map.md",
+              "text": "| 应该演化现有架构，还是整体重写？ | [[galls-law]]、[[second-system-effect]]、[[sunk-cost-fallacy]] | 简单可用核心支持增量演化，继任系统容易吸收未经验证的复杂性，但既有投入也不能成为继续旧方案的唯一理由。 | 能否先验证简单核心？重写范围是否来自已验证需求？忽略过去投入后哪条路径的未来收益更高？ |\n| 分布式系统怎样设计故障与分区行为？ | [[fallacies-of-distributed-computing]]、[[cap-theorem]]、[[murphys-law]] | 远程交互存在延迟、丢失、安全和拓扑变化；网络分区时还须明确一致性与可用性的选择。 | 超时、重试、容量和安全边界是否明确？分区时哪些请求失败，哪些数据可能暂时陈旧？ |\n| 排期为什么总在尾部失真？ | [[hofstadters-law]]、[[ninety-ninety-rule]]、[[parkinsons-law]] | 隐藏任务与收尾工作容易被低估，而过宽期限又可能被非必要工作填满。 | 是否估算了集成、边界情况、性能、修复与交付准备？期限是否清晰、现实并保留必要空间？ |\n| 延期项目或大型团队是否应该继续增员？ | [[brooks-law]]、[[ringelmann-effect]]、[[conways-law]] | 新人上手和团队扩张会增加协调成本，沟通结构还可能固化为系统边界。 | 新增贡献何时超过培训与协调成本？能否先调整范围、时间、所有权或沟通路径？ |\n| 团队扩大后怎样控制知识和协作风险？ | [[bus-factor]]、[[dunbars-number]]、[[prices-law]] | 规模扩大可能使职责关系模糊，知识与关键交付也可能集中于少数成员。 | 谁掌握不可替代的知识？成员是否知道该找谁？可见产出是否遗漏支持、文档、安全与可靠性工作？ |\n| 指标或 KPI 是否正在扭曲行为？ | [[gilbs-law]]、[[goodharts-law]]、[[pareto-principle]] | 度量能提供反馈，但代理指标一旦成为目标就可能偏离真实结果；资源集中度也应由数据验证。 | 数字改善是否对应真实结果改善？是否结合上下文、多个信号与定性判断？ |\n| 测试不足、测试失效或技术债如何处理？ | [[testing-pyramid]]、[[pesticide-paradox]]、[[technical-debt]]、[[boy-scout-rule]] | 测试需要兼顾反馈成本与真实协作，并随缺陷模式更新；债务可通过范围明确的小步改善偿还。 | 缺陷能否在较低成本层暴露？测试是否吸收生产反馈？本次可安全偿还哪一项局部债务？ |\n| 功能范围和设计复杂度是否失控？ | [[yagni]]、[[kiss-principle]]、[[zawinskis-law]]、[[teslers-law]] | 未验证的扩展与功能蔓延会扩大维护成本，但固有复杂性只能被合理分配，不能假装消失。 | 删除扩展点后能否满足当前目标？新功能是否强化核心价值？复杂性由哪一层承担最合适？ |\n| 性能优化或扩展投入会不会有效？ | [[premature-optimization]]、[[amdahls-law]]、[[gustafsons-law]] | 优化应由测量确认瓶颈；固定工作量受串行路径限制，可增长工作量则可能利用新增资源。 | 热点是否已被测量？串行路径在哪里？新增资源是在缩短固定任务，还是处理更多有效工作？ |\n| 工程判断是否被信心、热度或既有投入带偏？ | [[confirmation-bias]]、[[dunning-kruger-effect]]、[[hype-cycle-amaras-law]]、[[map-is-not-the-territory]] | 初始信念、未经校准的信心、市场热度和抽象模型都可能遮蔽现实证据。 | 找过哪些反证？信心由什么验证支撑？运行现实是否与文档、模型或宣传相符？ |\n\n## 完整 56 条入口"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L99-L110",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "- [[deterministic-analytics-llm-reasoning-boundary]] 说明把过滤、聚合与格式抽取交给确定性执行器、仅让模型承担规约与解释；本页进一步说明在多轮文档变换中，通用代码执行或整文件重写仍可能引入静默改写，需改用受限领域函数与可逆往返校验。\n- [[hermes-ai-workflow-formalization-principles]] 说明自然语言任务要转成形式化产物和验证闭环；本页提供了可逆任务和往返评估的具体评估思路。\n\n## What to preserve, what not to preserve\n\n保留：\n\n- 多轮委托式工作中的文档保真风险。\n- “前沿模型错误更隐蔽”这个失败模式。\n- DELEGATE-52 的 round-trip relay / 可逆任务评估方法。\n- 上面的数量级 benchmark，且必须标注为来源实验结果。\n- 短步骤、受限工具、中间态审计和多步 RAG 评估这些本地可迁移原则。"
+            }
+          ],
+          "evidence_bytes": 8533,
+          "formal_retrieval": {
+            "precision": 0.5,
+            "recall": 0.5
+          },
+          "raw_retrieval": {
+            "precision": null,
+            "recall": 0.0
+          }
+        }
+      ],
+      "answers": [
+        {
+          "id": "Q5",
+          "answer": "先建立单 Agent 基线，再依据任务可分解性决定协作；只有可验证增益超过消息、调用、延迟与合并成本才支持采用，还要检查错误相关性，不能把多数意见当独立证据。[concepts/production-ai-agent-evaluation-framework.md:L63-L74]运行层由宿主持有权威状态、路由、审批与凭据，子代理执行有归属、超时、取消及资源上限的有界任务，完成情况回读权威状态。[concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38]Tool Gate 将审查决定与执行授权分开；Alpha 云拓扑未证明容量调度与恢复可靠性，不能由线程数量推断质量或默认照搬。[concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L63-L74]",
+          "citations": [
+            "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38",
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L63-L74"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "解析需保留章节、表头、单位、脚注及空间关系；正文可用 Markdown，复杂表格补 HTML，字段用 JSON，按需留图片、页码与坐标，格式整齐不保证语义正确。[concepts/document-parsing-structural-fidelity.md:L13-L24]多文档比较前逐项核对数值与表头、单位、脚注的绑定；多任务共享内容时可复用可读中间层，单任务无需强制转换。确定性计算也会稳定计算错配输入，不能证明关系正确。[concepts/document-parsing-structural-fidelity.md:L37-L48]变换过程还应保留原文、清洗输入、输出及校验记录，文件写入留回读与差异证据，防止后续静默改写。[concepts/ai-agent-document-fidelity-risk.md:L87-L98]",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "concepts/document-parsing-structural-fidelity.md:L37-L48",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "repeat_answers": [
+        {
+          "id": "Q5",
+          "answer": "先建立单 Agent 基线，再按任务可分解性考虑协作；须验证增益能覆盖消息、Token、延迟及合并成本，并检查错误相关性，多数意见不等于独立证据。[concepts/production-ai-agent-evaluation-framework.md:L63-L74]运行拓扑应让宿主持有权威状态、路由、审批与凭据，Worker 仅执行有界工作；子任务需有归属、取消、资源限制及可观察终态，完成应回读权威状态。[concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38]凭据隔离不能代替执行授权，审查决定须先于工具调度；Alpha 云拓扑与候选产物对抗复核只是受限实践或设计主张，不能从线程数量推断质量提升。[concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L63-L74]",
+          "citations": [
+            "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L27-L38",
+            "concepts/agent-production-harness-and-cloud-runtime-boundaries.md:L63-L74"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "结构保真需保留章节、表头、单位、脚注及空间关系；普通表格可能留下全部数值却丢失年份、指标与区域从属。正文可用 Markdown，复杂表格按需补 HTML，字段用 JSON，并保留溯源信息。[concepts/document-parsing-structural-fidelity.md:L13-L24]比较前逐项核对数值对应的表头、单位和脚注：确定性程序也会稳定计算错配数据，计算可复现不能证明输入关系正确；中间表示适合复用与检查，但不是单一任务必需步骤。[concepts/document-parsing-structural-fidelity.md:L37-L48]变换链应保留原文、清洗输入、输出与校验记录，写文件需回读和 diff。现有片段不足以完整规定多文档计算职责。[concepts/ai-agent-document-fidelity-risk.md:L87-L98]",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "concepts/document-parsing-structural-fidelity.md:L37-L48",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "original_grades": [
+        {
+          "strategy": "keyword",
+          "run": "first",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 2,
+          "reason": "单 Agent 对照、协调成本和错误相关性，以及宿主权威状态、任务边界和 Tool Gate 均有支持。"
+        },
+        {
+          "strategy": "keyword",
+          "run": "first",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 1,
+          "reason": "结构保真及回读记录有依据；只指出程序会计算错配输入，未说明模型语义判断与确定性过滤/聚合的职责分工。"
+        },
+        {
+          "strategy": "keyword",
+          "run": "repeat",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 2,
+          "reason": "单 Agent 对照、协调成本和错误相关性，以及宿主权威状态、任务边界和 Tool Gate 均有支持。"
+        },
+        {
+          "strategy": "keyword",
+          "run": "repeat",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 1,
+          "reason": "结构保真及回读记录有依据；只指出程序会计算错配输入，未说明模型语义判断与确定性过滤/聚合的职责分工。"
+        }
+      ]
+    },
+    {
+      "strategy": "catalog",
+      "input_sha256": "d607d5c1c14378edb16de01c350498425e2a9dd3cd8565ab8c8ea14b386f0b45",
+      "page_limit": 4,
+      "evidence_byte_budget": 9000,
+      "input_hashes": {
+        "concepts/agent-autonomy-ladder-for-hermes-workflows.md": "65c5890b1a737fb851b264821ed1bc66c41708b95cf4f08c25a01b8e09984623",
+        "concepts/agent-context-history-state-and-bounded-processing.md": "4898889b61f752e0afd2f81cce5a1048ce7f1376ae24b264b29b956aad4dd9c3",
+        "concepts/agent-orchestration-production-tradeoffs.md": "80212d8e5cfcba62a590202058a166c66912180ee44c25b1e1a0636a395efa2b",
+        "concepts/ai-agent-document-fidelity-risk.md": "73b4d0699c631f01bda4fbad2f7e33c31d9afaf2c7de9780c99ad0fe6a478ef4",
+        "concepts/deterministic-analytics-llm-reasoning-boundary.md": "95fcf1290e3eb53a5bdd1bd44ef49fb517323abcfff36b4aa1eeeae955e57407",
+        "concepts/document-parsing-structural-fidelity.md": "b567778649036255a192de852439354ee9389619ea860d585379120f1cd20eef",
+        "concepts/repeated-measures-statistical-power-for-ai-evaluation.md": "496573b0a9186e800d61c3bd74cfa2f4396e6972b52f005dbd5bd7753499c5d5",
+        "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md": "26a4452f57ca78caebf69a75ca4a9bc44b356642fd6b4946d132c0c418fc4812"
+      },
+      "cases": [
+        {
+          "id": "Q5",
+          "question": "子代理编排什么时候值得采用？如何结合生产拓扑、资源路由与证据门，避免多 Agent 数量被误当成质量？",
+          "candidates": [
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+            "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+            "concepts/agent-context-history-state-and-bounded-processing.md",
+            "concepts/agent-orchestration-production-tradeoffs.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+              "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+              "text": "\nUse for:\n- 选择 summarization fallback；\n- 决定是否需要 code review / web lookup / local test；\n- 在实际支持的委派入口选择编码 Agent、子代理或父级直接执行；\n- 将任务路由到 memory / wiki / skill / project-local docs。\n\nAI Agent rule: 让模型做分类和路由，但保持可列举路径、skip condition 和父级验收。\n\n### 3. Bounded reactive loop\n\n模型可以根据观察结果决定下一步，但必须有边界。"
+            },
+            {
+              "id": "concepts/agent-context-history-state-and-bounded-processing.md:L39-L50",
+              "path": "concepts/agent-context-history-state-and-bounded-processing.md",
+              "text": "[[langchain-context-engineering-deep-agents-remember]] 将两类增长问题分开：**转储（offloading）**在大工具结果或超长用户输入进入对话前保存原文，只让预览与指针进入上下文；**摘要（summarization）**在模型调用前检查累计预算，压缩旧交互并保留近期消息原文。前者挡住单次输入尖峰，后者处理多轮累积，不能互相替代。技能按需加载减少无关规程进入窗口；子代理的独立上下文则隔离已知高噪声工作，不等于安全沙箱。\n\n文章以 Deep Agents 中间件说明这些介入位置，不要求所有宿主采用中间件架构。**可恢复依赖原始结果或消息仍被保存、指针可访问且允许回读；摘要本身不是无损保存。** 相关恢复与总成本评测边界沿用下文“专用模型承担有界上下文加工”及 [[hermes-context-engineering-design-priorities]]，内容归属仍以 [[hermes-memory-skills-wiki-boundaries]] 为准。\n\n来源边界：Jess Weng 的 LangChain 文章，发布于 2026-10-14，2026-10-16 从原站可读正文提取为选择性来源笔记；作者与发布日期已在原页面核对。文中的 Token 与窗口占用阈值只保留在来源层，属于文中实现说明，不是通用默认。未核对产品源码、版本或复现收益；纯文本记忆可迁移不证明跨模型行为一致，也不授权自动学习、扩大保留范围或修改运行配置。\n\n### SKILL.state：状态成为执行真相源，而不是历史摘要\n\n[[arxiv-2608-26263-skill-state]] 把“状态卡优于 transcript”推进成了明确的运行时契约。每一步只向模型提供不可变 Skill 规范 `P`、当前结构化状态 `Σ_t` 和最新观察 `O_t`；模型提出状态补丁与动作，确定性运行时负责校验、合并和执行。上一步的推理、旧观察和旧动作不再自动进入下一轮 Prompt，但仍可保留在外部日志中供审计、调试和恢复。\n\n论文的核心增量不是“再做一次摘要”，而是把未来决策依赖从自然语言历史迁移为经校验的当前状态。其 Warehouse 实验在 100 步时报告 Stateful 基线使用 1,062,387 Token，而 SKILL.state 使用 65,408 Token；在约 1,800 Token 的等预算对照中，滑动窗口、LLMLingua 与 SKILL.state 分别得到 0.18、0.22 和 0.94。InterCode CTF 与 τ-Bench 结果进一步表明该机制不只适用于合成库存状态。所有数字仍受论文实现、Schema、Prompt、模型和评测环境约束，不是 AI Agent 的收益承诺。\n"
+            },
+            {
+              "id": "concepts/agent-context-history-state-and-bounded-processing.md:L15-L26",
+              "path": "concepts/agent-context-history-state-and-bounded-processing.md",
+              "text": "\n# Agent Context: History, State and Bounded Processing\n\n## Summary\n\n本页是 [[agent-context-engineering]] 的子主题，处理“随执行推进而增长的上下文”：消息历史、运行状态、子代理交接和专用模型的有界加工。核心结论是：历史是有损且随任务变化的动态面，应把未来决策依赖从自然语言历史迁到经校验的当前状态，完整轨迹留在外部证据层，转储（offloading）与摘要（summarization）解决不同问题，不能互相替代。静态上下文面（system prompt、tools、examples）见 [[agent-context-prompt-tools-and-examples]]。\n\n## Message history and state: dynamic, lossy, and task-scoped\n\n历史消息不是越全越好。长历史会引入旧目标、旧错误、重复工具输出和无关上下文，让模型注意力被稀释。\n\nAgent 运行状态应从“完整聊天记录”转成结构化状态：当前目标、已做决策、已验证事实、待办步骤、失败尝试、风险和停止条件。旧过程保留在获授权的项目记录或私有日志中，不应默认继续压进 prompt。只有适合公开、获准保留且有复用价值的来源才进入 Wiki raw；私有执行记录不因压缩上下文而获得公开准入。"
+            },
+            {
+              "id": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L51-L62",
+              "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+              "text": "即使条件满足，增加任务的收益通常也会递减；不能用更多任务无限替代更多主体。\n\n## 对 AI 与 Agent 评测的映射\n\n以下是对 AI Agent/AI 评测的本地映射，均为 `[推论]`：\n\n- 比较两个模型、Prompt、Agent harness 或工具策略时，如果同一批任务都由两个条件执行，优先考虑配对或被试内比较，而不是把两组结果当成互不相关。\n- 同一模型在同一任务上的多次运行可用于估计随机性，但不能自动当成更多独立任务。\n- 由 LLM 按模板扩增出的题目应按任务簇或子量表处理；在证明多样性前，不应按题目数量等比例增加置信度。\n- 评测记录至少应区分主体/模型配置、任务或任务簇、条件、运行次数和顺序，才能判断适合的统计单元。\n- 与 [[agent-evaluation-rubric-calibration]]、[[production-agent-evaluation-baselines]] 及 [[agent-self-validation-loops]] 配合使用：先确认评分尺稳定与单任务自验证边界清晰，再对照生产延迟/成本基线讨论样本结构和功效；错误的 Rubric 不会因样本增多而自动变正确。\n"
+            },
+            {
+              "id": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L15-L26",
+              "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+              "text": "\n# 少样本 AI 评测中的重复任务、伪重复与统计功效\n\n## Summary\n\n在 AI、Agent 或人机交互评测中，增加任务数量不等于增加同等数量的独立样本。被试间设计仍受主体基线差异限制；被试内设计让同一主体跨条件比较，可以抵消部分主体噪声，但同一主体和相似任务产生的观测彼此相关，必须显式建模，不能把它们当成独立样本堆高置信度。\n\n这页基于 [[towardsdatascience-statistical-power-more-problems-2026-08-04]] 补充 [[production-ai-agent-evaluation-framework]] 的实验设计与统计功效层，也与 [[stateful-agent-environments-and-grounded-verification]] 关于“任务数量不等于评测多样性”的边界相连。\n\n## 核心问题：更多数据点是否真的增加证据\n\n设有 `N` 个参与主体，每个主体完成 `M` 个任务。表面观测数是 `N × M`，但有效证据量取决于这些观测共享多少主体、任务和条件结构。"
+            },
+            {
+              "id": "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L15-L26",
+              "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+              "text": "\n# Agent Autonomy Ladder for AI Agent Workflows\n\n## Summary\n\nAI Agent 不应把“是否使用 agent”当成二元选择。更稳定的问题是：**这个任务应该给模型多少控制流自主权？** Machine Learning Mastery 的文章 [[machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01]] 把 agentic workflow 与 autonomous agent 的分界归结为控制流归属：路径是人类在设计时写死，还是模型在运行时根据观察动态决定。\n\n这页把该光谱翻译为 AI Agent 的调度规则：从确定性 workflow、LLM 编排 workflow、受限 reactive loop，到 bounded multi-agent。自主度越高，越需要强验证、成本上限、权限边界、父级验收和人工确认点。\n\n## Core distinction\n\n文章的可复用判断是："
+            },
+            {
+              "id": "concepts/agent-orchestration-production-tradeoffs.md:L135-L146",
+              "path": "concepts/agent-orchestration-production-tradeoffs.md",
+              "text": "- makes verification explicit\n- improves reliability for high-risk tasks\n\nFailure modes:\n- highest cost and latency\n- queueing delays and timeouts at scale\n- over-revision can make ambiguous outputs less stable\n- without hard checks, the loop becomes aesthetic rewriting rather than validation\n\nAI Agent interpretation: this maps to [[agent-self-validation-loops]], code review gates, browser/test verification, and promotion audits. It should not become the default for low-risk bulk work.\n\n## Benchmark claims to preserve"
+            }
+          ],
+          "evidence_bytes": 8939,
+          "formal_retrieval": {
+            "precision": 0.25,
+            "recall": 0.2
+          },
+          "raw_retrieval": {
+            "precision": null,
+            "recall": 0.0
+          }
+        },
+        {
+          "id": "Q8",
+          "question": "文档解析怎样保持结构保真？多文档比较如何结合文档失真风险与确定性计算边界，避免表格数值被错配？",
+          "candidates": [
+            "concepts/document-parsing-structural-fidelity.md",
+            "concepts/ai-agent-document-fidelity-risk.md",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+            "concepts/fixed-budget-optimizer-selection-aca-case.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L37-L48",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n## 何时需要独立中间层\n\n原文支持的主要适用条件是：多个下游问题或抽取 Schema 共享同一份文档内容，并且需要可读的解析结果来检查或定位错误。这样可以复用表示，而不是为每个任务重新处理来源。\n\n直接从文档抽取字段也可以奏效。单一、边界明确的任务不因这篇文章就必须增加 Markdown 转换步骤；中间层不是越多越可靠，也不能代替抽取结果的验证。\n\n与 [[deterministic-analytics-llm-reasoning-boundary]] 的衔接是：本页关注计算之前的输入结构是否正确；该页关注语义判断与确定性计算的职责。确定性程序可以稳定地计算被错配的数据，却无法仅凭计算可复现证明输入关系正确。\n\n## 最小质量检查\n\n原文建议从熟悉的文档开始，检查每个数值的表头、单位和脚注，而不是只看输出整齐程度。可围绕以下关系阅读解析结果："
+            },
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L13-L24",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n# 文档解析的结构保真与中间表示\n\n## Summary\n\n文档解析的可靠性不只取决于文字和数值是否提取正确，还取决于它们是否保留正确的章节、表头、单位、脚注及空间关系。**可读、可复用的中间表示有助于检查这些关系，但格式本身不保证语义正确。**\n\n本页基于 LlamaIndex 的 [[llamaindex-markdown-is-all-you-need-2026-10-08]] 和 [Document Parsing Protocol（DPP）介绍](https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol)，适用于 PDF 入库、文档搜索、RAG 和字段抽取的表示选择与质量检查。Markdown 可作为正文的实用起点，复杂表格可补充 HTML，应用字段可用 JSON，视觉信息及溯源需求则按需保留图片、页码与坐标；这不是产品选型或统一格式的强制要求。\n\n## 失败机制：内容留下了，关系丢失了\n\n原文以两年度营收与利润率、按区域分组的表格为例：所有字词和数字都能保留，但普通 Markdown 管道表格无法原样表达跨行跨列。年份与两个指标之间的从属关系不再显式，第二层表头可能变成普通数据行，区域标签也可能只剩一个需要猜测的空行。"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L87-L98",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "\n- 对真实文件写入任务保留 read-back 和 diff 证据。\n- 对长文档变换任务保留原文、清洗输入、输出和校验记录。\n- 对工具权限采用窄工具、typed result 和 explicit dependency。\n- 对 RAG/context-heavy 任务做多步验证，而不是只测单轮检索。\n\n## Relationship to existing concepts\n\n- [[document-parsing-structural-fidelity]] 解释解析阶段的章节、表头及数值关系丢失；本页讨论其后的多轮编辑失真，两者分别需要检查输入表示与变换过程。\n- [[production-ai-agent-evaluation-framework]] 说明生产 Agent 要评估检索、生成、工具行为和运营指标；本页补充“文档内容保真”这一长链路风险维度。\n- [[agent-self-validation-loops]] 说明单个任务如何形成目标-反馈-迭代闭环；本页强调验证目标必须覆盖文档内容是否被悄悄改写。\n- [[typed-ai-agent-boundaries]] 说明用 typed schema 和窄工具降低接口不确定性；本页说明为什么宽泛文件工具会放大内容损坏。"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L99-L110",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "- [[deterministic-analytics-llm-reasoning-boundary]] 说明把过滤、聚合与格式抽取交给确定性执行器、仅让模型承担规约与解释；本页进一步说明在多轮文档变换中，通用代码执行或整文件重写仍可能引入静默改写，需改用受限领域函数与可逆往返校验。\n- [[hermes-ai-workflow-formalization-principles]] 说明自然语言任务要转成形式化产物和验证闭环；本页提供了可逆任务和往返评估的具体评估思路。\n\n## What to preserve, what not to preserve\n\n保留：\n\n- 多轮委托式工作中的文档保真风险。\n- “前沿模型错误更隐蔽”这个失败模式。\n- DELEGATE-52 的 round-trip relay / 可逆任务评估方法。\n- 上面的数量级 benchmark，且必须标注为来源实验结果。\n- 短步骤、受限工具、中间态审计和多步 RAG 评估这些本地可迁移原则。"
+            },
+            {
+              "id": "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+              "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+              "text": "\n### 2. Deterministic engine owns filtering, aggregation, and extraction\n\n原文的 Analysis Engine 使用预置 Python / Pandas 脚本执行规则：读取评估 Excel、语义映射文件和 Selection Rule，然后做列匹配、行过滤、均值计算或文本抽取。它不改写规则、不推断额外列，也不输出解释性自然语言。\n\nAI Agent 迁移原则：\n\n- 数值计算、过滤、聚合、去重、抽样和文件解析应优先落到确定性代码。\n- 执行器只消费结构化输入并输出结构化结果。\n- 如果执行器找不到匹配列、规则冲突或数据为空，应显式失败，而不是让 LLM 补全。\n\n这补充 [[constrained-toolbox-evaluator-loop]]：后者强调受限工具箱和 evaluator；本页强调计算结果应由确定性执行器生成，输入质量与语义判断则需另行验证。程序可复现不代表输入标签正确。"
+            },
+            {
+              "id": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L27-L38",
+              "path": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
+              "text": "### 文本正确不等于解析可靠\n\n原文指出，PDF 中的文字和数值可以全部提取正确，但若失去所属章节或表格的关系，下游模型仍须猜测这些关系。文档搜索和抽取需要保留标题、阅读顺序、表格结构及元素周围的上下文，并让解析结果便于检查。\n\n### Markdown 的职责\n\n标题层级连接章节与小节；列表保留步骤及嵌套；简单表格给数值提供行列标签；链接保留引用。分块器可以按标题切分，并把章节标题带入切片。可读中间文本有助于区分解析、检索和生成阶段的问题。相比包含类型、样式和坐标的对象表示，Markdown 标记可能减少格式开销，但具体 Token 节省取决于文档和对照格式。\n\n### 复杂表格示例及 HTML\n\n文章用两年度营收与利润率、按区域分组的示例说明：转成普通管道表格后，年份跨列关系不再显式，第二层表头可能退化成数据行，区域分组依赖对空行的猜测。这里的财年与数值是说明性例子，不是实测财报数据。\n"
+            },
+            {
+              "id": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50",
+              "path": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
+              "text": "简单结构可以通过展平字段名和增加区域列归一化；复杂结构可以在 Markdown 中嵌入 HTML，用 `colspan`、`rowspan` 和 `<thead>` 表达合并单元格及表头分组。HTML 只能表示解析器识别出的关系，不能保证这些关系识别正确。\n\n### JSON、图片和坐标\n\nJSON 可保存文档元素、元数据和供应用消费的抽取字段。Markdown 中间层便于人工检查并供多个提问或抽取 Schema 复用；直接从文档抽取也可以有效，不是所有任务都必须增加独立解析步骤。\n\n图表可能需要数值及文字描述，空间关系图可能需要原图。页码与包围盒可关联解析内容，用于引用、高亮和视觉对齐；纯文本不是所有信息的替代品。\n\n### 原文的检查方法\n\n用熟悉的文档检查解析后的表格，确认数值仍对应正确的表头、单位和脚注，而不是只看输出整不整齐。\n"
+            }
+          ],
+          "evidence_bytes": 8163,
+          "formal_retrieval": {
+            "precision": 0.75,
+            "recall": 0.75
+          },
+          "raw_retrieval": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333
+          }
+        }
+      ],
+      "answers": [
+        {
+          "id": "Q5",
+          "answer": "子代理独立上下文可隔离已知高噪声工作，但不构成安全沙箱。[concepts/agent-context-history-state-and-bounded-processing.md:L39-L50]编排应按需要的控制流自主度选择；自主度越高，越需验证、成本上限、权限边界和父级验收。[concepts/agent-autonomy-ladder-for-hermes-workflows.md:L15-L26]资源路由可由模型分类，但须保留可列举路径、跳过条件和父级验收。[concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62]高验证投入也会增加成本、延迟、排队与过度修改风险，不能默认用于低风险批量工作。[concepts/agent-orchestration-production-tradeoffs.md:L135-L146]质量需用同批任务比较并估计运行随机性，不能由 Agent 数量推出；材料不足以给出具体生产拓扑和资源阈值。[concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L51-L62]",
+          "citations": [
+            "concepts/agent-context-history-state-and-bounded-processing.md:L39-L50",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L15-L26",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+            "concepts/agent-orchestration-production-tradeoffs.md:L135-L146",
+            "concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L51-L62"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "解析须保留章节、表头、单位、脚注和空间关系；复杂表格转普通 Markdown 可能丢失年份与指标的从属关系。[concepts/document-parsing-structural-fidelity.md:L13-L24]可展平字段、补区域列，或用 HTML 表达合并单元格，并借页码坐标回看原图；格式仍不能保证识别正确。[raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50]多文档比较前先逐项核对数值归属，再让确定性执行器做列匹配、过滤和聚合，缺列、冲突或空数据应显式失败。[concepts/document-parsing-structural-fidelity.md:L37-L48][concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50]多轮变换还应保留原文、中间输入、输出与校验记录，真实写入保留回读和差异证据。[concepts/ai-agent-document-fidelity-risk.md:L87-L98]",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50",
+            "concepts/document-parsing-structural-fidelity.md:L37-L48",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "repeat_answers": [
+        {
+          "id": "Q5",
+          "answer": "子代理独立上下文可隔离已知高噪声工作，但不等于安全沙箱。[concepts/agent-context-history-state-and-bounded-processing.md:L39-L50]采用何种编排应考虑控制流自主权；越自主，越需要强验证、成本上限、权限边界与父级验收。[concepts/agent-autonomy-ladder-for-hermes-workflows.md:L15-L26]资源路由应保留可列举路径、跳过条件和父级验收。[concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62]验证循环可能增加成本、排队和超时，无硬检查会退化为反复润色，不宜默认用于低风险批量任务。因此不能用 Agent 数量代替质量证据；片段不足以确定具体生产拓扑或采用阈值。[concepts/agent-orchestration-production-tradeoffs.md:L135-L146]",
+          "citations": [
+            "concepts/agent-context-history-state-and-bounded-processing.md:L39-L50",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L15-L26",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+            "concepts/agent-orchestration-production-tradeoffs.md:L135-L146"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "解析保真要保留章节、表头、单位、脚注与空间关系，文字数字齐全仍可能丢失年份和指标从属关系。[concepts/document-parsing-structural-fidelity.md:L13-L24]简单表可展平字段并增加区域列，复杂表可用 HTML 表达合并关系，但格式不能保证识别正确；应逐值核对表头、单位和脚注。[raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50]比较中的过滤、聚合与计算交给只消费结构化输入的确定性执行器，缺列、冲突或空数据应显式失败；可复现不证明输入标签正确。[concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50]多轮变换还须保留原文、清洗输入、输出及校验记录，真实写入保留回读与差异证据。[concepts/ai-agent-document-fidelity-risk.md:L87-L98]",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "original_grades": [
+        {
+          "strategy": "catalog",
+          "run": "first",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 1,
+          "reason": "路由边界、验证及成本讨论有依据；具体生产拓扑明确留白，未交代宿主/Worker 状态与执行授权分工。"
+        },
+        {
+          "strategy": "catalog",
+          "run": "first",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 2,
+          "reason": "结构关系核对、确定性执行器职责与显式失败、文档变换回读及差异证据均有支持。"
+        },
+        {
+          "strategy": "catalog",
+          "run": "repeat",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 1,
+          "reason": "路由边界、验证及成本讨论有依据；具体生产拓扑明确留白，未交代宿主/Worker 状态与执行授权分工。"
+        },
+        {
+          "strategy": "catalog",
+          "run": "repeat",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 2,
+          "reason": "结构关系核对、确定性执行器职责与显式失败、文档变换回读及差异证据均有支持。"
+        }
+      ]
+    },
+    {
+      "strategy": "relations",
+      "input_sha256": "25ffad7a7442bdb7dd3fe470cce98f2ef2e65715cb3eac56f9be6e331849d06e",
+      "page_limit": 4,
+      "evidence_byte_budget": 9000,
+      "input_hashes": {
+        "concepts/agent-autonomy-ladder-for-hermes-workflows.md": "65c5890b1a737fb851b264821ed1bc66c41708b95cf4f08c25a01b8e09984623",
+        "concepts/ai-agent-document-fidelity-risk.md": "73b4d0699c631f01bda4fbad2f7e33c31d9afaf2c7de9780c99ad0fe6a478ef4",
+        "concepts/deterministic-analytics-llm-reasoning-boundary.md": "95fcf1290e3eb53a5bdd1bd44ef49fb517323abcfff36b4aa1eeeae955e57407",
+        "concepts/document-parsing-structural-fidelity.md": "b567778649036255a192de852439354ee9389619ea860d585379120f1cd20eef",
+        "concepts/loop-engineering-hermes-agent-workflow.md": "e7f9a42ce6736236d75546d4c496e362a8b71eb2ba585b0212ffd5d418515353",
+        "concepts/production-ai-agent-evaluation-framework.md": "4a4dce4a7a37bb02ce0bb122ac41b01a5ba339781a1f6dd09beb547369dfc25a",
+        "concepts/repeated-measures-statistical-power-for-ai-evaluation.md": "496573b0a9186e800d61c3bd74cfa2f4396e6972b52f005dbd5bd7753499c5d5",
+        "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md": "26a4452f57ca78caebf69a75ca4a9bc44b356642fd6b4946d132c0c418fc4812",
+        "raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md": "01c26dc1e6d0568fc980c14fc225e026cf392da554157e60ba0dfc443f0ad27d"
+      },
+      "cases": [
+        {
+          "id": "Q5",
+          "question": "子代理编排什么时候值得采用？如何结合生产拓扑、资源路由与证据门，避免多 Agent 数量被误当成质量？",
+          "candidates": [
+            "concepts/production-ai-agent-evaluation-framework.md",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+            "concepts/loop-engineering-hermes-agent-workflow.md",
+            "concepts/repeated-measures-statistical-power-for-ai-evaluation.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+              "path": "concepts/production-ai-agent-evaluation-framework.md",
+              "text": "\n检查项：\n- Tool Selection Accuracy：是否为当前意图选择了正确工具。\n- Tool Execution Success：工具调用参数、格式、返回是否成功。\n- Multi-Step Coherence：多步执行是否保持逻辑、状态和目标一致。\n- Multi-Agent Baseline Delta: 多智能体相对单智能体是否有可验证的增益。\n- Coordination Cost: 额外消息、Token、调用、延迟和合并成本是否超过收益。\n- Error Correlation: 多个 Agent 是否重复同一种错误，导致“多数意见”被误当成独立证据。\n\n工程含义：Agent 不只会“答题”，还会行动。工具越多、步骤越长，错误可能断崖式增加，因此要单独评估过程轨迹，而不是只看最终输出。\n\n[推论] 对多智能体任务，先记录单智能体基线，再按任务可分解性决定是否启用并行或协作。[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]] 中的 45% 阈值、推理轮数指数和具体 benchmark 百分比不作为 AI Agent 默认门槛；只有本地对照实验或真实失败案例才足以推动路由规则或 regression artifact。"
+            },
+            {
+              "id": "concepts/production-ai-agent-evaluation-framework.md:L171-L182",
+              "path": "concepts/production-ai-agent-evaluation-framework.md",
+              "text": "- 单篇实践文章给出的固定 Eval 数量、分数差、重试次数或 Prompt 文件组织方式。\n\n工具线索可作为延伸阅读：Ragas、TruLens、DeepEval、LangSmith、OpenTelemetry。是否选型应另做项目级验证。\n\n## AI Agent mapping\n\n### Wiki\n本页是概念层：回答“生产 Agent 应该评估什么”。它不直接授权修改 AI Agent runtime、skills、cron、MCP 或 gateway。\n\n### Skill/reference candidate\n这些来源适合作为 AI Agent 质量评估的 Wiki 证据，但不应直接进入 active skill。外部阈值、路由、缓存和 serving 建议尚未通过 AI Agent 本地任务验证；已有专项延迟 reference 覆盖真实故障时，优先复用而不是复制本页清单。\n"
+            },
+            {
+              "id": "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+              "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
+              "text": "\nUse for:\n- 选择 summarization fallback；\n- 决定是否需要 code review / web lookup / local test；\n- 在实际支持的委派入口选择编码 Agent、子代理或父级直接执行；\n- 将任务路由到 memory / wiki / skill / project-local docs。\n\nAI Agent rule: 让模型做分类和路由，但保持可列举路径、skip condition 和父级验收。\n\n### 3. Bounded reactive loop\n\n模型可以根据观察结果决定下一步，但必须有边界。"
+            },
+            {
+              "id": "concepts/loop-engineering-hermes-agent-workflow.md:L15-L26",
+              "path": "concepts/loop-engineering-hermes-agent-workflow.md",
+              "text": "\n# Loop Engineering for AI Agent Workflows\n\n## Summary\n\nLoop engineering 是把 coding agent 从“一轮 prompt → 一轮回答”的交互，提升为可审计的工作闭环：发现任务、隔离执行、验证结果、记录状态，并决定下一步。对 AI Agent 来说，它不是立即新增 cron/daemon/runtime 的理由，而是按目标宿主已有的委派、方法、产物记录与工作区能力组织验证闭环；缺少子代理时可由单 Agent 与工具顺序完成。\n\n## Durable principle\n\nAI Agent 中的 agent loop 应被设计为可审计闭环：自动或半自动发现任务，隔离执行，独立验证，外部记录状态，并在人类确认点前停止。任何 runtime、cron、MCP、gateway、wrapper 或生产侧自动改动都必须另走 active-layer 审批、备份、验证和回滚。\n\n## Task-level efficiency evidence"
+            },
+            {
+              "id": "raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md:L50-L61",
+              "path": "raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md",
+              "text": "模型结合日期与命名产品，区分同名实体、是否真正讨论目标产品、负面态度和主题。它将“名称匹配”“讨论相关性”“负面情绪”拆成不同问题，避免将顺带提及或其他 Gemini/Claude 实体算作产品意见。文章使用的多个置信阈值属于案例配置；HN 是偏开发者的人群，不能解释为总体市场份额。\n\n### Sales calls\n\n销售 SQL 使用虚构的通话与账户表，模型只回答明确产品需求是否出现，账户规模与职位沿用 CRM 的结构化字段。高分仅用于形成供人工检查的候选名单，不等于优质线索；文章建议按已标注通话验证阈值。\n\n### Job postings and cloud platforms\n\n输入使用职位名称与提及云的句子，而不是完整描述。候选类别除实际云厂商外，还包括“多云、无明确主平台”和“云仅被顺带提及”，防止强行选择厂商。地图另排除云厂商自己的招聘，仅保留单一云提及、真实云类别和达到案例置信阈值的记录。\n\n文章报告的数据过滤和地域结果只是相应招聘样本与过滤条件下的代理观察，不证明企业真实部署或云市场份额。未先翻译的多语言示例也不证明中文质量。\n"
+            },
+            {
+              "id": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L51-L62",
+              "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+              "text": "即使条件满足，增加任务的收益通常也会递减；不能用更多任务无限替代更多主体。\n\n## 对 AI 与 Agent 评测的映射\n\n以下是对 AI Agent/AI 评测的本地映射，均为 `[推论]`：\n\n- 比较两个模型、Prompt、Agent harness 或工具策略时，如果同一批任务都由两个条件执行，优先考虑配对或被试内比较，而不是把两组结果当成互不相关。\n- 同一模型在同一任务上的多次运行可用于估计随机性，但不能自动当成更多独立任务。\n- 由 LLM 按模板扩增出的题目应按任务簇或子量表处理；在证明多样性前，不应按题目数量等比例增加置信度。\n- 评测记录至少应区分主体/模型配置、任务或任务簇、条件、运行次数和顺序，才能判断适合的统计单元。\n- 与 [[agent-evaluation-rubric-calibration]]、[[production-agent-evaluation-baselines]] 及 [[agent-self-validation-loops]] 配合使用：先确认评分尺稳定与单任务自验证边界清晰，再对照生产延迟/成本基线讨论样本结构和功效；错误的 Rubric 不会因样本增多而自动变正确。\n"
+            },
+            {
+              "id": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md:L15-L26",
+              "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
+              "text": "\n# 少样本 AI 评测中的重复任务、伪重复与统计功效\n\n## Summary\n\n在 AI、Agent 或人机交互评测中，增加任务数量不等于增加同等数量的独立样本。被试间设计仍受主体基线差异限制；被试内设计让同一主体跨条件比较，可以抵消部分主体噪声，但同一主体和相似任务产生的观测彼此相关，必须显式建模，不能把它们当成独立样本堆高置信度。\n\n这页基于 [[towardsdatascience-statistical-power-more-problems-2026-08-04]] 补充 [[production-ai-agent-evaluation-framework]] 的实验设计与统计功效层，也与 [[stateful-agent-environments-and-grounded-verification]] 关于“任务数量不等于评测多样性”的边界相连。\n\n## 核心问题：更多数据点是否真的增加证据\n\n设有 `N` 个参与主体，每个主体完成 `M` 个任务。表面观测数是 `N × M`，但有效证据量取决于这些观测共享多少主体、任务和条件结构。"
+            },
+            {
+              "id": "raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md:L14-L25",
+              "path": "raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md",
+              "text": "\n# 5 Jev use cases for analytics, with real queries and datasets\n\n## Provenance and capture scope\n\n- 原文：Mehdi Ouazza，MotherDuck，2026-10-06，页面显示预计阅读时间 15 分钟。\n- 本页基于原站完整可读正文、静态表格与 SQL 示例整理，是选取并转述的来源笔记，不是全文镜像，也不是独立实验报告。\n- 来源质量：厂商发布的第一方产品实践文章。Agent 案例按作者描述来自生产流程，销售案例明确为虚构示例；其余数据分析与性能数字均为作者报告，未独立复现。\n- 未执行 SQL、接入公开数据 share、验证交互式 Dive 或检查图片像素；图片中的信息仅采用正文和图注明确说明的部分。\n- 下文区分文章内容、补充官方文档与编译推论。官方文档无可见发布日期，产品边界仅代表 2026-10-10 查阅状态，采用前须重新核验。\n\n## Article notes — Agent trace evaluation"
+            }
+          ],
+          "evidence_bytes": 8920,
+          "formal_retrieval": {
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "raw_retrieval": {
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        {
+          "id": "Q8",
+          "question": "文档解析怎样保持结构保真？多文档比较如何结合文档失真风险与确定性计算边界，避免表格数值被错配？",
+          "candidates": [
+            "concepts/document-parsing-structural-fidelity.md",
+            "concepts/production-ai-agent-evaluation-framework.md",
+            "concepts/ai-agent-document-fidelity-risk.md",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md"
+          ],
+          "evidence": [
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L37-L48",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n## 何时需要独立中间层\n\n原文支持的主要适用条件是：多个下游问题或抽取 Schema 共享同一份文档内容，并且需要可读的解析结果来检查或定位错误。这样可以复用表示，而不是为每个任务重新处理来源。\n\n直接从文档抽取字段也可以奏效。单一、边界明确的任务不因这篇文章就必须增加 Markdown 转换步骤；中间层不是越多越可靠，也不能代替抽取结果的验证。\n\n与 [[deterministic-analytics-llm-reasoning-boundary]] 的衔接是：本页关注计算之前的输入结构是否正确；该页关注语义判断与确定性计算的职责。确定性程序可以稳定地计算被错配的数据，却无法仅凭计算可复现证明输入关系正确。\n\n## 最小质量检查\n\n原文建议从熟悉的文档开始，检查每个数值的表头、单位和脚注，而不是只看输出整齐程度。可围绕以下关系阅读解析结果："
+            },
+            {
+              "id": "concepts/document-parsing-structural-fidelity.md:L13-L24",
+              "path": "concepts/document-parsing-structural-fidelity.md",
+              "text": "\n# 文档解析的结构保真与中间表示\n\n## Summary\n\n文档解析的可靠性不只取决于文字和数值是否提取正确，还取决于它们是否保留正确的章节、表头、单位、脚注及空间关系。**可读、可复用的中间表示有助于检查这些关系，但格式本身不保证语义正确。**\n\n本页基于 LlamaIndex 的 [[llamaindex-markdown-is-all-you-need-2026-10-08]] 和 [Document Parsing Protocol（DPP）介绍](https://www.llamaindex.ai/blog/introducing-the-document-parsing-protocol)，适用于 PDF 入库、文档搜索、RAG 和字段抽取的表示选择与质量检查。Markdown 可作为正文的实用起点，复杂表格可补充 HTML，应用字段可用 JSON，视觉信息及溯源需求则按需保留图片、页码与坐标；这不是产品选型或统一格式的强制要求。\n\n## 失败机制：内容留下了，关系丢失了\n\n原文以两年度营收与利润率、按区域分组的表格为例：所有字词和数字都能保留，但普通 Markdown 管道表格无法原样表达跨行跨列。年份与两个指标之间的从属关系不再显式，第二层表头可能变成普通数据行，区域标签也可能只剩一个需要猜测的空行。"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L87-L98",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "\n- 对真实文件写入任务保留 read-back 和 diff 证据。\n- 对长文档变换任务保留原文、清洗输入、输出和校验记录。\n- 对工具权限采用窄工具、typed result 和 explicit dependency。\n- 对 RAG/context-heavy 任务做多步验证，而不是只测单轮检索。\n\n## Relationship to existing concepts\n\n- [[document-parsing-structural-fidelity]] 解释解析阶段的章节、表头及数值关系丢失；本页讨论其后的多轮编辑失真，两者分别需要检查输入表示与变换过程。\n- [[production-ai-agent-evaluation-framework]] 说明生产 Agent 要评估检索、生成、工具行为和运营指标；本页补充“文档内容保真”这一长链路风险维度。\n- [[agent-self-validation-loops]] 说明单个任务如何形成目标-反馈-迭代闭环；本页强调验证目标必须覆盖文档内容是否被悄悄改写。\n- [[typed-ai-agent-boundaries]] 说明用 typed schema 和窄工具降低接口不确定性；本页说明为什么宽泛文件工具会放大内容损坏。"
+            },
+            {
+              "id": "concepts/production-ai-agent-evaluation-framework.md:L27-L38",
+              "path": "concepts/production-ai-agent-evaluation-framework.md",
+              "text": "生产环境中的失败通常来自链路中某一层失真：检索取错上下文，生成不忠实，工具选错或参数错误，多步状态断裂，或者成本/延迟失控。评估系统应覆盖这些层，并能在上线前、软发布、稳定运行阶段持续提供反馈。\n\n### Prompt plateau as a failure-layer signal\n\n[[medium-kritnandan-prompt-engineering-ai-product-2026-08-09]] 提供了一个外部实践案例：作者团队在同一批 200 份文档上比较抽取 Prompt v12 与 v47，报告得分只从 82% 提升到 83%，却消耗了五周改写。可复用结论不是这组数字本身，而是：当版本化基线显示 Prompt 改写的边际收益已很小，应停止继续调词，转而定位检索、输入可见性、解析、Schema、权限、工具、状态、重试或 UI 边界中的真实故障层。\n\n文章给出的五类案例把这个诊断原则具体化：JSON 外包装由解析和类型校验处理；虚构产品编码由真实目录校验拦截；不可违反的权限规则在执行前由代码检查；畸形工具参数在调用前做 Schema 校验并把具体错误反馈给有界重试；硬性展示长度由生成上限和渲染器边界控制。它们共同支持一个边界：主观表达、语气和难以形式化的示例适合 Prompt；可判定真假的约束应尽量进入确定性代码和验证器。\n\n这个案例也明确限制了 Schema 的作用：结构有效不等于语义正确。一个字段可以满足字符串类型却仍是幻觉，因此评估必须继续覆盖证据、语义和下游结果，而不能把 valid JSON 当成正确性证明。作者建议的 100 个输入、3 个百分点停止线、20–50 个 Eval 案例和最多三次重试均保留为来源特定经验值，不升级为 AI Agent 默认阈值。\n\n## Evaluation layers\n"
+            },
+            {
+              "id": "concepts/ai-agent-document-fidelity-risk.md:L99-L110",
+              "path": "concepts/ai-agent-document-fidelity-risk.md",
+              "text": "- [[deterministic-analytics-llm-reasoning-boundary]] 说明把过滤、聚合与格式抽取交给确定性执行器、仅让模型承担规约与解释；本页进一步说明在多轮文档变换中，通用代码执行或整文件重写仍可能引入静默改写，需改用受限领域函数与可逆往返校验。\n- [[hermes-ai-workflow-formalization-principles]] 说明自然语言任务要转成形式化产物和验证闭环；本页提供了可逆任务和往返评估的具体评估思路。\n\n## What to preserve, what not to preserve\n\n保留：\n\n- 多轮委托式工作中的文档保真风险。\n- “前沿模型错误更隐蔽”这个失败模式。\n- DELEGATE-52 的 round-trip relay / 可逆任务评估方法。\n- 上面的数量级 benchmark，且必须标注为来源实验结果。\n- 短步骤、受限工具、中间态审计和多步 RAG 评估这些本地可迁移原则。"
+            },
+            {
+              "id": "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+              "path": "concepts/deterministic-analytics-llm-reasoning-boundary.md",
+              "text": "\n### 2. Deterministic engine owns filtering, aggregation, and extraction\n\n原文的 Analysis Engine 使用预置 Python / Pandas 脚本执行规则：读取评估 Excel、语义映射文件和 Selection Rule，然后做列匹配、行过滤、均值计算或文本抽取。它不改写规则、不推断额外列，也不输出解释性自然语言。\n\nAI Agent 迁移原则：\n\n- 数值计算、过滤、聚合、去重、抽样和文件解析应优先落到确定性代码。\n- 执行器只消费结构化输入并输出结构化结果。\n- 如果执行器找不到匹配列、规则冲突或数据为空，应显式失败，而不是让 LLM 补全。\n\n这补充 [[constrained-toolbox-evaluator-loop]]：后者强调受限工具箱和 evaluator；本页强调计算结果应由确定性执行器生成，输入质量与语义判断则需另行验证。程序可复现不代表输入标签正确。"
+            },
+            {
+              "id": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50",
+              "path": "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md",
+              "text": "简单结构可以通过展平字段名和增加区域列归一化；复杂结构可以在 Markdown 中嵌入 HTML，用 `colspan`、`rowspan` 和 `<thead>` 表达合并单元格及表头分组。HTML 只能表示解析器识别出的关系，不能保证这些关系识别正确。\n\n### JSON、图片和坐标\n\nJSON 可保存文档元素、元数据和供应用消费的抽取字段。Markdown 中间层便于人工检查并供多个提问或抽取 Schema 复用；直接从文档抽取也可以有效，不是所有任务都必须增加独立解析步骤。\n\n图表可能需要数值及文字描述，空间关系图可能需要原图。页码与包围盒可关联解析内容，用于引用、高亮和视觉对齐；纯文本不是所有信息的替代品。\n\n### 原文的检查方法\n\n用熟悉的文档检查解析后的表格，确认数值仍对应正确的表头、单位和脚注，而不是只看输出整不整齐。\n"
+            }
+          ],
+          "evidence_bytes": 8878,
+          "formal_retrieval": {
+            "precision": 0.75,
+            "recall": 0.75
+          },
+          "raw_retrieval": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333
+          }
+        }
+      ],
+      "answers": [
+        {
+          "id": "Q5",
+          "answer": "先记录单 Agent 基线，再按任务可分解性决定是否协作；须证明相对增益，并核算额外消息、Token、调用、延迟与合并成本，检查多个 Agent 是否重复同类错误，不能把多数意见当独立证据。[concepts/production-ai-agent-evaluation-framework.md:L63-L74]资源路由保留可列举路径、跳过条件及父级验收。[concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62]执行应隔离、验证并外部记录状态；缺子代理可顺序完成。[concepts/loop-engineering-hermes-agent-workflow.md:L15-L26]只有本地对照或真实失败证据才支持调整路由；现有片段不足以确定具体生产拓扑、资源预算或证据门实现。[concepts/production-ai-agent-evaluation-framework.md:L63-L74]",
+          "citations": [
+            "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+            "concepts/loop-engineering-hermes-agent-workflow.md:L15-L26"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "结构保真不仅保存文字数字，还保存章节、表头、单位、脚注与空间关系；Markdown 不保证合并表头正确。[concepts/document-parsing-structural-fidelity.md:L13-L24]简单表可展平字段并加区域列，复杂表用 HTML 表达分组，按需保留页码坐标；逐项核对数值归属。[raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50]多文档比较的过滤、聚合和计算交给确定性执行器，列缺失、规则冲突或空数据显式失败；可复现不能证明标签正确。[concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50]多轮变换保留原文、输入输出、校验记录及写入后的 read-back、diff，以核对静默失真。[concepts/ai-agent-document-fidelity-risk.md:L87-L98]",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md:L39-L50",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "repeat_answers": [
+        {
+          "id": "Q5",
+          "answer": "先建立单 Agent 基线，再按任务可分解性选择并行协作；验收比较实际增益与消息、Token、调用、延迟、合并成本，同时检查错误相关性，多数意见不等于独立证据。外部百分比不能直接设为默认门槛。〔concepts/production-ai-agent-evaluation-framework.md:L63-L74〕资源路由应在宿主支持的委派入口选择子代理或父级直做，保持可列举路径、跳过条件和父级验收。〔concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62〕闭环要隔离执行、独立验证并外部记录状态，缺少子代理也可顺序完成。〔concepts/loop-engineering-hermes-agent-workflow.md:L15-L26〕片段不足以支持某种具体生产拓扑或资源配额。",
+          "citations": [
+            "concepts/production-ai-agent-evaluation-framework.md:L63-L74",
+            "concepts/agent-autonomy-ladder-for-hermes-workflows.md:L51-L62",
+            "concepts/loop-engineering-hermes-agent-workflow.md:L15-L26"
+          ]
+        },
+        {
+          "id": "Q8",
+          "answer": "解析保真不仅保留数字，还须保留章节、表头、单位、脚注和空间关系；普通表格可能丢失跨行跨列从属关系。〔concepts/document-parsing-structural-fidelity.md:L13-L24〕多文档比较前应核对每个数值的表头、单位、脚注；中间表示便于复用检查，但不能替代验证，确定性计算也会稳定地算错配数据。〔concepts/document-parsing-structural-fidelity.md:L37-L48〕计算、过滤、聚合交给只消费和输出结构化数据的执行器，缺列、冲突或空数据显式失败，不能让模型补全。〔concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50〕变换过程保存原文、中间输入、输出和校验记录，文件写入保留回读与差异证据。〔concepts/ai-agent-document-fidelity-risk.md:L87-L98〕",
+          "citations": [
+            "concepts/document-parsing-structural-fidelity.md:L13-L24",
+            "concepts/document-parsing-structural-fidelity.md:L37-L48",
+            "concepts/deterministic-analytics-llm-reasoning-boundary.md:L39-L50",
+            "concepts/ai-agent-document-fidelity-risk.md:L87-L98"
+          ]
+        }
+      ],
+      "original_grades": [
+        {
+          "strategy": "relations",
+          "run": "first",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 1,
+          "reason": "路由边界、验证及成本讨论有依据；具体生产拓扑明确留白，未交代宿主/Worker 状态与执行授权分工。"
+        },
+        {
+          "strategy": "relations",
+          "run": "first",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 2,
+          "reason": "结构关系核对、确定性执行器职责与显式失败、文档变换回读及差异证据均有支持。"
+        },
+        {
+          "strategy": "relations",
+          "run": "repeat",
+          "id": "Q5",
+          "support": 2,
+          "coverage": 1,
+          "reason": "路由边界、验证及成本讨论有依据；具体生产拓扑明确留白，未交代宿主/Worker 状态与执行授权分工。"
+        },
+        {
+          "strategy": "relations",
+          "run": "repeat",
+          "id": "Q8",
+          "support": 2,
+          "coverage": 2,
+          "reason": "结构关系核对、确定性执行器职责与显式失败、文档变换回读及差异证据均有支持。"
+        }
+      ]
+    }
+  ],
+  "review": {
+    "reviewed_at": "2026-11-09",
+    "reviewer_kind": "AI source-and-claim audit; not independent human adjudication",
+    "end_to_end": "NOT_RUN",
+    "external_factual_accuracy": "NOT_MEASURED; scoped source checks are documented on the benchmark page",
+    "coverage_corrections": [
+      {
+        "strategy": "keyword",
+        "run": "first",
+        "id": "Q5",
+        "original_coverage": 2,
+        "reviewed_coverage": 1,
+        "support": 2,
+        "reason": "有单 Agent 基线、协调成本及宿主/Worker 边界证据，但未完成任务上下文驱动的模型/资源选择机制和研究证据充分性裁决。Tool Gate 是执行授权门，不能替代研究证据门。"
+      },
+      {
+        "strategy": "keyword",
+        "run": "repeat",
+        "id": "Q5",
+        "original_coverage": 2,
+        "reviewed_coverage": 1,
+        "support": 2,
+        "reason": "有单 Agent 基线、协调成本及宿主/Worker 边界证据，但未完成任务上下文驱动的模型/资源选择机制和研究证据充分性裁决。Tool Gate 是执行授权门，不能替代研究证据门。"
+      }
+    ],
+    "scope_note": "Only the two Q5 keyword coverage scores are corrected numerically. Q8 full-target semantic-label coverage is separately marked partial; historical narrow question-coverage grades are not silently replaced or promoted into full-target success."
+  }
+}

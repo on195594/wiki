@@ -141,7 +141,7 @@ status: current
 - [Agent Architecture Primary-Paper Map](../queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
 - [Software Engineering Laws Decision Map](../queries/software-engineering-laws-decision-map.md) — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
 - [OKF Concepts for AI Agent Wiki Governance Assessment](../queries/okf-for-hermes-wiki-governance-assessment.md) — OKF/LLM-wiki 的采纳边界、已完成的核心页试点、本地 catalog 与 OKF 字段对照，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
-- [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 固定用例、静态拓扑与三策略固定证据包重复问答基线；区分候选召回、引用支持性和一致性，自由检索端到端效果仍未验证
+- [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 检索基线、Q5/Q8 公开证据与评分纠正；区分覆盖、引用支持与事实核验，自由检索端到端效果仍未验证
 - [AI Agent Layer Routing Edge Cases](../queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：区分可选接入、执行契约与公开操作指南
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
 - [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署
