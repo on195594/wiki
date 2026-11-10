@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Planning
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-09
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/gilbs-law.md, raw/articles/laws-of-software-engineering/goodharts-law.md, raw/articles/laws-of-software-engineering/hofstadters-law.md, raw/articles/laws-of-software-engineering/ninety-ninety-rule.md, raw/articles/laws-of-software-engineering/parkinsons-law.md, raw/articles/laws-of-software-engineering/premature-optimization.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/gilbs-law.md, raw/articles/laws-of-software-engineering/goodharts-law.md, raw/articles/laws-of-software-engineering/hofstadters-law.md, raw/articles/laws-of-software-engineering/ninety-ninety-rule.md, raw/articles/laws-of-software-engineering/parkinsons-law.md, raw/articles/laws-of-software-engineering/premature-optimization.md, docs:https://en.wikipedia.org/wiki/Goodhart%27s_law]
 status: stable
-description: 用于检索软件工程规划中关于度量、估算、期限、收尾成本与优化时机的经验法则。
+description: 用于检索软件工程规划中关于度量与代理指标失真（Gilb / Goodhart）、估算、期限、收尾成本与优化时机的经验法则。
 volatility: low
 aliases: [se-laws-planning, planning-engineering-laws]
 ---
@@ -39,10 +39,10 @@ aliases: [se-laws-planning, planning-engineering-laws]
 
 - **ID**：lse-goodharts-law
 - **原陈述**：When a measure becomes a target, it ceases to be a good measure.
-- **核心机制**：指标通常只是生产力、质量等目标的代理。一旦它成为考核目标，人们会优化指标本身，即使这种优化损害原始意图；例如以关闭工单数为目标，可能诱发拆分或过早关闭工单。
-- **适用与评审问题**：[综合] 当前指标是在辅助观察，还是已经成为需要被直接完成的目标？团队是否结合多个指标、业务上下文与定性判断，检查数字改善是否对应真实结果改善？
+- **核心机制**：指标通常只是生产力、质量等目标的代理。该定律源自经济学家 Charles Goodhart（1975）对英国货币政策统计规律的论述——“任何观察到的统计规律，一旦被施加政策控制压力，往往就会失效”，后由人类学家 Marilyn Strathern（1997）浓缩为通行的“当度量变成目标，它就不再是好度量”（[Goodhart's Law](https://en.wikipedia.org/wiki/Goodhart%27s_law)）。一旦代理指标成为考核目标，执行者会直接优化指标本身，即使这种优化损害原始意图；例如以关闭工单数为目标，可能诱发拆分或过早关闭工单。
+- **适用与评审问题**：[综合] 当前指标是在辅助观察，还是已经成为需要被直接完成的目标？团队是否结合多个指标、业务上下文与定性判断，检查数字改善是否对应真实结果改善？[推论] 在 LLM 与 Agent 评测体系（[[llm-engineering-knowledge-map]]）中，把单一基准分数或局部代理指标直接作为迭代目标，同样会诱发针对评分器偏好或固定题库的过拟合（Reward Hacking / Rubric Gaming），需结合保留集、噪声鲁棒性与定性复核加以约束。
 - **误用与限制**：该法则并不否定度量本身；来源明确认为指标仍可用于洞察，但不宜脱离上下文或被单独用于驱动行为。来源未系统给出反例。
-- **来源**：[[goodharts-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/goodharts-law/)
+- **来源**：[[goodharts-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/goodharts-law/)；[Goodhart's Law (Wikipedia)](https://en.wikipedia.org/wiki/Goodhart%27s_law)
 
 ### Hofstadter's Law
 

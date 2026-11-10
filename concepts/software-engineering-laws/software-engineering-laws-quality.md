@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Quality
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-09
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/boy-scout-rule.md, raw/articles/laws-of-software-engineering/broken-windows-theory.md, raw/articles/laws-of-software-engineering/kernighans-law.md, raw/articles/laws-of-software-engineering/lehmans-laws.md, raw/articles/laws-of-software-engineering/linuss-law.md, raw/articles/laws-of-software-engineering/murphys-law.md, raw/articles/laws-of-software-engineering/pesticide-paradox.md, raw/articles/laws-of-software-engineering/postels-law.md, raw/articles/laws-of-software-engineering/sturgeons-law.md, raw/articles/laws-of-software-engineering/technical-debt.md, raw/articles/laws-of-software-engineering/testing-pyramid.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/boy-scout-rule.md, raw/articles/laws-of-software-engineering/broken-windows-theory.md, raw/articles/laws-of-software-engineering/kernighans-law.md, raw/articles/laws-of-software-engineering/lehmans-laws.md, raw/articles/laws-of-software-engineering/linuss-law.md, raw/articles/laws-of-software-engineering/murphys-law.md, raw/articles/laws-of-software-engineering/pesticide-paradox.md, raw/articles/laws-of-software-engineering/postels-law.md, raw/articles/laws-of-software-engineering/sturgeons-law.md, raw/articles/laws-of-software-engineering/technical-debt.md, raw/articles/laws-of-software-engineering/testing-pyramid.md, docs:https://www.rfc-editor.org/info/rfc9413/]
 status: stable
-description: 汇总软件质量、演化、测试与技术债相关经验法则，供设计和评审时快速检索。
+description: 汇总软件质量、演化、测试、协议主动维护（Postel's Law 与 RFC 9413 边界）及技术债相关经验法则，供设计和评审时快速检索。
 volatility: low
 aliases: [se-laws-quality, quality-engineering-laws]
 ---
@@ -96,8 +96,8 @@ aliases: [se-laws-quality, quality-engineering-laws]
 - **原陈述**：Be conservative in what you do, be liberal in what you accept from others.
 - **核心机制**：系统输出应严格遵循协议和标准；输入端可在能够安全解释时容纳顺序、格式等轻微差异，以提高不同实现之间的互操作性和韧性。
 - **适用与评审问题**：[综合] 输出是否明确合规，输入容错是否具有确定、安全且一致的解释规则，而不会隐藏生产者错误？
-- **误用与限制**：来源明确指出过度宽容可能掩盖错误、纵容不合规生产者、造成长期互操作问题，并在安全场景中扩大畸形输入风险；因此“liberal”不能越过安全边界。
-- **来源**：[[postels-law]]；[canonical](https://lawsofsoftwareengineering.com/laws/postels-law/)
+- **误用与限制**：来源明确指出过度宽容可能掩盖错误、纵容不合规生产者、造成长期互操作问题，并在安全场景中扩大畸形输入风险；因此“liberal”不能越过安全边界。IETF/IAB 在 **RFC 9413**（*Maintaining Robust Protocols*，M. Thomson & D. Schinazi，2023 年 6 月，[RFC 9413](https://www.rfc-editor.org/info/rfc9413/)）中进一步指出，长期静默容忍有缺陷的实现会诱发**协议退化（Protocol Decay，§4.1）**：生产者缺乏修复动力，后续实现被迫复刻同样的容错逻辑（如早期 TLS 对空扩展列表尾随字节的容忍阻碍了后续协议演化）。RFC 9413 因此主张**主动协议维护（Active Protocol Maintenance，§5）**与**良性不宽容（Virtuous Intolerance，§5.1）**：对违反规范或有歧义的输入应优先显式失败、拒绝或告警，以构成防止协议腐化的负反馈闭环。[推论] 在 LLM 工具调用与结构化输出边界（[[llm-engineering-knowledge-map]]）中，对越界参数或格式损坏的输出同样不应静默猜测修复，而应显式拒绝并返回可归因校验错误。
+- **来源**：[[postels-law]]；[canonical](https://lawsofsoftwareengineering.com/laws/postels-law/)；[IETF RFC 9413: Maintaining Robust Protocols](https://www.rfc-editor.org/info/rfc9413/)
 
 ### Sturgeon's Law
 

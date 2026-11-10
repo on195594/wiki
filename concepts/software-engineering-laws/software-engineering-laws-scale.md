@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Scale
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-09
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/amdahls-law.md, raw/articles/laws-of-software-engineering/gustafsons-law.md, raw/articles/laws-of-software-engineering/metcalfes-law.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/amdahls-law.md, raw/articles/laws-of-software-engineering/gustafsons-law.md, raw/articles/laws-of-software-engineering/metcalfes-law.md, docs:https://en.wikipedia.org/wiki/Amdahl%27s_law, docs:https://en.wikipedia.org/wiki/Gustafson%27s_law]
 status: stable
-description: 用于检索和比较软件系统扩展中的串行瓶颈、工作负载增长与网络效应。
+description: 用于检索和比较软件系统扩展中的串行瓶颈、固定工作负载与规模化加速公式（Amdahl / Gustafson）及网络效应。
 volatility: low
 aliases: [se-laws-scale, scale-engineering-laws]
 ---
@@ -27,19 +27,23 @@ aliases: [se-laws-scale, scale-engineering-laws]
 
 - **ID**：lse-amdahls-law
 - **原陈述**：The speedup from parallelization is limited by the fraction of work that cannot be parallelized.
-- **核心机制**：增加处理器、机器或人员时，只有可并行部分能够随资源增长而加速；串行部分保持不变，并逐渐主导总耗时。若串行比例为 `s`，无限并行资源下的最大加速比为 `1/s`。同一机制也适用于单一数据库、共享服务或集中决策者形成的瓶颈。
-- **适用与评审问题**：[综合] 当前流程中哪些工作必须串行执行？新增资源是否仍会经过同一数据库、共享依赖或决策节点？在扩大资源投入前，能否先缩短或拆除这些串行路径？
-- **误用与限制**：不能据此断言增加并行资源完全无效；它描述的是串行部分对固定工作量加速上限的约束。来源未系统给出反例。
-- **来源**：[[amdahls-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/amdahls-law/)
+- **核心机制**：增加处理器、机器或人员时，只有可并行部分能够随资源增长而加速；串行部分保持不变，并逐渐主导总耗时。按 Gene Amdahl（AFIPS，1967）的固定工作负载延迟加速比定义（[Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law)），若可并行部分占比为 $p$、串行部分占比为 $s = 1 - p$、并行资源倍数为 $N$，则总加速比为：
+  $$S_{\text{latency}}(N) = \frac{1}{(1 - p) + \frac{p}{N}} = \frac{1}{s + \frac{1 - s}{N}}, \quad \lim_{N \to \infty} S_{\text{latency}}(N) = \frac{1}{1 - p} = \frac{1}{s}$$
+  例如当 $p = 0.90$（串行比例 $s = 0.10$）时，即使并行资源无限增加，理论加速上限也仅为 $10\times$。同一机制也适用于单一数据库、共享服务或集中决策者形成的瓶颈。
+- **适用与评审问题**：[综合] 当前流程中哪些工作必须串行执行？新增资源是否仍会经过同一数据库、共享依赖或决策节点？在扩大资源投入前，能否先缩短或拆除这些串行路径？[推论] 在 LLM 与多智能体系统工程（[[llm-engineering-knowledge-map]]）中，父节点规划、上下文汇集、冲突消解与验证门禁构成串行比例 $s$；在扩大并发度 $N$ 前，是否先测量了串行协调与合并耗时占比？
+- **误用与限制**：不能据此断言增加并行资源完全无效；它描述的是串行部分对固定工作量延迟加速上限的约束，不直接刻画随资源同步扩大工作负载规模时的吞吐收益。来源未系统给出反例。
+- **来源**：[[amdahls-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/amdahls-law/)；[Amdahl's Law (Wikipedia)](https://en.wikipedia.org/wiki/Amdahl%27s_law)
 
 ### Gustafson's Law
 
 - **ID**：lse-gustafsons-law
 - **原陈述**：It is possible to achieve significant speedup in parallel processing by increasing the problem size.
-- **核心机制**：当计算资源增加时，可以扩大待处理的问题规模，让并行部分随处理器数量增长，而串行部分大致保持不变。扩展的目标因此可以是相同时间内处理更多数据或更高分辨率的问题，而不只是更快完成同一固定任务。
+- **核心机制**：当计算资源增加时，可以扩大待处理的问题规模，让并行部分随处理器数量增长，而串行部分大致保持不变。按 John L. Gustafson（*Communications of the ACM*，1988；与 Edwin H. Barsis 共同提出）的固定时间规模化加速比模型（[Gustafson's Law](https://en.wikipedia.org/wiki/Gustafson%27s_law)），若在放大后的并行总运行时间中串行与并行占比分别为 $s$ 与 $p$（$s + p = 1$），则相对于单处理器执行同一放大任务的时间，规模化加速比为：
+  $$S_{\text{scaled}}(N) = s + p \cdot N = N + (1 - N)s$$
+  扩展的目标因此可以是相同时间内处理更多数据或更高分辨率的问题，而不只是更快完成同一固定任务。
 - **适用与评审问题**：[综合] 新增核心或机器后，工作负载能否按资源拆分并扩大？额外容量是否承担了更多有效计算？系统设计是否允许通过增加分区、数据量或模型精度来利用扩展资源？
-- **误用与限制**：该机制依赖问题规模能够增长、并行部分能够持续占用新增资源，以及串行部分大致稳定；不能据此假定任意工作负载都可获得近线性的规模化加速。来源未系统给出反例。
-- **来源**：[[gustafsons-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/gustafsons-law/)
+- **误用与限制**：该机制依赖问题规模能够增长、并行部分能够持续占用新增资源，以及串行部分大致稳定；不能据此假定任意工作负载都可获得近线性的规模化加速。此外，非线性算法会限制新增资源所能换取的问题规模增长：若计算工作量与问题尺寸 $n$ 的三次方成正比，即使理想加速使可处理工作量翻倍，$n$ 也仅增至原来的 $\sqrt[3]{2}$ 倍。这不等于工作量意义上的并行加速失效，须区分问题尺寸、计算工作量与加速比（[Gustafson's Law — Limitations](https://en.wikipedia.org/wiki/Gustafson%27s_law)）。
+- **来源**：[[gustafsons-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/gustafsons-law/)；[Gustafson's Law (Wikipedia)](https://en.wikipedia.org/wiki/Gustafson%27s_law)
 
 ### Metcalfe's Law
 

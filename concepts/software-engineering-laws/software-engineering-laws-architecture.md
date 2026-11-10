@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Architecture
 created: 2026-08-10
-updated: 2026-11-06
+updated: 2026-11-09
 type: concept
 tags: [research, architecture, decision, networking]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md, docs:https://en.wikipedia.org/wiki/PACELC_theorem, docs:https://www.hyrumslaw.com/]
 status: stable
-description: 用于检索分布式权衡、复杂性演化、抽象边界与架构范围控制相关的软件工程经验法则。
+description: 用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则。
 volatility: low
 aliases: [se-laws-architecture, architecture-engineering-laws]
 ---
@@ -33,8 +33,8 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 - **原陈述**：A distributed system can guarantee only two of: consistency, availability, and partition tolerance.
 - **核心机制**：分布式系统无法同时保证一致性、可用性与分区容错；在网络健康时三者可以同时表现良好，但实际不可避免的分区会迫使系统在一致性与可用性之间取舍：要么拒绝部分请求以维持节点一致，要么继续响应并接受数据暂时不一致。
 - **适用与评审问题**：[综合] 系统发生网络分区时选择一致性还是可用性？哪些请求会失败，哪些数据可能暂时陈旧，这一行为是否被明确设计和验证？
-- **误用与限制**：不能将其误读为系统在所有时刻只能拥有三者中的两个；来源把它称为设计起点，并明确指出它没有覆盖全部设计空间。
-- **来源**：[[cap-theorem]]；[canonical](https://lawsofsoftwareengineering.com/laws/cap-theorem/)
+- **误用与限制**：不能将其误读为系统在所有时刻只能拥有三者中的两个；来源把它称为设计起点，并明确指出它没有覆盖全部设计空间。Daniel Abadi（2010 年提出、2012 年发表，2018 年由 Wojciech Golab 给出形式化证明）进一步提出 **PACELC 定理**（[PACELC Theorem](https://en.wikipedia.org/wiki/PACELC_theorem)）补齐常态运行空间：若发生网络分区（**P**artition），系统须在可用性（**A**vailability）与一致性（**C**onsistency）间取舍；否则（**E**lse，即无分区的正常复制运行态），系统仍须在延迟（**L**atency）与一致性（**C**onsistency）间取舍（例如 `PA/EL` 的 Dynamo 风格系统，或 `PC/EC` 的 Spanner/VoltDB 强一致系统）。
+- **来源**：[[cap-theorem]]；[canonical](https://lawsofsoftwareengineering.com/laws/cap-theorem/)；[PACELC Theorem (Wikipedia)](https://en.wikipedia.org/wiki/PACELC_theorem)
 
 ### Fallacies of Distributed Computing
 
@@ -58,10 +58,10 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 
 - **ID**：lse-hyrums-law
 - **原陈述**：With a sufficient number of API users, all observable behaviors of your system will be depended on by somebody.
-- **核心机制**：随着使用者增多，正式契约之外的可观察行为——包括顺序、时序、错误信息、格式、性能特征乃至缺陷——也可能成为依赖。实际接口因此会扩展到线上可观察行为，使看似内部的修改产生兼容性风险。
-- **适用与评审问题**：[综合] 这次变更会改变哪些可观察行为，是否存在消费者依赖未文档化的顺序、格式、时序、错误码或旧缺陷，需要怎样发现和控制兼容风险？
+- **核心机制**：随着使用者增多，正式契约之外的可观察行为——包括顺序、时序、错误信息、格式、性能特征乃至缺陷——也可能成为依赖。Hyrum Wright 将其称为“隐式接口定律（The Law of Implicit Interfaces）”与“接口蒸发（Interface Evaporation）”（[Hyrum's Law](https://www.hyrumslaw.com/)）：当消费方规模足够大时，显式契约会被消费方对可观察实现细节的集体依赖所淹没，甚至迫使维护者维持“缺陷级兼容（bug-for-bug compatibility）”。
+- **适用与评审问题**：[综合] 这次变更会改变哪些可观察行为，是否存在消费者依赖未文档化的顺序、格式、时序、错误码或旧缺陷，需要怎样发现和控制兼容风险？[推论] 在 LLM 工程与工具接口设计（[[llm-engineering-knowledge-map]]）中，若向模型或下游暴露未约束的自然语言报错、动态字段顺序或内部中间态，Prompt 与调用方很容易耦合这些偶然特征；通过窄接口与显式 Schema 可压缩隐式可观察面。
 - **误用与限制**：该法则提示“可能有人依赖”，不等于任何行为都必须永久保留；来源未提供判断依赖是否值得兼容的统一标准。
-- **来源**：[[hyrums-law]]；[canonical](https://lawsofsoftwareengineering.com/laws/hyrums-law/)
+- **来源**：[[hyrums-law]]；[canonical](https://lawsofsoftwareengineering.com/laws/hyrums-law/)；[Hyrum's Law Official Text](https://www.hyrumslaw.com/)
 
 ### The Law of Leaky Abstractions
 

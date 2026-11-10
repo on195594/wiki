@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Teams
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-09
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/brooks-law.md, raw/articles/laws-of-software-engineering/bus-factor.md, raw/articles/laws-of-software-engineering/conways-law.md, raw/articles/laws-of-software-engineering/dilbert-principle.md, raw/articles/laws-of-software-engineering/dunbars-number.md, raw/articles/laws-of-software-engineering/peter-principle.md, raw/articles/laws-of-software-engineering/prices-law.md, raw/articles/laws-of-software-engineering/putts-law.md, raw/articles/laws-of-software-engineering/ringelmann-effect.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/brooks-law.md, raw/articles/laws-of-software-engineering/bus-factor.md, raw/articles/laws-of-software-engineering/conways-law.md, raw/articles/laws-of-software-engineering/dilbert-principle.md, raw/articles/laws-of-software-engineering/dunbars-number.md, raw/articles/laws-of-software-engineering/peter-principle.md, raw/articles/laws-of-software-engineering/prices-law.md, raw/articles/laws-of-software-engineering/putts-law.md, raw/articles/laws-of-software-engineering/ringelmann-effect.md, docs:https://en.wikipedia.org/wiki/Brooks%27s_law]
 status: stable
-description: 用于检索和评审团队规模、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。
+description: 用于检索和评审团队规模、两两沟通通道二次方增长（Brooks's Law）、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。
 volatility: low
 aliases: [se-laws-teams, team-engineering-laws]
 ---
@@ -22,7 +22,7 @@ aliases: [se-laws-teams, team-engineering-laws]
 - 来源将这些条目主要描述为经验法则，其证据强度因条目而异。
 - 数字模型用于识别风险和形成假设，不能直接代替对交付质量、职责差异、系统复杂度及团队环境的实际调查。
 - 讽刺性组织原则用于暴露潜在机制，不足以单独判断个人能力或决定任免。
-- 本页只综合给定来源中的机制与关联，不引入其他法则或扩展理论。
+- 本页综合来源中的机制、经典公式及关联；针对 LLM 与多智能体协作的跨领域映射均显式标注为 `[推论]`，不作为原始经验法则的自带推论。
 
 ## 法则记录
 
@@ -30,10 +30,12 @@ aliases: [se-laws-teams, team-engineering-laws]
 
 - **ID**：lse-brooks-law
 - **原陈述**：Adding manpower to a late software project makes it later.
-- **核心机制**：软件工作不能被完全线性拆分。向已经延期的项目加入新人，会产生培训、沟通和集成成本，并占用原团队成员的时间；这些成本在一段时间内可能超过新增人员的贡献。来源建议优先重新评估范围或时间，而非假定增员能够立即追回进度。
-- **适用与评审问题**：[综合] 当前延期是否主要受人员数量限制？新人达到有效产出前需要哪些培训与协调投入，这些投入会占用哪些关键成员？是否应先调整范围、时间或工作安排？
+- **核心机制**：软件工作不能被完全线性拆分。Fred Brooks 在《人月神话》（*The Mythical Man-Month*，1975）中将延期增员失效归结为三项结构性因素（[Brooks's Law](https://en.wikipedia.org/wiki/Brooks%27s_law)）：新成员的爬坡培训时间（ramp-up time）、任务受顺序依赖约束而有限的可分割性（limited divisibility），以及随人数 $n$ 呈二次方增长的两两沟通通道数：
+  $$C(n) = \frac{n(n - 1)}{2}$$
+  例如 5 人团队存在 $10$ 条成对沟通路径，扩充至 10 人时增至 $45$ 条，扩充至 50 人时则达 $1{,}225$ 条。向已延期项目加入新人会立即占用原核心成员的时间用于培训、沟通和集成，短期内净产出反而下降。来源建议优先重新评估范围或时间，而非假定增员能够立即追回进度。
+- **适用与评审问题**：[综合] 当前延期是否主要受人员数量限制？新人达到有效产出前需要哪些培训与协调投入，这些投入会占用哪些关键成员？是否应先调整范围、时间或工作安排？[推论] 在多智能体编排（[[llm-engineering-knowledge-map]]）中，无约束的全连接多 Agent 交互同样面临 $\frac{n(n - 1)}{2}$ 的上下文同步与协调损耗；通过主从协调拓扑、窄任务边界与状态隔离可抑制成对通信膨胀。
 - **误用与限制**：该法则并不声称增员永远无效，而是指出把增员作为延期项目的即时补救通常适得其反；具体影响取决于上手成本、任务可分割性和沟通负担。
-- **来源**：[[brooks-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/brooks-law/)
+- **来源**：[[brooks-law]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/brooks-law/)；[Brooks's Law (Wikipedia)](https://en.wikipedia.org/wiki/Brooks%27s_law)
 
 ### Bus Factor
 

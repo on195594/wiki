@@ -1636,7 +1636,7 @@
       "path": "concepts/family-education-operating-model.md",
       "type": "concept",
       "title": "Family Education Operating Model",
-      "description": "提供可跨家庭复用的教育决策变量、适用条件与可持续性边界。",
+      "description": "提供可跨家庭复用的教育决策变量、基本心理需要（自主/胜任/归属）、发展性工作记忆边界与可持续性原则。",
       "status": "stable",
       "tags": [
         "lifeos",
@@ -1650,7 +1650,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -2656,7 +2656,7 @@
       "path": "concepts/lifeos-overview.md",
       "type": "concept",
       "title": "LifeOS Overview",
-      "description": "概述可配置 LifeOS 的核心层次、可选领域和治理边界，不保存个人状态。",
+      "description": "概述可配置 LifeOS 的核心层次、可选领域、跨域参数耦合矩阵与治理边界，不保存个人状态。",
       "status": "stable",
       "tags": [
         "lifeos",
@@ -2671,7 +2671,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2963,7 +2963,7 @@
       "path": "concepts/personal-growth-operating-model.md",
       "type": "concept",
       "title": "Personal Growth Operating Model",
-      "description": "定义个人成长在 LifeOS 中的目标、反馈、复盘和执行系统。",
+      "description": "定义个人成长在 LifeOS 中的目标、刻意练习边界、认知负荷管理、单双环复盘与压力下迁移验证系统。",
       "status": "stable",
       "tags": [
         "lifeos",
@@ -2978,7 +2978,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3217,7 +3217,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-architecture.md",
       "type": "concept",
       "title": "Software Engineering Laws — Architecture",
-      "description": "用于检索分布式权衡、复杂性演化、抽象边界与架构范围控制相关的软件工程经验法则。",
+      "description": "用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则。",
       "status": "stable",
       "tags": [
         "research",
@@ -3232,7 +3232,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-06",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3247,7 +3247,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-decisions.md",
       "type": "concept",
       "title": "Software Engineering Laws — Decisions",
-      "description": "汇总软件工程决策类经验法则，供方案评审、风险检查与技术选择时检索。",
+      "description": "汇总软件工程决策与认知偏差类经验法则（含 Wason 证伪实验、达克效应统计边界、Lindy 帕累托风险率与奥卡姆剃刀），供方案评审与风险检查检索。",
       "status": "stable",
       "tags": [
         "research",
@@ -3261,7 +3261,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-10",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3276,7 +3276,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-design.md",
       "type": "concept",
       "title": "Software Engineering Laws — Design",
-      "description": "用于检索和比较软件设计中控制重复、复杂度、耦合、意外行为与过度实现的经验法则。",
+      "description": "用于检索和比较软件设计中控制知识重复（DRY vs AHA）、复杂度、调用耦合（Law of Demeter）、里氏行为子类型（LSP）与超前实现（YAGNI）的经验法则。",
       "status": "stable",
       "tags": [
         "research",
@@ -3290,7 +3290,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-10",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3304,7 +3304,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-planning.md",
       "type": "concept",
       "title": "Software Engineering Laws — Planning",
-      "description": "用于检索软件工程规划中关于度量、估算、期限、收尾成本与优化时机的经验法则。",
+      "description": "用于检索软件工程规划中关于度量与代理指标失真（Gilb / Goodhart）、估算、期限、收尾成本与优化时机的经验法则。",
       "status": "stable",
       "tags": [
         "research",
@@ -3318,7 +3318,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3332,7 +3332,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-quality.md",
       "type": "concept",
       "title": "Software Engineering Laws — Quality",
-      "description": "汇总软件质量、演化、测试与技术债相关经验法则，供设计和评审时快速检索。",
+      "description": "汇总软件质量、演化、测试、协议主动维护（Postel's Law 与 RFC 9413 边界）及技术债相关经验法则，供设计和评审时快速检索。",
       "status": "stable",
       "tags": [
         "research",
@@ -3346,7 +3346,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3362,7 +3362,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-scale.md",
       "type": "concept",
       "title": "Software Engineering Laws — Scale",
-      "description": "用于检索和比较软件系统扩展中的串行瓶颈、工作负载增长与网络效应。",
+      "description": "用于检索和比较软件系统扩展中的串行瓶颈、固定工作负载与规模化加速公式（Amdahl / Gustafson）及网络效应。",
       "status": "stable",
       "tags": [
         "research",
@@ -3376,7 +3376,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3390,7 +3390,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-teams.md",
       "type": "concept",
       "title": "Software Engineering Laws — Teams",
-      "description": "用于检索和评审团队规模、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。",
+      "description": "用于检索和评审团队规模、两两沟通通道二次方增长（Brooks's Law）、知识分布、组织结构、晋升机制与协作成本相关的软件工程经验法则。",
       "status": "stable",
       "tags": [
         "research",
@@ -3404,7 +3404,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-09",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
@@ -3612,7 +3612,7 @@
       "path": "concepts/work-and-career-operating-model.md",
       "type": "concept",
       "title": "Work and Career Operating Model",
-      "description": "定义工作与职业在 LifeOS 中的目标、项目、能力积累和家庭约束协调模型。",
+      "description": "定义工作与职业在 LifeOS 中的目标、人力资本分层（通用/任务特定/企业特定）、探索—利用平衡与家庭约束协调模型。",
       "status": "stable",
       "tags": [
         "lifeos",
@@ -3628,7 +3628,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-06",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -4287,7 +4287,7 @@
       "path": "queries/software-engineering-laws-decision-map.md",
       "type": "query",
       "title": "Software Engineering Laws Decision Map",
-      "description": "按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。",
+      "description": "按真实工程问题与 AI Agent 系统工程场景检索 56 条软件工程法则、量化模型与形式化边界（Amdahl / Gustafson / PACELC / RFC 9413 / Brooks / LoD / LSP / Lindy）的决策地图。",
       "status": "stable",
       "tags": [
         "research",
@@ -4301,7 +4301,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "software-engineering-laws-architecture",

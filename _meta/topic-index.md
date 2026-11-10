@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-09
+updated: 2026-11-10
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-09 | Indexed pages: 126
+> Last updated: 2026-11-10 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -108,26 +108,26 @@ status: current
 
 ### 5. 个人操作系统与投资决策 (LifeOS, Systems & Investment)
 - [CompanyOS to LifeOS Filesystem Philosophy](../concepts/companyos-to-lifeos-filesystem-philosophy.md) — 将公司和人生建模为文件系统：统一命名空间、文件即状态、权限即治理、读写即操作
-- [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、家庭可持续和教育兜底能力为核心，含适配余量、通勤陪伴、教育现金流占比与兜底切换摩擦的可选推论参数
+- [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要（自主/胜任/归属）、发展性工作记忆边界和家庭可持续为核心，含 `M / T_c / F_e / K` 可选推论参数
 - [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
 - [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：以主协调上下文组织语义层，明确知识、可选执行与接入能力、隔离和临时状态的职责与越界规则
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，转向顺势、止损、控回撤与简单可执行规则
-- [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、公开/私有边界和 AI Agent 的可选执行角色
+- [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域参数耦合矩阵、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
 - [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓与行为控制执行
 - [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
-- [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：把成长作为职业升级、家庭沟通与判断质量的底层引擎，含输入—产出转化与压力下迁移验证的可选推论参数
+- [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习反馈边界（Ericsson / Macnamara）、认知负荷理论（Sweller）与单双环复盘（Argyris & Schön），含 `R / P / V` 可选推论参数
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含回撤恢复非对称数学与参数化风控变量（r / R_open / D_max / δ）
-- [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：兼顾现金流缓冲、能力复利、时间预算、转换摩擦与家庭兼容性，决策参数为可选推论
+- [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 任务特定）及探索—利用权衡（March），兼顾 `B / E / C / S` 可选推论参数与家庭兼容性
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
-- [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍、抽象边界、复杂度分配、兼容性与系统演化风险
-- [Software Engineering Laws — Decisions](../concepts/software-engineering-laws/software-engineering-laws-decisions.md) — 软件工程 Decisions 法则地图：认知偏差、问题建模、技术选择与资源分配
-- [Software Engineering Laws — Design](../concepts/software-engineering-laws/software-engineering-laws-design.md) — 软件工程 Design 法则地图：重复、复杂度、耦合、可预期行为与提前建设边界
-- [Software Engineering Laws — Planning](../concepts/software-engineering-laws/software-engineering-laws-planning.md) — 软件工程 Planning 法则地图：估算、期限、收尾成本、指标约束与优化时机
-- [Software Engineering Laws — Quality](../concepts/software-engineering-laws/software-engineering-laws-quality.md) — 软件工程 Quality 法则地图：渐进维护、测试策略、协议兼容、技术债与长期演化
-- [Software Engineering Laws — Scale](../concepts/software-engineering-laws/software-engineering-laws-scale.md) — 软件工程 Scale 法则地图：固定工作量、扩展工作量、串行瓶颈与网络效应
-- [Software Engineering Laws — Teams](../concepts/software-engineering-laws/software-engineering-laws-teams.md) — 软件工程 Teams 法则地图：团队规模、知识集中、组织结构、晋升机制与协作成本
+- [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险
+- [Software Engineering Laws — Decisions](../concepts/software-engineering-laws/software-engineering-laws-decisions.md) — 软件工程 Decisions 法则地图：认知偏差（Wason 证伪实验与达克效应统计边界）、Lindy 帕累托失效率、奥卡姆剃刀与资源分配
+- [Software Engineering Laws — Design](../concepts/software-engineering-laws/software-engineering-laws-design.md) — 软件工程 Design 法则地图：知识唯一表示（DRY vs AHA）、Law of Demeter 五类调用边界、LSP 强行为子类型与 YAGNI 持续重构前提
+- [Software Engineering Laws — Planning](../concepts/software-engineering-laws/software-engineering-laws-planning.md) — 软件工程 Planning 法则地图：度量与代理指标失真（Gilb / Goodhart）、估算、期限、收尾成本与优化时机
+- [Software Engineering Laws — Quality](../concepts/software-engineering-laws/software-engineering-laws-quality.md) — 软件工程 Quality 法则地图：渐进维护、测试策略、协议主动维护（Postel's Law 与 RFC 9413 边界）、技术债与长期演化
+- [Software Engineering Laws — Scale](../concepts/software-engineering-laws/software-engineering-laws-scale.md) — 软件工程 Scale 法则地图：固定工作负载与规模化加速公式（Amdahl / Gustafson）、串行瓶颈与网络效应
+- [Software Engineering Laws — Teams](../concepts/software-engineering-laws/software-engineering-laws-teams.md) — 软件工程 Teams 法则地图：团队规模、两两沟通通道二次方增长（Brooks's Law）、知识集中、组织结构与协作成本
 
 ## Operations
 - [Agent Shared Wiki Index](../operations/agent-shared-wiki-index.md) — Agent 共享 Wiki 的产品无关接入模板：根目录可配置、按需检索、项目规则优先且默认只读；获准维护时保留 raw 增删审查与清单差异回读
@@ -139,7 +139,7 @@ status: current
 
 ## Queries
 - [Agent Architecture Primary-Paper Map](../queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制、证据和外推边界
-- [Software Engineering Laws Decision Map](../queries/software-engineering-laws-decision-map.md) — 56 条软件工程法则的全量问题导向入口：按真实工程场景检索适用法则、误用边界、跨类别张力和来源记录
+- [Software Engineering Laws Decision Map](../queries/software-engineering-laws-decision-map.md) — 56 条软件工程法则的全量问题导向入口：按真实工程场景与 AI Agent 五维系统工程映射检索适用法则、形式化模型边界（Amdahl / Gustafson / PACELC / RFC 9413 / Brooks / LoD / LSP / Lindy）、跨类别张力和来源记录
 - [OKF Concepts for AI Agent Wiki Governance Assessment](../queries/okf-for-hermes-wiki-governance-assessment.md) — OKF/LLM-wiki 的采纳边界、已完成的核心页试点、本地 catalog 与 OKF 字段对照，以及企业 Catalog 规模化实现的触发条件；不替代现有 Markdown wiki 架构
 - [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 检索基线、Q5/Q8 公开证据与评分纠正；区分覆盖、引用支持与事实核验，自由检索端到端效果仍未验证
 - [AI Agent Layer Routing Edge Cases](../queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：区分可选接入、执行契约与公开操作指南

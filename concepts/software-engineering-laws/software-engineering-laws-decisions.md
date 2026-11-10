@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Decisions
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-10
 type: concept
 tags: [research, architecture, decision]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/confirmation-bias.md, raw/articles/laws-of-software-engineering/cunninghams-law.md, raw/articles/laws-of-software-engineering/dunning-kruger-effect.md, raw/articles/laws-of-software-engineering/first-principles-thinking.md, raw/articles/laws-of-software-engineering/hanlons-razor.md, raw/articles/laws-of-software-engineering/hype-cycle-amaras-law.md, raw/articles/laws-of-software-engineering/inversion.md, raw/articles/laws-of-software-engineering/lindy-effect.md, raw/articles/laws-of-software-engineering/map-is-not-the-territory.md, raw/articles/laws-of-software-engineering/occams-razor.md, raw/articles/laws-of-software-engineering/pareto-principle.md, raw/articles/laws-of-software-engineering/sunk-cost-fallacy.md]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/confirmation-bias.md, raw/articles/laws-of-software-engineering/cunninghams-law.md, raw/articles/laws-of-software-engineering/dunning-kruger-effect.md, raw/articles/laws-of-software-engineering/first-principles-thinking.md, raw/articles/laws-of-software-engineering/hanlons-razor.md, raw/articles/laws-of-software-engineering/hype-cycle-amaras-law.md, raw/articles/laws-of-software-engineering/inversion.md, raw/articles/laws-of-software-engineering/lindy-effect.md, raw/articles/laws-of-software-engineering/map-is-not-the-territory.md, raw/articles/laws-of-software-engineering/occams-razor.md, raw/articles/laws-of-software-engineering/pareto-principle.md, raw/articles/laws-of-software-engineering/sunk-cost-fallacy.md, docs:https://en.wikipedia.org/wiki/Confirmation_bias, docs:https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect, docs:https://en.wikipedia.org/wiki/Lindy_effect, docs:https://en.wikipedia.org/wiki/Occam%27s_razor]
 status: stable
-description: 汇总软件工程决策类经验法则，供方案评审、风险检查与技术选择时检索。
+description: 汇总软件工程决策与认知偏差类经验法则（含 Wason 证伪实验、达克效应统计边界、Lindy 帕累托风险率与奥卡姆剃刀），供方案评审与风险检查检索。
 volatility: low
 aliases: [se-laws-decisions, decision-engineering-laws]
 ---
@@ -27,10 +27,10 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 - **ID**：lse-confirmation-bias
 - **原陈述**：A tendency to favor information that supports our existing beliefs or ideas.
-- **核心机制**：形成初步判断后，人会更注意支持该判断的信息而忽略反证；在调试、评审和技术选型中，可主动寻找替代解释、引入不同意见，并用测试、性能标准或实验校正判断。
-- **适用与评审问题**：[综合] 当前调查是否只验证了最初假设？如果该假设错误，预期会观察到什么？是否检查了其他模块、边界输入和反对方案，并使用客观证据比较？
-- **误用与限制**：意识到偏差不能自动消除偏差；来源建议以反证问题、不同意见和客观标准缓解，但未声称这些方法能够保证无偏判断。
-- **来源**：[[confirmation-bias]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/confirmation-bias/)
+- **核心机制**：形成初步判断后，决策者倾向于检索、解释和回忆支持既有假设的信息，同时对相反证据施加更严苛的审查标准（反证偏误，Lord, Ross & Lepper，1979；Raymond Nickerson，1998，*Review of General Psychology*，[Confirmation bias](https://en.wikipedia.org/wiki/Confirmation_bias)）。Peter Wason 在 1960 年的 `2-4-6` 序列规则发现实验中展示了这一机制：受试者往往只构造符合自身狭窄假设的正例（如 `(11, 13, 15)`，Klayman 与 Ha 1987 称之为**正向测试策略 Positive Test Strategy**），而不去构造能证伪该假设的反例（如 `(11, 12, 19)`）。
+- **适用与评审问题**：[综合] 当前调查是否只执行了正向测试来验证最初假设？如果该假设错误，预期会观察到什么反证？是否检查了其他模块、边界输入和反对方案，并使用客观证据比较？[推论] 在 LLM 辅助调试与架构评审（[[llm-engineering-knowledge-map]]）中，带有倾向性的提问极易诱发模型迎合（Sycophancy）并只列举支持性线索；评审时是否显式要求先生成证伪用例与反方论据？
+- **误用与限制**：意识到偏差不能自动消除偏差；在信息获取成本受限时，正向测试策略有时具有启发式效率，但在目标规则宽泛或存在系统性盲区时必须主动引入证伪测试。
+- **来源**：[[confirmation-bias]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/confirmation-bias/)；[Confirmation bias (Wikipedia)](https://en.wikipedia.org/wiki/Confirmation_bias)
 
 ### Cunningham's Law
 
@@ -45,10 +45,10 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 - **ID**：lse-dunning-kruger-effect
 - **原陈述**：The less you know about something, the more confident you tend to be.
-- **核心机制**：领域知识不足时，人也缺少准确评估自身能力所需的知识，容易高估理解程度；随着未知复杂性被发现，信心可能先下降，再随经验和基础理解而恢复。
-- **适用与评审问题**：[综合] 当前信心是否有领域经验、验证结果和同伴评审支撑？估算是否表达了范围、权衡、概率以及尚未识别的未知因素？
-- **误用与限制**：原始研究关注相对同伴的自我排名；来源明确指出，流行的“信心峰值曲线”是后来的简化，不能据此断言低表现者必然比专家更自信。
-- **来源**：[[dunning-kruger-effect]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/dunning-kruger-effect/)
+- **核心机制**：由 David Dunning 与 Justin Kruger（1999，*Journal of Personality and Social Psychology*）实证研究提出：特定任务技能较低的受试者（底层四分位，实际处于第 12 百分位）往往高估自身相对表现（自评处于第 62 百分位），作者将其归因于缺乏识别自身错误的元认知能力（“双重负担”假说，[Dunning–Kruger effect](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect)）。
+- **适用与评审问题**：[综合] 当前信心是否有领域经验、客观验证结果和同伴评审支撑？估算是否表达了范围、权衡、概率以及尚未识别的未知因素？[推论] 在 LLM 工程与代码审查（[[llm-engineering-knowledge-map]]）中，无论是开发者对 AI 生成代码的自评理解度，还是模型直接输出的口头置信度，都不能替代独立测试与确定性验证器。
+- **误用与限制**：原始研究衡量的是相对同伴的百分位自评，且低表现者的绝对自信水平仍低于高表现者（并非“越无知越比专家自信”）。此外，后续统计学研究（如 Gignac & Zajenkowski，2020；Nuhfer et al.，2016/2017）指出，经验曲线很大程度可由观测噪声下的**均值回归（Regression toward the Mean）**叠加**优于平均效应（Better-than-Average Effect）**解释（[Dunning–Kruger effect — Statistical explanation](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect)），因此不应将其当作评判个人智力的标签。
+- **来源**：[[dunning-kruger-effect]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/dunning-kruger-effect/)；[Dunning–Kruger effect (Wikipedia)](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect)
 
 ### First Principles Thinking
 
@@ -91,10 +91,13 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 - **ID**：lse-lindy-effect
 - **原陈述**：The longer something has been in use, the more likely it is to continue being used.
-- **核心机制**：时间会淘汰一部分脆弱或缺乏价值的技术与观念，因此长期存续可作为未来继续存续的启发式信号，并支持优先投资基础能力和经受时间检验的技术。
-- **适用与评审问题**：[综合] 候选技术是否已有足够长的实际使用记录？其基础概念、协议或技能是否比短期流行框架更可能持续？选择新方案的收益是否足以抵消成熟度差异？
-- **误用与限制**：长期存续只是倾向性信号，不是质量或未来存续的保证；来源未系统给出反例。
-- **来源**：[[lindy-effect]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/lindy-effect/)
+- **核心机制**：概念源于 Albert Goldman（1964，《The New Republic》“Lindy's Law”），经 Benoit Mandelbrot（1982，《自然界的分形几何》，p. 342）幂律化，并由 Nassim Nicholas Taleb（2012，《反脆弱》；2019，《非对称风险》）严格限定于**非易腐事物（Non-perishable items，如技术协议、数学定理、开源原语，区别于有生理寿命上限的易腐个体）**（[Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect)）。按 Iddo Eliazar（2017，*Physica A*）的数学形式化，若非易腐事物的寿命 $T \ge c > 0$ 在已存续时间 $t$ 下的条件期望剩余寿命与当前年龄成正比（Lindy 比例常数 $p > 0$）：
+  $$\mathbb{E}[T - t \mid T > t] = p \cdot t$$
+  则其生存函数服从指数为 $\epsilon = 1 + \frac{1}{p}$ 的帕累托分布（Pareto distribution），且瞬时失效率（Hazard Rate）随存续时间 $t$ 单调递减：
+  $$\Phi(t) = \Pr(T > t) = \left(\frac{c}{t}\right)^{\epsilon}, \quad h(t) = -\frac{\Phi'(t)}{\Phi(t)} = \frac{\epsilon}{t} = \frac{1 + p}{p \cdot t}$$
+- **适用与评审问题**：[综合] 候选技术属于无固定自然寿命的非易腐协议/原语，还是受硬件代际或厂商平台绑定限制的易腐实现？其基础概念、协议或技能是否比短期流行封装更可能持续？选择新方案的收益是否足以抵消成熟度差异（例如评估跨平台 UI 框架 [[flutter]] 时区分底层渲染/语言原语与易变的三方插件）？
+- **误用与限制**：递减失效率仅适用于无内置淘汰期限的非易腐技术或思想；长期存续只是抗脆弱性的统计信号，不保证在范式转移或安全边界失效时永久存续。
+- **来源**：[[lindy-effect]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/lindy-effect/)；[Lindy effect (Wikipedia)](https://en.wikipedia.org/wiki/Lindy_effect)
 
 ### The Map Is Not the Territory
 
@@ -109,10 +112,10 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 - **ID**：lse-occams-razor
 - **原陈述**：The simplest explanation is often the most accurate one.
-- **核心机制**：当多个解释或方案都能覆盖目标时，优先检查或选择不必要假设和组件更少者，以减少理解、维护、调试、集成与协调成本。
-- **适用与评审问题**：[综合] 是否存在满足同一目标但组件、数据库、服务或假设更少的方案？调试时是否先验证了拼写、配置和其他简单原因？
-- **误用与限制**：“最简单”是优先考虑而非正确性保证；来源使用“often”而非绝对表述，不能据此删除实现目标所必需的复杂性。
-- **来源**：[[occams-razor]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/occams-razor/)
+- **核心机制**：归于 14 世纪哲学家奥卡姆的威廉（*Summa Totius Logicae*：“Frustra fit per plura quod potest fieri per pauciora”），通行拉丁表述由 John Punch（1639）归纳为“如无必要，勿增实体（Non sunt multiplicanda entia sine necessitate）”（[Occam's razor](https://en.wikipedia.org/wiki/Occam%27s_razor)）。在科学哲学与信息论中，其合理性由三方面支撑：（1）Karl Popper 的**可证伪性准则**——更明确、排除更多可能观测的理论更易接受严格检验，但参数更少或表述更短并不自动意味着经验内容更大；（2）Jefferys 与 Berger（1992）及 David MacKay 阐述的**贝叶斯奥卡姆因子**——边缘似然对参数先验下的似然取平均，权衡数据拟合与参数空间的有效复杂度；更简单的模型不保证边缘似然更高，后验模型概率还取决于模型先验；（3）统计学习中的**偏差—方差权衡（Bias–Variance Tradeoff）**与最小描述长度（MDL）。
+- **适用与评审问题**：[综合] 在满足同等观测证据与验收目标的前提下，是否存在组件、数据库、服务或未验证假设更少的方案？故障排查时是否先检验了配置、拼写与单点故障等高频简单原因，再排查罕见复合故障？
+- **误用与限制**：“更简单”是在**相同解释力或预测力（ceteris paribus）**前提下的启发式优选，而非正确性证明；正如爱因斯坦约束所警示的，不得为了表面精简而舍弃对真实观测数据的充分表征。
+- **来源**：[[occams-razor]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/occams-razor/)；[Occam's razor (Wikipedia)](https://en.wikipedia.org/wiki/Occam%27s_razor)
 
 ### Pareto Principle (80/20 Rule)
 

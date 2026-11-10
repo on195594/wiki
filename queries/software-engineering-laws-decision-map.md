@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws Decision Map
 created: 2026-08-10
-updated: 2026-11-02
+updated: 2026-11-10
 type: query
 tags: [research, architecture, decision]
 sources: [concepts/software-engineering-laws/software-engineering-laws-architecture.md, concepts/software-engineering-laws/software-engineering-laws-teams.md, concepts/software-engineering-laws/software-engineering-laws-planning.md, concepts/software-engineering-laws/software-engineering-laws-quality.md, concepts/software-engineering-laws/software-engineering-laws-scale.md, concepts/software-engineering-laws/software-engineering-laws-design.md, concepts/software-engineering-laws/software-engineering-laws-decisions.md]
 status: stable
-description: 按真实工程问题检索软件工程法则、适用边界与评审问题的决策地图。
+description: 按真实工程问题与 AI Agent 系统工程场景检索 56 条软件工程法则、量化模型与形式化边界（Amdahl / Gustafson / PACELC / RFC 9413 / Brooks / LoD / LSP / Lindy）的决策地图。
 volatility: low
 aliases: [se-laws-decision-map, software-laws-index]
 ---
@@ -19,8 +19,8 @@ aliases: [se-laws-decision-map, software-laws-index]
 
 ## 使用边界
 
-- CAP 仅在网络分区发生时聚焦一致性与可用性的取舍，不能解释为系统在所有时刻只能保留三项属性中的两项。
-- Postel's Law 对不可信输入不能解释成无条件宽容；容错必须具有确定、安全且一致的解释规则。
+- CAP 仅在网络分区发生时聚焦一致性与可用性的取舍，不能解释为系统在所有时刻只能保留三项属性中的两项；无分区的常态运行权衡可结合 [[software-engineering-laws-architecture|PACELC 定理]] 检查延迟（L）与一致性（C）的取舍。
+- Postel's Law 对不可信输入不能解释成无条件宽容；容错必须具有确定、安全且一致的解释规则。按 [[software-engineering-laws-quality|IETF RFC 9413（主动协议维护）]]，长期静默容忍违规输入会导致协议退化（Protocol Decay），对越界或歧义输入应优先显式失败。
 - Boy Scout Rule 只支持当前变更附近范围明确的小步改善，不授权无边界顺手重构。
 - Linus's Law 不替代责任人、测试和验证；代码可见或参与者增多也不保证缺陷会被发现和修复。
 - Price's Law、Dunbar's Number 与 Sturgeon's Law 中的数字不能成为人员、绩效或组织硬阈值。
@@ -142,6 +142,12 @@ aliases: [se-laws-decision-map, software-laws-index]
 - [推论] 当多个法则给出不同方向的提醒时，可检索“跨类别张力”，明确记录当前上下文中的取舍，不让法则名称直接充当结论。
 - [推论] 对含数字、绝对措辞或幽默表达的条目，应继续检索类别页的“误用与限制”，不得据此形成硬阈值。
 - [推论] 本次只沉淀 Wiki，不发生 active-layer promotion；AI Agent 仅将本页用于 Wiki 检索与评审提问。
+- [推论] **AI Agent 系统工程五维法则映射（供结合 [[agentic-programming-system-engineering]] 与 [[llm-engineering-knowledge-map]] 评审）**：
+  1. **并发加速与协调拓扑**（[[software-engineering-laws-scale]]、[[software-engineering-laws-teams]]）：用 Amdahl 定律 $S_{\text{latency}}(N) = \frac{1}{s_A + (1 - s_A)/N}$ 识别固定任务的单资源运行时间中串行规划/验证所占比例 $s_A$；用 Gustafson 定律 $S_{\text{scaled}}(N) = s_G + p_G N$ 评估固定运行时间下的规模化加速，其中 $s_G + p_G = 1$ 是扩展任务在 $N$ 个资源上实测的时间占比，不能直接复用 $s_A$，并用 Brooks 沟通通道公式 $C(n) = \frac{n(n - 1)}{2}$ 约束多 Agent 成对通信开销。
+  2. **隐式接口与主动协议维护**（[[software-engineering-laws-architecture]]、[[software-engineering-laws-quality]]）：用 Hyrum 定律识别未约束输出带来的隐式依赖（Interface Evaporation），并按 IETF RFC 9413 的良性不宽容（Virtuous Intolerance）对越界工具参数或损坏结构化输出执行显式失败校验，而非静默猜测修复。
+  3. **常态/分区状态权衡**（[[software-engineering-laws-architecture]]）：结合 CAP 与 PACELC（`PA/EL` vs `PC/EC`）区分网络中断期的读写降级策略与正常复制运行态的确认延迟/一致性边界。
+  4. **最小耦合、行为子类型与演进式抽象**（[[software-engineering-laws-design]]）：用 Law of Demeter 五类合法调用范围限制工具与子代理的上下文暴露面；用 Liskov 替换原则（前置条件、后置条件、不变量与历史约束）检验工具/模型替换的语义兼容性；结合 DRY、AHA 与 YAGNI（配齐持续重构与自动化回归测试）防止草率抽象。
+  5. **评测失真、反迎合证伪与复杂度守恒**（[[software-engineering-laws-planning]]、[[software-engineering-laws-decisions]]）：结合 Gilb 与 Goodhart 定律防范针对单一评分器的过拟合；用 Wason 证伪测试与奥卡姆剃刀克服确认偏误及模型迎合；仅在非易腐对象可用帕累托生存模型近似的假设下，讨论 Lindy 递减失效率 $h(t) = \epsilon/t$；不能仅凭年龄或“协议/框架”标签判定未来生存率。
 
 ## Relations
 
