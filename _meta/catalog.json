@@ -333,7 +333,7 @@
       "path": "concepts/agent-evaluation-rubric-calibration.md",
       "type": "concept",
       "title": "Agent Evaluation Rubric Calibration",
-      "description": "说明如何为开放式 Agent 输出选择、诊断和校准评测 Rubric，并把有上下文和理由的专家反馈转化为可复用评估数据。",
+      "description": "结合 MT-Bench 裁判偏差分类学、Rogan–Gladen 灵敏度/特异度偏差校正与预测驱动推断（PPI），说明如何诊断和校准开放式 Agent 评测 Rubric。",
       "status": "stable",
       "tags": [
         "agent",
@@ -349,7 +349,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -363,7 +363,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：在线捕捉、离线对账、按层职责路由、复用与选择性重验证；Skill 治理与知识演化/元技能细节见两个子页。",
+      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）双系统分工、在线捕捉与离线对账、按层职责路由及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -382,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -475,7 +475,7 @@
       "path": "concepts/agent-knowledge-evolution-and-meta-skills.md",
       "type": "concept",
       "title": "Agent Knowledge Evolution and Meta-Skills",
-      "description": "说明经验进入持久层后的演化与元技能：知识整合与加权、外部知识复用与权重学习的区别，以及任务技能与支持设计元技能的分工和证据边界。",
+      "description": "说明经验进入持久层后的演化与元技能：结合稳定性—可塑性困境与 EWC 二阶正则化边界区分外部知识复用与权重学习，并明确任务技能与支持设计元技能的分工和证据边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -493,7 +493,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -508,7 +508,7 @@
       "path": "concepts/agent-memory-reflection-planning-pipeline.md",
       "type": "concept",
       "title": "Agent Memory–Reflection–Planning Pipeline",
-      "description": "将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，同时区分应用事件存储与 AI Agent 默认 memory。",
+      "description": "将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分与反思触发方程，同时区分应用事件存储与 AI Agent 默认 memory。",
       "status": "stable",
       "tags": [
         "agent",
@@ -523,7 +523,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -784,7 +784,7 @@
       "path": "concepts/agent-skill-governance-and-reversible-state.md",
       "type": "concept",
       "title": "Agent Skill Governance and Reversible Skill State",
-      "description": "说明如何把 Skill 作为受治理的程序性资产：使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。",
+      "description": "说明如何把 Skill 作为受治理的程序性资产：结合 ACT-R 知识编译与扇出效应（Fan Effect）形式化使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -803,7 +803,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -2229,7 +2229,7 @@
       "path": "concepts/hermes-memory-governance-notes.md",
       "type": "concept",
       "title": "AI Agent Memory Governance Notes",
-      "description": "记录 AI Agent memory 的写入、更新、遗忘和跨层治理注意事项。",
+      "description": "记录 AI Agent memory 的写入、更新、遗忘、ACT-R 幂律激活衰减与跨层治理注意事项。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2245,7 +2245,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2996,7 +2996,7 @@
       "path": "concepts/production-agent-evaluation-baselines.md",
       "type": "concept",
       "title": "Production Agent Evaluation Baselines",
-      "description": "定义生产 Agent 的延迟、成本、调用和缓存观测基线，并约束外部经验阈值与控制层边界。",
+      "description": "定义生产 Agent 的延迟、成本、调用与缓存观测基线，结合 TOST 非劣效检验、重尾分布均值—中位数偏离与知识编译摊销公式约束外部经验阈值。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3012,7 +3012,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -3031,7 +3031,7 @@
       "path": "concepts/production-ai-agent-evaluation-framework.md",
       "type": "concept",
       "title": "Production AI Agent Evaluation Framework",
-      "description": "定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页。",
+      "description": "定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3047,7 +3047,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -3150,7 +3150,7 @@
       "path": "concepts/repeated-measures-statistical-power-for-ai-evaluation.md",
       "type": "concept",
       "title": "少样本 AI 评测中的重复任务、伪重复与统计功效",
-      "description": "区分参与主体数、任务数与有效独立证据，说明何时重复任务能提高统计功效，以及如何避免把相关观测误当独立样本。",
+      "description": "结合 Hurlbert 伪重复、Kish 设计效应（DEFF）、Clark 语言固定效应谬误（min F'）与 Miller 聚类标准误，区分参与主体数、任务数与有效独立样本量。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3165,7 +3165,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"

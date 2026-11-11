@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-10
+updated: 2026-11-11
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-10 | Indexed pages: 126
+> Last updated: 2026-11-11 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -46,9 +46,9 @@ status: current
 - [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；结合长上下文 U 型位置退化（Lost in the Middle）与带边信息瓶颈（Information Bottleneck）解释即时加载、首尾锚定、上下文与记忆边界及出处债务；静态上下文面与历史/状态加工分别见两个子页
 - [Agent Context: System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报、窄工具面与反向边界、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型的有界加工与恢复边界
-- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：在线捕捉、离线对账、按任务组织与选择性维护；只把公开、长期可复用的发现编译进正式页；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
-- [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离、演化知识评估边界
-- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：整合与加权、外部知识复用 vs 权重学习、任务技能 vs 支持设计元技能
+- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）海马体/新皮层双阶段分工、在线捕捉、离线对账与选择性维护，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
+- [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界
+- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘与弹性权重巩固（EWC Fisher 矩阵二次惩罚）区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：用 CEP 与 7W 框架从真实决策场景出发，而不是把搜索量直接当成内容需求
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
@@ -63,7 +63,7 @@ status: current
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
 - [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
-- [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 AI Agent 默认 memory
+- [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，区分应用事件存储与 AI Agent 默认 memory
 - [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，含 `pass^k / c_err / T_pivot / C_coord` 参数化编排与状态恢复裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、技能、数据源、中间产物与人工审核；视觉设计案例补充低成本迭代、条件性门禁和模型升级后的规则复查
 - [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
@@ -85,7 +85,7 @@ status: current
 
 ### 4. 评测、验证与知识治理 (Evaluation, Verification & Governance)
 - [ACA 源码：有效参数与评估预算](../concepts/fixed-budget-optimizer-selection-aca-case.md) — 仅依据固定 GitHub 提交解析参数校验、调用预算与移动算子，区分请求参数、生效种群和实际评估次数
-- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；尊重必要前置与结果核验，用相关会话、工具证据和专家评分理由校准评测器并沉淀回归案例，不把人工标签当绝对真值
+- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；结合 MT-Bench 三大裁判偏差（位置/冗长/自我偏好）、Rogan–Gladen 灵敏度/特异度校准（$\hat{\theta}_{\text{RG}}$ / Youden's $J$）与预测驱动推断（PPI），用相关会话、工具证据和专家评分理由校准评测器并沉淀回归案例
 - [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
 - [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 研究型 Agent 的证据质量闸门：最终复核通过才综合，否则明确不足并停止；这是加固建议，来源教程仍有未复核就出报告的旁路
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件形成可验证迭代回路；人的理解与证据审查职责链接至对应主维护页
@@ -94,15 +94,15 @@ status: current
 - [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：小型默认注入层、按需检索、历史压缩、长任务 project state、最新观察和隔离 handoff
 - [Human and AI Agent Shared Knowledge Architecture](../concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：运行时知识栈、Wiki 文件层、Wiki 与原始搜索的适用边界、冲突感知对象及候选事实证据边界
 - [Shared Wiki Operating Flow](../concepts/hermes-knowledge-base-operating-flow.md) — 共享知识库端到端操作流：公开准入、可选能力、operations、检索门禁与授权回写
-- [AI Agent Memory Governance Notes](../concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
+- [AI Agent Memory Governance Notes](../concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：结合 ACT-R 基础水平激活幂律衰减（$B_i = \ln \sum t_j^{-d}$）界定什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [AI Agent Retrieval Priority and Answer Path](../concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：区分单源查找与跨源推理，按 `locate` → `expand` 与 Freshness Gate 检查关系出入边与来源证据，公开且授权才回写
 - [Wiki Lint and Health Check Standards](../concepts/hermes-wiki-lint-and-health-check-standards.md) — 共享 Wiki lint / 健康检查规范：链接、索引、frontmatter、标签、页面及局部 claim 新鲜度与结构健康
 - [Wiki Page Writing Standards](../concepts/hermes-wiki-page-writing-standards.md) — 人类与 AI Agent 共用的 Wiki 页面写作规范：命名、frontmatter、日期模板、结构、wikilinks、可选 Relations、局部 `[!volatile]` claim 与质量检查
-- [Production Agent Evaluation Baselines](../concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、缓存、工具耗时、单次正确回答成本与跨源证据导航待执行评测；区分路由质量代理、非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
-- [Production AI Agent Evaluation Framework](../concepts/production-ai-agent-evaluation-framework.md) — 生产级 AI Agent 评估框架：分层评估检索（含跨运行引用一致性）、生成、行为和运营，结合广覆盖评分、条件性诊断和多 Agent 基线比较；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页
+- [Production Agent Evaluation Baselines](../concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、缓存、工具耗时、单次正确回答摊销成本（$C_{\text{amort}}$）与跨源证据导航待执行评测；结合 TOST 双单侧非劣效检验与右偏重尾分布均值—中位数公式，区分非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
+- [Production AI Agent Evaluation Framework](../concepts/production-ai-agent-evaluation-framework.md) — 生产级 AI Agent 评估框架：分层评估检索（含跨运行引用一致性）、生成、行为和运营，含 `N_eff / J_judge / Δ_NI / C_amort` 参数化评估与门禁裁决矩阵；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页
 - [Agent 部署前结构回归与工具轨迹调试](../concepts/agent-pre-deploy-regression-and-trace-debugging.md) — 生产评估子页：工具调用六步可归因调试证据链、部署前七类结构回归探针矩阵，以及 RAG 决策输出变化与有真实值支持的质量增益边界
 - [Progressive Knowledge System Growth](../concepts/progressive-knowledge-system-growth.md) — 知识系统的渐进式生长原则：先用真实问题产生内容，再让结构、链接和自动化从反复出现的摩擦中生长
-- [少样本 AI 评测中的重复任务、伪重复与统计功效](../concepts/repeated-measures-statistical-power-for-ai-evaluation.md) — 少样本 AI 评测的重复测量与统计功效：区分主体、任务和有效独立证据，避免把相关观测当成独立样本
+- [少样本 AI 评测中的重复任务、伪重复与统计功效](../concepts/repeated-measures-statistical-power-for-ai-evaluation.md) — 少样本 AI 评测的重复测量与统计功效：结合 Hurlbert 伪重复、Kish 设计效应（$\text{DEFF} = 1 + (m-1)\rho$ 与有效样本量上限 $N/\rho$）、Clark 语言固定效应谬误（$\min F'$）及 Miller 聚类标准误与配对差值方差分解，区分主体、任务和有效独立证据
 - [System Governance Operating Model](../concepts/system-governance-operating-model.md) — 系统治理域的 operating model：管理 AI Agent LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
 - [Wiki Ingestion Workflow](../concepts/wiki-ingestion-workflow.md) — 把外部信息编译进知识库的标准入库流程：公开边界、raw 固化、候选反查、Relations 与链接卫生；清单同步前审查 raw 增删授权，同步后回读差异并验证
 

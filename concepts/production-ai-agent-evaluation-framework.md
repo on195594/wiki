@@ -1,12 +1,12 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-11-04
+updated: 2026-11-11
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md]
 status: stable
-description: 定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页。
+description: 定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。
 aliases: [agent-evaluation-framework]
 volatility: medium
 review_by: 2027-03-02
@@ -149,6 +149,17 @@ verified_at: 2026-11-02
 [[agent-evaluation-rubric-calibration]] 单独维护评测尺失准的诊断与校准方法：普通问答可使用 Golden Answer 语义比较，开放式长报告应使用分维度 Rubric、忠实度检查和基线 A/B；聚合分数只作诊断指针，必须回溯具体 Case、分项评语和 Trace。分数与证据冲突时，先审计评分维度、锚点和错误激励，再修改 Agent。
 
 该方法来自 [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]] 的单一实践案例，不把具体权重、评分锚点或 LangSmith 产品依赖提升为 AI Agent 默认规则。
+
+## [推论] 参数化评估与门禁裁决矩阵（`N_eff / J_judge / Δ_NI / C_amort`）
+
+`[推论]` 为将本页的四层评估框架与子页的统计功效（[[repeated-measures-statistical-power-for-ai-evaluation]]）、裁判校准（[[agent-evaluation-rubric-calibration]]）、生产成本非劣效基线（[[production-agent-evaluation-baselines]]）及多轮状态一致性（[[stateful-agent-environments-and-grounded-verification]]）收束为统一的可核验工程契约，在设计离线基准、在线抽检或模型/Harness 降级试验时，可按以下四参数矩阵逐项核对（不预设跨项目硬编码默认数值）：
+
+| 参数符号 | 评估维度与数学定义 | 门禁裁决条件（Release / Routing Gate） | 违背时的典型退化模式与处置动作 |
+| :--- | :--- | :--- | :--- |
+| $N_{\text{eff}}$ | **有效独立样本量与聚类配对设计**：<br>$N_{\text{eff}} = \frac{N \cdot m}{1 + (m - 1)\rho} \le \frac{N}{\rho}$；<br>配对差值标准误 $\text{SE}(\hat{\Delta}) = \sqrt{\text{SE}_A^2 + \text{SE}_B^2 - 2\text{Cov}(\hat{p}_A, \hat{p}_B)}$ | 1. 同一模板扩题或同题重跑按簇计算 $\text{DEFF}$ 与聚类标准误；<br>2. 跨条件比较满足交叉随机效应（或 $\min F'$）且优先采用同题配对比较 | **牺牲性/隐式伪重复**：把同题 $K$ 次采样或同模板改写当作独立样本，虚高显著性；应扩充独立任务簇 $N$ 而非堆叠同质重跑 $m$ |
+| $J_{\text{judge}}$ | **自动裁判区分度与偏差校准**：<br>Youden 指数 $J = \hat{q}_1 + \hat{q}_0 - 1 > 0$；<br>$\hat{\theta}_{\text{RG}} = \text{clip}_{[0,1]}\!\left(\frac{\hat{p}_{\text{raw}} + \hat{q}_0 - 1}{J}\right)$ 或 $\hat{\theta}_{\text{PPI}}$ | 1. 小样本专家审查集 $n$ 实测 $J > 0$，且成对比较通过正反位置互换一致性检查；<br>2. 报告经 Rogan–Gladen 或 PPI 修正后的正确率及置信区间 | **评测尺失准与奖励黑客**：位置/冗长/自我偏好或低特异度 $\hat{q}_0$ 导致表观分数与人工复核背离；应暂停修改 Agent，先重修 Rubric 锚点 |
+| $\Delta_{\text{NI}}$ | **非劣效/等效检验与多轮可靠率**：<br>TOST 下界 $L_{1-2\alpha}(\mu_{\text{new}} - \mu_{\text{base}}) > -\delta_{\text{NI}}$；<br>有状态多轮 $\text{pass}^k = \mathbb{E}[(c_i/n_i)^k]$ | 1. 路由降级或 Prompt 压缩的 $(1-2\alpha)$ 置信区间下限严格高于预设容忍退化界 $-\delta_{\text{NI}}$；<br>2. 工具与数据库终态满足幂等与 $\text{pass}^k$ 连续可靠门槛 | **把未显著误当等价**：小样本 $p > \alpha$ 掩盖真实质量滑坡或长链路复合衰减（$\prod p_t$）；应标记为“未决（Inconclusive）”并阻断自动全量切换 |
+| $C_{\text{amort}}$ | **全周期摊销成本与尾部延迟分布**：<br>$C_{\text{amort}} = \frac{\mathbb{E}[C_{\text{query}}] + (C_{\text{compile}} + C_{\text{maint}})/N_{\text{queries}}}{\hat{\theta}_{\text{correct}}}$；<br>监控 $\mathbb{E}[C]$ 与 P50/P95/P99 | 1. 同时披露算术均值 $\mathbb{E}[C]$（含重试/回退长尾）与分位数，不以中位数代替总预算；<br>2. 含编译知识库或 Judge 抽检时计入离线编译与裁判摊销成本 | **长尾预算爆炸与编译倒挂**：中位成本下降但尾部失败重试拉高 $\mathbb{E}[C]$，或低频查询无法摊销离线编译开销；应退回轻量基线或收紧有界重试 |
 
 ## What to preserve, what not to preserve
 

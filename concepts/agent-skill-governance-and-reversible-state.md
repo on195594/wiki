@@ -1,12 +1,12 @@
 ---
 title: Agent Skill Governance and Reversible Skill State
 created: 2026-10-17
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, lifecycle]
-sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification]
+sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification, https://edutechwiki.unige.ch/en/Adaptive_control_of_thought_theory, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf]
 status: stable
-description: 说明如何把 Skill 作为受治理的程序性资产：使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。
+description: 说明如何把 Skill 作为受治理的程序性资产：结合 ACT-R 知识编译与扇出效应（Fan Effect）形式化使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。
 volatility: medium
 review_by: 2027-03-02
 aliases: [skill-governance, reversible-skill-state]
@@ -35,6 +35,18 @@ available candidates
 ```
 
 这些维度必须分别记录。`skill_view` 命中、正确 Skill 排第一、最终任务成功和 Skill 对结果的因果贡献不是同一个指标。
+
+### 认知架构根基：ACT-R 知识编译（Knowledge Compilation）与扇出效应（Fan Effect）
+
+上述实证现象（Skill 的作用集中于 65.7% 的程序锚定而非仅占 4.5% 的显式知识注入，且候选池从 5 扩至 100 时实际使用精度从 `29.6%` 暴跌至 `3.3%`）在认知科学中可由 John R. Anderson（1982，*Psychological Review*；Anderson et al.，2004，*Psychological Review*，[An Integrated Theory of the Mind](https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf)，[ACT-R Theory](https://edutechwiki.unige.ch/en/Adaptive_control_of_thought_theory)）的 **ACT-R 认知架构**给出严密的形式化解释：
+
+1. **知识编译（Knowledge Compilation：程序化与合成）**：ACT-R 区分**陈述性记忆（Declarative Memory，以 chunk 存储概念与事实）**与**程序性记忆（Procedural Memory，以 `IF condition THEN action` 产生式规则存储技能）**。陈述性知识不能直接高效驱动行动，必须经过**程序化（Proceduralization，将显式环境前提与动作绑定为无需工作记忆反复检索的条件—动作对）**与**合成（Composition，将多步序列折叠为紧凑控制流）**编译为产生式规则，才能消除长链推理中的工作记忆瓶颈。**[推论]** 这解释了为何高价值 Skill 必须写成带触发条件、前置检查、有序命令与验证门的程序锚点，而非百科全书式的概念说明。
+2. **扇出效应（Fan Effect）与候选池干扰衰减**：在 ACT-R 的关联检索模型（Anderson & Reder，1999；[Thomson et al. 2016](https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf)）中，当上下文线索 $j$ 关联到 $\text{fan}_j$ 个候选记忆或技能时，线索 $j$ 向目标条目 $i$ 传递的关联激活强度 $S_{ji}$ 按对数规律衰减：
+   $$S_{ji} = S_{\max} - \ln(\text{fan}_j)$$
+   其中 $S_{\max}$ 为最大基础关联强度。随着共享相似领域词或触发标签的候选 Skill 数量 $\text{fan}_j$ 增加，每个候选分得的鉴别性激活信噪比呈 $-\ln(\text{fan}_j)$ 下降，相似干扰项（Confusable Distractors）比无关条目更直接推高局部 $\text{fan}_j$，导致检索排序与实际调用精度急剧退化。
+3. **[推论] 技能使用漏斗的条件概率分解**：设候选池规模为 $M$、目标运行环境（`model × harness × toolset`）为 $\mathcal{E}$，单次任务中某个 Skill $s$ 产生正向经验证净收益的有效转化率可分解为：
+   $$P_{\text{eff}}(s \mid \mathcal{C}_M, \mathcal{E}) = P(\text{id} \mid s, \mathcal{C}_M) \cdot P(\text{apply} \mid \text{id}, s, \mathcal{E}) \cdot \Delta P(\text{succ} \mid \text{apply}, s, \mathcal{E})$$
+   其中 $P(\text{id} \mid s, \mathcal{C}_M)$ 受扇出 $\text{fan}_j$ 制约，$P(\text{apply} \mid \text{id}, s, \mathcal{E})$ 受指令清晰度与模型遵循度制约（原论文中仍有 `10.0%` 被误用或忽略），而 $\Delta P(\text{succ} \mid \text{apply}, s, \mathcal{E}) = P(\text{succ} \mid \text{apply}, s, \mathcal{E}) - P(\text{succ} \mid \text{baseline}, \mathcal{E})$ 衡量外部验证器的真实增益（跨模型负迁移时 $\Delta P < 0$）。治理评估必须分别观测这三项因子，不能用单一命中率或未对照的完成率替代。
 
 ### Frontier-model implication
 
@@ -76,6 +88,12 @@ WikiSkill（[[arxiv-2608-27454-wikiskill]]）将每轮状态表示为活动 Skil
 ```text
 rollback(active candidate) != erase(evidence and rejected reasoning)
 ```
+
+用状态转移方程表示为：设第 $k$ 轮迭代的活动技能集为 $S_k$、持久知识与证据库为 $W_k$。当候选技能变更 $s_{\text{cand}}$ 在验证集上的净效用门禁未通过（$\Delta V(S_k \oplus s_{\text{cand}}) \le 0$）时，系统执行非对称状态更新：
+
+$$S_{k+1} = S_k, \qquad W_{k+1} = W_k \cup \big\{\big(\text{trace}_k,\; s_{\text{cand}},\; \Delta V_k,\; \text{reason}_k\big)\big\}$$
+
+即活动执行面 $S_{k+1}$ 严格回滚至已验证基线 $S_k$，但本次失败轨迹 $\text{trace}_k$、候选差异 $s_{\text{cand}}$、验证得分变化 $\Delta V_k$ 与拒绝归因 $\text{reason}_k$ 单调并入持久层 $W_{k+1}$，从结构上阻断后续 Proposer 在同一无效搜索方向上重复试错。
 
 [推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先留在其原有会话、项目或评估载体中；只有通过公共边界且长期可复用的发现才编译进公共 Wiki 的正式 owner。Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，在合适的项目证据载体中保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令，也不把“保留证据”误读为“公开全部执行记录”。
 

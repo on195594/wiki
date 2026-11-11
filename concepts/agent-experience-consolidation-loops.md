@@ -1,12 +1,12 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-09
+updated: 2026-11-11
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/]
 status: stable
-description: 定义 Agent 经验固化闭环：在线捕捉、离线对账、按层职责路由、复用与选择性重验证；Skill 治理与知识演化/元技能细节见两个子页。
+description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）双系统分工、在线捕捉与离线对账、按层职责路由及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。
 volatility: medium
 review_by: 2026-12-13
 aliases: [experience-consolidation-loop, agent-experience-consolidation]
@@ -46,6 +46,8 @@ Anthropic 发布的 Warp 案例 [[claude-warp-self-improving-agent-skills-2026-0
 ## Online capture and offline consolidation
 
 Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-11-07]]（“Memory notes”“Dreaming can correct memory”“Thinking backward, looking forward”）补充了闭环的时间分工：执行时记录显著观察，使其能及时用于后续步骤；离线 dreaming 再回看原始记录，纠正笔记、组织知识表示或调整后续会话的注入内容。这里的 memory 是跨会话知识的总称，不只指宿主的默认 memory 工具，也不涉及模型权重更新。
+
+在认知与计算神经科学中，这一双阶段架构对应 James L. McClelland、Bruce L. McNaughton 与 Randall C. O'Reilly（1995, *Psychological Review*，[Why there are complementary learning systems in the hippocampus and neocortex](https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf)，[PubMed 7624455](https://pubmed.ncbi.nlm.nih.gov/7624455/)）提出的**互补学习系统（Complementary Learning Systems, CLS）**理论：海马体（Hippocampus）采用快速、稀疏、正交化的表征完成单次情景编码（Episodic Encoding），防止新旧经历互相覆盖；新皮层（Neocortex）则通过慢速、交错回放（Interleaved Replay）从多轮历史样本中逐步提取潜在语义结构与程序规律。若将单次特定轨迹直接以大步长写入共享知识层或模型参数，就会破坏既有结构（即灾难性干扰，见 [[agent-knowledge-evolution-and-meta-skills]]）。**[推论]** 对应到 AI Agent 架构，在线 `session / raw trajectory` 承担快速情景捕获职责，而离线复盘、对账与门禁验证则承担慢速交错整合职责；不能跳过离线对账与反例检验直接把单次轨迹写成全局常驻指令。
 
 ### Capture less, but preserve what cannot be cheaply recovered
 
@@ -205,6 +207,17 @@ session_search / project evidence → audited review
 5. 只有稳定、短小、经常需要的事实进入 memory。
 6. 自动化只读复盘可以先做；自动写入 durable layer 要等真实验证和单独批准。
 7. 所有经验固化都要保留 provenance 和 rollback path。
+
+## [推论] 参数化经验固化与技能治理裁决矩阵（`B_act / P_skill / G_promo / I_rev`）
+
+`[推论]` 为将本页的互补学习系统（CLS）双阶段分工与子页的记忆激活衰减（[[hermes-memory-governance-notes]]）、Skill 使用漏斗与可回滚状态（[[agent-skill-governance-and-reversible-state]]）及知识演化与元技能边界（[[agent-knowledge-evolution-and-meta-skills]]）收束为统一的可审计工程契约，在评估记忆留存、Skill 库扩容或候选规则晋升时，可按以下四参数矩阵逐项核对（不预设跨项目硬编码默认数值）：
+
+| 参数符号 | 治理维度与数学定义 | 门禁裁决条件（Consolidation & Promotion Gate） | 违背时的典型退化模式与处置动作 |
+| :--- | :--- | :--- | :--- |
+| $B_{\text{act}}$ | **记忆基础激活与扇出信噪比（Activation & Fan Signal-to-Noise）**：<br>$A_i = \ln\!\left(\sum_{j=1}^{n} t_j^{-d}\right) + \sum_{j \in \mathcal{C}} W_j \big(S_{\max} - \ln(\text{fan}_j)\big)$ | 1. 常驻 `memory` 条目须具备跨任务高频激活（高 $n$、低衰减 $t_j$）且单句高密度；<br>2. 共享同一触发线索 $j$ 的候选条目数 $\text{fan}_j$ 受控，避免无界堆积 | **扇出稀释与常驻膨胀**：将一次性长篇反思或高度重叠条目塞入默认层，导致 $\ln(\text{fan}_j)$ 增大、检索精度暴跌；应合并同角色条目或下沉至按需检索的 `wiki` |
+| $P_{\text{skill}}$ | **技能漏斗有效转化率（Skill Funnel Conversion）**：<br>$P_{\text{eff}}(s) = P(\text{id} \mid \mathcal{C}_M) \cdot P(\text{apply} \mid \text{id}) \cdot \Delta P(\text{succ} \mid \text{apply}, \mathcal{E})$ | 1. 分别记录候选集召回 $P(\text{id})$、实质遵循 $P(\text{apply} \mid \text{id})$ 与外部验证净增益 $\Delta P(\text{succ})$；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验 | **高命中低转化与负迁移**：把 `skill_view` 命中率当作成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
+| $G_{\text{promo}}$ | **候选晋升净效用门禁（Promotion Net-Utility Gate）**：<br>$G_{\text{promo}}(s_{\text{cand}}) = \Delta \hat{\mu}_{\text{held-out}} - \lambda_{\text{neg}} R_{\text{regress}} - \lambda_{\text{cost}} \Delta C_{\text{token}} > 0$ | 1. 候选规则在冻结基线、原失败案例与相邻反向案例上无回归（$R_{\text{regress}} = 0$）；<br>2. 性能增益足以覆盖额外上下文 Token 与控制器开销 $\Delta C_{\text{token}}$ | **单次痛点过拟合与库漂移（Library Drift）**：因单次失败盲目追加规则，导致邻近任务回归或 Token 预算被挤占；应拒绝晋升，保留为局部 fixture 或合并进既有 owner |
+| $I_{\text{rev}}$ | **可逆技能状态与持久证据分离不变量（Reversible-State Invariant）**：<br>$S_{k+1} = \text{Rollback}(S_k, s_{\text{cand}}),\; W_{k+1} = W_k \cup \{e_k, \text{reason}_k\}$ | 1. 候选 Skill $s_{\text{cand}}$ 验证回退时立即恢复上一活动状态 $S_k$；<br>2. 原始轨迹证据 $e_k$ 与被拒绝原因 $\text{reason}_k$ 持久保留在证据/知识层 $W_{k+1}$ | **回滚失忆与重复无效搜索**：回滚失败 Skill 时一并删掉测试记录与拒绝理由，导致后续迭代重复探索同一死胡同；应严格分离活动指令层 $S_k$ 与不可变证据/知识层 $W_k$ |
 
 ## Relations
 

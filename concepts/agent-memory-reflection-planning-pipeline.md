@@ -1,12 +1,12 @@
 ---
 title: Agent Memory–Reflection–Planning Pipeline
 created: 2026-08-15
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, memory, architecture, research]
-sources: [raw/papers/arxiv-2304-03442-generative-agents.md]
+sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442]
 status: stable
-description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，同时区分应用事件存储与 AI Agent 默认 memory。
+description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分与反思触发方程，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
 volatility: medium
 review_by: 2027-03-02
@@ -32,6 +32,17 @@ observation / interaction
 ```
 
 论文实现将观察、反思和计划都写回 memory stream，再根据上下文窗口检索子集。反思不是定时摘要，而是从近期高重要性经历生成更高层问题和推断；计划则从日级大纲逐步分解到更细行动。
+
+### 形式化检索评分与反思触发条件（Park et al., 2023）
+
+在原论文（[arXiv:2304.03442](https://arxiv.org/abs/2304.03442)，[[arxiv-2304-03442-generative-agents]]）的实现中，面对当前查询或情境 $q$，记忆流中每条记录 $m_i$ 的检索得分由三项经 Min–Max 归一化至 $[0, 1]$ 的信号线性加权合成：
+
+$$s(m_i, q) = \alpha_{\text{rec}} \cdot \widehat{\text{Rec}}(m_i) + \alpha_{\text{imp}} \cdot \widehat{\text{Imp}}(m_i) + \alpha_{\text{rel}} \cdot \widehat{\text{Rel}}(m_i, q)$$
+
+- **新近度（Recency）**：按距上次访问的小时数 $\Delta t_i$ 呈指数衰减，$\text{Rec}(m_i) = \gamma^{\Delta t_i}$（原实现取衰减因子 $\gamma = 0.995$）；
+- **重要性（Importance）**：写入时由模型在 $1 \sim 10$ 整数刻度上评估事件对主体的长期意义（如日常琐事为 `1`，重大转折为 `10`）；
+- **相关性（Relevance）**：记忆文本嵌入 $\mathbf{e}_{m_i}$ 与查询嵌入 $\mathbf{e}_q$ 的余弦相似度，$\text{Rel}(m_i, q) = \frac{\mathbf{e}_{m_i}^\top \mathbf{e}_q}{\|\mathbf{e}_{m_i}\| \cdot \|\mathbf{e}_q\|}$；
+- **反思触发阈值（Reflection Gate）**：当最近写入事件的累积重要性得分满足 $\sum_{i \in \mathcal{W}_{\text{recent}}} \text{Imp}(m_i) > \tau_{\text{reflect}}$（原实现取 $\tau_{\text{reflect}} = 150$，且检索权重取 $\alpha_{\text{rec}} = \alpha_{\text{imp}} = \alpha_{\text{rel}} = 1$）时，触发反思树合成并将高层推断连同指向底层证据的指针写回记忆流。
 
 ## What the evidence supports
 
