@@ -188,7 +188,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
@@ -559,7 +559,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -643,7 +643,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -911,7 +911,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "agent-context-engineering",
@@ -1214,7 +1214,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1347,9 +1347,9 @@
         "claude-code-tips"
       ],
       "volatility": "high",
-      "review_by": "2027-01-15",
-      "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "review_by": "2027-02-10",
+      "verified_at": "2026-11-10",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "ai-coding-assistant-context-budget-management",
@@ -1384,9 +1384,9 @@
         "codex-workflow-layering"
       ],
       "volatility": "high",
-      "review_by": "2027-01-20",
-      "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "review_by": "2027-02-10",
+      "verified_at": "2026-11-10",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "hermes-ai-workflow-formalization-principles",
@@ -1521,7 +1521,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-08",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1750,7 +1750,7 @@
       "volatility": "high",
       "review_by": "2027-02-05",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "updated": "2026-11-10",
       "relations": {
         "refines": [
           "flutter"
@@ -1892,7 +1892,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "dijkstra-ai-programming-formalization"
@@ -1939,7 +1939,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer"
@@ -2315,9 +2315,9 @@
         "agent-model-specific-harness-profiles"
       ],
       "volatility": "high",
-      "review_by": "2027-01-25",
-      "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "review_by": "2027-02-10",
+      "verified_at": "2026-11-10",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2704,7 +2704,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -2915,7 +2915,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -3200,7 +3200,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "ai-coding-assistant-context-budget-management",
@@ -3435,7 +3435,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -3550,7 +3550,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -3693,7 +3693,7 @@
       "volatility": "high",
       "review_by": "2027-01-30",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
+      "updated": "2026-11-10",
       "relations": {
         "depends_on": [
           "hermes-retrieval-priority-and-answer-path"
@@ -3971,7 +3971,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",

@@ -1,10 +1,10 @@
 ---
 title: AI Agent Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, llm, workflow, decision, note, skills, governance]
-sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, docs:https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/, raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md, raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md]
+sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, docs:https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/, raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md, raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, https://arxiv.org/abs/2307.09702, https://www.inf.unibz.it/~franconi/teaching/2006/kbdb/Codd72a.pdf, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf]
 aliases: [agent-ai-workflow-formalization-principles]
 status: stable
 description: 把形式化思想转译为 AI Agent 工作流中的规格、边界、验证和可回滚原则。
@@ -121,6 +121,17 @@ AI 最有价值的地方不是取代结构，而是更快地生成结构。
 实践含义：
 - 用 AI 草拟 spec、总结要点、生成测试框架、补充分类与交叉链接
 - 但最后仍由人或规则层负责验收与裁决
+
+### 参数化类型契约与确定性验证裁决矩阵（`C_spec / D_fsm / A_add / P_prop`）
+
+**[推论]** 为将形式化思想切实落地为可审计的 Agent 软件工程契约，结合语法约束有限状态机（[Willard & Louf 2023](https://arxiv.org/abs/2307.09702)）、关系代数的形式化查询语义（[Codd 1970/1972](https://www.inf.unibz.it/~franconi/teaching/2006/kbdb/Codd72a.pdf)）与 QuickCheck 属性测试（[Claessen & Hughes 2000](https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf)），可定义四个参数化工程核验维度：
+
+| 契约参数 | 定义与形式化机制 | 适用分工与防御边界 | 越界信号与降级规则 |
+| :--- | :--- | :--- | :--- |
+| **`C_spec`** | **规格完备性与双向追溯契约**：变更需求与代码实现、测试用例之间的双向映射覆盖度（Bidirectional Traceability）。 | 在变更前显式定义输入约束、输出对象、禁止边界与验收条件；重要变更必须在现有 spec / doc 中留档，避免“先写代码、再补规格、审查走过场”的 review theater。 | 当存在未绑定义图的隐式实现扩展时，阻断合并并要求补充业务理由或将其剔除。 |
+| **`D_fsm`** | **状态机约束解码比率**：结构化输出中由 FSM / CFG Logits 掩码直接保证语法的接口覆盖率（Correct by Construction）。 | 对所有进入自动化管线的中间对象（工具参数、分类标签、路由指令）采用语法约束解码，在推理层杜绝格式畸变与 JSON 语法错误。 | 约束解码仅解决形式合法性；若出现语义跑偏或越权调用，必须由外层 Tool Gate 业务规则拦截，禁止将格式合法误认为执行授权。 |
+| **`A_add`** | **度量代数可加性分级**：区分完全可加（Additive）、半可加（Semi-additive）与非可加（Non-additive）计算逻辑。 | 所有加总、过滤、均值与指标比率计算严格下沉至确定性执行器（Python / SQL）；禁止模型对明细比率直接平均；仅当分子与分母在目标粒度上均可加、分区互不重叠且口径一致时，才按 $\sum \text{num} / \text{nullif}(\sum \text{den}, 0)$ 计算；否则先按指标定义重算组成量。 | 当数据源缺少必要明细列时，显式留白并披露原因，严禁模型擅自插值填零或捏造未测量数据。 |
+| **`P_prop`** | **属性测试不变量覆盖度**：核心算法与状态转换逻辑通过生成式属性测试（Property-based Testing）检验的比例。 | 为复杂数据处理逻辑配备不变量（对称性、幂等性、守恒性），利用随机输入与收缩算法（Shrinking）探查最小边界反例。 | 仅通过固定单测示例但属性测试失败的代码，视为尚未收敛，要求基于最小反例重构。 |
 
 ## Principle 6: context should be compressed, not endlessly widened
 长上下文会污染后续输出。

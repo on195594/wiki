@@ -1,10 +1,10 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-11-05
+updated: 2026-11-11
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
-sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md]
+sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf]
 status: stable
 description: 说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。
 aliases: [typed-agent-boundaries]
@@ -33,6 +33,13 @@ Pydantic AI 这篇文章 [[machinelearningmastery-pydantic-ai-agents-2026-04-29]
 - 下游处理不确定：业务代码拿到的是已验证 Python 对象，而不是一段待解释文本。
 
 重要细节：`Field(description=...)` 不只是文档，也是在给模型提供字段级约束。字段说明越明确，校验失败和自动重试越少。
+
+### 1.0 语法约束解码与有限状态机掩码（FSM / CFG Logits Masking）
+
+在运行时底层，类型化输出的可靠性不仅依赖事后 Pydantic 解析，更可由**语法约束解码（Grammar-Constrained Decoding / Guided Generation）**在推理阶段直接保障：
+- Brandon T. Willard 与 Rémi Louf（2023，*Efficient Guided Generation for Large Language Models*，[arXiv:2307.09702](https://arxiv.org/abs/2307.09702)、开源库 Outlines）证明，神经文本生成可等价重构为**确定性有限状态机（FSM）或下推自动机（PDA / CFG）的状态转移过程**。通过在模型词表上离线构建索引，解码引擎在生成每个 Token 时以 $\mathcal{O}(1)$ 平均开销直接对其 Logits 施加状态掩码（Logits Mask），将所有会导致违反目标正则表达式、JSON Schema 或上下文无关文法（CFG / GBNF）的非法 Token 概率置为 $-\infty$。
+- **构造即合法（Correct by Construction）**：与传统的“生成自由文本 → 正则提取 → JSON 反序列化 → 失败报错重试”相比，状态机约束解码使模型在推理采样阶段即被物理限制在目标 Schema 的合法转移路径内，彻底消除了语法错误与格式畸变（malformed JSON）。
+- **[推论] 语法合法性不替代语义有效性（Syntactic vs. Semantic Correctness）**：约束解码能保证输出严格符合类型定义（例如字段存在且符合正则表达式），但**无法保证字段取值的真实性与业务语义合理性**。结构合法的 `delete_account(user_id=123)` 依然可能是误触发；Schema 约束减少了下游门禁需要处理的畸形候选率，但业务规则校验、权限检查与逻辑评估（见下文属性测试与依赖注入）依然必须独立存在。
 
 ### 1.1 Stage scope selection before nested extraction
 
@@ -76,6 +83,13 @@ Pydantic AI 的 `RunContext` 模式把依赖作为运行时参数注入工具函
 - 不同用户、租户、权限上下文可以隔离。
 - 工具函数不需要读取隐式全局状态。
 - 失败可以被定位到模型输出、工具实现或依赖服务，而不是混在一起。
+
+### 5. 属性测试与不变量生成式检验（Property-based Invariant Testing）
+
+单靠固定的单元测试样例容易让 Agent 编写的代码在未见输入上崩溃。Koen Claessen 与 John Hughes（2000，ACM SIGPLAN ICFP，*QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs*，[Tufts CS Archive](https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf)）开创的**属性测试（Property-based Testing）**为类型化 Agent 提供了更高阶的验证边界：
+- 程序员或 Agent 不只指定特定输入输出对（如 `f(2) == 4`），而是用代数性质形式化表达在任意合法输入 $x \in \mathcal{X}$ 下必须始终成立的**系统不变量（Invariants）**（如逆操作对称性 $f^{-1}(f(x)) = x$、幂等性 $g(g(x)) = g(x)$、单调性或保持数据守恒）。
+- 结合随机生成与**收缩（Shrinking）**机制：当测试引擎在大量随机生成的结构化测试用例中探测到违反不变量的样本时，自动执行贪婪搜索将其收缩为导致失败的**局部最小反例（minimal failing test case）**。
+- **[推论] 在 AI 编程中的应用**：对 Agent 生成的复杂数据转换、序列化或解析逻辑，强制其配套提供属性测试（例如使用 Python `hypothesis` 库）；利用收缩出的最小反例可直接阻断有缺陷的代码合入，并为上下文压缩提供极低噪声的精确调试用例。
 
 ## What uncertainty this solves
 

@@ -1,10 +1,10 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [ai-coding, agent, context-engineering, optimization, claude-code]
-sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md]
+sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489]
 status: stable
 volatility: medium
 review_by: 2027-03-02
@@ -64,6 +64,10 @@ Microsoft Developer 的 AX 文章（[[microsoft-developer-ai-coding-agents-use-t
 
 ### 4. File access should be explicit and deny noisy surfaces
 “读整个仓库”通常是上下文预算灾难。文章建议从明确文件开始，只允许读取 import/调用链相关文件，并 deny `.env`、secrets、`node_modules`、build、coverage、logs 等噪音目录。
+
+结合代码智能与软件工程实证研究，控制文件读取预算还有两条高杠杆机制：
+- **用 AST 符号签名图替代全量依赖文件正文**：如 [Aider RepoMap](https://aider.chat/2023/10/22/repomap.html) 所示，利用 Tree-sitter 提取跨文件类与函数调用签名并在引用图上按 PageRank 排序，在固定小预算（如 1k tokens）内即可向模型传达模块接口契约，仅对需要实际修改的文件加载完整实现源码。
+- **按“文件 → 类/函数骨架 → 目标行窗口”三级漏斗定位**：如 [Agentless（Xia et al., 2024）](https://arxiv.org/abs/2407.01489) 在 SWE-bench Lite 上验证的层级化定位流水线，先根据问题与仓库结构筛出候选文件，再查看 AST 签名压缩视图定位具体函数，最后只读取目标行窗口并生成紧凑 Diff 补丁，从而避免无界探索循环打爆上下文窗口。
 
 AI Agent 映射：子任务委派 / coding agent prompt 应明确：
 - 起始文件

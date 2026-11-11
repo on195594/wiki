@@ -1,10 +1,10 @@
 ---
 title: Agent 生产级 Harness 与云端运行时边界
 created: 2026-11-02
-updated: 2026-11-06
+updated: 2026-11-11
 type: concept
 tags: [agent, harness, lifecycle, deployment, orchestration, governance, verification, linux]
-sources: [raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, concepts/agent-development-lifecycle.md]
+sources: [raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, concepts/agent-development-lifecycle.md, https://en.wikipedia.org/wiki/Long-running_transaction]
 status: stable
 volatility: medium
 verified_at: 2026-11-02
@@ -62,6 +62,13 @@ Yang Li 的 Tetral 架构叙述 [[tetral-next-scaling-problem-2026-09-06]] 为�
 5. **旧执行者隔离（Stale worker fencing）**：超时重投后，旧进程迟到的写入是否会被代际号拒绝？
 
 此机制不让任意外部系统自动具备事务性，也不保证副作用恰好执行一次；持久化载体的成本与复杂度取舍见 [[agent-orchestration-production-tradeoffs]]。
+
+### 长程副作用的 Saga 补偿事务与枢轴事务边界
+
+当长程 Agent 跨多个外部 API、代码仓库或 SaaS 服务执行写操作时，由于无法跨外部系统维持传统数据库的分布式 ACID 锁，其恢复语义应锚定 Hector Garcia-Molina 与 Kenneth Salem（1987，ACM SIGMOD，*SAGAS*；[Long-running transaction](https://en.wikipedia.org/wiki/Long-running_transaction)）提出的 **Saga 长事务模式**，将工具调用序列 $T_1, T_2, \dots, T_n$ 按可逆性划分为三类操作单元：
+1. **可补偿事务（Compensable transactions）**：已提交的局部写操作具备明确的业务逆操作 $C_i$（例如创建临时分支对应删除分支、预占日程对应取消预约）。当后续步骤 $T_k$ 失败或被用户取消时，Harness 协调器按逆序调用 $C_{k-1}, \dots, C_1$ 执行**向后恢复（Backward recovery）**，使外部环境回到等价初始状态，而非仅清理本地会话内存。
+2. **枢轴事务（Pivot transaction）**：整条工作流的**不可逆分界点（Go/No-Go point）**——即既不可自动补偿、也不可无副作用撤回的动作（例如对外发送正式邮件、发布公开包、执行生产环境破坏性迁移或资金扣划）。一旦枢轴事务提交，工作流便不可向后回滚；因此 **Tool Gate 人工审批、只读预检（dry-run）与权威状态快照必须严格前置在枢轴事务提交之前**。
+3. **可重试事务（Retryable transactions）**：位于枢轴事务之后的收尾步骤（如同步本地索引、写入归档日志、发送完成回执），必须设计为幂等操作（配合上述窗口 1–4 的唯一操作身份），以便在断连恢复时通过**向前恢复（Forward recovery）**重试直至收敛。
 
 ### 凭据隔离与 Tool Gate 授权分离
 

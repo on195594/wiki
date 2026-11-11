@@ -1,10 +1,10 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [llm, agent, workflow, research]
-sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md]
+sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md, https://arxiv.org/abs/2307.03172, https://aclanthology.org/2024.tacl-1.9/, https://en.wikipedia.org/wiki/Information_bottleneck_method]
 status: stable
 description: 定义检索与 prompt 之间的上下文工程层，以及 Agentic RAG 的证据信任、语义漂移和未知候选处理边界。
 aliases: [context-engineering-layer]
@@ -33,6 +33,7 @@ verified_at: 2026-11-02
 - token 不够时只能粗暴截断，导致关键信息丢失
 - 旧错误上下文持续污染后续推理
 - 系统 prompt、历史、检索结果之间没有明确预算边界
+- **检索器召回率与阅读器有效利用率脱节（Reader Saturation & Lost in the Middle）**：Nelson F. Liu 等（2024，*TACL*，[arXiv:2307.03172](https://arxiv.org/abs/2307.03172)、[ACL Anthology 2024.tacl-1.9](https://aclanthology.org/2024.tacl-1.9/)）在开放域多文档问答实证研究中证明，语言模型阅读器的准确率远在检索器 Top-$K$ 召回率饱和之前就已达到平台期；盲目扩大检索注入条数不仅把关键证据推入长上下文中间的低效注意区（U 型序列位置曲线谷底），还会拉低整体回答准确率
 
 这类问题并不是检索器本身能单独解决的。
 
@@ -45,7 +46,7 @@ verified_at: 2026-11-02
 
 ### 2. Re-ranker
 检索命中的候选文档不等于最终放进上下文的顺序。
-Re-ranker 会结合领域标签与相关性，再次决定优先级。
+Re-ranker 会结合领域标签、相关性与去重后信息增益，再次决定准入优先级与空间位置（例如将最高置信证据锚定在检索块首尾两端，避免落入长上下文中段盲区，参见 [Liu et al. 2024](https://arxiv.org/abs/2307.03172)）。
 
 ### 3. Memory with decay
 系统不应机械保留全部历史，而应保留重要信息，并让旧信息逐步衰减。
@@ -53,7 +54,7 @@ Re-ranker 会结合领域标签与相关性，再次决定优先级。
 
 ### 4. Context compression
 当候选上下文超出预算时，不应只做硬截断。
-更好的做法是先压缩内容，尽量保留关键事实和结构。
+更好的做法是按信息瓶颈原理（[Information bottleneck method](https://en.wikipedia.org/wiki/Information_bottleneck_method)，在压缩输入表示复杂度 $I(X; T)$ 的同时最大化对目标回答的互信息 $I(T; Y)$）先压缩冗余内容，尽量保留关键事实、约束和结构。
 
 ### 5. Token budget enforcement
 上下文窗口是稀缺资源，需要明确分配给：

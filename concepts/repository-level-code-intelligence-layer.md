@@ -1,10 +1,10 @@
 ---
 title: Repository-Level Code Intelligence Layer
 created: 2026-05-17
-updated: 2026-11-06
+updated: 2026-11-11
 type: concept
 tags: [ai-coding, architecture, workflow, context-engineering, agent, project]
-sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md]
+sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md, https://arxiv.org/abs/2407.01489, https://aider.chat/2023/10/22/repomap.html, https://aider.chat/docs/repomap.html]
 status: stable
 description: 定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。
 aliases: [repo-code-intelligence]
@@ -39,11 +39,20 @@ verified_at: 2026-11-02
 
 这是一种任务上下文装配原则，不是对文章 Python 静态分析器的默认采用，也不能替代项目规则读取、根因调查或父级验证。
 
+### 层级化代码定位与小步 Diff 修复基线（Agentless 对照边界）
+
+Chunqiu Steven Xia、Yinlin Deng、Soren Dunn 与 Lingming Zhang（2024，*Agentless: Demystifying LLM-based Software Engineering Agents*，[arXiv:2407.01489](https://arxiv.org/abs/2407.01489)）通过 SWE-bench Lite（及剔除问题描述直接含真值补丁或误导性规格后的 SWE-bench Lite-S）对照实验提出了一个重要的工程基线（常被称为 **Agentless 悖论**）：在不赋予模型自主决定未来动作或循环调用复杂环境工具的前提下，仅靠确定性的三阶段流水线——**层级化定位（Hierarchical Localization：文件级 → 类/函数签名骨架级 → 具体编辑行窗口）**、**基于紧凑 Diff 格式的候选补丁生成（Repair）** 与 **回归测试及复现测试过滤（Patch Validation）**——即可在 SWE-bench Lite 上取得显著优于当时多款复杂自主开源 Agent 的修复率（32.00%，96 个正确修复）与更低的单次修复成本（论文报告约 0.70 美元）。
+
+**[推论] 对 AI Agent 代码工程的边界启发**：
+- **先走结构化层级定位，再决定是否开启自由探索循环**：当任务目标明确（如修复已知故障或修改特定接口）时，优先按“仓库文件目录/索引 → AST 类与函数签名骨架 → 目标代码行窗口”三级漏斗装配上下文，而不是默认放任 Agent 在全仓执行无界 `grep` / `find` 多轮试错（与 [[agent-autonomy-ladder-for-hermes-workflows]] 及 [[first-edit-economy-for-coding-agents]] 一致）。
+- **接口骨架与实现正文分离**：对仅提供调用契约的依赖模块，优先传入类/函数签名与类型定义（而非完整函数体实现）；对需要修改的目标区域，输出最小 Diff 补丁而非重写整份源码文件，以降低生成幻觉与上下文占用。
+- **适用边界**：论文基准聚焦单仓库局部 issue 修复；当需求涉及跨服务架构权衡、运行时动态状态探查或交互式环境调试时，仍需受控工具循环配合，不能把静态三阶段流水线当作所有软件工程任务的万能替代。
+
 ## Repository intelligence layers
 
 ### 1. Indexing layer
 
-先建立仓库级索引，记录文件、模块、符号、文档和基础元数据。
+先建立仓库级索引，记录文件、模块、符号、文档和基础元数据。工业界常用做法（如 Paul Gauthier 在 Aider 中实现的 [Tree-sitter Repository Map](https://aider.chat/2023/10/22/repomap.html) 与 [RepoMap 文档](https://aider.chat/docs/repomap.html)）是通过 **Tree-sitter** 将各语言源码解析为抽象语法树（AST），基于 `tags.scm` 查询同时提取符号定义（类、函数、方法、类型及完整调用签名）与跨文件符号引用，相比传统 `universal-ctags` 能保留更丰富的接口签名上下文且无需外部二进制依赖。
 
 作用：
 - 给后续图谱、搜索和 AI 上下文生成提供统一底座。
@@ -52,7 +61,7 @@ verified_at: 2026-11-02
 
 ### 2. Dependency graph layer
 
-把文件、模块、导入关系、调用关系或引用关系建成图。
+把文件、模块、导入关系、调用关系或引用关系建成有向图（节点为源文件或模块，有向边表示文件间的符号引用与导入依赖，参见 [Aider RepoMap](https://aider.chat/2023/10/22/repomap.html)）。
 
 作用：
 - 把代码库从目录树转成依赖网络。
@@ -61,12 +70,12 @@ verified_at: 2026-11-02
 
 ### 3. Centrality ranking layer
 
-用 PageRank、degree centrality 或类似图指标识别“高影响节点”。
+用 PageRank、degree centrality 或类似图指标识别“高影响节点”。例如 [Aider RepoMap](https://aider.chat/2023/10/22/repomap.html) 在文件引用有向图上运行图排序算法（结合当前对话已打开文件作为个性化重启权重），再按用户给定的 Token 预算（如 `--map-tokens`，默认 1k tokens）动态筛选出被最广泛引用的核心类与函数签名送入模型窗口。
 
 作用：
 - 接手陌生项目时，优先阅读高权重文件。
 - 修改前识别潜在高风险区域。
-- 给 agent 明确起始文件，而不是让它盲目搜索。
+- 给 agent 明确起始文件与固定预算下的全局接口骨架，而不是让它盲目搜索或塞入整文件源码。
 
 注意：中心性高只表示结构影响大，不等于业务重要性一定最高；仍需要测试、Git 历史和人工判断校准。
 

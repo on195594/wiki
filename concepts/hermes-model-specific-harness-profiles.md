@@ -1,7 +1,7 @@
 ---
 title: AI Agent Model-Specific Harness Profiles
 created: 2026-04-30
-updated: 2026-11-06
+updated: 2026-11-10
 type: concept
 tags: [agent, harness, model-profiles, skills, context-engineering, verification]
 sources: [docs:https://docs.langchain.com/oss/python/deepagents/profiles, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
@@ -9,15 +9,15 @@ status: stable
 volatility: high
 description: 定义 AI Agent 针对不同模型配置 harness profile 的适配原则和验证路径。
 aliases: [model-specific-harness, harness-profiles, agent-model-specific-harness-profiles]
-verified_at: 2026-11-06
-review_by: 2027-01-25
+verified_at: 2026-11-10
+review_by: 2027-02-10
 ---
 
 # AI Agent Model-Specific Harness Profiles
 
 ## Freshness scope
 
-本页为混合知识：通用模型适配与验证方法论可独立复用；LangChain `deepagents` 的 `HarnessProfile` 接口面与 Hermes 官方配置边界已于 2026-11-06 对照官方文档核验（见下方 `[!volatile]` 块），页面级 `verified_at` 仅覆盖官方文档接口边界核对，不代表已在本地复现外部评测或执行客户端测试；`tau2-bench` 分数与 Google Antigravity Custom Agents 字段保留为对应发布日期的来源记录。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围。
+本页为混合知识：通用模型适配与验证方法论可独立复用；LangChain `deepagents` 的 `HarnessProfile` 接口面与 Hermes 官方配置边界已于 2026-11-10 对照官方文档核验（见下方 `[!volatile]` 块），页面级 `verified_at` 仅覆盖官方文档接口边界核对，不代表已在本地复现外部评测或执行客户端测试；`tau2-bench` 分数与 Google Antigravity Custom Agents 字段保留为对应发布日期的来源记录。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围。
 
 ## Summary
 LangChain 的 Deep Agents 文章给 AI Agent 的核心启发是：Agent 的能力不是裸模型能力，而是 `模型 + harness` 的组合能力。对 AI Agent 来说，harness 不只是 runtime profile；它包括 system/developer 指令、skills、工具暴露方式、subagent 使用、项目上下文、verification 纪律、cron 入口和 wiki/memory 注入策略。
@@ -28,11 +28,11 @@ LangChain 的 Deep Agents 文章给 AI Agent 的核心启发是：Agent 的能�
 [[langchain-tuning-deep-agents-different-models-2026-04-29]]（2026-04-29 发布）介绍 Deep Agents 新增 `HarnessProfile`：按模型或 provider 声明式调整 prompt、tool naming、middleware、subagent 和 skills。文章给出的作者自报证据是，在 `tau2-bench` 挑选的困难子集上，custom profile 让 GPT 5.3 Codex 从 33% 提升到 53%，Claude Opus 4.7 从 43% 提升到 53%。这说明模型切换不能只换 model name，还要换外部执行环境。
 
 > [!volatile]
-> verified_at: 2026-11-06
-> review_by: 2027-01-25
+> verified_at: 2026-11-10
+> review_by: 2027-02-10
 > source: docs:https://docs.langchain.com/oss/python/deepagents/profiles
 >
-> 当前 LangChain Deep Agents 官方 Profiles 文档说明：`HarnessProfile` 与 `register_harness_profile` 支持按 provider 键（如 `"openai"`）或 `provider:model` 键定制 `base_system_prompt`、`system_prompt_suffix`、`tool_description_overrides`、`excluded_tools`、`excluded_middleware`、`extra_middleware` 与 `general_purpose_subagent`（`GeneralPurposeSubagentProfile`），并在解析时将 model 级覆盖合并到 provider 级默认项之上；YAML/JSON 声明式配置通过 `HarnessProfileConfig` 加载，插件通过 `deepagents.harness_profiles` entry point 注册；模型初始化参数则由独立的 `ProviderProfile` 与 `register_provider_profile` 管理。
+> 当前 LangChain Deep Agents 官方 Profiles 文档说明：`HarnessProfile` 与 `register_harness_profile` 支持按 provider 键（如 `"openai"`）或 `provider:model` 键定制 `base_system_prompt`、`system_prompt_suffix`、`tool_description_overrides`、`excluded_tools`、`excluded_middleware`、`extra_middleware` 与 `general_purpose_subagent`（`GeneralPurposeSubagentProfile`），并在解析时将 model 级覆盖合并到 provider 级默认项之上；核心脚手架中间件（`FilesystemMiddleware`、`SubAgentMiddleware` 与内部权限中间件）禁止放入 `excluded_middleware`（否则抛出 `ValueError`，需改用 `excluded_tools` 或 `GeneralPurposeSubagentProfile(enabled=False)`）。YAML/JSON 声明式配置通过 `HarnessProfileConfig`（`from_dict` / `to_dict` / `from_harness_profile`）加载，插件通过 `deepagents.harness_profiles` 与 `deepagents.provider_profiles` entry points 注册；模型初始化参数则由独立的 `ProviderProfile`（`init_kwargs`、`pre_init`、`init_kwargs_factory`）与 `register_provider_profile` 管理。
 
 ## AI Agent translation
 ### 1. Harness 是职责集合
@@ -48,11 +48,11 @@ Google Antigravity 的官方博客文章 [[google-antigravity-custom-agents-2026
 ### 2. 当前不应马上新建 AI Agent runtime profile
 
 > [!volatile]
-> verified_at: 2026-11-06
-> review_by: 2027-01-25
+> verified_at: 2026-11-10
+> review_by: 2027-02-10
 > source: docs:https://hermes-agent.nousresearch.com/docs
 >
-> 当前 Hermes Agent 官方文档说明其配置入口为 `~/.hermes/config.yaml`、`.env`、`SOUL.md` 及 `hermes model`、`hermes setup`（含通过 Nous Portal OAuth 登录并配置模型及 Tool Gateway 的 `hermes setup --portal`）、`hermes tools` 等 CLI 命令，用于切换 provider/model 与工具配置（文档站点同时提供 `/llms.txt` 与 `/llms-full.txt` 索引），并未内置上述 LangChain `deepagents` 式的按模型自动切换 `HarnessProfile` 注册表。
+> 当前 Hermes Agent 官方文档说明其配置入口为 `~/.hermes/config.yaml`、`.env`、`SOUL.md` 及 `hermes model`、`hermes setup`（含通过单次 Nous Portal OAuth 同时授权模型推理与网页搜索、图像生成、TTS、浏览器 4 类 Tool Gateway 工具的 `hermes setup --portal`）、`hermes tools` 等 CLI 命令；运行层提供 6 类内置终端后端（`local`、`Docker`、`SSH`、`Daytona`、`Modal`、`Vercel Sandbox` 及 `Singularity` 等插件后端）、按角色隔离模型/记忆/技能/调度的 **Bot Mode**、基于 FTS5 与 LLM 摘要的跨会话记忆及 Honcho 用户建模、基于 `execute_code` 的程序化工具调用（Programmatic Tool Calling），并在文档站点暴露 `/llms.txt`（约 17 KB 索引）与 `/llms-full.txt`（约 1.8 MB 全量文本），但并未内置上述 LangChain `deepagents` 式的按模型自动切换 `HarnessProfile` 注册表。
 
 AI Agent 的 profile 能力、命令和存储位置属于版本化产品接口；部署前应查当前官方文档并在目标版本运行只读帮助命令。本页不声称 profile 已创建、某个 provider 已配置或 Gateway 健康，也不授权改变这些状态。
 

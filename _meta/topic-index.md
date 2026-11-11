@@ -14,36 +14,36 @@ status: current
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
-- [Nimbus 文档站点框架](../entities/nimbus-docs.md) — 基于 Astro 的文档站点方案：仓库可编辑文件、Agent 可读端点、内容校验、公开边界及采用限制
+- [Nimbus 文档站点框架](../entities/nimbus-docs.md) — 基于 Astro 7 的文档站点方案：仓库可编辑文件、Agent 可读端点、`nimbus-docs check --fix/--json` 校验、多平台服务器适配器、公开边界及采用限制
 
 ## Concepts
 
 ### 1. 智能体架构、边界与运行时 (Agent Architecture, Boundaries & Runtime)
 - [Agent Development Lifecycle](../concepts/agent-development-lifecycle.md) — Agent 开发生命周期：Build → Test → Deploy → Monitor 与横切治理；软件交付的阶段契约与知识效果评估，生产级 Harness、薄宿主与云端运行时边界见子页
-- [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口，以及 Agent-as-Code 的 PR 控制面
+- [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口与 Saga 补偿/枢轴/幂等事务边界，以及 Agent-as-Code 的 PR 控制面
 - [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
 - [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：用集合覆盖、分配、背包和网络流视角建模资源约束；以 Open SWE 线上案例解释任务上下文驱动的模型分层、低价替代反例与证据边界
-- [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
+- [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：先验证真实问题、可衡量结果和人类信任边界，再决定模型、自动化和 human-in-the-loop 范围
 - [AI Agent Tool Selection Architecture](../concepts/ai-agent-tool-selection-architecture.md) — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，并以本地评测决定是否需要动态路由
 - [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：区分即时表现、独立能力与持续委派中的理解所有权；用撤除测试、按需重建和责任归属识别认知替代，不将低风险自动化升级为人工门禁
 - [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：在复杂创意、写作、方案设计或 AI Agent PM 编排前，用反迎合角色澄清意图、挑战假设、发现盲点，再由人或受控工具执行
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：把创造型 Agent 拆成候选生成、可执行转换、客观 evaluator 和反馈迭代，降低幻觉并保留审计边界
-- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；规范多受众配置驱动语义层、比率聚合纪律与输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
+- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；规范多受众配置驱动语义层、含可加性前提的度量与比率重聚纪律及输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
 - [Dijkstra on AI Programming Formalization](../concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判在 AI 编程时代的再验证：形式化约束仍是核心
 - [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种职责拆分需求，外部接入优先复用授权工具，MCP 可选
-- [AI Agent Model-Specific Harness Profiles](../concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是扩张 runtime profile 或预建角色目录
+- [AI Agent Model-Specific Harness Profiles](../concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：对照 LangChain DeepAgents `HarnessProfile` / `ProviderProfile` 与 Hermes Agent 配置边界，把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是盲目扩张 runtime profile
 - [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：以分层验证、负面结果和专家评审约束知识准入；ScientistTwo 展示自主实验闭环及其评审与成本边界
 - [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、持久化 Outbox、乐观视图、游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和可选调度
-- [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，并从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
-- [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 structured output、分阶段语义分解、固定候选空间、typed tools 与 dependency injection 把 LLM 不确定性收进可验证的工程边界
+- [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$-bench 数据库终态比对与多轮次连续可靠率（$\text{pass}^k$），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
+- [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码（Outlines / Guided Generation）、分阶段语义分解、固定候选空间、typed tools、dependency injection 与属性测试不变量检验把 LLM 不确定性收进可验证的工程边界
 
 ### 2. 上下文工程、记忆与技能演化 (Context Engineering, Memory & Skill Evolution)
 - [Agent 闭环学习：从用户纠错到规则升级](../concepts/agent-closed-loop-learning-from-corrections-to-rules.md) — Agent 闭环学习：把用户纠错先保存为结构化记忆，再经规则蒸馏、影子/离线评估和显式推广；来源中的人工修正量与比例口径待核实
-- [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面（prompt/工具/示例）与历史、状态及有界加工分别见两个子页；产品示例不是默认依赖，过程记录仍受公开准入约束
+- [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；结合长上下文 U 型位置退化（Lost in the Middle）与带边信息瓶颈（Information Bottleneck）解释即时加载、首尾锚定、上下文与记忆边界及出处债务；静态上下文面与历史/状态加工分别见两个子页
 - [Agent Context: System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报、窄工具面与反向边界、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型的有界加工与恢复边界
 - [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：在线捕捉、离线对账、按任务组织与选择性维护；只把公开、长期可复用的发现编译进正式页；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
@@ -53,33 +53,33 @@ status: current
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：用 CEP 与 7W 框架从真实决策场景出发，而不是把搜索量直接当成内容需求
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
 - [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合 Markdown/HTML/JSON/坐标表示，并以 DPP 0.1 工作草案（140 条规则）参考解析裁决与等价形式，不把格式正确当作语义正确
-- [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay
+- [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay；含 `B_ctx / U_blk / C_total / R_probe` 参数化上下文预算与端到端总成本评估模型
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分拓扑重合度与真实引用一致性，8 组双入口跨源评测方案与拓扑基线见独立查询页
 - [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：区分广义 agent memory 与默认 memory 载体，用正反例路由 skills、wiki、sessions/project state 与历史证据
 - [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
-- [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget；涵盖 Agentic RAG 的证据信任边界，以及语义漂移、未知候选和专家复核的概念级参考，不将 oRAG 设想当作已验证效果
+- [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget：结合检索召回与阅读器饱和脱节（Lost in the Middle）及信息瓶颈原理；涵盖 Agentic RAG 的证据信任边界与语义漂移/未知候选概念参考
 - [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
-- [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：用索引、依赖图和任务级上下文编译，把目标代码、可达接口、项目约束与显式未知项装配成低噪音 Agent 上下文
+- [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：结合 Tree-sitter AST 符号引用图与 PageRank 预算映射（RepoMap）及三级层级化定位（Agentless），把目标代码、可达接口签名、项目约束与显式未知项装配成低噪音 Agent 上下文
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
 - [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 判断任务应给 agent 多少控制流自主权
 - [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、多因素检索、反思推断与分层计划，区分应用事件存储与 AI Agent 默认 memory
-- [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，并验证持久化与副作用恢复语义
+- [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，含 `pass^k / c_err / T_pivot / C_coord` 参数化编排与状态恢复裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、技能、数据源、中间产物与人工审核；视觉设计案例补充低成本迭代、条件性门禁和模型升级后的规则复查
 - [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
-- [AI Coding Assistant Context Budget Management](../concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：限制历史、文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
+- [AI Coding Assistant Context Budget Management](../concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：结合 AST 符号签名图（RepoMap）与三级层级化定位（Agentless），限制历史、全量文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
 - [AI Task Delegation Patterns from Local-Cloud Hybrid LLMs](../concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md) — 从端云混合 LLM 模式抽象出的 AI Agent PM/subagent 调度模式：任务包、计划落地、困难升级、草稿精修和交叉审查
-- [Claude Code Practical Workflow Tips](../concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、浏览器验证（`/chrome`）、会话内循环调度（`/loop` / `/proactive`）与云端（`/schedule`）/Desktop 持久任务区分、多目录访问（`--add-dir`）与跨设备接续（`/teleport`、`/remote-control`）；官方接口说明已局部核验，具体客户端运行仍需在目标环境确认
-- [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、AGENTS.md、skill、MCP 与 automation 各司其职；限定指令链的发现、候选文件与拼接覆盖规则
+- [Claude Code Practical Workflow Tips](../concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、目标循环（`/goal`）、浏览器与指令审计（`/chrome`、`/doctor prompt-audit`、`/autofix-pr`）、会话内循环调度（`/loop` / `/proactive`）与 Cloud/Desktop 持久任务区分、多目录与规则加载边界（`--add-dir`、`claudeMdExcludes`）及跨设备/后台并行接续（`/teleport`、`/remote-control`、`/background`、`/batch`）
+- [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、`AGENTS.md`（含 `## Code Review Rules`）、`config.toml` / `requirements.toml`、skill（`agents/openai.yaml` 与非破坏性启停）、MCP 与 automation 各司其职
 - [First-edit Economy for Coding Agents](../concepts/first-edit-economy-for-coding-agents.md) — Coding agent 的首次编辑经济性：有明确锚点和便宜验证时，减少宽泛探索，形成可证伪局部假设后小步编辑并立即验证
-- [Flutter 版本演进、平台编译与可选 AI 生态边界](../concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界
+- [Flutter 版本演进、平台编译与可选 AI 生态边界](../concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限（含 Flutter 3.47.8 eMudhra CA 密钥拦截公告）、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界
 - [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：标准 playbook、受控执行、人机协作止血
 - [AI Agent Workflow Layering and Adoption Order](../concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode 程序化执行、验证与 cron 的职责和落地顺序
-- [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，代码审查分层与收敛治理见子页
+- [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，含 `C_spec / D_fsm / A_add / P_prop` 参数化类型契约与验证裁决模型，代码审查分层与收敛治理见子页
 - [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：保留决策理解与责任，结合双向追溯、断言验证、风险分级与审查收敛；先读关键证据，并让生成吞吐匹配可核验、可负责的处理能力
 - [AI Agent Python Engineering Capability Checklist](../concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式输入、资源生命周期、有界并发、类型边界、测量驱动的性能优化，以及按真实变更压力选择七类最小设计边界与失效检查
 - [Loop Engineering for AI Agent Workflows](../concepts/loop-engineering-hermes-agent-workflow.md) — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher 和有界重试组织工作闭环；从单个缺陷验证完整用户行为链、可重复环境与人工补救负担，保留 active-layer 审批边界
-- [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
+- [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：结合孔多塞陪审团定理相关投票退化公式与 MAST 14 类失效分类学（FC1 系统设计 / FC2 协同失调 / FC3 验证缺陷），区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
 - [Subagent Orchestration Patterns](../concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：先验证单 Agent 基线、真实瓶颈和可分解性，再选择 inline tool、fan-out、agent pool 或 team
 - [Chat to Agent Session Routing](../concepts/chat-to-agent-session-routing.md) — 聊天平台到有状态 AI Agent 运行时的会话路由与边界隔离设计原则
 
@@ -144,7 +144,7 @@ status: current
 - [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 检索基线、Q5/Q8 公开证据与评分纠正；区分覆盖、引用支持与事实核验，自由检索端到端效果仍未验证
 - [AI Agent Layer Routing Edge Cases](../queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：区分可选接入、执行契约与公开操作指南
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
-- [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、窄工具、显式依赖和验证 gate；示例不表示已经部署
+- [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、FSM 约束解码、窄工具、显式依赖、属性测试和验证 gate；示例不表示已经部署
 - [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：长期制度管底盘，主动纪律管进攻
 - [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
 - [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：进攻仓摊平亏损、情绪补仓、越权单或无适用退出计划；核心仓制度化再平衡与情绪补仓分开判断

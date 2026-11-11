@@ -1,10 +1,10 @@
 ---
 title: Agentic Programming as System Engineering
 created: 2026-05-21
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, ai-coding, architecture, tool, context-engineering, governance, debugging]
-sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md]
+sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, https://arxiv.org/abs/2406.12045, https://en.wikipedia.org/wiki/Long-running_transaction]
 status: stable
 description: 定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。
 aliases: [agentic-programming]
@@ -68,6 +68,8 @@ AI Agent 映射：模型可以负责“在已准备好的上下文里决定下�
 - 将一次局部失败扩散成后续步骤的错误前提。
 
 AI Agent 映射：这类风险应由 [[agent-failure-closed-loop-evaluation]]、trace-like evidence、人类审批、最大迭代边界和可回滚交付来治理，而不是只靠模型“自觉”。
+
+**[推论] 多步串联成功率与检查点恢复边界**：设长程任务包含 $L$ 个顺序依赖步骤，$S_t$ 表示第 $t$ 步满足验收条件，定义 $p_t = P(S_t \mid S_1 \cap \dots \cap S_{t-1})$（$p_1 = P(S_1)$），即此前各步均成功时本步成功的条件概率。由概率链式法则，整条轨迹首次即正确的概率为 $P_{\text{traj}} = \prod_{t=1}^{L} p_t$；若只知道各步骤无条件的边际成功率，在缺少独立性假设时不能直接相乘。仅当上述条件成功率均为 $0.95$ 时，$20$ 步连续成功概率才是 $0.95^{20} \approx 35.8\%$。对同一固定任务做 $k$ 次独立同分布运行，全部成功概率为 $P_{\text{traj}}^k$；跨任务的 $\text{pass}^k$ 则需对各任务的该概率取均值（参见 [[stateful-agent-environments-and-grounded-verification]] 与 [Yao et al. 2024](https://arxiv.org/abs/2406.12045)）。**[推论]** 在关键状态跃迁与不可逆枢轴动作（Pivot transaction，参见 [Long-running transaction](https://en.wikipedia.org/wiki/Long-running_transaction)）前配置确定性校验、局部重试和补偿，旨在支持分段有界恢复；它们是否提高成功率及增加多少成本仍需实测，不能由上述乘积公式直接保证。
 
 ### 3. Multi-agent systems should minimize shared context
 

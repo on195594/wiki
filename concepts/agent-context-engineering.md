@@ -1,10 +1,10 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, llm, context-engineering, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md, https://arxiv.org/abs/2307.03172, https://aclanthology.org/2024.tacl-1.9/, https://arxiv.org/abs/physics/0004057, https://en.wikipedia.org/wiki/Information_bottleneck_method]
 status: stable
 description: 定义 Agent 执行过程中的上下文装配总原则：最小可见信息、上下文腐败与即时加载防御、上下文与记忆工程边界、出处债务；静态上下文面与历史/状态加工见两个子页。
 aliases: [context-engineering-for-agents]
@@ -42,6 +42,12 @@ Agent prompt engineering 不是把一次性聊天 prompt 写得更漂亮，而�
 
 Context rot 不是单纯 token 不够，而是上下文质量随长度和噪音下降：旧错误被保留、重复输出占位、无关材料挤掉关键事实、模型在“看起来相关”的历史中迷路。
 
+从信息论与实证评测视角看，上下文退化受两类基础机制约束：
+- **长上下文位置退化（Lost in the Middle）**：Nelson F. Liu 等（2023/2024，*Transactions of the Association for Computational Linguistics*，[arXiv:2307.03172](https://arxiv.org/abs/2307.03172)、[ACL Anthology 2024.tacl-1.9](https://aclanthology.org/2024.tacl-1.9/)）在多文档问答与键值检索对照实验中证明，语言模型对长输入上下文的利用呈现显著的 **U 型序列位置效应（U-shaped serial-position curve）**——当关键证据位于输入上下文的最开端（首因效应，primacy）或最末尾（近因效应，recency）时准确率最高，而一旦关键信息被埋在长上下文中间段，即使对显式宣称支持长窗口的模型，准确率也会显著劣化；同时，开放域问答中阅读器（reader）的准确率远在检索器召回率（retriever recall）饱和前就已见顶甚至回落。
+- **信息瓶颈与带边信息率失真权衡（Information Bottleneck with Side Information）**：Naftali Tishby、Fernando C. Pereira 与 William Bialek（1999，*37th Annual Allerton Conference*，pp. 368–377；[arXiv:physics/0004057](https://arxiv.org/abs/physics/0004057)、[Information bottleneck method](https://en.wikipedia.org/wiki/Information_bottleneck_method)）及其带边信息扩展（Chechik & Tishby，*NeurIPS* 2002）将压缩表示为在原始输入 $X$、压缩后上下文表示 $T$、目标有效决策变量 $Y^{+}$ 与无关干扰变量 $Y^{-}$ 之间的泛函极小化：
+  $$\min_{p(t\mid x)}\; I(X; T) - \beta^{+} I(T; Y^{+}) + \beta^{-} I(T; Y^{-})$$
+  **[推论]** 映射到 Agent 上下文装配：$X$ 为全量候选材料（完整对话历史、仓库源码、工具输出日志、外部检索切片），$T$ 为本轮实际送入模型窗口的上下文，$Y^{+}$ 为下一步正确动作与验收判断，$Y^{-}$ 为已关闭分支、过期报错或无关噪音。上下文工程的目标不是最大化 $I(X; T)$（塞入更多原文），而是在压缩输入复杂度 $I(X; T)$ 并抑制干扰互信息 $I(T; Y^{-})$ 的同时，最大化对下一步决策的充分性 $I(T; Y^{+})$。上述实证与信息论公式用于解释为什么需要即时加载与首尾排布，不直接规定固定 Token 截断阈值。
+
 AI Agent 的防腐原则：
 
 1. **Just-in-time over pre-loaded**
@@ -73,8 +79,8 @@ AI Agent 映射（参见 [[hermes-memory-skills-wiki-boundaries]]）：
 - 当前任务状态、工具输出和 session 历史应先被压缩成结构化状态卡，再决定是否进入下一轮上下文。
 
 这篇文章补充了两个可操作原则：
-1. **预算先于检索**：检索条数不应只由 Top-K 或相似度阈值决定，而应先由上下文装配器计算当前步骤的 token 预算。
-2. **位置是上下文质量的一部分**：关键指令靠前；当前任务、高相关检索结果和需要马上使用的状态靠近生成位置；不要把重要信息随机拼接到长上下文中间。
+1. **预算先于检索**：检索条数不应只由 Top-K 或相似度阈值决定，而应先由上下文装配器计算当前步骤的 token 预算（避免检索召回扩张超过阅读器有效注意窗口而触发准确率饱和与回落，参见 [Liu et al. 2024](https://arxiv.org/abs/2307.03172)）。
+2. **位置是上下文质量的一部分**：受 U 型位置曲线（[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)）约束，不可违反的系统边界与核心目标靠前（首部锚定）；当前子任务指令、高相关证据和需要马上消费的最新工具观察靠近生成位置（尾部锚定）；避免把决定成败的唯一约束随机拼接到长上下文中间段。
 
 后续文章 [[machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11]] 又补充了检索前的分类步骤：当前状态、稳定事实、历史事件和可复用规程应先进入不同候选层，再由 context assembly 决定本轮是否读取。这里最重要的边界是：检索得到的历史事件不等于当前事实；程序性经验也不能因单次成功就自动进入 system prompt 或 skill。
 
