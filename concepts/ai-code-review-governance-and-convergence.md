@@ -1,12 +1,12 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-03
+updated: 2026-11-11
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
-sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md]
+sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/]
 status: stable
-description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、证据阅读与注意力容量边界，以及多 Agent 审查收敛规则。
+description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。
 aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review, orchestration-tax]
 volatility: medium
 review_by: 2027-03-02
@@ -86,6 +86,19 @@ Addy Osmani 的 [[addyosmani-critical-thinking-when-agents-do-the-work-2026-11-0
 3. **生成吞吐不等于可接受吞吐。** 作者以“编排税”（orchestration tax）描述 Agent 产量与人敢于署名承担责任的产量之间的落差。完成项积压超出核查能力时，继续增加会话不能解决瓶颈；应先改进检查以减少必要人工量，或放慢生成。
 
 [推论] 将第三点用于任务组织时，可先缩小批次或降低并发，直到现有核验和责任承接能够跟上；自动检查应覆盖真实风险，而不是为了减少积压而降低证据标准。这是容量判断，不是固定并发上限，也不证明人工参与越多越好。人的理解与责任诊断见 [[ai-assistance-cognitive-substitution-and-skill-formation]]，Agent 自行运行与反馈的机制仍由 [[agent-self-validation-loops]] 维护。
+
+### 排队论形式化：Little 定律、Kingman 拥塞公式与审查容量边界
+
+`[推论]` 上述“编排税（生成吞吐超出人类可承担责任的审查吞吐时，继续增加并发会话只会制造积压）”与“多轮互审必须收敛”的现象，可用运筹学排队论中的 **Little 定律**（John D. C. Little, 1961，[Little's Law](https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/)）与 **Kingman G/G/1 近似公式**（J. F. C. Kingman, 1961，[Kingman's Formula](https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html)，[WIP & Clearing Preconditions](https://agility-at-scale.com/principles/littles-law-wip-calculation/)）给出严格数学刻画：
+
+1. **有效审查利用率与积压发散条件**：
+   设并行 Agent 生成候选变更（PR / Diff）的总到达率为 $\lambda_{\text{gen}}$，前置确定性自验证（CI、类型检查、属性测试与自动共识过滤）在进入人工队列前拦截并退回的劣质比例为 $p_{\text{filter}} \in [0, 1)$，人类审查者在保持真实理解与责任标准下的有效服务率为 $\mu_{\text{rev}} = 1 / \tau_{\text{rev}}$（$\tau_{\text{rev}}$ 为平均实质审查耗时）。则人类审查网关的有效利用率 $\rho_{\text{rev}}$ 与平均排队等待时间 $W_q$ 满足：
+   $$\rho_{\text{rev}} = \frac{\lambda_{\text{gen}}(1 - p_{\text{filter}})}{\mu_{\text{rev}}} < 1, \qquad W_q \approx \left(\frac{\rho_{\text{rev}}}{1 - \rho_{\text{rev}}}\right)\left(\frac{c_a^2 + c_s^2}{2}\right)\tau_{\text{rev}}$$
+   且在途未决 PR 积压量由 Little 定律给出：$L_{\text{WIP}} = \lambda_{\text{eff}}(W_q + \tau_{\text{rev}})$，其中 $c_a^2, c_s^2$ 分别为到达间隔与人工审查耗时的变异系数平方（Squared Coefficient of Variation）。
+2. **三个直接工程推论**：
+   - **高利用率下的非线性爆炸（$\frac{\rho}{1-\rho}$ 项）**：当团队因“代码生成变便宜”而盲目拉高 $\lambda_{\text{gen}}$，使 $\rho_{\text{rev}}$ 从 `0.70` 推高至 `0.95` 时，拥塞乘子 $\frac{\rho_{\text{rev}}}{1-\rho_{\text{rev}}}$ 从 `2.33` 暴涨至 `19.0`（上升逾 8 倍）。此时若强行要求消化积压，审查者只能被迫压缩 $\tau_{\text{rev}}$，即退化为走过场的 **Review Theater**；
+   - **控制批次方差（$c_s^2$ 项）**：跨模块、混杂多重意图的大 PR 会急剧放大人工审查时间的不确定性 $c_s^2$；将改动拆分为小步、单一意图且附带明确验证证据的 diff，可直接压低 $c_s^2$ 与 $\tau_{\text{rev}}$；
+   - **多轮互审的压缩收敛条件**：设第 $k$ 轮审查后未消解的实质性缺陷数为 $D_k$，单轮修复引入新缺陷的再生率为 $\gamma_{\text{regen}}$、消解率为 $\beta_{\text{fix}}$。仅当净收缩率 $r_{\text{conv}} = 1 - \beta_{\text{fix}} + \gamma_{\text{regen}} < 1$ 时，期望缺陷数 $E[D_k] = D_0 \cdot r_{\text{conv}}^k$ 才单调收敛；若两个 Agent 在风格或局部偏好上反复互改导致 $r_{\text{conv}} \ge 1$，系统即陷入无限振荡，因此必须设置硬性轮次上限（如 $K_{\max} = 3$）并强制仅重审增量 diff（见 [[loop-engineering-hermes-agent-workflow]] 的 `V_loop / ρ_rev` 门禁）。
 
 证据与采用边界：文章是实践反思，没有给出审查产能阈值或受控效果数据；不能将“编排税”当作已经测得的通用指标。本文确认已有的测试边界与责任原则，新增的是阅读顺序和容量视角；不据此启用默认子代理审查、答题后合并、必填 PR 模板、Skill、自动化或权限变更。
 

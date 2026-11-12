@@ -1,14 +1,14 @@
 ---
 title: Google SRE Gemini CLI Incident Response Pattern
 created: 2026-04-16
-updated: 2026-11-06
+updated: 2026-11-11
 type: concept
 tags: [agent, mcp, workflow, tool, research, devops]
 sources: [raw/articles/google-sre-gemini-cli-outages-2026-01-22.md]
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、工具约束和生产协作模式。
+description: 总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、MTTM 延迟分量分解与错误预算门禁、闭集工具约束和生产人机协作模式。
 aliases: [gemini-cli-incident-response, sre-agentic-incident-response]
 verified_at: 2026-11-02
 ---
@@ -42,6 +42,18 @@ verified_at: 2026-11-02
 - 不是先写 patch
 - 不是先解释技术原理
 - 而是先帮助 SRE 选出最快、最安全、最合理的止血动作
+
+### 定量拆解：MTTM 四阶段延迟分量与错误预算消耗（Error Budget Burn）
+
+`[推论]` 从 SRE 可靠性工程视角看，一次生产事故对服务等级目标（SLO）造成的累计错误预算损失 $\Delta B_{\text{err}}$ 取决于故障期间的错误率增量 $\Delta e(t)$ 与持续时长，而在阶跃型故障下近似正比于**平均缓解时间（MTTM）**：
+
+$$\text{MTTM} = T_{\text{detect}} + T_{\text{triage}} + T_{\text{approve}} + T_{\text{exec}}, \qquad \Delta B_{\text{err}} \approx \overline{\Delta e} \cdot \text{MTTM}$$
+
+将这四个时间分量与人机自动化阶段（见 [[agent-autonomy-ladder-for-hermes-workflows]]）对齐，可以清晰界定受控 CLI Agent 的优化靶点与安全红线：
+
+- **压缩诊断与方案装配耗时（$T_{\text{triage}} \downarrow$）**：高压事故中最耗时的往往是跨监控、日志、变更历史拼装上下文并匹配 Playbook。Agentic CLI 通过并发只读工具调用（信息获取与分析阶段的高自主度）大幅压缩跨系统人工排查与上下文拼装耗时，直接呈现结构化止血候选；
+- **保留审批门但消除准备摩擦（$T_{\text{approve}}$ 低摩擦但非零）**：若为追求极致速度而取消人工批准（令 $T_{\text{approve}} = 0$，即全自动 autopilot），一旦发生误判（以概率 $p_{\text{misfire}}$ 在错误上下文中触发全局重启或错误回滚），会引入次生级联故障惩罚 $p_{\text{misfire}} \cdot \Delta B_{\text{cascade}} \gg \overline{\Delta e} \cdot T_{\text{approve}}$。因此，通过预先填好闭集 Playbook 参数（Generic Mitigations）让人类只需做知情确认（“SGTM, execute”），是在最小化 $T_{\text{approve}}$ 的同时阻断 $\Delta B_{\text{cascade}}$ 的最优折中；
+- **闭集确定性执行（$T_{\text{exec}}$ 可预测）**：由带类型校验、风险标签与审计日志的确定性工具执行止血动作，避免现场手写复杂 shell 脚本引发语法错误或越权副作用。
 
 ## Standard flow: page -> mitigate -> fix -> postmortem
 文章把事故流程概括为：
@@ -200,4 +212,4 @@ Gemini CLI 的作用不是只参与某一环，而是尽量横跨整条链：
 ## Relations
 
 - depends_on: [[hermes-knowledge-base-operating-flow]], [[wiki-ingestion-workflow]]
-- related: [[hermes-vs-google-sre-agentic-incident-response]]
+- related: [[hermes-vs-google-sre-agentic-incident-response]], [[agent-autonomy-ladder-for-hermes-workflows]]

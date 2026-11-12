@@ -1,12 +1,12 @@
 ---
 title: AI Agent Tool Selection Architecture
 created: 2026-07-11
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, tool, context-engineering, evaluation, workflow]
 sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
 status: stable
-description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。
+description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益与分数间隔（Score Margin）回退判据。
 aliases: [agent-tool-selection, tool-routing-for-ai-agents]
 volatility: medium
 review_by: 2027-03-02
@@ -70,6 +70,22 @@ AI Agent 的工具选择不是“把所有工具交给模型后让它自己决�
 4. 高风险、不可逆或需凭证的操作进入审批边界。
 
 “置信度阈值”不能仅依赖模型自报。除非通过本地标注集校准，否则应优先使用可观察信号：候选分数差距、Schema 校验、参数缺失、执行错误、权限检查及用户输入是否足够。
+
+### 形式化：工具选择四阶条件概率漏斗与 Top-K 损益边界
+
+`[推论]` 为避免把“检索召回率”“模型选对率”和“最终执行成功率”混为一谈，可将全量注册工具池 $\mathcal{T}_N$（规模 $N$）下针对请求 $q$ 成功调用目标工具 $t^*$ 的端到端概率分解为四阶乘积漏斗：
+
+$$P(\text{succ} \mid q, \mathcal{T}_N) = \underbrace{P(t^* \in \mathcal{A}_q)}_{\text{1. Availability}} \cdot \underbrace{P(t^* \in \mathcal{C}_K \mid t^* \in \mathcal{A}_q, q)}_{\text{2. Candidate Recall } R_K} \cdot \underbrace{P(\hat{t} = t^* \mid t^* \in \mathcal{C}_K, q)}_{\text{3. In-Context Selection } S_K} \cdot \underbrace{P(\text{valid\_args} \land \text{exec} \mid \hat{t} = t^*, q)}_{\text{4. Schema & Execution } E_{t^*}}$$
+
+这一分解直接给出两项工程裁决准则：
+1. **Top-K 候选缩减（$N \to K$）的成立前提**：
+   将全量工具集 $\mathcal{A}_q$（$|\mathcal{A}_q| = N$，$R_N = 1$）缩减为规模 $K < N$ 的候选子集 $\mathcal{C}_K$ 时，一方面因减少相似工具干扰（可类比 ACT-R 扇出 $\text{fan}_j$ 降低，见 [[agent-skill-governance-and-reversible-state]]；这是类比，不是对 LLM 的已证机制）使模型上下文内选择准确率从 $S_N$ 提升至 $S_K$，并节省 Schema Token 成本 $\Delta C_{\text{schema}}(N - K)$；但另一方面引入了检索器的漏召回风险（$R_K < 1$）与路由器开销 $C_{\text{router}}$。因此，可用下面这个保守的充分判据判断动态 Top-K 缩减是否优于全量暴露（同时要求端到端选择质量不降、Schema 节省覆盖新增开销；它不是充要条件，也不覆盖与静态分组的比较，后者需用静态分组的 $R \cdot S$ 替换 $S_N$ 另行比较）：
+   $$R_K \cdot S_K > S_N \quad \land \quad \Delta C_{\text{schema}}(N - K) > C_{\text{router}} + (1 - R_K) C_{\text{fallback}}$$
+   若工具描述含糊导致检索器首轮漏召回（$R_K$ 偏低），缩减候选集反而会直接封死模型的正确路径。
+2. **基于 Top-2 分数间隔（Score Margin）与必填槽位的确定性回退**：
+   相比依赖模型在生成文本中自报校准度差的口头置信度，更稳健的 Fallback 触发条件是结合候选排序得分差（Logit 或余弦相似度间隔 $\Delta s_{1,2}(q) = s_{(1)}(q) - s_{(2)}(q)$）与参数 Schema 校验器 $\mathcal{V}_{\text{schema}}$：
+   $$\text{TriggerFallback}(q) \iff \big(s_{(1)}(q) < \tau_{\min}\big) \;\lor\; \big(\Delta s_{1,2}(q) < \tau_{\text{margin}}\big) \;\lor\; \big(\neg \mathcal{V}_{\text{schema}}(\hat{\mathbf{a}})\big)$$
+   当最高分低于绝对门槛 $\tau_{\min}$ 时走无工具分支或扩展检索；当头两名候选工具得分过于接近（$\Delta s_{1,2} < \tau_{\text{margin}}$，即存在歧义竞争工具）或缺少必填参数时，优先将并列候选同时暴露给模型或向用户发起澄清，严禁在低间隔下静默执行高风险写工具（对应 [[agent-resource-optimization]] 中的 `P_tool / M_margin` 门禁）。
 
 ## Six controls from the source
 
@@ -146,4 +162,4 @@ Toolformer ([[arxiv-2302-04761-toolformer]]) learns tool-call behavior by sampli
 
 - refines: [[agent-context-engineering]]
 - depends_on: [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]]
-- related: [[constrained-toolbox-evaluator-loop]], [[agent-orchestration-production-tradeoffs]], [[hermes-context-engineering-design-priorities]], [[agent-architecture-primary-paper-map]]
+- related: [[constrained-toolbox-evaluator-loop]], [[agent-orchestration-production-tradeoffs]], [[hermes-context-engineering-design-priorities]], [[agent-architecture-primary-paper-map]], [[agent-skill-governance-and-reversible-state]], [[agent-resource-optimization]]

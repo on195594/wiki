@@ -1,12 +1,12 @@
 ---
 title: Agent Autonomy Ladder for AI Agent Workflows
 created: 2026-07-01
-updated: 2026-11-02
+updated: 2026-11-11
 type: concept
 tags: [agent, workflow, orchestration, multi-agent, subagent, governance]
-sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md]
+sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md, https://doi.org/10.1109/3468.844354, https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b]
 status: stable
-description: 用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 AI Agent 任务应给 agent 多少自主权。
+description: 结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），用确定性工作流、编排工作流、受限反应式代理和多代理编排判断 AI Agent 任务的控制流自主权与阶段非对称授权。
 aliases: [agent-autonomy-ladder, hermes-agent-autonomy, agent-autonomy-ladder-for-agent-workflows]
 volatility: medium
 review_by: 2027-03-02
@@ -30,6 +30,19 @@ AI Agent 不应把“是否使用 agent”当成二元选择。更稳定的问�
 - **Hybrid architecture**：生产系统通常把高风险部分留给确定性模块，把不确定探索、分解和编排交给受限 agent。
 
 这个 distinction 补充 [[subagent-orchestration-patterns]]：后者回答“要不要增加 subagent / fan-out / team”，本页回答“当前任务应允许多高的运行时自主度”。它也补充 [[loop-engineering-hermes-agent-workflow]]：loop 可以是有边界的工程闭环，不等于无限自主。
+
+### 理论根基：Parasuraman–Sheridan–Wickens 四阶段×十级自动化模型（LOA）
+
+在人因工程与系统控制理论中，上述“控制流归属与混合架构”对应 Raja Parasuraman、Thomas B. Sheridan 与 Christopher D. Wickens（2000，*IEEE Transactions on Systems, Man, and Cybernetics - Part A* 30(3): 286–297，*A Model for Types and Levels of Human Interaction with Automation*，[DOI 10.1109/3468.844354](https://doi.org/10.1109/3468.844354)，[Semantic Scholar](https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b)）提出的经典框架：自动化不是单一标量，而是可在四个信息处理阶段上分别取值的自主度组合。原文的十级量表（Sheridan 量表）主要刻画决策与动作阶段，信息获取与分析阶段以“低—高”连续谱描述；本页为工程记账统一记作 $\mathbf{L}_{\text{auto}} = (L_{\text{acq}}, L_{\text{anal}}, L_{\text{dec}}, L_{\text{act}}) \in \{1, \dots, 10\}^4$，这是 `[推论]` 层面的约定，不是原文定义：
+
+1. **信息获取（Information Acquisition，$L_{\text{acq}}$）**：感知、检索、读取日志、代码或文档；
+2. **信息分析（Information Analysis，$L_{\text{anal}}$）**：工作记忆加工、相关性汇总、根因推断与候选构造；
+3. **决策选择（Decision Selection，$L_{\text{dec}}$）**：在候选方案或分支路径中作出选择（其中 Level 2 为提供全集、Level 3 为收窄候选集、Level 4 为推荐单一方案由人裁决）；
+4. **动作执行（Action Implementation，$L_{\text{act}}$）**：实际修改外部状态（Level 5 为人类批准后执行、Level 6 为限时否决执行、Level 7 为先执行后通知、Level 10 为完全自主闭环）。
+
+原文给出的评估判据分两层：首要判据是**人类绩效后果**（心理负荷、情境意识、自满/过度信任与技能退化）；次要判据是**自动化可靠性**与**决策/动作后果代价**。“可逆性”不是原文的独立判据，本页把它作为后果代价的工程代理 `[推论]`。
+
+**[推论] 阶段非对称授权（Asymmetric Stage Autonomy）**：将 LOA 模型映射到 AI Agent 工作流，最关键的工程原则是**把只读认知阶段与写状态执行阶段解耦授权**——在信息获取（$L_{\text{acq}}$）与信息分析（$L_{\text{anal}}$）阶段可赋予较高自主度（Level 7–9，允许 Agent 自动检索上下文、聚合跨文件调用链、运行只读测试诊断），但在决策选择（$L_{\text{dec}}$）与外部动作执行（$L_{\text{act}}$）阶段，只要操作跨越不可逆枢轴边界（如生产部署、外部发信、数据库变更或 active 配置修改），就必须将 $L_{\text{dec}}, L_{\text{act}}$ 压回 Level 3–5（收窄候选并由人类或确定性门禁批准后执行，见 [[loop-engineering-hermes-agent-workflow]] 中的 `L_auto` 裁决矩阵）。
 
 ## AI Agent autonomy lanes
 

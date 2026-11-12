@@ -99,7 +99,7 @@
       "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
       "type": "concept",
       "title": "Agent Autonomy Ladder for AI Agent Workflows",
-      "description": "用确定性工作流、编排工作流、受限反应式代理和多代理编排四层判断 AI Agent 任务应给 agent 多少自主权。",
+      "description": "结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），用确定性工作流、编排工作流、受限反应式代理和多代理编排判断 AI Agent 任务的控制流自主权与阶段非对称授权。",
       "status": "stable",
       "tags": [
         "agent",
@@ -117,7 +117,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns",
@@ -704,7 +704,7 @@
       "path": "concepts/agent-resource-optimization.md",
       "type": "concept",
       "title": "Agent Resource Optimization",
-      "description": "说明预算与能力约束下的 Agent 资源规划，并以 Open SWE 案例解释任务上下文驱动的模型分层及证据边界。",
+      "description": "说明预算与能力约束下的 Agent 运筹规划（ILP），结合 FrugalGPT 级联停止与 RouteLLM 偏好阈值路由形式化模型分层及 C_cov / R_route / P_tool / M_margin 裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -721,7 +721,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -731,7 +731,8 @@
           "production-agent-evaluation-baselines",
           "constrained-toolbox-evaluator-loop",
           "subagent-orchestration-patterns",
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "ai-agent-tool-selection-architecture"
         ]
       }
     },
@@ -1007,7 +1008,7 @@
       "path": "concepts/ai-agent-tool-selection-architecture.md",
       "type": "concept",
       "title": "AI Agent Tool Selection Architecture",
-      "description": "区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，并用本地评测决定是否需要动态工具路由。",
+      "description": "区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益与分数间隔（Score Margin）回退判据。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1023,7 +1024,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1036,7 +1037,9 @@
           "constrained-toolbox-evaluator-loop",
           "agent-orchestration-production-tradeoffs",
           "hermes-context-engineering-design-priorities",
-          "agent-architecture-primary-paper-map"
+          "agent-architecture-primary-paper-map",
+          "agent-skill-governance-and-reversible-state",
+          "agent-resource-optimization"
         ]
       }
     },
@@ -1044,7 +1047,7 @@
       "path": "concepts/ai-assistance-cognitive-substitution-and-skill-formation.md",
       "type": "concept",
       "title": "AI Assistance, Cognitive Substitution, and Skill Formation",
-      "description": "区分 AI 辅助的即时表现、独立能力与持续委派中的理解所有权，以撤除测试和按需重建判断能力形成及责任边界。",
+      "description": "结合 Bainbridge 自动化讽刺（Ironies of Automation）与 Parasuraman & Riley 误用/弃用分类，区分 AI 辅助的即时表现、独立能力与持续委派中的理解所有权，以撤除测试和按需重建判断能力形成及责任边界。",
       "status": "stable",
       "tags": [
         "llm",
@@ -1061,7 +1064,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-03",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "ai-assumption-challenger-before-execution",
@@ -1118,7 +1121,7 @@
       "path": "concepts/ai-code-review-governance-and-convergence.md",
       "type": "concept",
       "title": "AI Code Review Governance, Traceability, and Convergence",
-      "description": "定义 AI 生成代码时代的分层审查、双向追溯、风险分级、证据阅读与注意力容量边界，以及多 Agent 审查收敛规则。",
+      "description": "定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1137,7 +1140,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-03",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1436,7 +1439,7 @@
       "path": "concepts/constrained-toolbox-evaluator-loop.md",
       "type": "concept",
       "title": "Constrained Toolbox Evaluator Loop",
-      "description": "定义受限工具箱配合 evaluator 的多 Agent 闭环，用于降低高风险任务的错误扩散。",
+      "description": "结合语法制导综合（SyGuS）与反例制导归纳综合（CEGIS）形式化受限工具箱配合客观 evaluator 的多 Agent 闭环，控制高风险任务的错误扩散与多重检验过拟合。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1453,7 +1456,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -1466,7 +1469,8 @@
           "agent-resource-optimization",
           "agent-research-evidence-gate",
           "agent-self-validation-loops",
-          "deterministic-analytics-llm-reasoning-boundary"
+          "deterministic-analytics-llm-reasoning-boundary",
+          "agent-harness-search-regularization"
         ]
       }
     },
@@ -1667,7 +1671,7 @@
       "path": "concepts/first-edit-economy-for-coding-agents.md",
       "type": "concept",
       "title": "First-edit Economy for Coding Agents",
-      "description": "把 VS Code GPT-5.5 prompt tuning 案例抽象成 coding agent 的“首次编辑经济性”原则：有锚点时少做宽泛探索，尽早形成可证伪假设、小步编辑并立即验证。",
+      "description": "结合样本信息期望价值（EVSI）最优停止判据与 Delta Debugging（ddmin）1-最小差分原则，把 VS Code GPT-5.5 案例抽象为 coding agent 的“首次编辑经济性”控制模式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1684,7 +1688,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "loop-engineering-hermes-agent-workflow",
@@ -1770,7 +1774,7 @@
       "path": "concepts/google-sre-gemini-cli-incident-response.md",
       "type": "concept",
       "title": "Google SRE Gemini CLI Incident Response Pattern",
-      "description": "总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、工具约束和生产协作模式。",
+      "description": "总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、MTTM 延迟分量分解与错误预算门禁、闭集工具约束和生产人机协作模式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1787,14 +1791,15 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "hermes-knowledge-base-operating-flow",
           "wiki-ingestion-workflow"
         ],
         "related": [
-          "hermes-vs-google-sre-agentic-incident-response"
+          "hermes-vs-google-sre-agentic-incident-response",
+          "agent-autonomy-ladder-for-hermes-workflows"
         ]
       }
     },
@@ -2798,7 +2803,7 @@
       "path": "concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md",
       "type": "concept",
       "title": "Local-First 同步中的确认镜像、Outbox 与冲突政策",
-      "description": "用确认镜像、持久化待提交事务、乐观内存视图和单调游标组织可恢复客户端同步，并显式选择幂等与冲突政策。",
+      "description": "结合 Xerox PARC Bayou 的 Committed/Tentative 双前缀状态投影模型与 CRDT 半格边界，用确认镜像、持久化待提交事务（Outbox）、乐观内存视图和单调游标组织可恢复客户端同步。",
       "status": "stable",
       "tags": [
         "architecture",
@@ -2813,7 +2818,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-11",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -2828,7 +2833,7 @@
       "path": "concepts/loop-engineering-hermes-agent-workflow.md",
       "type": "concept",
       "title": "Loop Engineering for AI Agent Workflows",
-      "description": "定义 AI Agent 工作流中计划、执行、验证和修正的 loop engineering 方法。",
+      "description": "定义 AI Agent 工作流中计划、执行、验证和修正的 loop engineering 方法，含离散控制 Lyapunov 变体收敛判据与 L_auto / E_first / V_loop / ρ_rev 参数化裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2846,7 +2851,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-11",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",
