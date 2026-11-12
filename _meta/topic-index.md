@@ -134,7 +134,7 @@ status: current
 
 ## Comparisons
 - [Dijkstra EWD667 vs 2026 AI Programming Article](../comparisons/dijkstra-ewd667-vs-ai-programming-article.md) — 对照 EWD667 原文与 2026 AI 编程文章：哪些原则不变，哪些是 AI 时代的新变量
-- [Hermes vs Google SRE Agentic Incident Response](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — Hermes/SRE 历史对照主题：区分 Google 来源案例、本仓库知识设计和通用 Agent 的待验证接入建议，不作当前产品排名
+- [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 按目标、工具、有限动作、审批和复盘职责评估任意 Agent 的接入；来源案例不作为当前产品能力或排名证据
 - [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：长期配置制度 vs 主动交易纪律
 
 ## Queries
@@ -157,5 +157,5 @@ status: current
 - [Detecting Repeat Trading Mistakes](../queries/repeat-mistake-detection-in-trading.md) — 重复错误识别：只有可命名、可复现、可归因的问题才升级规则
 - [Converting Trading Lessons into Hard Rules](../queries/trading-lessons-to-hard-rules.md) — 教训到硬规则的转化：仅制度化反复、高代价且可执行的问题
 - [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：保留少数高阻断力规则，删除不可快速调用的说明书式规则
-- [Hermes Wiki 知识新鲜度改造计划（历史）](../queries/hermes-wiki-knowledge-freshness-improvement-plan.md) — 2026-08-26 已关闭的新鲜度改造决策；保留历史约定并指向现行 Schema 与 Freshness Gate
-- [Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot（历史）](../queries/hermes-agent-experience-consolidation-capability-assessment.md) — 2026-05-11 / v0.13.0 的 Hermes 经验固化能力历史快照；版本、命令和原生能力结论使用前必须重新核验
+- [Wiki 知识新鲜度改造：通用原则与历史决策（已关闭记录）](../queries/hermes-wiki-knowledge-freshness-improvement-plan.md) — 提炼证据绑定、时间区分和局部复查的跨系统原则；旧改造约定与现行 Schema、Freshness Gate 明确分开
+- [Agent 经验固化能力评估：通用框架与历史案例（已关闭记录）](../queries/hermes-agent-experience-consolidation-capability-assessment.md) — 按证据、提炼、分层保存、效果验证、生命周期与权限核查任意 Agent，区分提供方式与验证程度；产品能力仅作版本历史案例

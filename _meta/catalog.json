@@ -36,11 +36,10 @@
     {
       "path": "comparisons/hermes-vs-google-sre-agentic-incident-response.md",
       "type": "comparison",
-      "title": "Hermes vs Google SRE Agentic Incident Response",
-      "description": "保留 Hermes/SRE 历史对照主题，区分来源中的事故响应模式、本仓库知识设计和待验证的 Agent 接入建议。",
+      "title": "Agent 事故响应接入：职责与安全边界",
+      "description": "从目标、工具、动作、权限与复盘职责评估任意 Agent 的事故响应接入，公开案例仅作设计参照，不作为当前产品能力或排名证据。",
       "status": "stable",
       "tags": [
-        "hermes",
         "agent",
         "mcp",
         "workflow",
@@ -49,12 +48,13 @@
         "devops"
       ],
       "aliases": [
+        "agent-incident-response-adoption",
         "hermes-vs-google-sre"
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "google-sre-gemini-cli-incident-response",
@@ -382,7 +382,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-11",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -3518,7 +3518,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3818,11 +3818,10 @@
     {
       "path": "queries/hermes-agent-experience-consolidation-capability-assessment.md",
       "type": "query",
-      "title": "Hermes Agent Experience Consolidation Capability Assessment — 2026-05-11 / v0.13.0 Snapshot",
-      "description": "2026-05-11 对 Hermes Agent 经验固化能力的历史快照；当前能力需重新核验。",
+      "title": "Agent 经验固化能力评估：通用框架与历史案例",
+      "description": "以通用职责、提供方式和验证程度评估 Agent 经验固化闭环，并将具体产品能力隔离为已关闭的版本历史案例。",
       "status": "closed",
       "tags": [
-        "hermes",
         "agent",
         "research",
         "memory",
@@ -3832,16 +3831,18 @@
         "validation"
       ],
       "aliases": [
+        "agent-experience-capability-assessment",
         "hermes-dreaming-assessment",
         "hermes-experience-consolidation-snapshot"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "production-ai-agent-evaluation-framework"
         ],
         "related": [
           "agent-self-validation-loops",
@@ -3921,11 +3922,10 @@
     {
       "path": "queries/hermes-wiki-knowledge-freshness-improvement-plan.md",
       "type": "query",
-      "title": "Hermes Wiki 知识新鲜度改造计划",
-      "description": "保留 2026-08-26 已关闭的新鲜度改造决策；当前执行以 Schema、写作规范和 Freshness Gate 为准。",
+      "title": "Wiki 知识新鲜度改造：通用原则与历史决策",
+      "description": "面向任意知识库提炼证据绑定、时间区分与局部复查原则，保留已关闭的改造决策并与现行 Wiki 规则明确分开。",
       "status": "closed",
       "tags": [
-        "hermes",
         "governance",
         "knowledge-base",
         "verification",
@@ -3933,13 +3933,14 @@
         "architecture"
       ],
       "aliases": [
+        "wiki-freshness-migration-principles",
         "wiki-freshness-plan",
         "claim-evidence-workflow"
       ],
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence"

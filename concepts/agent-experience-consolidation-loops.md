@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-11
+updated: 2026-11-12
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
 sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/]
@@ -169,10 +169,12 @@ lesson candidate
 
 ## AI Agent mapping
 
-Hermes 产品实例 [[hermes-agent-experience-consolidation-capability-assessment]] 仅记录 2026-05-11 / v0.13.0 的历史能力快照，不是当前能力清单。该产品目标部署是否具有 `session_search`、skills、memory、验证工具、`/goal`、`delegate_task`、cron 或 Auto Dream，必须按当前官方文档与实际工具列表重新核验；本页只保留知识闭环边界：
+经验闭环按职责接入任意 Agent 或人工辅助流程：证据获取、候选提炼、持久化载体、效果验证和后续复用分别检查，不要求存在特定的会话搜索命令、Skill 格式、记忆 API、子代理或调度器。[[hermes-agent-experience-consolidation-capability-assessment]] 提供通用能力核查框架，并将具体产品能力限定在版本历史案例中；当前部署能力仍须查目标版本资料和实际证据。
+
+可采用的知识闭环边界是：
 
 ```text
-session_search / project evidence → audited review
+authorized session / project evidence → audited review
 → public, durable finding → corresponding wiki formal owner
 → private or project-local record → original authorized session/project carrier
 → one-off closeout → project state/history, not public wiki
@@ -181,7 +183,7 @@ session_search / project evidence → audited review
 → runtime/cron only after separate approval
 ```
 
-- `/goal`、fresh-context reviewer 和确定性工具证据可以提供结果验证，详见 [[agent-self-validation-loops]]。
+- 结果验证可由测试、确定性工具证据或独立评审承担，详见 [[agent-self-validation-loops]]；产品内置的目标判定命令只是可选实现。
 - 多 Agent 只用于适合拆分的复杂工作，不替代明确验收标准；编排边界见 [[subagent-orchestration-patterns]]。
 - 定时复盘默认只生成候选报告，不自动修改 memory、skills 或 runtime。
 

@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-12] refactor | Generalize remaining brand-scoped knowledge titles and adoption guidance
+
+- Reframed [[hermes-agent-experience-consolidation-capability-assessment]] around reusable capability responsibilities and separate availability/effectiveness evidence; retained the closed version-specific assessment as a historical case, not a current product checklist.
+- Reframed [[hermes-wiki-knowledge-freshness-improvement-plan]] around portable freshness principles while preserving its closed historical decision and deferring current execution to the existing Schema and owner pages.
+- Retitled [[hermes-vs-google-sre-agentic-incident-response]] around Agent incident-response responsibilities; product names remain evidence-scoped case provenance, not deployment assumptions or rankings.
+- Removed product-command assumptions from the mapping in [[agent-experience-consolidation-loops]], clarified a legacy-path heading in [[system-governance-operating-model]], and synchronized discovery metadata. Existing paths and legacy aliases remain compatible; raw sources and verification dates were not rewritten.
+
 ## [2026-11-12] improve | Ground document parsing and public-info monitoring with explicit evaluation boundaries
 
 - Expanded [[document-parsing-structural-fidelity]] with task-scoped relational tuples, TEDS tree-edit evaluation and DPP regression normalization; distinguished a specific published perturbation example from a general performance guarantee.
