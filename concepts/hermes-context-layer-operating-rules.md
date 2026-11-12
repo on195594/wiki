@@ -1,12 +1,12 @@
 ---
 title: AI Agent Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-11-07
+updated: 2026-11-12
 type: concept
 tags: [agent, lifeos, context-engineering, knowledge-base, workflow, governance, project]
-sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md]
+sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://arxiv.org/abs/2310.08560]
 status: stable
-description: 定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则。
+description: 定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则，结合 MemGPT 虚拟上下文分层与参数化预算/探针契约（B_ctx / U_blk / R_probe）。
 aliases: [context-layer-rules, agent-context-layer-operating-rules]
 volatility: medium
 review_by: 2027-03-02
@@ -28,7 +28,7 @@ Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口�
 
 ## Core principles
 ### 1. Context window is RAM, not archive
-上下文窗口快、贵、有限，只放当前步骤需要的高信号内容；wiki、文件、数据库和 raw source 更像 disk，需要时再显式取回。
+上下文窗口快、贵、有限，只放当前步骤需要的高信号内容；wiki、文件、数据库和 raw source 更像 disk，需要时再显式取回。这一原则与 Charles Packer 等在 [《MemGPT: Towards LLMs as Operating Systems》（arXiv:2310.08560）](https://arxiv.org/abs/2310.08560) 中提出的**虚拟上下文管理（Virtual Context Management）**架构一致：将受限的上下文窗口作为主存（`Main Context`：存放系统指令、当前工作状态与近期观察），将历史会话队列（`Recall Storage`）与结构化知识库（`Archival Storage`）作为外存，通过显式检索/转储原语按需换入（Page-in）与换出（Page-out），而非把外存全量镜像到主存中。
 
 ### 2. Static and dynamic context must be separated
 系统规则、工具 schema、固定边界属于静态层；用户当前目标、最近工具结果、检索片段和当前状态属于动态层。静态层应尽量稳定，动态层应尽量小而准。
@@ -100,6 +100,11 @@ Machine Learning Mastery 这篇文章提供的底层原则是：上下文窗口�
 6. 加入最新工具观察，移除过期输出、已解决分支和重复背景。
 7. 用 probe 检查目标、关键决策、已处理对象和下一步是否仍完整。
 
+**[推论] 装配清单与参数化治理指标对齐**：执行上述 7 步装配时，可对照 [[hermes-context-engineering-design-priorities]] 的四参数模型进行定量核查：
+- 第 1–2 步对应锁定静态指令配额 $B_{\text{sys}}$ 与经校验状态配额 $B_{\text{state}}$，确保总占用 $B_{\text{ctx}} \le W_{\text{eff}}$ 并预留充足生成余量 $B_{\text{res}}$；
+- 第 3–5 步对应按候选片段边际价值密度 $u_i(S) = \frac{\text{Rel}_i \cdot \text{Trust}_i \cdot \nu_i(S)}{c_i}$（`U_blk`）对 memory、Wiki 段落与按需 skill 排序准入，剔除高重复低新颖度（$\nu_i(S) \to 0$）的背景块；
+- 第 6–7 步对应控制单步观察配额 $B_{\text{obs}}$ 并执行关键事实保留率探针（`R_probe`：$R_{\text{probe}} = 1$），若压缩或状态更新后丢失必保约束，则阻断高风险写操作并从外部证据层回填。
+
 若问题是“内容长期放哪”或“是否组合 cron/MCP”，分别回到 [[hermes-memory-skills-wiki-boundaries]] 与 [[hermes-layer-routing-decision-checklist]]，不在本页另维护一套晋升规则。
 
 ## Promotion is separate from assembly
@@ -153,4 +158,4 @@ Machine Learning Mastery 文章的处理结果：
 
 ## Relations
 - depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-lifeos-executable-architecture]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[agent-context-engineering]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]], [[agent-experience-consolidation-loops]]
+- related: [[agent-context-engineering]], [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]], [[agent-experience-consolidation-loops]]

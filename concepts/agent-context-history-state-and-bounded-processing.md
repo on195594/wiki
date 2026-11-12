@@ -1,12 +1,12 @@
 ---
 title: "Agent Context: History, State and Bounded Processing"
 created: 2026-10-17
-updated: 2026-11-02
+updated: 2026-11-12
 type: concept
 tags: [agent, llm, context-engineering, workflow]
-sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md]
+sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md, https://arxiv.org/abs/2310.08560]
 status: stable
-description: 说明 Agent 消息历史与运行状态如何裁剪：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型承担的有界上下文加工及其恢复与评测边界。
+description: 说明 Agent 消息历史与运行状态如何裁剪：结合 MemGPT 虚拟上下文分页、转储与摘要分工、SKILL.state 状态折叠契约、子代理交接，以及专用模型有界加工的恢复与总成本边界。
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -60,6 +60,18 @@ AI Agent 映射：
 
 这不是所有任务的默认模式。以下任一条件成立时应保留历史检索或混合执行：Schema 需要动态发现；早期观察可能延迟显现价值；任务目标本身要求审计、溯源或解释历史；状态会随步数无界增长；多个写者缺少冲突解决；模型经常产生语义错误但 Schema 合法的 patch。论文中 Gemma-4-31B-it 的失败有 68% 来自意外覆盖或删除，说明“结构化”不等于“可靠更新”。
 
+### 虚拟上下文分页与三类动态裁剪算子对比
+
+Charles Packer 等（UC Berkeley, 2023/2024，*MemGPT: Towards LLMs as Operating Systems*，[arXiv:2310.08560](https://arxiv.org/abs/2310.08560)）从传统操作系统分层内存管理出发，提出了 **虚拟上下文管理（Virtual Context Management）**：将受限的模型上下文窗口视为高速工作内存（`Main Context`），将完整历史日志与文档库视为外部慢速存储（`External Context`：含可检索历史队列 `Recall Storage` 与持久知识库 `Archival Storage`），通过水位告警中断与显式读写调用在主存与外存之间执行页面换入/换出（Page-in / Page-out）。
+
+**[推论]** 结合 [[hermes-context-engineering-design-priorities]] 的参数化预算模型（`B_ctx / U_blk / C_total / R_probe`），可将动态上下文的三类裁剪机制統一为针对不同窗口分项的算子：
+
+| 裁剪机制 | 作用对象与控制分项 | 形式化转换算子 | 适用前提与失效保护（`R_probe` / `C_total`） |
+| :--- | :--- | :--- | :--- |
+| **输入转储（Offloading）** | 单次超大工具输出或长文档输入（控制 $B_{\text{obs}}$ 尖峰） | $O_t \mapsto (\text{Preview}(O_t), \text{URI}_t)$，原文落入外部证据存储，窗口内仅保留结构化摘要与可寻址指针 | 防止单步观察撑爆 $W_{\text{eff}}$；工具支持按行/按查询分页回读（Page-in）时最有效 |
+| **历史摘要（Summarization）** | 多轮累积对话轨迹（压缩旧历史占用，释放 $B_{\text{res}}$） | $H_{1:t-k} \mapsto S_{\text{summary}}$，保留近期 $k$ 轮原文与旧轮次有损压缩文本 | 适合开放式对话；摘要属于有损变换，若丢失硬约束（$R_{\text{probe}} < 1$）会导致后续轮次反复回读并推高总成本 $C_{\text{total}}$ |
+| **状态补丁投影（`SKILL.state`）** | 长程多步程序性任务状态（避免随历史轮数线性累积；仅领域状态规模有界时，$B_{\text{state}}$ 才可为 $\mathcal{O}(1)$） | $\Sigma_{t+1} = \text{ValidateAndMerge}(\Sigma_t, \Delta_t)$，每步输入收缩为 $(P, \Sigma_t, O_t)$ | 要求领域状态 Schema 闭合且补丁可确定性校验；对模型误删字段（$R_{\text{probe}} < 1$）须由宿主拦截并回滚至 $\Sigma_t$ |
+
 ## Subagent handoff: causal continuation vs independent judgment
 
 [[langchain-organizing-context-multi-agent-harness-2026-09-08]] distinguishes forked subagents, which inherit a supervisor's conversation, from isolated subagents, which receive a fresh context. Its durable contribution is not “always copy history”, but a role-aware test: does the child need to continue an already established causal chain, or independently evaluate a frozen object?
@@ -91,4 +103,4 @@ The article argues that prompt caching can make full-context forks cheaper than 
 ## Relations
 - refines: [[agent-context-engineering]]
 - depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[agent-context-prompt-tools-and-examples]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-programming-system-engineering]], [[hermes-layer-routing-decision-checklist]]
+- related: [[agent-context-prompt-tools-and-examples]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-programming-system-engineering]], [[hermes-layer-routing-decision-checklist]]

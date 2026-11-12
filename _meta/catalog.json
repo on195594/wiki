@@ -70,7 +70,7 @@
       "path": "comparisons/leontraveller-vs-ordinary-investor-investment-system.md",
       "type": "comparison",
       "title": "Leontraveller vs Ordinary Investor Investment System",
-      "description": "比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的分工和冲突边界。",
+      "description": "结合行为投资组合理论（BPT-MA）比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的心理账户分工、参数矩阵和冲突边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -84,14 +84,16 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
           "ordinary-investor-investment-system"
         ],
         "related": [
-          "investment-risk-control-framework"
+          "investment-risk-control-framework",
+          "combining-two-investment-frameworks",
+          "household-fund-layering-model"
         ]
       }
     },
@@ -215,7 +217,7 @@
       "path": "concepts/agent-context-history-state-and-bounded-processing.md",
       "type": "concept",
       "title": "\"Agent Context: History, State and Bounded Processing\"",
-      "description": "说明 Agent 消息历史与运行状态如何裁剪：转储与摘要分工、SKILL.state 状态契约、子代理交接，以及专用模型承担的有界上下文加工及其恢复与评测边界。",
+      "description": "说明 Agent 消息历史与运行状态如何裁剪：结合 MemGPT 虚拟上下文分页、转储与摘要分工、SKILL.state 状态折叠契约、子代理交接，以及专用模型有界加工的恢复与总成本边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -230,7 +232,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -241,6 +243,8 @@
         ],
         "related": [
           "agent-context-prompt-tools-and-examples",
+          "hermes-context-layer-operating-rules",
+          "subagent-orchestration-patterns",
           "deterministic-analytics-llm-reasoning-boundary",
           "agentic-programming-system-engineering",
           "hermes-layer-routing-decision-checklist"
@@ -251,7 +255,7 @@
       "path": "concepts/agent-context-prompt-tools-and-examples.md",
       "type": "concept",
       "title": "\"Agent Context: System Prompt, Tools and Examples\"",
-      "description": "说明 Agent 静态上下文面的设计：system prompt 作为操作简报、窄工具面与反向边界、可见不等于可用的级联，以及以行为为主的示例。",
+      "description": "说明 Agent 静态上下文面的设计：system prompt 作为操作简报（受静态配额 B_sys 约束）、窄工具面与四阶工具选择概率漏斗、可见不等于可用的级联，以及以行为为主的示例。",
       "status": "stable",
       "tags": [
         "agent",
@@ -266,17 +270,19 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agent-context-engineering"
         ],
         "depends_on": [
           "typed-ai-agent-boundaries",
-          "ai-agent-tool-selection-architecture"
+          "ai-agent-tool-selection-architecture",
+          "hermes-context-engineering-design-priorities"
         ],
         "related": [
           "agent-context-history-state-and-bounded-processing",
+          "hermes-context-layer-operating-rules",
           "ai-coding-assistant-context-budget-management",
           "hermes-skill-refactoring-methodology",
           "agent-self-validation-loops"
@@ -1308,7 +1314,7 @@
       "path": "concepts/chat-to-agent-session-routing.md",
       "type": "concept",
       "title": "Chat to Agent Session Routing",
-      "description": "\"[有限经验] 聊天平台到有状态 AI Agent 运行时的会话路由与边界隔离设计原则。\"",
+      "description": "聊天平台到有状态 AI Agent 运行时的会话路由、容器键隔离与幂等接收器（Idempotent Receiver）设计原则。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1323,12 +1329,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
           "hermes-memory-skills-wiki-boundaries",
           "subagent-orchestration-patterns"
+        ],
+        "related": [
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "local-first-sync-confirmed-mirror-outbox-conflict-policy"
         ]
       }
     },
@@ -1944,7 +1954,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer"
@@ -1953,6 +1963,9 @@
           "hermes-retrieval-priority-and-answer-path",
           "hermes-knowledge-architecture",
           "agent-context-engineering",
+          "agent-context-prompt-tools-and-examples",
+          "agent-context-history-state-and-bounded-processing",
+          "hermes-context-layer-operating-rules",
           "wiki-ingestion-workflow"
         ]
       }
@@ -1961,7 +1974,7 @@
       "path": "concepts/hermes-context-layer-operating-rules.md",
       "type": "concept",
       "title": "AI Agent Context Layer Operating Rules",
-      "description": "定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则。",
+      "description": "定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则，结合 MemGPT 虚拟上下文分层与参数化预算/探针契约（B_ctx / U_blk / R_probe）。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1979,7 +1992,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-07",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-context-engineering-design-priorities",
@@ -1989,6 +2002,8 @@
         ],
         "related": [
           "agent-context-engineering",
+          "agent-context-prompt-tools-and-examples",
+          "agent-context-history-state-and-bounded-processing",
           "llm-context-engineering-layer",
           "ai-assumption-challenger-before-execution",
           "subagent-orchestration-patterns",
@@ -2126,7 +2141,7 @@
       "path": "concepts/hermes-layer-routing-decision-checklist.md",
       "type": "concept",
       "title": "AI Agent Layer Routing Decision Checklist",
-      "description": "以内容归属、执行方法、触发方式、外部能力和运行状态五个可组合维度判断 AI Agent 层间路由。",
+      "description": "以内容归属、执行方法、触发方式、外部能力和运行状态五个正交职责维度及晋升门禁（B_act / P_skill / G_promo）判断 AI Agent 层间路由。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2144,7 +2159,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -2153,6 +2168,8 @@
           "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
+          "hermes-context-layer-operating-rules",
+          "agent-experience-consolidation-loops",
           "hermes-knowledge-architecture",
           "hermes-memory-governance-notes",
           "hermes-layer-routing-sample-cases",
@@ -2265,7 +2282,7 @@
       "path": "concepts/hermes-memory-skills-wiki-boundaries.md",
       "type": "concept",
       "title": "AI Agent Memory Skills Wiki Boundaries",
-      "description": "定义 AI Agent memory、skills、wiki 和 sessions 的归类边界，避免把偏好、流程、正式知识和临时上下文混放。",
+      "description": "结合认知神经科学记忆分类学（Tulving 情景/语义记忆与 Squire 陈述/程序记忆）定义 AI Agent memory、skills、wiki 和 sessions 的归类与晋升边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2281,7 +2298,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-07",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -2292,10 +2309,14 @@
         ],
         "related": [
           "hermes-context-layer-operating-rules",
+          "agent-context-history-state-and-bounded-processing",
           "hermes-memory-governance-notes",
+          "agent-experience-consolidation-loops",
           "agent-skill-provider-governance-boundary",
           "chat-to-agent-session-routing",
           "hermes-layer-routing-decision-checklist",
+          "hermes-layer-routing-sample-cases",
+          "hermes-layer-routing-edge-cases",
           "hermes-retrieval-priority-and-answer-path"
         ]
       }
@@ -2610,7 +2631,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2618,11 +2639,20 @@
         ],
         "related": [
           "combining-two-investment-frameworks",
+          "leontraveller-vs-ordinary-investor-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework",
-          "minimal-executable-trading-system",
           "household-fund-layering-model",
           "pre-trade-risk-checklist",
-          "position-sizing-method"
+          "when-not-to-trade",
+          "inaction-vs-action-decision-framework",
+          "position-sizing-method",
+          "position-scaling-method",
+          "losing-position-review-method",
+          "winning-position-risk-management",
+          "post-trade-review-loop",
+          "repeat-mistake-detection-in-trading",
+          "trading-lessons-to-hard-rules",
+          "minimal-executable-trading-system"
         ]
       }
     },
@@ -3791,7 +3821,7 @@
       "path": "queries/combining-two-investment-frameworks.md",
       "type": "query",
       "title": "Combining Two Investment Frameworks",
-      "description": "回答如何同时使用长期投资框架和主动交易框架而不混仓、混脑、混规则。",
+      "description": "回答如何基于行为投资组合理论（BPT-MA）与参数化风控门禁（L / δ vs 1R / R_open / D_max）同时使用长期配置与主动交易框架而不混仓混规则。",
       "status": "stable",
       "tags": [
         "investment",
@@ -3805,13 +3835,19 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "ordinary-investor-investment-system",
           "leontraveller-trading-and-investment-system",
           "investment-risk-control-framework",
           "leontraveller-vs-ordinary-investor-investment-system"
+        ],
+        "related": [
+          "household-fund-layering-model",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "inaction-vs-action-decision-framework"
         ]
       }
     },
@@ -3857,7 +3893,7 @@
       "path": "queries/hermes-layer-routing-edge-cases.md",
       "type": "query",
       "title": "AI Agent Layer Routing Edge Cases",
-      "description": "沉淀 AI Agent layer routing 中容易混淆的边界案例和判定结果。",
+      "description": "沉淀 AI Agent layer routing 中容易混淆的 10 类边界案例，并结合正交职责分量与晋升门禁（B_act / P_skill / G_promo）给出裁决规则。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3874,7 +3910,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
@@ -3882,7 +3918,9 @@
         ],
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
-          "hermes-memory-skills-wiki-boundaries"
+          "hermes-memory-skills-wiki-boundaries",
+          "hermes-context-layer-operating-rules",
+          "agent-experience-consolidation-loops"
         ]
       }
     },
@@ -3907,7 +3945,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
@@ -3915,7 +3953,9 @@
         ],
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
-          "hermes-retrieval-priority-and-answer-path"
+          "hermes-retrieval-priority-and-answer-path",
+          "hermes-layer-routing-edge-cases",
+          "hermes-context-layer-operating-rules"
         ]
       }
     },
@@ -3994,7 +4034,7 @@
       "path": "queries/inaction-vs-action-decision-framework.md",
       "type": "query",
       "title": "Deciding Between Inaction and Action",
-      "description": "回答投资交易中如何判断等待是否优于立即行动。",
+      "description": "回答投资交易中如何识别行动偏误（Action Bias）与换手摩擦损耗，判断条件化等待是否优于立即行动。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4008,7 +4048,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4016,6 +4056,12 @@
           "winning-position-risk-management",
           "position-sizing-method",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "losing-position-review-method",
+          "post-trade-review-loop",
+          "combining-two-investment-frameworks",
+          "coping-skill-application-and-imaginal-exposure"
         ]
       }
     },
@@ -4260,7 +4306,7 @@
       "path": "queries/repeat-mistake-detection-in-trading.md",
       "type": "query",
       "title": "Detecting Repeat Trading Mistakes",
-      "description": "回答如何从多笔交易中识别重复错误，并决定是否升级为规则修正。",
+      "description": "回答如何从多笔交易中区分过程违背与合规亏损、识别重复错误模式并防范小样本假阳性过拟合。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4274,7 +4320,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "post-trade-review-loop",
@@ -4285,7 +4331,9 @@
         ],
         "related": [
           "trading-lessons-to-hard-rules",
-          "minimal-executable-trading-system"
+          "minimal-executable-trading-system",
+          "agent-failure-closed-loop-evaluation",
+          "agent-closed-loop-learning-from-corrections-to-rules"
         ]
       }
     },
@@ -4329,7 +4377,7 @@
       "path": "queries/trading-lessons-to-hard-rules.md",
       "type": "query",
       "title": "Converting Trading Lessons into Hard Rules",
-      "description": "回答哪些交易教训应升级成硬规则，以及规则颗粒度如何保持可执行。",
+      "description": "回答哪些交易教训应升级成硬规则，并结合执行意图（Implementation Intentions）的 If-Then 结构与活跃面治理保持规则可执行。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4343,7 +4391,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-19",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "repeat-mistake-detection-in-trading",
@@ -4351,6 +4399,13 @@
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "investment-risk-control-framework"
+        ],
+        "related": [
+          "minimal-executable-trading-system",
+          "combining-two-investment-frameworks",
+          "position-sizing-method",
+          "hermes-active-surface-lifecycle-governance",
+          "agent-closed-loop-learning-from-corrections-to-rules"
         ]
       }
     },
@@ -4358,7 +4413,7 @@
       "path": "queries/when-not-to-trade.md",
       "type": "query",
       "title": "When Not to Trade",
-      "description": "回答哪些情境下默认不交易、不加仓或先暂停决策。",
+      "description": "回答哪些情境下默认不交易、不加仓或先暂停决策，结合个人投资者过度交易损耗实证与参数化熔断红线（D_max / R_open / δ / 1R）。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4372,13 +4427,17 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-25",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
           "combining-two-investment-frameworks",
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
+        ],
+        "related": [
+          "inaction-vs-action-decision-framework",
+          "position-sizing-method"
         ]
       }
     },

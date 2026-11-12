@@ -1,12 +1,12 @@
 ---
 title: "Agent Context: System Prompt, Tools and Examples"
 created: 2026-10-17
-updated: 2026-11-02
+updated: 2026-11-12
 type: concept
 tags: [agent, llm, context-engineering, workflow]
-sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, docs:https://impeccable.style/docs/, concepts/ai-agent-tool-selection-architecture.md]
+sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, docs:https://impeccable.style/docs/, concepts/ai-agent-tool-selection-architecture.md, concepts/hermes-context-engineering-design-priorities.md]
 status: stable
-description: 说明 Agent 静态上下文面的设计：system prompt 作为操作简报、窄工具面与反向边界、可见不等于可用的级联，以及以行为为主的示例。
+description: 说明 Agent 静态上下文面的设计：system prompt 作为操作简报（受静态配额 B_sys 约束）、窄工具面与四阶工具选择概率漏斗、可见不等于可用的级联，以及以行为为主的示例。
 volatility: medium
 review_by: 2027-03-02
 aliases: [static-agent-context, prompt-tools-and-examples]
@@ -82,6 +82,12 @@ AI Agent 映射：评估 skill/tool/MCP 不应只看“是否被暴露”或“�
 
 [[ai-agent-tool-selection-architecture]] 进一步区分“系统允许使用哪些工具”和“当前推理步骤应让模型看到哪些工具”。若目标宿主的工具配置支持平台、会话和任务级静态边界，应先复用这些边界；动态 Top-K、语义路由或规划式选择只有在真实会话基线证明静态收窄仍不足时，才值得进入项目级试验。外部文章中的工具数量和阈值不应直接变成 active runtime 默认值。
 
+**[推论] 静态预算配额与四阶选择漏斗对齐**：结合 [[hermes-context-engineering-design-priorities]] 的分层有效窗口预算（$B_{\text{ctx}} = B_{\text{sys}} + B_{\text{state}} + B_{\text{ret}} + B_{\text{obs}} + B_{\text{res}} \le W_{\text{eff}}$）与 [[ai-agent-tool-selection-architecture]] 的四阶条件概率漏斗：
+$$P_{\text{succ}}(q) = P_{\text{avail}}(t^* \in \mathcal{T}_{\text{avail}}) \cdot R_K(t^* \in \mathcal{C}_K \mid t^* \in \mathcal{T}_{\text{avail}}) \cdot S_K(\hat{t} = t^* \mid t^* \in \mathcal{C}_K) \cdot E_{t^*}(\text{exec ok} \mid \hat{t} = t^*)$$
+上述 AX 五步级联可直接映射为两个可验证的静态装配约束：
+1. **控制静态上下文基荷 $B_{\text{sys}}$**：系统指令、固定规则、工具 Schema 与常驻示例共享静态预算 $B_{\text{sys}}$。若把低频工具 Schema 或冗余 Few-shot 全量常驻在 $B_{\text{sys}}$ 中，不仅直接挤压长任务状态 $B_{\text{state}}$ 与生成余量 $B_{\text{res}}$，还会因同名或近似参数干扰拉低全量工具集上的选择准确率 $S_N$。
+2. **在相同任务基线上比较端到端净收益**：上述漏斗是单一目标工具、逐层嵌套事件的简化模型，不是所有多工具任务的成功率。仅当可用性相同且末阶执行率近似相等时，$R_K(q) \cdot S_K(q) > S_N(q)$ 才能表示选择环节的收益；一般应比较 $R_K S_K E_K$ 与 $S_N E_N$，并计入发现 Schema 的额外调用、延迟、Token 与失败成本。不能仅凭候选集变小或选择率提高判定两阶段发现更优；多工具链仍需按完整任务验收。
+
 ### Paid Media Agent：按需工具与确定性计算案例
 
 LangChain 的 [[langchain-paid-media-agent-2026-09-13]] 是上述原则的生产案例，而不是新的默认架构。其早期周报把原始广告和 pipeline 数据全部交给模型计算；作者报告单次约 390 万输入 Token、1,112 秒。改由 Python 对齐时间窗、计算指标并应用固定规则后，模型只解释原因和提出建议，运行时间降至 85 秒，成本约降 40 倍。这些数字只适用于该冻结测试集，但支持“模型负责判断，代码负责可复现计算”的边界。
@@ -101,5 +107,5 @@ AI Agent 映射：
 
 ## Relations
 - refines: [[agent-context-engineering]]
-- depends_on: [[typed-ai-agent-boundaries]], [[ai-agent-tool-selection-architecture]]
-- related: [[agent-context-history-state-and-bounded-processing]], [[ai-coding-assistant-context-budget-management]], [[hermes-skill-refactoring-methodology]], [[agent-self-validation-loops]]
+- depends_on: [[typed-ai-agent-boundaries]], [[ai-agent-tool-selection-architecture]], [[hermes-context-engineering-design-priorities]]
+- related: [[agent-context-history-state-and-bounded-processing]], [[hermes-context-layer-operating-rules]], [[ai-coding-assistant-context-budget-management]], [[hermes-skill-refactoring-methodology]], [[agent-self-validation-loops]]

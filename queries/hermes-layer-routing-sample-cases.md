@@ -1,7 +1,7 @@
 ---
 title: AI Agent Layer Routing Sample Cases
 created: 2026-04-17
-updated: 2026-11-02
+updated: 2026-11-12
 type: query
 tags: [agent, workflow, decision, configuration, automation, mcp]
 sources: [concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/memory, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/skills, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/cron, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp]
@@ -139,4 +139,4 @@ verified_at: 2026-11-02
 
 ## Relations
 - depends_on: [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-retrieval-priority-and-answer-path]], [[hermes-layer-routing-edge-cases]], [[hermes-context-layer-operating-rules]]

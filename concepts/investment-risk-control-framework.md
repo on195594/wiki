@@ -1,7 +1,7 @@
 ---
 title: Investment Risk Control Framework
 created: 2026-04-17
-updated: 2026-11-09
+updated: 2026-11-12
 type: concept
 tags: [investment, governance, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, docs:https://vantharpinstitute.com/tools/position-sizing-calculator/, docs:https://blog.traderspost.io/article/kelly-criterion-position-sizing-automated-trading, docs:https://investor.vanguard.com/investor-resources-education/portfolio-management/rebalancing-your-portfolio]
@@ -143,4 +143,4 @@ volatility: low
 
 ## Relations
 - depends_on: [[leontraveller-trading-and-investment-system]], [[ordinary-investor-investment-system]]
-- related: [[combining-two-investment-frameworks]], [[money-as-tool-and-investment-vs-consumption-framework]], [[minimal-executable-trading-system]], [[household-fund-layering-model]], [[pre-trade-risk-checklist]], [[position-sizing-method]]
+- related: [[combining-two-investment-frameworks]], [[leontraveller-vs-ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[household-fund-layering-model]], [[pre-trade-risk-checklist]], [[when-not-to-trade]], [[inaction-vs-action-decision-framework]], [[position-sizing-method]], [[position-scaling-method]], [[losing-position-review-method]], [[winning-position-risk-management]], [[post-trade-review-loop]], [[repeat-mistake-detection-in-trading]], [[trading-lessons-to-hard-rules]], [[minimal-executable-trading-system]]

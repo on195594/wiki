@@ -1,7 +1,7 @@
 ---
 title: AI Agent Context Engineering Design Priorities
 created: 2026-04-16
-updated: 2026-11-11
+updated: 2026-11-12
 type: concept
 tags: [agent, llm, workflow, decision]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://arxiv.org/abs/2307.03172, https://en.wikipedia.org/wiki/Information_bottleneck_method]
@@ -153,4 +153,4 @@ AI Agent 的 context engineering 应遵循 4 条规则：
 ## Relations
 
 - depends_on: [[llm-context-engineering-layer]]
-- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-architecture]], [[agent-context-engineering]], [[wiki-ingestion-workflow]]
+- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-architecture]], [[agent-context-engineering]], [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]]
