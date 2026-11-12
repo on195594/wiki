@@ -2,6 +2,19 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-12] improve | Ground document parsing and public-info monitoring with explicit evaluation boundaries
+
+- Expanded [[document-parsing-structural-fidelity]] with task-scoped relational tuples, TEDS tree-edit evaluation and DPP regression normalization; distinguished a specific published perturbation example from a general performance guarantee.
+- Expanded [[public-info-monitoring-automation-methodology]] with per-object, nullable Last-Known-Good baselines, event deduplication / threshold hysteresis, CUSUM and Bayesian alert PPV; covered first observations, failed delivery, current-round health and consecutive-failure semantics. Statistical formulas are not uncalibrated production guarantees.
+
+## [2026-11-12] improve | Connect summary support, document fidelity, research gates and verification scope to primary literature
+
+- Related [[llm-summary-identification-step]] to Manski partial identification and selective prediction, while separating those theories from summary-specific engineering analogies; category-aware audits do not turn unsupported facts into recommendations.
+- Related [[ai-agent-document-fidelity-risk]] to bidirectional Lens laws and a hypothetical drift/jump model; attempted reversals are not proven inverses, and aggregate degradation data do not identify per-step failure rates.
+- Related [[agent-research-evidence-gate]] to CRAG document-level routing and Self-RAG critique dimensions; aligned the bounded stopping policy with its decision matrix, defined initial evidence and distinguished failed-gate stagnation from successful synthesis with no new sources.
+- Clarified [[human-machine-scientific-discovery-verification-scarcity]]: de Bruijn proof objects differ from LCF theorem construction; formal derivations do not validate unformalized domain bridges, and large candidate spaces do not establish complexity lower bounds.
+- Distinguished FActScore, ALCE citation recall/precision and cross-run Jaccard consistency in [[hermes-knowledge-freshness-and-claim-evidence]]; documented undefined/empty cases and avoided treating source support or stable citations as factual truth.
+
 ## [2026-11-11] improve | Ground resource optimization, tool selection, constrained synthesis, local-first sync, and cognitive substitution in FrugalGPT/RouteLLM, SyGuS/CEGIS, Bayou/CRDT, and Bainbridge automation ironies
 
 - Enriched [[agent-resource-optimization]] with Set-Covering / Knapsack Integer Linear Programming ($\min \sum_j c_j x_j \text{ s.t. } \mathbf{A}\mathbf{x} \ge \mathbf{1}$), Lingjiao Chen, Matei Zaharia & James Zou's (arXiv 2023 / *TMLR* 2024, *FrugalGPT*, [arXiv:2305.05176](https://arxiv.org/abs/2305.05176)) sequential LLM cascade, Isaac Ong et al.'s (arXiv 2024 / ICLR 2025, *RouteLLM*, [arXiv:2406.18665v4](https://arxiv.org/html/2406.18665v4)) preference-threshold binary routing, full-lifecycle expected routing cost incorporating escalation, cache invalidation, and rework ($\mathbb{E}[C_{\text{route}}(q)]$), and an explicitly labeled `[推论]` parameterized resource and tool-routing decision matrix (`C_cov / R_route / P_tool / M_margin`).

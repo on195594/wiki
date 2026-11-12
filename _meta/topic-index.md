@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-11
+updated: 2026-11-12
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-11 | Indexed pages: 126
+> Last updated: 2026-11-12 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -34,10 +34,10 @@ status: current
 - [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种职责拆分需求，外部接入优先复用授权工具，MCP 可选
 - [AI Agent Model-Specific Harness Profiles](../concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：对照 LangChain DeepAgents `HarnessProfile` / `ProviderProfile` 与 Hermes Agent 配置边界，把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是盲目扩张 runtime profile
-- [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：以分层验证、负面结果和专家评审约束知识准入；ScientistTwo 展示自主实验闭环及其评审与成本边界
+- [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：区分 de Bruijn 准则与 LCF 架构、形式推导与领域规约，以分层验证、范围化负面结果和专家评审约束知识准入
 - [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、Outbox 与冲突政策：结合 Xerox PARC Bayou 的 Committed/Tentative 折叠投影方程（$\text{FoldL}(\text{Apply}, S_{\text{committed}}, O)$）与 CRDT 半格边界组织游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
-- [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 公开信息监控自动化方法论：从信息源建模、结构化快照、变化判断、低噪音通知到健康检查和可选调度
+- [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，校准 CUSUM 与告警 PPV，区分当前成功观测和尾部连续失败的健康检查
 - [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$-bench 数据库终态比对与多轮次连续可靠率（$\text{pass}^k$），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
 - [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码（Outlines / Guided Generation）、分阶段语义分解、固定候选空间、typed tools、dependency injection 与属性测试不变量检验把 LLM 不确定性收进可验证的工程边界
 
@@ -49,16 +49,16 @@ status: current
 - [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）海马体/新皮层双阶段分工、在线捕捉、离线对账与选择性维护，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界
 - [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘与弹性权重巩固（EWC Fisher 矩阵二次惩罚）区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
-- [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — AI Agent 文档保真风险：多轮委托式工作流中模型可能悄悄重写、扭曲或幻觉原文，需用短步骤、diff、可逆验证、受限工具和中间态审计控制风险
+- [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：以 Lens 往返定律作类比，区分尝试恢复与真逆函数、汇总退化数据与示意模型，采用小步编辑、结构检查与中间态审计
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：用 CEP 与 7W 框架从真实决策场景出发，而不是把搜索量直接当成内容需求
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
-- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与章节、表头、单位、脚注的关系；按职责组合 Markdown/HTML/JSON/坐标表示，并以 DPP 0.1 工作草案（140 条规则）参考解析裁决与等价形式，不把格式正确当作语义正确
+- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与表头、单位、脚注的绑定：结合关系元组投影、TEDS 与 DPP 0.1 工作草案，区分局部结构评分、受限格式归一化和完整语义/合规验证
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay；含 `B_ctx / U_blk / C_total / R_probe` 参数化上下文预算与端到端总成本评估模型
-- [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分拓扑重合度与真实引用一致性，8 组双入口跨源评测方案与拓扑基线见独立查询页
+- [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分 FActScore、ALCE 支持度与 Jaccard 稳定性，明确空集合和来源真实性边界
 - [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：区分广义 agent memory 与默认 memory 载体，用正反例路由 skills、wiki、sessions/project state 与历史证据
 - [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
 - [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget：结合检索召回与阅读器饱和脱节（Lost in the Middle）及信息瓶颈原理；涵盖 Agentic RAG 的证据信任边界与语义漂移/未知候选概念参考
-- [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — LLM 摘要的识别步骤：先判断来源能否支撑 claim，再生成带证据类型的摘要，并让审查阶段只能削弱或留白
+- [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — 来源约束摘要的识别与诚实留白：以部分识别和选择性预测作类比，按类别核验原文事实、显式推断与建议，不把建议作为事实的自动降级出口
 - [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：结合 Tree-sitter AST 符号引用图与 PageRank 预算映射（RepoMap）及三级层级化定位（Agentless），把目标代码、可达接口签名、项目约束与显式未知项装配成低噪音 Agent 上下文
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
@@ -87,7 +87,7 @@ status: current
 - [ACA 源码：有效参数与评估预算](../concepts/fixed-budget-optimizer-selection-aca-case.md) — 仅依据固定 GitHub 提交解析参数校验、调用预算与移动算子，区分请求参数、生效种群和实际评估次数
 - [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；结合 MT-Bench 三大裁判偏差（位置/冗长/自我偏好）、Rogan–Gladen 灵敏度/特异度校准（$\hat{\theta}_{\text{RG}}$ / Youden's $J$）与预测驱动推断（PPI），用相关会话、工具证据和专家评分理由校准评测器并沉淀回归案例
 - [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：把可复发失败从失败信号、中立证据、根因分类推进到最小修复和防回归 evaluator/case
-- [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 研究型 Agent 的证据质量闸门：最终复核通过才综合，否则明确不足并停止；这是加固建议，来源教程仍有未复核就出报告的旁路
+- [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 以 CRAG / Self-RAG 为参照，区分来源机制与工程推论：综合前核验支持度、按轮次/预算补证或明确弃答，并说明 `I_ident / G_evid / F_rt / V_cov` 的适用边界
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：用 baseline、测试、浏览器/MCP 反馈和停止条件形成可验证迭代回路；人的理解与证据审查职责链接至对应主维护页
 - [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：把文件、类和内联技能统一到 provider 抽象下，同时用分层来源、过滤、去重、审批和沙箱控制 active skill 风险
 - [AI Agent Active-Surface Lifecycle Governance](../concepts/hermes-active-surface-lifecycle-governance.md) — AI Agent 活跃面的生命周期治理：从基线、校准、晋升和验证推进到事件触发的重基线与可回滚退役，避免规则和自动化只增不减

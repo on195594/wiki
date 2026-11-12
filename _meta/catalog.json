@@ -666,7 +666,7 @@
       "path": "concepts/agent-research-evidence-gate.md",
       "type": "concept",
       "title": "Agent Research Evidence Gate",
-      "description": "定义研究型 Agent 在最终综合前必须通过的证据收集和质量判断门。",
+      "description": "结合 CRAG 三路纠偏检索、Self-RAG 反思批判令牌与有界回填停止状态机，定义研究型 Agent 在最终综合前必须通过的证据闸门及 I_ident / G_evid / F_rt / V_cov 裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -682,7 +682,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -933,7 +933,7 @@
       "path": "concepts/ai-agent-document-fidelity-risk.md",
       "type": "concept",
       "title": "AI Agent Document Fidelity Risk",
-      "description": "说明 AI Agent 处理文档时的保真风险以及需要的证据、验证和人工边界。",
+      "description": "结合双向变换 Lens 往返定律（GetPut/PutGet）与复合跳跃退化模型，说明 AI Agent 多轮文档处理的保真风险、静默改写机制及工程验证边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -951,7 +951,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -1580,7 +1580,7 @@
       "path": "concepts/document-parsing-structural-fidelity.md",
       "type": "concept",
       "title": "文档解析的结构保真与中间表示",
-      "description": "解释文档解析中内容与关系的保真边界、Markdown/HTML/JSON/视觉坐标的职责分工，以及 DPP 0.1 工作草案的 140 条裁决约定。",
+      "description": "结合树编辑距离相似度（TEDS / Zhang–Shasha）、关系元组投影与 DPP 0.1 的 140 条裁决约定，解释文档解析中内容与关系的保真边界及中间表示职责分工。",
       "status": "stable",
       "tags": [
         "llm",
@@ -1598,7 +1598,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "ai-agent-document-fidelity-risk",
@@ -2081,7 +2081,7 @@
       "path": "concepts/hermes-knowledge-freshness-and-claim-evidence.md",
       "type": "concept",
       "title": "Wiki 知识新鲜度与断言证据绑定",
-      "description": "定义 AI Agent Wiki 的知识新鲜度、断言级来源绑定，以及基于 locate/expand 的两步证据导航与编译记忆适用边界。",
+      "description": "定义 AI Agent Wiki 的知识新鲜度、断言级来源绑定，结合 FActScore 原子事实精度、ALCE 引用召回/精度与多轮 Jaccard 稳定性规范 locate/expand 两步证据导航。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2100,7 +2100,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture",
@@ -2560,7 +2560,7 @@
       "path": "concepts/human-machine-scientific-discovery-verification-scarcity.md",
       "type": "concept",
       "title": "Human-Machine Scientific Discovery and Verification Scarcity",
-      "description": "当机器让科学候选生成变得丰沛时，以分层验证、状态账本、负面结果和人类评审约束可信知识形成。",
+      "description": "区分 de Bruijn 准则与 LCF 架构，结合 Flyspeck 形式化规约边界与 Rosenthal 抽屉问题（File Drawer Problem），以分层验证、范围化负面结果和人类评审约束机器候选丰沛时代的知识准入。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2578,7 +2578,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agent-self-validation-loops"
@@ -2769,7 +2769,7 @@
       "path": "concepts/llm-summary-identification-step.md",
       "type": "concept",
       "title": "LLM Summary Identification Step",
-      "description": "说明摘要任务前先识别文档类型、意图和证据边界的必要步骤。",
+      "description": "结合 Manski 部分识别边界、Geifman & El-Yaniv 选择性预测风险—覆盖权衡与保守审查约束，说明摘要任务前识别文档证据边界与诚实留白的必要步骤。",
       "status": "stable",
       "tags": [
         "llm",
@@ -2784,7 +2784,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -3119,7 +3119,7 @@
       "path": "concepts/public-info-monitoring-automation-methodology.md",
       "type": "concept",
       "title": "Public Info Monitoring Automation Methodology",
-      "description": "总结只读公共信息监控自动化项目的范围、边界、验证和推广方法。",
+      "description": "结合最后成功基线投影（LKG）、Page 累积和变点检测（CUSUM）、迟滞去重转换器与 Axelsson 基率谬误（PPV），总结只读公共信息监控自动化的范围、验证和推广方法。",
       "status": "stable",
       "tags": [
         "monitoring",
@@ -3137,7 +3137,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "agent-development-lifecycle",
