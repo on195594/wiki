@@ -21,7 +21,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "dijkstra-ai-programming-formalization"
@@ -157,7 +157,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -429,7 +429,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-05",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -763,7 +763,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-03",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -879,7 +879,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -996,7 +996,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -1107,7 +1107,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1260,7 +1260,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "agent-autonomy-ladder-for-hermes-workflows"
@@ -1297,7 +1297,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "agentic-content-pipeline-design-patterns",
@@ -1572,7 +1572,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-10-29",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1834,7 +1834,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "system-governance-operating-model"
@@ -2037,7 +2037,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-07",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2074,7 +2074,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2421,7 +2421,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -3133,7 +3133,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -3508,7 +3508,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -3627,7 +3627,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -3797,7 +3797,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-12",
       "relations": {
         "refines": [
           "agentic-programming-system-engineering"

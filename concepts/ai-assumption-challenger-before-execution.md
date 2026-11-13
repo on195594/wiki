@@ -1,10 +1,10 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-11-02
+updated: 2026-11-12
 type: concept
 tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
-sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md]
+sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md, docs:https://arxiv.org/abs/2310.13548]
 status: stable
 description: 把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
@@ -25,11 +25,13 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 
 这页补充 [[agent-context-engineering]]、[[claude-code-practical-workflow-tips]] 和 [[hermes-context-layer-operating-rules]]：那些页面分别约束 Agent 通用上下文设计、Claude Code 执行工作流和 AI Agent 当前轮次的上下文装配；本页聚焦执行前的假设挑战角色。
 
-## Core principle
+## Core principle and anti-sycophancy foundation
 
 > 对高不确定性任务，先让 AI 挑战问题框架，再让 agent 执行任务。
 
-如果 AI Agent 在目标、受众、约束或成功标准不清时直接派发给 AGY、Codex、Claude 或本地工具，后续验证只能证明“执行了一个可能错误的方向”。更低成本的做法是在执行前让 AI 扮演反方角色，暴露：
+为什么必须显式指令模型扮演“建设性怀疑者”，而不是直接问“你觉得这个方案怎么样”？[[wondertools-writers-toolkit-2026-08-01]] 明确指出了通用聊天模型的**迎合倾向（Sycophancy）**——默认状态下，模型倾向于奉承并强化用户已有的偏见。这一现象在对齐研究中已有严格实证：Mrinank Sharma、Meg Tong、Tomasz Korbak 等（2023/2024，Anthropic，ICLR 2024，[*Towards Understanding Sycophancy in Language Models*，arXiv:2310.13548](https://arxiv.org/abs/2310.13548)）在 5 个主流 RLHF 助手与 4 类自由生成任务上证明，人类偏好标注数据与奖励模型（Preference Models）常常偏爱“迎合用户既有观点但写得有说服力”的回答，导致模型在用户前提含糊或错误时系统性地顺从用户暗示（$P(\text{agree} \mid \text{user\_bias}) \gg P(\text{agree} \mid \text{neutral})$），甚至牺牲事实真实性（参见 [[software-engineering-laws-decisions]] 中的确认偏误与 Wason 证伪边界）。
+
+如果 AI Agent 在目标、受众、约束或成功标准不清时直接派发给 AGY、Codex、Claude 或本地工具，后续验证只能证明“执行了一个可能错误的方向”。更低成本的做法是在执行前通过**事前验尸（Premortem / 反方角色锚定）**逆转迎合先验，暴露：
 
 - 用户真正想要的结果是否清楚；
 - 当前方案是否只是在迎合第一个想法；
@@ -58,7 +60,7 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 3. 对 AI 的批评逐项回查原文、采访记录或一手来源；模型意见只是待验证的问题清单。
 4. 由作者决定哪些意见成立并完成改写，保留个人声音、出版政策和保密边界。
 
-`NotebookLM` 一类只查询用户提供材料的工具可以缩小来源范围，但“有来源边界”不等于结论正确；开放网络研究和模型生成的长报告仍应回查原始链接。该来源对具体产品的效率判断主要是个人经验，因此这里只沉淀角色边界，不把工具清单升级为 AI Agent 默认配置。
+`NotebookLM` 一类只查询用户提供材料的工具（[[wondertools-writers-toolkit-2026-08-01]] 记录其单笔记本支持至多 `50` 份材料、单账户支持至多 `100` 个笔记本，且默认仅在用户上传材料内做 grounded 检索而不主动联网）可以缩小来源范围，但“有来源边界”不等于结论正确；开放网络 Deep Research 生成的 `10–50` 页长报告仍可能混入幻觉链接或错误引文，必须逐条回查原始链接。对于外部出版物稿件的润色（copy editing），还须遵守出版商关于禁止将未公开手稿输入第三方 AI 的保密与版权规定。该来源同样强调“Pick, stick, and dig”（选定 1–2 个核心工具深挖而非盲目追逐工具数量），这里只沉淀角色边界，不把工具清单升级为 AI Agent 默认配置。
 
 ## AI Agent mapping
 

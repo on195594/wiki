@@ -1,10 +1,10 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-11-04
+updated: 2026-11-13
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, docs:https://www.nature.com/articles/s42256-026-01268-y, docs:https://arxiv.org/abs/2512.08296, docs:https://www.expertsmind.com/questions/bernstein-conditions-for-detection-of-parallelism-30138201.aspx]
 status: stable
 volatility: medium
 review_by: 2027-03-02
@@ -53,7 +53,9 @@ This source is a general tutorial rather than production evidence, so it strengt
 
 ### Single-agent baseline before multi-agent escalation
 
-[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]] provides a stronger precondition for escalation: choose multi-agent collaboration by task decomposability and measured single-agent need, not by task complexity or nominal team size. Weakly coupled, independently verifiable subtasks may justify fan-out; strongly sequential or shared-state tasks usually do not. A stronger single-agent baseline raises the burden of proof for adding coordination.
+[[nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026]]（Yubin Kim 等，2026，*Nature Machine Intelligence* 8, 1157–1172，[DOI 10.1038/s42256-026-01268-y](https://www.nature.com/articles/s42256-026-01268-y)，预印本 [arXiv:2512.08296](https://arxiv.org/abs/2512.08296)）在匹配提示词、工具与算力预算的条件下横评了 3 个模型家族、5 种架构与 6 个基准共 260 种配置，提供了更严格的升级前置条件：多智能体协作并不天然优于单 Agent；任务可分解性与协调瓶颈影响收益，不能只按名义任务难度或团队人数选型。`[推论]` 独立可验证性可作为工程上的附加门槛；随着单 Agent 基线能力增强，多 Agent 协作的边际净收益可收窄甚至反转为负，可用以下示意账本表达（不是论文给出的效用估计器）：
+$$\Delta U_{\text{multi}}(k) = U_{\text{collab}}(k) - U_{\text{single}} - C_{\text{coord}}(k) - L_{\text{corr}}(c_{\text{err}}, k)$$
+各项须换算为同一效用口径且避免重复计入损耗；只有实测净收益为正且满足权限与验证边界时才考虑升级。这里 $C_{\text{coord}}(k)$ 为跨代理通信、上下文压缩与合并开销，$L_{\text{corr}}(c_{\text{err}}, k)$ 为同源误差相关系数 $c_{\text{err}}$ 导致的共模错误放大损耗（参见 [[multiagent-systemic-failure-modes]]）。弱耦合、可独立核验的子任务才适合 fan-out；强顺序依赖或共享可变状态的任务通常不应拆分为多代理。
 
 [推论] AI Agent rule: establish the single-agent baseline, identify a real bottleneck, confirm genuine parallelism, define merge and verification criteria, then run a small comparison. Agreement among similar agents is not independent evidence; parent-level evidence review remains mandatory.
 
@@ -81,12 +83,13 @@ AI Agent mapping:
 Failure mode:
 - No mid-task correction. If the subagent misunderstands, the parent only learns when the result returns.
 
-### Context handoff by role
+### Context handoff by role (`Isolated` vs. `Fork` cost–bias trade-off)
 
-The lifecycle mode and the context-handoff mode are separate decisions. [[langchain-organizing-context-multi-agent-harness-2026-09-08]] proposes full-context forks for workers that continue a supervisor's diagnosis and isolated contexts for reviewers and self-contained researchers. Without assuming that AI Agent exposes a literal fork mode, preserve the useful distinction with the smallest existing mechanism:
+The lifecycle mode and the context-handoff mode are separate decisions. [[langchain-organizing-context-multi-agent-harness-2026-09-08]] proposes full-context forks (`mode: "fork"`) for workers that continue a supervisor's diagnosis and isolated contexts (`mode: "isolated"`) for reviewers and self-contained researchers. `[推论]` Treat this as a role-first decision, not a measured optimum: independent reviewers and self-contained researchers receive isolated task context without the parent's expected conclusion. For continuation workers, compare evidence rediscovery cost, anchoring risk and duplicated history, then prefer a bounded evidence packet; a full fork is optional only when the history itself is necessary evidence and sharing it is authorized. If roles overlap, preserve the independent-review boundary or split the roles rather than silently selecting a mode.
+Without assuming that AI Agent exposes a literal fork mode, preserve the useful distinction with the smallest existing mechanism:
 
 - **Continuation worker / fixer**: include a bounded evidence packet containing the verified diagnosis, exact paths or SHAs, prior decisions, failing check, constraints and expected artifact. Do not make it rediscover facts the parent has already verified.
-- **Independent reviewer / verifier**: provide the frozen diff or artifact, acceptance criteria and necessary project rules, but omit the parent's reasoning and expected conclusion.
+- **Independent reviewer / verifier**: provide the frozen diff or artifact, acceptance criteria and necessary project rules, but omit the parent's reasoning and expected conclusion to reduce anchoring; shared models, training or evidence can still correlate errors ([[ai-assumption-challenger-before-execution]]).
 - **Self-contained researcher**: provide the question, source standard and output contract only; this keeps parallel fan-out from duplicating irrelevant history.
 - **Memory-oriented child**: use only when the conversation itself is necessary evidence, and retain AI Agent's existing privacy, layer-routing and explicit write-authorization boundaries.
 
@@ -111,11 +114,14 @@ AI Agent mapping:
 Failure mode:
 - Premature fan-out creates duplicate work and inconsistent assumptions. The parent must pass enough shared context to each worker.
 
-#### Context isolation is not execution isolation
+#### Context isolation is not execution isolation (Bernstein's disjoint state conditions)
 
-[[langchain-paid-media-agent-2026-09-13]] reports two concrete parent-worker failures. Two platform workers had separate context windows but wrote to the same report path and shared one `done` flag; the first completion could make the second stop without an artifact. Another worker could not determine whether PDF rendering had succeeded, repeatedly inspected files and eventually tried to rebuild the PDF.
+[[langchain-paid-media-agent-2026-09-13]] reports two concrete parent-worker failures. Two platform workers had separate context windows but wrote to the same report path and shared one `done` flag; the first completion could make the second stop without an artifact. Another worker could not determine whether PDF rendering had succeeded, repeatedly inspected files and eventually tried to rebuild the PDF. (The same report also notes that moving deterministic data aggregation from in-context LLM reasoning—`3.9M` input tokens, `1,112s`, `>$3`—to Python execution cut runtime to `85s` and cost by `~40x`, while progressive 3-step tool discovery reduced first-turn tool context from `~38,000` to `~12,000` tokens across 60 runs.)
 
-The narrow fix was per-worker output paths and completion state, a three-tool child surface（read context、compute、render）, and one mechanical stop condition: successful render means done. The reusable rule is broader than context separation: each child needs isolated writable state, a bounded tool set, an exact return artifact, explicit failure semantics and a completion condition the parent can verify. Shared paths or lifecycle flags turn nominally parallel work into hidden coupling.
+From concurrent programming theory (A. J. Bernstein, 1966, [*Bernstein's Conditions for Parallelism*](https://www.expertsmind.com/questions/bernstein-conditions-for-detection-of-parallelism-30138201.aspx)), disjoint LLM context windows ($\text{Ctx}_i \cap \text{Ctx}_j = \emptyset$) do not guarantee order-independent parallel execution unless external read sets $\mathcal{R}_i$ and writable state/artifact sets $\mathcal{W}_i$ (output paths, database rows, lifecycle flags) also satisfy pairwise non-interference for all concurrent workers $i \neq j$:
+$$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset \;\land\; \mathcal{R}_i \cap \mathcal{W}_j = \emptyset \;\land\; \mathcal{W}_i \cap \mathcal{R}_j = \emptyset$$
+
+The narrow fix was per-worker output paths and completion state ($\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$), a three-tool child surface（read context、compute、render）, and one mechanical stop condition: successful render means done ($\Phi_{\text{done}}(w_i) = 1$). The reusable rule is broader than context separation: each child needs isolated writable state, a bounded tool set, an exact return artifact, explicit failure semantics and a completion condition the parent can verify. Shared paths or lifecycle flags turn nominally parallel work into hidden coupling.
 
 ### 3. Agent pool: persistent workers with messages
 
