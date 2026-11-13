@@ -1,12 +1,12 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-12
+updated: 2026-11-13
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/]
 status: stable
-description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）双系统分工、在线捕捉与离线对账、按层职责路由及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。
+description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 跨模型记忆行为对比及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。
 volatility: medium
 review_by: 2026-12-13
 aliases: [experience-consolidation-loop, agent-experience-consolidation]
@@ -47,7 +47,19 @@ Anthropic 发布的 Warp 案例 [[claude-warp-self-improving-agent-skills-2026-0
 
 Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-11-07]]（“Memory notes”“Dreaming can correct memory”“Thinking backward, looking forward”）补充了闭环的时间分工：执行时记录显著观察，使其能及时用于后续步骤；离线 dreaming 再回看原始记录，纠正笔记、组织知识表示或调整后续会话的注入内容。这里的 memory 是跨会话知识的总称，不只指宿主的默认 memory 工具，也不涉及模型权重更新。
 
-在认知与计算神经科学中，这一双阶段架构对应 James L. McClelland、Bruce L. McNaughton 与 Randall C. O'Reilly（1995, *Psychological Review*，[Why there are complementary learning systems in the hippocampus and neocortex](https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf)，[PubMed 7624455](https://pubmed.ncbi.nlm.nih.gov/7624455/)）提出的**互补学习系统（Complementary Learning Systems, CLS）**理论：海马体（Hippocampus）采用快速、稀疏、正交化的表征完成单次情景编码（Episodic Encoding），防止新旧经历互相覆盖；新皮层（Neocortex）则通过慢速、交错回放（Interleaved Replay）从多轮历史样本中逐步提取潜在语义结构与程序规律。若将单次特定轨迹直接以大步长写入共享知识层或模型参数，就会破坏既有结构（即灾难性干扰，见 [[agent-knowledge-evolution-and-meta-skills]]）。**[推论]** 对应到 AI Agent 架构，在线 `session / raw trajectory` 承担快速情景捕获职责，而离线复盘、对账与门禁验证则承担慢速交错整合职责；不能跳过离线对账与反例检验直接把单次轨迹写成全局常驻指令。
+在认知与计算神经科学中，这一双阶段架构对应 James L. McClelland、Bruce L. McNaughton 与 Randall C. O'Reilly（1995, *Psychological Review*，[Why there are complementary learning systems in the hippocampus and neocortex](https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf)，[PubMed 7624455](https://pubmed.ncbi.nlm.nih.gov/7624455/)）提出的**互补学习系统（Complementary Learning Systems, CLS）**理论：海马体（Hippocampus）采用快速、稀疏、正交化的表征完成单次情景编码（Episodic Encoding），防止新旧经历互相覆盖；新皮层（Neocortex）则通过慢速、交错回放（Interleaved Replay）从多轮历史样本中逐步提取潜在语义结构与程序规律。若将单次特定轨迹直接以大步长写入共享知识层或模型参数，就会破坏既有结构（即灾难性干扰，见 [[agent-knowledge-evolution-and-meta-skills]]）。可与离线阶段对照的计算研究是 Kevin Lin、Charlie Snell 等（2025，Letta & UC Berkeley，[*Sleep-time Compute: Beyond Inference Scaling at Test-time*，arXiv:2504.13171](https://arxiv.org/abs/2504.13171)）提出的**离线睡眠计算（Sleep-time Compute）**：在交互间隙预先整理上下文与知识表示，可在 Stateful GSM-Symbolic 与 Stateful AIME 上将达到同等准确率的测试期推理计算降至约五分之一（或在多问题共享上下文的 Multi-Query 场景下将单次问题平均成本降至约 40%），论文还观察到收益与**未来查询相对当前上下文的可预测性（Query Predictability）**相关；测试期节省不等于包含离线预计算的总成本同幅下降。
+
+更进一步，已固化的长期记忆并非永久静态档案：Karim Nader、Glenn E. Schafe 与 Joseph E. LeDoux（2000，*Nature*，[*Fear memories require protein synthesis in the amygdala for reconsolidation after retrieval*](https://pubmed.ncbi.nlm.nih.gov/10963596/)；综述见 [Karim Nader, 2015, PMC4588064](https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/)）在大鼠恐惧条件化实验中发现，提取后的记忆可重新对蛋白质合成抑制敏感，支持**记忆再巩固（Memory Reconsolidation）**。这不等于所有检索都会使记忆失稳，也不证明再巩固必然纠正错误。**[推论]** 借此可为 AI Agent 设计三阶段维护流程：在线 `session / raw trajectory` 承担快速情景捕获职责；离线复盘、对账与门禁验证承担受查询可预测性约束的慢速交错整合职责；而在后续任务调用既有 `memory / skill / wiki` 遭遇执行报错、测试回归或用户纠正时，可触发受影响条目的证据复核与回归验证（对应 [[hermes-active-surface-lifecycle-governance]] 的 `Rebase`），不能跳过离线对账与反例检验直接把单次轨迹写成全局常驻指令。
+
+### Hypothesis testing and rule verification across model generations (CL-Bench 1.0)
+
+[[anthropic-components-of-agent-memory-2026-11-07]]（“Memory can be a prediction about what the future will need”与“Steering Claude to write memory”，Figure 3 & Figure 5）将记忆定义为“对未来会话所需规律的预测”，并在 Continual Learning Bench（CL-Bench）1.0 数据库长程问答任务（30 道连续问题、每题独立新会话但共享持久化记忆目录）中对比了无状态基线（Stateless Baseline）与启用记忆目录（Memory Store）的均值奖励得分：
+
+- **仅生成未验证猜测（`Sonnet 4.6`：`0.330` $\to$ `0.364`）**：模型在答错后仅将多个未经检验的错误原因猜测散落在不同文件中，且不到一半回合主动读取记忆目录；当显式在提示词中要求其“回答前先读取记忆文件并显式验证假设”后，得分由 `0.364` 提升约 76% 至 `0.641`；
+- **确认标记与纠错记录（`Sonnet 5`：`0.306` $\to$ `0.610`；`Opus 4.7`：`0.383` $\to$ `0.700`）**：`Sonnet 5` 在无额外提示下约 `9/10` 回合主动读取记忆，并在判分器确认后标记已验证答案或写入纠错；`Opus 4.7` 进一步将分散笔记整合为单一参考文档，显式区分已核验事实（`checked`）与待确认事实（`unconfirmed`）；
+- **原生跑通规则与陷阱闭环（`Opus 5`：`0.564` $\to$ `0.828`；`Sonnet 5.5`：`0.644` $\to$ `0.833`；`Opus 5.5`：`0.655` $\to$ `0.838`）**：原文观察到 `Opus 5` 的多数记忆条目同时包含**可复用规则、如何确认该规则成立的证据来源、历史问题答案以及已发现的陷阱警告（Trap Warnings）**；而当人为施加僵化预设规则（如强制“只允许记录失败 `record only failures`”）时，`Opus 5` 与 `Opus 4.7` 的记忆增益反而分别变化 `-0.234` 与 `-0.150`（`Sonnet 4.6` 微降 `-0.020`）。
+
+这组第一方评测是特定基准上的模型表现，不能外推为所有任务的具体分值。其可迁移启发是：**[推论] 高质量的经验沉淀必须区分“未经验证的失败猜想”与“带验证依据和反例陷阱的已确认规则”；可对缺少检索或验证行为的模型评估显式流程提示的收益；对已能有效利用记忆的模型，也应通过任务评测决定约束粒度，避免未经验证地套用“只准记失败”等内容禁令。**
 
 ### Capture less, but preserve what cannot be cheaply recovered
 
@@ -59,7 +71,7 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 ### Organize for the task, and avoid shared-page write collisions
 
-同一来源的“Dreaming can focus memory on a specific goal”报告：合同任务先由多个 Agent 并发维护共享条款表，发生覆盖且遗漏关键内容；改为每份合同独立页面、单一写入者并逐字引用条款后，依据 Wiki 生成的简报可满足的评分标准由 72% 提升至 100%。这是特定任务的联合改动结果，不是通用成功率，也不能单独归因于反思。**[推论] 需要精确保留措辞时，应按证据单元组织页面、明确写入归属，再综合引用，不以压缩摘要替代关键原文。** 这不要求每次知识维护都引入多 Agent。
+同一来源的“Dreaming can focus memory on a specific goal”报告：合同任务先由多个 Agent 并发维护共享条款表，发生覆盖且遗漏关键内容；改为每份合同独立页面、单一写入者并逐字引用条款后，依据 Wiki 生成的简报可满足的评分标准由 72% 提升至 100%。此外，“Dreaming can fill in gaps a session leaves behind”（Figure 15）记录了跨会话拓扑修复：单次会话写入时只看到局部上下文，导致首轮构建的 38 页 Wiki（225 条链接）中出现 6 个页面指向不存在页面 `escrow-agreement` 的 **9 条悬空死链**；第二轮离线 dreaming 扫描跨会话上下文后，将全部 9 条死链重指向已存在的规范页 `buyer-form-escrow-agreement`，并补齐 `index` 等 3 个页面（扩至 41 页、278 条链接）。这是特定任务的联合改动结果，不是通用成功率，也不能单独归因于反思。**[推论] 需要精确保留措辞时，应按证据单元组织页面、明确写入归属，再综合引用，不以压缩摘要替代关键原文；跨会话构建知识库时，应配合离线二阶段断链对账与 canonical 页面重指向（见 [[hermes-knowledge-base-operating-flow]] 与 [[hermes-knowledge-freshness-and-claim-evidence]]）。** 这不要求每次知识维护都引入多 Agent。
 
 ### Maintain selectively; do not promote every reflection
 
@@ -224,4 +236,4 @@ authorized session / project evidence → audited review
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]]
+- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-governance-notes]], [[hermes-active-surface-lifecycle-governance]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]]

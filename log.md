@@ -2,6 +2,24 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-13] fix | 修正投资公式、论文归因与记忆治理类比边界
+
+- 修正 [[investment-risk-control-framework]] 的杠杆 ETF 连续模型假设，区分标的期末回到起点的条件终值与零漂移下的期望对数增长；修正 [[leontraveller-trading-and-investment-system]] 的资本利得悬顶机制解释。
+- 收窄 [[losing-position-review-method]]、[[winning-position-risk-management]]、[[position-scaling-method]] 的行为金融外推；修正 [[minimal-executable-trading-system]] 对训练误差、统计偏差、规则复杂度与估计窗口的混同。
+- 修正 [[agent-experience-consolidation-loops]] 和 [[agent-knowledge-evolution-and-meta-skills]] 的再巩固综述作者归因，区分动物实验与工程类比；修正 CL-Bench 提升比例与模型行为概括范围。
+- 修正 [[hermes-memory-governance-notes]]、[[hermes-memory-skills-wiki-boundaries]] 与 [[agent-memory-reflection-planning-pipeline]]：记忆强度不代表事实可靠性，ACT-R 不构成跨会话晋升的强制算法。同步主题目录与 catalog。
+
+## [2026-11-13] improve | 补充投资风险控制与交易系统的研究视角
+
+- 在 [[leontraveller-trading-and-investment-system]] 与 [[investment-risk-control-framework]] 补充 52 周高点、资本利得悬顶和每日重置杠杆产品的路径依赖，并连接交易执行查询页；数学模型与经验结果均保留适用条件。
+- 在 [[losing-position-review-method]]、[[winning-position-risk-management]] 与 [[position-scaling-method]] 补充前景理论、回本效应与赌场钱效应的行为解释；在 [[minimal-executable-trading-system]] 补充快省启发式与参数估计误差视角。
+
+## [2026-11-13] improve | 补充 Agent 记忆与经验固化的证据和工程类比
+
+- 在 [[agent-experience-consolidation-loops]] 补充 Sleep-time Compute 查询可预测性、记忆再巩固类比，以及本地来源 [[anthropic-components-of-agent-memory-2026-11-07]] 的 CL-Bench 模型对比和第二轮 dreaming 修复九条悬空链接的案例。
+- 在 [[hermes-memory-governance-notes]] 与 [[hermes-memory-skills-wiki-boundaries]] 借鉴 Bjork 存储/检索强度区分，设计默认注入与按需检索的路由；在 [[agent-memory-reflection-planning-pipeline]] 对比新近度和历史访问频次，保持证据质量独立核验。
+- 补充 [[agent-knowledge-evolution-and-meta-skills]] 的局部修订类比与局部证据范围说明，保持既有页面级核验日期不变。
+
 ## [2026-11-13] fix | 收窄形式化类比、隐私保证与案例外推边界
 
 - 修正 [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]] 与 [[ai-agent-human-outcome-design-principle]]：化名化不保证零信息泄露；出域须核查准标识符与重识别风险，JSON 解析、Schema 合法和业务正确性分别验证。

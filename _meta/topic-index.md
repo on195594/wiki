@@ -46,16 +46,16 @@ status: current
 - [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；结合长上下文 U 型位置退化（Lost in the Middle）与带边信息瓶颈（Information Bottleneck）解释即时加载、首尾锚定、上下文与记忆边界及出处债务；静态上下文面与历史/状态加工分别见两个子页
 - [Agent Context: System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报（受静态配额 $B_{\text{sys}}$ 约束）、窄工具面与四阶选择概率漏斗、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：结合 MemGPT 虚拟上下文分页区分输入转储、历史摘要与 `SKILL.state` 确定性状态折叠（受 $R_{\text{probe}}$ 与 $C_{\text{total}}$ 约束）、子代理交接及专用模型有界加工
-- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）海马体/新皮层双阶段分工、在线捕捉、离线对账与选择性维护，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
+- [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比（Reconsolidation）、CL-Bench 1.0 跨模型记忆行为对比与断链修复案例，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界
-- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘与弹性权重巩固（EWC Fisher 矩阵二次惩罚）区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
+- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘、弹性权重巩固（EWC Fisher 矩阵二次惩罚）与再巩固的局部修订类比区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：以 Lens 往返定律作类比，区分尝试恢复与真逆函数、汇总退化数据与示意模型，采用小步编辑、结构检查与中间态审计
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：结合 Ehrenberg-Bass 心智可得性理论（Romaniuk & Sharp，心智渗透率 $\text{MP}$ / 网络规模 $\text{NS}$ / 心智份额 $\text{SoM}$）、CEP 与 7W 框架从真实决策场景出发，消除边际关键词搜索量混杂
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
 - [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与表头、单位、脚注的绑定：结合关系元组投影、TEDS 与 DPP 0.1 工作草案，区分局部结构评分、受限格式归一化和完整语义/合规验证
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay；含 `B_ctx / U_blk / C_total / R_probe` 参数化上下文预算与端到端总成本评估模型
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分 FActScore、ALCE 支持度与 Jaccard 稳定性，明确空集合和来源真实性边界
-- [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：结合 Tulving 情景/语义记忆与 Squire 陈述/程序记忆分类学，区分广义 agent memory 与默认 memory 载体，用正反例与去情境化晋升门禁路由 skills、wiki、sessions/project state 与历史证据
+- [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：结合 Tulving 情景/语义记忆、Squire 陈述/程序记忆分类学与 Bjork 存储/检索强度双维解耦，区分广义 agent memory 与默认 memory 载体，用正反例与去情境化晋升门禁路由 skills、wiki、sessions/project state 与历史证据
 - [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
 - [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget：结合检索召回与阅读器饱和脱节（Lost in the Middle）及信息瓶颈原理；涵盖 Agentic RAG 的证据信任边界与语义漂移/未知候选概念参考
 - [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — 来源约束摘要的识别与诚实留白：以部分识别和选择性预测作类比，按类别核验原文事实、显式推断与建议，不把建议作为事实的自动降级出口
@@ -63,7 +63,7 @@ status: current
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
 - [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 实施阶段非对称授权与语义验收
-- [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，区分应用事件存储与 AI Agent 默认 memory
+- [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，对比单次间隔指数衰减与 ACT-R 全历史幂律激活的适用边界，区分应用事件存储与 AI Agent 默认 memory
 - [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，含 `pass^k / c_err / T_pivot / C_coord` 参数化编排与状态恢复裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、窄职责技能链（含 `skill-creator` 有/无引导消融裁剪 $\Delta Q$）、真实数据源、低成本中间产物与前置人类方向；视觉设计案例补充条件性门禁和模型升级后的规则复查
 - [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
@@ -94,7 +94,7 @@ status: current
 - [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：结合 MemGPT 主存/外存分页模型与 `B_ctx / U_blk / R_probe` 参数契约，管理小型默认注入层、按需检索、历史压缩、长任务 project state 和隔离 handoff
 - [Human and AI Agent Shared Knowledge Architecture](../concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：结合 Sleep-Time Compute 离线重组织、编译摊销盈亏平衡方程（$Q^*$）、“博尔赫斯地图陷阱”压缩率边界（$\rho_{\text{comp}} < 1$）、纯检索六类结构失效与冲突感知对象组织运行时知识栈与 Wiki 文件层
 - [Shared Wiki Operating Flow](../concepts/hermes-knowledge-base-operating-flow.md) — 共享知识库端到端操作流：公开准入、读写提案与提交门禁分离（Proposal vs. Commit）、离线二阶段断链/偏差对账、检索门禁与授权回写
-- [AI Agent Memory Governance Notes](../concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：结合 ACT-R 基础水平激活幂律衰减（$B_i = \ln \sum t_j^{-d}$）界定什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
+- [AI Agent Memory Governance Notes](../concepts/hermes-memory-governance-notes.md) — Memory 减脂与跨层路由规则：结合 ACT-R 基础水平激活幂律衰减（$B_i = \ln \sum t_j^{-d}$）与借鉴 Bjork 存储/检索强度区分的工程路由矩阵界定什么适合留在 memory，什么应进入 wiki、skill、项目状态或 session
 - [AI Agent Retrieval Priority and Answer Path](../concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：区分单源查找与跨源推理，结合排序前时间窗过滤（Pre-Ranking $t_{\text{as\_of}}$ Filter）、词法—语义倒数排名融合（RRF）与证据导航图按 `locate` → `expand` 及 Freshness Gate 核验出入边与来源证据
 - [Wiki Lint and Health Check Standards](../concepts/hermes-wiki-lint-and-health-check-standards.md) — 共享 Wiki lint / 健康检查规范：链接、索引、frontmatter、标签、页面及局部 claim 新鲜度与结构健康
 - [Wiki Page Writing Standards](../concepts/hermes-wiki-page-writing-standards.md) — 人类与 AI Agent 共用的 Wiki 页面写作规范：命名、frontmatter、日期模板、结构、wikilinks、可选 Relations、局部 `[!volatile]` claim 与质量检查
@@ -111,13 +111,13 @@ status: current
 - [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要（自主/胜任/归属）、发展性工作记忆边界和家庭可持续为核心，含 `M / T_c / F_e / K` 可选推论参数
 - [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
 - [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：以主协调上下文组织语义层，明确知识、可选执行与接入能力、隔离和临时状态的职责与越界规则
-- [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，转向顺势、止损、控回撤与简单可执行规则
+- [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域参数耦合矩阵、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
 - [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓与行为控制执行
 - [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习反馈边界（Ericsson / Macnamara）、认知负荷理论（Sweller）与单双环复盘（Argyris & Schön），含 `R / P / V` 可选推论参数
-- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含回撤恢复非对称数学与参数化风控变量（r / R_open / D_max / δ）
+- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 任务特定）及探索—利用权衡（March），兼顾 `B / E / C / S` 可选推论参数与家庭兼容性
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
@@ -148,14 +148,14 @@ status: current
 - [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：基于 BPT 心理账户防火墙与参数化门禁（`L / δ` vs `1R / R_open / D_max`），长期制度管底盘，主动纪律管进攻
 - [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
 - [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：结合 Barber & Odean 过度交易换手损耗实证与四条硬熔断门禁（`D_max / R_open / δ / 1R`），拦截进攻仓摊平亏损、情绪补仓、越权单或无退出计划交易
-- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：克服处置效应与回本执念（Get-even-itis），区分正常回撤、失效判断和伪装成再平衡的情绪补仓
-- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓可采用非递增顺势分层，按当前净值核算合并风险，不把浮盈或保本止损当作免费风险资本
+- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：结合前景理论的参考点价值函数、处置效应与回本效应（Break-Even Effect），区分正常回撤、失效判断和伪装成再平衡的情绪补仓
+- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓防御赌场钱效应（House-Money Effect），可采用非递增顺势分层并按当前净值核算合并风险，不把浮盈或保本止损当作免费风险资本
 - [Position Sizing by Risk Budget](../queries/position-sizing-method.md) — 参数化仓位预算：基于 1R 单位风险、固定比例仓位公式、R 倍数与分数凯利边界计算规模，防范超仓与跳空风险
-- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：克服处置效应过早止盈，用结构移动止损与固定 1R 分母平衡利润保护与趋势延续
+- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：克服前景理论与赌场钱效应提供的行为偏差视角，用结构移动止损与固定 1R 分母平衡利润保护与趋势延续
 - [Deciding Between Inaction and Action](../queries/inaction-vs-action-decision-framework.md) — 不行动与行动的裁决框架：结合行动偏误（Action Bias）与交易摩擦损耗，区分进攻仓条件化等待与止损/再平衡刚性执行
 - [Building a Post-Trade Review Loop](../queries/post-trade-review-loop.md) — 交易后复盘闭环：结合过程合规性与含零收益交易的 R 倍数样本分布，区分执行偏差与风险模型缺口，避免事后归因
 - [Detecting Repeat Trading Mistakes](../queries/repeat-mistake-detection-in-trading.md) — 重复错误识别：区分过程违背（Process Bug）与合规尾部亏损，按频次、触发情境与累计 R 拖累过滤小样本假阳性过拟合
 - [Converting Trading Lessons into Hard Rules](../queries/trading-lessons-to-hard-rules.md) — 教训到硬规则的转化：结合 Gollwitzer 执行意图（Implementation Intentions）将高频高代价教训编译为可验证的 `IF-THEN` 参数化动作约束
-- [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：保留少数高阻断力规则，删除不可快速调用的说明书式规则
+- [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：结合快省启发式（Fast-and-Frugal Heuristics）的偏差—方差权衡与样本外参数估计误差边界，保留少数高阻断力规则，删除不可快速调用的说明书式规则
 - [Wiki 知识新鲜度改造：通用原则与历史决策（已关闭记录）](../queries/hermes-wiki-knowledge-freshness-improvement-plan.md) — 提炼证据绑定、时间区分和局部复查的跨系统原则；旧改造约定与现行 Schema、Freshness Gate 明确分开
 - [Agent 经验固化能力评估：通用框架与历史案例（已关闭记录）](../queries/hermes-agent-experience-consolidation-capability-assessment.md) — 按证据、提炼、分层保存、效果验证、生命周期与权限核查任意 Agent，区分提供方式与验证程度；产品能力仅作版本历史案例

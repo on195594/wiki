@@ -1,12 +1,12 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-11-11
+updated: 2026-11-13
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
-sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf, https://en.wikipedia.org/wiki/Catastrophic_interference, https://www.pnas.org/doi/10.1073/pnas.1611835114, https://arxiv.org/abs/1612.00796]
+sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf, https://en.wikipedia.org/wiki/Catastrophic_interference, https://www.pnas.org/doi/10.1073/pnas.1611835114, https://arxiv.org/abs/1612.00796, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/]
 status: stable
-description: 说明经验进入持久层后的演化与元技能：结合稳定性—可塑性困境与 EWC 二阶正则化边界区分外部知识复用与权重学习，并明确任务技能与支持设计元技能的分工和证据边界。
+description: 说明经验进入持久层后的演化与元技能：结合稳定性—可塑性困境、EWC 二阶正则化与记忆再巩固的工程类比区分外部知识复用与权重学习，并明确任务技能与支持设计元技能的分工和证据边界。
 volatility: medium
 review_by: 2026-12-13
 aliases: [agent-knowledge-evolution, meta-skills-evolution]
@@ -53,7 +53,7 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 
 **[推论]** 这一数学结构直接框定了 AI Agent 知识演化的两条路径边界：
 - **参数化后训练路径（LoRA / Replay / EWC）**：通过历史轨迹重放（Interleaved Replay）或曲率正则化（$F_i$）近似保护旧能力，但对角 Fisher 近似在长任务序列或强分布漂移下仍会累积近似误差，且一旦发生错误泛化或隐式数据污染，无法在不重训或回退整套权重快照的前提下单独剥离某一条错误规则；
-- **非参数化外部知识路径（Wiki / Skills / Project Context）**：将底座权重 $\theta$ 冻结（$\Delta \theta = 0$，从根源消除权重级灾难性遗忘），把新经验外化为离散、带来源归因的符号规则单元；此时“稳定性约束”从隐式的参数二次惩罚 $\sum \frac{\lambda}{2} F_i (\theta_i - \theta_{A,i}^*)^2$ 转化为**显式的冻结回归测试集门禁与版本化单点回滚（Git revert）**（见 [[agent-skill-governance-and-reversible-state]] 与 [[agent-experience-consolidation-loops]] 的 `G_promo / I_rev` 门禁）。这解释了为何在缺乏完备回放集与隔离训练管线前，生产 Agent 应优先采用外部非参数化闭环。
+- **非参数化外部知识路径（Wiki / Skills / Project Context）**：将底座权重 $\theta$ 冻结（$\Delta \theta = 0$，从根源消除权重级灾难性遗忘），把新经验外化为离散、带来源归因的符号规则单元；此时“稳定性约束”从隐式的参数二次惩罚 $\sum \frac{\lambda}{2} F_i (\theta_i - \theta_{A,i}^*)^2$ 转化为**显式的冻结回归测试集门禁与版本化单点回滚（Git revert）**（见 [[agent-skill-governance-and-reversible-state]] 与 [[agent-experience-consolidation-loops]] 的 `G_promo / I_rev` 门禁），而“可塑性更新”可借鉴**记忆再巩固（Memory Reconsolidation）**（[Karim Nader, 2015, PMC4588064](https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/)），在发现冲突证据后按条目复核和修订；这是工程类比，并非该生物机制直接证明了文本知识的更新策略。这解释了为何在缺乏完备回放集与隔离训练管线前，生产 Agent 应优先采用外部非参数化闭环。
 
 报告给出的同底座 CL-Bench rubric pass rate 从 24.5% 提升至 47.6%，可作为方向性系统证据，但不能直接成为 AI Agent 基线：主要结果只有 3 个 seeds，集中在一个 Qwen MoE 底座，教师蒸馏依赖付费外部模型；超过 10 个连续任务的长期效果、更多 seeds、无教师消融和更强对抗实验仍被列为待完成工作。
 
@@ -62,7 +62,7 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 > review_by: 2026-12-13
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
-> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`。
+> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`（该外部直链不可达仅限定于本段第一方报告数据，不代表本页其他来源同时不可达，也不构成对其他结论的新增核验）。
 
 [推论] 对当前 AI Agent 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
 

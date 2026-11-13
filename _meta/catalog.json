@@ -369,7 +369,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）双系统分工、在线捕捉与离线对账、按层职责路由及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
+      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 跨模型记忆行为对比及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -388,7 +388,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -399,6 +399,11 @@
           "agent-skill-governance-and-reversible-state",
           "agent-knowledge-evolution-and-meta-skills",
           "hermes-knowledge-architecture",
+          "hermes-knowledge-base-operating-flow",
+          "hermes-knowledge-freshness-and-claim-evidence",
+          "hermes-memory-governance-notes",
+          "hermes-active-surface-lifecycle-governance",
+          "agent-memory-reflection-planning-pipeline",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-harness-search-regularization",
@@ -481,7 +486,7 @@
       "path": "concepts/agent-knowledge-evolution-and-meta-skills.md",
       "type": "concept",
       "title": "Agent Knowledge Evolution and Meta-Skills",
-      "description": "说明经验进入持久层后的演化与元技能：结合稳定性—可塑性困境与 EWC 二阶正则化边界区分外部知识复用与权重学习，并明确任务技能与支持设计元技能的分工和证据边界。",
+      "description": "说明经验进入持久层后的演化与元技能：结合稳定性—可塑性困境、EWC 二阶正则化与记忆再巩固的工程类比区分外部知识复用与权重学习，并明确任务技能与支持设计元技能的分工和证据边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -499,7 +504,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-11",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -514,7 +519,7 @@
       "path": "concepts/agent-memory-reflection-planning-pipeline.md",
       "type": "concept",
       "title": "Agent Memory–Reflection–Planning Pipeline",
-      "description": "将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分与反思触发方程，同时区分应用事件存储与 AI Agent 默认 memory。",
+      "description": "将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分、反思触发方程及与 ACT-R 全历史幂律激活的适用边界对比，同时区分应用事件存储与 AI Agent 默认 memory。",
       "status": "stable",
       "tags": [
         "agent",
@@ -529,7 +534,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -537,6 +542,7 @@
         "related": [
           "agent-experience-consolidation-loops",
           "hermes-memory-skills-wiki-boundaries",
+          "hermes-memory-governance-notes",
           "agentic-programming-system-engineering",
           "production-ai-agent-evaluation-framework",
           "agent-self-validation-loops",
@@ -2251,7 +2257,7 @@
       "path": "concepts/hermes-memory-governance-notes.md",
       "type": "concept",
       "title": "AI Agent Memory Governance Notes",
-      "description": "记录 AI Agent memory 的写入、更新、遗忘、ACT-R 幂律激活衰减与跨层治理注意事项。",
+      "description": "记录 AI Agent memory 的写入、更新、遗忘、ACT-R 幂律激活衰减、Bjork 存储强度 vs. 检索强度双维解耦与跨层治理注意事项。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2267,14 +2273,17 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
           "hermes-layer-routing-decision-checklist"
         ],
         "related": [
-          "hermes-layer-routing-edge-cases"
+          "hermes-layer-routing-edge-cases",
+          "agent-experience-consolidation-loops",
+          "agent-memory-reflection-planning-pipeline",
+          "hermes-active-surface-lifecycle-governance"
         ]
       }
     },
@@ -2282,7 +2291,7 @@
       "path": "concepts/hermes-memory-skills-wiki-boundaries.md",
       "type": "concept",
       "title": "AI Agent Memory Skills Wiki Boundaries",
-      "description": "结合认知神经科学记忆分类学（Tulving 情景/语义记忆与 Squire 陈述/程序记忆）定义 AI Agent memory、skills、wiki 和 sessions 的归类与晋升边界。",
+      "description": "结合认知神经科学记忆分类学（Tulving 情景/语义记忆、Squire 陈述/程序记忆与 Bjork 存储/检索强度双维解耦）定义 AI Agent memory、skills、wiki 和 sessions 的归类与晋升边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2298,7 +2307,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-13",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -2312,6 +2321,7 @@
           "agent-context-history-state-and-bounded-processing",
           "hermes-memory-governance-notes",
           "agent-experience-consolidation-loops",
+          "agent-memory-reflection-planning-pipeline",
           "agent-skill-provider-governance-boundary",
           "chat-to-agent-session-routing",
           "hermes-layer-routing-decision-checklist",
@@ -2617,7 +2627,7 @@
       "path": "concepts/investment-risk-control-framework.md",
       "type": "concept",
       "title": "Investment Risk Control Framework",
-      "description": "汇总可参数化的长期配置、主动交易、回撤恢复数学边界与行为纪律运行规则。",
+      "description": "汇总可参数化的长期配置、主动交易、回撤恢复双曲方程、杠杆 ETF 二次方方差损耗边界与行为纪律运行规则。",
       "status": "stable",
       "tags": [
         "investment",
@@ -2631,7 +2641,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2660,7 +2670,7 @@
       "path": "concepts/leontraveller-trading-and-investment-system.md",
       "type": "concept",
       "title": "Trend-Following Trading System (Summary of Leontraveller Public Notes)",
-      "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则。",
+      "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则，结合 52 周高点锚定动量、未实现资本利得悬顶（Capital Gains Overhang）与杠杆 ETF 方差损耗说明其理论边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -2674,7 +2684,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-04",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -2683,6 +2693,13 @@
           "ordinary-investor-investment-system",
           "leontraveller-vs-ordinary-investor-investment-system",
           "investment-risk-control-framework",
+          "combining-two-investment-frameworks",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "losing-position-review-method",
+          "position-scaling-method",
+          "position-sizing-method",
+          "winning-position-risk-management",
           "wiki-ingestion-workflow"
         ]
       }
@@ -4069,7 +4086,7 @@
       "path": "queries/losing-position-review-method.md",
       "type": "query",
       "title": "Reviewing a Losing Position",
-      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损、处置效应（回本执念）与结构失效。",
+      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损、前景理论损失区风险寻求、回本效应（Break-Even Effect）与结构失效。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4083,7 +4100,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4102,7 +4119,7 @@
       "path": "queries/minimal-executable-trading-system.md",
       "type": "query",
       "title": "Keeping a Trading System Small and Executable",
-      "description": "回答如何控制交易系统规则数量，让系统保持小、清楚且可执行。",
+      "description": "回答如何控制交易系统规则数量：结合快省启发式（Fast-and-Frugal Heuristics）的偏差—方差权衡与样本外估计误差边界，让系统保持小、清楚且可执行。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4116,7 +4133,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "trading-lessons-to-hard-rules",
@@ -4176,7 +4193,7 @@
       "path": "queries/position-scaling-method.md",
       "type": "query",
       "title": "Scaling Into and Out of a Position",
-      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平，并给出顺势分层加仓与合并风险约束。",
+      "description": "回答什么时候分批进出是风险管理，什么时候只是包装犹豫或摊平，并结合赌场钱效应（House-Money Effect）防御与顺势分层加仓给出合并风险约束。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4190,7 +4207,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4199,6 +4216,9 @@
           "position-sizing-method",
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system"
+        ],
+        "related": [
+          "winning-position-risk-management"
         ]
       }
     },
@@ -4509,7 +4529,7 @@
       "path": "queries/winning-position-risk-management.md",
       "type": "query",
       "title": "Managing a Winning Position",
-      "description": "回答盈利仓位如何克服处置效应过早止盈、用结构移动止损与 R 倍数规则平衡利润保护与趋势延续。",
+      "description": "回答盈利仓位如何检查过早止盈与赌场钱效应（House-Money Effect）等行为倾向，用结构移动止损与 R 倍数规则平衡利润保护与趋势延续。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4523,7 +4543,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-13",
       "relations": {
         "depends_on": [
           "position-sizing-method",

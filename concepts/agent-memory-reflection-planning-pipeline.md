@@ -1,12 +1,12 @@
 ---
 title: Agent Memory–Reflection–Planning Pipeline
 created: 2026-08-15
-updated: 2026-11-11
+updated: 2026-11-13
 type: concept
 tags: [agent, memory, architecture, research]
-sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442]
+sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf]
 status: stable
-description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分与反思触发方程，同时区分应用事件存储与 AI Agent 默认 memory。
+description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分、反思触发方程及与 ACT-R 全历史幂律激活的适用边界对比，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
 volatility: medium
 review_by: 2027-03-02
@@ -43,6 +43,8 @@ $$s(m_i, q) = \alpha_{\text{rec}} \cdot \widehat{\text{Rec}}(m_i) + \alpha_{\tex
 - **重要性（Importance）**：写入时由模型在 $1 \sim 10$ 整数刻度上评估事件对主体的长期意义（如日常琐事为 `1`，重大转折为 `10`）；
 - **相关性（Relevance）**：记忆文本嵌入 $\mathbf{e}_{m_i}$ 与查询嵌入 $\mathbf{e}_q$ 的余弦相似度，$\text{Rel}(m_i, q) = \frac{\mathbf{e}_{m_i}^\top \mathbf{e}_q}{\|\mathbf{e}_{m_i}\| \cdot \|\mathbf{e}_q\|}$；
 - **反思触发阈值（Reflection Gate）**：当最近写入事件的累积重要性得分满足 $\sum_{i \in \mathcal{W}_{\text{recent}}} \text{Imp}(m_i) > \tau_{\text{reflect}}$（原实现取 $\tau_{\text{reflect}} = 150$，且检索权重取 $\alpha_{\text{rec}} = \alpha_{\text{imp}} = \alpha_{\text{rel}} = 1$）时，触发反思树合成并将高层推断连同指向底层证据的指针写回记忆流。
+
+**[推论] 新近度与历史频次是不同信号**：$\text{Rec}(m_i)=\gamma^{\Delta t_i}$ 只度量距最后访问的时间，不能单独区分一次近期观察与长期反复调用的条目。ACT-R 的 $B_i=\ln(\sum_{j=1}^{n}t_j^{-d})$ 可作为结合频次与时间的候选评分（[Anderson et al. 2004](https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf)、[Petrov 2006](https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf)；见 [[hermes-memory-governance-notes]]）。两种公式并不分别限定于短期和长期存储，跨会话晋升也不必强制切换公式；重复访问不等于重复验证，默认注入仍应依据稳定性、跨任务适用性、证据与预算（见 [[agent-experience-consolidation-loops]]）。
 
 ## What the evidence supports
 
@@ -100,4 +102,4 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。AI Agen
 ## Relations
 
 - refines: [[agent-context-engineering]]
-- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]]
+- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-memory-governance-notes]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]]
