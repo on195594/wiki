@@ -1,7 +1,7 @@
 ---
 title: "Agent Context: History, State and Bounded Processing"
 created: 2026-10-17
-updated: 2026-11-12
+updated: 2026-11-13
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md, https://arxiv.org/abs/2310.08560]
@@ -64,7 +64,7 @@ AI Agent 映射：
 
 Charles Packer 等（UC Berkeley, 2023/2024，*MemGPT: Towards LLMs as Operating Systems*，[arXiv:2310.08560](https://arxiv.org/abs/2310.08560)）从传统操作系统分层内存管理出发，提出了 **虚拟上下文管理（Virtual Context Management）**：将受限的模型上下文窗口视为高速工作内存（`Main Context`），将完整历史日志与文档库视为外部慢速存储（`External Context`：含可检索历史队列 `Recall Storage` 与持久知识库 `Archival Storage`），通过水位告警中断与显式读写调用在主存与外存之间执行页面换入/换出（Page-in / Page-out）。
 
-**[推论]** 结合 [[hermes-context-engineering-design-priorities]] 的参数化预算模型（`B_ctx / U_blk / C_total / R_probe`），可将动态上下文的三类裁剪机制統一为针对不同窗口分项的算子：
+**[推论]** 结合 [[hermes-context-engineering-design-priorities]] 的参数化预算模型（`B_ctx / U_blk / C_total / R_probe`），可将动态上下文的三类裁剪机制统一为针对不同窗口分项的算子：
 
 | 裁剪机制 | 作用对象与控制分项 | 形式化转换算子 | 适用前提与失效保护（`R_probe` / `C_total`） |
 | :--- | :--- | :--- | :--- |
@@ -72,18 +72,18 @@ Charles Packer 等（UC Berkeley, 2023/2024，*MemGPT: Towards LLMs as Operating
 | **历史摘要（Summarization）** | 多轮累积对话轨迹（压缩旧历史占用，释放 $B_{\text{res}}$） | $H_{1:t-k} \mapsto S_{\text{summary}}$，保留近期 $k$ 轮原文与旧轮次有损压缩文本 | 适合开放式对话；摘要属于有损变换，若丢失硬约束（$R_{\text{probe}} < 1$）会导致后续轮次反复回读并推高总成本 $C_{\text{total}}$ |
 | **状态补丁投影（`SKILL.state`）** | 长程多步程序性任务状态（避免随历史轮数线性累积；仅领域状态规模有界时，$B_{\text{state}}$ 才可为 $\mathcal{O}(1)$） | $\Sigma_{t+1} = \text{ValidateAndMerge}(\Sigma_t, \Delta_t)$，每步输入收缩为 $(P, \Sigma_t, O_t)$ | 要求领域状态 Schema 闭合且补丁可确定性校验；对模型误删字段（$R_{\text{probe}} < 1$）须由宿主拦截并回滚至 $\Sigma_t$ |
 
-## Subagent handoff: causal continuation vs independent judgment
+## 子代理交接：因果延续与独立判断（Subagent Handoff）
 
-[[langchain-organizing-context-multi-agent-harness-2026-09-08]] distinguishes forked subagents, which inherit a supervisor's conversation, from isolated subagents, which receive a fresh context. Its durable contribution is not “always copy history”, but a role-aware test: does the child need to continue an already established causal chain, or independently evaluate a frozen object?
+[[langchain-organizing-context-multi-agent-harness-2026-09-08]] 区分了继承父级对话历史的派生子代理（forked subagents）与接收全新上下文的隔离子代理（isolated subagents）。其长期价值不在于“总是复制完整历史”，而在于按角色职责判断：**子任务究竟需要延续已建立的因果链，还是对冻结对象做出独立判断？**
 
-Without assuming that AI Agent provides a literal conversation fork, the practical mapping is a bounded handoff:
+在不假设宿主提供字面意义上的会话 fork 能力时，可迁移的有界交接（bounded handoff）准则为：
 
-- **Worker / fixer continuing diagnosed work**: pass the verified diagnosis, exact paths or SHAs, accepted decisions, failing check, constraints and expected artifact. This preserves prior evidence without forcing rediscovery or copying unrelated transcript noise.
-- **Reviewer / verifier**: pass the frozen artifact, acceptance criteria and necessary project rules, but omit the parent's diagnosis, confidence and desired verdict so the review remains meaningfully independent.
-- **Researcher**: pass a self-contained question, source requirements and output contract. Parallel researchers should not receive a duplicated parent history unless the question truly depends on it.
-- **Memory extraction**: conversation may be the evidence, but AI Agent storage boundaries and explicit write authorization still apply. The article's forked memorizer example does not authorize copying private history broadly or granting unrestricted writes.
+- **延续已诊断工作的执行者/修复者（Worker / Fixer）**：传递已验证的诊断结论、精确文件路径或提交 SHA、已确认决策、失败检查项、约束条件与预期产物。这样既保留前序证据、避免重复探索，又不会拷入无关的对话噪音。
+- **独立审查者/验证者（Reviewer / Verifier）**：仅传递冻结的待审产物、验收标准与必要的项目规则，显式省略父代理的诊断假设、置信度与期望结论，以防父级锚定偏差削弱审查独立性（参见 [[subagent-orchestration-patterns]]）。
+- **平行研究者（Researcher）**：传递自包含的研究问题、来源要求与输出契约。并发研究者之间不应共享复制的父级历史，除非问题本身强依赖前序上下文。
+- **记忆提炼者（Memory Extraction）**：对话本身可以作为待提炼证据，但仍须遵守 AI Agent 的存储边界与显式写入授权。原文中的 forked memorizer 示例不代表允许广泛复制私有历史或授予无限制写入权限。
 
-The article argues that prompt caching can make full-context forks cheaper than repeated discovery. That is implementation-specific and workload-dependent: without measured cache hits, relevant-context quality and latency, AI Agent should prefer explicit evidence packets over a new fork runtime.
+原文提出提示词缓存（prompt caching）可能使全量上下文 fork 比重复探索更便宜。这一结论高度依赖具体实现与工作负载：在缺乏实测缓存命中率、有效上下文质量与延迟对比前，AI Agent 应优先采用显式有界证据包交接，而非新建 fork 运行时。
 
 ## 专用模型承担有界上下文加工
 

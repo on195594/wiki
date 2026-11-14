@@ -1,13 +1,13 @@
 ---
 title: Agent Autonomy Ladder for AI Agent Workflows
 created: 2026-07-01
-updated: 2026-11-11
+updated: 2026-11-13
 type: concept
 tags: [agent, workflow, orchestration, multi-agent, subagent, governance]
 sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md, https://doi.org/10.1109/3468.844354, https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b]
 status: stable
 description: 结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），用确定性工作流、编排工作流、受限反应式代理和多代理编排判断 AI Agent 任务的控制流自主权与阶段非对称授权。
-aliases: [agent-autonomy-ladder, hermes-agent-autonomy, agent-autonomy-ladder-for-agent-workflows]
+aliases: [agent-autonomy-ladder, agent-autonomy-ladder-for-agent-workflows]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02

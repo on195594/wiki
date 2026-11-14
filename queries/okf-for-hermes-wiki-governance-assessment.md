@@ -1,7 +1,7 @@
 ---
 title: OKF Concepts for AI Agent Wiki Governance Assessment
 created: 2026-06-18
-updated: 2026-11-06
+updated: 2026-11-13
 type: query
 tags: [agent, knowledge-base, governance, context-engineering]
 sources: [raw/articles/google-cloud-okf-knowledge-catalog-2026-08-26.md, docs:https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md, docs:https://www.marktechpost.com/2026/06/16/google-cloud-introduces-open-knowledge-format-okf-a-vendor-neutral-markdown-spec-for-giving-ai-agents-curated-context/, repository:SCHEMA.md, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_maintain.py, concepts/hermes-memory-skills-wiki-boundaries.md]
@@ -114,11 +114,11 @@ Google Cloud 的官方实现说明 [[google-cloud-okf-knowledge-catalog-2026-08-
 
 首批 5 个治理核心页的知识对象增强试点已完成，均已具备 `description`、少量 `aliases` 和 `## Relations`：
 
-1. [[hermes-knowledge-architecture]]
-2. [[wiki-ingestion-workflow]]
-3. [[hermes-wiki-page-writing-standards]]
-4. [[hermes-wiki-lint-and-health-check-standards]]
-5. [[hermes-memory-skills-wiki-boundaries]]
+1. [[hermes-knowledge-architecture|Human and AI Agent Shared Knowledge Architecture]]
+2. [[wiki-ingestion-workflow|Wiki Ingestion Workflow]]
+3. [[hermes-wiki-page-writing-standards|Wiki Page Writing Standards]]
+4. [[hermes-wiki-lint-and-health-check-standards|Wiki Lint and Health Check Standards]]
+5. [[hermes-memory-skills-wiki-boundaries|AI Agent Memory Skills Wiki Boundaries]]
 
 后续沿用小步维护：只在页面被真实任务触达时增量补充可选 metadata，不启动全库迁移。每次修改后同步 catalog、运行门禁并更新 [[log]]；试点完成不表示页面事实已获全面核验。
 

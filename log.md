@@ -2,6 +2,17 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-13] refactor | 清理通用知识页的 `hermes-*` 品牌别名、补充导航显示名并收敛正文表述
+
+- 移除 [[hermes-vs-google-sre-agentic-incident-response]]、[[agent-autonomy-ladder-for-hermes-workflows]]、[[hermes-active-surface-lifecycle-governance]]、[[hermes-agent-workflow-layering-and-adoption-order]]、[[hermes-context-engineering-design-priorities]] 与 [[hermes-knowledge-architecture]] 共 6 篇通用知识页 frontmatter 中的 `hermes-*` 历史别名，仅保留通用中性别名（历史路径继续按 `SCHEMA.md` 保留以兼容不可变 `raw/` 快照）。
+- 为 [[hermes-knowledge-architecture]]、[[hermes-wiki-page-writing-standards]]、[[hermes-wiki-lint-and-health-check-standards]] 与 [[okf-for-hermes-wiki-governance-assessment]] 核心导航列表中的 `hermes-*` 链接补齐通用管道显示名，并收敛 [[hermes-vs-google-sre-agentic-incident-response]] 与 [[agent-shared-wiki-index]] 中的品牌泛指表述。
+
+## [2026-11-13] improve | 优化经验固化、记忆路由与活跃治理面生命周期的图谱边、生命周期门禁口径与语言一致性
+
+- 补齐 [[hermes-active-surface-lifecycle-governance]]、[[agent-closed-loop-learning-from-corrections-to-rules]]、[[hermes-layer-routing-decision-checklist]] 与 [[agent-harness-search-regularization]] 的 `## Relations` 显式关联边，消除正文引用与机器可读目录之间的 `undeclared_outbound` 断路。
+- 在 [[agent-experience-consolidation-loops]] 与 [[agent-closed-loop-learning-from-corrections-to-rules]] 中统一规则晋升期（$G_{\text{promo}}$ / $\operatorname{LCB}_{1-\alpha}(\Delta M)$）与模型代际重基线期（[[hermes-active-surface-lifecycle-governance]] 的 $\Delta U(r_j \mid M_{t+1})$）的跨阶段生命周期口径；补充 [[agent-experience-consolidation-loops]] 与 [[agent-knowledge-evolution-and-meta-skills]] 对 `sea.pdf` 外部直链到期时的快照降级复用边界。
+- 修正 [[agent-harness-search-regularization]] 指向已拆分章节的旧引用（改链至子页 [[agent-knowledge-evolution-and-meta-skills]]），并将 [[agent-context-history-state-and-bounded-processing]] 的子代理有界交接章节统一为规范中文。
+
 ## [2026-11-13] fix | 修正投资公式、论文归因与记忆治理类比边界
 
 - 修正 [[investment-risk-control-framework]] 的杠杆 ETF 连续模型假设，区分标的期末回到起点的条件终值与零漂移下的期望对数增长；修正 [[leontraveller-trading-and-investment-system]] 的资本利得悬顶机制解释。

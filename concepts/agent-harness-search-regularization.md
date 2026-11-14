@@ -1,7 +1,7 @@
 ---
 title: Agent Harness 搜索正则化
 created: 2026-09-29
-updated: 2026-11-04
+updated: 2026-11-13
 type: concept
 tags: [agent, harness, optimization, evaluation, validation]
 sources: [raw/articles/rrsi-harness-search-regularization-2026-09.md, docs:https://arxiv.org/abs/2609.24972v2]
@@ -36,7 +36,7 @@ verified_at: 2026-11-02
 ## 与邻近概念的边界
 
 - [[fixed-budget-optimizer-selection-aca-case]] 是基于固定 GitHub 提交的跨域源码案例：通过参数校验与调用方预算计算的衔接，说明比较搜索方法时应核对实际评估预算、生效参数和实现版本。它不改变本页的 Agent harness 结论，也不提供跨域性能证据。
-- [[agent-experience-consolidation-loops]] 管经验与 Skill 如何留证、晋升或回滚，其 3e 节区分任务技能与支持设计元技能；此页只讨论 harness 候选搜索和性能迁移。前者关注经验如何指导环境支持，后者关注候选如何筛选与采纳，不把两项研究组合为已验证方案。
+- [[agent-experience-consolidation-loops]] 管经验与 Skill 如何留证、晋升或回滚，其子页 [[agent-knowledge-evolution-and-meta-skills]] 区分任务技能与支持设计元技能；此页只讨论 harness 候选搜索和性能迁移。前者关注经验如何指导环境支持，后者关注候选如何筛选与采纳，不把两项研究组合为已验证方案。
 - [[production-ai-agent-evaluation-framework]] 管应该观察哪些质量与成本维度；此页补充自我改动期间如何筛选候选。
 - [[agent-self-validation-loops]] 管单次任务的目标—反馈—验证；此页不把一次任务验证等同于跨任务分布外泛化。
 
@@ -44,4 +44,4 @@ verified_at: 2026-11-02
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[agent-experience-consolidation-loops]], [[agent-self-validation-loops]]
-- related: [[fixed-budget-optimizer-selection-aca-case]]
+- related: [[fixed-budget-optimizer-selection-aca-case]], [[agent-knowledge-evolution-and-meta-skills]]

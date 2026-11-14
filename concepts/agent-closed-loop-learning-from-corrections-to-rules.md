@@ -1,7 +1,7 @@
 ---
 title: Agent 闭环学习：从用户纠错到规则升级
 created: 2026-05-18
-updated: 2026-11-12
+updated: 2026-11-13
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, governance]
 sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714]
@@ -100,7 +100,7 @@ many correction examples
 
 `[推论]` 项目可以预先约定如下工程门禁（参见 [[repeated-measures-statistical-power-for-ai-evaluation]] 与 [[production-agent-evaluation-baselines]]）：
 $$\text{Promote}(\pi_{\text{cand}}) = \mathbb{I}\!\Bigl[\operatorname{LCB}_{1-\alpha}(\Delta M) > \delta_{\min} \;\land\; \text{Regress}(\pi_{\text{cand}}, \mathcal{F}_{\text{gold}}) = 0 \;\land\; \Delta C_{\text{amort}} \le \varepsilon_C\Bigr]$$
-这里 $\Delta M$ 是候选相对基线的目标指标差值，$\delta_{\min}$ 为最低实际收益，$\mathcal{F}_{\text{gold}}$ 为预先选定的受保护回归集，$\varepsilon_C$ 为允许的摊销成本增量。置信下界应按同一输入的配对设计估计（例如配对 bootstrap），不能用两个独立置信区间是否重叠替代；有限回归集零回退不证明所有场景零风险。成本门槛与统计方法均为项目选择，并非 GEPA 或微软系统的固定规则。
+这里 $\Delta M$ 是候选相对基线的目标指标差值，$\delta_{\min}$ 为最低实际收益，$\mathcal{F}_{\text{gold}}$ 为预先选定的受保护回归集，$\varepsilon_C$ 为允许的摊销成本增量。置信下界应按同一输入的配对设计估计（例如配对 bootstrap），不能用两个独立置信区间是否重叠替代；有限回归集零回退不证明所有场景零风险。成本门槛与统计方法均为项目选择，并非 GEPA 或微软系统的固定规则。`[推论]` 在规则生命周期上，该式将 [[agent-experience-consolidation-loops]] 的候选晋升净效用门禁 $G_{\text{promo}}$ 具体化为配对置信下界与零回归硬约束；当规则晋升后遇基座模型升级至 $M_{t+1}$ 时，则转为 [[hermes-active-surface-lifecycle-governance]] 的反向移除消融检验 $\Delta U(r_j \mid M_{t+1})$。
 
 对 AI Agent 来说，等价 gate 可以是：
 
@@ -216,4 +216,4 @@ candidate correction pattern
 ## Relations
 
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-self-validation-loops]], [[production-ai-agent-evaluation-framework]], [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]]
+- related: [[agent-self-validation-loops]], [[production-ai-agent-evaluation-framework]], [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[production-agent-evaluation-baselines]], [[hermes-active-surface-lifecycle-governance]]

@@ -7,7 +7,7 @@ tags: [agent, governance, workflow, context-engineering, lifecycle]
 sources: [raw/articles/xda-claude-md-anthropic-engineers-2026-07-31.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, concepts/system-governance-operating-model.md, concepts/hermes-context-layer-operating-rules.md, concepts/agent-failure-closed-loop-evaluation.md]
 status: stable
 description: 定义 AI Agent 活跃治理面的基线、校准、晋升、验证、运行、重基线与退役生命周期，避免规则和自动化只增不减。
-aliases: [active-surface-lifecycle, hermes-governance-lifecycle, agent-active-surface-lifecycle-governance]
+aliases: [active-surface-lifecycle, agent-active-surface-lifecycle-governance]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -173,4 +173,4 @@ XDA 原文讨论的是 Claude Code 的项目上下文文件，并转述 Boris Ch
 
 - refines: [[system-governance-operating-model]]
 - depends_on: [[hermes-context-layer-operating-rules]], [[agent-failure-closed-loop-evaluation]]
-- related: [[agent-context-engineering]], [[hermes-context-engineering-design-priorities]], [[ai-coding-assistant-context-budget-management]]
+- related: [[agent-context-engineering]], [[hermes-context-engineering-design-priorities]], [[ai-coding-assistant-context-budget-management]], [[agent-skill-governance-and-reversible-state]], [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[progressive-knowledge-system-growth]], [[agent-experience-consolidation-loops]]

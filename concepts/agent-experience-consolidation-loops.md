@@ -35,7 +35,7 @@ Xudong Han 的 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 及其链�
 > review_by: 2026-12-13
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
-> Alloomi Self-Evolving Agent 技术报告（经 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 于 2026-08-14 采集记录）将真实任务上下文、专家修改与反馈组织为轨迹，经筛选与后训练后在 CL-Bench 上报告同底座成绩从 24.5% 升至 47.6%（3 seeds 第一方报告，长周期与更强消融列为待完成工作）；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`。
+> Alloomi Self-Evolving Agent 技术报告（经 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 于 2026-08-14 采集记录）将真实任务上下文、专家修改与反馈组织为轨迹，经筛选与后训练后在 CL-Bench 上报告同底座成绩从 24.5% 升至 47.6%（3 seeds 第一方报告，长周期与更强消融列为待完成工作）；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`（该报告仅作权重后训练与轨迹三元组筛选的方向性对照，不构成非参数化外部闭环的前提；到期若外部直链仍不可达，保留采集快照说明并继续按降级证据边界使用，不影响本页其余已核验规则）。
 
 [[arxiv-2608-27454-wikiskill]] 进一步用受控实验区分不可变执行轨迹、持续累积的 Wiki 知识和可回滚的 Skill 状态。它补充的关键不是另一种存储格式，而是：候选 Skill 可以回滚，支持后续搜索的证据、拒绝原因和结构化知识不能随之丢失。
 
@@ -230,7 +230,7 @@ authorized session / project evidence → audited review
 | :--- | :--- | :--- | :--- |
 | $B_{\text{act}}$ | **记忆基础激活与扇出信噪比（Activation & Fan Signal-to-Noise）**：<br>$A_i = \ln\!\left(\sum_{j=1}^{n} t_j^{-d}\right) + \sum_{j \in \mathcal{C}} W_j \big(S_{\max} - \ln(\text{fan}_j)\big)$ | 1. 常驻 `memory` 条目须具备跨任务高频激活（高 $n$、低衰减 $t_j$）且单句高密度；<br>2. 共享同一触发线索 $j$ 的候选条目数 $\text{fan}_j$ 受控，避免无界堆积 | **扇出稀释与常驻膨胀**：将一次性长篇反思或高度重叠条目塞入默认层，导致 $\ln(\text{fan}_j)$ 增大、检索精度暴跌；应合并同角色条目或下沉至按需检索的 `wiki` |
 | $P_{\text{skill}}$ | **技能漏斗有效转化率（Skill Funnel Conversion）**：<br>$P_{\text{eff}}(s) = P(\text{id} \mid \mathcal{C}_M) \cdot P(\text{apply} \mid \text{id}) \cdot \Delta P(\text{succ} \mid \text{apply}, \mathcal{E})$ | 1. 分别记录候选集召回 $P(\text{id})$、实质遵循 $P(\text{apply} \mid \text{id})$ 与外部验证净增益 $\Delta P(\text{succ})$；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验 | **高命中低转化与负迁移**：把 `skill_view` 命中率当作成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
-| $G_{\text{promo}}$ | **候选晋升净效用门禁（Promotion Net-Utility Gate）**：<br>$G_{\text{promo}}(s_{\text{cand}}) = \Delta \hat{\mu}_{\text{held-out}} - \lambda_{\text{neg}} R_{\text{regress}} - \lambda_{\text{cost}} \Delta C_{\text{token}} > 0$ | 1. 候选规则在冻结基线、原失败案例与相邻反向案例上无回归（$R_{\text{regress}} = 0$）；<br>2. 性能增益足以覆盖额外上下文 Token 与控制器开销 $\Delta C_{\text{token}}$ | **单次痛点过拟合与库漂移（Library Drift）**：因单次失败盲目追加规则，导致邻近任务回归或 Token 预算被挤占；应拒绝晋升，保留为局部 fixture 或合并进既有 owner |
+| $G_{\text{promo}}$ | **候选晋升净效用门禁（Promotion Net-Utility Gate）**：<br>$G_{\text{promo}}(s_{\text{cand}}) = \Delta \hat{\mu}_{\text{held-out}} - \lambda_{\text{neg}} R_{\text{regress}} - \lambda_{\text{cost}} \Delta C_{\text{token}} > 0$ | 1. 候选规则在冻结基线、原失败案例与相邻反向案例上无回归（$R_{\text{regress}} = 0$），可用配对置信下界 $\operatorname{LCB}_{1-\alpha}(\Delta M)$ 实例化（[[agent-closed-loop-learning-from-corrections-to-rules]]）；<br>2. 性能增益足以覆盖额外上下文 Token 与控制器开销 $\Delta C_{\text{token}}$；模型升级至 $M_{t+1}$ 时转为反向消融检验 $\Delta U(r_j \mid M_{t+1})$（[[hermes-active-surface-lifecycle-governance]]） | **单次痛点过拟合与库漂移（Library Drift）**：因单次失败盲目追加规则，导致邻近任务回归或 Token 预算被挤占；应拒绝晋升，保留为局部 fixture 或合并进既有 owner |
 | $I_{\text{rev}}$ | **可逆技能状态与持久证据分离不变量（Reversible-State Invariant）**：<br>$S_{k+1} = \text{Rollback}(S_k, s_{\text{cand}}),\; W_{k+1} = W_k \cup \{e_k, \text{reason}_k\}$ | 1. 候选 Skill $s_{\text{cand}}$ 验证回退时立即恢复上一活动状态 $S_k$；<br>2. 原始轨迹证据 $e_k$ 与被拒绝原因 $\text{reason}_k$ 持久保留在证据/知识层 $W_{k+1}$ | **回滚失忆与重复无效搜索**：回滚失败 Skill 时一并删掉测试记录与拒绝理由，导致后续迭代重复探索同一死胡同；应严格分离活动指令层 $S_k$ 与不可变证据/知识层 $W_k$ |
 
 ## Relations

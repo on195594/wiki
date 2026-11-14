@@ -1,7 +1,7 @@
 ---
 title: Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-11-06
+updated: 2026-11-13
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, debugging]
 sources: [repository:SCHEMA.md, repository:_meta/wiki-health-check-runbook.md, repository:_meta/scripts/wiki_maintain.py, repository:_meta/scripts/wiki_health_check.py, repository:_meta/scripts/wiki_tag_audit.py, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_public_content_check.py]
@@ -76,7 +76,7 @@ AI Agent wiki 的健康检查不是“看看文件还在不在”，而是持续
 一份 lint 报告至少包含：检查范围、问题统计、按严重性分组的问题与文件路径、建议动作、是否需要立即修复，以及哪些项目未被检查。
 
 ## Relationship to other rules
-这页定义“怎么检查 wiki 是否健康”。页面怎么写见 [[hermes-wiki-page-writing-standards]]，内容怎么入库见 [[wiki-ingestion-workflow]]，整体架构见 [[hermes-knowledge-architecture]]。
+这页定义“怎么检查 wiki 是否健康”。页面怎么写见 [[hermes-wiki-page-writing-standards|Wiki Page Writing Standards]]，内容怎么入库见 [[wiki-ingestion-workflow|Wiki Ingestion Workflow]]，整体架构见 [[hermes-knowledge-architecture|Human and AI Agent Shared Knowledge Architecture]]。
 
 ## Relations
 - refines: [[hermes-wiki-page-writing-standards]]

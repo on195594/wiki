@@ -7,7 +7,7 @@ tags: [agent, knowledge-base, mcp, workflow, configuration]
 sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, docs:https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf]
 status: stable
 description: 定义 AI Agent 长期知识系统的总体架构、层间关系、Wiki 与原始搜索的适用边界及分层规则导航。
-aliases: [knowledge-architecture, hermes-wiki-architecture, agent-knowledge-architecture]
+aliases: [knowledge-architecture, agent-knowledge-architecture]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -31,10 +31,10 @@ verified_at: 2026-11-02
 
 本页维护总体结构和层间关系；具体规则按问题进入对应页面：
 
-- 内容属于 memory、skill、wiki 还是 session：[[hermes-memory-skills-wiki-boundaries]]
-- 一个需求如何组合内容、方法、触发、外部能力和运行状态：[[hermes-layer-routing-decision-checklist]]
-- 哪些材料进入当前上下文、如何压缩历史、长任务状态如何推进：[[hermes-context-layer-operating-rules]]
-- Wiki 结论能否用于当前回答、何时必须实时核验：[[hermes-retrieval-priority-and-answer-path]]
+- 内容属于 memory、skill、wiki 还是 session：[[hermes-memory-skills-wiki-boundaries|AI Agent Memory Skills Wiki Boundaries]]
+- 一个需求如何组合内容、方法、触发、外部能力和运行状态：[[hermes-layer-routing-decision-checklist|AI Agent Layer Routing Decision Checklist]]
+- 哪些材料进入当前上下文、如何压缩历史、长任务状态如何推进：[[hermes-context-layer-operating-rules|AI Agent Context Layer Operating Rules]]
+- Wiki 结论能否用于当前回答、何时必须实时核验：[[hermes-retrieval-priority-and-answer-path|AI Agent Retrieval Priority and Answer Path]]
 - 内容能否进入公共 Wiki：`SCHEMA.md`
 
 各页可以保留理解当前主题所需的短定义和安全边界，但详细规则只在上述对应页面维护。
@@ -161,10 +161,10 @@ $$Q^* = \frac{D \cdot T_{\text{doc}} \cdot M_{\text{write}}}{T_{\text{rag}} - (T
 
 ## Cross-layer invariants
 
-- 内容归属先按 [[hermes-memory-skills-wiki-boundaries]] 判定；同一主题可以产生不同职责的资产，但不复制同一正文。
-- 执行方法、触发方式和外部能力可按 [[hermes-layer-routing-decision-checklist]] 组合；skill、cron、MCP 与 wiki 不是互斥层。
-- 上下文装配只决定本轮加载什么，不改变资产归属；长任务状态按 [[hermes-context-layer-operating-rules]] 维护。
-- Wiki 是正式知识层，但不是当前事实的豁免证据；回答前按 [[hermes-retrieval-priority-and-answer-path]] 执行 Freshness Gate。
+- 内容归属先按 [[hermes-memory-skills-wiki-boundaries|AI Agent Memory Skills Wiki Boundaries]] 判定；同一主题可以产生不同职责的资产，但不复制同一正文。
+- 执行方法、触发方式和外部能力可按 [[hermes-layer-routing-decision-checklist|AI Agent Layer Routing Decision Checklist]] 组合；skill、cron、MCP 与 wiki 不是互斥层。
+- 上下文装配只决定本轮加载什么，不改变资产归属；长任务状态按 [[hermes-context-layer-operating-rules|AI Agent Context Layer Operating Rules]] 维护。
+- Wiki 是正式知识层，但不是当前事实的豁免证据；回答前按 [[hermes-retrieval-priority-and-answer-path|AI Agent Retrieval Priority and Answer Path]] 执行 Freshness Gate。
 - raw 保存合格来源，sessions 保存历史轨迹；二者都不能自动替代编译后的正式知识。
 
 ## Retrieval and write-back loop

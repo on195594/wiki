@@ -62,7 +62,7 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 > review_by: 2026-12-13
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
-> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`（该外部直链不可达仅限定于本段第一方报告数据，不代表本页其他来源同时不可达，也不构成对其他结论的新增核验）。
+> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`（该外部直链不可达仅限定于本段第一方报告数据，不代表本页其他来源同时不可达，也不构成对其他结论的新增核验；到期若直链仍不可达，继续保留采集快照边界说明，不影响本页 EWC 正则化与元技能章节的独立复用）。
 
 [推论] 对当前 AI Agent 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
 

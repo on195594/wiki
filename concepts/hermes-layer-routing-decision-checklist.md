@@ -1,7 +1,7 @@
 ---
 title: AI Agent Layer Routing Decision Checklist
 created: 2026-04-17
-updated: 2026-11-12
+updated: 2026-11-13
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, decision, automation, mcp]
 sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/memory, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/skills, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/cron, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp]
@@ -111,4 +111,4 @@ $$\mathbf{R}(x) = \bigl(\text{Store}(x),\; \text{Proc}(x),\; \text{Trig}(x),\; \
 ## Relations
 - refines: [[hermes-agent-workflow-layering-and-adoption-order]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
-- related: [[hermes-context-layer-operating-rules]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-memory-governance-notes]], [[hermes-layer-routing-sample-cases]], [[hermes-layer-routing-edge-cases]], [[wiki-ingestion-workflow]]
+- related: [[hermes-context-layer-operating-rules]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-memory-governance-notes]], [[hermes-layer-routing-sample-cases]], [[hermes-layer-routing-edge-cases]], [[wiki-ingestion-workflow]], [[hermes-context-engineering-design-priorities]]
