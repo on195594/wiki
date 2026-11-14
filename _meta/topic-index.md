@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-14
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-13 | Indexed pages: 126
+> Last updated: 2026-11-14 | Indexed pages: 126
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -56,7 +56,7 @@ status: current
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay；含 `B_ctx / U_blk / C_total / R_probe` 参数化上下文预算与端到端总成本评估模型
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分 FActScore、ALCE 支持度与 Jaccard 稳定性，明确空集合和来源真实性边界
 - [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：结合 Tulving 情景/语义记忆、Squire 陈述/程序记忆分类学与 Bjork 存储/检索强度双维解耦，区分广义 agent memory 与默认 memory 载体，用正反例与去情境化晋升门禁路由 skills、wiki、sessions/project state 与历史证据
-- [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：以窄职责、前置安全边界、可发现的 reference 路由和父级验证收敛默认路径
+- [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：结合 Parnas 信息隐藏、Nielsen 渐进式披露与 Agent Skills 三层加载、SKILL.state 程序/状态分离（$\mathcal{O}(T)$ vs $\mathcal{O}(T^2)$）及 Warp/WikiSkill 双环演化机制，收敛默认路径与跨模型复验边界
 - [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget：结合检索召回与阅读器饱和脱节（Lost in the Middle）及信息瓶颈原理；涵盖 Agentic RAG 的证据信任边界与语义漂移/未知候选概念参考
 - [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — 来源约束摘要的识别与诚实留白：以部分识别和选择性预测作类比，按类别核验原文事实、显式推断与建议，不把建议作为事实的自动降级出口
 - [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：结合 Tree-sitter AST 符号引用图与 PageRank 预算映射（RepoMap）及三级层级化定位（Agentless），把目标代码、可达接口签名、项目约束与显式未知项装配成低噪音 Agent 上下文
@@ -89,7 +89,7 @@ status: current
 - [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：结合 SWT-Bench `Fail-to-Pass` 复现判据与 TestPrism 单参考盲区拆解（覆盖缺口/过弱断言/执行错误），将可复发失败按三路根因分流并编译为成对差分回归工件（含 `S_f2p / F_ext / G_shadow / B_retry` 参数化裁决矩阵）
 - [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 以 CRAG / Self-RAG 为参照，区分来源机制与工程推论：综合前核验支持度、按轮次/预算补证或明确弃答，并说明 `I_ident / G_evid / F_rt / V_cov` 的适用边界
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：区分提示驱动修正的局限、SCoRe 专门训练与工具/环境反馈，按证据可靠性、确定性或容差等价和项目重试预算组织迭代
-- [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：把文件、类和内联技能统一到 provider 抽象下，同时用分层来源、过滤、去重、审批和沙箱控制 active skill 风险
+- [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：形式化多源组合算子（`Aggregate / Deduplicate / Filter`）与命名空间遮蔽防御，结合 Saltzer–Schroeder 最小权限/完全中介原则与 Confused Deputy（ScopeGate 逐次参数值授权）分离静态暴露门控与动态执行授权
 - [AI Agent Active-Surface Lifecycle Governance](../concepts/hermes-active-surface-lifecycle-governance.md) — AI Agent 活跃面的生命周期治理：结合上下文房租（Context Rent）、CL-Bench 预设规则负增益实证（`-0.234`）与模型代际补丁衰减公式（$\Delta U(r_j \mid M_{t+1})$），从基线、校准、晋升推进到事件触发的重基线与退役，含 `Q_amort / ρ_comp / E_res / ΔU_reb` 诊断矩阵，不把体积比或效用示意式作为自动退役授权
 - [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：结合 MemGPT 主存/外存分页模型与 `B_ctx / U_blk / R_probe` 参数契约，管理小型默认注入层、按需检索、历史压缩、长任务 project state 和隔离 handoff
 - [Human and AI Agent Shared Knowledge Architecture](../concepts/hermes-knowledge-architecture.md) — 人类与 AI Agent 共享知识架构与导航：结合 Sleep-Time Compute 离线重组织、编译摊销盈亏平衡方程（$Q^*$）、“博尔赫斯地图陷阱”压缩率边界（$\rho_{\text{comp}} < 1$）、纯检索六类结构失效与冲突感知对象组织运行时知识栈与 Wiki 文件层
@@ -107,10 +107,10 @@ status: current
 - [Wiki Ingestion Workflow](../concepts/wiki-ingestion-workflow.md) — 把外部信息编译进知识库的标准入库流程：借记录链接与信念修正作概念类比，区分精确来源依赖、名称候选、范围复核与五类编辑动作（`NEW / CONFIRM / UPDATE / CONFLICT / SUPERSEDE`），不宣称实现概率匹配或次协调逻辑，先过公开边界再固化 raw、反查依赖、更新 Relations 并验证
 
 ### 5. 个人操作系统与投资决策 (LifeOS, Systems & Investment)
-- [CompanyOS to LifeOS Filesystem Philosophy](../concepts/companyos-to-lifeos-filesystem-philosophy.md) — 将公司和人生建模为文件系统：统一命名空间、文件即状态、权限即治理、读写即操作
+- [CompanyOS to LifeOS Filesystem Philosophy](../concepts/companyos-to-lifeos-filesystem-philosophy.md) — 将公司和人生建模为文件系统：结合 Unix 文件与进程机制的四项归纳（基于 Ritchie & Thompson）、Plan 9 进程级定制命名空间与 9P 协议（Pike 等）、Simon 状态—过程转译理论及最小权威原则（PoLA），界定文件即状态与权限治理的适用边界
 - [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要（自主/胜任/归属）、发展性工作记忆边界和家庭可持续为核心，含 `M / T_c / F_e / K` 可选推论参数
-- [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的参考架构：协调 profile、wiki/memory/skills/cron/MCP/profiles 按版本和权限边界推进
-- [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：以主协调上下文组织语义层，明确知识、可选执行与接入能力、隔离和临时状态的职责与越界规则
+- [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的可执行参考架构：结合 Simon 近可分解系统（快慢时间尺度解耦）与 Hora/Tempus 稳定中间形态寓言，按 Phase 0–5 渐进组织协调上下文与 `wiki / memory / skills / cron / MCP / profiles`
+- [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：结合 Lampson 保护域与访问控制矩阵（$\mathbf{A}[d,o]$）及 Plan 9 命名空间视图，区分领域分类（`wiki / skill`）与需独立验证的运行时状态和权限隔离（`profile`），含七层准入与越界裁决矩阵
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域参数耦合矩阵、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力

@@ -838,7 +838,7 @@
       "path": "concepts/agent-skill-provider-governance-boundary.md",
       "type": "concept",
       "title": "Agent Skill Provider Governance Boundary",
-      "description": "说明多形态 Agent skill 进入统一 provider 前需要保持的命名、暴露和审批边界。",
+      "description": "结合多源组合代数、命名空间遮蔽防御、Saltzer–Schroeder 最小权限/完全中介原则与 Confused Deputy（ScopeGate 逐次参数授权）边界，定义多形态 Agent skill 进入统一 provider 的治理契约。",
       "status": "stable",
       "tags": [
         "agent",
@@ -853,7 +853,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -1501,7 +1501,7 @@
       "path": "concepts/companyos-to-lifeos-filesystem-philosophy.md",
       "type": "concept",
       "title": "CompanyOS to LifeOS Filesystem Philosophy",
-      "description": "提炼从 CompanyOS 到 LifeOS 的文件系统即状态、共享命名空间和权限治理思想。",
+      "description": "结合 Unix 文件抽象、Plan 9 进程级定制命名空间（9P 协议）、Simon 状态—过程转译理论与最小权威边界，提炼从 CompanyOS 到 LifeOS 的文件系统即状态与治理思想。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1516,7 +1516,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-02",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2268,7 +2268,7 @@
       "path": "concepts/hermes-lifeos-executable-architecture.md",
       "type": "concept",
       "title": "AI Agent LifeOS Executable Architecture",
-      "description": "定义 AI Agent LifeOS 如何把知识、记忆、技能、工具和自动化组织为可执行架构。",
+      "description": "结合 Simon 近可分解系统（快慢时间尺度解耦与稳定中间形态）与进程级命名空间隔离思想，定义 AI Agent LifeOS 将知识、记忆、技能、工具、调度和隔离环境组织为可执行系统的参考架构。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2285,7 +2285,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2303,7 +2303,7 @@
       "path": "concepts/hermes-lifeos-layer-boundary-contract.md",
       "type": "concept",
       "title": "AI Agent LifeOS Layer Boundary Contract",
-      "description": "规定 AI Agent LifeOS 各层之间的职责、准入和越界判断契约。",
+      "description": "结合 Lampson 保护域与访问控制矩阵（Access Control Matrix）及 Plan 9 命名空间隔离模型，规定 AI Agent LifeOS 七层架构的职责、准入、越界禁令与升降级契约。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2319,7 +2319,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "hermes-lifeos-executable-architecture",
@@ -2529,7 +2529,7 @@
       "path": "concepts/hermes-skill-refactoring-methodology.md",
       "type": "concept",
       "title": "AI Agent Skill Refactoring Methodology",
-      "description": "总结 AI Agent skill 重构时从边界收敛、分层到回归验证的可移植方法。",
+      "description": "结合 Parnas 信息隐藏、Nielsen 渐进式披露与 Agent Skills 三层加载、SKILL.state 状态分离及 Warp/WikiSkill 双环演化机制，总结 AI Agent skill 重构与回归验证的可移植方法。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2547,7 +2547,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",

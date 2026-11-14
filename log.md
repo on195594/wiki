@@ -2,6 +2,24 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-14] fix | 校准 LifeOS 与 Skill 治理集群的理论归因和安全保障边界
+
+- 修正 [[hermes-lifeos-layer-boundary-contract]] 中从访问控制矩阵推导 `profile` 充要条件的错误；明确同权限仍可需状态隔离，命名空间视图不是完整安全边界。
+- 修正 [[hermes-lifeos-executable-architecture]] 中调用频率与契约变更频率混用的固定排序；Phase 编号不应推迟安全隔离，公共模型定义与私有参数值分离。
+- 修正 [[companyos-to-lifeos-filesystem-philosophy]] 中对 Git、内容哈希并发控制、质量检查和原子回滚的过强承诺；区分二手解读与本页归纳，使用可访问的 Plan 9 原文链接。
+- 校准 [[agent-skill-provider-governance-boundary]] 的算子顺序归因、技能名称约束、路径校验与幂等前提；在 [[hermes-skill-refactoring-methodology]] 中区分可用性经验与定量结论，要求经验证后再删除模型特定补丁。同步主题目录与 catalog，不刷新页面级 `verified_at`。
+
+## [2026-11-14] improve | 统一 LifeOS 架构与文件系统哲学集群为规范中文，并补充 Unix/Plan 9 命名空间、Simon 近可分解系统与 Lampson 保护域理论依据
+
+- 在 [[companyos-to-lifeos-filesystem-philosophy]] 中补充 Dennis M. Ritchie 与 Ken Thompson（1974，*CACM*，[The UNIX Time-Sharing System 综述](https://sparsenotes.com/posts/2026/08/papers/unix-time-sharing-system/)）的文件与进程机制四项归纳、Rob Pike 等人（1993/1995，[Plan 9 from Bell Labs](https://9p.io/sys/doc/9.html)、[The Use of Name Spaces in Plan 9](https://9p.io/sys/doc/names.html)）的 9P 统一文件协议、按进程可组装私有命名空间（`mount / bind` 联合目录）与 `/n/dump` 每日只读快照树，以及 Herbert A. Simon（1962，[The Architecture of Complexity 笔记](https://www.infraculture.org/2020-09-10-text-notes-architecture-of-complexity/)）的状态描述 vs. 过程描述转译模型；同时结合 [最小权威原则 (PoLA)](https://cosmonic.com/docs/platform-concepts/principle-of-least-authority/) 校准“万物皆文件”与“Unix `rwx` 权限即治理”在 AI Agent 环境权威下的安全局限。
+- 将 [[hermes-lifeos-executable-architecture]] 与 [[hermes-lifeos-layer-boundary-contract]] 中的主体章节统一为规范中文，保留 `Summary / Relations` 等通用结构标题；在 [[hermes-lifeos-executable-architecture]] 中引入 Simon（1962，[Agre 2003 评述](https://pages.gseis.ucla.edu/faculty/agre/simon.html)）的**近可分解系统（Nearly Decomposable Systems）**时间尺度解耦与 **Hora/Tempus 钟表匠寓言（稳定中间形态）**，作为 Phase 0–5 渐进演进的工程类比，不指定固定更新频率排序或安全措施的延后顺序。
+- 在 [[hermes-lifeos-layer-boundary-contract]] 中引入 Butler W. Lampson（1971/1974，*Protection*，[Cornell Reference Monitors](https://www.cs.cornell.edu/fbs/publications/chptr.enfMech.refMonitor.pdf)、[arXiv:2304.10600v1](https://arxiv.org/html/2304.10600v1)）的**保护域（Protection Domains）与访问控制矩阵** $\mathbf{A}[d, o]$，借此区分领域对象分类与运行时状态、权限隔离，不将矩阵行差异等同于独立 `profile` 的充要条件，提炼带 `[推论]` 标记的七层一屏裁决矩阵；同步更新 [[topic-index]] 与 catalog，保持既有 1 跳 `Relations` 拓扑与页面级 `verified_at` 不变。
+
+## [2026-11-14] improve | 补充 Skill 重构方法论与 Skill Provider 治理边界的模块化、渐进式披露及逐次参数授权证据
+
+- 在 [[hermes-skill-refactoring-methodology]] 中补充 David L. Parnas（1972，*CACM*，[*On the Criteria To Be Used in Decomposing Systems into Modules*](https://wstomv.win.tue.nl/edu/2ip30/references/criteria_for_modularization.pdf)）按高波动设计决策（信息隐藏）而非执行流程图拆分模块的原则、Jakob Nielsen（2006，[Progressive Disclosure](https://www.nngroup.com/articles/progressive-disclosure/)）的渐进式披露原则与 [Agent Skills 规范](https://agentskills.io/specification) 的三层加载预算（Level 1 启动元数据 `~100 tokens`、Level 2 激活正文 `< 5,000 tokens / < 500 lines`、Level 3 单跳可达 `references/` 与 `scripts/`），并整合 [[arxiv-2608-26263-skill-state]] 的程序规范与有界状态分离（$A_t = (P, \Sigma_t, O_t)$，累计复杂度 $\mathcal{O}(T)$ vs. $\mathcal{O}(T^2)$ 及 `Gemma-4-31B-it` 状态覆写失效分布）、[[claude-warp-self-improving-agent-skills-2026-08-26]] 的 Inner/Outer 双层 PR 自改进闭环与 [[arxiv-2608-27454-wikiskill]] 的诊断轨迹隔离（`63.7` vs. `60.9`）及跨模型负迁移（`50.5%` $\to$ `18.1%`）边界，提炼带 `[推论]` 标记的 `I_hide / D_disc / S_sep / V_reg` 四维重构诊断矩阵。
+- 在 [[agent-skill-provider-governance-boundary]] 中形式化 [[microsoft-devblogs-agent-skills-python-provider-2026-05-24]] 的多源组合能力（本页以 $\operatorname{Filter} \circ \operatorname{Deduplicate}_{\text{first}} \circ \operatorname{Aggregate}$ 示意一种可选顺序）与非交换左偏覆盖（$S_1 \triangleright S_2$）下的命名空间遮蔽（Namespace Shadowing）风险，并结合 Saltzer & Schroeder（1975）最小权限/完全中介原则、Hardy（1988）与 [Cosmonic PoLA](https://cosmonic.com/docs/platform-concepts/principle-of-least-authority/) 的困惑副手（Confused Deputy）模型，以及 David Mellafe Zuvic（2026，[arXiv:2606.28679v1](https://arxiv.org/html/2606.28679v1)）对主流框架默认派发缺口的源码审计、27 模型任务对齐注入暴露度（部署层平均 $\mathrm{ASR}_{\text{task}} = 0.603$ vs. 旗舰层 $0.189$）与五阶段确定性策略执行点 `ScopeGate`（带外策略不变性、`0/48` 静态绕过与 `0/29` 自适应绕过），明确区分静态能力暴露门控与动态逐次参数值授权；同步更新 [[topic-index]] 与 catalog，保持既有 1 跳 `Relations` 拓扑与页面级 `verified_at` 不变。
+
 ## [2026-11-14] ingest | 新增三张公司分析方法卡
 
 - 新建 `concepts/company-analysis/`，加入 [[cyclical-earnings-normalization]]、[[growth-reinvestment-and-return-on-capital]] 与 [[price-implied-expectations-analysis]]。每页按“解决什么问题、来源与核对范围、适用条件、所需证据、怎么分析、常见误判、结论如何验证”组织，为原创概括并链接公开原文，不镜像原文。
