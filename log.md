@@ -2,6 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-14] ingest | 补充现金流估值与盈利质量草稿，澄清增长和组合风险边界
+
+- 新增 [[free-cash-flow-and-valuation-basis]] 与 [[earnings-quality-and-cash-conversion]]：区分现金流对象、折现率、营运资本及维护性投入，避免把低现金转化当造假；原文获取不充分的范围如实列出，保留 draft，不以离线检查代替来源核验。
+- 原位补清 [[growth-reinvestment-and-return-on-capital]] 中稳定 ROE、留存收益和外部融资的适用限制；三张既有企业分析卡仅增必要交叉链接，不重写方法。
+- 在 [[investment-risk-control-framework]] 补充协方差与分散化原理、共同驱动和压力检查推论，区分计划止损、波动与回撤，保持参数边界；1952 原论文未取得全文，另核作者诺奖讲座的相应段落，不混淆核对范围。同步主题目录和生成 catalog，不改变首页入口。
+
 ## [2026-11-14] fix | 校准 LifeOS 与 Skill 治理集群的理论归因和安全保障边界
 
 - 修正 [[hermes-lifeos-layer-boundary-contract]] 中从访问控制矩阵推导 `profile` 充要条件的错误；明确同权限仍可需状态隔离，命名空间视图不是完整安全边界。

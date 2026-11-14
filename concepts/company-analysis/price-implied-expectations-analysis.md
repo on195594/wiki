@@ -63,4 +63,4 @@ Michael Mauboussin 与 Alfred Rappaport《Expectations Investing》官方网站�
 
 ## Relations
 
-- related: [[cyclical-earnings-normalization]], [[growth-reinvestment-and-return-on-capital]]
+- related: [[cyclical-earnings-normalization]], [[growth-reinvestment-and-return-on-capital]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]]

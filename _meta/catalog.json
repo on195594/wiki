@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 129,
+  "total_pages": 131,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -1443,6 +1443,64 @@
       "relations": {
         "related": [
           "growth-reinvestment-and-return-on-capital",
+          "price-implied-expectations-analysis",
+          "free-cash-flow-and-valuation-basis",
+          "earnings-quality-and-cash-conversion"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/earnings-quality-and-cash-conversion.md",
+      "type": "concept",
+      "title": "盈利质量与现金转化",
+      "description": "公司分析方法卡：在同期间、同合并范围解释利润与经营现金流差异，区分正常投入、收付时点与待核查异常；不把低现金转化视为造假证据。",
+      "status": "draft",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "利润现金转化",
+        "应计质量",
+        "盈利现金含量"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-11-14",
+      "relations": {
+        "related": [
+          "free-cash-flow-and-valuation-basis",
+          "growth-reinvestment-and-return-on-capital",
+          "cyclical-earnings-normalization",
+          "price-implied-expectations-analysis"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/free-cash-flow-and-valuation-basis.md",
+      "type": "concept",
+      "title": "自由现金流与估值口径",
+      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings，匹配现金流对象、折现率和价值口径；保留维护性资本开支与原文核验缺口。",
+      "status": "draft",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "现金流估值口径",
+        "自由现金流",
+        "所有者盈余"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-11-14",
+      "relations": {
+        "related": [
+          "earnings-quality-and-cash-conversion",
+          "growth-reinvestment-and-return-on-capital",
+          "cyclical-earnings-normalization",
           "price-implied-expectations-analysis"
         ]
       }
@@ -1468,7 +1526,9 @@
       "relations": {
         "related": [
           "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis"
+          "price-implied-expectations-analysis",
+          "free-cash-flow-and-valuation-basis",
+          "earnings-quality-and-cash-conversion"
         ]
       }
     },
@@ -1493,7 +1553,9 @@
       "relations": {
         "related": [
           "cyclical-earnings-normalization",
-          "growth-reinvestment-and-return-on-capital"
+          "growth-reinvestment-and-return-on-capital",
+          "free-cash-flow-and-valuation-basis",
+          "earnings-quality-and-cash-conversion"
         ]
       }
     },
@@ -2721,7 +2783,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-14",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
