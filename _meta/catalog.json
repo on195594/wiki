@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 126,
+  "total_pages": 129,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -1419,6 +1419,81 @@
           "claude-code-practical-workflow-tips",
           "repository-level-code-intelligence-layer",
           "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/cyclical-earnings-normalization.md",
+      "type": "concept",
+      "title": "Cyclical Earnings Normalization and the Low-PE Trap",
+      "description": "公司分析方法卡：周期或商品类公司市盈率很低时，如何用利润正常化区分“价格低估”与“利润处于周期高位”。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "周期股低PE",
+        "利润正常化"
+      ],
+      "volatility": "low",
+      "review_by": "2027-11-14",
+      "verified_at": "2026-11-14",
+      "updated": "2026-11-14",
+      "relations": {
+        "related": [
+          "growth-reinvestment-and-return-on-capital",
+          "price-implied-expectations-analysis"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/growth-reinvestment-and-return-on-capital.md",
+      "type": "concept",
+      "title": "Growth, Reinvestment and Return on Capital",
+      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及投入资本回报率（ROIC）的口径与常见失真。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "增长与再投资",
+        "投入资本回报率"
+      ],
+      "volatility": "low",
+      "review_by": "2027-11-14",
+      "verified_at": "2026-11-14",
+      "updated": "2026-11-14",
+      "relations": {
+        "related": [
+          "cyclical-earnings-normalization",
+          "price-implied-expectations-analysis"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/price-implied-expectations-analysis.md",
+      "type": "concept",
+      "title": "Price-Implied Expectations Analysis",
+      "description": "公司分析方法卡：从当前股价反推它隐含的经营预期（反向估值），再判断这些预期被上修或下修的可能。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "反向估值",
+        "价格隐含预期"
+      ],
+      "volatility": "low",
+      "review_by": "2027-11-14",
+      "verified_at": "2026-11-14",
+      "updated": "2026-11-14",
+      "relations": {
+        "related": [
+          "cyclical-earnings-normalization",
+          "growth-reinvestment-and-return-on-capital"
         ]
       }
     },

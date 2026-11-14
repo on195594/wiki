@@ -2,6 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-14] ingest | 新增三张公司分析方法卡
+
+- 新建 `concepts/company-analysis/`，加入 [[cyclical-earnings-normalization]]、[[growth-reinvestment-and-return-on-capital]] 与 [[price-implied-expectations-analysis]]。每页按“解决什么问题、来源与核对范围、适用条件、所需证据、怎么分析、常见误判、结论如何验证”组织，为原创概括并链接公开原文，不镜像原文。
+- 证据边界：三页的来源均于 2026-11-14 读取；Damodaran 论文中租赁与研发资本化算例、《Expectations Investing》书籍正文未核对，页内已注明。原文没有的应用建议逐条标为“本页推论”。方法卡不构成任何公司的事实，也未验证能改善投资结果。
+- 同步主题目录第 5 节；未新增标签，未保存 raw。
+
 ## [2026-11-13] refactor | 清理通用知识页的 `hermes-*` 品牌别名、补充导航显示名并收敛正文表述
 
 - 移除 [[hermes-vs-google-sre-agentic-incident-response]]、[[agent-autonomy-ladder-for-hermes-workflows]]、[[hermes-active-surface-lifecycle-governance]]、[[hermes-agent-workflow-layering-and-adoption-order]]、[[hermes-context-engineering-design-priorities]] 与 [[hermes-knowledge-architecture]] 共 6 篇通用知识页 frontmatter 中的 `hermes-*` 历史别名，仅保留通用中性别名（历史路径继续按 `SCHEMA.md` 保留以兼容不可变 `raw/` 快照）。
