@@ -1425,7 +1425,7 @@
     {
       "path": "concepts/company-analysis/cyclical-earnings-normalization.md",
       "type": "concept",
-      "title": "Cyclical Earnings Normalization and the Low-PE Trap",
+      "title": "周期利润正常化与低市盈率陷阱",
       "description": "公司分析方法卡：周期或商品类公司市盈率很低时，如何用利润正常化区分“价格低估”与“利润处于周期高位”。",
       "status": "stable",
       "tags": [
@@ -1450,7 +1450,7 @@
     {
       "path": "concepts/company-analysis/growth-reinvestment-and-return-on-capital.md",
       "type": "concept",
-      "title": "Growth, Reinvestment and Return on Capital",
+      "title": "增长、再投资与资本回报",
       "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及投入资本回报率（ROIC）的口径与常见失真。",
       "status": "stable",
       "tags": [
@@ -1475,7 +1475,7 @@
     {
       "path": "concepts/company-analysis/price-implied-expectations-analysis.md",
       "type": "concept",
-      "title": "Price-Implied Expectations Analysis",
+      "title": "价格隐含预期分析（反向估值）",
       "description": "公司分析方法卡：从当前股价反推它隐含的经营预期（反向估值），再判断这些预期被上修或下修的可能。",
       "status": "stable",
       "tags": [

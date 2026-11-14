@@ -119,9 +119,9 @@ status: current
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习反馈边界（Ericsson / Macnamara）、认知负荷理论（Sweller）与单双环复盘（Argyris & Schön），含 `R / P / V` 可选推论参数
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 任务特定）及探索—利用权衡（March），兼顾 `B / E / C / S` 可选推论参数与家庭兼容性
-- [Cyclical Earnings Normalization and the Low-PE Trap](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
-- [Growth, Reinvestment and Return on Capital](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：增长率 = 再投资率 × 资本回报，ROIC 的定义、会计失真与边际回报，以及没有超额回报的增长不创造价值
-- [Price-Implied Expectations Analysis](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
+- [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
+- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：增长率 = 再投资率 × 资本回报，ROIC 的定义、会计失真与边际回报，以及没有超额回报的增长不创造价值
+- [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
 - [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险
