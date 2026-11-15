@@ -31,6 +31,7 @@ status: current
 | 查工具配置与能力边界 | [Claude Code 工作流](concepts/claude-code-practical-workflow-tips.md) · [Codex 工作流分层](concepts/codex-agent-workflow-layering.md)；具体命令先核对页面的局部证据与官方文档 |
 | 排查生产事故 | [SRE 事故响应模式](concepts/google-sre-gemini-cli-incident-response.md)：方法参考，执行仍以目标项目 runbook 为准 |
 | 构建投资风控与评估企业基本面 | [投资风险控制框架](concepts/investment-risk-control-framework.md) · [普通人长期投资系统](concepts/ordinary-investor-investment-system.md) · [自由现金流与估值口径](concepts/company-analysis/free-cash-flow-and-valuation-basis.md) |
+| 规划个人成长、职业跃迁、家庭教育与资金协同（LifeOS） | [LifeOS 总览](concepts/lifeos-overview.md) · [工作与职业模型](concepts/work-and-career-operating-model.md) · [家庭教育模型](concepts/family-education-operating-model.md) · [个人成长模型](concepts/personal-growth-operating-model.md) |
 | 查看治理与变更 | [Schema](SCHEMA.md) · [变更日志](log.md) |
 
 历史 `hermes-*` 文件路径保留以兼容引用；标题和摘要定义当前通用知识范围。Hermes 产品评估与历史决策仍保留产品名，不能当作所有 Agent 的能力声明。

@@ -85,7 +85,7 @@ status: current
 
 ### 4. 评测、验证与知识治理 (Evaluation, Verification & Governance)
 - [ACA 源码：有效参数与评估预算](../concepts/fixed-budget-optimizer-selection-aca-case.md) — 仅依据固定 GitHub 提交解析参数校验、调用预算与移动算子，区分请求参数、生效种群和实际评估次数
-- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：分数只作诊断指针；结合 MT-Bench 三大裁判偏差（位置/冗长/自我偏好）、Rogan–Gladen 灵敏度/特异度校准（$\hat{\theta}_{\text{RG}}$ / Youden's $J$）与预测驱动推断（PPI），用相关会话、工具证据和专家评分理由校准评测器并沉淀回归案例
+- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：评分器选择、可审计 Rubric、未评分状态与裁判自身回归；结合 MT-Bench 三大偏差、Rogan–Gladen 与 PPI，用会话、工具证据和专家评分理由校准评测器，分数只作诊断指针
 - [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：结合 SWT-Bench `Fail-to-Pass` 复现判据与 TestPrism 单参考盲区拆解（覆盖缺口/过弱断言/执行错误），将可复发失败按三路根因分流并编译为成对差分回归工件（含 `S_f2p / F_ext / G_shadow / B_retry` 参数化裁决矩阵）
 - [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 以 CRAG / Self-RAG 为参照，区分来源机制与工程推论：综合前核验支持度、按轮次/预算补证或明确弃答，并说明 `I_ident / G_evid / F_rt / V_cov` 的适用边界
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：区分提示驱动修正的局限、SCoRe 专门训练与工具/环境反馈，按证据可靠性、确定性或容差等价和项目重试预算组织迭代
@@ -108,17 +108,17 @@ status: current
 
 ### 5. 个人操作系统与投资决策 (LifeOS, Systems & Investment)
 - [CompanyOS to LifeOS Filesystem Philosophy](../concepts/companyos-to-lifeos-filesystem-philosophy.md) — 将公司和人生建模为文件系统：结合 Unix 文件与进程机制的四项归纳（基于 Ritchie & Thompson）、Plan 9 进程级定制命名空间与 9P 协议（Pike 等）、Simon 状态—过程转译理论及最小权威原则（PoLA），界定文件即状态与权限治理的适用边界
-- [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要（自主/胜任/归属）、发展性工作记忆边界和家庭可持续为核心，含 `M / T_c / F_e / K` 可选推论参数
+- [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要与有机整合理论（Deci & Ryan 2000，自主/胜任/归属与认同调节 vs 内摄调节）、发展性工作记忆边界（Gathercole 2004 / Sweller 1988）和家庭可持续为核心，含 `M / T_c / F_e / K` 强类型参数契约与双环熔断边界
 - [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的可执行参考架构：结合 Simon 近可分解系统（快慢时间尺度解耦）与 Hora/Tempus 稳定中间形态寓言，按 Phase 0–5 渐进组织协调上下文与 `wiki / memory / skills / cron / MCP / profiles`
 - [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：结合 Lampson 保护域与访问控制矩阵（$\mathbf{A}[d,o]$）及 Plan 9 命名空间视图，区分领域分类（`wiki / skill`）与需独立验证的运行时状态和权限隔离（`profile`），含七层准入与越界裁决矩阵
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
-- [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域参数耦合矩阵、公开/私有边界和 AI Agent 的可选执行角色
+- [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域 15 项强类型参数耦合矩阵与守恒不变量（周时间带宽、存量/流量转换式、撤除留存门禁与压力余量熔断）、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
 - [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓、宽基底盘到个股基本面五卡路由边界与行为控制执行
 - [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
-- [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习反馈边界（Ericsson / Macnamara）、认知负荷理论（Sweller）与单双环复盘（Argyris & Schön），含 `R / P / V` 可选推论参数
+- [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习解释力边界（Ericsson 1993 / Macnamara 2014）、认知负荷理论（Sweller 1988）、任务切换注意力残留（Leroy 2009）与单双环复盘（Argyris & Schön），含 `R / P / V` 强类型参数与 $\Delta S_{\text{retain}} > 0$ 撤除迁移验证契约
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
-- [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 任务特定）及探索—利用权衡（March），兼顾 `B / E / C / S` 可选推论参数与家庭兼容性
+- [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 2004 任务特定）、探索—利用权衡（March 1991）与长工时边际产出非线性衰减（Pencavel 2015），兼顾 `B / E / C / S` 强类型参数与家庭兼容性
 - [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
 - [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：增长率 = 再投资率 × 资本回报，ROIC 的定义、会计失真与边际回报，以及没有超额回报的增长不创造价值
 - [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向

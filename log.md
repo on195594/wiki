@@ -2,6 +2,20 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-15] improve | 补充评分器选择、可审计 Rubric 与裁判自身回归
+
+- 将 Bala Priya C 的 [The Complete Guide to LLM Evaluation](https://machinelearningmastery.com/the-complete-guide-to-llm-evaluation/) 增量编译到 [[agent-evaluation-rubric-calibration]]：区分代码、参考答案与模型裁判，明确 Rubric 四要素和逐项判断/程序聚合；裁判变更需与被评系统变化分开比较。
+- 将空主张、证据不足、截断及解析失败的状态处理与覆盖披露标为工程推论；澄清忠实度不证明事实正确或完整，换序不一致不等于已经证明位置偏差或内容等质。人工标注数量、kappa 经验值及 QAG/G-Eval 名称不升级为通用验收门槛或算法定义。
+- 在 [[production-ai-agent-evaluation-framework]] 保留导航，同步主题目录与 catalog；不新增重复概念页或 raw 快照，不刷新页面级 `verified_at`，不引入运行时规则或自动评测任务。
+
+## [2026-11-15] improve | 贯通 LifeOS 个人成长、职业与家庭教育子域拓扑，补齐 15 项参数核算边界及相关文献
+
+- **拓扑断链修复与双向 `Relations` 对齐**：在 `index.md`（`## 按任务进入`）新增 LifeOS 个人成长、职业跃迁、家庭教育与资金协同任务入口；为 [[companyos-to-lifeos-filesystem-philosophy]] 补齐 `lifeos` 领域标签；补齐 [[personal-growth-operating-model]]、[[work-and-career-operating-model]]、[[family-education-operating-model]] 与 [[household-fund-layering-model]] 对 [[lifeos-overview]] 的导航，保留各域原有执行架构或投资规则依赖，并在四个业务子域及 [[hermes-lifeos-executable-architecture]]、[[hermes-lifeos-layer-boundary-contract]] 中补齐对 [[system-governance-operating-model]] 的双向接口说明与 `## Relations` 回链；打通 [[personal-growth-operating-model]] 与 [[ai-assistance-cognitive-substitution-and-skill-formation]] 的双向引用。
+- **跨域参数类型与核算边界**：在 [[lifeos-overview]] 明确 `T_c` 的单程通勤上限与陪伴最低承诺、`P` 的回顾周期与非职业向净工时；周时间按个人互斥活动核算，计入实际计划陪伴及用餐、家务等活动。职业缓冲期 `B` 使用用途互斥的可用储备与不重复计数的月支出，补齐非正流入及非均匀付款边界。迁移验证项 `V` 按目标任务选择，不将 AI 正增益与压力暴露回避下降合成通用门禁；儿童余量 `M` 保留资料不足状态与家庭自定回顾规则，不设等待两周期的默认阈值。
+- **一手学术文献锚点补强**：在 [[work-and-career-operating-model]] 补充 John Pencavel（2014/2015，*The Economic Journal*，[OUP 摘要](https://academic.oup.com/ej/article-abstract/125/589/2052/5078088)、[IZA DP No. 8129 PDF](https://docs.iza.org/dp8129.pdf)）关于周工时超过 $48\text{–}50$ 小时后边际产出非线性衰减的实证边界，以及 Robert Gibbons & Michael Waldman（2004，*AER*，[*Task-Specific Human Capital*](https://www.aeaweb.org/articles?id=10.1257/0002828041301579)）与 James G. March（1991，*Organization Science*，[DOI 10.1287/orsc.2.1.71](https://pubsonline.informs.org/doi/10.1287/orsc.2.1.71)）的一手文献链接；在 [[personal-growth-operating-model]] 补充 Sophie Leroy（2009，*OBHDP*，[*Attention Residue*](https://ideas.repec.org/a/eee/jobhdp/v109y2009i2p168-181.html)）、Macnamara & Maitra（2019，对 Ericsson et al. 1993 研究的复现，[PMC6731745](https://pmc.ncbi.nlm.nih.gov/articles/PMC6731745/)）、Macnamara et al.（2014，[PubMed 24986855](https://pubmed.ncbi.nlm.nih.gov/24986855/)）与 John Sweller（1988，[DOI 10.1207/s15516709cog1202_4](https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1202_4)）；在 [[family-education-operating-model]] 补充 Edward L. Deci & Richard M. Ryan（2000，*Psychological Inquiry*，[*The "What" and "Why" of Goal Pursuits* PDF](https://selfdeterminationtheory.org/SDT/documents/2000_DeciRyan_PIWhatWhy.pdf)）；同步更新 `_meta/topic-index.md` 与 `_meta/catalog.json`。
+
+- **审查修正**：上述跨域规则保持为可配置推论，不授予自动执行权限；历史军需工人的工时拐点不作为知识工作的通用上限，亦不用于声称错误率与健康损耗急升；澄清 2019 年刻意练习复现研究未复现原研究核心发现，单次撤除正增益不证明长期留存或因果。同步相关领域页，补齐比例分母、零输入及零工时边界，并修正数学转义、总览表参数语义及财务页将资金目标 `T` 误称为目标日期的表述。
+
 ## [2026-11-15] improve | 贯通投资与公司基本面分析拓扑、转正两张现金流/盈利质量方法卡并补充极端尾部相关、波动率缩放与多重检验防过拟合边界
 
 - **拓扑贯通与强类型风控参数契约收敛**：在 `index.md` 新增投资风控与企业基本面评估任务入口；为 [[money-as-tool-and-investment-vs-consumption-framework]] 补齐 `investment` 领域标签；打通 [[ordinary-investor-investment-system]]、[[investment-risk-control-framework]] 与 `concepts/company-analysis/` 下五张公司分析方法卡（[[free-cash-flow-and-valuation-basis]]、[[earnings-quality-and-cash-conversion]]、[[growth-reinvestment-and-return-on-capital]]、[[cyclical-earnings-normalization]]、[[price-implied-expectations-analysis]]）的双向 `## Relations` 及“宽基底盘 vs. 个股基本面 Thesis Stop”路由契约；在 [[investment-risk-control-framework]] 汇总强类型风控参数契约表（`T / H / L / D / δ` 与 `E / r / B / N / d / 1R / R_open / D_max`），保留家庭分层及仓位计算页各自的定义主维护权。

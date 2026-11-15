@@ -1,7 +1,7 @@
 ---
 title: AI Assistance, Cognitive Substitution, and Skill Formation
 created: 2026-08-04
-updated: 2026-11-11
+updated: 2026-11-15
 type: concept
 tags: [llm, research, workflow, governance]
 sources: [raw/articles/psychologytoday-ai-cognitive-substitution-skill-formation-2026-08-03.md, raw/articles/psychologytoday-ai-two-forms-authorship-2026-07-30.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/ai-assumption-challenger-before-execution.md, concepts/ai-agent-human-outcome-design-principle.md, concepts/dijkstra-ai-programming-formalization.md, https://doi.org/10.1016/0005-1098(83)90046-8, https://pubmed.ncbi.nlm.nih.gov/9203702/]
@@ -167,4 +167,4 @@ Addy Osmani 的 [[addyosmani-critical-thinking-when-agents-do-the-work-2026-11-0
 ## Relations
 
 - depends_on: [[ai-assumption-challenger-before-execution]], [[ai-agent-human-outcome-design-principle]], [[dijkstra-ai-programming-formalization]]
-- related: [[production-ai-agent-evaluation-framework]], [[coping-skill-application-and-imaginal-exposure]], [[ai-code-review-governance-and-convergence]], [[agent-self-validation-loops]]
+- related: [[personal-growth-operating-model]], [[work-and-career-operating-model]], [[lifeos-overview]], [[production-ai-agent-evaluation-framework]], [[coping-skill-application-and-imaginal-exposure]], [[ai-code-review-governance-and-convergence]], [[agent-self-validation-loops]]

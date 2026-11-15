@@ -1,7 +1,7 @@
 ---
 title: AI Agent LifeOS Layer Boundary Contract
 created: 2026-05-18
-updated: 2026-11-14
+updated: 2026-11-15
 type: concept
 tags: [agent, lifeos, architecture, workflow, governance]
 sources: [concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-context-layer-operating-rules.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, concepts/hermes-knowledge-architecture.md, https://www.cs.cornell.edu/fbs/publications/chptr.enfMech.refMonitor.pdf, https://arxiv.org/html/2304.10600v1, https://9p.io/sys/doc/names.html]
@@ -152,4 +152,4 @@ AI Agent LifeOS 默认保持单一主协调上下文：
 
 ## Relations
 - depends_on: [[hermes-lifeos-executable-architecture]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]]
-- related: [[hermes-knowledge-base-operating-flow]]
+- related: [[lifeos-overview]], [[system-governance-operating-model]], [[hermes-knowledge-base-operating-flow]]

@@ -1,10 +1,10 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-11-11
+updated: 2026-11-15
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, concepts/agent-evaluation-rubric-calibration.md]
 status: stable
 description: 定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。
 aliases: [agent-evaluation-framework]
@@ -149,6 +149,8 @@ verified_at: 2026-11-02
 [[agent-evaluation-rubric-calibration]] 单独维护评测尺失准的诊断与校准方法：普通问答可使用 Golden Answer 语义比较，开放式长报告应使用分维度 Rubric、忠实度检查和基线 A/B；聚合分数只作诊断指针，必须回溯具体 Case、分项评语和 Trace。分数与证据冲突时，先审计评分维度、锚点和错误激励，再修改 Agent。
 
 该方法来自 [[langchain-similarweb-long-form-agent-report-evaluation-2026-07-29]] 的单一实践案例，不把具体权重、评分锚点或 LangSmith 产品依赖提升为 AI Agent 默认规则。
+
+评分器选择应先满足约束再考虑复杂度：确定性检查与语义判断分开，避免用模型裁判替代能由代码核验的规则。评分器类型、Rubric 四要素、未评分状态和裁判自身回归测试由 [[agent-evaluation-rubric-calibration#评分器选择与可审计 Rubric|评分器选择与可审计 Rubric]] 维护，不在本页复制算法或外部经验阈值。
 
 ## [推论] 参数化评估与门禁裁决矩阵（`N_eff / J_judge / Δ_NI / C_amort`）
 

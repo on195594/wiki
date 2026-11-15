@@ -341,7 +341,7 @@
       "path": "concepts/agent-evaluation-rubric-calibration.md",
       "type": "concept",
       "title": "Agent Evaluation Rubric Calibration",
-      "description": "结合 MT-Bench 裁判偏差分类学、Rogan–Gladen 灵敏度/特异度偏差校正与预测驱动推断（PPI），说明如何诊断和校准开放式 Agent 评测 Rubric。",
+      "description": "说明评分器选择、可审计 Rubric 与裁判回归，并结合 MT-Bench 偏差分类、Rogan–Gladen 与 PPI 诊断和校准 Agent 评测器。",
       "status": "stable",
       "tags": [
         "agent",
@@ -357,7 +357,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -1079,7 +1079,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "ai-assumption-challenger-before-execution",
@@ -1087,6 +1087,9 @@
           "dijkstra-ai-programming-formalization"
         ],
         "related": [
+          "personal-growth-operating-model",
+          "work-and-career-operating-model",
+          "lifeos-overview",
           "production-ai-agent-evaluation-framework",
           "coping-skill-application-and-imaginal-exposure",
           "ai-code-review-governance-and-convergence",
@@ -1576,6 +1579,7 @@
       "description": "结合 Unix 文件抽象、Plan 9 进程级定制命名空间（9P 协议）、Simon 状态—过程转译理论与最小权威边界，提炼从 CompanyOS 到 LifeOS 的文件系统即状态与治理思想。",
       "status": "stable",
       "tags": [
+        "lifeos",
         "agent",
         "workflow",
         "research",
@@ -1588,7 +1592,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1597,6 +1601,8 @@
         ],
         "related": [
           "lifeos-overview",
+          "hermes-lifeos-executable-architecture",
+          "system-governance-operating-model",
           "wiki-ingestion-workflow"
         ]
       }
@@ -1820,7 +1826,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -1829,7 +1835,8 @@
         "related": [
           "household-fund-layering-model",
           "work-and-career-operating-model",
-          "personal-growth-operating-model"
+          "personal-growth-operating-model",
+          "system-governance-operating-model"
         ]
       }
     },
@@ -2357,7 +2364,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2366,8 +2373,13 @@
           "hermes-layer-routing-edge-cases"
         ],
         "related": [
+          "lifeos-overview",
+          "system-governance-operating-model",
           "hermes-lifeos-layer-boundary-contract",
-          "hermes-knowledge-base-operating-flow"
+          "hermes-knowledge-base-operating-flow",
+          "work-and-career-operating-model",
+          "family-education-operating-model",
+          "personal-growth-operating-model"
         ]
       }
     },
@@ -2391,7 +2403,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "hermes-lifeos-executable-architecture",
@@ -2401,6 +2413,8 @@
           "hermes-knowledge-architecture"
         ],
         "related": [
+          "lifeos-overview",
+          "system-governance-operating-model",
           "hermes-knowledge-base-operating-flow"
         ]
       }
@@ -2728,6 +2742,7 @@
       "updated": "2026-11-15",
       "relations": {
         "depends_on": [
+          "lifeos-overview",
           "investment-risk-control-framework",
           "money-as-tool-and-investment-vs-consumption-framework",
           "family-education-operating-model"
@@ -2737,9 +2752,9 @@
           "combining-two-investment-frameworks",
           "leontraveller-vs-ordinary-investor-investment-system",
           "pre-trade-risk-checklist",
-          "lifeos-overview",
           "work-and-career-operating-model",
-          "personal-growth-operating-model"
+          "personal-growth-operating-model",
+          "system-governance-operating-model"
         ]
       }
     },
@@ -2884,7 +2899,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2895,7 +2910,9 @@
           "household-fund-layering-model",
           "work-and-career-operating-model",
           "personal-growth-operating-model",
-          "system-governance-operating-model"
+          "system-governance-operating-model",
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "coping-skill-application-and-imaginal-exposure"
         ]
       }
     },
@@ -3199,17 +3216,19 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "lifeos-overview",
-          "work-and-career-operating-model"
+          "hermes-lifeos-executable-architecture"
         ],
         "related": [
+          "work-and-career-operating-model",
           "family-education-operating-model",
           "household-fund-layering-model",
-          "hermes-lifeos-executable-architecture",
-          "coping-skill-application-and-imaginal-exposure"
+          "system-governance-operating-model",
+          "coping-skill-application-and-imaginal-exposure",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -3268,7 +3287,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -3849,7 +3868,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -3858,7 +3877,9 @@
         "related": [
           "family-education-operating-model",
           "household-fund-layering-model",
-          "personal-growth-operating-model"
+          "personal-growth-operating-model",
+          "system-governance-operating-model",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
