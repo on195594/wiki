@@ -31,7 +31,7 @@ status: current
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：结合语法制导综合（SyGuS）与反例制导归纳综合（CEGIS）把创造型 Agent 拆成合法算子空间生成、可执行转换、客观 evaluator 与多重检验样本外防过拟合闭环
 - [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；规范多受众配置驱动语义层、含可加性前提的度量与比率重聚纪律及输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
 - [Dijkstra on AI Programming Formalization](../concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判与 AI 编程：区分 EWD667 窄接口定性论证、本页成本类比、最弱前置条件、有限测试与形式化证明
-- [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外和软件类比边界
+- [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外，以及软件腐化与 AI 编程反熵约束类比的适用边界
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种正交职责分量（$\mathbf{R}(x)$）与晋升门禁（`B_act / P_skill / G_promo`）拆分需求，外部接入优先复用授权工具，MCP 可选
 - [AI Agent Model-Specific Harness Profiles](../concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：对照 LangChain DeepAgents `HarnessProfile` / `ProviderProfile` 与 Hermes Agent 配置边界，把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是盲目扩张 runtime profile
 - [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：区分 de Bruijn 准则与 LCF 架构、形式推导与领域规约，以分层验证、范围化负面结果和专家评审约束知识准入
@@ -66,8 +66,8 @@ status: current
 - [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，对比单次间隔指数衰减与 ACT-R 全历史幂律激活的适用边界，区分应用事件存储与 AI Agent 默认 memory
 - [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，含 `pass^k / c_err / T_pivot / C_coord` 参数化编排与状态恢复裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、窄职责技能链（含 `skill-creator` 有/无引导消融裁剪 $\Delta Q$）、真实数据源、低成本中间产物与前置人类方向；视觉设计案例补充条件性门禁和模型升级后的规则复查
-- [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，再按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
-- [AI Coding Assistant Context Budget Management](../concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：结合 AST 符号签名图（RepoMap）与三级层级化定位（Agentless），限制历史、全量文件、工具输出、日志和全局指令进入模型，降低 token 成本和上下文漂移
+- [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，结合 AI-Native SDLC 阶段提交工件链（`intent.md → spec.md → plan.md → diff`）、单一事实源对齐与 `1σ/2σ/3σ` 生产控制带闭环，按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
+- [AI Coding Assistant Context Budget Management](../concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：结合 AST 符号签名图（RepoMap）、三级层级化定位（Agentless）与 GitHub Copilot 局部指标陷阱实证（三分类选择性输出压缩、移除无用行号前缀与带行为回归测试的提示词压缩），限制历史、全量文件、工具输出和全局指令进入模型
 - [AI Task Delegation Patterns from Local-Cloud Hybrid LLMs](../concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md) — 从端云混合 LLM 三维坐标（Direction / Trigger / Purpose）抽象出的 AI Agent 调度模式：含脱敏—求解—还原闭环、化名化与重识别风险、小模型结构化输出“约束税”（Constraint Tax）、Schema/业务双重校验及五种模式证据分级
 - [Claude Code Practical Workflow Tips](../concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、目标循环（`/goal`）、浏览器与指令审计（`/chrome`、`/doctor prompt-audit`、`/autofix-pr`）、会话内循环调度（`/loop` / `/proactive`）与 Cloud/Desktop 持久任务区分、多目录与规则加载边界（`--add-dir`、`claudeMdExcludes`）及跨设备/后台并行接续（`/teleport`、`/remote-control`、`/background`、`/batch`）
 - [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、`AGENTS.md`（含 `## Code Review Rules`）、`config.toml` / `requirements.toml`、skill（`agents/openai.yaml` 与非破坏性启停）、MCP 与 automation 各司其职
@@ -88,7 +88,7 @@ status: current
 - [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：评分器选择、可审计 Rubric、未评分状态与裁判自身回归；结合 MT-Bench 三大偏差、Rogan–Gladen 与 PPI，用会话、工具证据和专家评分理由校准评测器，分数只作诊断指针
 - [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：结合 SWT-Bench `Fail-to-Pass` 复现判据与 TestPrism 单参考盲区拆解（覆盖缺口/过弱断言/执行错误），将可复发失败按三路根因分流并编译为成对差分回归工件（含 `S_f2p / F_ext / G_shadow / B_retry` 参数化裁决矩阵）
 - [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 以 CRAG / Self-RAG 为参照，区分来源机制与工程推论：综合前核验支持度、按轮次/预算补证或明确弃答，并说明 `I_ident / G_evid / F_rt / V_cov` 的适用边界
-- [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：区分提示驱动修正的局限、SCoRe 专门训练与工具/环境反馈，按证据可靠性、确定性或容差等价和项目重试预算组织迭代
+- [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：区分提示驱动修正的局限、SCoRe 专门训练与工具/环境反馈，结合咨询性 Skill 与确定性 Hook 护栏（含防篡改测试门禁、隔离上下文 Verifier Subagent 与配置级 CI 持续回归评测），按证据可靠性、容差等价和重试预算组织迭代
 - [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：形式化多源组合算子（`Aggregate / Deduplicate / Filter`）与命名空间遮蔽防御，结合 Saltzer–Schroeder 最小权限/完全中介原则与 Confused Deputy（ScopeGate 逐次参数值授权）分离静态暴露门控与动态执行授权
 - [AI Agent Active-Surface Lifecycle Governance](../concepts/hermes-active-surface-lifecycle-governance.md) — AI Agent 活跃面的生命周期治理：结合上下文房租（Context Rent）、CL-Bench 预设规则负增益实证（`-0.234`）与模型代际补丁衰减公式（$\Delta U(r_j \mid M_{t+1})$），从基线、校准、晋升推进到事件触发的重基线与退役，含 `Q_amort / ρ_comp / E_res / ΔU_reb` 诊断矩阵，不把体积比或效用示意式作为自动退役授权
 - [AI Agent Context Layer Operating Rules](../concepts/hermes-context-layer-operating-rules.md) — AI Agent 上下文装配规则：结合 MemGPT 主存/外存分页模型与 `B_ctx / U_blk / R_probe` 参数契约，管理小型默认注入层、按需检索、历史压缩、长任务 project state 和隔离 handoff
@@ -149,7 +149,7 @@ status: current
 - [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 检索基线、Q5/Q8 公开证据与评分纠正；区分覆盖、引用支持与事实核验，自由检索端到端效果仍未验证
 - [AI Agent Layer Routing Edge Cases](../queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：结合正交职责分量与 `B_act / P_skill / G_promo` 门禁裁决 10 类易混淆场景，区分可选接入、执行契约与公开操作指南
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
-- [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 编程中的 typed output、FSM 约束解码、窄工具、显式依赖、属性测试和验证 gate；示例不表示已经部署
+- [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 反熵编程主查询入口：整合比例规格契约、二阶段结构化提取、首次编辑经济性、窄工具、显式依赖、按风险选择的分层验证与重试预算、爆炸半径内有界清理、退出证据块与五条反合理化应对建议；流程由对应概念页主维护，示例不表示已经部署
 - [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：基于 BPT 心理账户防火墙与参数化门禁（`L / δ` vs `1R / R_open / D_max`），长期制度管底盘，主动纪律管进攻
 - [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
 - [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：结合 Barber & Odean 过度交易换手损耗实证与四条硬熔断门禁（`D_max / R_open / δ / 1R`），拦截进攻仓摊平亏损、情绪补仓、越权单或无退出计划交易

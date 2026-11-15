@@ -2,6 +2,14 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-15] improve | 深化反熵 AI 编程与类型化边界集群：贯通 AI-Native SDLC 工件链、Hook 护栏、局部指标陷阱与熵增类比边界
+
+- **升级反熵编程主查询入口并补齐图谱关联**：在 [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 整合二阶段结构化提取（范围筛选 → 细节填充）、[[first-edit-economy-for-coding-agents]] 的首次编辑经济性闭环、按任务设置预算的有界自修正循环（3 轮为示例）、爆炸半径内有界清理、结构化退出证据块（`Modified Files / Verification Executed / Residual Risk`）以及五条常见偷懒借口与反熵阻断规则对照表；打通与 [[first-edit-economy-for-coding-agents]]、[[agent-self-validation-loops]]、[[loop-engineering-hermes-agent-workflow]]、[[ai-code-review-governance-and-convergence]] 及 [[entropy-and-entropy-increase]] 的 `## Relations`。
+- **编译 `anthropic-ai-native-sdlc-playbook-2026-08-21` 的阶段工件链与确定性 Hook 护栏**：在 [[ai-coding-agent-workflow-types]] 补充当编码阶段加速后瓶颈向左右两侧（规划、审查、发布）转移的演进规律、跨阶段版本化交接工件链（`intent.md → spec.md → plan.md → diff & PR`）、与存量工单系统的两种单一事实源方案（Repo-as-SoT / Legacy-as-SoT）及仍保留双事实源的双向 SHA 绑定过渡方式及确定性监控触发的 `1σ / 2σ / 3σ` 生产维护分级响应边界；在 [[agent-self-validation-loops]] 区分咨询性 Skill 与确定性 Hook 护栏，明确 Bug 修复中“先提交失败复现测试并由 Hook 拦截测试文件篡改”的防弱化断言机制、内循环自检与全新隔离上下文 Verifier Subagent 的职责分离，以及针对 `CLAUDE.md` / Skills / Hooks 变更的 CI 持续回归评测。
+- **编译 `github-copilot-cost-efficient-coding-2026-09-02` 的局部指标陷阱与选择性压缩实证**：在 [[ai-coding-assistant-context-budget-management]] 新增“局部指标陷阱（The Local Metric Trap）”，说明过度裁剪单次工具输出（如压缩 `git diff`）为何会因回读原文和重跑命令而推高端到端总成本；补充三分类选择性输出压缩策略、移除 `view` 工具无用行号前缀的推理成本下降实证（离线约 `5%`、CLI 线上日均约 `3%`）、绑定行为回归测试的提示词压缩（防范并行调度退化为串行，每轮省约 `1,300` tokens）及后台完成结果直投机制。
+- **桥接软件熵增与 AI 编程反熵控制类比**：在 [[entropy-and-entropy-increase]] 补充候选空间约束、小差分与“工程麦克斯韦妖”验证门禁的类比说明；区分有限候选集的熵上界与实际信息熵，给出候选减少但熵增加的反例，说明局部熵可通过热交换降低、验证成本并非热力学定律推论；同步更新 [[topic-index]]，保持既有页面级 `verified_at` 与厂商报告证据边界说明。
+- **审查修正**：首次编辑流程与验证回路分别由对应概念页主维护，查询页保留按风险选择的应用入口；区分来源实现、本 wiki 建议与安全约束，明确双事实源过渡方案需另设冲突裁决和同步规则，并说明 Bash 工具名本身不构成只读权限。
+
 ## [2026-11-15] improve | 三张公司分析方法卡补充四项应用推论
 
 - [[cyclical-earnings-normalization]] 增加“分业务驱动如何传到可持续分红”；[[price-implied-expectations-analysis]] 增加“经营改善与股价背离”和“催化与产品周期的证据阶梯”；[[earnings-quality-and-cash-conversion]] 增加汇兑损益扭曲利润时的两期同口径比较。各卡 Summary 关键词同步补充。

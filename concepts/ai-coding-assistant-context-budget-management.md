@@ -1,14 +1,14 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-11-11
+updated: 2026-11-15
 type: concept
 tags: [ai-coding, agent, context-engineering, optimization, claude-code]
-sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489]
+sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489]
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 总结 coding assistant 控制上下文预算、压缩历史和减少无效 token 消耗的方法。
+description: 总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出和减少无效 token 消耗的方法。
 aliases: [coding-context-budget, context-budget-management]
 verified_at: 2026-11-02
 ---
@@ -61,6 +61,25 @@ AI Agent 映射：
 AI Agent 映射：subagent 和 terminal 输出应优先返回压缩后的 evidence summary，而不是把完整探索过程灌回主会话。
 
 Microsoft Developer 的 AX 文章（[[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]）把同一原则推广到 MCP/extension 返回值：工具返回太长、太少或格式混乱，都会让模型错过关键段落或用假设补空白。对 AI Agent 来说，agent-facing 工具输出不应追求“把所有资料都给模型”，而应优先返回当前任务决策所需的短结构：结论、必要字段、失败语义、下一步验证线索。
+
+### 3.1 The local metric trap and selective output compaction
+
+GitHub Copilot 团队的受控实验文章 [[github-copilot-cost-efficient-coding-2026-09-02]]（Erik Kristensen & Napalys Klicius，2026-09-02）揭示了上下文预算优化中最常见的反模式——**局部指标陷阱（The Local Metric Trap）**：如果只以“单次工具调用返回的 Token 数”作为优化目标，激进截断或压缩 shell 输出（例如早期实验直接压缩 `git diff` 或盲目套用通用输出裁剪器），会导致模型因丢失关键上下文而打开保存的原始输出、重跑命令或增加探索轮次。单次响应看似变短，但恢复步骤携带了更多历史上下文跨越额外轮次，反而推高了**完整任务的端到端总 Token 消耗与总耗时**（与 [[hermes-context-engineering-design-priorities]] 的 $C_{\text{total}}$ 总成本模型及 $R_{\text{probe}}$ 回读探针一致）。
+
+该团队基于离线基准与线上 A/B 实验采用了以下四项策略。这是来源中的实现选择，不是所有宿主的强制规则；本 wiki 建议迁移前先验证关键信息可恢复、行为不退化和端到端成本确有改善：
+
+1. **按输出代表的信息类型做三分类处理，而非一刀切截断**：
+   - **不对源码与任意脚本输出做有损压缩**：该实现保留 `cat`、`git diff`、`git show` 及自定义脚本结果，避免通用压缩器猜测哪些内容可丢弃；这不排斥调用前缩小查询范围，或通过分页读取保留完整原文；
+   - **无损重排搜索结果**：该实现将 `grep` 等工具的匹配项与文件列表分组呈现，不在压缩阶段静默删除匹配；
+   - **仅对可预测的重复噪声做选择性压缩，并保留直接恢复路径**：仅当 `install / build / test / lint` 进度日志节省显著时才予以压缩，同时提供直接回读完整原文的路径，并将“模型打开原文、重跑命令、重复搜索或增加轮次”的频率作为压缩器是否误删有效信息的监控信号。
+2. **先移除无用格式开销，再考虑删减信息（Remove formatting before removing information）**：
+   当文件编辑工具已改为基于上下文代码段匹配而非行号定位时，`view` 工具在每次读文件时为每行附加的行号前缀就变成了跨全会话累积的纯格式冗余。移除 `view` 行号前缀在不损失任何源码信息的前提下，使 Copilot 离线基准推理成本下降约 `5%`、CLI 线上实验日均每用户模型推理成本下降约 `3%`（代码审查场景单次评审平均 prompt tokens 亦下降约 `5%`），且未出现编辑失败率上升或质量退化。
+3. **提示词压缩必须绑定行为回归测试（Compress prompts without compressing intent）**：
+   元提示（meta-prompting）循环虽能将 `task` 工具提示词压缩约一半，但在首次线上实验中曾将“谨慎并行”指导静默改写为“强制串行调度策略”，导致独立子代理退化为顺序执行。只有针对并行调度补齐行为回归测试、并将冗长的允许/禁止列表精简为一句保留模型判断权的原则（`Independent agents can run in parallel; consider side effects.`）后，才安全实现了每轮减少约 `1,300` 个 prompt tokens（会话总 prompt tokens 减少约 `1.8%`，每活跃小时归一化成本降低约 `2.9%`）。
+4. **由 Harness 直接投递后台完成结果，消除纯拉取轮次**：
+   当后台 shell 命令与子代理相继完成时，若通知仅唤醒模型而不附带结果，模型必须额外消耗多轮调用去拉取已就绪的输出（每次拉取都重复携带全会话上下文）。由 Harness 批量合并就绪通知并直接以标准 `tool-result` 格式注入完整结果，可将处理两项并发结果的模型调用从 4 次减至 1 次（报告 AI Credits 消耗降低约 `2.3%`）。
+
+证据边界：上述百分比（`3.1% / 5.5% / 2.9% / 2.3%` AI Credits 节省等）为 GitHub Copilot CLI 与代码审查特定工作负载的第一方实验报告，各项改进并非严格线性可加，且在代码审查有效的精简文件工具指令移植到 CLI 时曾导致成本上升而被放弃。因此，任何上下文压缩或提示词精简都必须在目标工作流中独立复验端到端完成率与回读率（详见 [[loop-engineering-hermes-agent-workflow]]）。
 
 ### 4. File access should be explicit and deny noisy surfaces
 “读整个仓库”通常是上下文预算灾难。文章建议从明确文件开始，只允许读取 import/调用链相关文件，并 deny `.env`、secrets、`node_modules`、build、coverage、logs 等噪音目录。
@@ -128,4 +147,4 @@ Verification:
 ## Relations
 
 - refines: [[llm-context-engineering-layer]], [[hermes-context-engineering-design-priorities]]
-- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]]
+- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[loop-engineering-hermes-agent-workflow]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]

@@ -1,14 +1,14 @@
 ---
 title: AI Coding Agent Workflow Types
 created: 2026-04-30
-updated: 2026-11-02
+updated: 2026-11-15
 type: concept
 tags: [agent, ai-coding, workflow, tool, deployment, governance]
-sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md, docs:https://hermes-agent.nousresearch.com/docs]
+sources: [raw/articles/realpython-ai-coding-agents-four-workflow-types-2026-04-29.md, raw/articles/towardsdatascience-work-with-ai-coding-agents-2026-08-27.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。
+description: 分类 AI coding agent 的常见工作流类型，并结合 AI-Native SDLC 的阶段工件审计链（intent/spec/plan/diff）、单一事实源对齐与生产控制带闭环选择协作与验证方式。
 aliases: [coding-agent-workflow-types]
 verified_at: 2026-11-02
 ---
@@ -37,6 +37,25 @@ Agent 与普通 chatbot 的差异在于持续执行循环：read → reason → 
 对需要修改仓库的任务，采用 **Ask → Inspect → Plan → Implement → Test → Review**：先让 Agent 只读检查代码位置、相关测试与架构约束，再确认计划并进入小步实现。任务应拆成可独立检查的小单元，每一步尽早运行相关验证，避免在错误理解上一次修改大量文件。
 
 测试通过只说明实现满足了当前可执行检查，不代表设计已经合理。最终人工审查仍需检查：是否符合现有架构、是否出现无关改动或隐藏假设、是否新增了依赖、异常输入是否被处理，以及可维护性和安全影响。该来源是实践者经验总结，不提供不同模型或工作流的量化对照，因此这些内容作为协作检查项，而不是证明某种流程必然提升固定比例的性能。
+
+## AI-Native SDLC artifact chain and bottleneck shift
+
+Anthropic 的 [[anthropic-ai-native-sdlc-playbook-2026-08-21]]（Louis Claxton，2026-08-21）从软件开发全生命周期（Plan → Design → Build → Test → Deploy → Maintain）视角指出了 Coding Agent 普及后的结构性瓶颈转移：**当 Build（编码实现）阶段从数周被压缩至数小时后，系统瓶颈向左右两侧仍以人类速度运行的阶段（需求规划、跨团队设计对齐、代码/安全审查与发布审批）转移**。如果仅加速代码生成而保持传统手工交接，审查队列会迅速积压或迫使代码在审查不足下上线（排队论容量边界见 [[ai-code-review-governance-and-convergence]]）。
+
+为消除阶段间的手工转译损耗与责任断层，该指南提出用**提交到版本控制的机器可读工件链（Committed Artifact Chain）**串联六个阶段：
+
+1. **阶段交接即提交工件（Stage Handoff via Committed Artifacts）**：
+   - **Plan（`intent.md`）**：发起人与 Agent 脑暴澄清范围、受影响系统与约束，生成原型规约 `intent.md`，由产品负责人审阅修正后提交入库；
+   - **Design（`spec.md`）**：在加载组织级安全、合规与 UX Skills 的会话中读取 `intent.md`，在同一工作会话内合一生成需求与设计规约 `spec.md`，显式标出冲突政策与风险点并交由策略所有者拍板；
+   - **Build（`plan.md` → `diff & tests`）**：工程师先在只读 Plan Mode 下基于 `spec.md` 生成包含变更文件、执行顺序、潜在破坏点与证明测试的 `plan.md`；计划获批入库后再切换至执行模式（小爆炸半径且有测试覆盖的常规改动可配合 git worktree 开启并行会话与 auto mode），偏离计划时必须在同一 commit 同步更新 `plan.md`；
+   - **Test / Deploy / Maintain（`PR review findings` → 新 `intent.md`）**：PR 审查对照 `spec.md` 与 `plan.md` 核验实际 diff；生产维护由确定性监控脚本按滚动基线标准差（如 Western Electric 规则）分级触发——`1σ` 仅记录日志，`2σ` 唤醒只读 Agent 诊断，`3σ` 仅允许通过受控路由提 PR 或触发预批回滚 runbook，并将异常诊断写回新的 `intent.md` 闭合循环。
+2. **与存量系统的事实源对齐（Single Source of Truth Alignment）**：
+   指南建议已有 Jira、ServiceNow 或合规需求管理工具的企业优先为每个阶段工件指定唯一事实源；双向链接则是仍保留两个事实源的过渡方案：
+   - **Repo-as-SoT**：仓库内 Markdown 工件为权威记录，外部工单系统仅保存指向 commit 文件的链接；
+   - **Legacy-as-SoT**：外部合规系统为权威记录，Agent 在会话开始时通过 MCP 读取工单，并将生成的规约或计划在同一会话内写回；
+   - **双向标识绑定（Linkage as minimum bar）**：过渡期至少要求 Markdown 工件记录外部工单 ID，且外部工单记录对应 Markdown 文件的 commit SHA。原文明确承认此时仍有两个事实源，链接本身不解决内容冲突。本 wiki 建议采用此方案时另行指定冲突裁决责任人与同步规则，并逐步收敛到唯一权威记录。
+
+**证据与采用边界**：该来源是 Anthropic Applied AI 团队的官方工程指南，属于厂商方法论总结，未提供跨组织独立受控实验数据集；文中提及的 `Claude Design`、`Claude Security`、`Claude Tag` 及 `1σ/2σ/3σ` 响应分级为特定产品与配置示例，不代表通用默认阈值或已部署能力。可迁移的核心原则是：**按任务风险与跨阶段交接需求保留最小版本化工件链，将人类注意力集中于阶段门禁裁决（Intent / Spec / Plan / Release Gate），并确保 Agent 的写权限严格止步于生产发布门禁之前**（补充 [[hermes-ai-workflow-formalization-principles]] 与 [[agent-development-lifecycle]]）。
 
 ## Four workflow types
 
@@ -189,4 +208,4 @@ Cloud agent 的自主性最高。用户描述任务，agent 在远端或托管�
 ## Relations
 
 - refines: [[hermes-agent-workflow-layering-and-adoption-order]], [[codex-agent-workflow-layering]]
-- related: [[ai-code-review-governance-and-convergence]], [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]]
+- related: [[ai-code-review-governance-and-convergence]], [[subagent-orchestration-patterns]], [[claude-code-practical-workflow-tips]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]], [[agent-development-lifecycle]], [[hermes-ai-workflow-formalization-principles]], [[agent-self-validation-loops]]

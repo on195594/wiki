@@ -755,7 +755,7 @@
       "path": "concepts/agent-self-validation-loops.md",
       "type": "concept",
       "title": "Agent Self-Validation Loops",
-      "description": "定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。",
+      "description": "定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改测试门禁及独立验证子代理。",
       "status": "stable",
       "tags": [
         "agent",
@@ -772,7 +772,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -792,7 +792,11 @@
           "stateful-agent-environments-and-grounded-verification",
           "human-machine-scientific-discovery-verification-scarcity",
           "google-sre-gemini-cli-incident-response",
-          "ai-assistance-cognitive-substitution-and-skill-formation"
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "agent-failure-closed-loop-evaluation",
+          "subagent-orchestration-patterns",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -1181,7 +1185,7 @@
       "path": "concepts/ai-coding-agent-workflow-types.md",
       "type": "concept",
       "title": "AI Coding Agent Workflow Types",
-      "description": "分类 AI coding agent 的常见工作流类型，用于选择合适的协作和验证方式。",
+      "description": "分类 AI coding agent 的常见工作流类型，并结合 AI-Native SDLC 的阶段工件审计链（intent/spec/plan/diff）、单一事实源对齐与生产控制带闭环选择协作与验证方式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1197,7 +1201,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -1211,7 +1215,10 @@
           "wiki-ingestion-workflow",
           "first-edit-economy-for-coding-agents",
           "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
-          "hermes-python-engineering-capability-checklist"
+          "hermes-python-engineering-capability-checklist",
+          "agent-development-lifecycle",
+          "hermes-ai-workflow-formalization-principles",
+          "agent-self-validation-loops"
         ]
       }
     },
@@ -1219,7 +1226,7 @@
       "path": "concepts/ai-coding-assistant-context-budget-management.md",
       "type": "concept",
       "title": "AI Coding Assistant Context Budget Management",
-      "description": "总结 coding assistant 控制上下文预算、压缩历史和减少无效 token 消耗的方法。",
+      "description": "总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出和减少无效 token 消耗的方法。",
       "status": "stable",
       "tags": [
         "ai-coding",
@@ -1235,7 +1242,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1246,7 +1253,10 @@
           "repository-level-code-intelligence-layer",
           "agent-context-engineering",
           "hermes-context-layer-operating-rules",
-          "subagent-orchestration-patterns"
+          "subagent-orchestration-patterns",
+          "first-edit-economy-for-coding-agents",
+          "loop-engineering-hermes-agent-workflow",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -1783,10 +1793,12 @@
       "path": "concepts/entropy-and-entropy-increase.md",
       "type": "concept",
       "title": "Entropy and Entropy Increase",
-      "description": "区分热力学熵、统计熵与信息熵，说明熵增成立的系统边界以及软件和组织类比的使用限制。",
+      "description": "区分热力学熵、统计熵与信息熵，说明熵增成立的系统边界以及软件工程、AI 编程反熵约束类比的使用限制。",
       "status": "stable",
       "tags": [
-        "research"
+        "research",
+        "ai-coding",
+        "architecture"
       ],
       "aliases": [
         "熵",
@@ -1797,11 +1809,14 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-09-21",
-      "updated": "2026-11-02",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "software-engineering-laws-quality",
-          "llm-engineering-knowledge-map"
+          "llm-engineering-knowledge-map",
+          "typed-ai-agent-boundaries",
+          "first-edit-economy-for-coding-agents",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ],
         "refines": [
           "software-engineering-laws-decision-map"
@@ -4207,7 +4222,7 @@
       "path": "queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md",
       "type": "query",
       "title": "Using AI Agent for AI Coding with Typed Boundaries",
-      "description": "回答如何用 AI Agent 以 typed boundaries、窄工具面和验证门执行 AI 编程任务。",
+      "description": "回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4224,16 +4239,22 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
           "hermes-ai-workflow-formalization-principles",
           "ai-coding-agent-workflow-types",
-          "hermes-context-layer-operating-rules"
+          "hermes-context-layer-operating-rules",
+          "first-edit-economy-for-coding-agents",
+          "agent-self-validation-loops"
         ],
         "related": [
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "loop-engineering-hermes-agent-workflow",
+          "ai-code-review-governance-and-convergence",
+          "hermes-python-engineering-capability-checklist",
+          "entropy-and-entropy-increase"
         ]
       }
     },

@@ -1,12 +1,12 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-11-12
+updated: 2026-11-15
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow]
-sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/papers/arxiv-2305-16291-voyager.md, docs:https://arxiv.org/abs/2310.01798, docs:https://arxiv.org/html/2304.05128v2, docs:https://arxiv.org/html/2305.11738v4, docs:https://arxiv.org/html/2303.11366v4, docs:https://arxiv.org/html/2409.12917]
+sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/papers/arxiv-2305-16291-voyager.md, docs:https://arxiv.org/abs/2310.01798, docs:https://arxiv.org/html/2304.05128v2, docs:https://arxiv.org/html/2305.11738v4, docs:https://arxiv.org/html/2303.11366v4, docs:https://arxiv.org/html/2409.12917]
 status: stable
-description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环。
+description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改测试门禁及独立验证子代理。
 aliases: [self-validation-loop]
 volatility: medium
 review_by: 2027-03-02
@@ -74,6 +74,17 @@ Agent 应被明确要求：验证失败就修改，再运行验证，直到通�
 - 需求与现有系统约束冲突
 - 重试多轮后差异仍不收敛
 - 下一步需要权限、产品裁决或外部副作用
+
+### 6. Protect the verification gate: advisory skills vs. deterministic hooks
+
+[[anthropic-ai-native-sdlc-playbook-2026-08-21]]（Stage 3–5）明确区分了编码闭环中的两层控制机制：**Skill 是咨询性控制（Advisory Control），而 Hook 是其背后的确定性执行层（Deterministic Layer）**。Skill 能提高模型在编写代码时遵循安全或架构规范的概率，但没有任何机制能强迫单次会话 100% 遵守提示词文本；凡是不允许例外的硬红线，必须由工具执行前后的确定性脚本（Hooks）或 CI 门禁兜底：
+
+- **保护测试不被篡改（Test-File Protection during Bug Fixes）**：该指南推荐的顺序是“先写复现测试 → 运行确认其因预期原因失败 → 提交测试 → 再修改实现代码使其通过”；是否单独提交测试服从项目协作规则。为防止 Agent 在修复受阻时通过删减断言、跳过测试或改写测试预期来“伪造全绿”，应在修复阶段通过 Hook 物理拦截对测试文件的编辑，或在审查 diff 时直接拒绝任何未经授权触碰测试文件的改动（与 [[agent-failure-closed-loop-evaluation]] 的 `Fail-to-Pass` 契约一致）。
+- **构建期轻量护栏 vs. 部署期审批门禁**：构建期 Hook 应快速且仅针对当前修改文件（如拦截对冻结目录 `v1/`、生成代码目录或 `.env` 凭证的读写，以及自动运行局部 linter）；需要人类签字确认的阻断式审批 Hook 则放在发布/部署边界（Stage 5: Deploy），避免在并行编码会话内部频繁弹窗把人类重新拉回关键路径。
+- **区分内循环自检（Feedback Loop）与独立上下文验证子代理（Verifier Subagent）**：内循环反馈贯穿实现全过程、由主会话反复运行以修正错误；而当主会话认为任务已完成时，可拉起一个拥有**全新隔离上下文窗口的 Verifier Subagent**，对照 `plan.md` 运行目标行为与相邻流程。验证器应禁止修改被验收代码；`Read, Bash` 只是工具配置示例，Bash 本身具有写入和其他副作用能力，需另由沙箱、受限命令或只读挂载落实权限边界，并为运行产生的临时文件提供隔离目录。独立上下文有助于降低主会话隐藏假设对验收结论的影响（呼应 [[subagent-orchestration-patterns]] 的独立审查隔离原则）。
+- **对引导 Agent 的配置本身执行持续回归评测（Continuous Evals in CI）**：`CLAUDE.md`、Skills 与 Hooks 本质上是控制 Agent 行为的代码；当更换模型版本或重写提示词/Skill 时，指南建议在 CI 中非交互式运行由真实历史任务与生产事故转化成的回归评测集（20–50 个任务是原文示例规模，不是通用门槛），防止配置修改导致遵循率静默退化。
+
+证据边界：上述 Hook 配置、权限白名单与 CI 评测工作流来自 Anthropic 官方工程 Playbook 的实践建议，不构成特定工具已在本机启用或零绕过风险的证明；工具级 `deny` 规则仍需配合操作系统级沙箱与网络/凭证隔离才能形成完整边界（见 [[agent-production-harness-and-cloud-runtime-boundaries]]）。
 
 ## What uncertainty this solves
 自我验证闭环主要降低这些不确定性：
@@ -172,4 +183,4 @@ UI/Web 任务追加：
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]]
+- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
