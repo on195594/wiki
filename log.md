@@ -2,6 +2,11 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-15] improve | 三张公司分析方法卡补充四项应用推论
+
+- [[cyclical-earnings-normalization]] 增加“分业务驱动如何传到可持续分红”；[[price-implied-expectations-analysis]] 增加“经营改善与股价背离”和“催化与产品周期的证据阶梯”；[[earnings-quality-and-cash-conversion]] 增加汇兑损益扭曲利润时的两期同口径比较。各卡 Summary 关键词同步补充。
+- 四项均为实践经验整理的应用推论，正文已标明没有外部来源、未经收益验证；不含固定折扣、触发线或评分规则。未新增来源、raw 快照或概念页，未改生命周期，不刷新页面级 `verified_at`。
+
 ## [2026-11-15] improve | 补充评分器选择、可审计 Rubric 与裁判自身回归
 
 - 将 Bala Priya C 的 [The Complete Guide to LLM Evaluation](https://machinelearningmastery.com/the-complete-guide-to-llm-evaluation/) 增量编译到 [[agent-evaluation-rubric-calibration]]：区分代码、参考答案与模型裁判，明确 Rubric 四要素和逐项判断/程序聚合；裁判变更需与被评系统变化分开比较。
