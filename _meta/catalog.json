@@ -1467,7 +1467,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "free-cash-flow-and-valuation-basis",
@@ -1495,7 +1495,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "earnings-quality-and-cash-conversion",
@@ -2783,7 +2783,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",

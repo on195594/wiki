@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-14 | Indexed pages: 126
+> Last updated: 2026-11-14 | Indexed pages: 131
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页

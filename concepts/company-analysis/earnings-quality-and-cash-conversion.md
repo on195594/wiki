@@ -1,7 +1,7 @@
 ---
 title: 盈利质量与现金转化
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 type: concept
 tags: [investment, research]
 sources: [https://doi.org/10.2308/tar-9608042309, https://api.crossref.org/works/10.2308/tar-9608042309, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=277231, https://api.crossref.org/works/10.2139/ssrn.277231, https://doi.org/10.2308/accr.2002.77.s-1.35, https://api.crossref.org/works/10.2308/accr.2002.77.s-1.35]
@@ -15,7 +15,9 @@ volatility: low
 
 ## Summary
 
-关键词：盈利质量、现金转化、经营现金流、CFO、应计、应收账款、票据、存货、营运资本、一次性损益、会计估计、Sloan、Dechow–Dichev、未来经营现金流、前视偏差。
+先对齐期间、合并范围与公告版本，再解释利润为什么没有同步变成经营现金流。把差异分成正常经营投入、现金时点变化和待核查异常，不由低现金转化直接判定造假。原论文全文尚未充分核验，本卡保持 draft。
+
+关键词：盈利质量、现金转化、经营现金流、CFO、应计、应收账款、票据、存货、营运资本、一次性损益、会计估计、Sloan、Dechow–Dichev、Dechow-Dichev、未来经营现金流、前视偏差。
 
 ## 问题
 

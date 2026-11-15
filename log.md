@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-15] fix | 补强现金流股权口径、实际卡验收与提交发布隔离
+
+- 在 [[free-cash-flow-and-valuation-basis]] 补清合并/归母 FCFE、少数股东索取权与重复计价边界；两张新卡补可读摘要和术语写法，保持 draft，不刷新来源验证日期。
+- 将 [[investment-risk-control-framework]] 的归因限定为现代均值—方差理论，移除项目挂载要求；主题目录页数声明修正为与实际索引一致的 131。
+- 维护 runbook 明确提交知识不授权跨库发布：发布钩子应默认关闭、单独显式授权，提交专用跳过开关优先；安全验证使用空操作替身，不实际发布。
+- 验证：离线直接读取三张 stable 与两张 draft 的标题、来源、原始哈希和关键词，通过原有批次排除、冻结与留痕机制检查；两份指定研究测试共 8 项通过，未以旧 fixture 替代实际卡验收。raw 路径与指纹保持原样；未新增原文核验或投资效果证据。
+
 ## [2026-11-14] ingest | 补充现金流估值与盈利质量草稿，澄清增长和组合风险边界
 
 - 新增 [[free-cash-flow-and-valuation-basis]] 与 [[earnings-quality-and-cash-conversion]]：区分现金流对象、折现率、营运资本及维护性投入，避免把低现金转化当造假；原文获取不充分的范围如实列出，保留 draft，不以离线检查代替来源核验。

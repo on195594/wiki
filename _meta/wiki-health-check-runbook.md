@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-11-06
+updated: 2026-11-15
 type: meta
 status: current
 ---
@@ -195,6 +195,14 @@ After changing governance content, read the changed passages and their direct qu
 - Report deterministic checks, semantic review and independent-review coverage separately. A focused re-review only clears its named findings.
 
 Before an authorized commit or publish, inspect effective Git hooks and invoked scripts for cross-repository writes, pushes or deployment triggers. Wiki editing permission alone does not authorize those effects; establish the exact authorized scope before running the trigger.
+
+For commit-only tasks, keep the checking hook active but explicitly suppress any publication hook:
+
+```bash
+SKIP_WIKI_PUBLISH=1 git commit -m "docs: describe the authorized change"
+```
+
+A publication hook must be default-off: exit without invoking another repository or publisher unless `WIKI_PUBLISH_AUTHORIZED=1` is explicitly set for a separately authorized publication. `SKIP_WIKI_PUBLISH` takes precedence even when that opt-in is present; an asynchronous-mode flag alone must not enable publishing. The flag is an execution guard, not a substitute for authorization. This is a local hook requirement, not a claim that cloning the Wiki installs or secures a publication hook. Test any such hook with inert command replacements; a safety check must not perform a real publish. This does not authorize changing another repository or rolling back a previous publication.
 
 ## Related
 
