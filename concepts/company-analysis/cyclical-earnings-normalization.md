@@ -1,7 +1,7 @@
 ---
 title: 周期利润正常化与低市盈率陷阱
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 type: concept
 tags: [investment, research]
 sources: [https://pages.stern.nyu.edu/~adamodar/New_Home_Page/littlebook/commodityvaluedrivers.htm]
@@ -69,4 +69,4 @@ Aswath Damodaran《Commodity companies: Value Drivers》页面（见 frontmatter
 
 ## Relations
 
-- related: [[growth-reinvestment-and-return-on-capital]], [[price-implied-expectations-analysis]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]]
+- related: [[growth-reinvestment-and-return-on-capital]], [[price-implied-expectations-analysis]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]

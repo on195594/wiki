@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-14
+updated: 2026-11-15
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-14 | Indexed pages: 131
+> Last updated: 2026-11-15 | Indexed pages: 131
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -114,7 +114,7 @@ status: current
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域参数耦合矩阵、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
-- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓与行为控制执行
+- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓、宽基底盘到个股基本面五卡路由边界与行为控制执行
 - [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习反馈边界（Ericsson / Macnamara）、认知负荷理论（Sweller）与单双环复盘（Argyris & Schön），含 `R / P / V` 可选推论参数
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
@@ -122,8 +122,8 @@ status: current
 - [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
 - [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：增长率 = 再投资率 × 资本回报，ROIC 的定义、会计失真与边际回报，以及没有超额回报的增长不创造价值
 - [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
-- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — draft：CFO 减资本开支、FCFF、FCFE 与 owner earnings 的口径，现金流与折现率匹配、再投资和终值；原信与准则正文待补核
-- [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — draft：同期间、同范围解释利润与经营现金流差异；区分正常投入、收付时点和待核查异常；Dechow–Dichev 含未来现金流，不作当期信号
+- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则及应用指南），匹配现金流对象、折现率、中国报表利息/税费分类与再投资要求
+- [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — 公司分析方法卡：基于 Sloan (1996) 应计持续性全文与 Dechow–Dichev (2001/2002) 营运资本应计模型，同期间、同范围解释利润与经营现金流差异，区分正常投入、收付时点和待核查异常；含未来现金流的回归残差不作当期信号
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
 - [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险
@@ -161,6 +161,6 @@ status: current
 - [Building a Post-Trade Review Loop](../queries/post-trade-review-loop.md) — 交易后复盘闭环：结合过程合规性与含零收益交易的 R 倍数样本分布，区分执行偏差与风险模型缺口，避免事后归因
 - [Detecting Repeat Trading Mistakes](../queries/repeat-mistake-detection-in-trading.md) — 重复错误识别：区分过程违背（Process Bug）与合规尾部亏损，按频次、触发情境与累计 R 拖累过滤小样本假阳性过拟合
 - [Converting Trading Lessons into Hard Rules](../queries/trading-lessons-to-hard-rules.md) — 教训到硬规则的转化：结合 Gollwitzer 执行意图（Implementation Intentions）将高频高代价教训编译为可验证的 `IF-THEN` 参数化动作约束
-- [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：结合快省启发式（Fast-and-Frugal Heuristics）的偏差—方差权衡与样本外参数估计误差边界，保留少数高阻断力规则，删除不可快速调用的说明书式规则
+- [Keeping a Trading System Small and Executable](../queries/minimal-executable-trading-system.md) — 交易系统做减法：结合快省启发式（Fast-and-Frugal Heuristics）的偏差—方差权衡、样本外参数估计误差、Bailey & López de Prado 缩减夏普比率（DSR）多重检验选择偏差及受限算子库边界，保留少数高阻断力规则，删除不可快速调用的说明书式规则
 - [Wiki 知识新鲜度改造：通用原则与历史决策（已关闭记录）](../queries/hermes-wiki-knowledge-freshness-improvement-plan.md) — 提炼证据绑定、时间区分和局部复查的跨系统原则；旧改造约定与现行 Schema、Freshness Gate 明确分开
 - [Agent 经验固化能力评估：通用框架与历史案例（已关闭记录）](../queries/hermes-agent-experience-consolidation-capability-assessment.md) — 按证据、提炼、分层保存、效果验证、生命周期与权限核查任意 Agent，区分提供方式与验证程度；产品能力仅作版本历史案例

@@ -1439,13 +1439,15 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "growth-reinvestment-and-return-on-capital",
           "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion"
+          "earnings-quality-and-cash-conversion",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1453,8 +1455,8 @@
       "path": "concepts/company-analysis/earnings-quality-and-cash-conversion.md",
       "type": "concept",
       "title": "盈利质量与现金转化",
-      "description": "公司分析方法卡：在同期间、同合并范围解释利润与经营现金流差异，区分正常投入、收付时点与待核查异常；不把低现金转化视为造假证据。",
-      "status": "draft",
+      "description": "公司分析方法卡：基于 Sloan (1996) 应计持续性与 Dechow–Dichev (2002) 营运资本应计模型，在同期间、同合并范围解释利润与经营现金流差异，区分正常投入、收付时点与待核查异常。",
+      "status": "stable",
       "tags": [
         "investment",
         "research"
@@ -1465,15 +1467,17 @@
         "盈利现金含量"
       ],
       "volatility": "low",
-      "review_by": null,
-      "verified_at": null,
+      "review_by": "2027-11-15",
+      "verified_at": "2026-11-15",
       "updated": "2026-11-15",
       "relations": {
         "related": [
           "free-cash-flow-and-valuation-basis",
           "growth-reinvestment-and-return-on-capital",
           "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis"
+          "price-implied-expectations-analysis",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1481,8 +1485,8 @@
       "path": "concepts/company-analysis/free-cash-flow-and-valuation-basis.md",
       "type": "concept",
       "title": "自由现金流与估值口径",
-      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings，匹配现金流对象、折现率和价值口径；保留维护性资本开支与原文核验缺口。",
-      "status": "draft",
+      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则），匹配现金流对象、折现率和价值口径。",
+      "status": "stable",
       "tags": [
         "investment",
         "research"
@@ -1493,15 +1497,17 @@
         "所有者盈余"
       ],
       "volatility": "low",
-      "review_by": null,
-      "verified_at": null,
+      "review_by": "2027-11-15",
+      "verified_at": "2026-11-15",
       "updated": "2026-11-15",
       "relations": {
         "related": [
           "earnings-quality-and-cash-conversion",
           "growth-reinvestment-and-return-on-capital",
           "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis"
+          "price-implied-expectations-analysis",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1522,13 +1528,15 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion"
+          "earnings-quality-and-cash-conversion",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1549,13 +1557,15 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-14",
+      "updated": "2026-11-15",
       "relations": {
         "related": [
           "cyclical-earnings-normalization",
           "growth-reinvestment-and-return-on-capital",
           "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion"
+          "earnings-quality-and-cash-conversion",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -2715,7 +2725,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "investment-risk-control-framework",
@@ -2723,6 +2733,10 @@
           "family-education-operating-model"
         ],
         "related": [
+          "ordinary-investor-investment-system",
+          "combining-two-investment-frameworks",
+          "leontraveller-vs-ordinary-investor-investment-system",
+          "pre-trade-risk-checklist",
           "lifeos-overview",
           "work-and-career-operating-model",
           "personal-growth-operating-model"
@@ -2794,6 +2808,11 @@
           "leontraveller-vs-ordinary-investor-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework",
           "household-fund-layering-model",
+          "free-cash-flow-and-valuation-basis",
+          "earnings-quality-and-cash-conversion",
+          "growth-reinvestment-and-return-on-capital",
+          "cyclical-earnings-normalization",
+          "price-implied-expectations-analysis",
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "inaction-vs-action-decision-framework",
@@ -3066,6 +3085,7 @@
       "description": "区分钱作为自由工具、投资资产和消费支出，并检查现金缓冲与自我投资失败风险的判断框架。",
       "status": "stable",
       "tags": [
+        "investment",
         "research",
         "note"
       ],
@@ -3076,7 +3096,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-15",
       "relations": {
         "refines": [
           "ordinary-investor-investment-system"
@@ -3141,7 +3161,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-09",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -3149,6 +3169,13 @@
         "related": [
           "investment-risk-control-framework",
           "leontraveller-trading-and-investment-system",
+          "combining-two-investment-frameworks",
+          "household-fund-layering-model",
+          "free-cash-flow-and-valuation-basis",
+          "earnings-quality-and-cash-conversion",
+          "growth-reinvestment-and-return-on-capital",
+          "cyclical-earnings-normalization",
+          "price-implied-expectations-analysis",
           "wiki-ingestion-workflow"
         ]
       }
@@ -4275,7 +4302,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "trading-lessons-to-hard-rules",
@@ -4286,7 +4313,8 @@
         ],
         "related": [
           "hermes-active-surface-lifecycle-governance",
-          "agent-closed-loop-learning-from-corrections-to-rules"
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "constrained-toolbox-evaluator-loop"
         ]
       }
     },
@@ -4448,7 +4476,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "investment-risk-control-framework",
@@ -4482,7 +4510,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-15",
       "relations": {
         "depends_on": [
           "post-trade-review-loop",

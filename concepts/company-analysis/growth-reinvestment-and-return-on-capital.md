@@ -1,7 +1,7 @@
 ---
 title: 增长、再投资与资本回报
 created: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 type: concept
 tags: [investment, research]
 sources: [https://pages.stern.nyu.edu/~adamodar/pdfiles/papers/returnmeasures.pdf, https://pages.stern.nyu.edu/~adamodar/podcasts/valspr20/session9slides.pdf]
@@ -77,4 +77,4 @@ review_by: 2027-11-14
 
 ## Relations
 
-- related: [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]]
+- related: [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]

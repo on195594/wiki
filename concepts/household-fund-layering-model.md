@@ -1,7 +1,7 @@
 ---
 title: Household Fund Layering Model
 created: 2026-04-21
-updated: 2026-11-09
+updated: 2026-11-15
 type: concept
 tags: [investment, lifeos, operating-model]
 sources: [concepts/investment-risk-control-framework.md, concepts/money-as-tool-and-investment-vs-consumption-framework.md, concepts/family-education-operating-model.md, docs:https://www.morningstar.com/retirement/an-investing-road-map-retirees, docs:https://investor.vanguard.com/investor-resources-education/portfolio-management/rebalancing-your-portfolio]
@@ -104,4 +104,4 @@ volatility: low
 
 ## Relations
 - depends_on: [[investment-risk-control-framework]], [[money-as-tool-and-investment-vs-consumption-framework]], [[family-education-operating-model]]
-- related: [[lifeos-overview]], [[work-and-career-operating-model]], [[personal-growth-operating-model]]
+- related: [[ordinary-investor-investment-system]], [[combining-two-investment-frameworks]], [[leontraveller-vs-ordinary-investor-investment-system]], [[pre-trade-risk-checklist]], [[lifeos-overview]], [[work-and-career-operating-model]], [[personal-growth-operating-model]]
