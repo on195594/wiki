@@ -138,6 +138,8 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 ### 4. Route by layer responsibility
 经验固化的核心治理问题是路由，而不是保存。[[agent-closed-loop-learning-from-corrections-to-rules]] 进一步补充了纠错晋升门槛：不要把一次用户纠正直接写成全局规则，先记忆、再泛化、再验证、最后推广。
 
+[推论] 经验固化之前，还应检查任务范围是否便于人工审阅，以及反馈是否具有明确的复用边界；案例、适用条件与证据限制统一见 [[agent-closed-loop-learning-from-corrections-to-rules#反馈之前：按可审阅性设计任务范围]]，本页不重复维护。
+
 ```text
 lesson candidate
 → Is it always-needed stable context? → memory

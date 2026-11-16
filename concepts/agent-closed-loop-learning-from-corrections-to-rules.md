@@ -1,13 +1,13 @@
 ---
 title: Agent 闭环学习：从用户纠错到规则升级
 created: 2026-05-18
-updated: 2026-11-13
+updated: 2026-11-16
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, governance]
-sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714]
+sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714, raw/articles/langchain-goal-engineering-2026-11-14.md]
 status: stable
-description: 说明如何把用户纠错转化为可验证的 Agent 规则升级闭环。
-aliases: [closed-loop-learning]
+description: 从便于人工审阅与反馈复用的任务范围设计，到用户纠错的记录、泛化、验证与规则晋升。
+aliases: [closed-loop-learning, goal-engineering]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -20,6 +20,8 @@ verified_at: 2026-11-02
 Agent 闭环学习是一种把真实使用中的用户纠错转化为可验证系统改进的机制：先保存个案纠正，再从重复模式中提炼规则，通过离线或影子评估验证后，才把规则升级为默认行为。它补充了 [[agent-experience-consolidation-loops]] 的经验固化路径，也为 [[production-ai-agent-evaluation-framework]] 提供“从反馈到新基线”的改进闭环。
 
 一句话原则：**不要把一次用户纠正直接写成全局规则；先记忆、再泛化、再验证、最后推广。**
+
+闭环还有一个上游设计问题：任务范围是否便于人类审阅，以及反馈能否在明确边界内复用。下文以 LangChain 的“目标工程”（Goal Engineering）案例补充这一环节，不将其视为替代上下文工程的新架构。
 
 ## Source anchor
 
@@ -47,6 +49,23 @@ production action
 成熟做法是在两者之间增加分层晋升：单次反馈先作为证据保留，只有当它可复现、可泛化、可验证时，才升级为默认行为。
 
 ## Reusable pattern
+
+### 反馈之前：按可审阅性设计任务范围
+
+**来源观点与案例：** Harrison Chase、Mihir Garimella 与 Anshul Gupta 在 LangChain 的 [[langchain-goal-engineering-2026-11-14]]（2026-11-14）中主张，设计 Agent 的工作范围时，应考虑人工提供高质量反馈是否方便，尤其是品牌审美、表达尺度和工作方法等尚未写成文档的判断。
+
+文中 Actively AI 起初按潜在客户账户配置 Agent，由同一 Agent 提交外联、回复、销售机会推进策略等不同类型的行动供销售人员批准。团队发现审阅工作分散、切换频繁，而且跨账户的同类经验不易共享；第二版改为按具体工作类型组织跨账户的 motions，例如外联或早期销售机会推进，使相似成果可以集中审阅。同一来源仍强调客户事实上下文的重要性：后台 Agent 收集各账户信息，motions 执行时按需调用，并非舍弃对象上下文。
+
+**[推论] 适用条件与取舍：** 当任务重复、专家判断重要，且一条反馈在一组任务中具有共同适用范围时，可考虑按工作类型组织审阅和经验复用；如果端到端责任、权限隔离或对象特异性更重要，按客户、项目或案件组织仍可能更合适。先检查现有审阅入口和任务分组即可，不必据此增加 Agent 数量、改变权限或重构运行拓扑。同类任务也不能自动共享全部偏好，仍须区分个人偏好、组织标准和一次性例外，再沿用下文的验证与晋升流程。
+
+**[推论] 轻量检查问题：** 仅在需要改进重复任务的反馈效率时使用，不为简单任务强制新增人工审批：
+
+- 人能否集中审阅一组同类成果，而不必反复切换背景？
+- 一条反馈适用于哪些任务和用户，又明确不适用于哪些场景？
+- 哪些信息是对象事实，哪些是可复用的工作方法或偏好？
+- 调整后，审阅耗时、重复纠错和结果质量是否实际改善，而不只是反馈数量增加？
+
+**证据边界：** 该来源是包含案例团队署名的产品实践叙述，没有提供审阅耗时、任务质量或反馈迁移效果的量化对照，不能证明按工作类型组织普遍优于按对象组织。文中的“学习”未详细交代持久化与更新机制，不支持推断模型权重更新或反馈自动成为默认规则；末句“提示工程和上下文工程会消失”是作者预测，本页不将其采纳为事实。2026-11-16 核对范围为该来源的正文与页面署名/日期，未复现实效或核验配图，不刷新本页其他来源的核验日期。
 
 ### 1. Capture corrections as structured memory
 

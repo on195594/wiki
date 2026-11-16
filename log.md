@@ -16,6 +16,35 @@
 - 同步现有主题目录条目与机器可读目录，不新增正式页或更改首页任务入口。
 - 验证：70 项单元测试以及结构、标签、公开边界和 diff 格式检查通过；目标页目录条目与生成结果一致，已回读来源字段，raw 清单无变化。复核本次新增的公开边界候选：旧会话兼容性是原文公开示例，未包含任何实际会话数据。
 
+## [2026-11-16] fix | 纠正远程恢复终局性、SLO 复位范围与 DELEGATE-52 / Saga 证据归因
+
+- [[agent-production-harness-and-cloud-runtime-boundaries]] 区分暂未观察到副作用与已确认请求不会再提交；非幂等重试或补偿须处理残余在途效果，缺少终局性或有效幂等保证时保留 `unknown`。将业务幂等/服务端原子去重标为跨 API 补偿的工程要求，不再归为 Saga 原论文对所有补偿函数的要求。
+- [[google-sre-gemini-cli-incident-response]] 将五分钟复位限定为 `1h + 5m` 的来源示例，不对 `6h + 30m` 等配置作统一承诺。
+- [[ai-agent-document-fidelity-risk]] 与 [[document-parsing-structural-fidelity]] 统一按完整往返（两次交互）后重构得分下降至少 10 个百分点描述关键失败；区分四模型基础工具实验约 6 个百分点的平均得分下降、VentureBeat 对作者的采访解释及其报道的 `30/52` 解析库复用数量，不把媒体解释升级为论文已验证的唯一因果机制。
+- 同步本次尚未提交条目的错误描述，不改写既有 raw 或刷新未复核范围的页面级 `verified_at`；此修正不授权改变任何 Agent 运行时或默认工作流。
+- 验证：70 项单元测试通过，catalog 同步、结构/链接健康、标签和 diff 格式检查通过；公开边界 0 违规、14 条候选提示仍按原扫描契约保留。核对 raw 清单仅新增目标工程来源，旧来源无删除或哈希变化；逐项核对修正段落与上述来源，不以结构检查代替事实核验。
+
+## [2026-11-16] ingest | 将目标工程案例并入纠错闭环：补充可审阅任务范围与反馈复用边界
+
+- 保存 LangChain《Goal Engineering: How to Design Goals》（2026-11-14）的英文正文快照 [[langchain-goal-engineering-2026-11-14]]，保留作者、发布日期、原始链接与末尾预测；排除站点导航，配图只保留公开 URL，不宣称视觉归档或实验复现。
+- 来源匹配与裁决：该来源为新证据，无既有精确来源依赖；[[agent-closed-loop-learning-from-corrections-to-rules]] 以正文“用户纠正 / 规则晋升”命中为 heuristic candidate，新增“反馈产生之前的任务范围设计”claim，归类 NEW 并入现有 owner；[[agent-experience-consolidation-loops]] 以正文“经验固化 / 用户纠正”命中为 heuristic candidate，仅新增派生导航，不复制案例或宣称 CONFIRM 其已有实效。两页主题相邻，无同范围冲突或替代证据。
+- 正式页区分来源案例、工程推论与证据限制；保留按业务对象组织的适用空间，不将无量化对照的产品叙述、模型权重学习或“上下文工程会消失”的预测升级为通用事实。
+- 同步主题目录的现有条目，不新增正式概念页或改变首页任务入口；保留已有页面级核验日期、生命周期与权限边界。
+- 验证：70 项单元测试、catalog 同步、结构/链接健康检查、标签审计和 diff 格式检查通过；公开边界扫描 0 违规，另有 14 条候选提示，不将扫描通过等同逐项事实或隐私审查。相对编辑前基线，raw 清单仅新增本来源，无删除或旧来源哈希变化；catalog 仅更新主维护页条目，来源反查指向该页。并核对本次新增段落的来源归因、推论标签与适用限制。
+
+## [2026-11-16] improve | 深化文档解析结构保真、多轮编辑失真风险与确定性分析边界集群：补齐 DELEGATE-52 一手论文、四阶误差传播模型与二阶段分类偏差分解
+
+- **补齐微软 DELEGATE-52 一手论文与方法学边界声明**：在 [[ai-agent-document-fidelity-risk]] 补充 Philippe Laban、Tobias Schnabel 与 Jennifer Neville（2026-04-17，[*LLMs Corrupt Your Documents When You Delegate*，arXiv:2604.15597](https://arxiv.org/abs/2604.15597)，[HTML 全文](https://arxiv.org/html/2604.15597v1)，[官方仓库 microsoft/DELEGATE52](https://github.com/microsoft/DELEGATE52)）及 [微软研究院方法学补充说明（2026-05-15）](https://www.microsoft.com/en-us/research/blog/further-notes-on-our-recent-research-on-ai-delegation-and-long-horizon-reliability/)；增补 `19` 个模型在 `52` 个领域的就绪度偏斜（20 次交互后 $\ge 98\%$ 达标率仅 Python 一域普遍就绪，榜首模型仅 `11/52` 域达标）及短程表现不总能预测长程表现的观察。四模型基础工具实验平均重构得分低约 6 个百分点；整文件重写解释与 `30/52` 领域复用现成解析库的数量另归于 VentureBeat 的作者采访/报道，不当作论文隔离验证的因果结论；三组件自测蓝图与方法学补充说明共同限定长程压力测试的适用边界。
+- **建立文档到确定性分析的四阶误差传播与验证闭环**：在 [[document-parsing-structural-fidelity]] 串联结构化解析（$\pi: D_0 \to M_0$，TEDS / DPP 表头与单位绑定）、多轮委托编辑（$T_{1..k}$，窄工具与往返接力 $F_{\text{rt}}$）、有界语义分类（$f_{\text{sem}}, g_{\text{gate}}$，逃生标签与置信度分流）与确定性聚合（$E_{\text{det}}$，Codd 关系代数与比率重算），明确各阶段静默失真向下游的传播机制与防御门禁。
+- **形式化二阶段语义分类误差分解并贯通摘要识别步**：在 [[deterministic-analytics-llm-reasoning-boundary]] 形式化“规则初筛 $R(x)$ + 置信度路由分类 $\hat{y}(x)$”的三类非抵消误差（初筛漏召回、封闭标签集强迫归因、双模型共识且 $c \ge 0.8$ 筛选子集 `53.7%` 上的条件一致率幸存者偏差）；在 [[deterministic-analytics-llm-reasoning-boundary]] 与 [[llm-summary-identification-step]] 的概念关系章节打通与 [[document-parsing-structural-fidelity]]、[[ai-agent-document-fidelity-risk]] 及 [[agent-research-evidence-gate]] 的正文互链，同时保持各页 `## Relations` 一跳拓扑、Q8 黄金章节标题与页面级 `verified_at` 不变。
+
+## [2026-11-16] improve | 深化生产级 Agent 运行时、SRE 事故响应与分布式状态恢复集群：补齐 SLO 多窗口燃烧率、单调代际隔离令牌（Fencing Tokens）、模糊远程结果恢复与双向图谱
+
+- **补强 SRE 事故响应的一手工程文献与多窗口错误预算燃烧率门禁**：在 [[google-sre-gemini-cli-incident-response]] 补齐 [Google SRE Workbook《Alerting on SLOs》](https://sre.google/workbook/alerting-on-slos/)、[Eliminating Toil](https://sre.google/sre-book/eliminating-toil/)、[Managing Incidents](https://sre.google/sre-book/managing-incidents/) 与 [Postmortem Culture](https://sre.google/sre-book/postmortem-culture/) 四个官方文献锚点；引入错误预算燃烧率 $B(w) = e(w) / \epsilon_{\text{SLO}}$ 与长短双窗口告警与门（短窗口取长窗口 $1/12$，如 `1h+5m` 或 `6h+30m`），解释单纯延长告警持续时间（Duration）导致的 $100\%$ 中断延迟与周期尖峰漏报缺陷，并将止血审批与权威恢复回读分别锚定至 [[agent-production-harness-and-cloud-runtime-boundaries]]、[[agent-skill-provider-governance-boundary]] 及 [[stateful-agent-environments-and-grounded-verification]]。
+- **形式化云端长程运行时的单调代际隔离令牌（Fencing Tokens）与模糊远程结果恢复**：在 [[agent-production-harness-and-cloud-runtime-boundaries]] 引入 Martin Kleppmann（2016，[*How to do distributed locking*](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)）的单调代际令牌不变量（$\text{CommitAllowed}(s, g_{\text{req}}) \iff g_{\text{req}} \ge g_{\max}(s)$），明确仅靠客户端自检租约 TTL 无法拦截进程暂停后的僵尸覆盖写入；补充 Hector Garcia-Molina 与 Kenneth Salem（1987，ACM SIGMOD，[*SAGAS* 原文 PDF](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf)）关于语义补偿而非物理回滚、且不能抹除跨步可见状态的边界。跨 API 补偿的安全重试另标为工程推论；工具调用超时结果未知（Ambiguous Tool Outcomes，[arXiv:2610.41453v1](https://arxiv.org/html/2610.41453v1)）时，先查询操作终态、回执与权威资源，排除残余在途效果或使用有效幂等契约，再裁决重试或补偿；一次负向回读不能证明原请求不会迟到提交。
+- **升级事故响应对比页并修复跨页 `## Relations` 单向悬空边**：在 [[hermes-vs-google-sre-agentic-incident-response]] 新增带 `[推论]` 标记的事故响应四阶段控制流与安全边界矩阵（串联 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务 $T_{\text{pivot}}$ / `ScopeGate` 逐次参数校验与权威终态回读）；打通 [[local-first-sync-confirmed-mirror-outbox-conflict-policy]]、[[chat-to-agent-session-routing]]、[[agent-production-harness-and-cloud-runtime-boundaries]]、[[google-sre-gemini-cli-incident-response]] 与 [[hermes-vs-google-sre-agentic-incident-response]] 之间的双向 `## Relations`，同步更新 `_meta/topic-index.md`。
+- **证据与采用边界**：所有通用 Agent 接入矩阵与恢复协议均标明 `[推论]`，不构成特定产品的当前能力声明或自动执行授权；保留既有页面级 `verified_at: 2026-11-02` 不变。
+
 ## [2026-11-16] review | 在线复核 30 天内即将到期的 Flutter SwiftPM/CocoaPods 局部断言与 Agent 经验固化/元技能页面来源
 
 - **复核 [[flutter-version-evolution-and-platform-boundaries]] 第 2 节 SwiftPM / CocoaPods 局部块**：在线核对 [Flutter SwiftPM 文档](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers)（站点顶部横幅已更新为 `Flutter 3.50 is live!`，3.44+ 默认启用 SwiftPM、插件回退与移除步骤不变）与 [CocoaPods Trunk Read-only Plan](https://blog.cocoapods.org/CocoaPods-Specs-Repo/)（`2026-11-02..06` 只读切换测试窗口已过，`2026-12-02` 永久只读计划日期不变）；将该局部 `[!volatile]` 块的 `verified_at` 更新为 `2026-11-16` 并同步 `Scoped verification note`（剩余 16 天），按 `SCHEMA.md` 严格保留未来事件 `review_by: 2026-12-02` 及页面级 `verified_at: 2026-11-06` 不变。

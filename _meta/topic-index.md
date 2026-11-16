@@ -20,7 +20,7 @@ status: current
 
 ### 1. 智能体架构、边界与运行时 (Agent Architecture, Boundaries & Runtime)
 - [Agent Development Lifecycle](../concepts/agent-development-lifecycle.md) — Agent 开发生命周期：Build → Test → Deploy → Monitor 与横切治理；软件交付的阶段契约与知识效果评估，生产级 Harness、薄宿主与云端运行时边界见子页
-- [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口与 Saga 补偿/枢轴/幂等事务边界，以及 Agent-as-Code 的 PR 控制面
+- [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口（含 Kleppmann 单调代际隔离令牌 $g_{\text{req}} \ge g_{\max}$）、Saga 语义补偿/枢轴/幂等事务与模糊远程结果先取证后恢复边界，以及 Agent-as-Code 的 PR 控制面
 - [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
 - [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：结合集合覆盖/背包整数规划（ILP）、FrugalGPT 级联停止与 RouteLLM 偏好阈值路由建模资源约束，含 `C_cov / R_route / P_tool / M_margin` 参数化裁决矩阵与 Open SWE 线上案例证据边界
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
@@ -29,7 +29,7 @@ status: current
 - [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：结合 Bainbridge 自动化讽刺论断与 Parasuraman–Riley 误用/弃用分类，区分即时表现增益（$\Delta P_{\text{assist}}$）、撤除后技能保持（$\Delta S_{\text{retain}}$）与持续委派中的理解所有权
 - [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：结合 RLHF 语言模型迎合偏差实证（Sharma et al. ICLR 2024）与事前验尸反方角色锚定，在复杂创意、写作或方案编排前先澄清意图、挑战假设并区分受限知识源与开放网络核验边界
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：结合语法制导综合（SyGuS）与反例制导归纳综合（CEGIS）把创造型 Agent 拆成合法算子空间生成、可执行转换、客观 evaluator 与多重检验样本外防过拟合闭环
-- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；规范多受众配置驱动语义层、含可加性前提的度量与比率重聚纪律及输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
+- [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；形式化二阶段“规则初筛 + 置信度路由”三类误差分解（漏召回、封闭集强迫归因、条件一致率幸存者偏差）、多受众配置驱动语义层、含可加性前提的度量与比率重聚纪律及输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
 - [Dijkstra on AI Programming Formalization](../concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判与 AI 编程：区分 EWD667 窄接口定性论证、本页成本类比、最弱前置条件、有限测试与形式化证明
 - [Entropy and Entropy Increase](../concepts/entropy-and-entropy-increase.md) — 区分热力学熵、统计熵与信息熵，说明熵增的系统边界、开放系统例外，以及软件腐化与 AI 编程反熵约束类比的适用边界
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种正交职责分量（$\mathbf{R}(x)$）与晋升门禁（`B_act / P_skill / G_promo`）拆分需求，外部接入优先复用授权工具，MCP 可选
@@ -42,17 +42,17 @@ status: current
 - [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码（Outlines / Guided Generation）、分阶段语义分解、固定候选空间、typed tools、强类型沙箱能力绑定（Code Mode RPC Bindings）、dependency injection 与属性测试不变量检验把 LLM 不确定性收进可验证的工程边界
 
 ### 2. 上下文工程、记忆与技能演化 (Context Engineering, Memory & Skill Evolution)
-- [Agent 闭环学习：从用户纠错到规则升级](../concepts/agent-closed-loop-learning-from-corrections-to-rules.md) — Agent 闭环学习：结合 DSPy/GEPA 反思式候选优化与影子实验，区分来源机制和项目自定的配对统计、回归与成本晋升门禁；来源人工修正口径待核实
+- [Agent 闭环学习：从用户纠错到规则升级](../concepts/agent-closed-loop-learning-from-corrections-to-rules.md) — Agent 闭环学习：先按可审阅性与反馈复用边界设计任务范围（目标工程案例），再结合 DSPy/GEPA 与影子实验验证规则晋升；区分来源机制和项目自定门禁，来源人工修正口径待核实
 - [Agent Context Engineering](../concepts/agent-context-engineering.md) — Agent 上下文工程总原则：用最小必要上下文防止偏航；结合长上下文 U 型位置退化（Lost in the Middle）与带边信息瓶颈（Information Bottleneck）解释即时加载、首尾锚定、上下文与记忆边界及出处债务；静态上下文面与历史/状态加工分别见两个子页
 - [Agent Context: System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报（受静态配额 $B_{\text{sys}}$ 约束）、窄工具面与四阶选择概率漏斗、可见不等于可用、以行为为主的示例
 - [Agent Context: History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：结合 MemGPT 虚拟上下文分页区分输入转储、历史摘要与 `SKILL.state` 确定性状态折叠（受 $R_{\text{probe}}$ 与 $C_{\text{total}}$ 约束）、子代理交接及专用模型有界加工
 - [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比（Reconsolidation）、CL-Bench 1.0 跨模型记忆行为对比与断链修复案例，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界
 - [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘、弹性权重巩固（EWC Fisher 矩阵二次惩罚）与再巩固的局部修订类比区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
-- [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：以 Lens 往返定律作类比，区分尝试恢复与真逆函数、汇总退化数据与示意模型，采用小步编辑、结构检查与中间态审计
+- [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：结合微软 DELEGATE-52 一手论文（arXiv:2604.15597，52 领域仅 Python 普遍达标、短程 2 轮表现无法预测 20 轮退化、通用工具退回整文件重写恶化 6%）与 Lens 往返定律类比，区分尝试恢复与真逆函数、压力测试边界与生产工作流，采用小步窄工具编辑、结构 diff 与中间态审计
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：结合 Ehrenberg-Bass 心智可得性理论（Romaniuk & Sharp，心智渗透率 $\text{MP}$ / 网络规模 $\text{NS}$ / 心智份额 $\text{SoM}$）、CEP 与 7W 框架从真实决策场景出发，消除边际关键词搜索量混杂
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界
-- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与表头、单位、脚注的绑定：结合关系元组投影、TEDS 与 DPP 0.1 工作草案，区分局部结构评分、受限格式归一化和完整语义/合规验证
+- [文档解析的结构保真与中间表示](../concepts/document-parsing-structural-fidelity.md) — 检查内容与表头、单位、脚注的绑定：结合关系元组投影、TEDS、DPP 0.1 工作草案与“解析表示 → 多轮编辑 → 有界分类 → 确定性聚合”四阶误差传播闭环，区分局部结构评分、受限格式归一化和完整语义/合规验证
 - [AI Agent Context Engineering Design Priorities](../concepts/hermes-context-engineering-design-priorities.md) — 面向 AI Agent 的 context engineering 设计优先级：先做 budget、ranking、compression，再做 history decay；含 `B_ctx / U_blk / C_total / R_probe` 参数化上下文预算与端到端总成本评估模型
 - [Wiki 知识新鲜度与断言证据绑定](../concepts/hermes-knowledge-freshness-and-claim-evidence.md) — 知识新鲜度、断言级来源绑定与 `locate` → `expand` 两步证据导航：区分 FActScore、ALCE 支持度与 Jaccard 稳定性，明确空集合和来源真实性边界
 - [AI Agent Memory Skills Wiki Boundaries](../concepts/hermes-memory-skills-wiki-boundaries.md) — AI Agent 内容归属主规则：结合 Tulving 情景/语义记忆、Squire 陈述/程序记忆分类学与 Bjork 存储/检索强度双维解耦，区分广义 agent memory 与默认 memory 载体，用正反例与去情境化晋升门禁路由 skills、wiki、sessions/project state 与历史证据
@@ -73,7 +73,7 @@ status: current
 - [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、`AGENTS.md`（含 `## Code Review Rules`）、`config.toml` / `requirements.toml`、skill（`agents/openai.yaml` 与非破坏性启停）、MCP 与 automation 各司其职
 - [First-edit Economy for Coding Agents](../concepts/first-edit-economy-for-coding-agents.md) — Coding agent 的首次编辑经济性：结合样本信息期望价值（EVSI）最优停止判据与 Delta Debugging（`ddmin`）1-最小差分原则，在有明确锚点和便宜验证时减少宽泛探索、小步编辑并立即验证
 - [Flutter 版本演进、平台编译与可选 AI 生态边界](../concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限（含 Flutter 3.47.8 eMudhra CA 密钥拦截公告）、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界
-- [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：结合 $\text{MTTM} = T_{\text{detect}} + T_{\text{triage}} + T_{\text{approve}} + T_{\text{exec}}$ 延迟分解与错误预算消耗保护，用闭集 playbook 与受控审批实现人机协作止血
+- [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：结合 SLO 多窗口燃烧率告警（`1h+5m` / `6h+30m` 与门）、$\text{MTTM} = T_{\text{detect}} + T_{\text{triage}} + T_{\text{approve}} + T_{\text{exec}}$ 延迟分解与错误预算消耗保护，用闭集 playbook、枢轴审批与权威终态回读实现人机协作止血
 - [AI Agent Workflow Layering and Adoption Order](../concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode / CodeAct 程序化执行（含多步中间载荷压缩损益判据）、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，含 `C_spec / D_fsm / A_add / P_prop` 参数化类型契约与验证裁决模型，代码审查分层与收敛治理见子页
 - [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：保留决策理解与责任；用双向追溯、断言验证和风险分级决定审查深度，按 diff 触发检查、先观察再决定是否拦截、分阶段诊断漏检，并用收敛条件与排队论（Little 定律、Kingman 公式）约束审查负荷
@@ -139,7 +139,7 @@ status: current
 
 ## Comparisons
 - [Dijkstra EWD667 vs 2026 AI Programming Article](../comparisons/dijkstra-ewd667-vs-ai-programming-article.md) — 对照 EWD667 原文与 2026 AI 编程文章：比较自然语言模糊性、窄接口、形式化契约、出处债务与认知风险，并区分原文论证和现代工程推论
-- [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 按目标、工具、有限动作、审批和复盘职责评估任意 Agent 的接入；来源案例不作为当前产品能力或排名证据
+- [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（$T_{\text{pivot}}$）、`ScopeGate` 逐次参数校验与权威终态回读评估任意 Agent 的四阶段事故响应接入；来源案例不作为当前产品能力或排名证据
 - [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：结合行为投资组合理论（BPT-MA）区分核心安全底盘（`T / H / L / D / δ`）与主动趋势进攻（`1R / r / R_open / D_max`）的分工和冲突边界
 
 ## Queries

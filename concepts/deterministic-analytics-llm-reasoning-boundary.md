@@ -1,7 +1,7 @@
 ---
 title: Deterministic Analytics and LLM Reasoning Boundary
 created: 2026-05-25
-updated: 2026-11-11
+updated: 2026-11-16
 type: concept
 tags: [agent, llm, architecture, structured-output, verification, typed-boundary]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/towardsdatascience-report-100-clients-one-semantic-model-2026-11-05.md, https://www.inf.unibz.it/~franconi/teaching/2006/kbdb/Codd72a.pdf, https://en.wikipedia.org/wiki/Codd%27s_theorem]
@@ -113,6 +113,11 @@ AI Agent 迁移原则：
 
 **[推论]** 候选筛选漏掉的记录不会被后续分类补回，评估应分开看召回与语义误判；不明确、不适用与未成功评分也不能混成普通业务类别。保留必要上下文并在目标数据上验证阈值，不能因为类别固定或结果落表就取消复核。
 
+**[推论] 二阶段“规则初筛 + 置信度路由分类”的误差分解边界**：设自由文本记录 $x$ 先经过确定性规则/正则初筛 $R(x) \in \{0, 1\}$，命中者再由有界分类模型给出预测标签 $\hat{y}(x) \in \mathcal{Y}_{\text{biz}} \cup \{\texttt{escape}\}$ 与候选分数集中度 $c(x) \in [0, 1]$，并按阈值 $\tau_{\text{conf}}$ 分流（$c(x) \ge \tau_{\text{conf}}$ 自动落表，$c(x) < \tau_{\text{conf}}$ 送人工或强模型复核）。则下游 SQL 聚合消费的落表标签同时受三类不可相互抵消的误差约束：
+1. **初筛漏召回（Pre-filter False Negatives，$\Pr(R(x)=0 \mid y \in \mathcal{Y}_{\text{biz}})$）**：过于严苛的关键词或正则在第一阶段丢弃的真实样本无法被后续 LLM 找回，直接造成聚合计数系统性低估；
+2. **封闭候选集强迫归因（Closed-World Forced Misattribution）**：若候选空间未设置显式逃生标签 $\texttt{escape}$（如“未说明”“多云/无主平台”“仅顺带提及”或摘要识别中的 `insufficient_evidence`，参见 [[llm-summary-identification-step]]），无关或模糊记录会被强制塞入某个业务类别，造成假阳性膨胀；
+3. **条件一致率幸存者偏差与未校准高置信错误（$\Pr(\hat{y}(x) \ne y \mid R(x)=1 \land c(x) \ge \tau_{\text{conf}})$）**：如前文 MotherDuck 案例所示，双大模型在全样本上的一致率仅为 $72.7\%$（$218/300$），而在双模型先达成共识且 $c(x) \ge 0.8$ 的子集（$161/300$，仅占原始样本 $53.7\%$）上测得的 $96.9\%$ 是**多重条件筛选后的局部模型一致率**，既非全量准确率，也未消除两模型共同盲区。因此必须对高置信自动接受桶（$c(x) \ge \tau_{\text{conf}}$）保持分层人工抽检，并为落表列绑定 `(source_id, taxonomy_version, model_version)` 以便类别定义演进时定点重算。
+
 招聘案例的耗时比较未同时给出人工金标准准确率，不能证明模型与规则质量等价；HN 情绪与招聘需求是样本代理，不是总体意见、真实部署或市场份额。Agent 轨迹的计数与语义判断分工详见 [[production-ai-agent-evaluation-framework]]；厂商性能、置信度与合规边界保留于来源笔记，不升级为产品采用结论。
 
 ## 多模态案例：先对齐证据，再融合与解释
@@ -218,6 +223,9 @@ AI Agent 迁移原则：
 
 ## Relationship to existing concepts
 
+- [[document-parsing-structural-fidelity]] 关注计算之前的文档解析表示是否保住表头层级、单位、脚注与空值关系；若上游解析已将跨列表头压平或错配，确定性引擎只会稳定算出错误结果。
+- [[ai-agent-document-fidelity-risk]] 关注多轮委托式文档变换中的静默语义改写与整文件重写退化；本页与其共同要求用窄领域函数与确定性执行器替代宽泛自由改写。
+- [[llm-summary-identification-step]] 关注摘要与定性分析前的可识别性检验与单调弱化审查；本页在定量语义层同样要求对缺失输入显式留白（`Not shown`），拒绝将未观测状态默认补零。
 - [[typed-ai-agent-boundaries]] 关注 typed schema、typed tools 和依赖注入；本页补充 typed schema 在数据分析链路中可以作为 Planner 与 Engine 的合同。
 - [[constrained-toolbox-evaluator-loop]] 关注受限工具箱、候选生成和 evaluator 反馈；本页补充企业分析系统中可计算结果由确定性执行器承担，上游语义判断仍需验证。
 - [[hermes-ai-workflow-formalization-principles]] 关注自然语言到形式化产物的整体原则；本页提供一个面向结构化数据分析的具体架构模式。

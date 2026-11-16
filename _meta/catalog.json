@@ -37,7 +37,7 @@
       "path": "comparisons/hermes-vs-google-sre-agentic-incident-response.md",
       "type": "comparison",
       "title": "Agent 事故响应接入：职责与安全边界",
-      "description": "从目标、工具、动作、权限与复盘职责评估任意 Agent 的事故响应接入，公开案例仅作设计参照，不作为当前产品能力或排名证据。",
+      "description": "结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（T_pivot）与 ScopeGate 逐次参数校验，从目标、工具、动作、权限与权威回读评估任意 Agent 的事故响应接入边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -53,14 +53,21 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "google-sre-gemini-cli-incident-response",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-autonomy-ladder-for-hermes-workflows",
           "hermes-knowledge-architecture",
           "hermes-knowledge-base-operating-flow"
         ],
         "related": [
+          "typed-ai-agent-boundaries",
+          "agent-skill-provider-governance-boundary",
+          "stateful-agent-environments-and-grounded-verification",
+          "public-info-monitoring-automation-methodology",
+          "agent-failure-closed-loop-evaluation",
           "wiki-ingestion-workflow"
         ]
       }
@@ -139,7 +146,7 @@
       "path": "concepts/agent-closed-loop-learning-from-corrections-to-rules.md",
       "type": "concept",
       "title": "Agent 闭环学习：从用户纠错到规则升级",
-      "description": "说明如何把用户纠错转化为可验证的 Agent 规则升级闭环。",
+      "description": "从便于人工审阅与反馈复用的任务范围设计，到用户纠错的记录、泛化、验证与规则晋升。",
       "status": "stable",
       "tags": [
         "agent",
@@ -150,12 +157,13 @@
         "governance"
       ],
       "aliases": [
-        "closed-loop-learning"
+        "closed-loop-learning",
+        "goal-engineering"
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -638,7 +646,7 @@
       "path": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
       "type": "concept",
       "title": "Agent 生产级 Harness 与云端运行时边界",
-      "description": "定义生产级 Agent Harness 的有状态执行边界、共享定义与薄宿主分层、云端长程运行时与沙箱分离，以及 Agent-as-Code 的 PR 控制面。",
+      "description": "定义生产级 Agent Harness 的有状态执行边界、共享定义与薄宿主分层、云端长程运行时五窗口恢复（含单调代际隔离令牌 Fencing Tokens、Saga 语义补偿与模糊远程结果先取证后恢复），以及 Agent-as-Code 的 PR 控制面。",
       "status": "stable",
       "tags": [
         "agent",
@@ -658,7 +666,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -673,7 +681,9 @@
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-experience-consolidation-loops",
           "subagent-orchestration-patterns",
-          "chat-to-agent-session-routing"
+          "chat-to-agent-session-routing",
+          "google-sre-gemini-cli-incident-response",
+          "agent-skill-provider-governance-boundary"
         ]
       }
     },
@@ -952,7 +962,7 @@
       "path": "concepts/ai-agent-document-fidelity-risk.md",
       "type": "concept",
       "title": "AI Agent Document Fidelity Risk",
-      "description": "结合双向变换 Lens 往返定律（GetPut/PutGet）与复合跳跃退化模型，说明 AI Agent 多轮文档处理的保真风险、静默改写机制及工程验证边界。",
+      "description": "结合微软 DELEGATE-52 一手论文（arXiv:2604.15597）、双向变换 Lens 往返定律与复合跳跃退化模型，说明 AI Agent 多轮文档处理的领域就绪度差异、静默改写机制及工程验证边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -970,7 +980,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -1360,7 +1370,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -1369,7 +1379,8 @@
         ],
         "related": [
           "agent-production-harness-and-cloud-runtime-boundaries",
-          "local-first-sync-confirmed-mirror-outbox-conflict-policy"
+          "local-first-sync-confirmed-mirror-outbox-conflict-policy",
+          "stateful-agent-environments-and-grounded-verification"
         ]
       }
     },
@@ -1716,7 +1727,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1789,7 +1800,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "ai-agent-document-fidelity-risk",
@@ -1971,7 +1982,7 @@
       "path": "concepts/google-sre-gemini-cli-incident-response.md",
       "type": "concept",
       "title": "Google SRE Gemini CLI Incident Response Pattern",
-      "description": "总结 Google SRE 使用 Gemini CLI 处理事故的缓解优先、MTTM 延迟分量分解与错误预算门禁、闭集工具约束和生产人机协作模式。",
+      "description": "结合 Google SRE 官方手册的多窗口错误预算燃烧率告警（Burn Rate）、MTTM 四阶段延迟分解、闭集缓解动作（Generic Mitigations）与无责复盘，总结受控 CLI Agent 接入生产事故响应的工程模式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1988,15 +1999,20 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
+          "agent-autonomy-ladder-for-hermes-workflows",
+          "typed-ai-agent-boundaries",
           "hermes-knowledge-base-operating-flow",
           "wiki-ingestion-workflow"
         ],
         "related": [
           "hermes-vs-google-sre-agentic-incident-response",
-          "agent-autonomy-ladder-for-hermes-workflows"
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-skill-provider-governance-boundary",
+          "public-info-monitoring-automation-methodology",
+          "stateful-agent-environments-and-grounded-verification"
         ]
       }
     },
@@ -3037,7 +3053,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -3071,14 +3087,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
         ],
         "related": [
           "production-ai-agent-evaluation-framework",
-          "stateful-agent-environments-and-grounded-verification"
+          "stateful-agent-environments-and-grounded-verification",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "chat-to-agent-session-routing"
         ]
       }
     },
