@@ -1,13 +1,13 @@
 ---
 title: Using AI Agent for AI Coding with Typed Boundaries
 created: 2026-05-01
-updated: 2026-11-15
+updated: 2026-11-16
 type: query
 aliases: [how-i-should-use-agent-for-ai-coding-with-typed-boundaries]
 status: stable
-description: 回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。
+description: 回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、受控沙箱程序化编排（防 JSON 搬运工）、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, validation, workflow]
-sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md, concepts/first-edit-economy-for-coding-agents.md, concepts/agent-self-validation-loops.md, concepts/loop-engineering-hermes-agent-workflow.md, concepts/entropy-and-entropy-increase.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf]
+sources: [concepts/typed-ai-agent-boundaries.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/ai-coding-agent-workflow-types.md, concepts/hermes-context-layer-operating-rules.md, concepts/first-edit-economy-for-coding-agents.md, concepts/agent-self-validation-loops.md, concepts/loop-engineering-hermes-agent-workflow.md, concepts/entropy-and-entropy-increase.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/ai-agent-tool-selection-architecture.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf, https://arxiv.org/abs/2402.01030, https://blog.cloudflare.com/code-mode/, https://www.anthropic.com/research/advanced-tool-use]
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02
@@ -93,6 +93,8 @@ AI Agent 任务要求可以这样写：
 如果要新增 agent/tool 函数，把它当 public API 设计：类型提示、docstring、错误语义、权限边界和测试都要补齐。
 ```
 
+当任务需要串联多步工具并对大体积中间输出做分页、过滤、排序或关联时，**不要让 LLM 通过多轮 JSON `tool_call` 充当中间数据的“JSON 搬运工”**；若宿主提供受控沙箱或代码执行层（Code Mode / Programmatic Tool Calling，参见 [CodeAct](https://arxiv.org/abs/2402.01030)、[Cloudflare Code Mode](https://blog.cloudflare.com/code-mode/) 与 [Anthropic PTC](https://www.anthropic.com/research/advanced-tool-use)），应让模型编写强类型代码在沙箱内完成确定性数据搬运与聚合，仅将精简后的终态结果返回主上下文，同时保持宿主侧的凭据隔离与逐次 Tool Gate 权限校验（详见 [[hermes-agent-workflow-layering-and-adoption-order]]、[[ai-agent-tool-selection-architecture]] 与 [[typed-ai-agent-boundaries]]）。
+
 ### 5. Inject dependencies; do not hide global state
 
 涉及数据库、API client、文件系统、用户上下文、权限或租户信息时，禁止让实现偷偷读全局变量。应使用显式上下文对象传入。
@@ -144,6 +146,7 @@ AI Agent 任务要求可以这样写：
 | “我先把整个仓库读一遍，确保 100% 稳妥。” | 无锚点的全仓扫描会污染上下文内存并稀释注意力；从具体故障锚点出发，仅沿直接调用边按需扩展（[[first-edit-economy-for-coding-agents]]）。 |
 | “修这个 Bug 的同时，我顺手把旁边三个文件也重构了。” | 将缺陷修复与未授权的跨文件重构混在一起会增加审查与回滚难度；将范围外技术债记入 `Residual Risk`。 |
 | “测试又挂了，我把断言放宽一点或者加个 `try/except pass`。” | 严禁通过弱化断言或吞掉异常来伪造门禁通过；按第 7 节的既定预算诊断、修复或停止交接。 |
+| “我直接用十几次 `tool_call` 把 100 条 JSON 拉进上下文再逐条筛选转发。” | 禁止让大模型充当按 Token 计费的 JSON 搬运工；多步确定性过滤、排序与参数拼接应下沉至受控代码执行层（[[hermes-agent-workflow-layering-and-adoption-order]]），仅向主上下文回传精简结果与验证证据。 |
 
 ## Best-practice prompt templates
 
@@ -211,4 +214,4 @@ AI Agent 任务要求可以这样写：
 
 ## Relations
 - depends_on: [[typed-ai-agent-boundaries]], [[hermes-ai-workflow-formalization-principles]], [[ai-coding-agent-workflow-types]], [[hermes-context-layer-operating-rules]], [[first-edit-economy-for-coding-agents]], [[agent-self-validation-loops]]
-- related: [[hermes-layer-routing-decision-checklist]], [[loop-engineering-hermes-agent-workflow]], [[ai-code-review-governance-and-convergence]], [[hermes-python-engineering-capability-checklist]], [[entropy-and-entropy-increase]]
+- related: [[hermes-layer-routing-decision-checklist]], [[loop-engineering-hermes-agent-workflow]], [[ai-code-review-governance-and-convergence]], [[hermes-python-engineering-capability-checklist]], [[entropy-and-entropy-increase]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]], [[ai-coding-assistant-context-budget-management]]

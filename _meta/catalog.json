@@ -1027,7 +1027,7 @@
       "path": "concepts/ai-agent-tool-selection-architecture.md",
       "type": "concept",
       "title": "AI Agent Tool Selection Architecture",
-      "description": "区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益与分数间隔（Score Margin）回退判据。",
+      "description": "区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益、分数间隔回退判据及三代工具调用演进（全量 Schema → 动态搜索 → Code Mode 沙箱编排）边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1043,7 +1043,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1058,7 +1058,10 @@
           "hermes-context-engineering-design-priorities",
           "agent-architecture-primary-paper-map",
           "agent-skill-governance-and-reversible-state",
-          "agent-resource-optimization"
+          "agent-resource-optimization",
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "ai-coding-assistant-context-budget-management",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -1226,7 +1229,7 @@
       "path": "concepts/ai-coding-assistant-context-budget-management.md",
       "type": "concept",
       "title": "AI Coding Assistant Context Budget Management",
-      "description": "总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出和减少无效 token 消耗的方法。",
+      "description": "总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出、通过 Code Mode / PTC 隔离多步工具中间载荷和减少无效 token 消耗的方法。",
       "status": "stable",
       "tags": [
         "ai-coding",
@@ -1242,7 +1245,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1256,7 +1259,9 @@
           "subagent-orchestration-patterns",
           "first-edit-economy-for-coding-agents",
           "loop-engineering-hermes-agent-workflow",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "ai-agent-tool-selection-architecture"
         ]
       }
     },
@@ -2036,7 +2041,7 @@
       "path": "concepts/hermes-agent-workflow-layering-and-adoption-order.md",
       "type": "concept",
       "title": "AI Agent Workflow Layering and Adoption Order",
-      "description": "定义 AI Agent 采用 Agent 工作流分层时的优先顺序和落地边界。",
+      "description": "定义 AI Agent 采用 Agent 工作流分层时的优先顺序、CodeAct/Code Mode 程序化工具编排损益判据与落地边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2052,7 +2057,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2063,7 +2068,11 @@
           "hermes-model-specific-harness-profiles",
           "deterministic-analytics-llm-reasoning-boundary",
           "hermes-retrieval-priority-and-answer-path",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "ai-agent-tool-selection-architecture",
+          "typed-ai-agent-boundaries",
+          "ai-coding-assistant-context-budget-management",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -3789,7 +3798,7 @@
       "path": "concepts/typed-ai-agent-boundaries.md",
       "type": "concept",
       "title": "Typed AI Agent Boundaries",
-      "description": "说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。",
+      "description": "说明通过 typed input/output、FSM 约束解码、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3805,7 +3814,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -3824,7 +3833,9 @@
           "deterministic-analytics-llm-reasoning-boundary",
           "agent-pre-deploy-regression-and-trace-debugging",
           "flutter-version-evolution-and-platform-boundaries",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "ai-agent-tool-selection-architecture"
         ]
       }
     },
@@ -4222,7 +4233,7 @@
       "path": "queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md",
       "type": "query",
       "title": "Using AI Agent for AI Coding with Typed Boundaries",
-      "description": "回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。",
+      "description": "回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、受控沙箱程序化编排（防 JSON 搬运工）、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4239,7 +4250,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
@@ -4254,7 +4265,10 @@
           "loop-engineering-hermes-agent-workflow",
           "ai-code-review-governance-and-convergence",
           "hermes-python-engineering-capability-checklist",
-          "entropy-and-entropy-increase"
+          "entropy-and-entropy-increase",
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "ai-agent-tool-selection-architecture",
+          "ai-coding-assistant-context-budget-management"
         ]
       }
     },

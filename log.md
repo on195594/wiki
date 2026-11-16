@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-16] improve | 贯通反熵 AI 编程与程序化工具编排（CodeAct / Code Mode / PTC）：补齐多步载荷压缩判据、强类型沙箱能力绑定与双向图谱
+
+- **形式化程序化工具执行层（Code Mode / CodeAct）的成本损益与路由判据**：在 [[hermes-agent-workflow-layering-and-adoption-order]] 整合 Xingyao Wang 等（ICML 2024，[*Executable Code Actions Elicit Better LLM Agents*，arXiv:2402.01030](https://arxiv.org/abs/2402.01030)，M3ToolEval 最高 `+20%` 成功率与 `-30%` 轮次）、[Cloudflare《Code Mode: the better way to use MCP》](https://blog.cloudflare.com/code-mode/) 与[续篇《Code Mode: give agents an entire API in 1,000 tokens》](https://blog.cloudflare.com/code-mode-mcp/)（及本地原始摘录 [[x-lanlance-code-mode-json-plumbing-2026-08-24]]）与 [Anthropic Programmatic Tool Calling (PTC)](https://www.anthropic.com/research/advanced-tool-use)（[PTC 文档](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling)，复杂研究任务平均 Token `43,588 → 27,297` 降 `37%`），推导 $M$ 步逐轮 JSON `tool_call` 二次方累积前向成本 $C_{\text{json}}(M)$ 与沙箱代码编排成本 $C_{\text{code}}(M)$ 的损益不等式，明确“中间处理规则确定且无需逐步开放语义判断”的切换门禁。
+- **衔接三代工具调用架构与强类型沙箱能力绑定安全边界**：在 [[ai-agent-tool-selection-architecture]] 梳理全量 Schema 预载、动态 Top-$K$ 工具搜索与 Code Mode 沙箱程序化编排三代范式的演进与适用边界；在 [[typed-ai-agent-boundaries]] 新增 `3.1 Programmatic tool composition and capability-bound sandboxes`，明确将 MCP JSON Schema 编译为强类型 TypeScript/Python SDK 桩并配合断网 RPC 能力绑定（沙箱不接触原始 API Key），同时规定沙箱内代码编排不豁免宿主侧逐次 RPC 调用的 Schema 校验、`ScopeGate` 参数级授权与枢轴事务人工审批；在 [[ai-coding-assistant-context-budget-management]] 补充 `Search + Execute` 动态规格披露与中间态沙箱驻留规则。
+- **升级反熵编程主查询入口并打通双向 `## Relations`**：在 [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 第 4 节与反合理化拦截表中新增“禁止让 LLM 充当多步工具间的 JSON 搬运工”阻断规则；打通 [[hermes-agent-workflow-layering-and-adoption-order]]、[[ai-agent-tool-selection-architecture]]、[[typed-ai-agent-boundaries]]、[[ai-coding-assistant-context-budget-management]] 与 [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 之间的双向 `## Relations`，同步更新 `_meta/topic-index.md`。
+- **证据与采用边界**：各厂商报告的 Token 降幅（`99.9%`、`37%`）与基准提升受特定工作负载限制，不作为通用默认阈值；Cloudflare 的端点数量与 Token 数直接引用对应续篇，训练语料差异保留为厂商提出的可能解释；不刷新页面级 `verified_at`，不新增独立概念页或改变运行时权限。
+
 ## [2026-11-16] fix | 对齐共享 Wiki 导航与目录维护职责
 
 - 以 `SCHEMA.md` 为准，统一 [[hermes-knowledge-architecture]]、[[hermes-knowledge-base-operating-flow]] 与 [[hermes-wiki-lint-and-health-check-standards]]：首页只维护任务入口，主题目录维护正式页清单与 `Indexed pages` 计数，新增页面不再机械要求改首页。

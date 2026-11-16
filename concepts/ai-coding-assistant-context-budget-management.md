@@ -1,14 +1,14 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-11-15
+updated: 2026-11-16
 type: concept
 tags: [ai-coding, agent, context-engineering, optimization, claude-code]
-sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489]
+sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489, https://blog.cloudflare.com/code-mode/, https://blog.cloudflare.com/code-mode-mcp/, https://www.anthropic.com/research/advanced-tool-use]
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出和减少无效 token 消耗的方法。
+description: 总结 coding assistant 控制上下文预算、规避单次调用局部指标陷阱、选择性压缩工具输出、通过 Code Mode / PTC 隔离多步工具中间载荷和减少无效 token 消耗的方法。
 aliases: [coding-context-budget, context-budget-management]
 verified_at: 2026-11-02
 ---
@@ -81,6 +81,13 @@ GitHub Copilot 团队的受控实验文章 [[github-copilot-cost-efficient-codin
 
 证据边界：上述百分比（`3.1% / 5.5% / 2.9% / 2.3%` AI Credits 节省等）为 GitHub Copilot CLI 与代码审查特定工作负载的第一方实验报告，各项改进并非严格线性可加，且在代码审查有效的精简文件工具指令移植到 CLI 时曾导致成本上升而被放弃。因此，任何上下文压缩或提示词精简都必须在目标工作流中独立复验端到端完成率与回读率（详见 [[loop-engineering-hermes-agent-workflow]]）。
 
+### 3.2 Eliminate multi-turn JSON plumbing via programmatic tool execution (Code Mode / PTC)
+
+除了裁剪单次工具输出，多工具工作流中另一项主要的上下文膨胀源是**跨工具中间载荷的逐轮回传**。如 [[x-lanlance-code-mode-json-plumbing-2026-08-24]]、[Cloudflare Code Mode](https://blog.cloudflare.com/code-mode/) 与 [Anthropic Programmatic Tool Calling (PTC)](https://www.anthropic.com/research/advanced-tool-use) 所示（形式化损益不等式见 [[hermes-agent-workflow-layering-and-adoption-order]]）：
+
+- **用 `Search + Execute` 替代全量 MCP Schema 预载**：当外部 API 或 MCP Server 拥有数百至上千个端点时，全量预载工具定义可在任务开始前即耗尽数十万至上百万 Tokens（[Cloudflare 续篇](https://blog.cloudflare.com/code-mode-mcp/)报告 2,500+ 端点全量 Schema 约 `117 万` Tokens）；其 `search()` + `execute()` 方案按需发现接口，可将常驻工具定义压降至约 `1,000` Tokens（参见 [[ai-agent-tool-selection-architecture]]）。
+- **将中间数据留在执行沙箱，仅向主上下文回传终态摘要**：当任务需要对多步工具返回的数据做分页拉取、过滤、排序或关联（如在 200KB 原始记录中筛出 1KB 异常项）时，由模型编写脚本在受控沙箱内完成循环与过滤，避免中间 JSON 反复进入模型历史消息（Anthropic 报告复杂研究任务平均 Token 消耗下降 `37%`，并消除 19+ 次模型前向推理往返）。这同样属于特定工作负载的第一方报告，迁移时须遵守 [[typed-ai-agent-boundaries]] 的宿主凭据隔离与逐次调用 Tool Gate 授权边界。
+
 ### 4. File access should be explicit and deny noisy surfaces
 “读整个仓库”通常是上下文预算灾难。文章建议从明确文件开始，只允许读取 import/调用链相关文件，并 deny `.env`、secrets、`node_modules`、build、coverage、logs 等噪音目录。
 
@@ -147,4 +154,4 @@ Verification:
 ## Relations
 
 - refines: [[llm-context-engineering-layer]], [[hermes-context-engineering-design-priorities]]
-- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[loop-engineering-hermes-agent-workflow]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[loop-engineering-hermes-agent-workflow]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]]

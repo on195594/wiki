@@ -1,12 +1,12 @@
 ---
 title: AI Agent Tool Selection Architecture
 created: 2026-07-11
-updated: 2026-11-11
+updated: 2026-11-16
 type: concept
 tags: [agent, tool, context-engineering, evaluation, workflow]
-sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference]
+sources: [raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/papers/arxiv-2302-04761-toolformer.md, raw/articles/thenewstack-ard-agent-discovery-specification-2026-08-31.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/tools, docs:https://hermes-agent.nousresearch.com/docs/reference/toolsets-reference, https://arxiv.org/abs/2402.01030, https://blog.cloudflare.com/code-mode/, https://www.anthropic.com/research/advanced-tool-use]
 status: stable
-description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益与分数间隔（Score Margin）回退判据。
+description: 区分资源发现、工具可用性、候选集缩减、逐步选择与失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益、分数间隔回退判据及三代工具调用演进（全量 Schema → 动态搜索 → Code Mode 沙箱编排）边界。
 aliases: [agent-tool-selection, tool-routing-for-ai-agents]
 volatility: medium
 review_by: 2027-03-02
@@ -87,6 +87,14 @@ $$P(\text{succ} \mid q, \mathcal{T}_N) = \underbrace{P(t^* \in \mathcal{A}_q)}_{
    $$\text{TriggerFallback}(q) \iff \big(s_{(1)}(q) < \tau_{\min}\big) \;\lor\; \big(\Delta s_{1,2}(q) < \tau_{\text{margin}}\big) \;\lor\; \big(\neg \mathcal{V}_{\text{schema}}(\hat{\mathbf{a}})\big)$$
    当最高分低于绝对门槛 $\tau_{\min}$ 时走无工具分支或扩展检索；当头两名候选工具得分过于接近（$\Delta s_{1,2} < \tau_{\text{margin}}$，即存在歧义竞争工具）或缺少必填参数时，优先将并列候选同时暴露给模型或向用户发起澄清，严禁在低间隔下静默执行高风险写工具（对应 [[agent-resource-optimization]] 中的 `P_tool / M_margin` 门禁）。
 
+### 三代工具调用架构演进：全量预载、动态搜索与程序化编排（Code Mode / PTC）
+
+结合 [[x-lanlance-code-mode-json-plumbing-2026-08-24]]、[Cloudflare Code Mode](https://blog.cloudflare.com/code-mode/)、[Anthropic Advanced Tool Use (Tool Search & Programmatic Tool Calling)](https://www.anthropic.com/research/advanced-tool-use) 与 [CodeAct（Wang et al., ICML 2024）](https://arxiv.org/abs/2402.01030)，Agent 工具调用架构按**“Schema 如何进入上下文”**与**“多步控制流由谁驱动”**可分为三代互补形态（详见 [[hermes-agent-workflow-layering-and-adoption-order]]）：
+
+1. **第一代：全量预载逐轮调用（Static Full-Schema Function Calling）**：将所有工具 JSON Schema 常驻在静态预算 $B_{\text{sys}}$ 中，由模型逐轮输出 JSON 调用单个工具。仅适合工具总数少（如 $N \lesssim 10\text{–}15$）、描述正交且单步即可完成的任务；当 API 端点扩展至数百或数千个时，常驻 Schema 会直接耗尽上下文窗口并拉低 $S_N$。
+2. **第二代：按需工具搜索（Dynamic Tool Search / Progressive Disclosure）**：只常驻轻量检索入口（如 `search_tools` 或目录索引），根据当前子任务动态召回 Top-$K$ 个工具 Schema。这解决了 $B_{\text{sys}}$ 静态膨胀（优化了漏斗第 2 阶 $R_K \cdot S_K$），但**多步工作流仍由模型逐轮驱动**——若任务需连续调用 20 次工具搬运中间 JSON，仍会产生高昂的跨轮推理延迟与中间数据上下文污染。
+3. **第三代：沙箱程序化工具编排（Code Mode / Programmatic Tool Calling）**：模型通过 `search()` 按需获取目标 API 的强类型签名（如 TypeScript / Python SDK 接口），随后编写一段可执行代码交由受控沙箱 `execute()` 一次性完成循环、分页、过滤与跨工具参数拼接，仅向主上下文返回最终精简结果。这把多步确定性编排从“逐轮概率性选择（$\prod_{m=1}^M S_{K,m} E_m$）”收敛为单次代码生成与确定性执行（权限与类型契约边界见 [[typed-ai-agent-boundaries]] 与 [[ai-coding-assistant-context-budget-management]]）。
+
 ## Six controls from the source
 
 文章提出六类控制，应按职责理解，而不是全部叠加为默认流水线：
@@ -162,4 +170,4 @@ Toolformer ([[arxiv-2302-04761-toolformer]]) learns tool-call behavior by sampli
 
 - refines: [[agent-context-engineering]]
 - depends_on: [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]]
-- related: [[constrained-toolbox-evaluator-loop]], [[agent-orchestration-production-tradeoffs]], [[hermes-context-engineering-design-priorities]], [[agent-architecture-primary-paper-map]], [[agent-skill-governance-and-reversible-state]], [[agent-resource-optimization]]
+- related: [[constrained-toolbox-evaluator-loop]], [[agent-orchestration-production-tradeoffs]], [[hermes-context-engineering-design-priorities]], [[agent-architecture-primary-paper-map]], [[agent-skill-governance-and-reversible-state]], [[agent-resource-optimization]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-coding-assistant-context-budget-management]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]

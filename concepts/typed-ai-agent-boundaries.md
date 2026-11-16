@@ -1,12 +1,12 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-11-11
+updated: 2026-11-16
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
-sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf]
+sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf, https://arxiv.org/abs/2402.01030, https://blog.cloudflare.com/code-mode/, https://www.anthropic.com/research/advanced-tool-use]
 status: stable
-description: 说明通过 typed input/output、窄工具面和显式验证降低 AI Agent 不确定性的边界设计。
+description: 说明通过 typed input/output、FSM 约束解码、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。
 aliases: [typed-agent-boundaries]
 volatility: medium
 review_by: 2027-03-02
@@ -72,6 +72,14 @@ Agent 需要调用外部世界时，最危险的不是“能不能调工具”�
 - 工具应尽量小而窄，避免一个函数同时承担查询、修改、删除、推断多种职责。
 
 Microsoft Developer 的 AX 文章（[[microsoft-developer-ai-coding-agents-use-technology-2026-05-27]]）补充了工具边界的发现层：好工具不仅要有 typed schema，还要能在 harness 装配、模型语义匹配和真实组合工具面中被正确发现。docstring/description 应优先覆盖“何时使用、何时不用、失败时返回什么”，否则模型可能跳过工具，转而用过时训练知识生成看似合理的错误代码。
+
+### 3.1 Programmatic tool composition and capability-bound sandboxes (Code Mode / PTC)
+
+当任务需要串联多个工具处理大体积中间数据（如拉取 100 条记录过滤排序后再逐条更新）时，传统的逐轮 JSON `tool_call` 会迫使大模型充当高成本、易出错的“JSON 搬运工”。结合 [[x-lanlance-code-mode-json-plumbing-2026-08-24]]、[Cloudflare Code Mode](https://blog.cloudflare.com/code-mode/)、[Anthropic Programmatic Tool Calling (PTC)](https://www.anthropic.com/research/advanced-tool-use) 与 [CodeAct（Wang et al., ICML 2024）](https://arxiv.org/abs/2402.01030)，可将窄工具接口升级为**强类型 SDK 沙箱绑定（Typed SDK Bindings in Sandbox）**（工作流分层与损益判据见 [[hermes-agent-workflow-layering-and-adoption-order]]）：
+
+- **从 JSON Schema 到强类型语言 API 桩（Typed Stubs）**：将 MCP Server 或内部工具的 JSON Schema 自动转译为带完整类型签名与文档注释的 TypeScript `.d.ts` 或 Python `typing.Protocol` / Pydantic 函数桩。Cloudflare 报告以 TypeScript API 暴露工具时可处理更多、更复杂的工具，并将更丰富的真实代码训练语料列为可能解释；这支持尝试用代码表达循环、过滤与错误处理，但不是对所有模型和任务准确率的普遍保证。
+- **能力绑定隔离（Capability Bindings over Raw Network / Credentials）**：沙箱内的生成代码绝不能拥有任意外网访问权限或直接读取原始 API Key。如 [Cloudflare Code Mode](https://blog.cloudflare.com/code-mode/) 所示，沙箱完全断网，仅能调用宿主注入的强类型 RPC Binding 对象（如 `env.mcp_server.call(...)`）；凭证注入、OAuth 令牌刷新与网络通信严格保留在沙箱外的受信任宿主（Supervisor / Harness）中。
+- **[推论] 沙箱内代码编排不豁免逐次调用的 Tool Gate 授权**：将多个工具调用合并进一段 Python/TypeScript 脚本只改变了**控制流与中间数据驻留位置**，绝不改变外部副作用的安全等级。宿主在接收沙箱发出的每一次 RPC 工具调用时，仍必须独立执行 Schema 校验、参数值级权限检查（如 `ScopeGate` 防范 Confused Deputy，见 [[agent-skill-provider-governance-boundary]]）以及不可逆写操作（枢轴事务）前的人工审批（见 [[agent-production-harness-and-cloud-runtime-boundaries]]），严禁因为代码在沙箱内运行就默认放行其发起的外部写请求。
 
 ### 4. Dependency injection removes hidden global state
 
@@ -159,4 +167,4 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[wiki-ingestion-workflow]]
+- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[wiki-ingestion-workflow]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]]
