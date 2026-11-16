@@ -1,7 +1,7 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-11-13
+updated: 2026-11-16
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf, https://en.wikipedia.org/wiki/Catastrophic_interference, https://www.pnas.org/doi/10.1073/pnas.1611835114, https://arxiv.org/abs/1612.00796, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/]
@@ -33,7 +33,7 @@ experience → extract skill/insight → retrieve similar knowledge
 
 ## Distinguish external consolidation from weight-level learning
 
-Alloomi 报告（[[xudong-han-self-evolving-agent-alloomi-2026-08-13]]；`sea.pdf` 保留自 2026-08 采集记录，本页 3 份本地 `raw/` 快照已于 2026-11-02 复核，因外部 PDF 直链未在线重抓故页面级 `verified_at` 保持留空）提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
+Alloomi 报告（[[xudong-han-self-evolving-agent-alloomi-2026-08-13]]；相关断言沿用 `sea.pdf` 的 2026-08 采集记录；2026-11-16 已重新获取 PDF，但尚未逐项核验报告内容，故页面级 `verified_at` 保持留空、页面级 `review_by: 2026-12-13` 保留不变）提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
 
 这与 AI Agent 当前知识层互补而非替代：
 
@@ -62,7 +62,7 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 > review_by: 2026-12-13
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
-> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；2026-11-06 在线尝试访问 `alloomi.ai/reports/sea.pdf` 时直链不可达，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新整页 `verified_at`（该外部直链不可达仅限定于本段第一方报告数据，不代表本页其他来源同时不可达，也不构成对其他结论的新增核验；到期若直链仍不可达，继续保留采集快照边界说明，不影响本页 EWC 正则化与元技能章节的独立复用）。
+> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；此前访问 `alloomi.ai/reports/sea.pdf` 曾失败；2026-11-16 补充检查已成功获取 PDF，本次仅确认可访问性，尚未逐项复核报告内容与本段断言，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新局部或整页 `verified_at`（本页其余外部学术文献 [Kirkpatrick et al. 2017 PNAS](https://www.pnas.org/doi/10.1073/pnas.1611835114) 已于 2026-11-16 在线核对；另清点本页 `sources` 中的 3 份本地 `raw/` 快照，本次未重新逐项核验全部快照正文；本次确认报告可访问不构成对第一方报告数据或其他结论的新增核验；到期仍需复核报告内容，如届时直链不可达，继续保留采集快照边界说明，不影响本页 EWC 正则化与元技能章节的独立复用）。
 
 [推论] 对当前 AI Agent 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
 

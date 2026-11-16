@@ -390,7 +390,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -507,7 +507,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -1947,7 +1947,7 @@
       "volatility": "high",
       "review_by": "2027-02-05",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-10",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "flutter"
