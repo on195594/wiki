@@ -1,7 +1,7 @@
 ---
 title: Shared Wiki Operating Flow
 created: 2026-04-16
-updated: 2026-11-12
+updated: 2026-11-16
 type: concept
 tags: [agent, knowledge-base, workflow, note]
 sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, concepts/hermes-knowledge-architecture.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md]
@@ -74,7 +74,7 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 - frontmatter（含 `description`，`aliases` 不重复自身 slug 或已登记标签）
 - Summary
 - 可点击正文 `[[wikilinks]]` 与规范 `## Relations`（单键单行、省略空 `[]` 占位）
-- `index.md`（标准相对 Markdown 链接与 `Indexed pages` 计数）
+- [主题目录](../_meta/topic-index.md)的页面条目与 `Indexed pages` 计数（仅 `queries/` 中 `status: closed` 的历史计划可退出目录，`draft` 页标注草稿）；任务入口变化时同步 `index.md`，导航使用标准相对 Markdown 链接
 - `log.md`（顶部按日期倒序记录 durable delta 与验证结果）
 - `_meta/catalog.json` 与 `_meta/raw-source-hashes.json`（及 `wiki_maintain.py --check` 门禁验证）
 
@@ -93,7 +93,7 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 知识库不是写完就完，需要持续维护：
 - 页面写作遵循 [[hermes-wiki-page-writing-standards]]
 - 健康检查遵循 [[hermes-wiki-lint-and-health-check-standards]]
-- 新增页面后必须更新 `[[index]]` 与 `[[log]]`
+- 新增页面后同步[主题目录](../_meta/topic-index.md)与 `[[log]]`；只有任务入口变化时才更新 `[[index]]`
 - 稳定流程可作为 skill 候选，稳定事实可作为 memory 候选；只有宿主支持、满足准入且已有相应写入授权时才晋升
 
 ## Operational checkpoints
@@ -101,17 +101,17 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 1. 这次输入该进哪一层？
 2. 材料是否适合公开，来源是否已按类型保留或引用？
 3. 是否已有现有页面可更新，避免重复建页？
-4. 正式页面是否已补齐索引、日志和链接？
+4. 正式页面是否已补齐主题目录、日志和链接，任务入口变化是否已同步首页？
 5. 这次结果是否值得下次直接复用？
 
 ## Minimal working path
 最小可运行路径可以记成一句话：
-授权与公开准入 -> 输入分类 -> 保存合格 raw 或引用现有来源 -> 编译正式页 -> 更新 index/log -> 以后优先从 wiki 检索。
+授权与公开准入 -> 输入分类 -> 保存合格 raw 或引用现有来源 -> 编译正式页 -> 同步主题目录/log，按需更新任务首页 -> 以后优先从 wiki 检索。
 
 ## Anti-patterns
 - 已授权维护且符合公共准入的可复用结论只留在聊天中
 - 只堆 raw，不生成正式页面
-- 只写页面，不更新 index/log
+- 只写页面，不同步主题目录/log，或把完整清单和页数计数重新堆回任务首页
 - 已有 skill 仍然反复临场发挥
 - 对稳定知识反复从零外搜，却不检查已有 Wiki；实时核验需求除外
 - 把 session 历史误当成正式知识层

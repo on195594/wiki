@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-16] fix | 对齐共享 Wiki 导航与目录维护职责
+
+- 以 `SCHEMA.md` 为准，统一 [[hermes-knowledge-architecture]]、[[hermes-knowledge-base-operating-flow]] 与 [[hermes-wiki-lint-and-health-check-standards]]：首页只维护任务入口，主题目录维护正式页清单与 `Indexed pages` 计数，新增页面不再机械要求改首页。
+- 明确只有 `queries/` 中 `status: closed` 的历史计划可退出主题目录，`draft` 页保留并标注草稿；架构页补齐主题目录导航及仓库规范来源，同步生成 catalog。
+- 验证：`wiki_maintain.py --check` 全部通过（70 项单元测试、catalog 同步、健康检查、标签、公开边界与 diff 格式）；定点导航断言与核验日期/生命周期不变检查通过。freshness 扫描无逾期，30 天内到期 5 处（页面与局部断言分别计数）；14 条既有公开边界候选仍待逐项复核。
+- 本轮只对齐仓库规范与流程表述；未改 raw、业务规则、生命周期或来源核验日期。结构门禁与定点导航核对不代表逐页事实复核，也不替代外链存活检查。
+
 ## [2026-11-15] improve | 深化反熵 AI 编程与类型化边界集群：贯通 AI-Native SDLC 工件链、Hook 护栏、局部指标陷阱与熵增类比边界
 
 - **升级反熵编程主查询入口并补齐图谱关联**：在 [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 整合二阶段结构化提取（范围筛选 → 细节填充）、[[first-edit-economy-for-coding-agents]] 的首次编辑经济性闭环、按任务设置预算的有界自修正循环（3 轮为示例）、爆炸半径内有界清理、结构化退出证据块（`Modified Files / Verification Executed / Residual Risk`）以及五条常见偷懒借口与反熵阻断规则对照表；打通与 [[first-edit-economy-for-coding-agents]]、[[agent-self-validation-loops]]、[[loop-engineering-hermes-agent-workflow]]、[[ai-code-review-governance-and-convergence]] 及 [[entropy-and-entropy-increase]] 的 `## Relations`。

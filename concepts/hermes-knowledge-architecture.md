@@ -1,10 +1,10 @@
 ---
 title: Human and AI Agent Shared Knowledge Architecture
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-16
 type: concept
 tags: [agent, knowledge-base, mcp, workflow, configuration]
-sources: [raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, docs:https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf]
+sources: [repository:SCHEMA.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, docs:https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf]
 status: stable
 description: 定义 AI Agent 长期知识系统的总体架构、层间关系、Wiki 与原始搜索的适用边界及分层规则导航。
 aliases: [knowledge-architecture, agent-knowledge-architecture]
@@ -67,8 +67,9 @@ verified_at: 2026-11-02
 
 ## Layer 2: Wiki filesystem architecture
 ### 1. Navigation layer
-- `[[index]]`：知识目录与入口
-- `[[log]]`：知识库变更历史
+- [[index]]：任务导航；只有任务入口变化时才更新
+- [主题目录](../_meta/topic-index.md)：正式页分类清单、摘要与 `Indexed pages` 计数；仅 `queries/` 中 `status: closed` 的历史计划可退出目录，`draft` 页标注草稿
+- [[log]]：知识库变更历史
 - `SCHEMA.md`：结构规则、标签体系、页面规范
 
 ### 2. Raw source layer
@@ -173,7 +174,7 @@ $$Q^* = \frac{D \cdot T_{\text{doc}} \cdot M_{\text{write}}}{T_{\text{rag}} - (T
 2. 按 [[hermes-retrieval-priority-and-answer-path]] 查找并检查现有知识的当前适用性
 3. 若 Wiki 不足，再读取合格 raw 或外部资料
 4. 经提炼且符合公共准入时，更新对应正式页面
-5. 同步更新 `[[index]]` 与 `[[log]]`
+5. 同步主题目录与 [[log]]；任务入口变化时才更新 [[index]]
 6. 后续问题继续复用经过范围与新鲜度检查的知识
 
 摄取细节由 [[wiki-ingestion-workflow]] 维护；内容归属不在本页重复展开。

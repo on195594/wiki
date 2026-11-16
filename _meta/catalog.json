@@ -2216,7 +2216,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2253,7 +2253,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-16",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2683,7 +2683,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-16",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
