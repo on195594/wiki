@@ -992,7 +992,7 @@
       "path": "concepts/ai-agent-human-outcome-design-principle.md",
       "type": "concept",
       "title": "AI Agent Human Outcome Design Principle",
-      "description": "用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，避免从模型能力出发制造漂亮但不可用的自动化。",
+      "description": "用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，并判断主动式 Agent 何时值得打断用户、如何检查误扰与漏报。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1009,7 +1009,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-18",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -1019,7 +1019,11 @@
         "related": [
           "agent-context-engineering",
           "ai-assistance-cognitive-substitution-and-skill-formation",
-          "production-ai-agent-evaluation-framework"
+          "production-ai-agent-evaluation-framework",
+          "public-info-monitoring-automation-methodology",
+          "agent-autonomy-ladder-for-hermes-workflows",
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "agent-experience-consolidation-loops"
         ]
       }
     },

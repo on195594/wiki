@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-18] ingest | 区分主动运行、通知与执行权限
+
+- 保存 Sydney Runkle 的 LangChain 原文 [[langchain-building-proactive-agents-2026-11-17]] 的关键英文摘录，不归档全文或配图。
+- **NEW，归入现有主维护页**：在 [[ai-agent-human-outcome-design-principle]] 补充判断何时值得打断用户，以及同时复核已通知事件和未通知事件的方法。交叉链接监控、授权、审核反馈与经验固化的既有页面，不复制规则。
+- 区分厂商自述与设计推论；不采用平台定时运行占比作为行业基准，不改变通知、授权或调度默认值，不刷新整页核验日期。同步主题目录，正式页数量与首页任务入口不变。
+- 验证：70 项单测通过，结构、标签、公开边界与 diff 格式检查通过；本次文件未新增公开边界候选。逐字核对摘录，来源反查只命中主维护页；相对本次编辑前，raw 清单仅新增该来源，旧哈希不变，机器可读目录仅更新该正式页。
+
 ## [2026-11-18] ingest | 将按变更触发的验证实践并入代码审查治理
 
 - 在 [[ai-code-review-governance-and-convergence]] 的分层防线一节引用 Addy Osmani 的 [Claude Code 工程博客](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)，补充 diff 触发与规则隔离、门禁先观察再决定是否拦截、审查召回率的分阶段诊断。

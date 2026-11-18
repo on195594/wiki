@@ -1,12 +1,12 @@
 ---
 title: AI Agent Human Outcome Design Principle
 created: 2026-06-20
-updated: 2026-11-13
+updated: 2026-11-18
 type: concept
 tags: [agent, product, workflow, decision, governance, debugging]
-sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, docs:https://pubmed.ncbi.nlm.nih.gov/15151155/]
+sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, docs:https://pubmed.ncbi.nlm.nih.gov/15151155/, raw/articles/langchain-building-proactive-agents-2026-11-17.md]
 status: stable
-description: 用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，避免从模型能力出发制造漂亮但不可用的自动化。
+description: 用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，并判断主动式 Agent 何时值得打断用户、如何检查误扰与漏报。
 aliases: [human-outcome-first-ai-agent-design, ai-automation-human-needs]
 volatility: medium
 review_by: 2027-03-02
@@ -106,6 +106,16 @@ Wobble 是心理健康支持服务。创始人 Jack Murphy 早期曾关闭一个
 
 不直接改变 runtime、MCP、cron、wrapper 或 gateway 行为。本文只能提供设计原则，不能授权任何自动化能力扩大。
 
+## 主动式 Agent：什么时候值得打断用户？
+
+LangChain 的 Sydney Runkle 在 [[langchain-building-proactive-agents-2026-11-17]]（2026-11-17）中区分了四种结果：该提醒时提醒、不该提醒时保持沉默、误扰、漏报。**事件真实不等于需要这个人现在处理。** [[public-info-monitoring-automation-methodology]] 讨论如何检测真实变化和过滤噪声；这里关注检测之后，是否值得占用人的注意力。
+
+- **[推论] 把触发、通知和执行权限分开。** 新邮件、定时任务或约定的跟进可以触发检查；要不要通知、现在通知还是放入简报，需要根据用户的目标、紧迫性和可采取的行动单独判断。能主动检查或起草不等于能发送邮件、修改日程；外部动作仍遵循 [[agent-autonomy-ladder-for-hermes-workflows]] 的授权边界。
+- **让用户在原有工作流里快速判断。** 原文中，Robin 在 Slack 用一两句话说明重点，细节放在线程里；GTM Agent 则因在 Slack 处理积压的邮件草稿太慢，改用专门的审核界面。**[推论]** 首屏交代「发生了什么、为什么现在需要你、要你做什么」，证据按需展开。选现有渠道还是专用界面，取决于哪种做法更省审核时间，而不是统一采用某个渠道。反馈复用和记忆维护分别见 [[agent-closed-loop-learning-from-corrections-to-rules]] 与 [[agent-experience-consolidation-loops]]。
+- **[推论] 沉默也要验收。** 用事先约定的「需要人工处理」标准，复核已通知和未通知的事件：前者看误扰，后者看是否错过要事。有代表性的历史事件可用于回放；若尚无人工标注或复核，不把静默解释为正确。推送量、点击率或采纳率只反映已推送部分，不能单独证明漏报少。
+
+证据边界：这是 LangChain 对两个内部 Agent 的实践叙述，没有通知效果或审阅耗时的量化对照。文中定时运行占比是厂商自报的平台使用情况，不作为行业基准，也不据此调高自主度、设置通知阈值或变更现有调度。
+
 ## AI Agent project design checklist
 
 在启动或推广 AI Agent 项目前，至少回答：
@@ -127,4 +137,4 @@ Wobble 是心理健康支持服务。创始人 Jack Murphy 早期曾关闭一个
 ## Relations
 
 - depends_on: [[agentic-programming-system-engineering]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]]
-- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]]
+- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]], [[public-info-monitoring-automation-methodology]], [[agent-autonomy-ladder-for-hermes-workflows]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]]
