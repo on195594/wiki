@@ -1,10 +1,10 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-11
+updated: 2026-11-18
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
-sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/]
+sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/]
 status: stable
 description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。
 aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review, orchestration-tax]
@@ -76,6 +76,16 @@ Addy Osmani、Morgan Westlee Lunt 与 Qing Wang 在 Anthropic 工程博客 [[cla
 - 2026-10-19 对照[原文正文](https://claude.dev/blog/solving-code-review-at-anthropic/)局部复核了审批路径与重审条件：raw 摘要表将 CI 路径并入高风险示例的表述过强，适用边界以上述原文区分为准。raw 保留采集时内容；收敛比例与平均轮次数值沿用 2026-10-18 采集记录，本次未重新核验图表。
 - 原文明确指出团队尚未实现当回滚率或事故率波动时自动收紧审批层级的熔断器（circuit breakers）；在缺少阻断式 CI/安全检查、合并队列、特性开关、内部灰度与快速回滚能力前，不得照搬“低风险变更零人工审批合并”。
 - `CLAUDE.md`、`REVIEW.md`、`Code Review for Claude Code`、`/code-review` 与 `/security-review` 是来源中的产品与仓库约定；本节仅补充可检索的审查分层与收敛原则，不新增默认自动合并、强制文件模板、active Skill、权限放宽或运行时改动。
+
+### 按变更触发验证：从观察到拦截
+
+Addy Osmani 记录了 Claude Code 团队如何为审查配置独立规则、观察新门禁和评估漏检。[How the Claude Code team thinks about verification（2026-11-16）](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)
+
+1. **按 diff 触发检查，隔离裁判规则。** 每项可靠性检查记录「从 diff 可识别的触发条件 → 要检查的行为 → 相关事故或 PR」，由代码负责人维护。例如，会话存储或消息类型变化时，检查旧会话记录能否安全加载。审查读取基准或默认分支的 `REVIEW.md`；PR 可以提议修改规则，但本次审查不用它刚改过的版本裁判自己。
+2. **新门禁先观察，再决定是否拦截。** 先记录哪些提交本会被挡，不实际阻断；回看误报后再决定是否启用强制模式。团队还记录每个提交采用何种验证方式，包括未验证的情况。**[推论]** 验证方式记录不是通过证据；验收仍应核对绑定到当前修订的实际结果。
+3. **分阶段诊断漏检。** 在已有的历史事故评测中，分别衡量「初次发现 → 验证后保留 → 最终报告」的召回率，区分一开始未发现缺陷，还是后续验证或筛选丢掉了真实问题。保留稳定变更作为对照以监测误报，不用一个端到端分数掩盖差异。
+
+**证据与采用边界：** 这是 Claude Code 团队的实践自述，不是对前述团队工程博客的独立验证。清单规模、重试与放行阈值属于该团队的实现选项，不作为通用标准；本节不启用新的 Hook、Skill 或审查门禁。
 
 ## 4. 先读证据，并让生成吞吐服从可承担责任的处理能力
 

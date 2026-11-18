@@ -2,6 +2,13 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-18] ingest | 将按变更触发的验证实践并入代码审查治理
+
+- 在 [[ai-code-review-governance-and-convergence]] 的分层防线一节引用 Addy Osmani 的 [Claude Code 工程博客](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)，补充 diff 触发与规则隔离、门禁先观察再决定是否拦截、审查召回率的分阶段诊断。
+- 将团队实践与本地推论分开：验证方式记录不等于当前修订的通过证据；同团队自述不算独立验证，不采纳具体清单规模或放行阈值。仅引用公开原文，不归档全文，不更改运行规则或整页核验日期。
+- 同步现有主题目录条目与机器可读目录，不新增正式页或更改首页任务入口。
+- 验证：70 项单元测试以及结构、标签、公开边界和 diff 格式检查通过；目标页目录条目与生成结果一致，已回读来源字段，raw 清单无变化。复核本次新增的公开边界候选：旧会话兼容性是原文公开示例，未包含任何实际会话数据。
+
 ## [2026-11-16] review | 在线复核 30 天内即将到期的 Flutter SwiftPM/CocoaPods 局部断言与 Agent 经验固化/元技能页面来源
 
 - **复核 [[flutter-version-evolution-and-platform-boundaries]] 第 2 节 SwiftPM / CocoaPods 局部块**：在线核对 [Flutter SwiftPM 文档](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers)（站点顶部横幅已更新为 `Flutter 3.50 is live!`，3.44+ 默认启用 SwiftPM、插件回退与移除步骤不变）与 [CocoaPods Trunk Read-only Plan](https://blog.cocoapods.org/CocoaPods-Specs-Repo/)（`2026-11-02..06` 只读切换测试窗口已过，`2026-12-02` 永久只读计划日期不变）；将该局部 `[!volatile]` 块的 `verified_at` 更新为 `2026-11-16` 并同步 `Scoped verification note`（剩余 16 天），按 `SCHEMA.md` 严格保留未来事件 `review_by: 2026-12-02` 及页面级 `verified_at: 2026-11-06` 不变。

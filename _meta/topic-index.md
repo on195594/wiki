@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-16
+updated: 2026-11-18
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-16 | Indexed pages: 131
+> Last updated: 2026-11-18 | Indexed pages: 131
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -76,7 +76,7 @@ status: current
 - [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：结合 $\text{MTTM} = T_{\text{detect}} + T_{\text{triage}} + T_{\text{approve}} + T_{\text{exec}}$ 延迟分解与错误预算消耗保护，用闭集 playbook 与受控审批实现人机协作止血
 - [AI Agent Workflow Layering and Adoption Order](../concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode / CodeAct 程序化执行（含多步中间载荷压缩损益判据）、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，含 `C_spec / D_fsm / A_add / P_prop` 参数化类型契约与验证裁决模型，代码审查分层与收敛治理见子页
-- [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：保留决策理解与责任，结合双向追溯、断言验证、风险分级、三轮收敛条件及排队论（Little 定律与 Kingman 拥塞公式 $W_q \propto \frac{\rho}{1-\rho}$）约束生成吞吐与人类审查产能
+- [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：保留决策理解与责任；用双向追溯、断言验证和风险分级决定审查深度，按 diff 触发检查、先观察再决定是否拦截、分阶段诊断漏检，并用收敛条件与排队论（Little 定律、Kingman 公式）约束审查负荷
 - [AI Agent Python Engineering Capability Checklist](../concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式输入、资源生命周期、有界并发、类型边界、测量驱动的性能优化，以及按真实变更压力选择七类最小设计边界与失效检查
 - [Loop Engineering for AI Agent Workflows](../concepts/loop-engineering-hermes-agent-workflow.md) — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher、离散控制 Lyapunov 变体函数（$\Delta V_t < 0$ 与不动点熔断）及 `L_auto / E_first / V_loop / ρ_rev` 参数化裁决矩阵组织工作闭环；保留 active-layer 审批边界
 - [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：结合孔多塞陪审团定理相关投票退化公式与 MAST 14 类失效分类学（FC1 系统设计 / FC2 协同失调 / FC3 验证缺陷），区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
