@@ -1,14 +1,14 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-11-13
+updated: 2026-11-19
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, docs:https://www.nature.com/articles/s42256-026-01268-y, docs:https://arxiv.org/abs/2512.08296, docs:https://www.expertsmind.com/questions/bernstein-conditions-for-detection-of-parallelism-30138201.aspx]
+sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, docs:https://www.nature.com/articles/s42256-026-01268-y, docs:https://arxiv.org/abs/2512.08296, https://www.semanticscholar.org/paper/Analysis-of-Programs-for-Parallel-Processing-Bernstein/f262d0aee47c1f9a047750957c25d4ffb9579b21, docs:https://a2a-protocol.org/latest/specification/, https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year]
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。
+description: 分类 subagent 编排中的 inline、fan-out、pool、team 及跨边界 A2A 不透明代理协作模式，结合单 Agent 基线、角色上下文交接与 Bernstein 并发读写不交条件。
 aliases: [subagent-patterns]
 verified_at: 2026-11-02
 ---
@@ -118,7 +118,7 @@ Failure mode:
 
 [[langchain-paid-media-agent-2026-09-13]] reports two concrete parent-worker failures. Two platform workers had separate context windows but wrote to the same report path and shared one `done` flag; the first completion could make the second stop without an artifact. Another worker could not determine whether PDF rendering had succeeded, repeatedly inspected files and eventually tried to rebuild the PDF. (The same report also notes that moving deterministic data aggregation from in-context LLM reasoning—`3.9M` input tokens, `1,112s`, `>$3`—to Python execution cut runtime to `85s` and cost by `~40x`, while progressive 3-step tool discovery reduced first-turn tool context from `~38,000` to `~12,000` tokens across 60 runs.)
 
-From concurrent programming theory (A. J. Bernstein, 1966, [*Bernstein's Conditions for Parallelism*](https://www.expertsmind.com/questions/bernstein-conditions-for-detection-of-parallelism-30138201.aspx)), disjoint LLM context windows ($\text{Ctx}_i \cap \text{Ctx}_j = \emptyset$) do not guarantee order-independent parallel execution unless external read sets $\mathcal{R}_i$ and writable state/artifact sets $\mathcal{W}_i$ (output paths, database rows, lifecycle flags) also satisfy pairwise non-interference for all concurrent workers $i \neq j$:
+From concurrent programming theory (A. J. Bernstein, 1966, [*Analysis of Programs for Parallel Processing*](https://www.semanticscholar.org/paper/Analysis-of-Programs-for-Parallel-Processing-Bernstein/f262d0aee47c1f9a047750957c25d4ffb9579b21), *IEEE Transactions on Electronic Computers*, EC-15(5), 757–763, DOI: `10.1109/PGEC.1966.264565`), disjoint LLM context windows ($\text{Ctx}_i \cap \text{Ctx}_j = \emptyset$) do not guarantee order-independent parallel execution unless external read sets $\mathcal{R}_i$ and writable state/artifact sets $\mathcal{W}_i$ (output paths, database rows, lifecycle flags) also satisfy pairwise non-interference for all concurrent workers $i \neq j$:
 $$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset \;\land\; \mathcal{R}_i \cap \mathcal{W}_j = \emptyset \;\land\; \mathcal{W}_i \cap \mathcal{R}_j = \emptyset$$
 
 The narrow fix was per-worker output paths and completion state ($\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$), a three-tool child surface（read context、compute、render）, and one mechanical stop condition: successful render means done ($\Phi_{\text{done}}(w_i) = 1$). The reusable rule is broader than context separation: each child needs isolated writable state, a bounded tool set, an exact return artifact, explicit failure semantics and a completion condition the parent can verify. Shared paths or lifecycle flags turn nominally parallel work into hidden coupling.
@@ -156,6 +156,15 @@ AI Agent mapping:
 
 Failure mode:
 - Agents can deadlock, talk past each other, edit the same files, or hide important state inside inter-agent conversations.
+
+#### Same-harness subagents vs. cross-boundary opaque agents (A2A vs. MCP)
+
+The four modes above assume subagents run inside one shared harness or trust domain. When collaboration crosses framework, service, or organizational boundaries, protocol architecture separates into two complementary open standards under the Linux Foundation ([A2A Protocol Specification](https://a2a-protocol.org/latest/specification/); [Linux Foundation A2A 2026 update](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year)):
+
+- **MCP（Agent ↔ Tool / Data）**：用于单一代理发现并调用结构化工具、资源与数据源，不负责跨不透明代理的多轮任务协商。
+- **A2A（Agent ↔ Opaque Agent）**：用于异构、不透明的外部代理之间通过标准化能力声明与任务生命周期交换消息和产物，而无需共享内部提示词、记忆或私有工具。
+
+**[推论]** 选型边界：凡同一信任域内可由受控子代理或窄工具完成的任务，优先停留在同 Harness 的 Inline / Fan-out 模式，不引入跨进程 A2A 通信开销；一旦接入跨边界外部代理，须将其返回视为不可信外部输入并纳入能力校验、权限隔离与防注入门禁（参见 [[agent-security-architecture-and-prompt-injection-defense]]）。
 
 ## Production trade-off layer
 
@@ -217,4 +226,4 @@ An earlier version cited a private search-workflow trial as validation. No publi
 ## Relations
 
 - depends_on: [[hermes-context-layer-operating-rules]], [[agent-context-engineering]]
-- related: [[agent-orchestration-production-tradeoffs]], [[agent-research-evidence-gate]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- related: [[agent-orchestration-production-tradeoffs]], [[agent-research-evidence-gate]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-security-architecture-and-prompt-injection-defense]]

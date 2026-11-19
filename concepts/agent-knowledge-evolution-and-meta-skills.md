@@ -57,7 +57,7 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 
 > [!volatile]
 > verified_at: 2026-11-18
-> review_by: 2026-12-13
+> review_by: 2027-02-18
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
 > 2026-11-18 核对报告正文、表 10、附录 A.1 和第 5.3 节。基于同一 Qwen3.6-35B-A3B 底座，报告的 CL-Bench 评分通过率为 FewShot 基线 24.5%、RAGMem 基线 39.4%、完整 Self-Evolving Agent-mini 系统 47.6%，各为 3 个随机种子的均值。结果属于包含外部教师的完整系统对比。长周期部署、完全去除外部教师的消融和更广泛的泛化验证仍待完成。

@@ -8,6 +8,13 @@
 - 仅引用公开文章及书目信息，不归档文章正文或配图。作者的收益估计不作为评测基准；对照评测是建议，不改变默认检索流程。
 - 验证：目录和来源反查已收录新页，证据导航页的回链可解析；必需检查通过，未新增公开边界候选，raw 清单不变。
 
+## [2026-11-19] improve | 深化多智能体编排与失效集群、补齐 A2A 协议边界并完成总图与新鲜度维护
+
+- **同错一致率、分歧路由与安全边界**：在 [[multiagent-systemic-failure-modes]] 区分 HELM 中两模型均答错时约 `60%` 的同错一致率、该指标与单体准确率的关系，以及共识不等于核验。将四类分歧路由限定为可被领域规则覆盖的内容审核示例，将 `p = 0.8` 限定为二元独立顾问模型的渐近速率交点；补充与 [[agent-security-architecture-and-prompt-injection-defense]] 的关联。
+- **一手文献替换与 A2A 跨边界协议（P0）**：在 [[subagent-orchestration-patterns]] 将 Bernstein (1966) 并行条件的二手问答站链接替换为 IEEE 原始文献书目（EC-15(5), 757–763, DOI: `10.1109/PGEC.1966.264565`），新增“同 Harness 子代理 vs 跨边界 A2A 不透明代理”小节明确 [A2A 协议](https://a2a-protocol.org/latest/specification/) 与 MCP 的正交分工，并关联 [[agent-security-architecture-and-prompt-injection-defense]]。
+- **编排基准与证据边界**：在 [[agent-orchestration-production-tradeoffs]] 按 [Nature 正式版](https://www.nature.com/articles/s42256-026-01268-y)注明任务、拓扑与单 Agent 基线；区分轨迹级错误放大观测、约 `45%` 的拟合经验规则与工具协调开销的描述性趋势。旧 NYU 2024 代际模型基准仅作历史参考。
+- **总图导航与局部复核**：在 [[llm-engineering-knowledge-map]] 补齐对 [[agent-security-architecture-and-prompt-injection-defense]]、[[repository-level-code-intelligence-layer]] 与 [[multiagent-systemic-failure-modes]] 的导航与 `## Relations`。[[agent-experience-consolidation-loops]] 和 [[agent-knowledge-evolution-and-meta-skills]] 不新增整页 `verified_at`，保留整页 `review_by: 2026-12-13`；后者的 Alloomi 局部块保留 `verified_at: 2026-11-18`，仅该块的 `review_by` 延至 `2027-02-18`。同步主题目录。
+
 ## [2026-11-19] fix | 审查未提交的知识页与决策入口
 
 - [[repository-level-code-intelligence-layer]] 按论文表格区分 AutoCodeRover 常规配置与 SBFL 配置、LocAgent 的微调模型与专有模型结果，并将 ROSE 数据改引原论文。常驻上下文的取舍采用本地对照，不套用论文的成本涨幅。

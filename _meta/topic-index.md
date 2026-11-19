@@ -36,7 +36,7 @@ status: current
 - [AI Agent Layer Routing Decision Checklist](../concepts/hermes-layer-routing-decision-checklist.md) — AI Agent 快速组合路由：按五种正交职责分量（$\mathbf{R}(x)$）与晋升门禁（`B_act / P_skill / G_promo`）拆分需求，外部接入优先复用授权工具，MCP 可选
 - [AI Agent Model-Specific Harness Profiles](../concepts/hermes-model-specific-harness-profiles.md) — AI Agent 的 model/role-specific harness 原则：对照 LangChain DeepAgents `HarnessProfile` / `ProviderProfile` 与 Hermes Agent 配置边界，把模型差异和 AGY Custom Agent 角色边界转成 skill、project context、窄工具面与 verification overlay，而不是盲目扩张 runtime profile
 - [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：区分 de Bruijn 准则与 LCF 架构、形式推导与领域规约，以分层验证、范围化负面结果和专家评审约束知识准入
-- [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
+- [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航（衔接安全架构、仓库代码智能与多智能体失效）及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、Outbox 与冲突政策：结合 Xerox PARC Bayou 的 Committed/Tentative 折叠投影方程（$\text{FoldL}(\text{Apply}, S_{\text{committed}}, O)$）与 CRDT 半格边界组织游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，校准 CUSUM 与告警 PPV，区分当前成功观测和尾部连续失败的健康检查
 - [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$-bench 数据库终态比对与多轮次连续可靠率（$\text{pass}^k$），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
@@ -66,7 +66,7 @@ status: current
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
 - [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 实施阶段非对称授权与语义验收
 - [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，对比单次间隔指数衰减与 ACT-R 全历史幂律激活的适用边界，区分应用事件存储与 AI Agent 默认 memory
-- [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：以单 Agent 基线、任务可分解性、协调成本和错误相关性选择最小拓扑，含 `pass^k / c_err / T_pivot / C_coord` 参数化编排与状态恢复裁决矩阵
+- [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：对照 Finance Agent 集中式与 PlanCraft 独立式的单 Agent 基线，区分错误放大实测、约 `45%` 的拟合经验规则与工具协调成本趋势；含 `pass^k / c_err / T_pivot / C_coord` 裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、窄职责技能链（含 `skill-creator` 有/无引导消融裁剪 $\Delta Q$）、真实数据源、低成本中间产物与前置人类方向；视觉设计案例补充条件性门禁和模型升级后的规则复查
 - [AI Coding Agent Workflow Types](../concepts/ai-coding-agent-workflow-types.md) — AI coding agent 的协作与入口选择：先定义目标、上下文、约束、验收和验证，结合 AI-Native SDLC 阶段提交工件链（`intent.md → spec.md → plan.md → diff`）、单一事实源对齐与 `1σ/2σ/3σ` 生产控制带闭环，按 IDE、Terminal、PR、Cloud 交互模式执行并保留人工审查
 - [AI Coding Assistant Context Budget Management](../concepts/ai-coding-assistant-context-budget-management.md) — AI coding assistant 的上下文预算管理：结合 AST 符号签名图（RepoMap）、三级层级化定位（Agentless）、GitHub Copilot 局部指标陷阱实证（三分类选择性输出压缩、移除无用行号前缀与带行为回归测试的提示词压缩）及 Code Mode / PTC 沙箱中间态隔离，限制历史、全量文件、工具输出和全局指令进入模型
@@ -81,8 +81,8 @@ status: current
 - [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：保留决策理解与责任；用双向追溯、断言验证和风险分级决定审查深度，按 diff 触发检查、先观察再决定是否拦截、分阶段诊断漏检，并用收敛条件与排队论（Little 定律、Kingman 公式）约束审查负荷
 - [AI Agent Python Engineering Capability Checklist](../concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式内存预算、资源清理、结构化并发、类型化解析、性能复测与最小设计边界。
 - [Loop Engineering for AI Agent Workflows](../concepts/loop-engineering-hermes-agent-workflow.md) — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher、离散控制 Lyapunov 变体函数（$\Delta V_t < 0$ 与不动点熔断）及 `L_auto / E_first / V_loop / ρ_rev` 参数化裁决矩阵组织工作闭环；保留 active-layer 审批边界
-- [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：结合孔多塞陪审团定理相关投票退化公式与 MAST 14 类失效分类学（FC1 系统设计 / FC2 协同失调 / FC3 验证缺陷），区分行为低方差、认识论失调、资源共谋与目标冲突升级，并把 Agent 数量和有效独立证据分开
-- [Subagent Orchestration Patterns](../concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：结合 Nature Machine Intelligence 260 配置协作边界、角色优先的上下文交接权衡（延续任务传有界证据包，独立审查隔离父级结论以降低锚定风险）与 Bernstein 并发读写不交条件（$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$），按单 Agent 基线之后依次评估 inline tool、fan-out、pool 或 team
+- [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：结合相关投票退化、受测 LLM 的同错一致率、内容审核中的分歧路由示例、MAST 14 类失效与跨代理安全传播，区分群体共识与独立证据
+- [Subagent Orchestration Patterns](../concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：结合 Nature Machine Intelligence 260 配置协作边界、角色优先上下文交接、Bernstein (1966) 并发读写不交条件（$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$）及同 Harness 子代理 vs 跨边界 A2A 不透明代理分工，按单 Agent 基线依次评估 inline tool、fan-out、pool 或 team
 - [Chat to Agent Session Routing](../concepts/chat-to-agent-session-routing.md) — 聊天平台到有状态 AI Agent 运行时的会话路由：容器键映射、回复目标不可变闭包与企业集成幂等接收器（Idempotent Receiver）去重边界
 
 ### 4. 评测、验证与知识治理 (Evaluation, Verification & Governance)

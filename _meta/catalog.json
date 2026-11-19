@@ -577,7 +577,7 @@
       "path": "concepts/agent-orchestration-production-tradeoffs.md",
       "type": "concept",
       "title": "Agent Orchestration Production Tradeoffs",
-      "description": "比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍。",
+      "description": "比较生产级 Agent 编排拓扑在成本、延迟、控制和准确性之间的取舍，结合任务与拓扑的基准对照、错误放大量和选型经验规则，以及 pass^k / c_err / T_pivot / C_coord 裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -594,7 +594,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -3199,7 +3199,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-19",
       "relations": {
         "depends_on": [
           "hermes-ai-workflow-formalization-principles",
@@ -3210,6 +3210,9 @@
           "production-ai-agent-evaluation-framework",
           "llm-summary-identification-step",
           "agent-orchestration-production-tradeoffs",
+          "agent-security-architecture-and-prompt-injection-defense",
+          "repository-level-code-intelligence-layer",
+          "multiagent-systemic-failure-modes",
           "software-engineering-laws-design",
           "software-engineering-laws-planning",
           "software-engineering-laws-scale",
@@ -3359,7 +3362,7 @@
       "path": "concepts/multiagent-systemic-failure-modes.md",
       "type": "concept",
       "title": "多智能体系统性失效模式",
-      "description": "从行为低方差、认识论失调、共谋和目标冲突升级理解多智能体群体为何会在单体正常时仍产生系统性失败。",
+      "description": "从行为低方差、LLM 同错一致率与共识的验证边界、分歧路由、资源共谋、目标冲突升级及跨代理安全传播理解多智能体群体的系统性失败。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3375,7 +3378,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-17",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -3385,7 +3388,8 @@
           "repeated-measures-statistical-power-for-ai-evaluation",
           "agent-evaluation-rubric-calibration",
           "agent-research-evidence-gate",
-          "agent-pre-deploy-regression-and-trace-debugging"
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "agent-security-architecture-and-prompt-injection-defense"
         ]
       }
     },
@@ -3934,7 +3938,7 @@
       "path": "concepts/subagent-orchestration-patterns.md",
       "type": "concept",
       "title": "Subagent Orchestration Patterns",
-      "description": "分类 subagent 编排中的顺序、并行、路由、评审和层级协作模式。",
+      "description": "分类 subagent 编排中的 inline、fan-out、pool、team 及跨边界 A2A 不透明代理协作模式，结合单 Agent 基线、角色上下文交接与 Bernstein 并发读写不交条件。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3950,7 +3954,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-19",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules",
@@ -3967,7 +3971,8 @@
           "agent-self-validation-loops",
           "wiki-ingestion-workflow",
           "ai-task-delegation-patterns-from-local-cloud-hybrid-llms",
-          "agent-closed-loop-learning-from-corrections-to-rules"
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "agent-security-architecture-and-prompt-injection-defense"
         ]
       }
     },

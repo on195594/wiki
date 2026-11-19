@@ -104,7 +104,7 @@ verified_at: 2026-11-02
 
 ## Related
 
-- [[wiki-cross-source-evidence-navigation-benchmark]]：独立保存本仓库 8 组双入口跨源证据导航评测方案（Q1–Q8）与一跳双向关系可达性拓扑基线。
+- [[wiki-cross-source-evidence-navigation-benchmark]]：独立保存本仓库 8 组双入口跨源证据导航评测方案（Q1–Q8）与一跳双向关系拓扑基线。
 - [[agentic-graphrag-pattern-selection]]：区分何时用固定查询、纵向下钻或有界横向多跳；不替代本页的断言证据绑定规则。
 - [[hermes-knowledge-architecture]]：补充知识对象和证据路由的维护维度。
 - [[hermes-memory-skills-wiki-boundaries]]：补充 Wiki 知识如何保持新鲜，而非改变层边界。
