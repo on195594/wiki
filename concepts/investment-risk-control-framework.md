@@ -1,7 +1,7 @@
 ---
 title: Investment Risk Control Framework
 created: 2026-04-17
-updated: 2026-11-15
+updated: 2026-11-19
 type: concept
 tags: [investment, governance, risk-control]
 sources: [concepts/leontraveller-trading-and-investment-system.md, concepts/ordinary-investor-investment-system.md, docs:https://vantharpinstitute.com/tools/position-sizing-calculator/, docs:https://blog.traderspost.io/article/kelly-criterion-position-sizing-automated-trading, docs:https://investor.vanguard.com/investor-resources-education/portfolio-management/rebalancing-your-portfolio, https://buildingarks.files.wordpress.com/2014/06/dynamics-of-leveraged-etfs-bgi-2009.pdf, https://doi.org/10.1111/j.1540-6261.1952.tb01525.x, https://www.nobelprize.org/uploads/2018/06/markowitz-lecture.pdf, http://solnik.people.ust.hk/Articles/A6-JoFLongin.pdf, https://amoreira2.github.io/alan-moreira.github.io/VolPortfolios_published.pdf]
@@ -80,7 +80,7 @@ volatility: low
 - 核心仓：到再平衡点、配置逻辑失效、或资产属性发生变化
 - 进攻仓：止损触发、时间止损触发、趋势结构破坏、或达到既定退出计划
 
-**[推论] 基本面选股的账户归属与预期失效退出契约**：当投资者基于企业基本面分析（见 [[free-cash-flow-and-valuation-basis]]、[[earnings-quality-and-cash-conversion]]、[[growth-reinvestment-and-return-on-capital]]、[[cyclical-earnings-normalization]] 与 [[price-implied-expectations-analysis]]）交易单家公司股票时，必须预先明确其账户层契约：
+**[推论] 基本面选股的账户归属与预期失效退出契约**：当投资者基于企业基本面分析（总入口见 [[company-analysis-decision-map]]，含 [[earnings-quality-and-cash-conversion]]、[[balance-sheet-solvency-and-distress-risk]]、[[cyclical-earnings-normalization]]、[[growth-reinvestment-and-return-on-capital]]、[[competitive-advantage-period-and-capital-allocation]]、[[free-cash-flow-and-valuation-basis]] 与 [[price-implied-expectations-analysis]]）交易单家公司股票时，必须预先明确其账户层契约：
 - 若划入**进攻仓**，基本面分析仅充当催化剂或基本面筛选器，入场、仓位规模（`1R`）与退出仍无条件服从价格/时间止损纪律，严禁在跌破止损后以“估值便宜、现金流好”为由就地转为长期死扛；
 - 若事前配置方案允许将其划入**核心仓长期配置**，则须受单一个股集中度上限约束；不得在进攻仓止损触发后重新归类以逃避退出。买入前应书面记录支撑估值的可证伪基本面假设（如 ROIC 高于 WACC 的竞争壁垒、自由现金流转化率、隐含预期关键驱动）。核心仓不设短线窄幅价格止损，但必须设定**基本面失效退出条件（Thesis Stop）**：一旦后续定期财报证实核心盈利质量恶化、护城河受损或长期配置逻辑证伪，应按配置失效规则退出，不得在亏损后改写原假设来规避退出；同时应区分可预期的周期回落与长期价值受损，不能把正常周期波动自动判作永久失效。
 
@@ -205,4 +205,4 @@ $$
 
 ## Relations
 - depends_on: [[leontraveller-trading-and-investment-system]], [[ordinary-investor-investment-system]]
-- related: [[combining-two-investment-frameworks]], [[leontraveller-vs-ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[household-fund-layering-model]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]], [[growth-reinvestment-and-return-on-capital]], [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[pre-trade-risk-checklist]], [[when-not-to-trade]], [[inaction-vs-action-decision-framework]], [[position-sizing-method]], [[position-scaling-method]], [[losing-position-review-method]], [[winning-position-risk-management]], [[post-trade-review-loop]], [[repeat-mistake-detection-in-trading]], [[trading-lessons-to-hard-rules]], [[minimal-executable-trading-system]]
+- related: [[combining-two-investment-frameworks]], [[leontraveller-vs-ordinary-investor-investment-system]], [[money-as-tool-and-investment-vs-consumption-framework]], [[household-fund-layering-model]], [[company-analysis-decision-map]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]], [[balance-sheet-solvency-and-distress-risk]], [[growth-reinvestment-and-return-on-capital]], [[competitive-advantage-period-and-capital-allocation]], [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[pre-trade-risk-checklist]], [[when-not-to-trade]], [[inaction-vs-action-decision-framework]], [[position-sizing-method]], [[position-scaling-method]], [[losing-position-review-method]], [[winning-position-risk-management]], [[post-trade-review-loop]], [[repeat-mistake-detection-in-trading]], [[trading-lessons-to-hard-rules]], [[minimal-executable-trading-system]]

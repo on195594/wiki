@@ -1,7 +1,7 @@
 ---
 title: 盈利质量与现金转化
 created: 2026-11-14
-updated: 2026-11-15
+updated: 2026-11-19
 type: concept
 tags: [investment, research]
 sources: [https://www.cuhk.edu.hk/acy2/workshop/June2009Wasley/1996TAR).pdf, https://doi.org/10.2308/tar-9608042309, https://api.crossref.org/works/10.2308/tar-9608042309, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=277231, https://api.crossref.org/works/10.2139/ssrn.277231, https://doi.org/10.2308/accr.2002.77.s-1.35, https://api.crossref.org/works/10.2308/accr.2002.77.s-1.35, https://cas.xmu.edu.cn/info/2083/4954.htm]
@@ -98,4 +98,4 @@ Sloan 的历史美股研究线索及 Dechow–Dichev 的外部实证，均不能
 
 ## Relations
 
-- related: [[free-cash-flow-and-valuation-basis]], [[growth-reinvestment-and-return-on-capital]], [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]
+- related: [[company-analysis-decision-map]], [[balance-sheet-solvency-and-distress-risk]], [[free-cash-flow-and-valuation-basis]], [[growth-reinvestment-and-return-on-capital]], [[competitive-advantage-period-and-capital-allocation]], [[cyclical-earnings-normalization]], [[price-implied-expectations-analysis]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]

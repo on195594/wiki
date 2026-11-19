@@ -1,10 +1,10 @@
 ---
 title: Agent Skill Governance and Reversible Skill State
 created: 2026-10-17
-updated: 2026-11-11
+updated: 2026-11-19
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, lifecycle]
-sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification, https://edutechwiki.unige.ch/en/Adaptive_control_of_thought_theory, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf]
+sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification, https://edutechwiki.unige.ch/en/Adaptive_control_of_thought_theory, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf, https://arxiv.org/html/2602.16313v1]
 status: stable
 description: 说明如何把 Skill 作为受治理的程序性资产：结合 ACT-R 知识编译与扇出效应（Fan Effect）形式化使用漏斗与归因、生命周期状态机与晋升边界、可回滚 Skill 状态与持久知识的分离，以及演化知识的评估边界。
 volatility: medium
@@ -44,9 +44,9 @@ available candidates
 2. **扇出效应（Fan Effect）与候选池干扰衰减**：在 ACT-R 的关联检索模型（Anderson & Reder，1999；[Thomson et al. 2016](https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf)）中，当上下文线索 $j$ 关联到 $\text{fan}_j$ 个候选记忆或技能时，线索 $j$ 向目标条目 $i$ 传递的关联激活强度 $S_{ji}$ 按对数规律衰减：
    $$S_{ji} = S_{\max} - \ln(\text{fan}_j)$$
    其中 $S_{\max}$ 为最大基础关联强度。随着共享相似领域词或触发标签的候选 Skill 数量 $\text{fan}_j$ 增加，每个候选分得的鉴别性激活信噪比呈 $-\ln(\text{fan}_j)$ 下降，相似干扰项（Confusable Distractors）比无关条目更直接推高局部 $\text{fan}_j$，导致检索排序与实际调用精度急剧退化。
-3. **[推论] 技能使用漏斗的条件概率分解**：设候选池规模为 $M$、目标运行环境（`model × harness × toolset`）为 $\mathcal{E}$，单次任务中某个 Skill $s$ 产生正向经验证净收益的有效转化率可分解为：
-   $$P_{\text{eff}}(s \mid \mathcal{C}_M, \mathcal{E}) = P(\text{id} \mid s, \mathcal{C}_M) \cdot P(\text{apply} \mid \text{id}, s, \mathcal{E}) \cdot \Delta P(\text{succ} \mid \text{apply}, s, \mathcal{E})$$
-   其中 $P(\text{id} \mid s, \mathcal{C}_M)$ 受扇出 $\text{fan}_j$ 制约，$P(\text{apply} \mid \text{id}, s, \mathcal{E})$ 受指令清晰度与模型遵循度制约（原论文中仍有 `10.0%` 被误用或忽略），而 $\Delta P(\text{succ} \mid \text{apply}, s, \mathcal{E}) = P(\text{succ} \mid \text{apply}, s, \mathcal{E}) - P(\text{succ} \mid \text{baseline}, \mathcal{E})$ 衡量外部验证器的真实增益（跨模型负迁移时 $\Delta P < 0$）。治理评估必须分别观测这三项因子，不能用单一命中率或未对照的完成率替代。
+3. **[推论] 技能使用漏斗的诊断量**：对同一组留出任务，固定 Skill $s$、候选池和运行环境，分别观察命中、命中后实质使用，以及外部验证成功率的差值。若有针对可比任务的受控使用实验，可用以下乘积估计经该漏斗传递的执行增益：
+   $$P_{\text{skill}} = P(\text{id}) \cdot P(\text{apply} \mid \text{id}) \cdot \Delta_{\text{apply}}$$
+   其中 $\Delta_{\text{apply}}$ 是受控使用与不使用的成功率差，可以为负；乘积不是概率，也不扣除成本。只有漏斗以外的路径对结果无影响、且该差值可代表实际应用场景时，乘积才可近似整体增益。不要把自然运行中已使用 Skill 的任务与整个基线任务集直接比较，两组难度可能不同。是否晋升应另用同一任务集做启用与禁用 Skill 的端到端对照，纳入漏检、误用和额外成本。
 
 ### Frontier-model implication
 
@@ -119,7 +119,7 @@ WikiSkill 报告跨模型正迁移，也报告明显负迁移：Qwen-3.6-27B 演
 
 ## Evaluation boundary for evolving knowledge
 
-[推论] 评估经验固化不能只看“是否检索到旧记录”。还要检查后续任务是否改善、Token 和测试时计算是否换来相称收益、随机混合任务顺序下是否稳定、是否产生错误泛化或陈旧规则，以及提炼、合并、评分和重验证本身的成本。
+[推论] 评估经验固化不能只看“是否检索到旧记录”。还要检查后续任务是否改善、Token 和测试时计算是否换来相称收益、随机混合任务顺序下是否稳定、是否产生错误泛化或陈旧规则，以及提炼、合并、评分和重验证本身的成本。此外，评测集设计须显式区分**被动长上下文回忆基准（如 LoCoMo）**与**行动耦合的多会话闭环基准**：[MemoryArena（2026-02，arXiv:2602.16313）](https://arxiv.org/html/2602.16313v1) 在网页导航、偏好约束规划、渐进式信息检索与顺序形式推理四类人工构造的相互依赖多会话任务中表明，在 LoCoMo 等被动问答基准上接近饱和的 Agent，在必须从早期动作与环境反馈中提炼经验并指导后续动作的闭环里仍表现不佳（该基准反映评测维度差异，不直接设定生产合格阈值）。
 
 对 Skill 类资产，最低评价面应明确区分：`available`、`identified/loaded`、`applied`、`applicable`、`verified outcome`、`misuse/negative transfer` 与 `cost`。只有在变更声称跨模型或跨 harness 可移植时才扩展矩阵；不能因单一平台 Skill 而默认运行全模型评测。
 

@@ -1,7 +1,7 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-18
+updated: 2026-11-19
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
 sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/]
@@ -116,4 +116,4 @@ Addy Osmani 的 [[addyosmani-critical-thinking-when-agents-do-the-work-2026-11-0
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
 - depends_on: [[agent-self-validation-loops]], [[subagent-orchestration-patterns]]
-- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-python-engineering-capability-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-python-engineering-capability-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[repository-level-code-intelligence-layer]]

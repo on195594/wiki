@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 132,
+  "total_pages": 135,
   "pages": [
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
@@ -178,7 +178,8 @@
           "agent-failure-closed-loop-evaluation",
           "repeated-measures-statistical-power-for-ai-evaluation",
           "production-agent-evaluation-baselines",
-          "hermes-active-surface-lifecycle-governance"
+          "hermes-active-surface-lifecycle-governance",
+          "agent-security-architecture-and-prompt-injection-defense"
         ]
       }
     },
@@ -525,7 +526,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -807,6 +808,7 @@
           "agent-production-harness-and-cloud-runtime-boundaries",
           "agent-memory-reflection-planning-pipeline",
           "agent-experience-consolidation-loops",
+          "agent-closed-loop-learning-from-corrections-to-rules",
           "multiagent-systemic-failure-modes",
           "hermes-agent-workflow-layering-and-adoption-order"
         ]
@@ -888,7 +890,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -1235,7 +1237,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-18",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1252,7 +1254,8 @@
           "loop-engineering-hermes-agent-workflow",
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "hermes-python-engineering-capability-checklist",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
+          "repository-level-code-intelligence-layer"
         ]
       }
     },
@@ -1317,7 +1320,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1499,7 +1502,7 @@
       "volatility": "high",
       "review_by": "2027-02-10",
       "verified_at": "2026-11-10",
-      "updated": "2026-11-10",
+      "updated": "2026-11-19",
       "relations": {
         "depends_on": [
           "hermes-ai-workflow-formalization-principles",
@@ -1510,6 +1513,70 @@
           "claude-code-practical-workflow-tips",
           "repository-level-code-intelligence-layer",
           "wiki-ingestion-workflow"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/balance-sheet-solvency-and-distress-risk.md",
+      "type": "concept",
+      "title": "资产负债表、偿债能力与财务困境风险",
+      "description": "公司分析方法卡：基于 Damodaran 困境估值截断风险模型与 Altman Z-score 口径边界，核查债务结构、利息保障、再融资压力与永久本金损失风险。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research",
+        "risk-control"
+      ],
+      "aliases": [
+        "偿债能力与困境风险",
+        "财务困境风险",
+        "solvency-and-distress-risk"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-11-19",
+      "relations": {
+        "related": [
+          "company-analysis-decision-map",
+          "earnings-quality-and-cash-conversion",
+          "free-cash-flow-and-valuation-basis",
+          "cyclical-earnings-normalization",
+          "competitive-advantage-period-and-capital-allocation",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
+        ]
+      }
+    },
+    {
+      "path": "concepts/company-analysis/competitive-advantage-period-and-capital-allocation.md",
+      "type": "concept",
+      "title": "竞争优势持续期与资本配置",
+      "description": "公司分析方法卡：结合 Mauboussin 护城河评估、竞争优势持续期（CAP）与资本配置框架，判断 ROIC 超额回报的幅度、持续时长与管理层资本配置质量。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research"
+      ],
+      "aliases": [
+        "竞争优势持续期",
+        "护城河与资本配置",
+        "cap-and-capital-allocation"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-11-19",
+      "relations": {
+        "related": [
+          "company-analysis-decision-map",
+          "earnings-quality-and-cash-conversion",
+          "growth-reinvestment-and-return-on-capital",
+          "price-implied-expectations-analysis",
+          "free-cash-flow-and-valuation-basis",
+          "balance-sheet-solvency-and-distress-risk",
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework"
         ]
       }
     },
@@ -1530,10 +1597,13 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "related": [
+          "company-analysis-decision-map",
+          "balance-sheet-solvency-and-distress-risk",
           "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
           "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
           "earnings-quality-and-cash-conversion",
@@ -1560,11 +1630,14 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "related": [
+          "company-analysis-decision-map",
+          "balance-sheet-solvency-and-distress-risk",
           "free-cash-flow-and-valuation-basis",
           "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "ordinary-investor-investment-system",
@@ -1576,7 +1649,7 @@
       "path": "concepts/company-analysis/free-cash-flow-and-valuation-basis.md",
       "type": "concept",
       "title": "自由现金流与估值口径",
-      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则），匹配现金流对象、折现率和价值口径。",
+      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则），匹配现金流对象、折现率、股权激励稀释与高 ROIC 负 FCF 边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1590,11 +1663,14 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "related": [
+          "company-analysis-decision-map",
           "earnings-quality-and-cash-conversion",
+          "balance-sheet-solvency-and-distress-risk",
           "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "ordinary-investor-investment-system",
@@ -1606,7 +1682,7 @@
       "path": "concepts/company-analysis/growth-reinvestment-and-return-on-capital.md",
       "type": "concept",
       "title": "增长、再投资与资本回报",
-      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及投入资本回报率（ROIC）的口径与常见失真。",
+      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及投入资本回报率（ROIC）的口径、研发资本化调整与常见失真。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1619,9 +1695,12 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "related": [
+          "company-analysis-decision-map",
+          "competitive-advantage-period-and-capital-allocation",
+          "balance-sheet-solvency-and-distress-risk",
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
@@ -1648,9 +1727,12 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "related": [
+          "company-analysis-decision-map",
+          "competitive-advantage-period-and-capital-allocation",
+          "balance-sheet-solvency-and-distress-risk",
           "cyclical-earnings-normalization",
           "growth-reinvestment-and-return-on-capital",
           "free-cash-flow-and-valuation-basis",
@@ -1957,7 +2039,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "loop-engineering-hermes-agent-workflow",
@@ -1969,7 +2051,8 @@
         "related": [
           "ai-coding-agent-workflow-types",
           "codex-agent-workflow-layering",
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "repository-level-code-intelligence-layer"
         ]
       }
     },
@@ -2097,7 +2180,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "system-governance-operating-model"
@@ -2114,7 +2197,8 @@
           "hermes-knowledge-architecture",
           "wiki-ingestion-workflow",
           "progressive-knowledge-system-growth",
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "repository-level-code-intelligence-layer"
         ]
       }
     },
@@ -2919,7 +3003,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -2930,9 +3014,12 @@
           "leontraveller-vs-ordinary-investor-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework",
           "household-fund-layering-model",
+          "company-analysis-decision-map",
           "free-cash-flow-and-valuation-basis",
           "earnings-quality-and-cash-conversion",
+          "balance-sheet-solvency-and-distress-risk",
           "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "pre-trade-risk-checklist",
@@ -3290,7 +3377,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-19",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -3300,9 +3387,12 @@
           "leontraveller-trading-and-investment-system",
           "combining-two-investment-frameworks",
           "household-fund-layering-model",
+          "company-analysis-decision-map",
           "free-cash-flow-and-valuation-basis",
           "earnings-quality-and-cash-conversion",
+          "balance-sheet-solvency-and-distress-risk",
           "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
           "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
           "wiki-ingestion-workflow"
@@ -3536,7 +3626,7 @@
       "path": "concepts/repository-level-code-intelligence-layer.md",
       "type": "concept",
       "title": "Repository-Level Code Intelligence Layer",
-      "description": "定义仓库级代码智能层在索引、检索、依赖理解和代码问答中的职责。",
+      "description": "定义仓库级代码智能层：区分词法、句法 AST（Tree-sitter）与编译器语义索引（LSP / SCIP），对比图引导/SBFL/结构分块定位范式，结合版本共变耦合（ROSE）与 AGENTS.md 正反实证及 R_loc / P_sym / H_ctx / C_co 参数化门禁装配低噪音上下文。",
       "status": "stable",
       "tags": [
         "ai-coding",
@@ -3552,7 +3642,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "ai-coding-assistant-context-budget-management",
@@ -3561,7 +3651,11 @@
         ],
         "related": [
           "llm-engineering-knowledge-map",
-          "subagent-orchestration-patterns"
+          "subagent-orchestration-patterns",
+          "first-edit-economy-for-coding-agents",
+          "typed-ai-agent-boundaries",
+          "ai-code-review-governance-and-convergence",
+          "hermes-active-surface-lifecycle-governance"
         ]
       }
     },
@@ -3924,7 +4018,8 @@
           "wiki-ingestion-workflow",
           "hermes-agent-workflow-layering-and-adoption-order",
           "ai-agent-tool-selection-architecture",
-          "agent-security-architecture-and-prompt-injection-defense"
+          "agent-security-architecture-and-prompt-injection-defense",
+          "repository-level-code-intelligence-layer"
         ]
       }
     },
@@ -4170,6 +4265,47 @@
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "inaction-vs-action-decision-framework"
+        ]
+      }
+    },
+    {
+      "path": "queries/company-analysis-decision-map.md",
+      "type": "query",
+      "title": "公司基本面分析决策地图",
+      "description": "按真实研究问题与四步尽调顺序路由公司基本面分析方法卡，并衔接长期配置与交易风控门禁的总入口。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "research",
+        "decision",
+        "risk-control"
+      ],
+      "aliases": [
+        "company-analysis-index",
+        "fundamental-analysis-decision-map",
+        "公司分析决策地图"
+      ],
+      "volatility": "low",
+      "review_by": null,
+      "verified_at": null,
+      "updated": "2026-11-19",
+      "relations": {
+        "depends_on": [
+          "earnings-quality-and-cash-conversion",
+          "balance-sheet-solvency-and-distress-risk",
+          "cyclical-earnings-normalization",
+          "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation",
+          "free-cash-flow-and-valuation-basis",
+          "price-implied-expectations-analysis"
+        ],
+        "related": [
+          "ordinary-investor-investment-system",
+          "investment-risk-control-framework",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "losing-position-review-method",
+          "combining-two-investment-frameworks"
         ]
       }
     },

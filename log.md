@@ -2,6 +2,36 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-19] fix | 审查未提交的知识页与决策入口
+
+- [[repository-level-code-intelligence-layer]] 按论文表格区分 AutoCodeRover 常规配置与 SBFL 配置、LocAgent 的微调模型与专有模型结果，并将 ROSE 数据改引原论文。常驻上下文的取舍采用本地对照，不套用论文的成本涨幅。
+- [[balance-sheet-solvency-and-distress-risk]] 对齐困境概率窗口与情景现值；[[competitive-advantage-period-and-capital-allocation]] 区分整体与新增资本的超额回报期，要求反推年限时联动重算增长、再投资与终值。[[company-analysis-decision-map]] 同步两类年限与核心仓个股准入约束；[[growth-reinvestment-and-return-on-capital]] 明确研发重分类不改变当期自由现金流的勾稽条件。
+- [[agent-experience-consolidation-loops]] 与 [[agent-skill-governance-and-reversible-state]] 统一技能漏斗指标，区分有符号增益、成功概率和扣除成本后的净效用。
+
+## [2026-11-19] fix | 校准仓库级代码智能层的来源归因、指标口径与页内一致性
+
+- **SCIP 与 LocAgent 归因收紧**：在 [[repository-level-code-intelligence-layer]] 明确 [Sourcegraph 2022-06-08 SCIP 公告](https://sourcegraph.com/blog/announcing-scip) 中 `10x` CI 提速并非仅源于协议差异、增量索引与跨语言导航在该公告时尚属预期能力（`once implemented`），并将 LSP 实时查询标为工程架构对照而非该公告实测；补充 [LocAgent (arXiv:2503.09089)](https://arxiv.org/abs/2503.09089) 约 `86%` 成本降幅以微调 32B 模型对照 SOTA 专有模型为前提。
+- **ROSE 版本归因与摘要核验边界**：将 ROSE 的 `26%/30%` 与 `15%/26%` 指标准确归因于已核对的 [ICSE 2004 摘要](https://www.uni-trier.de/universitaet/fachbereiche-faecher/fachbereich-iv/faecher/informatikwissenschaften/professuren/softwaretechnik/forschung/projekte/software-evolution)，移除未通读全文的 2005 TSE PDF 来源项，并在 `Limits` 注明本次新增外部论文仅核对公开摘要页，保持页面级 `verified_at: 2026-11-02` 不变。
+- **`AGENTS.md` 口径区分与页内消歧**：明确 [arXiv:2601.20404](https://arxiv.org/abs/2601.20404) 报告的是中位耗时与**输出 Token**关联（而非含常驻输入的总推理费用），与 [arXiv:2602.11988](https://arxiv.org/abs/2602.11988) 的总成本上升并不直接矛盾；同步修正 [[codex-agent-workflow-layering]] 第 3 节的“目录结构”示例，消除与页尾反静态概览表述的页内冲突。
+
+## [2026-11-19] improve | 深化仓库级代码智能层：补齐 SCIP 语义索引、图/AST 定位范式、AGENTS.md 正反实证与共变耦合边界
+
+- **索引分层与定位范式**：在 [[repository-level-code-intelligence-layer]] 将索引明确分层为词法（ripgrep/BM25）、句法 AST（Tree-sitter / RepoMap）与编译器语义索引（[Sourcegraph SCIP](https://sourcegraph.com/blog/announcing-scip) / LSP），补充 [AutoCodeRover (arXiv:2404.05427)](https://arxiv.org/abs/2404.05427)、[LocAgent (arXiv:2503.09089)](https://arxiv.org/abs/2503.09089) 与 [cAST (arXiv:2506.15655)](https://arxiv.org/abs/2506.15655) 的代码定位与结构分块实证对照。
+- **`AGENTS.md` 实证边界与共变降噪**：引入 [Evaluating AGENTS.md (arXiv:2602.11988)](https://arxiv.org/abs/2602.11988) 与 [AGENTS.md Efficiency (arXiv:2601.20404)](https://arxiv.org/abs/2601.20404) 的正反实证，将常驻上下文文件收束为非标准约定与验收命令（剔除高税负静态仓库概览）；为 Git 共变层补齐 [Zimmermann 等（IEEE TSE 2005，ROSE）](https://thomas-zimmermann.com/publications/files/zimmermann-tse-2005.pdf) 理论基础与超大提交降噪边界。
+- **参数化门禁与双向图谱**：新增 `[推论]` 四参数裁决矩阵（`R_loc / P_sym / H_ctx / C_co`），在 [[ai-coding-assistant-context-budget-management]] 与 [[codex-agent-workflow-layering]] 补齐交叉引用，在 [[first-edit-economy-for-coding-agents]]、[[typed-ai-agent-boundaries]]、[[ai-code-review-governance-and-convergence]] 与 [[hermes-active-surface-lifecycle-governance]] 补齐双向 `## Relations` 并同步 `_meta/topic-index.md`；保留各存量页既有 `verified_at` 与 `review_by` 不变，不改动任何运行规则或默认配置。
+
+## [2026-11-19] improve | Agent 经验固化的证据与安全边界
+
+- [[agent-experience-consolidation-loops]] 区分干净记录、无关文本与似是而非的错误细节对离线重写的影响；跨轮冲突保留出处。Alloomi 的易变指标由 [[agent-knowledge-evolution-and-meta-skills]] 单点维护，局部补证不刷新整页核验期限。
+- [[agent-security-architecture-and-prompt-injection-defense]] 集中维护 MINJA、PMPA 与 MemPoison 的威胁模型及指标口径；纠错、记忆与经验固化页引用该页的写入信任门禁。
+- [[agent-knowledge-evolution-and-meta-skills]] 区分纯检索记忆的理论限制与生产实测；[[agent-skill-governance-and-reversible-state]] 引入 MemoryArena，区分被动回忆与后续行动表现。
+
+## [2026-11-19] improve | 公司基本面七卡决策地图
+
+- 新增 [[company-analysis-decision-map]]，串联七张方法卡，并按资金层衔接 [[pre-trade-risk-checklist]]。首页、主题目录和机器目录同步收录三个新页面。
+- 新增 [[balance-sheet-solvency-and-distress-risk]] 与 [[competitive-advantage-period-and-capital-allocation]]，分别覆盖逐月偿债缺口与困境估值、竞争优势持续期与资本配置；决策地图区分市场隐含预测期与新增投资的超额回报期。
+- [[growth-reinvestment-and-return-on-capital]] 补充研发资本化与增量回报口径，[[free-cash-flow-and-valuation-basis]] 补充股权激励稀释、净回购与扩张期负现金流的判断条件。
+
 ## [2026-11-19] improve | 增量补强五篇存量核心页的安全边界并打通双向图谱
 
 - **工具供应链与沙箱隔离衔接**：在 [[agent-skill-provider-governance-boundary]] 补充外部 MCP 工具描述投毒、批准后静默篡改（Rug Pull）与跨服务器遮蔽边界（引 [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification) 与 [MCP 安全最佳实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)）；在 [[typed-ai-agent-boundaries]] 的 Code Mode 沙箱小节衔接 [CaMeL (arXiv:2503.18813)](https://arxiv.org/abs/2503.18813) 数据流污点追踪与[六类抗注入架构模式 (arXiv:2506.08837)](https://arxiv.org/abs/2506.08837)。

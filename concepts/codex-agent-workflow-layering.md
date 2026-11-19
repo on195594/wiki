@@ -1,7 +1,7 @@
 ---
 title: Codex Agent Workflow Layering
 created: 2026-04-17
-updated: 2026-11-10
+updated: 2026-11-19
 type: concept
 tags: [agent, llm, mcp, automation, workflow, configuration, tool]
 sources: [docs:https://learn.chatgpt.com/docs/agent-configuration/agents-md, docs:https://learn.chatgpt.com/docs/config-file/config-basic, docs:https://learn.chatgpt.com/docs/build-skills, raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md]
@@ -57,7 +57,7 @@ prompt 的职责是把这一次要做什么说清楚。
 _As of: 2026-11-10 · Source: [官方文档：How Codex discovers guidance](https://learn.chatgpt.com/docs/agent-configuration/agents-md#how-codex-discovers-guidance)_
 
 `AGENTS.md` 负责承载仓库级长期规则，例如：
-- 目录结构
+- 关键入口与非标准目录边界（避免堆砌完整静态目录树概览，实证边界见 [[repository-level-code-intelligence-layer]]）
 - build / test / lint 命令
 - 工程约定
 - 禁止事项
@@ -183,7 +183,7 @@ AI Agent 对这篇文章的采纳边界：
 
 ## Relationship to repository intelligence
 
-[[repository-level-code-intelligence-layer]] adds a repo-analysis layer beneath `AGENTS.md`: durable repo rules and context files should be informed by indexed structure, dependency graph signals, Git history, and verified architecture decisions rather than hand-written summaries alone.
+[[repository-level-code-intelligence-layer]] adds a repo-analysis layer beneath `AGENTS.md`: durable repo rules should stay short and focus on non-standard conventions and verification commands rather than bloated static repository overviews (see the 2026 `AGENTS.md` empirical boundaries maintained on that page), while indexed structure, semantic dependency graphs, and denoised Git co-change signals supply task-scoped context on demand.
 
 ## Relations
 

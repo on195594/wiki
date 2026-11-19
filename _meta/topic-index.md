@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-19 | Indexed pages: 132
+> Last updated: 2026-11-19 | Indexed pages: 135
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -60,7 +60,7 @@ status: current
 - [AI Agent Skill Refactoring Methodology](../concepts/hermes-skill-refactoring-methodology.md) — AI Agent Skill 重构方法论：结合 Parnas 信息隐藏、Nielsen 渐进式披露与 Agent Skills 三层加载、SKILL.state 程序/状态分离（$\mathcal{O}(T)$ vs $\mathcal{O}(T^2)$）及 Warp/WikiSkill 双环演化机制，收敛默认路径与跨模型复验边界
 - [LLM Context Engineering Layer](../concepts/llm-context-engineering-layer.md) — Context engineering 管理 memory、compression、re-ranking 与 token budget：结合检索召回与阅读器饱和脱节（Lost in the Middle）及信息瓶颈原理；涵盖 Agentic RAG 的证据信任边界与语义漂移/未知候选概念参考
 - [LLM Summary Identification Step](../concepts/llm-summary-identification-step.md) — 来源约束摘要的识别与诚实留白：以部分识别和选择性预测作类比，按类别核验原文事实、显式推断与建议，不把建议作为事实的自动降级出口
-- [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：结合 Tree-sitter AST 符号引用图与 PageRank 预算映射（RepoMap）及三级层级化定位（Agentless），把目标代码、可达接口签名、项目约束与显式未知项装配成低噪音 Agent 上下文
+- [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：区分词法、句法 AST（Tree-sitter / RepoMap）与编译器语义索引（LSP / SCIP），对比 Agentless / AutoCodeRover（AST+SBFL）/ LocAgent（异构图）/ cAST（结构分块）定位范式，结合版本共变耦合（ROSE）、`AGENTS.md` 2026 正反实证与 `R_loc / P_sym / H_ctx / C_co` 参数化门禁装配低噪音上下文
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
 - [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 实施阶段非对称授权与语义验收
@@ -115,16 +115,18 @@ status: current
 - [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域 15 项强类型参数耦合矩阵与守恒不变量（周时间带宽、存量/流量转换式、撤除留存门禁与压力余量熔断）、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
-- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓、宽基底盘到个股基本面五卡路由边界与行为控制执行
+- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓、宽基底盘到个股基本面七卡路由边界与行为控制执行
 - [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习解释力边界（Ericsson 1993 / Macnamara 2014）、认知负荷理论（Sweller 1988）、任务切换注意力残留（Leroy 2009）与单双环复盘（Argyris & Schön），含 `R / P / V` 强类型参数与 $\Delta S_{\text{retain}} > 0$ 撤除迁移验证契约
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 2004 任务特定）、探索—利用权衡（March 1991）与长工时边际产出非线性衰减（Pencavel 2015），兼顾 `B / E / C / S` 强类型参数与家庭兼容性
 - [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
-- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：增长率 = 再投资率 × 资本回报，ROIC 的定义、会计失真与边际回报，以及没有超额回报的增长不创造价值
+- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：用再投资率与新增资本回报估算经营利润增长，ROIC 的定义、研发资本化调整、会计失真与边际回报（ROIIC），以及没有超额回报的增长不创造价值
 - [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
-- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则及应用指南），匹配现金流对象、折现率、中国报表利息/税费分类与再投资要求
+- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则及应用指南），匹配现金流对象、折现率、中国报表利息/税费分类、SBC 稀释口径与高 ROIC 阶段性负 FCF 边界
 - [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — 公司分析方法卡：基于 Sloan (1996) 应计持续性全文与 Dechow–Dichev (2001/2002) 营运资本应计模型，同期间、同范围解释利润与经营现金流差异，区分正常投入、收付时点和待核查异常；含未来现金流的回归残差不作当期信号
+- [资产负债表、偿债能力与财务困境风险](../concepts/company-analysis/balance-sheet-solvency-and-distress-risk.md) — 公司分析方法卡：基于 Damodaran 困境估值截断风险模型（Going Concern DCF 与困境出售价值按对应情景概率加权）与 Altman Z / Z' / Z'' 适用口径边界，核查债务到期墙、下行利息保障与永久本金损失风险
+- [竞争优势持续期与资本配置](../concepts/company-analysis/competitive-advantage-period-and-capital-allocation.md) — 公司分析方法卡：结合 Mauboussin 护城河评估、竞争优势持续期（CAP / ROIC 衰减率）与资本配置框架（零基配置、战略包与五类资金去向核查），评估超额回报持续时长与管理层配置质量
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
 - [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险
@@ -152,6 +154,7 @@ status: current
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
 - [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 反熵编程主查询入口：整合比例规格契约、二阶段结构化提取、首次编辑经济性、窄工具与沙箱程序化编排（防 JSON 搬运工）、显式依赖、按风险选择的分层验证与重试预算、爆炸半径内有界清理、退出证据块与六条反合理化应对建议；流程由对应概念页主维护，示例不表示已经部署
 - [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：基于 BPT 心理账户防火墙与参数化门禁（`L / δ` vs `1R / R_open / D_max`），长期制度管底盘，主动纪律管进攻
+- [公司基本面分析决策地图](../queries/company-analysis-decision-map.md) — 公司基本面分析总入口：按四步尽调顺序（质量与生存闸门 → 商业模式、周期与护城河校准 → 现金流口径与预期差 → 组合与风控接入）和具体问题路由七张公司分析方法卡，衔接长期配置与交易风控门禁
 - [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
 - [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：结合 Barber & Odean 过度交易换手损耗实证与四条硬熔断门禁（`D_max / R_open / δ / 1R`），拦截进攻仓摊平亏损、情绪补仓、越权单或无退出计划交易
 - [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：结合前景理论的参考点价值函数、处置效应与回本效应（Break-Even Effect），区分正常回撤、失效判断和伪装成再平衡的情绪补仓

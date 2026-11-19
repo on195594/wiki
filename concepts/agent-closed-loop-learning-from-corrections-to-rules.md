@@ -4,7 +4,7 @@ created: 2026-05-18
 updated: 2026-11-19
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, governance]
-sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714, docs:https://www.langchain.com/blog/goal-engineering]
+sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714, docs:https://www.langchain.com/blog/goal-engineering, https://arxiv.org/pdf/2609.13889, https://arxiv.org/abs/2605.29960]
 status: stable
 description: 从便于人工审阅与反馈复用的任务范围设计，到用户纠错的记录、泛化、验证与规则晋升。
 aliases: [closed-loop-learning, goal-engineering]
@@ -221,6 +221,7 @@ candidate correction pattern
 - 无法构造验证样本。
 - 会覆盖其他用户或其他任务的合理差异。
 - 只是产品宣传，缺少本地验证。
+- `[推论]` 纠错来源未经鉴权、混杂了外部不可信输入或跨主体共享上下文：结合 [PMPA（2026-09，arXiv:2609.13889）](https://arxiv.org/pdf/2609.13889) 与 [MemPoison（ACM CCS 2026，arXiv:2605.29960）](https://arxiv.org/abs/2605.29960)，不能将选择性摘要或反思改写当作过滤恶意指令的唯一屏障；反馈晋升前须核验纠错主体权限与来源信任等级，完整防御门禁见 [[agent-security-architecture-and-prompt-injection-defense]]。
 
 ## Limitations
 
@@ -235,4 +236,4 @@ candidate correction pattern
 ## Relations
 
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-self-validation-loops]], [[production-ai-agent-evaluation-framework]], [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[production-agent-evaluation-baselines]], [[hermes-active-surface-lifecycle-governance]]
+- related: [[agent-self-validation-loops]], [[production-ai-agent-evaluation-framework]], [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-layer-routing-decision-checklist]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[production-agent-evaluation-baselines]], [[hermes-active-surface-lifecycle-governance]], [[agent-security-architecture-and-prompt-injection-defense]]

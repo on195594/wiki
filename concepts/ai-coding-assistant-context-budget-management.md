@@ -1,7 +1,7 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-11-16
+updated: 2026-11-19
 type: concept
 tags: [ai-coding, agent, context-engineering, optimization, claude-code]
 sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489, https://blog.cloudflare.com/code-mode/, https://blog.cloudflare.com/code-mode-mcp/, https://www.anthropic.com/research/advanced-tool-use]
@@ -41,7 +41,7 @@ AI coding assistant 的成本与稳定性主要受上下文输入治理影响，
 AI Agent 映射：长任务不要依赖完整聊天历史延续；应把 durable knowledge 写回 wiki/skill/project doc，把短期状态留在 session。
 
 ### 2. Instructions should be layered, not global
-`CLAUDE.md` 这类全局指令每次都会占用上下文。文章建议保持短小，并把 API、测试、模块规则迁移到路径级规则或按需 skills。
+`CLAUDE.md` / `AGENTS.md` 这类全局或仓库常驻指令每次都会占用上下文。文章建议保持短小，并把 API、测试、模块规则迁移到路径级规则或按需 skills。2026 年实证研究亦提示：常驻上下文文件中堆砌静态仓库概览往往不提升成功率反而推高推理成本，应仅保留非标准约定与验收命令并在部署前对照验证（完整正反实证边界统一由 [[repository-level-code-intelligence-layer]] 维护）。
 
 AI Agent 映射：
 - 全局 developer/SOUL 只放稳定边界

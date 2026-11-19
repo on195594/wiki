@@ -1,7 +1,7 @@
 ---
 title: First-edit Economy for Coding Agents
 created: 2026-07-07
-updated: 2026-11-11
+updated: 2026-11-19
 type: concept
 tags: [agent, ai-coding, workflow, optimization, evaluation]
 sources: [raw/articles/vscode-prompt-tuning-gpt55-coding-harness-2026-07-06.md, https://people.orie.cornell.edu/pfrazier/pub/frazier_dp_weor.pdf, https://www.inf.u-szeged.hu/~akiss/pub/fulltext/hodovan2016modernizing.pdf, https://userweb.cs.txstate.edu/~rp31/papersSQ/WeiserSlicing.pdf]
@@ -142,4 +142,4 @@ concrete anchor
 
 - refines: [[loop-engineering-hermes-agent-workflow]], [[agent-self-validation-loops]]
 - depends_on: [[agent-context-engineering]]
-- related: [[ai-coding-agent-workflow-types]], [[codex-agent-workflow-layering]], [[hermes-layer-routing-decision-checklist]]
+- related: [[ai-coding-agent-workflow-types]], [[codex-agent-workflow-layering]], [[hermes-layer-routing-decision-checklist]], [[repository-level-code-intelligence-layer]]

@@ -4,7 +4,7 @@ created: 2026-11-19
 updated: 2026-11-19
 type: concept
 tags: [agent, architecture, governance, risk-control, mcp, verification]
-sources: [https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/, https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/, https://arxiv.org/abs/2404.13208, https://arxiv.org/abs/2406.13352, https://arxiv.org/abs/2503.18813v2, https://arxiv.org/abs/2506.08837, https://arxiv.org/abs/2510.09023, https://arxiv.org/abs/2503.03704, https://invariantlabs.ai/blog/mcp-security-notification, https://invariantlabs.ai/blog/introducing-mcp-scan, https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices, concepts/agent-skill-provider-governance-boundary.md, concepts/typed-ai-agent-boundaries.md]
+sources: [https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/, https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/, https://arxiv.org/abs/2404.13208, https://arxiv.org/abs/2406.13352, https://arxiv.org/abs/2503.18813v2, https://arxiv.org/abs/2506.08837, https://arxiv.org/abs/2510.09023, https://arxiv.org/abs/2503.03704, https://arxiv.org/pdf/2609.13889, https://arxiv.org/abs/2605.29960, https://invariantlabs.ai/blog/mcp-security-notification, https://invariantlabs.ai/blog/introducing-mcp-scan, https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices, concepts/agent-skill-provider-governance-boundary.md, concepts/typed-ai-agent-boundaries.md]
 status: stable
 volatility: medium
 verified_at: 2026-11-19
@@ -90,12 +90,16 @@ Beurer-Kellner 等（2025，[*Design Patterns for Securing LLM Agents against Pr
 - **本地进程沙箱与完整命令确认**：支持一键配置的客户端必须展示完整、未截断的待执行命令和参数，并要求显式确认。规范另建议以最小权限沙箱限制本地进程的文件系统与网络访问；`stdio` 只约束通信方式，本身不是沙箱。
 - **工具定义哈希固定与跨源隔离**：`[推论]` 以已审来源标识和工具名绑定审批，将 Schema 与 `description` 等元数据做哈希固定（Pinning），发现变化即暂停并重审。哈希只能发现覆盖字段变更，不能证明远端实现不变；仍需隔离不同来源的权限，并由 [[agent-skill-provider-governance-boundary]] 的 `ScopeGate` 按调用校验参数。
 
-### 4.2 持久记忆与经验固化投毒（MINJA）
+### 4.2 持久记忆与经验固化投毒（MINJA / PMPA / MemPoison）
 
-当 Agent 具备跨会话长期记忆或经验固化闭环时，一次性注入可转化为持久化后门。NeurIPS 2025 论文 [*Memory Injection Attacks on LLM Agents via Query-Only Interaction*（MINJA）](https://arxiv.org/abs/2503.03704) 在实验中发现，无需直接访问记忆数据库，仅通过查询与观察输出也能诱导具备自动记忆写入的 Agent 保存恶意记录。在三类任务 Agent、四类受害者与目标配对的实验设置中，平均记忆注入成功率为 **98.2%**，后续恶意推理诱发成功率为 **76.8%**；后一指标不等于外部系统实际发生越权操作的概率。
+当 Agent 具备跨会话长期记忆或经验固化闭环时，一次性注入可转化为持久化后门。三类前提不同的威胁模型需要一并纳入防御假设：
+
+- **仅查询交互投毒（MINJA）**：NeurIPS 2025 论文 [*Memory Injection Attacks on LLM Agents via Query-Only Interaction*（MINJA）](https://arxiv.org/abs/2503.03704) 在实验中发现，无需直接访问记忆数据库，仅通过查询与观察输出也能诱导具备自动记忆写入的 Agent 保存恶意记录。在三类任务 Agent、四类受害者与目标配对的实验设置中，平均记忆注入成功率为 **98.2%**，后续恶意推理诱发成功率为 **76.8%**；后一指标不等于外部系统实际发生越权操作的概率。
+- **无直接交互的 Harness 持久投毒（PMPA）**：[*When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents*（PMPA，2026-09，arXiv:2609.13889）](https://arxiv.org/pdf/2609.13889) 进一步削弱攻击者前提——攻击者不与受害 Agent 直接对话，只在外部良性来源中嵌入恶意指令；在 OpenClaw 与 Claude Code 上跨多类模型与触发场景评测，平均注入成功率（ISR）与跨会话攻击成功率（C-ASR）分别达到 **73.7% / 55.5%**（OpenClaw）与 **66.9% / 81.7%**（Claude Code）。ISR 的分母是注入试验；C-ASR 的分母是跨会话试验，衡量新会话中已存规则被触发并造成泄露的比例，不是一次外部输入最终造成泄露的概率。论文报告良性任务表现得以维持，但提示级防御对已污染记忆的保护有限。
+- **绕过选择性记忆提取与改写（MemPoison）**：ACM CCS 2026 论文 [*MemPoison: Bypassing Selective Memory Mechanisms to Plant Backdoors in LLM Agents*（arXiv:2605.29960）](https://arxiv.org/abs/2605.29960) 通过语义关系桥接、实体伪装与联合嵌入优化，绕过现代 Agent 的选择性记忆提取与重写机制，在评测域与记忆机制中达到最高 **0.95** 的攻击成功率；这表明不能把 LLM 选择性摘要或离线 dreaming 当作唯一安全过滤层。
 
 **[推论] 记忆与经验固化层的抗投毒门禁**：
-- **写入路径信任分级**：凡源自外部不可信输入（网页、邮件、第三方工单、未知用户查询）的会话轨迹，不得直接自动写入高信任度的持久记忆、系统规则或活跃 Skill（衔接 [[agent-memory-reflection-planning-pipeline]] 与 [[agent-experience-consolidation-loops]]）。
+- **写入路径信任分级**：凡源自外部不可信输入（网页、邮件、第三方工单、未知用户查询）的会话轨迹或未鉴权反馈，不得直接自动写入高信任度的持久记忆、系统规则或活跃 Skill（衔接 [[agent-memory-reflection-planning-pipeline]]、[[agent-experience-consolidation-loops]] 与 [[agent-closed-loop-learning-from-corrections-to-rules]]）。
 - **检索态去特权化**：从长期记忆或向量库召回的历史记录应保留来源元数据（Provenance / Trust Tier），默认视为待核实参考数据而非可执行指令；多租户或共享记忆键必须严格按主体隔离，防止跨用户投毒。
 
 ## 5. `[推论]` 生产 Agent 安全评估与落地检查表
@@ -112,11 +116,11 @@ Beurer-Kellner 等（2025，[*Design Patterns for Securing LLM Agents against Pr
 
 ## 证据边界与不推广事项
 
-- 本文引用的 CaMeL v2（最佳配置约 77% 安全完成率）、MINJA（98.2% 注入率 / 76.8% ASR）与自适应攻击绕过率（>90%）均为特定论文基准、模型与攻击协议下的实验观测值，不代表任意生产系统的固定安全指标或默认验收阈值。
+- 本文引用的 CaMeL v2（最佳配置约 77% 安全完成率）、MINJA（98.2% 注入率 / 76.8% ASR）、PMPA（OpenClaw 73.7% ISR / 55.5% C-ASR、Claude Code 66.9% ISR / 81.7% C-ASR）、MemPoison（最高 0.95 ASR）与自适应攻击绕过率（>90%）均为特定论文基准、模型、框架与攻击协议下的实验观测值，不代表任意生产系统的固定安全指标或默认验收阈值。
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) 与 [MCP Security Best Practices](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) 属于持续演进的行业规范；接入具体框架或协议版本时须核对当前官方规范与实际 SDK 行为。
 - 本页提供架构审查与安全设计参照，不构成对任何现有 Agent 运行时、MCP 配置或沙箱策略的自动修改授权。
 
 ## Relations
 
 - depends_on: [[agent-skill-provider-governance-boundary]], [[typed-ai-agent-boundaries]]
-- related: [[agent-pre-deploy-regression-and-trace-debugging]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-memory-reflection-planning-pipeline]], [[agent-experience-consolidation-loops]], [[multiagent-systemic-failure-modes]], [[hermes-agent-workflow-layering-and-adoption-order]]
+- related: [[agent-pre-deploy-regression-and-trace-debugging]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-memory-reflection-planning-pipeline]], [[agent-experience-consolidation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[multiagent-systemic-failure-modes]], [[hermes-agent-workflow-layering-and-adoption-order]]

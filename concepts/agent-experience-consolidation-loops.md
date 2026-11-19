@@ -4,7 +4,7 @@ created: 2026-05-11
 updated: 2026-11-19
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/abs/2503.03704]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/abs/2503.03704, https://arxiv.org/html/2611.21648v1, https://arxiv.org/pdf/2609.13889, https://arxiv.org/abs/2605.29960, https://arxiv.org/html/2602.16313v1]
 status: stable
 description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 跨模型记忆行为对比及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。
 volatility: medium
@@ -28,14 +28,7 @@ Agent experience consolidation loop 是一种让 agent 从历史任务、失败�
 
 Microsoft Research 的 [[microsoft-research-evolib-evolving-knowledge-2026-07-30]] 进一步区分了“经验归档”和“知识演化”：EvoLib 从成功尝试中提炼可复用技能、从失败中提炼反思见解，再通过 consolidation 与 dynamic weighting 持续更新知识库。
 
-[[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 链接的 Alloomi 技术报告提供了权重后训练的对照案例。方案筛选任务轨迹用于 LoRA、跨任务回放和教师蒸馏，并用评测与回滚控制更新。
-
-> [!volatile]
-> verified_at: 2026-11-18
-> review_by: 2026-12-13
-> source: docs:https://alloomi.ai/reports/sea.pdf
->
-> 2026-11-18 核对报告正文、表 10、附录 A.1 和第 5.3 节。基于同一 Qwen3.6-35B-A3B 底座，报告的 CL-Bench 评分通过率为 FewShot 基线 24.5%、RAGMem 基线 39.4%、完整 Self-Evolving Agent-mini 系统 47.6%，各为 3 个随机种子的均值。结果属于包含外部教师的完整系统对比。长周期部署、完全去除外部教师的消融和更广泛的泛化验证仍待完成。
+[[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 链接的 Alloomi 技术报告提供了权重后训练的对照案例。方案筛选任务轨迹用于 LoRA、跨任务回放和教师蒸馏，并用评测与回滚控制更新；CL-Bench 的具体基线分值、随机种子与时效核验块统一由子页 [[agent-knowledge-evolution-and-meta-skills]] 单点维护。
 
 [[arxiv-2608-27454-wikiskill]] 进一步用受控实验区分不可变执行轨迹、持续累积的 Wiki 知识和可回滚的 Skill 状态。它补充的关键不是另一种存储格式，而是：候选 Skill 可以回滚，支持后续搜索的证据、拒绝原因和结构化知识不能随之丢失。
 
@@ -67,7 +60,7 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 ### Reconcile notes against observations, not against another summary
 
-在月见山案例中，错误笔记将地标方向写反；离线核对 transcript 后，模型纠正笔记并抵达目标城市，未纠正的运行则继续绕路。这支持“回看原始记录可以纠正部分错误”，不证明 dreaming 普遍解决了记忆漂移。**[推论] 对账时必须区分环境/工具观察、模型当时的陈述和事后推断；日志里出现过的判断不自动成为事实。** 变化后的当前状态仍需重新观察，不能只凭历史记录裁决。
+在月见山案例中，错误笔记将地标方向写反；离线核对 transcript 后，模型纠正笔记并抵达目标城市，未纠正的运行则继续绕路。这支持“回看原始记录可以纠正部分错误”，不证明 dreaming 普遍解决了记忆漂移。反证方面，Eric Zou（2026-10，[*Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory*，arXiv:2611.21648](https://arxiv.org/html/2611.21648v1)）在 Claude Opus 5.5 的 30 次运行（10 种条件 × 3 组历史，含不重写对照）中观察到：同一容量限制下，最终召回率在不重写时为 `14 ± 4%`，在干净记录上重写时为 `76 ± 5%`。模型通常能排除来自《白鲸》的无关文本，但当对话记录中混入似是而非的错误细节（Detail Corruption）时，离线重写会像人类“误导信息效应（Misinformation Effect）”一样将错误细节当作事实写入持久记忆（即便另一轮对话包含正确值），使对应问题正确率从 `75%` 降至 `40%`（40% 细节污染下整体召回降至 `60 ± 4%`）。该实验仅测试固定权重的单一模型（Claude Opus 5.5）与三组历史，不代表所有模型或经微调学习器的普遍表现。**[推论] 对账时必须区分环境/工具观察、模型当时的陈述和事后推断；日志里出现过的判断不自动成为事实。跨轮存在冲突值时，离线整合应保留冲突标记与出处指针，而不是由重写模型静默择一覆盖。** 变化后的当前状态仍需重新观察，不能只凭历史记录裁决。
 
 ### Organize for the task, and avoid shared-page write collisions
 
@@ -140,7 +133,7 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 [推论] 经验固化之前，还应检查任务范围是否便于人工审阅，以及反馈是否具有明确的复用边界；案例、适用条件与证据限制统一见 [[agent-closed-loop-learning-from-corrections-to-rules#反馈之前：按可审阅性设计任务范围]]，本页不重复维护。
 
-[推论] **抗记忆投毒的写入信任门禁**：结合 [MINJA（NeurIPS 2025，arXiv:2503.03704）](https://arxiv.org/abs/2503.03704) 的仅查询持久记忆注入实证与 [[agent-security-architecture-and-prompt-injection-defense]]，凡接触过外部不可信输入（网页、邮件、第三方工单或未知用户查询）的会话轨迹，不得仅因重复出现就自动晋升至默认注入层 `memory` 或活跃 `skill`；离线整合须核验来源信任等级（Trust Tier）并严格隔离多主体命名空间，避免一次性间接注入固化为跨会话后门。
+[推论] **抗记忆投毒的写入信任门禁**：结合 [MINJA（arXiv:2503.03704）](https://arxiv.org/abs/2503.03704)、[PMPA（arXiv:2609.13889）](https://arxiv.org/pdf/2609.13889) 与 [MemPoison（ACM CCS 2026，arXiv:2605.29960）](https://arxiv.org/abs/2605.29960) 的持久记忆投毒实证（完整威胁模型与实验边界由 [[agent-security-architecture-and-prompt-injection-defense]] 主维护），凡接触过外部不可信输入（网页、邮件、第三方工单或未知用户查询）的会话轨迹，不得仅因重复出现或经过 LLM 选择性摘要/重写就自动晋升至默认注入层 `memory` 或活跃 `skill`；离线整合须核验来源信任等级（Trust Tier）并严格隔离多主体命名空间，避免一次性间接注入固化为跨会话后门。
 
 ```text
 lesson candidate
@@ -216,6 +209,7 @@ authorized session / project evidence → audited review
 - [推论] 让同一个模型同时负责提炼、加权和验收，再把其自评分数当作有效性证明。
 - [推论] 把 Skill 命中率、实际使用率或最终成功率中的任一项当作完整生命周期质量。
 - [推论] 让外部或共享轨迹绕过来源授权，因重复出现而自动成为 Active 指令。
+- [推论] 把 LLM 选择性摘要或离线 dreaming 当作足够的抗投毒过滤或事实核验手段，忽视似是而非细节被静默固化或被绕过的风险。
 
 ## Operating rules
 1. 经验候选必须先问：未来会在哪类任务中复用？
@@ -233,7 +227,7 @@ authorized session / project evidence → audited review
 | 参数符号 | 治理维度与数学定义 | 门禁裁决条件（Consolidation & Promotion Gate） | 违背时的典型退化模式与处置动作 |
 | :--- | :--- | :--- | :--- |
 | $B_{\text{act}}$ | **记忆基础激活与扇出信噪比（Activation & Fan Signal-to-Noise）**：<br>$A_i = \ln\!\left(\sum_{j=1}^{n} t_j^{-d}\right) + \sum_{j \in \mathcal{C}} W_j \big(S_{\max} - \ln(\text{fan}_j)\big)$ | 1. 常驻 `memory` 条目须具备跨任务高频激活（高 $n$、低衰减 $t_j$）且单句高密度；<br>2. 共享同一触发线索 $j$ 的候选条目数 $\text{fan}_j$ 受控，避免无界堆积 | **扇出稀释与常驻膨胀**：将一次性长篇反思或高度重叠条目塞入默认层，导致 $\ln(\text{fan}_j)$ 增大、检索精度暴跌；应合并同角色条目或下沉至按需检索的 `wiki` |
-| $P_{\text{skill}}$ | **技能漏斗有效转化率（Skill Funnel Conversion）**：<br>$P_{\text{eff}}(s) = P(\text{id} \mid \mathcal{C}_M) \cdot P(\text{apply} \mid \text{id}) \cdot \Delta P(\text{succ} \mid \text{apply}, \mathcal{E})$ | 1. 分别记录候选集召回 $P(\text{id})$、实质遵循 $P(\text{apply} \mid \text{id})$ 与外部验证净增益 $\Delta P(\text{succ})$；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验 | **高命中低转化与负迁移**：把 `skill_view` 命中率当作成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
+| $P_{\text{skill}}$ | **技能漏斗的执行增益估计**：分别测量候选命中率、命中后实质使用率与外部验证成功率的有符号差值；乘积是诊断量，不是单个任务成功的概率。定义见 [[agent-skill-governance-and-reversible-state]] | 1. 另做启用与禁用 Skill 的端到端对照，不能只比较实际使用 Skill 的成功样本；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验，且区分被动回忆基准与行动耦合多会话闭环（见 [MemoryArena，arXiv:2602.16313](https://arxiv.org/html/2602.16313v1)） | **高命中低转化与负迁移**：把 `skill_view` 命中率或被动长上下文 QA 高分当作行动闭环成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
 | $G_{\text{promo}}$ | **候选晋升净效用门禁（Promotion Net-Utility Gate）**：<br>$G_{\text{promo}}(s_{\text{cand}}) = \Delta \hat{\mu}_{\text{held-out}} - \lambda_{\text{neg}} R_{\text{regress}} - \lambda_{\text{cost}} \Delta C_{\text{token}} > 0$ | 1. 候选规则在冻结基线、原失败案例与相邻反向案例上无回归（$R_{\text{regress}} = 0$），可用配对置信下界 $\operatorname{LCB}_{1-\alpha}(\Delta M)$ 实例化（[[agent-closed-loop-learning-from-corrections-to-rules]]）；<br>2. 性能增益足以覆盖额外上下文 Token 与控制器开销 $\Delta C_{\text{token}}$；模型升级至 $M_{t+1}$ 时转为反向消融检验 $\Delta U(r_j \mid M_{t+1})$（[[hermes-active-surface-lifecycle-governance]]） | **单次痛点过拟合与库漂移（Library Drift）**：因单次失败盲目追加规则，导致邻近任务回归或 Token 预算被挤占；应拒绝晋升，保留为局部 fixture 或合并进既有 owner |
 | $I_{\text{rev}}$ | **可逆技能状态与持久证据分离不变量（Reversible-State Invariant）**：<br>$S_{k+1} = \text{Rollback}(S_k, s_{\text{cand}}),\; W_{k+1} = W_k \cup \{e_k, \text{reason}_k\}$ | 1. 候选 Skill $s_{\text{cand}}$ 验证回退时立即恢复上一活动状态 $S_k$；<br>2. 原始轨迹证据 $e_k$ 与被拒绝原因 $\text{reason}_k$ 持久保留在证据/知识层 $W_{k+1}$ | **回滚失忆与重复无效搜索**：回滚失败 Skill 时一并删掉测试记录与拒绝理由，导致后续迭代重复探索同一死胡同；应严格分离活动指令层 $S_k$ 与不可变证据/知识层 $W_k$ |
 
