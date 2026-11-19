@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-18 | Indexed pages: 131
+> Last updated: 2026-11-19 | Indexed pages: 131
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -104,7 +104,7 @@ status: current
 - [Progressive Knowledge System Growth](../concepts/progressive-knowledge-system-growth.md) — 知识系统的渐进式生长原则：结合 Gall 定律、Luhmann 卡片盒自底向上涌现与容器维护税实证（413 文件失速 vs 10 文件高显著性结构），先用真实问题产生内容，再让结构、链接和自动化从反复摩擦中生长
 - [少样本 AI 评测中的重复任务、伪重复与统计功效](../concepts/repeated-measures-statistical-power-for-ai-evaluation.md) — 少样本 AI 评测的重复测量与统计功效：结合 Hurlbert 伪重复、Kish 设计效应（$\text{DEFF} = 1 + (m-1)\rho$ 与有效样本量上限 $N/\rho$）、Clark 语言固定效应谬误（$\min F'$）及 Miller 聚类标准误与配对差值方差分解，区分主体、任务和有效独立证据
 - [System Governance Operating Model](../concepts/system-governance-operating-model.md) — 系统治理域的 operating model：管理 AI Agent LifeOS 的分层边界、沉淀路径、扩张节奏与结构健康
-- [Wiki Ingestion Workflow](../concepts/wiki-ingestion-workflow.md) — 把外部信息编译进知识库的标准入库流程：借记录链接与信念修正作概念类比，区分精确来源依赖、名称候选、范围复核与五类编辑动作（`NEW / CONFIRM / UPDATE / CONFLICT / SUPERSEDE`），不宣称实现概率匹配或次协调逻辑，先过公开边界再固化 raw、反查依赖、更新 Relations 并验证
+- [Wiki Ingestion Workflow](../concepts/wiki-ingestion-workflow.md) — 把外部信息编译进知识库的标准入库流程：借记录链接与信念修正作概念类比，区分精确来源依赖、名称候选、范围复核与五类编辑动作（`NEW / CONFIRM / UPDATE / CONFLICT / SUPERSEDE`），不宣称实现概率匹配或次协调逻辑；先审查公开边界和再发布依据，按许可归档或只保留来源链接，再反查依赖、更新 Relations 并验证
 
 ### 5. 个人操作系统与投资决策 (LifeOS, Systems & Investment)
 - [CompanyOS to LifeOS Filesystem Philosophy](../concepts/companyos-to-lifeos-filesystem-philosophy.md) — 将公司和人生建模为文件系统：结合 Unix 文件与进程机制的四项归纳（基于 Ritchie & Thompson）、Plan 9 进程级定制命名空间与 9P 协议（Pike 等）、Simon 状态—过程转译理论及最小权威原则（PoLA），界定文件即状态与权限治理的适用边界

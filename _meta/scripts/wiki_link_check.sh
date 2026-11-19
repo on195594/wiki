@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# External link liveness check for formal wiki pages. See _meta/lychee.toml.
+# External link liveness for formal pages and raw source URLs. See _meta/lychee.toml.
 #
 # Deliberately not part of wiki_health_check.py: this one needs the network,
-# so its result is not reproducible from the files alone. Exit code is
-# lychee's, so a nonzero exit means dead links, not "the script broke".
+# so its result is not reproducible from the files alone. A nonzero exit
+# can indicate link failures or an error running the check.
 set -euo pipefail
 
 PATH="${HOME:+$HOME/.local/bin:}$PATH"
@@ -31,13 +31,14 @@ done
 if [[ -z "$ROOT" ]]; then
   ROOT=${OBSIDIAN_VAULT_PATH:-}
 fi
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 if [[ -z "$ROOT" ]]; then
-  SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
   ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd -P)
 fi
 cd "$ROOT"
 
-exec lychee -c _meta/lychee.toml "${LYCHEE_ARGS[@]}" \
+python3 "$SCRIPT_DIR/wiki_raw_source_urls.py" --root "$PWD" | \
+lychee -c _meta/lychee.toml "${LYCHEE_ARGS[@]}" - \
   'entities/**/*.md' \
   'concepts/**/*.md' \
   'queries/**/*.md' \

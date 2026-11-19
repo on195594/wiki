@@ -1,9 +1,8 @@
 # External link liveness for the wiki's own provenance claims.
 #
-# Scope is deliberately the formal pages only, not raw/. A formal page cites a
-# URL as evidence, so a dead one is a real finding. URLs inside raw/ captures
-# are third-party article text we already archived; their rot costs us nothing
-# and they outnumber ours ten to one (598 vs 63), which would bury the signal.
+# Check links in formal pages plus raw Markdown frontmatter source_url values.
+# Do not scan raw bodies: incidental links in captured third-party prose would
+# bury failures of the actual source URLs.
 #
 # This is separate from wiki_health_check.py on purpose: network results are
 # neither deterministic nor offline-safe, and that script is both.

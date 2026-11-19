@@ -2,6 +2,9 @@
 *.bak.*
 _backups/
 
+# Wiki runtime state (never publish)
+/.wiki-state/
+
 # Generated browser inspection artifacts (not Wiki sources)
 /.playwright-mcp/
 

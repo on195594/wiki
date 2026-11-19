@@ -122,6 +122,7 @@ This verifies citation identity and computes two-run fixed-packet citation Jacca
 - **Candidate**: possible personal instance record that needs content review; candidates do not fail the command by themselves.
 - **PASS**: no blocking rule matched. It does not mean candidates were adjudicated, attachments were reviewed, or the repository is absolutely safe.
 - Reports contain only repository-relative paths and rule names, never matched values.
+- Root `.wiki-state/` is local runtime state, not a knowledge source. Git ignores it in every clone; if it is tracked (including a forced add) or present in a staged export, the scanner reports `tracked-runtime-state` without reading or reporting its contents.
 - Files containing NUL bytes and files that do not decode as UTF-8 are candidates marked `unreviewed-binary-or-non-utf8`; they cannot be counted as reviewed until inspected with an appropriate tool.
 - Generic product paths, configurable examples and obvious credential placeholders are allowed. A synthetic example does not prove deployment or authorization.
 ### Baseline candidate adjudication (2026-11-19)
@@ -172,7 +173,7 @@ python3 _meta/scripts/wiki_raw_hashes.py --root "$WIKI_ROOT"
 
 `_meta/scripts/wiki_link_check.sh` uses `lychee` and the repository's `_meta/lychee.toml`. It needs network access and is separate from deterministic health checks. The weekly scheduled CI workflow also runs it as a separate `external-links` job (lychee pinned in `.github/workflows/wiki-checks.yml`); inspect failed requests to distinguish dead links from network restrictions, rate limits or temporary service failures. The current configuration accepts HTTP 429 to avoid blocking on rate limits, so a passing run does not establish every URL's liveness. Install a supported `lychee` version through the operator's package or release-verification process; the repository does not claim a machine-local installation.
 
-Both entrypoints cover `entities/`, `concepts/`, `queries/`, `comparisons/` and `operations/`.
+Both entrypoints cover `entities/`, `concepts/`, `queries/`, `comparisons/`, `operations/` and the deduplicated HTTP(S) `source_url` values in `raw/**/*.md` frontmatter. They do not crawl links embedded in the raw captures themselves. Source liveness is not a check of provenance accuracy or redistribution rights.
 
 ```bash
 _meta/scripts/wiki_link_check.sh --root "$WIKI_ROOT"
@@ -203,7 +204,7 @@ For the Python checks:
 
 ## Health-check scope
 
-The structural health check covers core files, frontmatter, type/status/tag enums, wikilinks, relative Markdown links, index coverage, semantic inbound links, log order, raw references, raw hashes, duplicate-page signals, freshness metadata and Relations syntax. It does not replace content review for public suitability, source quality, contradictions or current product behavior.
+The structural health check covers core files, frontmatter, type/status/tag enums, wikilinks, relative Markdown links, index coverage, semantic inbound links, log order, raw references, raw hashes, duplicate-page signals, freshness metadata and Relations syntax. It checks local Markdown heading slugs and Obsidian heading names from Wiki pages (`broken_heading_anchor`); this does not cover Obsidian block IDs, browser text fragments or links originating inside raw captures. It does not replace content review for public suitability, source quality, contradictions or current product behavior.
 
 Index coverage recognizes both wikilinks and standard relative Markdown links in `index.md` and its explicitly linked `_meta/topic-index.md`; an unlinked topic directory does not establish coverage. Administrative navigation links do not count as semantic inbound links from another formal page. Catalog relations still come only from explicit `## Relations`; ordinary navigation links are not inferred as typed relations.
 

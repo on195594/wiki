@@ -18,9 +18,12 @@ import json
 import re
 import subprocess
 import sys
+import unicodedata
 from datetime import date, datetime, timezone
+from html import unescape
 from pathlib import Path
 from typing import Any
+from urllib.parse import unquote
 
 from wiki_root import resolve_root
 
@@ -92,7 +95,7 @@ def is_formal_page(root: Path, path: Path) -> bool:
     )
 
 
-def strip_code(text: str) -> str:
+def strip_code(text: str, *, strip_inline: bool = True) -> str:
     lines = []
     fence = ""
     list_indent: int | None = None
@@ -117,8 +120,7 @@ def strip_code(text: str) -> str:
             elif line.strip():
                 list_indent = None
     text = "".join(lines)
-    text = re.sub(r"(`+).*?\1", "", text, flags=re.S)
-    return text
+    return re.sub(r"(`+).*?\1", "", text, flags=re.S) if strip_inline else text
 
 
 def read_text(path: Path) -> str:
@@ -128,6 +130,42 @@ def read_text(path: Path) -> str:
 def extract_frontmatter(text: str) -> str | None:
     match = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, flags=re.S)
     return match.group(1) if match else None
+
+
+def heading_slug(text: str) -> str:
+    text = text.lower().replace(" ", "-")
+    return "".join(c for c in text if c in "_-" or unicodedata.category(c)[0] in "LMN")
+
+
+def heading_targets(path: Path) -> tuple[set[str], set[str]]:
+    """Collect Markdown slugs and Obsidian heading names from common heading syntax."""
+    text = re.sub(r"^---[ \t]*\n.*?\n---[ \t]*(?:\n|$)", "", read_text(path), count=1, flags=re.S)
+    text = re.sub(r"<!--.*?-->", "", strip_code(text, strip_inline=False), flags=re.S)
+    slugs: set[str] = set()
+    names: set[str] = set()
+    previous = ""
+    for line in text.splitlines():
+        atx = re.match(r"^ {0,3}#{1,6}[ \t]+(.*)$", line)
+        if atx:
+            title = re.sub(r"[ \t]+#+[ \t]*$", "", atx[1])
+        elif previous and re.fullmatch(r" {0,3}(?:=+|-+)[ \t]*", line):
+            title = previous
+        else:
+            previous = line.strip()
+            continue
+        previous = ""
+        title = re.sub(r"!?\[([^\]]+)\]\([^)]*\)", r"\1", title)
+        title = re.sub(r"<[^>]+>|`+|\*+|(?<!\w)_+(?=\w)|(?<=\w)_+(?!\w)", "", title)
+        title = unescape(title).strip()
+        names.add(" ".join(title.casefold().split()))
+        base = heading_slug(title)
+        slug = base
+        suffix = 0
+        while slug in slugs:
+            suffix += 1
+            slug = f"{base}-{suffix}"
+        slugs.add(slug)
+    return slugs, names
 
 
 def parse_inline_list(value: str) -> list[str]:
@@ -570,33 +608,54 @@ def build_report(root: Path, *, today: date | None = None) -> dict[str, Any]:
         ):
             navigation_paths.add(topic_path)
     inbound: dict[Path, set[Path]] = {p: set() for p in formal}
+    anchor_cache: dict[Path, tuple[set[str], set[str]]] = {}
+
+    def check_heading(source: Path, target: Path, fragment: str, link: str, *, wiki: bool) -> None:
+        fragment = unquote(fragment)
+        # Raw bodies may retain fragments from the original website, not the Wiki.
+        if rel(root, source).startswith("raw/") or not fragment or target.suffix != ".md" or not target.is_file():
+            return
+        if (wiki and fragment.startswith("^")) or fragment.startswith(":~:"):
+            return  # Obsidian block IDs and browser text fragments are not headings.
+        if target not in anchor_cache:
+            anchor_cache[target] = heading_targets(target)
+        slugs, names = anchor_cache[target]
+        found = " ".join(fragment.casefold().split()) in names if wiki else fragment in slugs
+        if not found:
+            severity = "P0" if source in navigation_paths else "P1"
+            add_issue(issues, severity, "broken_heading_anchor", rel(root, source),
+                      "Heading not found in linked Markdown page", target=link)
+
     for p in live_md:
         r = rel(root, p)
-        text = navigation_text(p) if p in navigation_paths else strip_code(read_text(p))
+        text = navigation_text(p)
         for match in re.finditer(r"\[\[([^\]]+)\]\]", text):
-            target = match.group(1).split("|", 1)[0].split("#", 1)[0].strip()
+            link = match.group(1).split("|", 1)[0].strip()
+            target, _, fragment = link.partition("#")
+            target = target.strip()
             if not resolve_wikilink(root, p, target, stems):
                 add_issue(issues, "P0", "broken_wikilink", r, "Broken wikilink", target=target)
                 continue
-            target_path = resolve_wikilink_path(root, p, target, stems)
-            if target_path in formal_paths:
+            target_path = resolve_wikilink_path(root, p, target, stems) if target else p
+            if target_path is not None:
+                check_heading(p, target_path, fragment, link, wiki=True)
+            if target and target_path in formal_paths:
                 inbound[target_path].add(p)
         for match in re.finditer(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", text):
-            url = match.group(1).strip()
-            if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", url) or url.startswith("#"):
+            url = re.split(r"\s+['\"]", match.group(1).strip(), maxsplit=1)[0]
+            if url.startswith("<") and url.endswith(">"):
+                url = url[1:-1]
+            if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", url) or url.startswith("//"):
                 continue
-            target = url.split("#", 1)[0].strip()
-            if not target:
-                continue
-            candidate = (p.parent / target).resolve()
-            try:
-                inside = candidate.is_relative_to(root.resolve())
-            except OSError:
-                inside = False
-            if inside and not candidate.exists():
-                severity, code = ("P0", "broken_index_target") if p in navigation_paths else ("P1", "broken_markdown_link")
-                add_issue(issues, severity, code, r, "Broken relative Markdown link", target=url)
-            if candidate in formal_paths:
+            target, _, fragment = url.partition("#")
+            candidate = (p.parent / unquote(target.strip())).resolve() if target.strip() else p
+            if candidate.is_relative_to(root):
+                if not candidate.exists():
+                    severity, code = ("P0", "broken_index_target") if p in navigation_paths else ("P1", "broken_markdown_link")
+                    add_issue(issues, severity, code, r, "Broken relative Markdown link", target=url)
+                else:
+                    check_heading(p, candidate, fragment, url, wiki=False)
+            if target and candidate in formal_paths:
                 inbound[candidate].add(p)
 
     for target_path, sources in inbound.items():

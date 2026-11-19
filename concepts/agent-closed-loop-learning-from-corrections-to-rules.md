@@ -1,10 +1,10 @@
 ---
 title: Agent 闭环学习：从用户纠错到规则升级
 created: 2026-05-18
-updated: 2026-11-16
+updated: 2026-11-19
 type: concept
 tags: [agent, memory, optimization, evaluation, workflow, governance]
-sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714, raw/articles/langchain-goal-engineering-2026-11-14.md]
+sources: [raw/articles/microsoft-power-apps-mcp-closed-loop-learning-2026-05-12.md, docs:https://arxiv.org/html/2507.19457v2, docs:https://dspy.ai/3.1.3/api/optimizers/GEPA/overview/, docs:https://arxiv.org/abs/2310.03714, docs:https://www.langchain.com/blog/goal-engineering]
 status: stable
 description: 从便于人工审阅与反馈复用的任务范围设计，到用户纠错的记录、泛化、验证与规则晋升。
 aliases: [closed-loop-learning, goal-engineering]
@@ -52,7 +52,7 @@ production action
 
 ### 反馈之前：按可审阅性设计任务范围
 
-**来源观点与案例：** Harrison Chase、Mihir Garimella 与 Anshul Gupta 在 LangChain 的 [[langchain-goal-engineering-2026-11-14]]（2026-11-14）中主张，设计 Agent 的工作范围时，应考虑人工提供高质量反馈是否方便，尤其是品牌审美、表达尺度和工作方法等尚未写成文档的判断。
+**来源观点与案例：** Harrison Chase、Mihir Garimella 与 Anshul Gupta 在 LangChain 的 [Goal Engineering: How to Design Goals](https://www.langchain.com/blog/goal-engineering)（2026-11-14）中主张，设计 Agent 的工作范围时，应考虑人工提供高质量反馈是否方便，尤其是品牌审美、表达尺度和工作方法等尚未写成文档的判断。
 
 文中 Actively AI 起初按潜在客户账户配置 Agent，由同一 Agent 提交外联、回复、销售机会推进策略等不同类型的行动供销售人员批准。团队发现审阅工作分散、切换频繁，而且跨账户的同类经验不易共享；第二版改为按具体工作类型组织跨账户的 motions，例如外联或早期销售机会推进，使相似成果可以集中审阅。同一来源仍强调客户事实上下文的重要性：后台 Agent 收集各账户信息，motions 执行时按需调用，并非舍弃对象上下文。
 

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -156,8 +157,21 @@ def build_report(root: Path) -> dict[str, Any]:
 
     violations: list[dict[str, str]] = []
     candidates: list[dict[str, str]] = []
+    # In a working clone only tracked runtime state is publishable by Git.
+    # A snapshot exported by the staged check contains only staged files.
+    state_dir = ".wiki-state"
+    if (root / ".git").exists():
+        tracked = subprocess.check_output(["git", "ls-files", "-z", "--", state_dir], cwd=root)
+        if tracked:
+            add(violations, state_dir, "tracked-runtime-state")
+    elif (root / state_dir).exists() or (root / state_dir).is_symlink():
+        add(violations, state_dir, "tracked-runtime-state")
+
     scanned = 0
-    for path in sorted(p for p in root.rglob("*") if p.is_file() and not SKIP_PARTS.intersection(p.relative_to(root).parts)):
+    for path in sorted(root.rglob("*")):
+        parts = path.relative_to(root).parts
+        if parts[0] == state_dir or SKIP_PARTS.intersection(parts) or not path.is_file():
+            continue
         rel = path.relative_to(root).as_posix()
         scanned += 1
         data = path.read_bytes()

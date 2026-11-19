@@ -2,6 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-19] fix | 补齐公开归档、运行状态与来源链接的治理边界
+
+- 在 [Schema](SCHEMA.md#conventions) 和 [[wiki-ingestion-workflow]] 明确第三方原文的再发布准入：核对依据与条件；依据不明时只保留链接、书目信息及自行撰写的摘要。
+- [LangChain《Goal Engineering: How to Design Goals》](https://www.langchain.com/blog/goal-engineering) 的再发布依据未确认，移除当前树中的英文正文快照及对应哈希项，不改写 Git 历史。[[agent-closed-loop-learning-from-corrections-to-rules]] 改引原文，保留书目信息、现有摘要及证据边界；本次未重新核验原文。
+- 将本地运行状态排除规则纳入仓库；公开边界检查阻断已被跟踪的运行状态。结构检查覆盖 Wiki 内的标题锚点，定期外链检查新增 raw 元数据中的来源 URL，不扫描原文内的旁支链接。
+
 ## [2026-11-18] ingest | 区分主动运行、通知与执行权限
 
 - 保存 Sydney Runkle 的 LangChain 原文 [[langchain-building-proactive-agents-2026-11-17]] 的关键英文摘录，不归档全文或配图。
@@ -35,7 +41,7 @@
 
 ## [2026-11-16] ingest | 将目标工程案例并入纠错闭环：补充可审阅任务范围与反馈复用边界
 
-- 保存 LangChain《Goal Engineering: How to Design Goals》（2026-11-14）的英文正文快照 [[langchain-goal-engineering-2026-11-14]]，保留作者、发布日期、原始链接与末尾预测；排除站点导航，配图只保留公开 URL，不宣称视觉归档或实验复现。
+- 保存 LangChain《Goal Engineering: How to Design Goals》（2026-11-14）的英文正文快照（后因再发布依据未确认而移除），保留作者、发布日期、原始链接与末尾预测；排除站点导航，配图只保留公开 URL，不宣称视觉归档或实验复现。
 - 来源匹配与裁决：该来源为新证据，无既有精确来源依赖；[[agent-closed-loop-learning-from-corrections-to-rules]] 以正文“用户纠正 / 规则晋升”命中为 heuristic candidate，新增“反馈产生之前的任务范围设计”claim，归类 NEW 并入现有 owner；[[agent-experience-consolidation-loops]] 以正文“经验固化 / 用户纠正”命中为 heuristic candidate，仅新增派生导航，不复制案例或宣称 CONFIRM 其已有实效。两页主题相邻，无同范围冲突或替代证据。
 - 正式页区分来源案例、工程推论与证据限制；保留按业务对象组织的适用空间，不将无量化对照的产品叙述、模型权重学习或“上下文工程会消失”的预测升级为通用事实。
 - 同步主题目录的现有条目，不新增正式概念页或改变首页任务入口；保留已有页面级核验日期、生命周期与权限边界。

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -21,6 +22,25 @@ class PublicContentCheckTests(unittest.TestCase):
             path.write_bytes(content)
         else:
             path.write_text(content, encoding="utf-8")
+
+    def test_only_tracked_runtime_state_blocks_a_clone(self) -> None:
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
+        self.write(".gitignore", "/.wiki-state/\n")
+        self.write(".wiki-state/audit.jsonl", b"\x00")
+        local = public_check.build_report(self.root)
+        self.assertTrue(local["pass"])
+        self.assertEqual(local["candidates"], [])
+
+        subprocess.run(["git", "add", "-f", "--", ".wiki-state"], cwd=self.root, check=True)
+        tracked = public_check.build_report(self.root)
+        self.assertEqual(tracked["violations"], [{"path": ".wiki-state", "rule": "tracked-runtime-state"}])
+        self.assertEqual(tracked["candidates"], [])
+
+    def test_runtime_state_blocks_an_exported_snapshot(self) -> None:
+        self.write(".wiki-state/version", "test version\n")
+        report = public_check.build_report(self.root)
+        self.assertFalse(report["pass"])
+        self.assertEqual(report["violations"], [{"path": ".wiki-state", "rule": "tracked-runtime-state"}])
 
     def test_reports_violations_without_echoing_values_or_exempting_directories(self) -> None:
         sensitive_value = "super-" + "secret-value-123"

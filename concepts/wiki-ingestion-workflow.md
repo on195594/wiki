@@ -1,12 +1,12 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-19
 type: concept
 tags: [knowledge-base, workflow, research, automation]
 sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, docs:https://www.cs.cornell.edu/~shmat/courses/cs6434/fellegi-sunter.pdf, docs:https://en.wikipedia.org/wiki/Record_linkage, docs:https://en.wikipedia.org/wiki/Belief_revision]
 status: stable
-description: 定义公开材料进入 AI Agent wiki 的标准路径：先过公开边界，再保存 raw、提炼正式页面、补链接并验证。
+description: 定义外部材料入库流程：审查公开边界与再发布依据，再按许可归档或只保存来源链接，提炼正式页面并验证。
 aliases: [wiki-ingestion, knowledge-ingestion]
 volatility: medium
 review_by: 2027-03-02
@@ -19,17 +19,16 @@ verified_at: 2026-11-02
 把适合公开的链接、文档、视频摘要等外部信息，稳定转化为可跨用户复用的长期知识。
 
 ## Summary
-这页定义人类与受授权的 AI Agent 把外部材料编译进公开 wiki 的共享入库路径：先判断是否适合公开，再保存 raw、提炼主题与结论，随后更新正式页面、补充链接，并同步主题目录、受影响的任务入口与 `[[log]]`。
+这页定义人类与受授权的 AI Agent 把外部材料编译进公开 wiki 的共享入库路径：先判断是否适合公开并核对再发布依据，再按许可保存 raw 或仅保留来源链接，提炼主题与结论，随后更新正式页面、补充链接，并同步主题目录、受影响的任务入口与 `[[log]]`。
 
 ## Standard flow
 1. 先过公开边界
    - 不接收私密对话、本机状态、真实持仓、家庭资料、凭证、私有配置或个人任务台账
    - 公共知识必须脱离作者环境仍可理解；本机路径和私有会话不能充当公众可复验证据
    - 边界适用于 `raw/`、正式页、附件、`_meta/`、脚本和日志，不允许“先存 raw 再判断”
-2. 获取公开原始材料
-   - URL → `raw/articles/`
-   - PDF → `raw/papers/`
-   - 公开会议/音视频整理 → `raw/transcripts/`
+2. 按 [Schema 的再发布规则](../SCHEMA.md#conventions) 审查拟留存内容
+   - 有明确依据且符合条件时，将来源链接、许可或授权依据、归档范围与所需署名一并记录；网页、论文、会议或音视频分别归入 `raw/articles/`、`raw/papers/`、`raw/transcripts/`。
+   - 依据不明时，不归档全文、长摘录、译文或配图；正式页用 `docs:<URL>` 记录来源，保留书目信息和自行撰写的摘要。
 3. 提炼主题、实体、概念、可复用结论
 4. 搜索现有正式页，区分精确依赖和启发式候选，按下表逐 claim 输出分类与匹配依据
 5. 按 NEW/CONFIRM/UPDATE/CONFLICT/SUPERSEDE 做最小补丁：

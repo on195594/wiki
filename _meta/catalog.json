@@ -163,7 +163,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -3889,7 +3889,7 @@
       "path": "concepts/wiki-ingestion-workflow.md",
       "type": "concept",
       "title": "Wiki Ingestion Workflow",
-      "description": "定义公开材料进入 AI Agent wiki 的标准路径：先过公开边界，再保存 raw、提炼正式页面、补链接并验证。",
+      "description": "定义外部材料入库流程：审查公开边界与再发布依据，再按许可归档或只保存来源链接，提炼正式页面并验证。",
       "status": "stable",
       "tags": [
         "knowledge-base",
@@ -3904,7 +3904,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-19",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"

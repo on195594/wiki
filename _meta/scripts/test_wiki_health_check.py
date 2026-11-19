@@ -231,6 +231,34 @@ class WikiHealthCheckRegressionTests(unittest.TestCase):
         self.add_formal("missing-summary", body="# Missing summary\n\n" + "context " * 20 + "\n")
         self.assertIn("missing_summary", self.issue_codes("P2"))
 
+    def test_checks_markdown_slugs_and_wikilink_heading_names(self) -> None:
+        self.add_formal("anchor-target", body=(
+            "# Target\n\n## 中文：\n\n## Use `Code` & **Tools**\n\n"
+            "## Use `Code` & **Tools**\n\nSetext title\n------------\n\n"
+            "```md\n## Not a heading\n```\n<!--\n## Hidden\n-->\n"
+        ))
+        self.add_formal("anchor-links", body=(
+            "# Source\n\n"
+            "[encoded](anchor-target.md#%E4%B8%AD%E6%96%87) "
+            "[duplicate](<anchor-target.md#use-code--tools-1> \"Heading title\") "
+            "[setext](anchor-target.md#setext-title) "
+            "[[anchor-target#Use Code & Tools|alias]] [self](#source) "
+            "[[anchor-target#^example-block]] [text](#\u003a~:text=Source)\n\n"
+            "[missing](#no-such-heading) [[anchor-target#Hidden]] "
+            "[fenced](anchor-target.md#not-a-heading)\n"
+            "<!-- [commented out](#absent) -->\n"
+        ))
+        report = wiki_health_check.build_report(self.root)
+        self.assertEqual(
+            [item["target"] for item in report["issues"]["P1"] if item["code"] == "broken_heading_anchor"],
+            ["anchor-target#Hidden", "#no-such-heading", "anchor-target.md#not-a-heading"],
+        )
+
+    def test_missing_index_heading_is_p0(self) -> None:
+        self.add_formal("anchor-target")
+        (self.root / "index.md").write_text("# Index\n\n[Stale entry](concepts/anchor-target.md#renamed)\n")
+        self.assertIn("broken_heading_anchor", self.issue_codes("P0"))
+
     def test_reports_broken_relative_markdown_link(self) -> None:
         self.add_formal("broken-markdown", body="# Broken markdown\n\n" + "context " * 20 + "[missing](missing.md)\n")
         self.assertIn("broken_markdown_link", self.issue_codes("P1"))
