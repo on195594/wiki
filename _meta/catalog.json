@@ -303,7 +303,7 @@
       "path": "concepts/agent-development-lifecycle.md",
       "type": "concept",
       "title": "Agent Development Lifecycle",
-      "description": "定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。",
+      "description": "定义 Agent 从构建、测试、部署、监控到治理的工程生命周期，结合 Sculley 等（NeurIPS 2015）机器学习系统隐性技术债（CACE 原则、未声明消费者与隐性反馈回路）说明各阶段和横切治理的检查项。",
       "status": "stable",
       "tags": [
         "agent",
@@ -320,7 +320,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-06",
+      "updated": "2026-11-18",
       "relations": {
         "depends_on": [
           "production-ai-agent-evaluation-framework",
@@ -341,7 +341,16 @@
           "typed-ai-agent-boundaries",
           "wiki-ingestion-workflow",
           "agent-failure-closed-loop-evaluation",
-          "agent-closed-loop-learning-from-corrections-to-rules"
+          "agent-closed-loop-learning-from-corrections-to-rules",
+          "agentic-programming-system-engineering",
+          "ai-agent-human-outcome-design-principle",
+          "ai-coding-agent-workflow-types",
+          "agent-context-engineering",
+          "llm-context-engineering-layer",
+          "public-info-monitoring-automation-methodology",
+          "stateful-agent-environments-and-grounded-verification",
+          "agent-architecture-primary-paper-map",
+          "hermes-active-surface-lifecycle-governance"
         ]
       }
     },
@@ -398,7 +407,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -515,7 +524,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -608,7 +617,7 @@
       "path": "concepts/agent-pre-deploy-regression-and-trace-debugging.md",
       "type": "concept",
       "title": "Agent 部署前结构回归与工具轨迹调试",
-      "description": "从生产评估主干页拆出工具调用六步调试证据链、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。",
+      "description": "从生产评估主干页拆出工具调用六步调试证据链（结合 W3C Trace Context 跨服务传播与首个可证实异常的定位）、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。",
       "status": "stable",
       "tags": [
         "agent",
@@ -625,7 +634,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-04",
-      "updated": "2026-11-04",
+      "updated": "2026-11-18",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -638,7 +647,8 @@
         "related": [
           "agent-development-lifecycle",
           "llm-context-engineering-layer",
-          "agent-self-validation-loops"
+          "agent-self-validation-loops",
+          "multiagent-systemic-failure-modes"
         ]
       }
     },
@@ -666,7 +676,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -782,7 +792,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-17",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -806,7 +816,11 @@
           "agent-failure-closed-loop-evaluation",
           "subagent-orchestration-patterns",
           "agent-production-harness-and-cloud-runtime-boundaries",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
+          "hermes-python-engineering-capability-checklist",
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "agent-development-lifecycle",
+          "deterministic-analytics-llm-reasoning-boundary"
         ]
       }
     },
@@ -1194,7 +1208,9 @@
           "ai-assumption-challenger-before-execution",
           "ai-coding-agent-workflow-types",
           "loop-engineering-hermes-agent-workflow",
-          "ai-assistance-cognitive-substitution-and-skill-formation"
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "hermes-python-engineering-capability-checklist",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -1727,7 +1743,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-17",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1742,7 +1758,8 @@
           "production-agent-evaluation-baselines",
           "llm-context-engineering-layer",
           "document-parsing-structural-fidelity",
-          "public-info-monitoring-automation-methodology"
+          "public-info-monitoring-automation-methodology",
+          "agent-pre-deploy-regression-and-trace-debugging"
         ]
       }
     },
@@ -1764,7 +1781,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-17",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1774,7 +1791,9 @@
           "dijkstra-ewd667-vs-ai-programming-article",
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "hermes-ai-workflow-formalization-principles",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "typed-ai-agent-boundaries",
+          "hermes-python-engineering-capability-checklist"
         ]
       }
     },
@@ -1962,7 +1981,7 @@
       "volatility": "high",
       "review_by": "2027-02-05",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-16",
+      "updated": "2026-11-18",
       "relations": {
         "refines": [
           "flutter"
@@ -2581,7 +2600,7 @@
       "path": "concepts/hermes-python-engineering-capability-checklist.md",
       "type": "concept",
       "title": "AI Agent Python Engineering Capability Checklist",
-      "description": "列出 AI Agent 执行 Python 工程任务时的输入、资源、并发、类型与性能检查项，并按真实变更压力选择最小设计边界。",
+      "description": "列出 AI Agent 执行 Python 工程任务时的流式输入、资源生命周期、结构化并发、类型化边界和性能检查项，并按真实变更压力选择最小设计边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2600,7 +2619,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-04",
+      "updated": "2026-11-18",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -2616,7 +2635,9 @@
           "agent-context-engineering",
           "software-engineering-laws-planning",
           "software-engineering-laws-design",
-          "production-agent-evaluation-baselines"
+          "production-agent-evaluation-baselines",
+          "ai-coding-agent-workflow-types",
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
         ]
       }
     },
@@ -2978,7 +2999,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-17",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -2993,7 +3014,9 @@
           "agent-closed-loop-learning-from-corrections-to-rules",
           "production-ai-agent-evaluation-framework",
           "agent-development-lifecycle",
-          "agent-context-engineering"
+          "agent-context-engineering",
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "deterministic-analytics-llm-reasoning-boundary"
         ]
       }
     },
@@ -3192,7 +3215,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-17",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -3201,7 +3224,8 @@
           "agent-orchestration-production-tradeoffs",
           "repeated-measures-statistical-power-for-ai-evaluation",
           "agent-evaluation-rubric-calibration",
-          "agent-research-evidence-gate"
+          "agent-research-evidence-gate",
+          "agent-pre-deploy-regression-and-trace-debugging"
         ]
       }
     },

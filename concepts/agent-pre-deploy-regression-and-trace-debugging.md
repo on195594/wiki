@@ -1,12 +1,12 @@
 ---
 title: Agent 部署前结构回归与工具轨迹调试
 created: 2026-11-04
-updated: 2026-11-04
+updated: 2026-11-18
 type: concept
 tags: [agent, evaluation, validation, debugging, harness, workflow]
-sources: [raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, concepts/production-ai-agent-evaluation-framework.md]
+sources: [raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, concepts/production-ai-agent-evaluation-framework.md, https://www.w3.org/TR/trace-context/, https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/]
 status: stable
-description: 从生产评估主干页拆出工具调用六步调试证据链、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。
+description: 从生产评估主干页拆出工具调用六步调试证据链（结合 W3C Trace Context 跨服务传播与首个可证实异常的定位）、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。
 aliases: [agent-pre-deploy-regression, tool-call-trace-debugging]
 volatility: medium
 verified_at: 2026-11-04
@@ -35,6 +35,25 @@ review_by: 2027-03-02
 文章还展示了两个边界案例：一次模型服务端错误发生在工具执行之前；一次通过故障注入制造的 malformed JSON 参数被结构化返回后，模型在下一轮自行重试。它们证明这些错误路径可以被显式观察，但单篇教程不能证明生产故障频率、自动重试可靠性或 Weave 相对其他追踪方案的优势。
 
 `[推论]` 对 AI Agent 的最小映射是：仅在模型/工具/MCP/浏览器/子代理链路出现异常或结果无法追溯时，按上述阶段收集已有日志和运行证据；修复后回放原失败案例和一个相邻反例（验证闭环见 [[agent-self-validation-loops]]）。不要因此默认保存全部参数、引入第三方追踪产品、建立持续评测项目或修改 runtime。
+
+### 跨服务追踪与首个可证实异常
+
+[W3C Trace Context 1](https://www.w3.org/TR/trace-context/) 定义 HTTP 追踪上下文。版本 `00` 的 `traceparent` 包含版本、16 字节非全零的 `trace-id`、8 字节非全零的 `parent-id` 和标志位，最低位 `sampled` 表达采样建议。参与追踪的服务通常沿用 `trace-id`，并将出站 `parent-id` 更新为当前操作的 ID。透传服务可原样传递头部。`tracestate` 承载厂商相关状态，最多 32 项。规范建议至少支持传播 512 个字符的合并头部。
+
+两个头部均不得携带个人可识别信息或其他敏感数据。信任边界可按策略重启追踪，重新生成 `trace-id`、`parent-id` 和 `trace-flags`，通常同时清理 `tracestate`。采样决策还应遵守本地预算。非 HTTP 调用按各自的传输契约传播关联信息。规范覆盖上下文传播，实际可见的 Span 取决于埋点和采样。
+
+**[推论] 定位步骤。** 按调用尝试关联六个检查点，以 `trace-id` 和父子 Span 关系串联跨服务证据，保留各步骤所需的状态、错误码或脱敏结果。对成功路径、错误分支和重试分别判断。每个检查点记为通过、失败、证据缺失或不适用。例如输入解析正确拒绝非法参数时，工具执行和结果裁剪不适用，此时应检查结构化错误是否送达调用方。边界解析见 [Parse, don’t validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/) 和 [[typed-ai-agent-boundaries]]。
+
+沿实际路径找首个有证据表明违反契约的检查点。若更早的步骤缺证，保留定位缺口。并发分支分别核对，只有回查输入、依赖和运行状态后才能确认根因。
+
+| 检查点 | 查证方向 |
+| --- | --- |
+| `model_request` | 回查模型请求和响应，区分限流、超时、上下文超限与正常响应。 |
+| `schema_validation` | 对照原始调用、实际生效的工具 Schema 与解析器，区分参数不合法、契约漂移与解析缺陷。 |
+| `tool_execution` | 超时且结果不明时，先确认远程终态和幂等边界。见 [[agent-production-harness-and-cloud-runtime-boundaries]]。 |
+| `result_compaction` | 对照裁剪前后结果，确认必要字段和错误语义是否保留。见 [[ai-coding-assistant-context-budget-management]]。 |
+| `error_path` | 对照错误来源、结构和接收方实际收到的内容，检查是否发生误分类或丢失。 |
+| `final_answer` | 对照模型实际收到的上下文和回答，区分上游结果未送达与回答未忠实反映结果。多 Agent 场景还应查交接，见 [[multiagent-systemic-failure-modes]]。 |
 
 ## 2. 部署前七类结构回归探针矩阵
 
@@ -77,4 +96,4 @@ review_by: 2027-03-02
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-failure-closed-loop-evaluation]], [[deterministic-analytics-llm-reasoning-boundary]]
-- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]]
+- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]]

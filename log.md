@@ -16,6 +16,15 @@
 - 同步现有主题目录条目与机器可读目录，不新增正式页或更改首页任务入口。
 - 验证：70 项单元测试以及结构、标签、公开边界和 diff 格式检查通过；目标页目录条目与生成结果一致，已回读来源字段，raw 清单无变化。复核本次新增的公开边界候选：旧会话兼容性是原文公开示例，未包含任何实际会话数据。
 
+## [2026-11-18] review | 校准工程检查与局部来源证据
+
+- [[hermes-python-engineering-capability-checklist]] 用 Python 官方文档区分上下文管理的进入失败、任务组取消和异常聚合，并区分并发 I/O 上限与待执行任务数。
+- [[agent-pre-deploy-regression-and-trace-debugging]] 按 W3C Trace Context 区分 HTTP 传播、透传和信任边界重启。六步排查覆盖错误分支、缺失证据和首个可证实异常。
+- [[agent-development-lifecycle]] 将 Sculley 等的隐性技术债风险映射到阶段交接与横切治理。[[agent-production-harness-and-cloud-runtime-boundaries]] 明确代际检查的生效时点，以及写入仍须符合的授权和业务条件。
+- [[flutter-version-evolution-and-platform-boundaries]] 局部复核 SwiftPM 默认启用、回退、分平台迁移步骤与 CocoaPods 公布的只读时间表。区分本次 SwiftPM 文档覆盖的 Flutter 3.50 与此前复核 FFI 文档时的 Flutter 3.47；实际演练和永久切换待确认。
+- 对照 Alloomi 技术报告表 10、附录 A.1 与第 5.3 节，校准 [[agent-experience-consolidation-loops]] 和 [[agent-knowledge-evolution-and-meta-skills]] 中 CL-Bench 的比较基线、种子数和适用范围。更新局部核验日期，保留页面级证据范围。
+- 同步跨页关系、主题索引和机器可读目录。
+
 ## [2026-11-16] fix | 纠正远程恢复终局性、SLO 复位范围与 DELEGATE-52 / Saga 证据归因
 
 - [[agent-production-harness-and-cloud-runtime-boundaries]] 区分暂未观察到副作用与已确认请求不会再提交；非幂等重试或补偿须处理残余在途效果，缺少终局性或有效幂等保证时保留 `unknown`。将业务幂等/服务端原子去重标为跨 API 补偿的工程要求，不再归为 Saga 原论文对所有补偿函数的要求。

@@ -116,4 +116,4 @@ Addy Osmani 的 [[addyosmani-critical-thinking-when-agents-do-the-work-2026-11-0
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
 - depends_on: [[agent-self-validation-loops]], [[subagent-orchestration-patterns]]
-- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]]
+- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[ai-assumption-challenger-before-execution]], [[ai-coding-agent-workflow-types]], [[loop-engineering-hermes-agent-workflow]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-python-engineering-capability-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]

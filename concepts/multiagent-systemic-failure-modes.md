@@ -1,7 +1,7 @@
 ---
 title: 多智能体系统性失效模式
 created: 2026-08-17
-updated: 2026-11-11
+updated: 2026-11-17
 type: concept
 tags: [agent, multi-agent, orchestration, risk-control, governance]
 sources: [raw/articles/anthropic-multiagent-systemic-failures-2026-08-13.md, https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem, https://en.wikipedia.org/wiki/Jury_theorem, https://arxiv.org/abs/2503.13657, https://arxiv.org/html/2503.13657v3]
@@ -100,4 +100,4 @@ Mert Cemri 等（2025，UC Berkeley，*Why Do Multi-Agent LLM Systems Fail?*，[
 ## Relations
 
 - refines: [[subagent-orchestration-patterns]]
-- related: [[agent-orchestration-production-tradeoffs]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-evaluation-rubric-calibration]], [[agent-research-evidence-gate]]
+- related: [[agent-orchestration-production-tradeoffs]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-evaluation-rubric-calibration]], [[agent-research-evidence-gate]], [[agent-pre-deploy-regression-and-trace-debugging]]

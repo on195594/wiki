@@ -1,7 +1,7 @@
 ---
 title: Deterministic Analytics and LLM Reasoning Boundary
 created: 2026-05-25
-updated: 2026-11-16
+updated: 2026-11-17
 type: concept
 tags: [agent, llm, architecture, structured-output, verification, typed-boundary]
 sources: [raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/towardsdatascience-report-100-clients-one-semantic-model-2026-11-05.md, https://www.inf.unibz.it/~franconi/teaching/2006/kbdb/Codd72a.pdf, https://en.wikipedia.org/wiki/Codd%27s_theorem]
@@ -235,4 +235,4 @@ AI Agent 迁移原则：
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
 - depends_on: [[typed-ai-agent-boundaries]], [[production-ai-agent-evaluation-framework]]
-- related: [[constrained-toolbox-evaluator-loop]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]], [[llm-context-engineering-layer]], [[document-parsing-structural-fidelity]], [[public-info-monitoring-automation-methodology]]
+- related: [[constrained-toolbox-evaluator-loop]], [[agent-self-validation-loops]], [[production-agent-evaluation-baselines]], [[llm-context-engineering-layer]], [[document-parsing-structural-fidelity]], [[public-info-monitoring-automation-methodology]], [[agent-pre-deploy-regression-and-trace-debugging]]

@@ -1,7 +1,7 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-11-15
+updated: 2026-11-17
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow]
 sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/papers/arxiv-2305-16291-voyager.md, docs:https://arxiv.org/abs/2310.01798, docs:https://arxiv.org/html/2304.05128v2, docs:https://arxiv.org/html/2305.11738v4, docs:https://arxiv.org/html/2303.11366v4, docs:https://arxiv.org/html/2409.12917]
@@ -183,4 +183,4 @@ UI/Web 任务追加：
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]], [[agent-pre-deploy-regression-and-trace-debugging]], [[agent-development-lifecycle]], [[deterministic-analytics-llm-reasoning-boundary]]

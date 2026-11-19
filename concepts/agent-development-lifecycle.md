@@ -1,12 +1,12 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-11-06
+updated: 2026-11-18
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, devops]
-sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/]
+sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/, https://papers.nips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf]
 status: stable
-description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期。
+description: 定义 Agent 从构建、测试、部署、监控到治理的工程生命周期，结合 Sculley 等（NeurIPS 2015）机器学习系统隐性技术债（CACE 原则、未声明消费者与隐性反馈回路）说明各阶段和横切治理的检查项。
 aliases: [agent-lifecycle]
 volatility: medium
 review_by: 2027-03-02
@@ -141,6 +141,20 @@ Anthropic 的 AI-native SDLC playbook 把 Plan、Design、Build、Test、Deploy�
 
 [推论] 先复用现有项目文档、测试和运行证据，在实际交接或检索出现问题时再补机制；简单任务仍可直接完成并验证，不必为四阶段新建流程、统一数据库或自动总结器。评估知识增益时应尽量保持任务和条件可比，同时观察正确性、耗时与成本，避免只看命中率或速度。
 
+### 隐性技术债与生命周期检查
+
+Sculley 等（NeurIPS 2015）讨论了机器学习系统中的边界侵蚀、数据依赖、反馈回路及其他维护风险。CACE（Changing Anything Changes Everything）指出，在相互依赖的学习系统中，一处特征、采样策略或超参数变更可能影响其他组件和整体表现。论文分别讨论了用后续模型修正前序模型的矫正级联，以及集成代码演变成难以维护的胶水代码和数据管道。[Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
+
+**[推论]** Agent 的模型、提示词、工具契约和检索策略也可能相互影响。按实际受影响的接口和任务选择回归范围。共享工具和知识的未声明消费者需要在改接口前排查。若系统会把自身输出送回记忆或知识库，保留来源并引入独立证据，避免重复采纳错误输出。见 [[agent-experience-consolidation-loops]]。
+
+| 阶段 | 何时检查 | 交接证据 |
+| --- | --- | --- |
+| Build | 修改模型、提示词、工具契约或检索策略 | 记录受影响的调用者和任务，核对类型边界与依赖。见 [[typed-ai-agent-boundaries]]。 |
+| Test | 准备部署或修复可复发失败 | 按能力选取结构回归探针。缺陷修复回放原失败与相邻合法用例，说明无法完成的复现。见 [[agent-pre-deploy-regression-and-trace-debugging]]、[[agent-failure-closed-loop-evaluation]]。 |
+| Deploy | 涉及跨进程恢复、并发写入或外部副作用 | 由受控资源端原子拒绝过时代际，另按操作核对授权、业务前置条件和幂等。不可逆步骤应有明确审批与失败后的处置方案，核对哪些前序动作可补偿。见 [[agent-production-harness-and-cloud-runtime-boundaries]]。 |
+| Monitor | 线上结果异常或有跨服务证据缺口 | 沿工具轨迹检查首个可证实的异常，回查依赖与状态。将可复发问题按执行、规约或评测器分流。见 [[agent-pre-deploy-regression-and-trace-debugging]]、[[agent-failure-closed-loop-evaluation]]。 |
+| Govern（横切） | 模型升级或规则积累后出现成本、冲突或适用性变化 | 用代表性案例对照可调整规则的收益，检查调用者、业务约束与安全硬边界，再决定保留、按需加载或退役。见 [[hermes-active-surface-lifecycle-governance]]。 |
+
 ## AI Agent interpretation
 这篇文章给 AI Agent 的价值，是把已有零散原则放进一条生命周期总线。
 
@@ -198,4 +212,4 @@ AI Agent 映射：
 ## Relations
 
 - depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-pre-deploy-regression-and-trace-debugging]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]]
+- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-pre-deploy-regression-and-trace-debugging]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agentic-programming-system-engineering]], [[ai-agent-human-outcome-design-principle]], [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[public-info-monitoring-automation-methodology]], [[stateful-agent-environments-and-grounded-verification]], [[agent-architecture-primary-paper-map]], [[hermes-active-surface-lifecycle-governance]]

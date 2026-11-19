@@ -1,7 +1,7 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-11-11
+updated: 2026-11-17
 type: concept
 tags: [llm, agent, workflow, research]
 sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md, https://arxiv.org/abs/2307.03172, https://aclanthology.org/2024.tacl-1.9/, https://en.wikipedia.org/wiki/Information_bottleneck_method]
@@ -140,4 +140,4 @@ RAG 解决“找到信息”，context engineering 解决“让模型在有限�
 
 - refines: [[llm-engineering-knowledge-map]]
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[wiki-ingestion-workflow]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]]
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[wiki-ingestion-workflow]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]], [[agent-pre-deploy-regression-and-trace-debugging]], [[deterministic-analytics-llm-reasoning-boundary]]

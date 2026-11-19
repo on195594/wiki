@@ -1,7 +1,7 @@
 ---
 title: Agent 生产级 Harness 与云端运行时边界
 created: 2026-11-02
-updated: 2026-11-16
+updated: 2026-11-18
 type: concept
 tags: [agent, harness, lifecycle, deployment, orchestration, governance, verification, linux]
 sources: [raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, concepts/agent-development-lifecycle.md, https://en.wikipedia.org/wiki/Long-running_transaction, https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf, https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html, https://arxiv.org/html/2610.41453v1]
@@ -62,8 +62,7 @@ Yang Li 的 Tetral 架构叙述 [[tetral-next-scaling-problem-2026-09-06]] 为�
 5. **旧执行者隔离（Stale worker fencing）**：超时重投后，旧进程迟到的写入是否会被代际号拒绝？
 
 **单调代际隔离令牌（Fencing Tokens）硬拒绝不变量**：针对窗口 5，Martin Kleppmann（2016，[*How to do distributed locking*](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)）证明：在可能发生 GC 暂停、容器挂起或网络延迟重排的异步系统中，仅靠 Worker 在执行前自检租约到期时间（TTL）无法阻止超时后的僵尸覆盖写入。`[推论]` 安全的跨进程代际隔离要求调度队列每次分配租约时发放严格单调递增的代际号 $g_1 < g_2 < \dots$，并由状态存储层（如 Bridge 数据库）或受控资源端维护目标会话 $s$ 已接受的最大代际号 $g_{\max}(s)$，对每次携带 $g_{\text{req}}$ 的状态转移或回执登记强制执行原子校验：
-$$\text{CommitAllowed}(s, g_{\text{req}}) \iff g_{\text{req}} \ge g_{\max}(s), \quad \text{通过时原子更新 } g_{\max}(s) \leftarrow g_{\text{req}}$$
-任何满足 $g_{\text{req}} < g_{\max}(s)$ 的迟到写请求均被存储层直接拒绝，从而在持久层阻断旧 Pod 复活后的状态污染。
+受控资源拒绝 $g_{\text{req}} < g_{\max}(s)$ 的写入。满足 $g_{\text{req}} \ge g_{\max}(s)$ 仅通过代际校验，提交仍须满足授权、业务前置条件和幂等约束。存储端将代际比较、受保护写入与 $g_{\max}(s)$ 的更新置于同一原子操作中。新代际在受控资源生效后，旧执行者的迟到写入才会因代际过时而被拒绝。
 
 此机制不让任意外部系统自动具备事务性，也不保证副作用恰好执行一次；持久化载体的成本与复杂度取舍见 [[agent-orchestration-production-tradeoffs]]。
 

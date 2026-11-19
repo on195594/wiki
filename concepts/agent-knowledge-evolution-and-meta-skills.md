@@ -1,7 +1,7 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-11-16
+updated: 2026-11-18
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf, https://en.wikipedia.org/wiki/Catastrophic_interference, https://www.pnas.org/doi/10.1073/pnas.1611835114, https://arxiv.org/abs/1612.00796, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/]
@@ -33,7 +33,7 @@ experience → extract skill/insight → retrieve similar knowledge
 
 ## Distinguish external consolidation from weight-level learning
 
-Alloomi 报告（[[xudong-han-self-evolving-agent-alloomi-2026-08-13]]；相关断言沿用 `sea.pdf` 的 2026-08 采集记录；2026-11-16 已重新获取 PDF，但尚未逐项核验报告内容，故页面级 `verified_at` 保持留空、页面级 `review_by: 2026-12-13` 保留不变）提出的 Self-Evolving Agent 把每次任务组织为 `(context, decision, feedback)` 三元组，经质量筛选后进入经验池，再执行在线 LoRA、跨任务 replay、强教师能力蒸馏和多指标验证。这个闭环的关键不是“把更多历史塞回上下文”，而是让候选经验经过保留旧能力的回放、准入检查和失败回滚后进入模型参数。
+[[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 链接的 Alloomi 技术报告将任务经验组织为 `(context, decision, feedback)` 三元组，经质量筛选后执行在线 LoRA、跨任务回放、教师蒸馏和多指标验证。候选更新未通过评测时回滚。
 
 这与 AI Agent 当前知识层互补而非替代：
 
@@ -55,14 +55,12 @@ $$\mathcal{L}(\theta) = \mathcal{L}_B(\theta) + \sum_{i} \frac{\lambda}{2} F_i \
 - **参数化后训练路径（LoRA / Replay / EWC）**：通过历史轨迹重放（Interleaved Replay）或曲率正则化（$F_i$）近似保护旧能力，但对角 Fisher 近似在长任务序列或强分布漂移下仍会累积近似误差，且一旦发生错误泛化或隐式数据污染，无法在不重训或回退整套权重快照的前提下单独剥离某一条错误规则；
 - **非参数化外部知识路径（Wiki / Skills / Project Context）**：将底座权重 $\theta$ 冻结（$\Delta \theta = 0$，从根源消除权重级灾难性遗忘），把新经验外化为离散、带来源归因的符号规则单元；此时“稳定性约束”从隐式的参数二次惩罚 $\sum \frac{\lambda}{2} F_i (\theta_i - \theta_{A,i}^*)^2$ 转化为**显式的冻结回归测试集门禁与版本化单点回滚（Git revert）**（见 [[agent-skill-governance-and-reversible-state]] 与 [[agent-experience-consolidation-loops]] 的 `G_promo / I_rev` 门禁），而“可塑性更新”可借鉴**记忆再巩固（Memory Reconsolidation）**（[Karim Nader, 2015, PMC4588064](https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/)），在发现冲突证据后按条目复核和修订；这是工程类比，并非该生物机制直接证明了文本知识的更新策略。这解释了为何在缺乏完备回放集与隔离训练管线前，生产 Agent 应优先采用外部非参数化闭环。
 
-报告给出的同底座 CL-Bench rubric pass rate 从 24.5% 提升至 47.6%，可作为方向性系统证据，但不能直接成为 AI Agent 基线：主要结果只有 3 个 seeds，集中在一个 Qwen MoE 底座，教师蒸馏依赖付费外部模型；超过 10 个连续任务的长期效果、更多 seeds、无教师消融和更强对抗实验仍被列为待完成工作。
-
 > [!volatile]
-> verified_at: 2026-08-14
+> verified_at: 2026-11-18
 > review_by: 2026-12-13
 > source: docs:https://alloomi.ai/reports/sea.pdf
 >
-> 上述 Alloomi Self-Evolving Agent 的 `(context, decision, feedback)` 轨迹筛选、LoRA/replay/蒸馏闭环及 CL-Bench `24.5% → 47.6%`（3 seeds）结果来自 2026-08-14 采集记录 [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] 所引技术报告；此前访问 `alloomi.ai/reports/sea.pdf` 曾失败；2026-11-16 补充检查已成功获取 PDF，本次仅确认可访问性，尚未逐项复核报告内容与本段断言，按 `SCHEMA.md` 保留原核验日期 `2026-08-14` 与 `review_by: 2026-12-13`，不刷新局部或整页 `verified_at`（本页其余外部学术文献 [Kirkpatrick et al. 2017 PNAS](https://www.pnas.org/doi/10.1073/pnas.1611835114) 已于 2026-11-16 在线核对；另清点本页 `sources` 中的 3 份本地 `raw/` 快照，本次未重新逐项核验全部快照正文；本次确认报告可访问不构成对第一方报告数据或其他结论的新增核验；到期仍需复核报告内容，如届时直链不可达，继续保留采集快照边界说明，不影响本页 EWC 正则化与元技能章节的独立复用）。
+> 2026-11-18 核对报告正文、表 10、附录 A.1 和第 5.3 节。基于同一 Qwen3.6-35B-A3B 底座，报告的 CL-Bench 评分通过率为 FewShot 基线 24.5%、RAGMem 基线 39.4%、完整 Self-Evolving Agent-mini 系统 47.6%，各为 3 个随机种子的均值。结果属于包含外部教师的完整系统对比。长周期部署、完全去除外部教师的消融和更广泛的泛化验证仍待完成。
 
 [推论] 对当前 AI Agent 的最小映射不是引入自动训练，而是继续使用现有可审计闭环：
 

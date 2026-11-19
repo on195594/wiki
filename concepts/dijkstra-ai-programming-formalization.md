@@ -1,7 +1,7 @@
 ---
 title: Dijkstra on AI Programming Formalization
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-17
 type: concept
 tags: [llm, workflow, research, note]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/infoworld-ai-coding-three-skills-2026-04-16.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, docs:https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html, docs:http://www.cs.toronto.edu/~chechik/courses05/csc410/readings/dijkstra.pdf, docs:https://arxiv.org/abs/2406.12952, docs:https://arxiv.org/html/2610.12289v1, docs:https://doi.org/10.1145/363235.363259]
@@ -96,4 +96,4 @@ AI 可以协助草拟形式化产物，但不替代形式化；是否降低总�
 ## Relations
 
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[dijkstra-ewd667-vs-ai-programming-article]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-ai-workflow-formalization-principles]], [[wiki-ingestion-workflow]]
+- related: [[dijkstra-ewd667-vs-ai-programming-article]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-ai-workflow-formalization-principles]], [[wiki-ingestion-workflow]], [[typed-ai-agent-boundaries]], [[hermes-python-engineering-capability-checklist]]

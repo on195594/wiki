@@ -1,7 +1,7 @@
 ---
 title: Flutter 版本演进、平台编译与可选 AI 生态边界
 created: 2026-11-05
-updated: 2026-11-16
+updated: 2026-11-18
 type: concept
 tags: [product, architecture, tool, deployment, validation]
 sources:
@@ -52,19 +52,19 @@ review_by: 2027-02-05
 ## 2. Swift Package Manager 默认启用，保留插件回退边界
 
 > [!volatile]
-> verified_at: 2026-11-16
+> verified_at: 2026-11-18
 > review_by: 2026-12-02
 > source: docs:https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers
 >
-> 所读文档（2026-11-16 在线复核时站点顶部提示 `Flutter 3.50 is live!`，2026-11-10 复核时曾显示 `Flutter 3.47.8 now blocks compromised eMudhra CA keys`，且 Packages & plugins / AI 导航包含 `Package skills` / `Ship skills with packages`）说明从 3.44 起 SwiftPM 默认启用（因 CocoaPods 已进入维护模式且官方 trunk 仓库定于 2026-12-02 永久转为只读；CocoaPods 官方计划同时载明自 2025-05 起拦截新 Podspec 中的 `prepare_command`，并于 2026-11-02 至 2026-11-06 执行只读切换演练）；升级后运行应用会自动加入集成，但未支持 SwiftPM 的依赖仍回退到 CocoaPods。只有所有插件支持 SwiftPM，且手工 Podfile 依赖/逻辑已处理，才适合移除 CocoaPods 集成。[7][13]
+> Flutter 3.44 起，iOS 和 macOS 默认启用 SwiftPM。升级后运行应用会自动加入集成，尚未支持 SwiftPM 的依赖仍回退到 CocoaPods。移除 CocoaPods 前，先确认所有插件支持 SwiftPM，并迁移手工添加的 Podfile 依赖或逻辑。官方文档分平台列出 `pod deintegrate`、清理旧文件和 Xcode 配置、重新构建的步骤。[7]
+>
+> CocoaPods 的公开时间表将 2026-11-02 至 2026-11-06 列为只读演练窗口，并计划于 2026-12-02 永久停止向 trunk 发布新 Pod 和版本。计划包括归档 GitHub Specs 仓库及继续提供 CDN，以便已有依赖继续解析。2025 年 5 月更新还说明新 Pod 的 Podspec 不能使用 `prepare_command`，既有使用者获得豁免。[13]
 
-文档提供项目级关闭配置与完整移除 SwiftPM 集成步骤；关闭开关不等于撤销 Xcode 项目改动。[7] [推论] Apple 平台选型与升级需检查插件、最低 OS、flavor/custom target 和真实构建路径；先验证迁移，再考虑删除旧依赖管理文件，不把默认行为当作所有项目已迁移完成。[1][3][7]
+Flutter 支持按项目或按用户关闭 SwiftPM。已写入 Xcode 的 SwiftPM 集成仍需按文档另行移除。Apple 平台迁移验收需覆盖插件、最低 OS、flavor 或自定义 target，以及实际构建路径。[7]
 
 ### Scoped verification note
 
-2026-11-06、2026-11-10 与 2026-11-16，审查 Agent（非人类复核）只复核本节的 SwiftPM 默认启用、CocoaPods 回退条件与 trunk 只读计划，依据 [Flutter SwiftPM 文档](https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers) 的开篇、How to turn on / remove CocoaPods 小节，以及 [CocoaPods Trunk Read-only Plan](https://blog.cocoapods.org/CocoaPods-Specs-Repo/) 的 Timeline。Flutter 页面给出从 3.44 起默认启用（2026-11-16 页面顶部横幅已更新为 `Flutter 3.50 is live!`）；CocoaPods 原文发布于 2024-11-30、注明 2025-05 更新（拦截新 Podspec 的 `prepare_command`），并将 2026-11-02 至 2026-11-06 列为只读切换测试窗口、2026-12-02 列为计划永久只读日期，未固定网页提交版本。
-
-**处理结果：公布计划已确认，距离 2026-12-02 计划切换日尚余 16 天，实际永久切换仍待到期确认。** CocoaPods 将 2026-12-02 列为计划永久停止新增 Podspec 的日期，同时说明日期可能调整；这不表示已有依赖或所有构建会停止工作。保留本节局部 `review_by: 2026-12-02`，届时由仓库维护者核对实际公告并更新本节；若提前出现变更则提前复核。未执行 SDK 升级或项目迁移，不因本次局部核对更新整页验证日期，也不替其他章节背书。[7][13]
+2026-11-18 对照 Flutter 3.50 文档中的默认启用、平台移除步骤和关闭选项，以及 CocoaPods 官方时间表。此次核对覆盖文档行为与公布计划。演练结果、永久切换及具体项目迁移效果待另行验证。[7][13]
 
 ## 3. Wasm 是编译与部署条件，不是通用性能保证
 
@@ -101,7 +101,7 @@ review_by: 2027-02-05
 
 ## 7. 来源范围与限制
 
-本页所引 SwiftPM 和 FFI 文档标示适用于 Flutter 3.47，Web FAQ 与 Wasm 文档在 2026-11-06 在线复核时已更新至 Flutter 3.50；2026-10-19、2026-10-20 与 2026-11-06 对照 `docs.flutter.dev` 与 `flutter.dev/blog` 重新核验了设计系统独立包、SwiftPM（局部 `review_by` 保持 `2026-12-02` 以对齐 CocoaPods 永久只读切换日）、Wasm、FFI、桌面多窗口及 GenUI/Genkit Dart 段落及对应官方来源（[1]–[12]）。网页与实验特性会随版本继续演进，超过 `review_by` 或用于真实项目升级决策时必须回到目标 SDK 的当前文档重新核对；本页核验不代表已安装目标 SDK、执行迁移或完成真机/商店验证。基础分层架构与选型决策入口见主实体页 [[flutter]]。
+SwiftPM 文档在 2026-11-18 局部复核时标示覆盖 Flutter 3.50；FFI 文档在 2026-11-06 复核时标示适用于 Flutter 3.47，Web FAQ 与 Wasm 文档在同日已更新至 Flutter 3.50。2026-10-19、2026-10-20 与 2026-11-06 对照 `docs.flutter.dev` 与 `flutter.dev/blog` 重新核验了设计系统独立包、SwiftPM、Wasm、FFI、桌面多窗口及 GenUI/Genkit Dart 段落及对应官方来源（[1]–[12]）。SwiftPM 局部 `review_by` 保持 `2026-12-02`，与 CocoaPods 计划永久只读日期一致。网页与实验特性会随版本继续演进，超过 `review_by` 或用于真实项目升级决策时必须回到目标 SDK 的当前文档重新核对；本页核验不代表已安装目标 SDK、执行迁移或完成真机/商店验证。基础分层架构与选型决策入口见主实体页 [[flutter]]。
 
 ## Relations
 
@@ -117,10 +117,10 @@ review_by: 2027-02-05
 [4] https://docs.flutter.dev/platform-integration/platform-channels — Writing custom platform-specific code
 [5] https://flutter.dev/blog/whats-new-in-flutter-3-47 — Emma Twersky，2026-08-12，What’s new in Flutter 3.47；2026-10-20 复核设计包、Impeller 桌面默认、Apple 版本与 `UIScene`、Wasm 与实验多窗口段落。
 [6] https://flutter.dev/blog/decoupling-material-cupertino — Craig Labenz，2026-09-09，Material and Cupertino decoupling are here；2026-10-20 复核独立包与未来移除的区别。
-[7] https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers — Swift Package Manager for app developers；文档说明 3.44+ 默认启用 SwiftPM（站点顶部于 2026-11-16 提示 Flutter 3.50 is live，2026-11-10 曾提示 Flutter 3.47.8 拦截受损 eMudhra CA 密钥；CocoaPods 仓库定于 2026-12-02 永久只读），2026-11-16 复核。
+[7] https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers — Swift Package Manager for app developers；2026-11-18 核对默认启用、回退与 iOS/macOS 迁移步骤。
 [8] https://docs.flutter.dev/platform-integration/web/wasm — Support for WebAssembly (Wasm)；2026-11-06 复核时文档已更新至 Flutter 3.50（含 `wasmAllowList`、`--enable-wasm-deferred-loading` 与 `--no-deprecated-js-interop`）。浏览器与实验能力使用前需重新核查。
 [9] https://docs.flutter.dev/platform-integration/bind-native-code — Bind to native code using FFI；文档标示 Flutter 3.47，2026-11-06 复核。
 [10] https://flutter.dev/blog/desktop-windowing-apis — Matthew Kosarek，2026-08-24，Introducing the Desktop Windowing API for Flutter；核对实验状态、通道和 API 设计边界。
 [11] https://flutter.dev/blog/announcing-genkit-dart-1-0 — Chris Gill，2026-10-08，Announcing Genkit Dart 1.0；核对稳定核心、实验扩展及客户端凭证边界。
 [12] https://flutter.dev/blog/new-updates-to-a2ui-and-flutters-genui-package — Andrew Brogdon，2026-05-14，New updates to A2UI and Flutter’s GenUI package；历史版本迁移说明，不认定 0.9.0 为当前最新版。
-[13] https://blog.cocoapods.org/CocoaPods-Specs-Repo/ — CocoaPods Trunk Read-only Plan；2026-11-10 与 2026-11-16 核对计划时间表（含 2025-05 `prepare_command` 限制、2026-11-02..06 演练窗口与 2026-12-02 计划只读日）与可调整边界，非实际切换完成证明。
+[13] https://blog.cocoapods.org/CocoaPods-Specs-Repo/ — CocoaPods Trunk Read-only Plan；2026-11-18 核对公告时间表与 2025 年 5 月更新。
