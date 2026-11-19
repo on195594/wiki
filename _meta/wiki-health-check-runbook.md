@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-11-15
+updated: 2026-11-19
 type: meta
 status: current
 ---
@@ -124,7 +124,29 @@ This verifies citation identity and computes two-run fixed-packet citation Jacca
 - Reports contain only repository-relative paths and rule names, never matched values.
 - Files containing NUL bytes and files that do not decode as UTF-8 are candidates marked `unreviewed-binary-or-non-utf8`; they cannot be counted as reviewed until inspected with an appropriate tool.
 - Generic product paths, configurable examples and obvious credential placeholders are allowed. A synthetic example does not prove deployment or authorization.
-- **Baseline candidate adjudication (2026-11-06)**: The local scan returned 14 non-blocking candidates across 12 files: 11 tracked Markdown pages plus the ignored `.lycheecache`. Content review found public bibliography URL paths in `concepts/entropy-and-entropy-increase.md` and `.lycheecache` (2 candidates); public-boundary exclusions in `SCHEMA.md`, `concepts/agent-experience-consolidation-loops.md`, `concepts/household-fund-layering-model.md`, `concepts/investment-risk-control-framework.md`, `concepts/wiki-ingestion-workflow.md` and `operations/agent-shared-wiki-index.md` (8); and reusable investment examples or self-checks in `concepts/leontraveller-trading-and-investment-system.md` and the three query pages `losing-position-review-method`, `position-sizing-method` and `pre-trade-risk-checklist` (4). These reviewed matches contain no personal instance records; disclaimers alone are not evidence of safety. This is a local scan snapshot, not a portable tracked-file baseline: ignored cache contents can differ between checkouts. Keep the conservative scanner unchanged without path allowlists; re-adjudicate when matched content changes, even if the candidate count and paths remain unchanged.
+### Baseline candidate adjudication (2026-11-19)
+
+The local scan reported 0 violations and 15 non-blocking candidates across 13 tracked Markdown files. Review of the matched passages and their surrounding context found no personal instance records. All 15 are safe to retain:
+
+| File | Rule | Basis for retaining the content |
+| --- | --- | --- |
+| [SCHEMA.md](../SCHEMA.md) | `personal-financial-record` | The public-boundary policy excludes private financial details; it gives no account or position values. |
+| [agent-experience-consolidation-loops.md](../concepts/agent-experience-consolidation-loops.md) | `session-or-task-ledger` | Both passages tell maintainers to keep private material out of the public Wiki; neither reproduces a transcript or an execution log. |
+| [ai-code-review-governance-and-convergence.md](../concepts/ai-code-review-governance-and-convergence.md) | `session-or-task-ledger` | Confirmed against the linked public Claude Code engineering article: this is a compatibility check for loading old transcripts, not an excerpt from one. No session identifier is given. |
+| [entropy-and-entropy-increase.md](../concepts/entropy-and-entropy-increase.md) | `non-generic-home-path` | Both occurrences are of the same public Harvard Mathematics URL. Opening it returned Shannon's *A Mathematical Theory of Communication*; the path is part of the URL, not a local directory. |
+| [hermes-lifeos-layer-boundary-contract.md](../concepts/hermes-lifeos-layer-boundary-contract.md) | `session-or-task-ledger` | The routing matrix lists publishing temporary transcripts as a prohibited example, without including one. |
+| [household-fund-layering-model.md](../concepts/household-fund-layering-model.md) | `personal-financial-record` | The template leaves values to the reader; the surrounding text gives no household amounts, account identifiers, or asset positions. |
+| [investment-risk-control-framework.md](../concepts/investment-risk-control-framework.md) | `personal-financial-record` | The matched passage introduces a reusable framework, not an account balance, position, or trade. |
+| [leontraveller-trading-and-investment-system.md](../concepts/leontraveller-trading-and-investment-system.md) | `personal-financial-record` | A summary of public investing notes gives a generic example of rationalizing a position, without a specific holding or transaction. |
+| [wiki-ingestion-workflow.md](../concepts/wiki-ingestion-workflow.md) | `personal-financial-record` | The intake checklist names private financial details as excluded material, without recording any. |
+| [wiki-ingestion-workflow.md](../concepts/wiki-ingestion-workflow.md) | `session-or-task-ledger` | The checklist excludes private task history; it contains no task entries. |
+| [agent-shared-wiki-index.md](../operations/agent-shared-wiki-index.md) | `personal-financial-record` | The write-boundary rule prohibits private financial details without giving any. |
+| [agent-shared-wiki-index.md](../operations/agent-shared-wiki-index.md) | `session-or-task-ledger` | The write-boundary rule names private task history as out of scope; it contains no task entries. |
+| [losing-position-review-method.md](../queries/losing-position-review-method.md) | `personal-financial-record` | The first-person wording is a reusable self-check for making exceptions, not a report of a specific trade. |
+| [position-sizing-method.md](../queries/position-sizing-method.md) | `personal-financial-record` | The drawdown question and the sizing red flag are generic decision criteria, not observations about an account. |
+| [pre-trade-risk-checklist.md](../queries/pre-trade-risk-checklist.md) | `personal-financial-record` | The checklist asks whether exits and size were defined; it supplies neither a completed answer nor an order. |
+
+This records a manual review, not a suppression list. The scanner still reports these candidates; re-review the passages when matched content changes, even if the count and paths stay the same. Review context rather than relying on disclaimers. Local results are not necessarily portable: the 2026-11-06 snapshot also matched a public bibliography URL in the ignored `.lycheecache`, which did not trigger on this run.
 
 ## Reverse lookup
 
