@@ -1,10 +1,10 @@
 ---
 title: Agent Memory–Reflection–Planning Pipeline
 created: 2026-08-15
-updated: 2026-11-13
+updated: 2026-11-19
 type: concept
 tags: [agent, memory, architecture, research]
-sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf]
+sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf, https://arxiv.org/abs/2503.03704]
 status: stable
 description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分、反思触发方程及与 ACT-R 全历史幂律激活的适用边界对比，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
@@ -85,7 +85,7 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。AI Agen
 3. 反思能否回链到支持它的具体事件？
 4. 错误反思如何撤回或降权？
 5. 计划如何响应新观察而不无限重写历史？
-6. 哪些状态包含个人数据、敏感信息或可被提示注入污染？
+6. 哪些状态包含个人数据、敏感信息或可被提示注入污染？（[MINJA，NeurIPS 2025，arXiv:2503.03704](https://arxiv.org/abs/2503.03704) 在具备自动记忆写入的实验 Agent 中观察到，仅靠查询与观察输出也能污染长期记忆；`[推论]` 按来源分级并记录来源，召回内容默认作为待核实数据，而非可执行指令，完整防御门禁见 [[agent-security-architecture-and-prompt-injection-defense]]。）
 7. 完成判断来自模型自评，还是更权威的环境状态？
 
 ## Evaluation boundary
@@ -102,4 +102,4 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。AI Agen
 ## Relations
 
 - refines: [[agent-context-engineering]]
-- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-memory-governance-notes]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]]
+- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-memory-governance-notes]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]], [[agent-security-architecture-and-prompt-injection-defense]]

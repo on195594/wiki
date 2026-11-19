@@ -2,6 +2,18 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-19] improve | 增量补强五篇存量核心页的安全边界并打通双向图谱
+
+- **工具供应链与沙箱隔离衔接**：在 [[agent-skill-provider-governance-boundary]] 补充外部 MCP 工具描述投毒、批准后静默篡改（Rug Pull）与跨服务器遮蔽边界（引 [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification) 与 [MCP 安全最佳实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)）；在 [[typed-ai-agent-boundaries]] 的 Code Mode 沙箱小节衔接 [CaMeL (arXiv:2503.18813)](https://arxiv.org/abs/2503.18813) 数据流污点追踪与[六类抗注入架构模式 (arXiv:2506.08837)](https://arxiv.org/abs/2506.08837)。
+- **持久记忆抗投毒与自适应回归探针**：在 [[agent-memory-reflection-planning-pipeline]] 与 [[agent-experience-consolidation-loops]] 补充 [MINJA (arXiv:2503.03704)](https://arxiv.org/abs/2503.03704) 记忆投毒证据与写入信任分级门禁；在 [[agent-pre-deploy-regression-and-trace-debugging]] 的 Prompt injection 回归探针中明确区分静态模板与自适应攻击（引 [AgentDojo (arXiv:2406.13352)](https://arxiv.org/abs/2406.13352) 与 [arXiv:2510.09023](https://arxiv.org/abs/2510.09023)），并在上述三页 `## Relations` 补齐对 [[agent-security-architecture-and-prompt-injection-defense]] 的双向引用。
+- **证据与维护边界**：所有新增工程门禁均标注 `[推论]`，完整威胁模型仍由 [[agent-security-architecture-and-prompt-injection-defense]] 主维护；严格保留五篇存量页既有 `verified_at` 与 `review_by` 不变，不改动任何现有运行规则。
+
+## [2026-11-19] improve | 新建 AI Agent 安全架构与提示注入防御主维护页并补齐导航入口
+
+- **新建安全架构主维护页**：新增 [[agent-security-architecture-and-prompt-injection-defense]]，沿用已登记标签 `[agent, architecture, governance, risk-control, mcp, verification]`（暂不为单页变更 `SCHEMA.md` 标签表），系统编译 [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)、Simon Willison [The Lethal Trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)、[Instruction Hierarchy (arXiv:2404.13208)](https://arxiv.org/abs/2404.13208)、[The Attacker Moves Second (arXiv:2510.09023)](https://arxiv.org/abs/2510.09023)、[CaMeL (arXiv:2503.18813)](https://arxiv.org/abs/2503.18813)、[AgentDojo (arXiv:2406.13352)](https://arxiv.org/abs/2406.13352)、[六类抗注入架构模式 (arXiv:2506.08837)](https://arxiv.org/abs/2506.08837)、[Invariant Labs MCP 工具投毒](https://invariantlabs.ai/blog/mcp-security-notification) / [MCP-Scan](https://invariantlabs.ai/blog/introducing-mcp-scan)、[MCP 官方安全最佳实践](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices) 及 [MINJA 记忆投毒 (arXiv:2503.03704)](https://arxiv.org/abs/2503.03704)。
+- **打通目录、任务导航与正式页入链**：在 `index.md` 的 `## 按任务进入` 新增“评估 Agent 安全与防提示注入边界”入口；同步更新 `_meta/topic-index.md`（正式页计数 `131 → 132`）；在 [[agent-skill-provider-governance-boundary]] 与 [[typed-ai-agent-boundaries]] 的 `## Relations` 中补齐对新页的双向关联（保留原页面级 `verified_at` 不变）。
+- **证据与采用边界**：明确区分论文实验指标与工程 `[推论]`，核对 CaMeL v2 的约 77% 安全完成率与 MCP 规范的适用范围，明确控制流隔离与外发授权不可互相替代，不将实验结果当作生产系统的默认门槛；本次操作不修改任何现有运行规则或 MCP 配置。
+
 ## [2026-11-19] fix | 补齐公开归档、运行状态与来源链接的治理边界
 
 - 在 [Schema](SCHEMA.md#conventions) 和 [[wiki-ingestion-workflow]] 明确第三方原文的再发布准入：核对依据与条件；依据不明时只保留链接、书目信息及自行撰写的摘要。

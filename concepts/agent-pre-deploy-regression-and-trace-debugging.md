@@ -1,10 +1,10 @@
 ---
 title: Agent 部署前结构回归与工具轨迹调试
 created: 2026-11-04
-updated: 2026-11-18
+updated: 2026-11-19
 type: concept
 tags: [agent, evaluation, validation, debugging, harness, workflow]
-sources: [raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, concepts/production-ai-agent-evaluation-framework.md, https://www.w3.org/TR/trace-context/, https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/]
+sources: [raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, concepts/production-ai-agent-evaluation-framework.md, https://www.w3.org/TR/trace-context/, https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/, https://arxiv.org/abs/2406.13352, https://arxiv.org/abs/2510.09023]
 status: stable
 description: 从生产评估主干页拆出工具调用六步调试证据链（结合 W3C Trace Context 跨服务传播与首个可证实异常的定位）、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。
 aliases: [agent-pre-deploy-regression, tool-call-trace-debugging]
@@ -63,7 +63,7 @@ review_by: 2027-03-02
 | --- | --- | --- | --- |
 | 上下文丢失与检索退化 | 多轮上下文可能被裁剪、摘要或外部记忆召回 | 早期关键事实仍能被正确恢复；检索与摘要分别判定，不能用 OR 断言互相遮蔽 | 短时、无裁剪、无跨轮状态任务 |
 | 工具执行幂等性 | Agent 能向外部系统写入，且调用可能重试或并发 | 同一逻辑操作重复到达时只产生一次真实写入，并可返回一致结果 | 纯只读工具或无外部副作用 |
-| 指令覆盖与 Prompt injection | 用户输入、网页、RAG 文档等不可信内容可影响工具调用 | 直接和间接注入都不能产生越权工具副作用；检查 trace 与真实状态，而非拒绝文案 | 无不可信输入且无工具执行面 |
+| 指令覆盖与 Prompt injection | 用户输入、网页、RAG 文档等不可信内容可影响工具调用 | 区分静态模板与自适应攻击（[arXiv:2510.09023](https://arxiv.org/abs/2510.09023) 表明仅测静态模板易产生安全错觉）；分别测量良性和受攻击时的任务完成率，检查工具轨迹与真实状态中的越权读写或披露，而非只看拒绝文案（[AgentDojo](https://arxiv.org/abs/2406.13352)，架构隔离见 [[agent-security-architecture-and-prompt-injection-defense]]） | 只有在确认不存在不可信输入到特权动作或敏感输出的路径时，才跳过对应副作用探针；仍应按风险验证回复完整性 |
 | 结构化输出依从性 | 下游依赖 schema、枚举或机器可读结果 | 同时检查解析、`finish_reason`、拒绝语义、字段值约束和模型版本；valid JSON 不等于语义正确 | 自由文本且无机器消费契约 |
 | 非终止与有界编排 | 存在 retry、tool loop、reactive loop 或多 Agent 等待关系 | 不可能任务和持续错误工具在步骤、累计成本与 wall-clock 三重预算内结构化退出 | 单步确定性调用，无循环或等待 |
 | RAG 与参数记忆冲突 | Agent 使用检索内容覆盖或补充模型知识 | 正向验证可采用可信新事实，负向验证可抵抗可检测的检索投毒；结合忠实度与归因证据 | 不使用检索增强 |
@@ -96,4 +96,4 @@ review_by: 2027-03-02
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-failure-closed-loop-evaluation]], [[deterministic-analytics-llm-reasoning-boundary]]
-- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]]
+- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]], [[agent-security-architecture-and-prompt-injection-defense]]

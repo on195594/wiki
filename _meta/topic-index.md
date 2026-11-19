@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-18
+updated: 2026-11-19
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-19 | Indexed pages: 131
+> Last updated: 2026-11-19 | Indexed pages: 132
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -23,6 +23,7 @@ status: current
 - [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口（含服务端代际隔离与写入条件）、Saga 语义补偿/枢轴/幂等事务与模糊远程结果先取证后恢复边界，以及 Agent-as-Code 的 PR 控制面
 - [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
 - [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：结合集合覆盖/背包整数规划（ILP）、FrugalGPT 级联停止与 RouteLLM 偏好阈值路由建模资源约束，含 `C_cov / R_route / P_tool / M_margin` 参数化裁决矩阵与 Open SWE 线上案例证据边界
+- [Agent Security Architecture and Prompt Injection Defense](../concepts/agent-security-architecture-and-prompt-injection-defense.md) — 用 OWASP Agentic Top 10（2026）与“致命三角”识别风险，比较 CaMeL 与六类架构模式的适用边界，并给出外发授权、MCP 工具供应链和持久记忆的防御门禁
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：结合 Lee & See 自动化适度依赖三维信任模型验证真实问题与信任边界；区分主动运行、通知和执行权限，按误扰与漏报验收提醒，含 `I_iso / M_ctx / T_tax / G_human` 委派与流水线裁决矩阵
 - [AI Agent Tool Selection Architecture](../concepts/ai-agent-tool-selection-architecture.md) — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益不等式、分数间隔（Score Margin）回退判据与三代工具调用演进（全量 Schema → 动态搜索 → Code Mode 沙箱编排）边界

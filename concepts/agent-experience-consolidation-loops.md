@@ -1,10 +1,10 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-18
+updated: 2026-11-19
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, docs:https://alloomi.ai/reports/sea.pdf, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/abs/2503.03704]
 status: stable
 description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 跨模型记忆行为对比及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。
 volatility: medium
@@ -140,6 +140,8 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 [推论] 经验固化之前，还应检查任务范围是否便于人工审阅，以及反馈是否具有明确的复用边界；案例、适用条件与证据限制统一见 [[agent-closed-loop-learning-from-corrections-to-rules#反馈之前：按可审阅性设计任务范围]]，本页不重复维护。
 
+[推论] **抗记忆投毒的写入信任门禁**：结合 [MINJA（NeurIPS 2025，arXiv:2503.03704）](https://arxiv.org/abs/2503.03704) 的仅查询持久记忆注入实证与 [[agent-security-architecture-and-prompt-injection-defense]]，凡接触过外部不可信输入（网页、邮件、第三方工单或未知用户查询）的会话轨迹，不得仅因重复出现就自动晋升至默认注入层 `memory` 或活跃 `skill`；离线整合须核验来源信任等级（Trust Tier）并严格隔离多主体命名空间，避免一次性间接注入固化为跨会话后门。
+
 ```text
 lesson candidate
 → Is it always-needed stable context? → memory
@@ -238,4 +240,4 @@ authorized session / project evidence → audited review
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-governance-notes]], [[hermes-active-surface-lifecycle-governance]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]]
+- related: [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-governance-notes]], [[hermes-active-surface-lifecycle-governance]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-security-architecture-and-prompt-injection-defense]]
