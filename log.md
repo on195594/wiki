@@ -2,6 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-19] ingest | 沉淀 Agentic GraphRAG 架构选型
+
+- 新增 [[agentic-graphrag-pattern-selection]]：按问题区分固定查询、纵向下钻与有界横向多跳，并归纳四类历史记录的复用边界。从 [[hermes-knowledge-freshness-and-claim-evidence]] 补充回链，同步主题目录；任务入口不变。
+- 仅引用公开文章及书目信息，不归档文章正文或配图。作者的收益估计不作为评测基准；对照评测是建议，不改变默认检索流程。
+- 验证：目录和来源反查已收录新页，证据导航页的回链可解析；必需检查通过，未新增公开边界候选，raw 清单不变。
+
 ## [2026-11-19] fix | 审查未提交的知识页与决策入口
 
 - [[repository-level-code-intelligence-layer]] 按论文表格区分 AutoCodeRover 常规配置与 SBFL 配置、LocAgent 的微调模型与专有模型结果，并将 ROSE 数据改引原论文。常驻上下文的取舍采用本地对照，不套用论文的成本涨幅。

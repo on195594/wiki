@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-19 | Indexed pages: 135
+> Last updated: 2026-11-19 | Indexed pages: 136
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -50,6 +50,7 @@ status: current
 - [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比（Reconsolidation）、CL-Bench 1.0 跨模型记忆行为对比与断链修复案例，含 `B_act / P_skill / G_promo / I_rev` 参数化治理矩阵；Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
 - [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界
 - [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘、弹性权重巩固（EWC Fisher 矩阵二次惩罚）与再巩固的局部修订类比区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能
+- [Agentic GraphRAG：架构选型与适用边界](../concepts/agentic-graphrag-pattern-selection.md) — 按问题选择固定查询、纵向下钻或有界横向多跳，区分决策先例、工具轨迹、用户约束和事故历史四类记录的复用边界
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：结合微软 DELEGATE-52 一手论文（arXiv:2604.15597，52 领域仅 Python 普遍达标、短程 2 轮表现无法预测 20 轮退化、通用工具退回整文件重写恶化 6%）与 Lens 往返定律类比，区分尝试恢复与真逆函数、压力测试边界与生产工作流，采用小步窄工具编辑、结构 diff 与中间态审计
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：结合 Ehrenberg-Bass 心智可得性理论（Romaniuk & Sharp，心智渗透率 $\text{MP}$ / 网络规模 $\text{NS}$ / 心智份额 $\text{SoM}$）、CEP 与 7W 框架从真实决策场景出发，消除边际关键词搜索量混杂
 - [From Coping Skill Acquisition to Real-World Application](../concepts/coping-skill-application-and-imaginal-exposure.md) — 应对技能从习得到现实应用：结合抑制性学习（Craske 等）与压力接种三阶段模型（Meichenbaum），识别伪应对并以有界想象暴露检验技能是否减少回避，区分日常迁移与临床延长暴露边界

@@ -1,7 +1,7 @@
 ---
 title: Wiki 知识新鲜度与断言证据绑定
 created: 2026-08-26
-updated: 2026-11-12
+updated: 2026-11-19
 type: concept
 tags: [agent, knowledge-base, memory, verification, architecture, workflow]
 sources: [raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, repository:_meta/catalog.json, concepts/hermes-knowledge-architecture.md, concepts/hermes-memory-skills-wiki-boundaries.md, https://arxiv.org/abs/2305.14251, https://arxiv.org/abs/2305.14627]
@@ -100,11 +100,12 @@ verified_at: 2026-11-02
 - refines: [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-memory-skills-wiki-boundaries]]
 - supersedes: [[hermes-wiki-knowledge-freshness-improvement-plan]]
-- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]], [[production-ai-agent-evaluation-framework]], [[production-agent-evaluation-baselines]]
+- related: [[wiki-cross-source-evidence-navigation-benchmark]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]], [[production-ai-agent-evaluation-framework]], [[production-agent-evaluation-baselines]], [[agentic-graphrag-pattern-selection]]
 
 ## Related
 
 - [[wiki-cross-source-evidence-navigation-benchmark]]：独立保存本仓库 8 组双入口跨源证据导航评测方案（Q1–Q8）与一跳双向关系可达性拓扑基线。
+- [[agentic-graphrag-pattern-selection]]：区分何时用固定查询、纵向下钻或有界横向多跳；不替代本页的断言证据绑定规则。
 - [[hermes-knowledge-architecture]]：补充知识对象和证据路由的维护维度。
 - [[hermes-memory-skills-wiki-boundaries]]：补充 Wiki 知识如何保持新鲜，而非改变层边界。
 - [[hermes-wiki-page-writing-standards]]：现行写作规范落点。
