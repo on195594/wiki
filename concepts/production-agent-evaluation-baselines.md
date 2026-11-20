@@ -1,10 +1,10 @@
 ---
 title: Production Agent Evaluation Baselines
 created: 2026-07-31
-updated: 2026-11-11
+updated: 2026-11-20
 type: concept
 tags: [agent, evaluation, validation, monitoring, optimization]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, https://en.wikipedia.org/wiki/Equivalence_test, https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, https://en.wikipedia.org/wiki/Equivalence_test, https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/, https://arxiv.org/abs/2610.34817, https://code.claude.com/docs/en/prompt-caching]
 status: stable
 description: 定义生产 Agent 的延迟、成本、调用与缓存观测基线，结合 TOST 非劣效检验、重尾分布均值—中位数偏离与知识编译摊销公式约束外部经验阈值。
 aliases: [agent-production-baselines, llm-latency-cost-baselines]
@@ -31,7 +31,7 @@ verified_at: 2026-11-02
 - End-to-end P50/P95/P99：典型、尾部和极端请求的完整耗时。
 - Input/output Token：上下文与生成长度的成本和延迟负担。
 - LLM calls per task：一项任务经过多少次串行或并行模型调用。
-- Cache-hit rate：prompt、响应、检索和工具结果缓存减少了多少重复工作。
+- Cache-hit rate：前缀 Token 命中率 = 缓存读取 Token ÷ 总输入 Token。先按厂商用量字段口径，把总输入拆成未缓存、缓存写入和缓存读取三项（若原字段已含缓存用量，不要重复相加）；分别监测命中率突降和连续重写。`read / create` 是读写比，不是命中率；写入量为零时只报告命中率和读写绝对量。响应、检索和工具结果缓存另计（回本边界见 [[agent-resource-optimization]]）。
 - Tool/retrieval latency：模型以外的工具调用和检索耗时。
 - Cost per Query / Cost per Correct Answer：模型、工具和基础设施的单任务总成本及按正确回答折算的成本；若架构包含离线知识编译或增量更新（参见 [[hermes-knowledge-freshness-and-claim-evidence]]），应分开报告查询期成本与编译维护摊销成本。
 
@@ -39,8 +39,8 @@ verified_at: 2026-11-02
 
 ## Control-layer boundary
 
-- 应用/AI Agent 可控层：输出长度、上下文预算、模型调用数、确定性步骤替换、缓存、任务优先级、后台隔离、请求与重试边界，以及经验证的模型/provider 路由和降级。
-- 托管 provider 内部层：GPU 调度、KV-cache 布局、FlashAttention、张量/流水线并行、连续批处理和推测解码。使用托管 API 时，这些只作为解释和选型知识，不进入 AI Agent 日常执行清单。
+- 应用/AI Agent 可控层：输出长度、上下文预算、模型调用数、确定性步骤替换、**前缀缓存稳定性与读写命中比观测（含 TTL 与闲置间隔匹配、网关 `cache_control` 透传校验与静默误配巡检）**、任务优先级、后台隔离、请求与重试边界，以及经验证的模型/推理深度路由和降级。需要特别注意，[Silent and Costly（ICSE 2027 录用，arXiv:2610.34817）](https://arxiv.org/abs/2610.34817)区分请求侧误配与响应侧用量误计：前者可能丢失折扣，后者可能只让观测或成本估算失真。[Claude Code Prompt Caching 文档](https://code.claude.com/docs/en/prompt-caching)则给出了请求侧实例：有的网关剥离缓存标记（包括将块级 system prompt 扁平化为纯字符串）后仍返回成功，被剥离标记的输入按未缓存计费。
+- 托管 provider 内部层：GPU 调度、服务端 KV-cache 显存布局、FlashAttention、张量/流水线并行、连续批处理和推测解码。使用托管 API 时，这些只作为解释和选型知识，不进入 AI Agent 日常执行清单。
 - 自托管推理项目：只有项目实际控制 serving stack 时，才把量化、批处理、KV-cache 和并行策略转成项目级基准测试。
 
 模型路由、provider fallback、admission control、语义缓存和调用合并不是默认优化。只有真实链路出现重复的成本、延迟或可用性问题时，才在所属项目做窄试验；provider fallback 首先解决可用性，不能预设它会降低成本或延迟。

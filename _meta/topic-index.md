@@ -22,7 +22,7 @@ status: current
 - [Agent Development Lifecycle](../concepts/agent-development-lifecycle.md) — Agent 开发生命周期：Build → Test → Deploy → Monitor 与横切治理。结合机器学习系统隐性技术债，说明阶段交接、结构回归与规则重基线。
 - [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口（含服务端代际隔离与写入条件）、Saga 语义补偿/枢轴/幂等事务与模糊远程结果先取证后恢复边界，以及 Agent-as-Code 的 PR 控制面
 - [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
-- [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：结合集合覆盖/背包整数规划（ILP）、FrugalGPT 级联停止与 RouteLLM 偏好阈值路由建模资源约束，含 `C_cov / R_route / P_tool / M_margin` 参数化裁决矩阵与 Open SWE 线上案例证据边界
+- [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：结合集合覆盖/背包整数规划（ILP）、FrugalGPT/RouteLLM 跨模型路由、前缀 KV-Cache 经济学、单模型按步推理深度路由（ARES/TAB）与 Open SWE 案例证据边界，含 `C_cov / R_route / P_tool / M_margin / K_cache / E_effort` 六参数裁决矩阵
 - [Agent Security Architecture and Prompt Injection Defense](../concepts/agent-security-architecture-and-prompt-injection-defense.md) — 用 OWASP Agentic Top 10（2026）与“致命三角”识别风险，比较 CaMeL 与六类架构模式的适用边界，并给出外发授权、MCP 工具供应链和持久记忆的防御门禁
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：结合 Lee & See 自动化适度依赖三维信任模型验证真实问题与信任边界；区分主动运行、通知和执行权限，按误扰与漏报验收提醒，含 `I_iso / M_ctx / T_tax / G_human` 委派与流水线裁决矩阵
@@ -100,7 +100,7 @@ status: current
 - [AI Agent Retrieval Priority and Answer Path](../concepts/hermes-retrieval-priority-and-answer-path.md) — 人类与 Agent 检索路径：区分单源查找与跨源推理，结合排序前时间窗过滤（Pre-Ranking $t_{\text{as\_of}}$ Filter）、词法—语义倒数排名融合（RRF）与证据导航图按 `locate` → `expand` 及 Freshness Gate 核验出入边与来源证据
 - [Wiki Lint and Health Check Standards](../concepts/hermes-wiki-lint-and-health-check-standards.md) — 共享 Wiki lint / 健康检查规范：链接、索引、frontmatter、标签、页面及局部 claim 新鲜度与结构健康
 - [Wiki Page Writing Standards](../concepts/hermes-wiki-page-writing-standards.md) — 人类与 AI Agent 共用的 Wiki 页面写作规范：命名、frontmatter、日期模板、结构、wikilinks、可选 Relations、局部 `[!volatile]` claim 与质量检查
-- [Production Agent Evaluation Baselines](../concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、缓存、工具耗时、单次正确回答摊销成本（$C_{\text{amort}}$）与跨源证据导航待执行评测；结合 TOST 双单侧非劣效检验与右偏重尾分布均值—中位数公式，区分非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
+- [Production Agent Evaluation Baselines](../concepts/production-agent-evaluation-baselines.md) — 生产 Agent 评估基线：拆分延迟、Token、调用、前缀缓存读写命中与静默误配观测、工具耗时、单次正确回答摊销成本（$C_{\text{amort}}$）与跨源证据导航待执行评测；结合 TOST 双单侧非劣效检验与右偏重尾分布均值—中位数公式，区分非显著与等价、中位成本与整体预算，并限制外部阈值的适用范围
 - [Production AI Agent Evaluation Framework](../concepts/production-ai-agent-evaluation-framework.md) — 生产级 AI Agent 评估框架：分层评估检索（含跨运行引用一致性）、生成、行为和运营，含 `N_eff / J_judge / Δ_NI / C_amort` 参数化评估与门禁裁决矩阵；工具轨迹六步调试、部署前七类结构回归探针与 RAG 决策敏感性见子页
 - [Agent 部署前结构回归与工具轨迹调试](../concepts/agent-pre-deploy-regression-and-trace-debugging.md) — 生产评估子页：六步工具调用证据、W3C Trace Context 跨服务传播、首个可证实异常的定位、七类结构回归探针与 RAG 评估边界。
 - [Progressive Knowledge System Growth](../concepts/progressive-knowledge-system-growth.md) — 知识系统的渐进式生长原则：结合 Gall 定律、Luhmann 卡片盒自底向上涌现与容器维护税实证（413 文件失速 vs 10 文件高显著性结构），先用真实问题产生内容，再让结构、链接和自动化从反复摩擦中生长

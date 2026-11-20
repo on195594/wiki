@@ -1,10 +1,10 @@
 ---
 title: AI Agent Context Engineering Design Priorities
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-20
 type: concept
 tags: [agent, llm, workflow, decision]
-sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://arxiv.org/abs/2307.03172, https://en.wikipedia.org/wiki/Information_bottleneck_method]
+sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, https://arxiv.org/abs/2307.03172, https://en.wikipedia.org/wiki/Information_bottleneck_method, https://arxiv.org/abs/2610.28577, https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus]
 status: stable
 description: 定义 AI Agent 上下文工程的预算控制、排序、压缩和历史衰减优先级。
 aliases: [agent-context-engineering-design-priorities]
@@ -68,6 +68,7 @@ GitHub Copilot 的公开工程案例 [[github-copilot-cost-efficient-coding-2026
 - 对长 wiki 页面、长 session 摘要、冗余 external docs 做压缩
 - 让 prompt 中保留“关键事实 + 当前任务相关段”
 - 避免为了保留全部原文而浪费窗口
+- **`[推论]` 前缀不可变前置约束**：在托管 API 场景下执行排序与压缩时，应将稳定指令与工具定义冻结在前缀顶部、动态检索与工具观察追加在尾部，避免每轮重排或原地改写旧消息，造成变更点后的内容无法复用旧缓存（[Cache Engineering for Agents，arXiv:2610.28577](https://arxiv.org/abs/2610.28577) 指出原地改写引发重算的本质，其 `drop`/`repos` 属于自托管引擎协同原语；托管侧对策见 [Manus 2025](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus) 及 [[agent-resource-optimization]]）
 
 为什么排第三：
 - 没有预算和排序，压缩会变成无目标压缩
@@ -135,7 +136,7 @@ AI Agent 的 context engineering 应遵循 4 条规则：
 | :--- | :--- | :--- | :--- |
 | **`B_ctx`** | **分层有效窗口预算（Partitioned Effective Window Budget）** | $B_{\text{ctx}} = B_{\text{sys}} + B_{\text{state}} + B_{\text{ret}} + B_{\text{obs}} + B_{\text{res}} \le W_{\text{eff}}$，其中 $W_{\text{eff}}$ 为模型保持高遵循率的有效窗口上限（受中间段退化影响，通常显著小于标称最大窗口 $W_{\max}$）；依次划拨给静态指令与窄工具面 $B_{\text{sys}}$、经校验任务状态 $B_{\text{state}}$、检索片段 $B_{\text{ret}}$、最新工具观察 $B_{\text{obs}}$ 及生成推理余量 $B_{\text{res}}$。 | 单一分项（如未过滤的工具输出 $B_{\text{obs}}$ 或历史对话）挤占 $B_{\text{state}}$ 与 $B_{\text{res}}$ 时，先触发输入转储（offloading）或状态折叠，禁止隐式截断系统硬边界。 |
 | **`U_blk`** | **候选片段边际价值密度（Marginal Utility Density）** | 对候选块 $i$（Token 成本 $c_i$，相对已选集合 $S$ 的去重信息新颖度 $\nu_i(S) \in [0, 1]$），按背包密度 $u_i(S) = \frac{\text{Rel}_i \cdot \text{Trust}_i \cdot \nu_i(S)}{c_i}$ 排序准入；并在空间排布上将不可违反约束置于首部（primacy）、当前步骤直接消费的状态与观察置于尾部（recency），规避长上下文中段盲区（[arXiv:2307.03172](https://arxiv.org/abs/2307.03172)）。 | 高相似度但高重复（$\nu_i(S) \to 0$）的检索切片或长文件正文占满 $B_{\text{ret}}$ 时，降级为 AST 接口签名骨架或摘要指针。 |
-| **`C_total`** | **任务端到端总成本（End-to-End Task Cost）** | $C_{\text{total}} = \sum_{t=1}^{T_{\text{turns}}} \left( C_{\text{input}}(t) + C_{\text{output}}(t) + C_{\text{tool}}(t) \right) + P_{\text{reread}} \cdot \Delta C_{\text{recovery}}$，度量完成并通过验证的累计成本（含因上下文过度压缩导致的漏改、重读文件或重跑测试惩罚 $P_{\text{reread}} \cdot \Delta C_{\text{recovery}}$）。 | 单轮输入 $C_{\text{input}}(t)$ 下降但总轮数 $T_{\text{turns}}$ 或回读率 $P_{\text{reread}}$ 上升时，说明压缩越过率失真安全边界，需放宽关键源码或错误上下文的保真配额。 |
+| **`C_total`** | **任务端到端总成本（End-to-End Task Cost）** | $C_{\text{total}} = \sum_{t=1}^{T_{\text{turns}}} \left( C_{\text{uncached}}(t) + C_{\text{cache\_w}}(t) + C_{\text{cache\_r}}(t) + C_{\text{output}}(t) + C_{\text{tool}}(t) \right) + P_{\text{reread}} \cdot \Delta C_{\text{recovery}}$，显式区分未缓存重算、缓存写入与缓存读取三类输入开销（[arXiv:2610.28577](https://arxiv.org/abs/2610.28577)，回本公式见 [[agent-resource-optimization]]），度量完成并通过验证的累计成本（含因过度压缩导致的回读/重跑惩罚）。 | 单轮输入变短但前缀频繁失效导致 $C_{\text{uncached}}(t) + C_{\text{cache\_w}}(t)$ 飙升，或总轮数 $T_{\text{turns}}$ / 回读率 $P_{\text{reread}}$ 上升时，说明压缩越过缓存与率失真安全边界，需改用仅追加/断点压缩并放宽关键证据保真配额。 |
 | **`R_probe`** | **关键事实保留率探针（Fact-Retention Probe Ratio）** | $R_{\text{probe}} = \frac{\lvert \mathcal{F}_{\text{retained}}(T) \rvert}{\lvert \mathcal{F}_{\text{mandatory}} \rvert}$，衡量历史摘要或状态补丁合并后，必保不变量集合 $\mathcal{F}_{\text{mandatory}}$（当前目标、禁止事项、已改文件路径、未通过验证项）在压缩后上下文 $T$ 中的完整保留比例。 | 当 $R_{\text{probe}} < 1$（任意硬约束或未决失败项在压缩后丢失）时，阻断写操作并从外部证据层或 project state 回填缺失字段。 |
 
 ## What not to do
@@ -153,4 +154,4 @@ AI Agent 的 context engineering 应遵循 4 条规则：
 ## Relations
 
 - depends_on: [[llm-context-engineering-layer]]
-- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-architecture]], [[agent-context-engineering]], [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]]
+- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-architecture]], [[agent-context-engineering]], [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[agent-resource-optimization]]

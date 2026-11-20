@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -70,6 +71,60 @@ PERSONAL_FINANCE = re.compile(
 TASK_LEDGER = re.compile(  # public-check: synthetic
     r"(?:\bsession_id\s*[:=]|\bjob_id\s*[:=]|个人任务台账|会话记录|会话原文)", re.I  # public-check: synthetic
 )
+
+
+REVIEW_BASELINE = Path("_meta/public-content-reviewed.json")
+REVIEW_PATTERNS = {
+    "non-generic-home-path": HOME_PATH,
+    "personal-financial-record": PERSONAL_FINANCE,
+    "session-or-task-ledger": TASK_LEDGER,
+}
+
+
+def candidate_scan_text(text: str) -> str:
+    # Keep line positions so fingerprints can include unfiltered context.
+    return "\n".join("" if SYNTHETIC_LINE_MARKER in line else line for line in text.splitlines())
+
+
+def is_non_generic_home(match: re.Match[str]) -> bool:
+    return match[1].lower() not in GENERIC_HOME_NAMES and not AUTHOR_HOME.fullmatch(match[0])
+
+
+def review_fingerprint(text: str, rule: str) -> str | None:
+    """Identify all hits for one rule by their surrounding lines, not line numbers."""
+    lines = text.splitlines()
+    candidate_text = candidate_scan_text(text)
+    windows = []
+    for match in REVIEW_PATTERNS[rule].finditer(candidate_text):
+        if rule == "non-generic-home-path" and not is_non_generic_home(match):
+            continue
+        start = candidate_text.count("\n", 0, match.start())
+        end = candidate_text.count("\n", 0, match.end())
+        windows.append(lines[max(0, start - 1):end + 2])
+    if not windows:
+        return None
+    payload = json.dumps(windows, ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def load_review_baseline(root: Path) -> dict[str, dict[str, str]]:
+    try:
+        manifest = json.loads((root / REVIEW_BASELINE).read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    except ValueError as exc:
+        raise ValueError(f"Invalid JSON in {REVIEW_BASELINE}") from exc
+    if not isinstance(manifest, dict) or any(
+        Path(path).is_absolute() or ".." in Path(path).parts or not isinstance(rules, dict)
+        or any(
+            rule not in REVIEW_PATTERNS or not isinstance(digest, str)
+            or not re.fullmatch(r"[a-f0-9]{64}", digest)
+            for rule, digest in rules.items()
+        )
+        for path, rules in manifest.items()
+    ):
+        raise ValueError(f"Invalid path, rule or SHA-256 digest in {REVIEW_BASELINE}")
+    return manifest
 
 
 def frontmatter(text: str) -> str | None:
@@ -150,13 +205,25 @@ def add(items: list[dict[str, str]], path: str, rule: str) -> None:
         items.append(record)
 
 
+def read_scan_text(path: Path) -> str | None:
+    data = path.read_bytes()
+    if b"\x00" in data:
+        return None
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+
+
 def build_report(root: Path) -> dict[str, Any]:
     root = root.expanduser().resolve()
     if not root.is_dir():
         raise FileNotFoundError(f"repository root does not exist or is not a directory: {root}")
 
+    baseline = load_review_baseline(root)
     violations: list[dict[str, str]] = []
     candidates: list[dict[str, str]] = []
+    reviewed_candidates: list[dict[str, str]] = []
     # In a working clone only tracked runtime state is publishable by Git.
     # A snapshot exported by the staged check contains only staged files.
     state_dir = ".wiki-state"
@@ -174,17 +241,12 @@ def build_report(root: Path) -> dict[str, Any]:
             continue
         rel = path.relative_to(root).as_posix()
         scanned += 1
-        data = path.read_bytes()
-        if b"\x00" in data:
-            add(candidates, rel, "unreviewed-binary-or-non-utf8")
-            continue
-        try:
-            text = data.decode("utf-8")
-        except UnicodeDecodeError:
+        text = read_scan_text(path)
+        if text is None:
             add(candidates, rel, "unreviewed-binary-or-non-utf8")
             continue
 
-        candidate_text = "\n".join(line for line in text.splitlines() if SYNTHETIC_LINE_MARKER not in line)
+        candidate_text = candidate_scan_text(text)
 
         if AUTHOR_HOME.search(text):
             add(violations, rel, "author-home-path")
@@ -203,10 +265,8 @@ def build_report(root: Path) -> dict[str, Any]:
         if secret_candidate:
             add(candidates, rel, "possible-secret-assignment")
 
-        for match in HOME_PATH.finditer(candidate_text):
-            if match.group(1).lower() not in GENERIC_HOME_NAMES and not AUTHOR_HOME.fullmatch(match.group(0)):
-                add(candidates, rel, "non-generic-home-path")
-                break
+        if any(is_non_generic_home(match) for match in HOME_PATH.finditer(candidate_text)):
+            add(candidates, rel, "non-generic-home-path")
         if PRIVATE_IPV4.search(candidate_text):
             add(candidates, rel, "private-network-address")
         if any(match.group(1).lower() not in {"example.com", "example.org", "example.net", "test.invalid"} for match in EMAIL.finditer(candidate_text)):
@@ -217,14 +277,20 @@ def build_report(root: Path) -> dict[str, Any]:
             add(candidates, rel, "personal-financial-record")
         if TASK_LEDGER.search(candidate_text):
             add(candidates, rel, "session-or-task-ledger")
+        for rule, digest in baseline.get(rel, {}).items():
+            if review_fingerprint(text, rule) == digest:
+                add(reviewed_candidates, rel, rule)
 
     violations.sort(key=lambda item: (item["path"], item["rule"]))
     candidates.sort(key=lambda item: (item["path"], item["rule"]))
+    reviewed_candidates.sort(key=lambda item: (item["path"], item["rule"]))
     return {
         "root": str(root),
         "scanned_files": scanned,
         "violations": violations,
         "candidates": candidates,
+        "pending_candidates": [item for item in candidates if item not in reviewed_candidates],
+        "reviewed_candidates": reviewed_candidates,
         "pass": not violations,
     }
 
@@ -237,7 +303,9 @@ def text_report(report: dict[str, Any]) -> str:
     ]
     lines.extend(f"  {item['path']} [{item['rule']}]" for item in report["violations"])
     lines.append(f"candidates: {len(report['candidates'])}")
-    lines.extend(f"  {item['path']} [{item['rule']}]" for item in report["candidates"])
+    for key in ("pending_candidates", "reviewed_candidates"):
+        lines.append(f"{key}: {len(report[key])}")
+        lines.extend(f"  {item['path']} [{item['rule']}]" for item in report[key])
     return "\n".join(lines) + "\n"
 
 
@@ -245,9 +313,29 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root")
     parser.add_argument("--format", choices=("json", "text"), default="text")
+    parser.add_argument("--fingerprint", nargs=2, metavar=("PATH", "RULE"),
+                        help="Print the digest for one manually reviewed baseline item")
     args = parser.parse_args(argv)
     try:
-        report = build_report(resolve_root(args.root))
+        root = resolve_root(args.root)
+        if args.fingerprint:
+            path, rule = args.fingerprint
+            relative = Path(path)
+            target = root / relative
+            if (
+                rule not in REVIEW_PATTERNS or relative.is_absolute() or ".." in relative.parts
+                or not target.resolve().is_relative_to(root)
+            ):
+                raise ValueError("Expected a repository-relative file and a supported baseline rule")
+            text = read_scan_text(target)
+            if text is None:
+                raise ValueError("Cannot fingerprint binary or non-UTF-8 content")
+            digest = review_fingerprint(text, rule)
+            if digest is None:
+                raise ValueError("No matching candidate for the selected rule")
+            print(digest)
+            return 0
+        report = build_report(root)
     except Exception as exc:  # noqa: BLE001 - compact CLI boundary
         print(json.dumps({"pass": False, "error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2

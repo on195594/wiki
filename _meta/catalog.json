@@ -785,7 +785,7 @@
       "path": "concepts/agent-resource-optimization.md",
       "type": "concept",
       "title": "Agent Resource Optimization",
-      "description": "说明预算与能力约束下的 Agent 运筹规划（ILP），结合 FrugalGPT 级联停止与 RouteLLM 偏好阈值路由形式化模型分层及 C_cov / R_route / P_tool / M_margin 裁决矩阵。",
+      "description": "说明预算与能力约束下的 Agent 运筹规划（ILP）、FrugalGPT/RouteLLM 跨模型路由、前缀 KV-Cache 经济学、单模型按步推理深度路由（ARES/TAB）及 C_cov / R_route / P_tool / M_margin / K_cache / E_effort 裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -802,7 +802,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -813,7 +813,10 @@
           "constrained-toolbox-evaluator-loop",
           "subagent-orchestration-patterns",
           "hermes-layer-routing-decision-checklist",
-          "ai-agent-tool-selection-architecture"
+          "ai-agent-tool-selection-architecture",
+          "ai-coding-assistant-context-budget-management",
+          "hermes-context-engineering-design-priorities",
+          "hermes-model-specific-harness-profiles"
         ]
       }
     },
@@ -1395,7 +1398,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1411,7 +1414,8 @@
           "loop-engineering-hermes-agent-workflow",
           "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
           "hermes-agent-workflow-layering-and-adoption-order",
-          "ai-agent-tool-selection-architecture"
+          "ai-agent-tool-selection-architecture",
+          "agent-resource-optimization"
         ]
       }
     },
@@ -2383,7 +2387,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-20",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer"
@@ -2395,7 +2399,8 @@
           "agent-context-prompt-tools-and-examples",
           "agent-context-history-state-and-bounded-processing",
           "hermes-context-layer-operating-rules",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "agent-resource-optimization"
         ]
       }
     },
@@ -2786,7 +2791,7 @@
       "volatility": "high",
       "review_by": "2027-02-10",
       "verified_at": "2026-11-10",
-      "updated": "2026-11-10",
+      "updated": "2026-11-20",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2796,7 +2801,8 @@
           "agent-production-harness-and-cloud-runtime-boundaries",
           "hermes-context-engineering-design-priorities",
           "codex-agent-workflow-layering",
-          "hermes-retrieval-priority-and-answer-path"
+          "hermes-retrieval-priority-and-answer-path",
+          "agent-resource-optimization"
         ]
       }
     },
@@ -3536,7 +3542,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"

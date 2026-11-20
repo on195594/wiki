@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-11-19
+updated: 2026-11-20
 type: meta
 status: current
 ---
@@ -119,7 +119,7 @@ This verifies citation identity and computes two-run fixed-packet citation Jacca
 ## Public-content result contract
 
 - **Violation**: deterministic public-boundary failure; the command exits `1`.
-- **Candidate**: possible personal instance record that needs content review; candidates do not fail the command by themselves.
+- **Candidate**: possible personal instance record; candidates do not fail the command by themselves. `pending_candidates` are new or changed findings that still need review; `reviewed_candidates` match the recorded baseline. `candidates` remains the total (the full list in JSON). Pre-commit warns only about pending candidates.
 - **PASS**: no blocking rule matched. It does not mean candidates were adjudicated, attachments were reviewed, or the repository is absolutely safe.
 - Reports contain only repository-relative paths and rule names, never matched values.
 - Root `.wiki-state/` is local runtime state, not a knowledge source. Git ignores it in every clone; if it is tracked (including a forced add) or present in a staged export, the scanner reports `tracked-runtime-state` without reading or reporting its contents.
@@ -147,7 +147,15 @@ The local scan reported 0 violations and 15 non-blocking candidates across 13 tr
 | [position-sizing-method.md](../queries/position-sizing-method.md) | `personal-financial-record` | The drawdown question and the sizing red flag are generic decision criteria, not observations about an account. |
 | [pre-trade-risk-checklist.md](../queries/pre-trade-risk-checklist.md) | `personal-financial-record` | The checklist asks whether exits and size were defined; it supplies neither a completed answer nor an order. |
 
-This records a manual review, not a suppression list. The scanner still reports these candidates; re-review the passages when matched content changes, even if the count and paths stay the same. Review context rather than relying on disclaimers. Local results are not necessarily portable: the 2026-11-06 snapshot also matched a public bibliography URL in the ignored `.lycheecache`, which did not trigger on this run.
+[`public-content-reviewed.json`](public-content-reviewed.json) links that manual review to specific repository-relative paths and rules. Each digest covers all matched lines in order, with one original surrounding line on each side, even if that line is marked synthetic and not scanned for candidates. The scanner still reports these candidates. A change to a match or its immediate context, an added match, or a move to another path requires review again. The baseline cannot exempt blocking violations.
+
+After re-reading every hit for a path and rule in context, retain public material and remove or generalize any private material. For a confirmed false positive, record the reason in this runbook and update only the relevant digest (the command prints it, without editing files):
+
+```bash
+python3 _meta/scripts/wiki_public_content_check.py --fingerprint concepts/entropy-and-entropy-increase.md non-generic-home-path
+```
+
+Do not bulk-approve scan results. Remove obsolete entries when the match disappears. Local results may include ignored files absent from CI or the staged snapshot; for example, `.lycheecache` triggered a candidate in the 2026-11-06 scan.
 
 ## Reverse lookup
 

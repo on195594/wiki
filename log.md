@@ -2,6 +2,27 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] fix | 审查并修正缓存证据口径与复核指纹
+
+- 修正自动缓存不等于免写溢价、前缀变更后只对本可命中的输入估算损失，以及 Claude Code 分层缓存与 fast mode 切换的适用条件；为 TAB 降幅注明数学任务基准与迁移结果，区分请求侧全价计费和响应侧用量误计。
+- 公共内容复核指纹纳入命中旁边的原始文本（包括标记为 synthetic 的上下文行），生成指纹和扫描共用文本解码规则。现有 15 项已人工复核记录仍匹配，阻断规则不变。
+
+## [2026-11-20] fix | 二次校准资源优化集群的缓存指标分母、服务端原语边界与预印本核对范围
+
+- **缓存指标与公式校准**：在 [[agent-resource-optimization]] 与 [[production-agent-evaluation-baselines]] 将 $K_{\text{cache}}$ 命中率分母修正为总输入口径（$T_{\text{uncached}} + T_{\text{create}} + T_{\text{read}}$），区分整体命中率与 `read / create` 读写比；细化单次前缀破坏差价（按缓存写入计费时为 $\alpha_w - \alpha_r$，按未缓存输入计费时为 $1 - \alpha_r$）、逐轮持续破坏的累积效应及短/长 TTL 依闲置断档频次选型的边界。
+- **来源口径与适用边界收紧**：在 [[agent-resource-optimization]] 与 [[hermes-context-engineering-design-priorities]] 明确 [arXiv:2610.28577](https://arxiv.org/abs/2610.28577) 的 `drop`/`repos`（AKV）属于自托管推理引擎协同原语而非黑盒托管 API 能力；将 [arXiv:2610.34817](https://arxiv.org/abs/2610.34817) 拆清为“10 系统 120 个 PR 实证研究”与“`CACHELINT` 扫描 571 项目检出 32 处误配（精确率 0.86、21 处确认、18 处修复）”；补齐 [arXiv:2601.06007v2](https://arxiv.org/html/2601.06007v2) 的 `10,000-token` system prompt 前提、[arXiv:2603.07915](https://arxiv.org/abs/2603.07915) 的“推理 Token（非总账单）”口径，以及 [[ai-coding-assistant-context-budget-management]] 中 `/rewind` 复用热缓存须在 TTL 活跃窗内的前提；披露本次新增 arXiv 预印本核对范围以公开摘要与导言页为主。
+
+## [2026-11-20] improve | 深化 Agent 资源优化与推理经济学集群：补齐前缀缓存经济学、静默误配观测与单模型按步推理深度路由
+
+- **P0 主维护页升级与控制面边界修正**：在 [[agent-resource-optimization]] 展开 $\Delta C_{\text{cache}}$ 为缓存写/读/TTL 回本方程，补齐前缀破坏三大反模式（动态头部、中途增删工具定义、原地压缩重算悖论）与单模型按步推理深度路由（[Snell et al. ICLR 2025, arXiv:2408.03314](https://arxiv.org/abs/2408.03314)、[Overthinking, arXiv:2412.21187](https://arxiv.org/abs/2412.21187)、[ARES, arXiv:2603.07915](https://arxiv.org/abs/2603.07915)、[TAB, arXiv:2604.05164](https://arxiv.org/abs/2604.05164)），并在裁决矩阵新增 `[推论]` 参数 $K_{\text{cache}}$ 与 $E_{\text{effort}}$；在 [[production-agent-evaluation-baselines]] 将前缀缓存稳定性、读写命中比观测与静默误配巡检（[Silent and Costly, ICSE 2027, arXiv:2610.34817](https://arxiv.org/abs/2610.34817)）上移至应用/Harness 可控层，与服务端 GPU KV-cache 显存布局明确分离。
+- **P1 上下文压缩与总成本模型消歧**：在 [[ai-coding-assistant-context-budget-management]] 新增前缀缓存兼容性小节，区分仅追加（`/recap`）、热前缀回退（`/rewind`）与重建前缀（`/compact`），并引入 [Manus（2025）](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus) 的状态机工具掩码（Mask, Don't Remove）与延迟工具搜索；在 [[hermes-context-engineering-design-priorities]] 将 $C_{\text{total}}$ 细化为未缓存重算、缓存写与缓存读三项输入开销，并为排序与压缩补充前缀不可变前置约束（引 [Cache Engineering for Agents, arXiv:2610.28577](https://arxiv.org/abs/2610.28577)）。
+- **P2 Harness Profile 维度补齐与图谱同步**：在 [[hermes-model-specific-harness-profiles]] 补充推理深度档位与厂商缓存语义维度，并以局部 `[!volatile]` 块（`verified_at: 2026-11-20`，`review_by: 2027-02-20`）记录 [Claude Code Prompt Caching 官方文档](https://code.claude.com/docs/en/prompt-caching)的 effort 保缓存与 TTL 分桶边界；补齐五页双向 `## Relations` 并同步 `_meta/topic-index.md`。
+- **证据与新鲜度纪律**：仅引用公开论文与官方文档链接，不归档第三方原文；所有工程门禁与回本方程均标注 `[推论]`，不将厂商时点 TTL/倍数或基准降幅固化为全局默认值；五篇存量页原页面级 `verified_at` 与 `review_by` 均保持不变。
+
+## [2026-11-20] improve | 区分公共内容已复核命中与待复核告警
+
+- 将维护手册已人工确认的 15 项命中登记到 `_meta/public-content-reviewed.json`。公开内容扫描保留完整报告，但提交检查仅对未复核或内容变动的命中告警；路径、命中或紧邻上下文变化须重审，阻断规则不受基线影响。
+
 ## [2026-11-20] fix | 校正 Agent 记忆对照的实验对照组与授权边界
 
 - 在 [[agent-memory-architectures-and-evaluation-benchmarks]] 区分 P-Mem 的读时剪枝与写时提交实验，明确 `0%` 恢复率属于关闭版本保留的对照组而非 Mem0 实测；补充修订链的到达顺序对照及聚合剪枝的未剪枝基线。将 Graphiti 的矛盾处理限定为论文所述实现，并区分治理状态故障的已知正确状态恢复与自主修复。

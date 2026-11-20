@@ -108,15 +108,24 @@ def check_all(root: Path, is_staged: bool = False) -> bool:
 
     # 5. Public content check
     print("[5/6] Checking public boundary and privacy...")
-    public_rep = build_public_content_report(root)
-    violations = public_rep.get("violations", [])
-    if violations:
-        print(f"FAIL: Public content check found {len(violations)} blocking violations.", file=sys.stderr)
+    try:
+        public_rep = build_public_content_report(root)
+    except (OSError, ValueError) as exc:
+        print(f"FAIL: Could not run public content check: {exc}", file=sys.stderr)
         all_ok = False
     else:
-        print("PASS: Public boundary check passed (0 violations).")
-    if public_rep.get("candidates"):
-        print(f"WARN: {len(public_rep['candidates'])} public-content candidates need review; run wiki_public_content_check.py for details.")
+        violations = public_rep.get("violations", [])
+        pending = public_rep["pending_candidates"]
+        reviewed = public_rep["reviewed_candidates"]
+        if violations:
+            print(f"FAIL: Public content check found {len(violations)} blocking violations.", file=sys.stderr)
+            all_ok = False
+        else:
+            print("PASS: Public boundary check passed (0 violations).")
+        if pending:
+            print(f"WARN: {len(pending)} public-content candidates need review; run wiki_public_content_check.py for details.")
+        if reviewed:
+            print(f"INFO: {len(reviewed)} public-content candidates match the reviewed baseline.")
 
     # 6. Git diff check
     if not is_staged:

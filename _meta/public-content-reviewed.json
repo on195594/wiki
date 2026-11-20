@@ -1,0 +1,43 @@
+{
+  "SCHEMA.md": {
+    "personal-financial-record": "ee8e71a1646476969df17873ddaf8ff9eb9ac6b011ff671f637c098d66087b67"
+  },
+  "concepts/agent-experience-consolidation-loops.md": {
+    "session-or-task-ledger": "59d867a4bf25789e48c42ae05dd0b6752be9a6c8d771e260259082771a2ef47d"
+  },
+  "concepts/ai-code-review-governance-and-convergence.md": {
+    "session-or-task-ledger": "53ad5c0857a8a8149c604bf1bc9f9d6193b8790280475ff2ac5412d3ba3a712e"
+  },
+  "concepts/entropy-and-entropy-increase.md": {
+    "non-generic-home-path": "2b34a07f9336926ca87f642a15708236ddeb84387d8205866126d77eabb7ca21"
+  },
+  "concepts/hermes-lifeos-layer-boundary-contract.md": {
+    "session-or-task-ledger": "f486f827319dd5b6c70860a8f9a44435ae791153520ce7a7e59847924edf0285"
+  },
+  "concepts/household-fund-layering-model.md": {
+    "personal-financial-record": "d14617c571f78425c1e8a7ff4dc6a20ca6f2f8973fa0450543980e0b2554ad94"
+  },
+  "concepts/investment-risk-control-framework.md": {
+    "personal-financial-record": "be5710a0a323afc0fd7b3e5a2016eb25a7624a0b9fd56c9c6258d8212f9679a1"
+  },
+  "concepts/leontraveller-trading-and-investment-system.md": {
+    "personal-financial-record": "d5863b45aaa67eeee2fb21a0f46be30ccc3a506f1cb06b997076e096ac4e1651"
+  },
+  "concepts/wiki-ingestion-workflow.md": {
+    "personal-financial-record": "b24397ef33904fbe3556eabce4e0737c10bd9e945890b7abff05754a73fe7da3",
+    "session-or-task-ledger": "b24397ef33904fbe3556eabce4e0737c10bd9e945890b7abff05754a73fe7da3"
+  },
+  "operations/agent-shared-wiki-index.md": {
+    "personal-financial-record": "1ce24ff44a71d5d22df1e425c776b60a2f3dd1f1346d1a8852059972965be3e9",
+    "session-or-task-ledger": "1ce24ff44a71d5d22df1e425c776b60a2f3dd1f1346d1a8852059972965be3e9"
+  },
+  "queries/losing-position-review-method.md": {
+    "personal-financial-record": "6506d9bfa3adc2e0237e8113c2b10eb30de4ad68ce77a2948461ccd8c4c72d8c"
+  },
+  "queries/position-sizing-method.md": {
+    "personal-financial-record": "f1fe00dc98df78bd89f52c31f404941a6ec0ce16c9eb5e5214858b3b9b05402d"
+  },
+  "queries/pre-trade-risk-checklist.md": {
+    "personal-financial-record": "fa9b89b0858e9acc619d491b990f735c317ec871372fe569cea2fff85e63ed45"
+  }
+}

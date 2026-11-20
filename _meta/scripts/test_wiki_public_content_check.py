@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import io
 import json
 import subprocess
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 import wiki_public_content_check as public_check
@@ -199,6 +201,84 @@ class PublicContentCheckTests(unittest.TestCase):
         self.assertIn(("notes/network.md", "personal-email-address"), rules)
         self.assertIn(("assets/blob.bin", "unreviewed-binary-or-non-utf8"), rules)
         self.assertTrue(report["pass"])
+
+    def test_reviewed_baseline_only_covers_unchanged_matches_in_the_same_file(self) -> None:
+        path = "notes/policy.md"
+        rule = "session-or-task-ledger"
+        hit = {"path": path, "rule": rule}
+        text = "# Policy\n\nDo not publish 会话记录.\nKeep material private.\n"  # public-check: synthetic
+        digest = public_check.review_fingerprint(text, rule)
+        self.write(str(public_check.REVIEW_BASELINE), json.dumps({path: {rule: digest}}))
+
+        self.write(path, "New heading elsewhere.\n\n" + text)
+        report = public_check.build_report(self.root)
+        self.assertEqual(report["candidates"], [hit])
+        self.assertEqual(report["reviewed_candidates"], [hit])
+        self.assertEqual(report["pending_candidates"], [])
+        self.assertNotIn("Do not publish", public_check.text_report(report))
+
+        for changed in (
+            text.replace("Keep material private.", "New surrounding context."),
+            text.replace("Do not publish", "Never publish"),
+            text + "\n" + text,
+        ):
+            with self.subTest(changed=changed):
+                self.write(path, changed)
+                report = public_check.build_report(self.root)
+                self.assertTrue(report["pass"])
+                self.assertEqual(report["reviewed_candidates"], [])
+                self.assertEqual(report["pending_candidates"], [hit])
+
+        self.write(path, text)
+        self.write("notes/copied.md", text)
+        report = public_check.build_report(self.root)
+        self.assertEqual(report["reviewed_candidates"], [hit])
+        self.assertEqual(report["pending_candidates"], [{"path": "notes/copied.md", "rule": rule}])
+
+    def test_change_to_synthetic_context_still_requires_review(self) -> None:
+        path = "notes/policy.md"
+        rule = "session-or-task-ledger"
+        text = "# Policy\nExample context: public-check: synthetic\nDo not publish 会话记录.\n"  # public-check: synthetic
+        self.write(path, text)
+        with redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(public_check.main(["--root", str(self.root), "--fingerprint", path, rule]), 0)
+        self.write(str(public_check.REVIEW_BASELINE), json.dumps({path: {rule: out.getvalue().strip()}}))
+        self.assertEqual(public_check.build_report(self.root)["pending_candidates"], [])
+
+        self.write(path, text.replace("Example context", "Changed context"))
+        report = public_check.build_report(self.root)
+        self.assertEqual(report["pending_candidates"], [{"path": path, "rule": rule}])
+        self.assertEqual(report["reviewed_candidates"], [])
+
+    def test_fingerprint_rejects_files_scanned_as_binary(self) -> None:
+        path = "notes/binary.md"
+        self.write(path, "\x00\nDo not publish 会话记录.\n")  # public-check: synthetic
+        with redirect_stdout(io.StringIO()) as out, redirect_stderr(io.StringIO()):
+            self.assertEqual(public_check.main(["--root", str(self.root), "--fingerprint", path, "session-or-task-ledger"]), 2)
+        self.assertEqual(out.getvalue(), "")
+
+    def test_reviewed_candidate_never_exempts_a_blocking_violation(self) -> None:
+        path = "notes/policy.md"
+        rule = "session-or-task-ledger"
+        text = "Do not publish 会话记录.\n\n"  # public-check: synthetic
+        digest = public_check.review_fingerprint(text, rule)
+        self.write(str(public_check.REVIEW_BASELINE), json.dumps({path: {rule: digest}}))
+        self.write(path, text + '\napi_key = "fake-test-key-not-a-real-secret"\n')
+        report = public_check.build_report(self.root)
+        self.assertFalse(report["pass"])
+        self.assertEqual(report["violations"], [{"path": path, "rule": "literal-secret-assignment"}])
+        self.assertEqual(report["reviewed_candidates"], [{"path": path, "rule": rule}])
+
+    def test_invalid_review_baseline_is_rejected(self) -> None:
+        for manifest in (
+            "{",
+            json.dumps({"notes/policy.md": {"literal-secret-assignment": "a" * 64}}),
+            json.dumps({"notes/policy.md": {"session-or-task-ledger": ""}}),
+        ):
+            with self.subTest(manifest=manifest):
+                self.write(str(public_check.REVIEW_BASELINE), manifest)
+                with self.assertRaisesRegex(ValueError, "public-content-reviewed.json"):
+                    public_check.build_report(self.root)
 
     def test_nul_bytes_are_unreviewed_without_misclassifying_utf8_text(self) -> None:
         self.write("assets/nuls.bin", b"\x00" * 16)

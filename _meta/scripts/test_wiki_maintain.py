@@ -124,14 +124,18 @@ Text
                     patch("wiki_maintain.check_catalog", return_value=True),
                     patch("wiki_maintain.build_health_report", return_value={"issues": issues, "pass": severity == "P2"}),
                     patch("wiki_maintain.build_tag_report", return_value={}),
-                    patch("wiki_maintain.build_public_content_report", return_value={"candidates": [{"path": "concepts/test.md"}]}),
+                    patch("wiki_maintain.build_public_content_report", return_value={
+                        "pending_candidates": [{"path": "concepts/test.md"}] if severity != "P2" else [],
+                        "reviewed_candidates": [{"path": "concepts/reviewed.md"}],
+                    }),
                     patch("wiki_maintain.check_git_diff", return_value=True),
                     patch("sys.stdout", new_callable=io.StringIO) as out,
                     patch("sys.stderr", new_callable=io.StringIO) as err,
                 ):
                     self.assertEqual(check_all(self.root), severity == "P2")
                 self.assertIn("test-finding", out.getvalue() + err.getvalue())
-                self.assertIn("1 public-content candidates need review", out.getvalue())
+                self.assertIn("INFO: 1 public-content candidates match the reviewed baseline.", out.getvalue())
+                self.assertEqual("public-content candidates need review" in out.getvalue(), severity != "P2")
 
     def test_freshness_includes_local_claims_without_page_deadline(self) -> None:
         path = self.root / "concepts" / "claims.md"
