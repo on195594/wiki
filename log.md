@@ -2,6 +2,12 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] improve | 补齐图谱关联、缓存来源与证据边界
+
+- **图谱关联**：在 [[agentic-graphrag-pattern-selection]] 正文和 `## Relations` 补齐对 [[hermes-retrieval-priority-and-answer-path]] 的引用，并从后者和 [[agent-context-engineering]] 增加指向 GraphRAG 页的关系。既有 `verified_at` 与 `review_by` 保持不变。
+- **缓存来源与产品边界**：将 [[agent-resource-optimization]]、[[production-agent-evaluation-baselines]] 与 [[ai-coding-assistant-context-budget-management]] 引用的 Claude 缓存官方文档统一为 `docs:` 前缀，便于精确反查。资源优化页保留 Claude API 的写入定价说明，并明确 [[hermes-model-specific-harness-profiles]] 中的前缀分层、effort 切换和 TTL 默认值属于 Claude Code 客户端行为。
+- **证据边界与任务入口**：在 [[ai-code-review-governance-and-convergence]] 第 2 节明确 James C. Davis 教材第 9 章作为工程判断框架的适用边界；在 [[agent-security-architecture-and-prompt-injection-defense]] 第 4.2 节链接到 [[agent-memory-architectures-and-evaluation-benchmarks]]；在 `index.md` 新增“优化 Agent 成本、缓存与模型路由”任务入口。
+
 ## [2026-11-20] ingest | 补充代码审查中证据层级与失误后果的判断
 
 - 在 [[ai-code-review-governance-and-convergence]] 第 2 节引用 James C. Davis《The Software Engineering Handbook》第 9 章，补充按主张层级验证、识别检查之间的共同假设、按失误后果补强证据或限制影响的判断；同步主题目录。仅引用公开原文链接，不归档正文或新增门禁。

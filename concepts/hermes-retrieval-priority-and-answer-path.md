@@ -1,7 +1,7 @@
 ---
 title: AI Agent Retrieval Priority and Answer Path
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-20
 type: concept
 tags: [agent, knowledge-base, workflow, tool, configuration]
 sources: [repository:SCHEMA.md, concepts/hermes-knowledge-architecture.md, concepts/hermes-context-layer-operating-rules.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, docs:https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf]
@@ -173,4 +173,4 @@ verified_at: 2026-11-02
 ## Relations
 
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]]
-- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]]
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]], [[agentic-graphrag-pattern-selection]]

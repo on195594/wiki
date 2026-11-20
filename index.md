@@ -28,6 +28,7 @@ status: current
 | 接入 AI Agent | [Agent 按需检索入口](operations/agent-shared-wiki-index.md) |
 | 组织 AI 编程任务 | [工作流入口选择](concepts/ai-coding-agent-workflow-types.md) · [类型边界与验证](queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) |
 | 评估 Agent 架构方案 | [编排取舍](concepts/agent-orchestration-production-tradeoffs.md) · [评测框架](concepts/production-ai-agent-evaluation-framework.md) |
+| 优化 Agent 成本、缓存与模型路由 | [资源优化与路由](concepts/agent-resource-optimization.md) · [生产延迟与成本基线](concepts/production-agent-evaluation-baselines.md) |
 | 设计与评测 Agent 记忆与经验固化 | [经验固化闭环](concepts/agent-experience-consolidation-loops.md) · [记忆架构与评测基准对照](comparisons/agent-memory-architectures-and-evaluation-benchmarks.md) |
 | 评估 Agent 安全与防提示注入边界 | [安全架构与提示注入防御](concepts/agent-security-architecture-and-prompt-injection-defense.md) · [Skill Provider 治理边界](concepts/agent-skill-provider-governance-boundary.md) |
 | 查工具配置与能力边界 | [Claude Code 工作流](concepts/claude-code-practical-workflow-tips.md) · [Codex 工作流分层](concepts/codex-agent-workflow-layering.md)；具体命令先核对页面的局部证据与官方文档 |

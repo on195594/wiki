@@ -1,7 +1,7 @@
 ---
 title: Agent Context Engineering
 created: 2026-05-20
-updated: 2026-11-11
+updated: 2026-11-20
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-context-vs-memory-engineering-agentic-ai-systems-2026-07-03.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, concepts/llm-context-engineering-layer.md, concepts/hermes-context-engineering-design-priorities.md, https://arxiv.org/abs/2307.03172, https://aclanthology.org/2024.tacl-1.9/, https://arxiv.org/abs/physics/0004057, https://en.wikipedia.org/wiki/Information_bottleneck_method]
@@ -140,4 +140,4 @@ AI Agent 的对应规则：
 
 ## Relations
 - depends_on: [[llm-context-engineering-layer]], [[hermes-context-engineering-design-priorities]]
-- related: [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[agent-memory-reflection-planning-pipeline]], [[ai-coding-assistant-context-budget-management]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]], [[subagent-orchestration-patterns]], [[codex-agent-workflow-layering]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[ai-assumption-challenger-before-execution]], [[wiki-ingestion-workflow]]
+- related: [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[agent-memory-reflection-planning-pipeline]], [[ai-coding-assistant-context-budget-management]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]], [[subagent-orchestration-patterns]], [[codex-agent-workflow-layering]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[ai-assumption-challenger-before-execution]], [[wiki-ingestion-workflow]], [[agentic-graphrag-pattern-selection]]

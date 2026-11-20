@@ -4,7 +4,7 @@ created: 2026-07-31
 updated: 2026-11-20
 type: concept
 tags: [agent, evaluation, validation, monitoring, optimization]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, https://en.wikipedia.org/wiki/Equivalence_test, https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/, https://arxiv.org/abs/2610.34817, https://code.claude.com/docs/en/prompt-caching]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, repository:_meta/catalog.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, https://en.wikipedia.org/wiki/Equivalence_test, https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/, https://arxiv.org/abs/2610.34817, docs:https://code.claude.com/docs/en/prompt-caching]
 status: stable
 description: 定义生产 Agent 的延迟、成本、调用与缓存观测基线，结合 TOST 非劣效检验、重尾分布均值—中位数偏离与知识编译摊销公式约束外部经验阈值。
 aliases: [agent-production-baselines, llm-latency-cost-baselines]
