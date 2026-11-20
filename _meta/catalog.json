@@ -1,8 +1,45 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 136,
+  "total_pages": 137,
   "pages": [
+    {
+      "path": "comparisons/agent-memory-architectures-and-evaluation-benchmarks.md",
+      "type": "comparison",
+      "title": "Agent 记忆写入范式与长期评测基准对照",
+      "description": "比较五类 Agent 记忆写入与状态演化范式（CRUD、原地演化、双时态图、离线巩固与类型化溯源图 MoM/P-Mem），并对照 LongMemEval v1/V2、MemoryArena、MemoryAgentBench 审计陷阱与控制面治理状态损坏评测。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "memory",
+        "comparison",
+        "evaluation",
+        "architecture",
+        "governance"
+      ],
+      "aliases": [
+        "agent-memory-architectures-comparison",
+        "agent-memory-evaluation-benchmarks"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-20",
+      "verified_at": "2026-11-20",
+      "updated": "2026-11-20",
+      "relations": {
+        "depends_on": [
+          "agent-experience-consolidation-loops",
+          "hermes-memory-governance-notes",
+          "agent-memory-reflection-planning-pipeline"
+        ],
+        "related": [
+          "agent-skill-governance-and-reversible-state",
+          "agent-security-architecture-and-prompt-injection-defense",
+          "production-ai-agent-evaluation-framework",
+          "llm-summary-identification-step",
+          "hermes-retrieval-priority-and-answer-path"
+        ]
+      }
+    },
     {
       "path": "comparisons/dijkstra-ewd667-vs-ai-programming-article.md",
       "type": "comparison",
@@ -389,7 +426,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 与 LongMemEval 评测、写入策略比较及 B_act / P_skill / G_promo / I_rev / I_retract 治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
+      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比、CL-Bench 1.0 观察及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -416,6 +453,7 @@
           "hermes-layer-routing-decision-checklist"
         ],
         "related": [
+          "agent-memory-architectures-and-evaluation-benchmarks",
           "agent-skill-governance-and-reversible-state",
           "agent-knowledge-evolution-and-meta-skills",
           "hermes-knowledge-architecture",
@@ -565,6 +603,7 @@
         ],
         "related": [
           "agent-experience-consolidation-loops",
+          "agent-memory-architectures-and-evaluation-benchmarks",
           "hermes-memory-skills-wiki-boundaries",
           "hermes-memory-governance-notes",
           "agentic-programming-system-engineering",
@@ -800,7 +839,7 @@
       "volatility": "medium",
       "review_by": "2027-03-19",
       "verified_at": "2026-11-19",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "depends_on": [
           "agent-skill-provider-governance-boundary",
@@ -811,6 +850,7 @@
           "agent-production-harness-and-cloud-runtime-boundaries",
           "agent-memory-reflection-planning-pipeline",
           "agent-experience-consolidation-loops",
+          "agent-memory-architectures-and-evaluation-benchmarks",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "multiagent-systemic-failure-modes",
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -899,6 +939,7 @@
           "agent-experience-consolidation-loops"
         ],
         "related": [
+          "agent-memory-architectures-and-evaluation-benchmarks",
           "agent-knowledge-evolution-and-meta-skills",
           "agent-skill-provider-governance-boundary",
           "hermes-active-surface-lifecycle-governance",
@@ -2672,6 +2713,7 @@
         "related": [
           "hermes-layer-routing-edge-cases",
           "agent-experience-consolidation-loops",
+          "agent-memory-architectures-and-evaluation-benchmarks",
           "agent-memory-reflection-planning-pipeline",
           "hermes-active-surface-lifecycle-governance",
           "agent-security-architecture-and-prompt-injection-defense"

@@ -2,6 +2,23 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] fix | 校正 Agent 记忆对照的实验对照组与授权边界
+
+- 在 [[agent-memory-architectures-and-evaluation-benchmarks]] 区分 P-Mem 的读时剪枝与写时提交实验，明确 `0%` 恢复率属于关闭版本保留的对照组而非 Mem0 实测；补充修订链的到达顺序对照及聚合剪枝的未剪枝基线。将 Graphiti 的矛盾处理限定为论文所述实现，并区分治理状态故障的已知正确状态恢复与自主修复。
+- 在 [[agent-security-architecture-and-prompt-injection-defense]] 与 [[agent-experience-consolidation-loops]] 区分 TLC 机器检查、参数无关性的手工论证与一次性动作授权；一次授权不等同于永久提高记忆条目的权限。
+
+## [2026-11-20] fix | 审查并校准记忆架构对照页与 TMA-NM / P-Mem 证据口径
+
+- **P-Mem 归因与剪枝权衡校准**：在 [[agent-memory-architectures-and-evaluation-benchmarks]] 明确 P-Mem 的 `~4×` 读 Token 节省源于轮次级检索粒度而非图谱压缩；补齐 `LongMemEval-s` 上图谱剪枝降低过时率（`23.6% → 10.9%`）同时牺牲 `3.8` 个百分点准确率（`69.2% → 65.4%`）的权衡、问题路由门控缓解数据，以及 `100%` 修订链/误提交恢复归属 `ALFWorld-Revision` 受控探针；同步区分 LongMemEval-V2 的最强外部 RAG 基线（`48.5%`）与作者分层方案 `AgentRunbook-R`（`57.8%`），并披露新增 2026 预印本的 arXiv 公开章节核对范围。
+- **TMA-NM 证明范围与排除边界校准**：在 [[agent-security-architecture-and-prompt-injection-defense]] 与 [[agent-experience-consolidation-loops]] 对齐完整性格符号（$\text{untrusted} \sqsubset \text{agent} \sqsubset \text{trusted}$ 与 $D(\tau(x)) \sqsubseteq D(x)$），注明 TLA+/TLC 有界模型验证（`3,270` 可达状态）加机器检验归纳不变量的边界、动作元组级一次性用户授权令牌，以及跨智能体共享记忆、纯回答偏置与受信任工具失陷三项排除/残余风险。
+- **图谱对称与尾注消歧**：在 [[agent-skill-governance-and-reversible-state]] 补齐对 [[agent-memory-architectures-and-evaluation-benchmarks]] 的双向 `## Relations`；在 [[agent-experience-consolidation-loops]] 恢复对 Anthropic 文章图注与新增预印本核对范围的区分表述。
+
+## [2026-11-20] improve | 重构 Agent 记忆治理与经验固化集群：抽离架构与评测对照页、补齐防洗白不变量 I_taint 与控制面完整性边界
+
+- **新建横向对照页并为主干页减重**：新增 [[agent-memory-architectures-and-evaluation-benchmarks]]（`verified_at: 2026-11-20`，`review_by: 2027-03-20`），将五类记忆写入范式对照（Mem0 CRUD / A-MEM / Zep-Graphiti / Dreaming / [Memory of Memory P-Mem，arXiv:2609.25054](https://arxiv.org/html/2609.25054v1)）与长期评测基准体系（LongMemEval v1、[LongMemEval-V2，arXiv:2605.12493](https://arxiv.org/abs/2605.12493)、MemoryArena、[MemoryAgentBench，arXiv:2507.05257](https://arxiv.org/abs/2507.05257) 及其[可达性审计反证，arXiv:2610.09193](https://arxiv.org/pdf/2610.09193)、[Governance-State Corruption，arXiv:2610.30698](https://arxiv.org/abs/2610.30698)）单点收口；在 [[agent-experience-consolidation-loops]] 移除重复表格并回链至新页。
+- **补齐前向防洗白不变量与状态/聚合键隔离**：在 [[agent-experience-consolidation-loops]] 治理裁决矩阵新增 $I_{\text{taint}}$（写入期来源绑定与防溯源洗白不变量，引 [TMA-NM，arXiv:2606.24322](https://arxiv.org/abs/2606.24322)），在 [[agent-security-architecture-and-prompt-injection-defense]] 补全三条来源洗白通道（自摘要、工具回显、伪造印证）与 TLA+ 机器验证边界；在 [[hermes-memory-governance-notes]] 补充 P-Mem 一等 `contested` 冲突态与状态覆写键/累加事件键隔离原则。
+- **控制面完整性与目录同步**：在 [[agent-memory-reflection-planning-pipeline]] 与 [[agent-experience-consolidation-loops]] 将控制面治理状态完整性纳入长期记忆回归门禁；保持存量页原整页复查节点（`review_by: 2026-12-13`）不变，不将局部增补记为整页核验；同步更新 `index.md` 与 `_meta/topic-index.md`（正式页计数 `136 → 137`）。
+
 ## [2026-11-20] fix | 校准 Flutter 迁移证据与 Agent 记忆撤回规则
 
 - [[flutter-version-evolution-and-platform-boundaries]] 按来源拆分局部核验，保留 `review_by: 2026-12-02`；区分发布方公告与已验证的发布、切换或迁移状态。

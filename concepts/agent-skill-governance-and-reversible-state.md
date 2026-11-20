@@ -129,4 +129,4 @@ EvoLib 博客（[[microsoft-research-evolib-evolving-knowledge-2026-07-30]]）�
 
 ## Relations
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[agent-security-architecture-and-prompt-injection-defense]]
+- related: [[agent-memory-architectures-and-evaluation-benchmarks]], [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[agent-security-architecture-and-prompt-injection-defense]]
