@@ -2,6 +2,23 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] fix | 校准 Flutter 迁移证据与 Agent 记忆撤回规则
+
+- [[flutter-version-evolution-and-platform-boundaries]] 按来源拆分局部核验，保留 `review_by: 2026-12-02`；区分发布方公告与已验证的发布、切换或迁移状态。
+- [[agent-experience-consolidation-loops]] 与 [[agent-skill-governance-and-reversible-state]] 明确撤回须阻断召回与回滚，只能依据仍可信且获授权的证据重算；隔离不等于合规删除。校准 Zep 与 LongMemEval 的研究口径；不将局部核验记为整页核验。
+
+## [2026-11-19] improve | 复核 Flutter SwiftPM 与 CocoaPods 12-02 只读切换前边界
+
+- 在 [[flutter-version-evolution-and-platform-boundaries]] 第 2 节补充复核：新增 Xcode 校验点与 `Minimum Deployments` 变更后的 `flutter build ios/macos --config-only` 重建命令；补充 iOS Add-to-App 切换至 `flutter build swift-package --platform ios` 与旧版 CocoaPods 指南进入 Legacy 停止维护状态；补充 [Firebase for Apple platforms](https://firebase.google.com/docs/ios/cocoapods-deprecation)（公告称 Firebase 12 为 CocoaPods 最终主版本，计划 2026-10 起停更）与 [Google Mobile Ads SDK](https://developers.google.com/ads/blog/posts/2026/11/prepare-for-cocoapods-read-only-mode)（2026-12-02 后停更）的生态断更边界。
+- 刻意保留该局部块 `review_by: 2026-12-02`（对应 CocoaPods 计划永久只读切换日），不提前延后事件驱动的复查节点；页面级 `verified_at: 2026-11-06` 与其他局部块保持不变。
+
+## [2026-11-19] improve | 补强 Agent 经验固化与记忆演化集群：双时态事实、写入爆炸半径、LongMemEval 五维评测与级联撤回
+
+- **双时态事实演化**：在 [[hermes-memory-governance-notes]] 补充 [Zep / Graphiti (arXiv:2501.13956)](https://arxiv.org/html/2501.13956v1) 的事件时间轴 $T$ 与事务时间轴 $T'$ 分离模型及情景边、双向溯源索引，将当前事实更新细化为值导向非破坏性失效，并注明抽取器可错的证据边界。
+- **写入原语与爆炸半径对比**：在 [[agent-experience-consolidation-loops]] 新增反应式 CRUD（[Mem0，arXiv:2504.19413](https://arxiv.org/abs/2504.19413)）、自组织原地演化（[A-MEM，arXiv:2502.12110](https://arxiv.org/html/2502.12110v11)）与主动离线巩固（Dreaming，[wal.sh 2026](https://wal.sh/research/2026-agent-memory-systems/)）的对比表，明确离线巩固须输出版本化快照或读时覆层而非原地覆写底层基底。
+- **五维记忆评测与溯源级联撤回**：在 [[agent-experience-consolidation-loops]] 与 [[agent-memory-reflection-planning-pipeline]] 接入 [LongMemEval (ICLR 2025, arXiv:2410.10813)](https://arxiv.org/html/2410.10813v1) 五维能力（IE/MR/TR/KU/ABS）及三项检索优化，衔接 [[llm-summary-identification-step]] 的诚实留白；在 [[agent-experience-consolidation-loops]] 裁决矩阵新增级联撤回不变量 $I_{\text{retract}}$（参考 [Agentic Unlearning](https://arxiv.org/html/2602.17692v2) 的依赖闭包失效；[Selective Forgetting](https://arxiv.org/html/2608.28978v1) 仅作图剪枝对照），并在 [[agent-skill-governance-and-reversible-state]] 补充与 $I_{\text{rev}}$ 的配合边界。
+- **新鲜度维护与跨页去重**：将 [[agent-experience-consolidation-loops]]、[[agent-memory-reflection-planning-pipeline]] 与 [[agent-closed-loop-learning-from-corrections-to-rules]] 中重复展开的持久记忆投毒实证收口至单一主维护页 [[agent-security-architecture-and-prompt-injection-defense]]；更新两篇经验固化相关页面的交叉引用，保留原整页复查节点。
+
 ## [2026-11-19] ingest | 沉淀 Agentic GraphRAG 架构选型
 
 - 新增 [[agentic-graphrag-pattern-selection]]：按问题区分固定查询、纵向下钻与有界横向多跳，并归纳四类历史记录的复用边界。从 [[hermes-knowledge-freshness-and-claim-evidence]] 补充回链，同步主题目录；任务入口不变。

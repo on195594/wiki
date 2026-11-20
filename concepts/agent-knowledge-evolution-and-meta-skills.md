@@ -1,7 +1,7 @@
 ---
 title: Agent Knowledge Evolution and Meta-Skills
 created: 2026-10-17
-updated: 2026-11-19
+updated: 2026-11-20
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent]
 sources: [raw/papers/arxiv-2609-38143-meta-skills-harness-design.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, docs:https://alloomi.ai/reports/sea.pdf, https://en.wikipedia.org/wiki/Catastrophic_interference, https://www.pnas.org/doi/10.1073/pnas.1611835114, https://arxiv.org/abs/1612.00796, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/abs/2604.27707]
@@ -16,7 +16,7 @@ aliases: [agent-knowledge-evolution, meta-skills-evolution]
 
 ## Summary
 
-本页是 [[agent-experience-consolidation-loops]] 的子主题，回答“经验进入持久层之后如何演化、由谁使用”。核心结论：知识演化比“保存更多历史”更严格，需要整合、加权、取代与拒绝，且语义相似不等于可替代；外部知识复用（memory、skills、wiki）与模型权重学习互补而非替代，当前只采用前者的可审计闭环；任务技能指导 Target 解题，元技能指导 Builder 搭建支持环境，两者要分别评估。Skill 的生命周期治理见 [[agent-skill-governance-and-reversible-state]]。
+本页是 [[agent-experience-consolidation-loops]] 的子主题，回答“经验进入持久层之后如何演化、由谁使用”。核心结论：知识演化比“保存更多历史”更严格，需要整合、加权、取代与拒绝，且语义相似不等于可替代；外部知识复用（memory、skills、wiki）与模型权重学习互补而非替代，当前只采用前者的可审计闭环；任务技能指导 Target 解题，元技能指导 Builder 搭建支持环境，两者要分别评估。Skill 的生命周期治理见 [[agent-skill-governance-and-reversible-state]]；事实层双时态失效与上游证据级联撤回（$I_{\text{retract}}$）分别见 [[hermes-memory-governance-notes]] 与 [[agent-experience-consolidation-loops]]。
 
 ## Evolve knowledge instead of only appending experience
 
@@ -105,4 +105,4 @@ Builder 在开发集上构建环境并观察执行反馈；测试前冻结经验
 
 ## Relations
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-skill-governance-and-reversible-state]], [[agent-harness-search-regularization]]
+- related: [[agent-skill-governance-and-reversible-state]], [[agent-harness-search-regularization]], [[hermes-memory-governance-notes]]

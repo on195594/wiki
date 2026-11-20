@@ -1,10 +1,10 @@
 ---
 title: Agent Memory–Reflection–Planning Pipeline
 created: 2026-08-15
-updated: 2026-11-19
+updated: 2026-11-20
 type: concept
 tags: [agent, memory, architecture, research]
-sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf, https://arxiv.org/abs/2503.03704, https://arxiv.org/pdf/2609.13889, https://arxiv.org/abs/2605.29960]
+sources: [raw/papers/arxiv-2304-03442-generative-agents.md, https://arxiv.org/abs/2304.03442, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://alexpetrov.com/pub/iccm06/PetrovICCM06.pdf, https://arxiv.org/html/2410.10813v1]
 status: stable
 description: 将 Agent 经历处理为可检索记忆、受证据约束的反思和可修订计划，补充三因子检索评分、反思触发方程及与 ACT-R 全历史幂律激活的适用边界对比，同时区分应用事件存储与 AI Agent 默认 memory。
 aliases: [agent-memory-pipeline, memory-reflection-planning]
@@ -85,7 +85,7 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。AI Agen
 3. 反思能否回链到支持它的具体事件？
 4. 错误反思如何撤回或降权？
 5. 计划如何响应新观察而不无限重写历史？
-6. 哪些状态包含个人数据、敏感信息或可被提示注入污染？（[MINJA，NeurIPS 2025，arXiv:2503.03704](https://arxiv.org/abs/2503.03704) 在具备自动记忆写入的实验 Agent 中观察到，仅靠查询与观察输出也能污染长期记忆；[PMPA（2026-09，arXiv:2609.13889）](https://arxiv.org/pdf/2609.13889) 进一步在 OpenClaw 与 Claude Code 上验证了无需直接对话、仅靠外部网页/文档嵌入指令即可触发跨会话持久投毒；[MemPoison（ACM CCS 2026，arXiv:2605.29960）](https://arxiv.org/abs/2605.29960) 表明选择性记忆提取与改写机制也可被绕过。`[推论]` 按来源分级并记录来源，不依赖选择性摘要充当唯一安全屏障，召回内容默认作为待核实数据而非可执行指令，完整防御门禁见 [[agent-security-architecture-and-prompt-injection-defense]]。）
+6. 哪些状态包含个人数据、敏感信息或可被提示注入污染？（持久记忆投毒的威胁模型、跨会话污染实证与写入信任分级门禁统一由 [[agent-security-architecture-and-prompt-injection-defense]] 主维护；`[推论]` 召回内容默认作为待核实数据而非可执行指令，不依赖选择性摘要充当唯一安全屏障。）
 7. 完成判断来自模型自评，还是更权威的环境状态？
 
 ## Evaluation boundary
@@ -99,7 +99,9 @@ Generative Agents 的 memory stream 是**应用拥有的事件存储**。AI Agen
 
 生产采用还需要权限、保留期限、隐私、审计、删除和回滚设计；原论文的两天模拟不能替代这些验证。
 
+在长期交互评测上，[LongMemEval（ICLR 2025，arXiv:2410.10813）](https://arxiv.org/html/2410.10813v1) 通过 500 道跨会话问题测试五项核心能力——**信息提取（IE）、多会话推理（MR）、时序推理（TR）、知识更新（KU）与拒答（ABS）**，在 LongMemEval_S 上，受测长上下文模型读取完整历史时，表现比只提供含证据会话的理想检索设置低 `30%–60%`（§3.5），并验证了三项检索与索引优化：**会话分解（Session Decomposition）**、**事实增强键扩展（Fact-Augmented Key Expansion）**与**时间感知查询扩展（Time-Aware Query Expansion）**。`[推论]` 流水线落地时应同步评估当前事实更新、历史时点正确性与无证据拒答（参见 [[llm-summary-identification-step]]），而非仅测试单次召回命中。
+
 ## Relations
 
 - refines: [[agent-context-engineering]]
-- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-memory-governance-notes]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]], [[agent-security-architecture-and-prompt-injection-defense]]
+- related: [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-memory-governance-notes]], [[agentic-programming-system-engineering]], [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[agent-architecture-primary-paper-map]], [[agent-security-architecture-and-prompt-injection-defense]], [[llm-summary-identification-step]]

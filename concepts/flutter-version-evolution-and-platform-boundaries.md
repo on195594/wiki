@@ -1,7 +1,7 @@
 ---
 title: Flutter 版本演进、平台编译与可选 AI 生态边界
 created: 2026-11-05
-updated: 2026-11-18
+updated: 2026-11-20
 type: concept
 tags: [product, architecture, tool, deployment, validation]
 sources:
@@ -18,6 +18,10 @@ sources:
   - docs:https://flutter.dev/blog/desktop-windowing-apis
   - docs:https://flutter.dev/blog/announcing-genkit-dart-1-0
   - docs:https://flutter.dev/blog/new-updates-to-a2ui-and-flutters-genui-package
+  - docs:https://docs.flutter.dev/add-to-app/ios/project-setup
+  - docs:https://docs.flutter.dev/add-to-app/ios/project-setup-legacy
+  - https://firebase.google.com/docs/ios/cocoapods-deprecation
+  - https://developers.google.com/ads/blog/posts/2026/11/prepare-for-cocoapods-read-only-mode
 status: stable
 description: 从 Flutter 实体页拆出独立设计系统包、SwiftPM 默认集成与 CocoaPods 只读期限、WebAssembly 编译与 wasmAllowList 浏览器门控、原生 FFI 绑定、实验桌面多窗口，以及 GenUI/Genkit Dart 可选 AI 生态的版本与采用边界。
 aliases: [flutter-version-boundaries, flutter-platform-compilation, flutter-3-47-migration-boundaries]
@@ -30,7 +34,7 @@ review_by: 2027-02-05
 
 ## Freshness scope
 
-本页为 [[flutter]] 的高易变子概念页：文中所涉独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 2026-12-02 只读期限、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定（`package_ffi`）、实验桌面多窗口，以及 Genkit Dart 1.0 / GenUI 0.9 生态边界，已于 2026-11-06 对照 Flutter 官方文档与官方博客重新核验（见各节 `[!volatile]` 块）；页面级 `verified_at` 覆盖官方文档与发布说明核对，不代表已在本地安装目标 SDK、执行迁移或完成真机基准测试。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围。
+本页为 [[flutter]] 的高易变子概念页：文中所涉独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 计划于 2026-12-02 切换为只读、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定（`package_ffi`）、实验桌面多窗口，以及 Genkit Dart 1.0 / GenUI 0.9 生态边界，已于 2026-11-06 对照 Flutter 官方文档与官方博客重新核验（见各节 `[!volatile]` 块）；页面级 `verified_at` 覆盖官方文档与发布说明核对，不代表已在本地安装目标 SDK、执行迁移或完成真机基准测试。使用前按 [[hermes-retrieval-priority-and-answer-path]] 检查关系及适用范围。
 
 ## Summary
 
@@ -52,19 +56,45 @@ review_by: 2027-02-05
 ## 2. Swift Package Manager 默认启用，保留插件回退边界
 
 > [!volatile]
-> verified_at: 2026-11-18
+> verified_at: 2026-11-20
 > review_by: 2026-12-02
 > source: docs:https://docs.flutter.dev/packages-and-plugins/swift-package-manager/for-app-developers
 >
-> Flutter 3.44 起，iOS 和 macOS 默认启用 SwiftPM。升级后运行应用会自动加入集成，尚未支持 SwiftPM 的依赖仍回退到 CocoaPods。移除 CocoaPods 前，先确认所有插件支持 SwiftPM，并迁移手工添加的 Podfile 依赖或逻辑。官方文档分平台列出 `pod deintegrate`、清理旧文件和 Xcode 配置、重新构建的步骤。[7]
->
-> CocoaPods 的公开时间表将 2026-11-02 至 2026-11-06 列为只读演练窗口，并计划于 2026-12-02 永久停止向 trunk 发布新 Pod 和版本。计划包括归档 GitHub Specs 仓库及继续提供 CDN，以便已有依赖继续解析。2025 年 5 月更新还说明新 Pod 的 Podspec 不能使用 `prepare_command`，既有使用者获得豁免。[13]
+> Flutter 3.44 起，iOS 和 macOS 默认启用 SwiftPM。升级后运行应用会自动加入集成，尚未支持 SwiftPM 的依赖仍回退到 CocoaPods。移除 CocoaPods 前，先确认所有插件支持 SwiftPM，并迁移手工添加的 Podfile 依赖或逻辑。官方文档分平台列出 `pod deintegrate`、清理旧文件和 Xcode 配置、重新构建的步骤；确认是否已启用 SwiftPM 可在 Xcode 核查 `Run Prepare Flutter Framework Script`（Pre-action）与 `FlutterGeneratedPluginSwiftPackage` 目标依赖；若 SwiftPM 插件要求更高最低 OS 版本，需在 Xcode 提高目标 `Minimum Deployments` 后运行 `flutter build ios --config-only`（macOS 用 `flutter build macos --config-only`）重建配置。可按项目或用户关闭 SwiftPM，但已写入 Xcode 的集成需另行移除；官方也提醒未来将不能关闭 SwiftPM。[7]
 
-Flutter 支持按项目或按用户关闭 SwiftPM。已写入 Xcode 的 SwiftPM 集成仍需按文档另行移除。Apple 平台迁移验收需覆盖插件、最低 OS、flavor 或自定义 target，以及实际构建路径。[7]
+> [!volatile]
+> verified_at: 2026-11-20
+> review_by: 2026-12-02
+> source: docs:https://docs.flutter.dev/add-to-app/ios/project-setup
+>
+> **iOS Add-to-App**：新版指南要求 Flutter 3.44+、Xcode 15.0+。已有 CocoaPods 或嵌入式 framework 集成时，先按指南移除原 Flutter 集成，再运行 `flutter build swift-package --platform ios` 生成 `FlutterNativeIntegration` 并接入宿主 Xcode 项目。Legacy 指南保留供参考，不再持续维护。[14][15]
+
+> [!volatile]
+> verified_at: 2026-11-20
+> review_by: 2026-12-02
+> source: docs:https://blog.cocoapods.org/CocoaPods-Specs-Repo/
+>
+> **CocoaPods 公布计划**：2026-11-02 至 2026-11-06 是计划中的只读演练窗口；2026-12-02 计划永久停止向公共 trunk 发布新 Pod 和新版本。计划保留 Specs 仓库与 CDN 供现有版本继续解析；未来补丁和新版本不能再经公共 trunk 发布，自建 Specs 仓库或已内置的依赖不受本次切换直接影响。2025 年 5 月公告还说明新 Pod 的 Podspec 不能使用 `prepare_command`，既有使用者获得豁免。[13]
+
+> [!volatile]
+> verified_at: 2026-11-20
+> review_by: 2026-12-02
+> source: https://firebase.google.com/docs/ios/cocoapods-deprecation
+>
+> **Firebase for Apple platforms**：官方公告将 Firebase 12 列为最后一个发布至 CocoaPods 的主版本，并将 2026 年 10 月列为停止发布新版本的时间；既有版本仍可用。官方提醒，在同一 target 中混用 CocoaPods 与 SwiftPM 可能引发依赖循环或构建错误。[16]
+
+> [!volatile]
+> verified_at: 2026-11-20
+> review_by: 2026-12-02
+> source: https://developers.google.com/ads/blog/posts/2026/11/prepare-for-cocoapods-read-only-mode
+>
+> **Google Mobile Ads SDK**：官方公告称，2026-12-02 后不会再向 CocoaPods 发布 iOS SDK 新版本或中介适配器；此前发布的版本仍可用。[17]
+
+Apple 平台迁移验收需覆盖插件、最低 OS、flavor 或自定义 target，以及实际构建路径。
 
 ### Scoped verification note
 
-2026-11-18 对照 Flutter 3.50 文档中的默认启用、平台移除步骤和关闭选项，以及 CocoaPods 官方时间表。此次核对覆盖文档行为与公布计划。演练结果、永久切换及具体项目迁移效果待另行验证。[7][13]
+2026-11-20 按来源复核了上述文档与公告。核验限于文档说明和公布计划，未验证 CocoaPods 演练或永久切换的实际状态、Firebase 发布记录或具体项目迁移效果。保留 `review_by: 2026-12-02`，在切换窗口复查实际状态。[7][13][14][15][16][17]
 
 ## 3. Wasm 是编译与部署条件，不是通用性能保证
 
@@ -124,3 +154,7 @@ SwiftPM 文档在 2026-11-18 局部复核时标示覆盖 Flutter 3.50；FFI 文�
 [11] https://flutter.dev/blog/announcing-genkit-dart-1-0 — Chris Gill，2026-10-08，Announcing Genkit Dart 1.0；核对稳定核心、实验扩展及客户端凭证边界。
 [12] https://flutter.dev/blog/new-updates-to-a2ui-and-flutters-genui-package — Andrew Brogdon，2026-05-14，New updates to A2UI and Flutter’s GenUI package；历史版本迁移说明，不认定 0.9.0 为当前最新版。
 [13] https://blog.cocoapods.org/CocoaPods-Specs-Repo/ — CocoaPods Trunk Read-only Plan；2026-11-18 核对公告时间表与 2025 年 5 月更新。
+[14] https://docs.flutter.dev/add-to-app/ios/project-setup — Integrate a Flutter app into your iOS project；2026-11-19 核对 `flutter build swift-package --platform ios` 与 `FlutterNativeIntegration` 接入路径。
+[15] https://docs.flutter.dev/add-to-app/ios/project-setup-legacy — Integrate a Flutter module into your iOS project (Legacy)；旧版 CocoaPods Add-to-App 操作参考；停止持续维护的说明见 [14]。
+[16] https://firebase.google.com/docs/ios/cocoapods-deprecation — Migrate from CocoaPods (Firebase for Apple platforms)；2026-11-19 核对 Firebase 12 为 CocoaPods 最终主版本、公告所列的 2026 年 10 月停更时间与同 target 混用风险。
+[17] https://developers.google.com/ads/blog/posts/2026/11/prepare-for-cocoapods-read-only-mode — Prepare for CocoaPods read-only mode (Google Mobile Ads)；2026-11-19 核对 2026-12-02 后停止通过 CocoaPods 发布新 SDK 与中介适配器。

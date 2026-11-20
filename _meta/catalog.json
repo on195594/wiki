@@ -389,7 +389,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 跨模型记忆行为对比及 B_act / P_skill / G_promo / I_rev 参数化治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
+      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固（Reconsolidation）的工程类比、CL-Bench 与 LongMemEval 评测、写入策略比较及 B_act / P_skill / G_promo / I_rev / I_retract 治理裁决矩阵；Skill 治理与知识演化/元技能细节见两个子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -408,7 +408,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -432,7 +432,8 @@
           "agentic-content-pipeline-design-patterns",
           "progressive-knowledge-system-growth",
           "hermes-agent-experience-consolidation-capability-assessment",
-          "agent-security-architecture-and-prompt-injection-defense"
+          "agent-security-architecture-and-prompt-injection-defense",
+          "llm-summary-identification-step"
         ]
       }
     },
@@ -526,14 +527,15 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
         ],
         "related": [
           "agent-skill-governance-and-reversible-state",
-          "agent-harness-search-regularization"
+          "agent-harness-search-regularization",
+          "hermes-memory-governance-notes"
         ]
       }
     },
@@ -556,7 +558,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -569,7 +571,8 @@
           "production-ai-agent-evaluation-framework",
           "agent-self-validation-loops",
           "agent-architecture-primary-paper-map",
-          "agent-security-architecture-and-prompt-injection-defense"
+          "agent-security-architecture-and-prompt-injection-defense",
+          "llm-summary-identification-step"
         ]
       }
     },
@@ -890,7 +893,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "agent-experience-consolidation-loops"
@@ -901,7 +904,8 @@
           "hermes-active-surface-lifecycle-governance",
           "hermes-agent-experience-consolidation-capability-assessment",
           "agent-self-validation-loops",
-          "hermes-memory-skills-wiki-boundaries"
+          "hermes-memory-skills-wiki-boundaries",
+          "agent-security-architecture-and-prompt-injection-defense"
         ]
       }
     },
@@ -2136,7 +2140,7 @@
       "volatility": "high",
       "review_by": "2027-02-05",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-18",
+      "updated": "2026-11-20",
       "relations": {
         "refines": [
           "flutter"
@@ -2659,7 +2663,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-20",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2669,7 +2673,8 @@
           "hermes-layer-routing-edge-cases",
           "agent-experience-consolidation-loops",
           "agent-memory-reflection-planning-pipeline",
-          "hermes-active-surface-lifecycle-governance"
+          "hermes-active-surface-lifecycle-governance",
+          "agent-security-architecture-and-prompt-injection-defense"
         ]
       }
     },

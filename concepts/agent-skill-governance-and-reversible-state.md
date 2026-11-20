@@ -1,7 +1,7 @@
 ---
 title: Agent Skill Governance and Reversible Skill State
 created: 2026-10-17
-updated: 2026-11-19
+updated: 2026-11-20
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, lifecycle]
 sources: [raw/papers/arxiv-2608-14036-demystifying-agent-skills.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, docs:https://agentskills.io/specification, https://edutechwiki.unige.ch/en/Adaptive_control_of_thought_theory, https://zoo.cs.yale.edu/classes/cs671/12f/12f-papers/anderson-act-r.pdf, https://iccm-conference.neocities.org/2016/proceedings/thomson2016iccm.pdf, https://arxiv.org/html/2602.16313v1]
@@ -89,13 +89,15 @@ WikiSkill（[[arxiv-2608-27454-wikiskill]]）将每轮状态表示为活动 Skil
 rollback(active candidate) != erase(evidence and rejected reasoning)
 ```
 
-用状态转移方程表示为：设第 $k$ 轮迭代的活动技能集为 $S_k$、持久知识与证据库为 $W_k$。当候选技能变更 $s_{\text{cand}}$ 在验证集上的净效用门禁未通过（$\Delta V(S_k \oplus s_{\text{cand}}) \le 0$）时，系统执行非对称状态更新：
+用状态转移方程表示为：设第 $k$ 轮迭代的活动技能集为 $S_k$、持久知识与证据库为 $W_k$。当候选技能变更 $s_{\text{cand}}$ 在验证集上的净效用门禁未通过（$\Delta V(S_k \oplus s_{\text{cand}}) \le 0$）时，若上一基线仍满足信任与授权门禁，且相关证据获准保留，则系统执行非对称状态更新：
 
 $$S_{k+1} = S_k, \qquad W_{k+1} = W_k \cup \big\{\big(\text{trace}_k,\; s_{\text{cand}},\; \Delta V_k,\; \text{reason}_k\big)\big\}$$
 
-即活动执行面 $S_{k+1}$ 严格回滚至已验证基线 $S_k$，但本次失败轨迹 $\text{trace}_k$、候选差异 $s_{\text{cand}}$、验证得分变化 $\Delta V_k$ 与拒绝归因 $\text{reason}_k$ 单调并入持久层 $W_{k+1}$，从结构上阻断后续 Proposer 在同一无效搜索方向上重复试错。
+即活动执行面 $S_{k+1}$ 恢复至仍符合门禁的已验证基线 $S_k$，但本次失败轨迹 $\text{trace}_k$、候选差异 $s_{\text{cand}}$、验证得分变化 $\Delta V_k$ 与拒绝归因 $\text{reason}_k$ 按保留政策并入持久层 $W_{k+1}$，为后续 Proposer 避免重复试错提供依据。
 
-[推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先留在其原有会话、项目或评估载体中；只有通过公共边界且长期可复用的发现才编译进公共 Wiki 的正式 owner。Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，在合适的项目证据载体中保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令，也不把“保留证据”误读为“公开全部执行记录”。
+`[推论]` **回滚不恢复已撤回证据**：$I_{\text{rev}}$ 约束候选 Skill 失败时的回滚；$I_{\text{retract}}$（见 [[agent-experience-consolidation-loops]]）约束证据失去信任或授权后仍依赖该证据的派生版本。恢复旧 Skill 前也必须检查来源状态；若依赖已撤回的证据，则保持停用，直至使用合法且可信的证据重算并通过门禁。保留依法或按政策可保留的底层证据，不表示可继续召回或使用已撤回的内容。
+
+[推论] 对应到本地工作流，session、项目轨迹、测试结果和 reviewer 结论先留在其原有会话、项目或评估载体中；只有通过公共边界且长期可复用的发现才编译进公共 Wiki 的正式 owner。Skill 候选在项目内接受冻结基线、held-out、反例和邻近能力检查；Active 发布失败或回滚时，在保留政策允许时，在合适的项目证据载体中保留候选版本、验证结果和拒绝原因，但不把被拒绝内容继续作为活动指令，也不把“保留证据”误读为“公开全部执行记录”。
 
 ### Role-specific knowledge access
 
@@ -127,4 +129,4 @@ EvoLib 博客（[[microsoft-research-evolib-evolving-knowledge-2026-07-30]]）�
 
 ## Relations
 - refines: [[agent-experience-consolidation-loops]]
-- related: [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[agent-knowledge-evolution-and-meta-skills]], [[agent-skill-provider-governance-boundary]], [[hermes-active-surface-lifecycle-governance]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-self-validation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[agent-security-architecture-and-prompt-injection-defense]]
