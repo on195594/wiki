@@ -1031,7 +1031,7 @@
       "path": "concepts/agentic-graphrag-pattern-selection.md",
       "type": "concept",
       "title": "Agentic GraphRAG：架构选型与适用边界",
-      "description": "按问题选择固定查询、纵向下钻或有界横向多跳，并区分值得建模的四类历史记录及其适用限制。",
+      "description": "按问题选择固定查询、纵向下钻或有界横向多跳，区分实体图谱与主题图谱的证据缺口，并判断哪些历史记录值得建模。",
       "status": "stable",
       "tags": [
         "agent",

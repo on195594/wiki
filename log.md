@@ -2,6 +2,10 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] ingest | 补充 GraphRAG 按证据缺口选型与召回评测口径
+
+- 在 [[agentic-graphrag-pattern-selection]] 补充直接查找、找齐结构化事实和覆盖多个主题的适用条件，以及平均证据召回率与完整证据召回率的区别；同步主题目录。微软 Foundry IQ 数据标为厂商案例，仅引用原文链接；现有检索默认和评测基线保持原样。
+
 ## [2026-11-20] improve | 补齐图谱关联、缓存来源与证据边界
 
 - **图谱关联**：在 [[agentic-graphrag-pattern-selection]] 正文和 `## Relations` 补齐对 [[hermes-retrieval-priority-and-answer-path]] 的引用，并从后者和 [[agent-context-engineering]] 增加指向 GraphRAG 页的关系。既有 `verified_at` 与 `review_by` 保持不变。
