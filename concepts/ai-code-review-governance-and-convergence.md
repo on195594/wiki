@@ -1,10 +1,10 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-19
+updated: 2026-11-20
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
-sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/]
+sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/, https://davisjam.github.io/model-based-agentic-software-engineering/book/se-handbook/software-engineering-handbook.pdf]
 status: stable
 description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。
 aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review, orchestration-tax]
@@ -50,6 +50,8 @@ Markus Eisele 在 O’Reilly Radar 的 [Code Review After Code Gets Cheap](https
 **虚构退款示例。** 原文规定超过 100 欧元须经授权员工批准，恰好 100 欧元无需这项额外批准，原有申请权限规则仍然有效。测试应区分 100 与 100.01 欧元，并观察批准前是否真的阻止了付款请求，不能只检查审批单是否创建。若 Agent 顺带在共享支付客户端加入超时重试，渠道可能已经完成退款、只是响应丢失；重复请求能否安全处理取决于渠道机制及代码用法。审查应要求覆盖该不确定场景的证据，或移除重试；回滚部署无法追回已经重复退付的资金。
 
 **可选 PR 提示（Wiki 综合，非固定模板）：** 约定行为是什么？当前修订有什么证据？额外行为影响哪些调用方？还有什么未决风险？复用现有 PR、spec 或测试记录即可，不要求为局部可逆的小修新增文档。
+
+**验证要覆盖主张成立的层级，证据要配得上判断出错的后果。** James C. Davis 在 [*The Software Engineering Handbook: A Judgment and Decision-Making Approach*](https://davisjam.github.io/model-based-agentic-software-engineering/book/se-handbook/software-engineering-handbook.pdf)（第一版，2026-11-19 修订，第 9 章，书内第 92–93、98–99、103–104 页）指出：组件测试可以支持局部结论；若主张涉及组件交互或端到端行为，就要在相应层级取证。两项检查若依赖同一个未经证实的关键假设，即使都通过，也可能漏掉同一问题。若误判后果严重或难以挽回，优先补能识别关键失败的证据，或先限制失败的影响范围，再判断剩余风险是否可接受。这里保留的是审查时的判断依据，而非固定的证据分数或发布门禁。
 
 证据与采用边界：
 - 退款案例及 100 欧元阈值均为作者的虚构教学示例，不是生产事故、通用风控阈值或安全性证明。文章是工程方法建议，没有受控数据证明吞吐量或缺陷率改善。

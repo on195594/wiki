@@ -2,6 +2,10 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-20] ingest | 补充代码审查中证据层级与失误后果的判断
+
+- 在 [[ai-code-review-governance-and-convergence]] 第 2 节引用 James C. Davis《The Software Engineering Handbook》第 9 章，补充按主张层级验证、识别检查之间的共同假设、按失误后果补强证据或限制影响的判断；同步主题目录。仅引用公开原文链接，不归档正文或新增门禁。
+
 ## [2026-11-20] fix | 审查并修正缓存证据口径与复核指纹
 
 - 修正自动缓存不等于免写溢价、前缀变更后只对本可命中的输入估算损失，以及 Claude Code 分层缓存与 fast mode 切换的适用条件；为 TAB 降幅注明数学任务基准与迁移结果，区分请求侧全价计费和响应侧用量误计。
