@@ -1,12 +1,12 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-20
+updated: 2026-11-23
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/html/2611.21648v1, https://arxiv.org/html/2602.16313v1, https://arxiv.org/abs/2504.19413, https://arxiv.org/html/2502.12110v11, https://wal.sh/research/2026-agent-memory-systems/, https://arxiv.org/html/2410.10813v1, https://arxiv.org/html/2602.17692v2, https://arxiv.org/html/2608.28978v1, https://arxiv.org/abs/2606.24322, https://arxiv.org/html/2609.25054v1, https://arxiv.org/abs/2610.30698]
+sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/html/2611.21648v1, https://arxiv.org/html/2602.16313v1, https://arxiv.org/abs/2504.19413, https://arxiv.org/html/2502.12110v11, https://wal.sh/research/2026-agent-memory-systems/, https://arxiv.org/html/2410.10813v1, https://arxiv.org/html/2602.17692v2, https://arxiv.org/html/2608.28978v1, https://arxiv.org/html/2606.24322, https://arxiv.org/html/2609.25054v1, https://arxiv.org/abs/2610.30698, docs:https://www.langchain.com/blog/knowledge-factory]
 status: stable
-description: 定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比、CL-Bench 1.0 观察及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。
+description: 定义 Agent 经验固化闭环，从任务现场发现知识缺口，到离线核对与分层更新；结合互补学习系统（CLS）、Sleep-Time Compute、记忆再巩固、CL-Bench 1.0 及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。
 volatility: medium
 review_by: 2026-12-13
 aliases: [experience-consolidation-loop, agent-experience-consolidation]
@@ -94,6 +94,14 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 - runtime incidents and recovery evidence
 
 这些证据可以来自 `session_search`、项目 closeout、logs、git diffs 或 test artifacts，但证据可用不等于有资格公开。私有或一次性材料只在原授权范围内参与复盘，不因“经验固化”而进入公共 Wiki；公开、长期可复用的结论应去标识化后编译进对应正式 owner，具有长期检索价值的公共历史决策可以保留。
+
+#### 从重复任务中发现知识缺口
+
+Harrison Chase 的 [《How to build a knowledge factory》](https://www.langchain.com/blog/knowledge-factory)（LangChain，2026-11-21，见 “The pieces of the factory” 与 “Putting it all together”）把反馈入口前移到执行现场：除了接收用户纠错，Agent 遇到缺失或疑似过时的知识时也可以当场上报，有线索时附上候选修正；知识维护者再结合原始来源、反馈和执行证据决定如何更新。
+
+原文用营收报告举例：BigQuery 列名变更，更新取数指南；财务负责人要求使用新标题，更新写作 Skill；ARR 计算口径留在 Wiki，营收数字仍从 BigQuery 和 Salesforce 现取。这个例子区分了取数方法、写作规程、稳定业务口径和实时数据，便于判断一条反馈应该改哪里。
+
+**[推论]** 可从一个重复任务做起：在原工作流记录「哪里卡住、依据在哪、哪份知识可能受影响」；核对后只修正对应的知识单元。营收报告是厂商文章里的说明性示例，原文未量化效果或维护成本；定时策展、自动写回和存储选型均不由此推出。
 
 ### 2. Detect recurring failures and successful workflows
 复盘的重点不是“发生了什么”，而是识别可以改变未来行为的模式。

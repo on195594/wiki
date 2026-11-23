@@ -427,7 +427,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环：结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比、CL-Bench 1.0 观察及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。",
+      "description": "定义 Agent 经验固化闭环，从任务现场发现知识缺口，到离线核对与分层更新；结合互补学习系统（CLS）、Sleep-Time Compute、记忆再巩固、CL-Bench 1.0 及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -446,7 +446,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-20",
+      "updated": "2026-11-23",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
