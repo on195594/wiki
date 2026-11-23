@@ -21,7 +21,7 @@ status: current
 ### 1. 智能体架构、边界与运行时 (Agent Architecture, Boundaries & Runtime)
 - [Agent Development Lifecycle](../concepts/agent-development-lifecycle.md) — Agent 开发生命周期：Build → Test → Deploy → Monitor 与横切治理。结合机器学习系统隐性技术债，说明阶段交接、结构回归与规则重基线。
 - [Agent 生产级 Harness 与云端运行时边界](../concepts/agent-production-harness-and-cloud-runtime-boundaries.md) — 生产级 Agent Harness 边界：单一权威状态、控制面与执行面分离、共享定义与薄宿主分层、云端长程运行时跨进程恢复的五个核对窗口（含服务端代际隔离与写入条件）、Saga 语义补偿/枢轴/幂等事务与模糊远程结果先取证后恢复边界，以及 Agent-as-Code 的 PR 控制面
-- [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，并用未见任务、噪声和成本检验改动是否可迁移；RRSI 数值只限其评测条件
+- [Agent Harness 搜索正则化](../concepts/agent-harness-search-regularization.md) — Agent harness 搜索正则化：约束候选提案与采纳，结合 ABC 防污染留出集/题目轮换、$N_{\text{eff}}$ 有效样本量配对比较与 Goodhart 代理失真约束检验改动迁移；RRSI 数值只限其评测条件
 - [Agent Resource Optimization](../concepts/agent-resource-optimization.md) — Agent 资源优化：结合集合覆盖/背包整数规划（ILP）、FrugalGPT/RouteLLM 跨模型路由、前缀 KV-Cache 经济学、单模型按步推理深度路由（ARES/TAB）与 Open SWE 案例证据边界，含 `C_cov / R_route / P_tool / M_margin / K_cache / E_effort` 六参数裁决矩阵
 - [Agent Security Architecture and Prompt Injection Defense](../concepts/agent-security-architecture-and-prompt-injection-defense.md) — 用 OWASP Agentic Top 10（2026）与“致命三角”识别风险，比较 CaMeL 与六类架构模式的适用边界，并给出外发授权、MCP 工具供应链和持久记忆的防御门禁
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
@@ -39,7 +39,7 @@ status: current
 - [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航（衔接安全架构、仓库代码智能与多智能体失效）及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、Outbox 与冲突政策：结合 Xerox PARC Bayou 的 Committed/Tentative 折叠投影方程（$\text{FoldL}(\text{Apply}, S_{\text{committed}}, O)$）与 CRDT 半格边界组织游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，校准 CUSUM 与告警 PPV，区分当前成功观测和尾部连续失败的健康检查
-- [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$-bench 数据库终态比对与多轮次连续可靠率（$\text{pass}^k$），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
+- [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$/$\tau^2$-Bench 单双控终态比对、多轮次连续可靠率（$\text{pass}^k$）与 ABC 终态校验三准则（全合法解、无关状态双检、防侥幸复杂度），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
 - [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码（Outlines / Guided Generation）、分阶段语义分解、固定候选空间、typed tools、强类型沙箱能力绑定（Code Mode RPC Bindings）、dependency injection 与属性测试不变量检验把 LLM 不确定性收进可验证的工程边界
 
 ### 2. 上下文工程、记忆与技能演化 (Context Engineering, Memory & Skill Evolution)
@@ -87,8 +87,8 @@ status: current
 
 ### 4. 评测、验证与知识治理 (Evaluation, Verification & Governance)
 - [ACA 源码：有效参数与评估预算](../concepts/fixed-budget-optimizer-selection-aca-case.md) — 仅依据固定 GitHub 提交解析参数校验、调用预算与移动算子，区分请求参数、生效种群和实际评估次数
-- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：评分器选择、可审计 Rubric、未评分状态与裁判自身回归；结合 MT-Bench 三大偏差、Rogan–Gladen 与 PPI，用会话、工具证据和专家评分理由校准评测器，分数只作诊断指针
-- [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：结合 SWT-Bench `Fail-to-Pass` 复现判据与 TestPrism 单参考盲区拆解（覆盖缺口/过弱断言/执行错误），将可复发失败按三路根因分流并编译为成对差分回归工件（含 `S_f2p / F_ext / G_shadow / B_retry` 参数化裁决矩阵）
+- [Agent Evaluation Rubric Calibration](../concepts/agent-evaluation-rubric-calibration.md) — Agent 评测 Rubric 校准：评分器选择、可执行锁定 Rubric（Rulers + Wasserstein 尺度校准）、上下文动态验证器（Agentic Rubrics / 回答门控清单）与裁判自身回归；结合 MT-Bench 三大偏差、Rogan–Gladen 与 PPI，用会话、工具证据和专家评分理由校准评测器，分数只作诊断指针
+- [Agent 失败闭环评估](../concepts/agent-failure-closed-loop-evaluation.md) — Agent 失败闭环评估：结合 SWT-Bench `Fail-to-Pass` 复现判据、TestPrism 单参考盲区拆解、MAST 三大失效域分桶与 Who&When 自动归因实证边界，将可复发失败按三路根因分流并编译为成对差分回归工件（含 `S_f2p / F_ext / G_shadow / B_retry / A_attr` 参数化裁决矩阵）
 - [Agent Research Evidence Gate](../concepts/agent-research-evidence-gate.md) — 以 CRAG / Self-RAG 为参照，区分来源机制与工程推论：综合前核验支持度、按轮次/预算补证或明确弃答，并说明 `I_ident / G_evid / F_rt / V_cov` 的适用边界
 - [Agent Self-Validation Loops](../concepts/agent-self-validation-loops.md) — Agent 自我验证闭环：区分提示驱动修正的局限、SCoRe 专门训练与工具/环境反馈，结合咨询性 Skill 与确定性 Hook 护栏（含防篡改测试门禁、隔离上下文 Verifier Subagent 与配置级 CI 持续回归评测），按证据可靠性、容差等价和重试预算组织迭代
 - [Agent Skill Provider Governance Boundary](../concepts/agent-skill-provider-governance-boundary.md) — Agent Skill Provider 治理边界：形式化多源组合算子（`Aggregate / Deduplicate / Filter`）与命名空间遮蔽防御，结合 Saltzer–Schroeder 最小权限/完全中介原则与 Confused Deputy（ScopeGate 逐次参数值授权）分离静态暴露门控与动态执行授权
@@ -122,7 +122,7 @@ status: current
 - [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 2004 任务特定）、探索—利用权衡（March 1991）与长工时边际产出非线性衰减（Pencavel 2015），兼顾 `B / E / C / S` 强类型参数与家庭兼容性
 - [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
-- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：用再投资率与新增资本回报估算经营利润增长，ROIC 的定义、研发资本化调整、会计失真与边际回报（ROIIC），以及没有超额回报的增长不创造价值
+- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：用再投资率与新增资本回报估算经营利润增长，ROIC 的定义、研发资本化调整、会计失真与边际回报（ROIIC），以及“可持续增长悖论”、FCFROIC 与大盘股因子敞口实证边界
 - [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
 - [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则及应用指南），匹配现金流对象、折现率、中国报表利息/税费分类、SBC 稀释口径与高 ROIC 阶段性负 FCF 边界
 - [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — 公司分析方法卡：基于 Sloan (1996) 应计持续性全文与 Dechow–Dichev (2001/2002) 营运资本应计模型，同期间、同范围解释利润与经营现金流差异，区分正常投入、收付时点和待核查异常；含未来现金流的回归残差不作当期信号

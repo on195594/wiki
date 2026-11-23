@@ -397,7 +397,7 @@
       "path": "concepts/agent-evaluation-rubric-calibration.md",
       "type": "concept",
       "title": "Agent Evaluation Rubric Calibration",
-      "description": "说明评分器选择、可审计 Rubric 与裁判回归，并结合 MT-Bench 偏差分类、Rogan–Gladen 与 PPI 诊断和校准 Agent 评测器。",
+      "description": "说明评分器选择、可执行锁定 Rubric（Rulers）、上下文动态验证器（Agentic Rubrics）与裁判回归，并结合 MT-Bench 偏差分类、Rogan–Gladen 与 PPI 诊断和校准 Agent 评测器。",
       "status": "stable",
       "tags": [
         "agent",
@@ -413,7 +413,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -480,7 +480,7 @@
       "path": "concepts/agent-failure-closed-loop-evaluation.md",
       "type": "concept",
       "title": "Agent 失败闭环评估",
-      "description": "说明如何把可复发 Agent 失败转化为 evaluator、fixture 或防回归工件。",
+      "description": "说明如何把可复发 Agent 失败转化为成对差分防回归工件，结合 MAST 失效分类边界与 Who&When 自动归因实证限制约束根因定位与闭环门禁。",
       "status": "stable",
       "tags": [
         "agent",
@@ -495,7 +495,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -505,7 +505,8 @@
           "agent-self-validation-loops",
           "agent-experience-consolidation-loops",
           "agent-evaluation-rubric-calibration",
-          "agent-pre-deploy-regression-and-trace-debugging"
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "multiagent-systemic-failure-modes"
         ]
       }
     },
@@ -513,7 +514,7 @@
       "path": "concepts/agent-harness-search-regularization.md",
       "type": "concept",
       "title": "Agent Harness 搜索正则化",
-      "description": "区分可编辑的 Agent harness 与受约束的候选搜索、评估和采纳过程，避免演化基准过拟合。",
+      "description": "区分可编辑的 Agent harness 与受约束的候选搜索、评估和采纳过程，结合 ABC 防污染留出集、N_eff 有效样本量与 Goodhart 代理失真约束避免演化基准过拟合。",
       "status": "stable",
       "tags": [
         "agent",
@@ -529,7 +530,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -540,7 +541,9 @@
         ],
         "related": [
           "fixed-budget-optimizer-selection-aca-case",
-          "agent-knowledge-evolution-and-meta-skills"
+          "agent-knowledge-evolution-and-meta-skills",
+          "repeated-measures-statistical-power-for-ai-evaluation",
+          "software-engineering-laws-planning"
         ]
       }
     },
@@ -1711,7 +1714,7 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-19",
+      "updated": "2026-11-23",
       "relations": {
         "related": [
           "company-analysis-decision-map",
@@ -1744,7 +1747,7 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-19",
+      "updated": "2026-11-23",
       "relations": {
         "related": [
           "company-analysis-decision-map",
@@ -1763,7 +1766,7 @@
       "path": "concepts/company-analysis/growth-reinvestment-and-return-on-capital.md",
       "type": "concept",
       "title": "增长、再投资与资本回报",
-      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及投入资本回报率（ROIC）的口径、研发资本化调整与常见失真。",
+      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及 ROIC 的口径、研发资本化调整、常见失真与“可持续增长悖论”实证边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1776,7 +1779,7 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-19",
+      "updated": "2026-11-23",
       "relations": {
         "related": [
           "company-analysis-decision-map",
@@ -3580,7 +3583,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -3698,7 +3701,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -3709,7 +3712,8 @@
         "related": [
           "stateful-agent-environments-and-grounded-verification",
           "agent-evaluation-rubric-calibration",
-          "production-agent-evaluation-baselines"
+          "production-agent-evaluation-baselines",
+          "agent-harness-search-regularization"
         ]
       }
     },
@@ -3855,13 +3859,14 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"
         ],
         "related": [
-          "llm-engineering-knowledge-map"
+          "llm-engineering-knowledge-map",
+          "agent-harness-search-regularization"
         ]
       }
     },
@@ -3955,7 +3960,7 @@
       "path": "concepts/stateful-agent-environments-and-grounded-verification.md",
       "type": "concept",
       "title": "Stateful Agent Environments and Grounded Verification",
-      "description": "用 environment + tasks + verifier 评估有状态 Agent 的行为保真、工作流深度与权威结果校验，并区分模型、环境、任务和验证器失败。",
+      "description": "用 environment + tasks + verifier 评估有状态 Agent 的行为保真、工作流深度与权威结果校验，涵盖 τ/τ²-Bench 单双控终态比对、ABC 终态校验三准则及四类失败归因。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3972,7 +3977,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",

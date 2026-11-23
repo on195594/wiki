@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Planning
 created: 2026-08-10
-updated: 2026-11-09
+updated: 2026-11-23
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/gilbs-law.md, raw/articles/laws-of-software-engineering/goodharts-law.md, raw/articles/laws-of-software-engineering/hofstadters-law.md, raw/articles/laws-of-software-engineering/ninety-ninety-rule.md, raw/articles/laws-of-software-engineering/parkinsons-law.md, raw/articles/laws-of-software-engineering/premature-optimization.md, docs:https://en.wikipedia.org/wiki/Goodhart%27s_law]
@@ -99,4 +99,4 @@ aliases: [se-laws-planning, planning-engineering-laws]
 ## Relations
 
 - refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]]
+- related: [[llm-engineering-knowledge-map]], [[agent-harness-search-regularization]]

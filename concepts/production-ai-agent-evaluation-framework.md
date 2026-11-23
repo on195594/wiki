@@ -1,7 +1,7 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-11-15
+updated: 2026-11-23
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
 sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, concepts/agent-evaluation-rubric-calibration.md]
@@ -160,7 +160,7 @@ verified_at: 2026-11-02
 | :--- | :--- | :--- | :--- |
 | $N_{\text{eff}}$ | **有效独立样本量与聚类配对设计**：<br>$N_{\text{eff}} = \frac{N \cdot m}{1 + (m - 1)\rho} \le \frac{N}{\rho}$；<br>配对差值标准误 $\text{SE}(\hat{\Delta}) = \sqrt{\text{SE}_A^2 + \text{SE}_B^2 - 2\text{Cov}(\hat{p}_A, \hat{p}_B)}$ | 1. 同一模板扩题或同题重跑按簇计算 $\text{DEFF}$ 与聚类标准误；<br>2. 跨条件比较满足交叉随机效应（或 $\min F'$）且优先采用同题配对比较 | **牺牲性/隐式伪重复**：把同题 $K$ 次采样或同模板改写当作独立样本，虚高显著性；应扩充独立任务簇 $N$ 而非堆叠同质重跑 $m$ |
 | $J_{\text{judge}}$ | **自动裁判区分度与偏差校准**：<br>Youden 指数 $J = \hat{q}_1 + \hat{q}_0 - 1 > 0$；<br>$\hat{\theta}_{\text{RG}} = \text{clip}_{[0,1]}\!\left(\frac{\hat{p}_{\text{raw}} + \hat{q}_0 - 1}{J}\right)$ 或 $\hat{\theta}_{\text{PPI}}$ | 1. 小样本专家审查集 $n$ 实测 $J > 0$，且成对比较通过正反位置互换一致性检查；<br>2. 报告经 Rogan–Gladen 或 PPI 修正后的正确率及置信区间 | **评测尺失准与奖励黑客**：位置/冗长/自我偏好或低特异度 $\hat{q}_0$ 导致表观分数与人工复核背离；应暂停修改 Agent，先重修 Rubric 锚点 |
-| $\Delta_{\text{NI}}$ | **非劣效/等效检验与多轮可靠率**：<br>TOST 下界 $L_{1-2\alpha}(\mu_{\text{new}} - \mu_{\text{base}}) > -\delta_{\text{NI}}$；<br>有状态多轮 $\text{pass}^k = \mathbb{E}[(c_i/n_i)^k]$ | 1. 路由降级或 Prompt 压缩的 $(1-2\alpha)$ 置信区间下限严格高于预设容忍退化界 $-\delta_{\text{NI}}$；<br>2. 工具与数据库终态满足幂等与 $\text{pass}^k$ 连续可靠门槛 | **把未显著误当等价**：小样本 $p > \alpha$ 掩盖真实质量滑坡或长链路复合衰减（$\prod p_t$）；应标记为“未决（Inconclusive）”并阻断自动全量切换 |
+| $\Delta_{\text{NI}}$ | **非劣效/等效检验与重复运行可靠率**：<br>TOST 下界 $L_{1-2\alpha}(\mu_{\text{new}} - \mu_{\text{base}}) > -\delta_{\text{NI}}$；<br>对任务 $i$，从相同初始状态独立同分布地运行 $n_i \ge k \ge 1$ 次，成功 $c_i$ 次；$k$ 指同一任务的重复次数，全部成功率的无偏估计为 $\mathbb{E}_{\text{task}}\!\left[\binom{c_i}{k}/\binom{n_i}{k}\right]$ | 1. 路由降级或 Prompt 压缩的 $(1-2\alpha)$ 置信区间下限严格高于预设容忍退化界 $-\delta_{\text{NI}}$；<br>2. 核验工具与数据库终态的幂等性；隔离会继承上次运行结果的缓存、记忆和数据库状态，再按 $\text{pass}^k$ 门槛验收；不同基准版本或任务集分别报告 | **把未显著误当等价、把相关重跑当独立样本**：小样本 $p > \alpha$ 掩盖质量滑坡；跨次状态继承或用 $(c_i/n_i)^k$ 替代组合数估计会扭曲可靠率。证据不足时标记为“未决（Inconclusive）”，阻断自动全量切换 |
 | $C_{\text{amort}}$ | **全周期摊销成本与尾部延迟分布**：<br>$C_{\text{amort}} = \frac{\mathbb{E}[C_{\text{query}}] + (C_{\text{compile}} + C_{\text{maint}})/N_{\text{queries}}}{\hat{\theta}_{\text{correct}}}$；<br>监控 $\mathbb{E}[C]$ 与 P50/P95/P99 | 1. 同时披露算术均值 $\mathbb{E}[C]$（含重试/回退长尾）与分位数，不以中位数代替总预算；<br>2. 含编译知识库或 Judge 抽检时计入离线编译与裁判摊销成本 | **长尾预算爆炸与编译倒挂**：中位成本下降但尾部失败重试拉高 $\mathbb{E}[C]$，或低频查询无法摊销离线编译开销；应退回轻量基线或收紧有界重试 |
 
 ## What to preserve, what not to preserve

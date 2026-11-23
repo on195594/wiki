@@ -1,7 +1,7 @@
 ---
 title: 少样本 AI 评测中的重复任务、伪重复与统计功效
 created: 2026-08-09
-updated: 2026-11-11
+updated: 2026-11-23
 type: concept
 tags: [agent, evaluation, validation, research]
 sources: [raw/articles/towardsdatascience-statistical-power-more-problems-2026-08-04.md, https://en.wikipedia.org/wiki/Pseudoreplication, https://en.wikipedia.org/wiki/Design_effect, https://acs.ist.psu.edu/papers/clark73.pdf, https://arxiv.org/abs/2411.00640]
@@ -136,4 +136,4 @@ PIPS 没有同行评审或独立验证，浏览器实现使用 Clark's min F' �
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[agent-self-validation-loops]]
-- related: [[stateful-agent-environments-and-grounded-verification]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]]
+- related: [[stateful-agent-environments-and-grounded-verification]], [[agent-evaluation-rubric-calibration]], [[production-agent-evaluation-baselines]], [[agent-harness-search-regularization]]

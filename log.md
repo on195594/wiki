@@ -2,6 +2,36 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-23] fix | 区分评测统计口径、财务口径与来源标识
+
+- [[production-ai-agent-evaluation-framework]] 明确 `pass^k` 以同一任务从相同初始状态独立重复运行计量；[[agent-failure-closed-loop-evaluation]] 按 Who&When 表 1 分开标注全日志法的责任 Agent 准确率、逐步法的错误步骤准确率及无任务答案真值的子组读数。
+- [[growth-reinvestment-and-return-on-capital]] 与 [[free-cash-flow-and-valuation-basis]] 分开标注 Brina 的完整成分股总体和非金融公司—年度样本，并将截断再投资率构造的筛选指标与实际经营自由现金流比率分开。
+- [[agent-harness-search-regularization]] 与 [[stateful-agent-environments-and-grounded-verification]] 的 ABC 来源使用同一公开 URL，供按来源反查两页。
+
+## [2026-11-23] improve | 深化评测集群（P1–P2）：补齐双控与 ABC 终态校验、Rulers/Agentic Rubrics 及 Harness 防过拟合联动
+
+- **有状态验证升级（P1）**：在 [[stateful-agent-environments-and-grounded-verification]] 补充 [$\tau^2$-Bench（arXiv:2506.07982）](https://arxiv.org/abs/2506.07982) 双控环境与 [tau2-bench-verified](https://github.com/amazon-agi/tau2-bench-verified) 的策略歧义/跨版本不可比边界，以及 [ABC 智能体基准检查清单（arXiv:2507.02825）](https://arxiv.org/abs/2507.02825) 的终态校验三准则（O.g.1 全合法解、O.g.2 相关与无关状态双检、O.g.3 防侥幸复杂度）与零动作基线（R.13）。
+- **Rubric 校准与动态验证器升级（P1）**：在 [[agent-evaluation-rubric-calibration]] 补充 [Rulers（arXiv:2601.08654）](https://arxiv.org/abs/2601.08654) 的锁定 Rubric 编译器与 Wasserstein 有序尺度后校准，以及 [Agentic Rubrics（arXiv:2601.04171）](https://arxiv.org/abs/2601.04171) 与[回答门控清单验证（arXiv:2605.18261）](https://arxiv.org/abs/2605.18261) 的上下文动态验证与防奖励黑客机制。
+- **Harness 搜索防过拟合与图谱补强（P2）**：在 [[agent-harness-search-regularization]] 新增防基准过拟合与统计门禁联动小节，接入 ABC 留出集（R.3）/轮换（R.4）/零基线（R.13）、$N_{\text{eff}}$ 有效样本量与 Goodhart 代理失真约束，并补齐与 [[repeated-measures-statistical-power-for-ai-evaluation]]、[[software-engineering-laws-planning]] 的双向 `## Relations`。
+- **索引与新鲜度纪律**：同步更新 `_meta/topic-index.md` 对应条目（正式页计数保持 `137` 不变）；新增论文均仅引用公开 arXiv/GitHub 摘要与方法章节，不归档全文，所有存量页既有页面级 `verified_at` 与 `review_by` 保持不变。
+
+## [2026-11-23] improve | 校准 pass^k 评估口径并补齐失败闭环的 MAST 分类联动与 Who&When 自动归因边界
+
+- **消除跨页公式口径冲突**：在 [[production-ai-agent-evaluation-framework]] 的 `Δ_NI` 裁决矩阵中，将有状态多轮一致率公式从有偏的 $\mathbb{E}[(c_i/n_i)^k]$ 修正为与 [[stateful-agent-environments-and-grounded-verification]] 一致的无偏有限样本估计 $\mathbb{E}_{\text{task}}\!\left[\binom{c_i}{k}/\binom{n_i}{k}\right]$，并明确不同基准版本与任务集不可直接跨版比分。
+- **补强失败归因分类学与可靠性门禁**：在 [[agent-failure-closed-loop-evaluation]] 衔接 [MAST（arXiv:2503.13657）](https://arxiv.org/abs/2503.13657) 的三大失效域（14 类细目继续由 [[multiagent-systemic-failure-modes]] 单点维护）与运行时细分维度；引入 [Who&When（ICML 2025, arXiv:2505.00212）](https://arxiv.org/abs/2505.00212) 与 [Who&When Pro（arXiv:2607.09996）](https://arxiv.org/abs/2607.09996) 的自动归因实证边界，在裁决矩阵新增 `A_attr` 失败归因证据锚定门禁并补齐 `## Relations` 关联。
+- **索引与新鲜度纪律**：同步更新 `_meta/topic-index.md` 对应条目（正式页计数保持 `137` 不变）；引用公开 arXiv 摘要、导言和 Who&When 表 1，两篇存量页既有页面级 `verified_at` 与 `review_by` 保持不变。
+
+## [2026-11-23] fix | 审查并校准 Brina (2026) 实证审计的口径、子样本量与来源核对范围
+
+- 在 [[growth-reinvestment-and-return-on-capital]] 补齐三类口径边界：明确毛利资产比（`n = 1,644`）、Sloan 应计（`n = 1,906`）与 Piotroski F-score（`n = 946`）跑在标注子样本上；明确 ROIC 对 ROE 的约 17 倍差距为池化秩相关之比（并补 ROE 的 Q5−Q1 年化收益差 `-1.1 pp/yr`）；注明再投资率 $\text{RR}$ 截断于 `[0, 1]`、多元回归系数 `-0.91` 的单位为 `pp/yr per 1 sd`、等权复合的精确成分（`FCFROIC + 盈利收益率 + 12 个月动量`，`+0.040`；Magic Formula `+0.057`）以及约 450 只大盘股等权多空回归统计功效有限的作者提示。
+- 在 [[free-cash-flow-and-valuation-basis]] 与 [[earnings-quality-and-cash-conversion]] 的“来源与实际核对范围”补齐 Brina（2026）的核对日期、核对章节与未复跑代码边界；收紧自由现金流卡中关于 $\text{FCFROIC}$ 的表述（限定为该样本内的横截面相关性恢复且未超越纯 ROIC），并在盈利质量卡补齐子样本量。既有页面级 `verified_at` 与 `review_by` 保持不变。
+
+## [2026-11-23] ingest | 补充可持续增长悖论、FCFROIC 与大盘股基本面指标实证审计
+
+- 在 [[growth-reinvestment-and-return-on-capital]] 新增第 6 节，引用 Fabio Brina（2026，[Zenodo:20650537](https://zenodo.org/records/20650537)）对 2010–2024 年无幸存者偏差标普 500 样本 16 项基本面指标的实证审计，沉淀“可持续增长悖论”（$g = \text{ROIC} \times \text{RR}$ 因盈利正向与再投资负向相互抵消而失效）、ROIC 对 ROE 的杠杆中性优势、$\text{FCFROIC} = \text{ROIC} \times (1 - \text{RR})$ 修正与 FF5+动量风险调整后无显著 Alpha 的因子敞口边界。
+- 在 [[free-cash-flow-and-valuation-basis]] 补充高再投资率平均拖累与 FCFROIC 统计基准对照，在 [[earnings-quality-and-cash-conversion]] 补充 Sloan 应计与 Piotroski F-score 在美股大盘股衰减的边界说明；同步更新 `_meta/topic-index.md` 对应条目，正式页总数与首页任务入口不变。
+- 证据与维护边界：仅引用公开 Zenodo 原文与书目信息，不归档全文或随附数据集；明确单一质量占优制度期、未含交易成本与 A 股会企 03 表口径适配推论，保持三篇存量页既有页面级 `verified_at` 与 `review_by` 不变，不生成任何交易或选股规则。
+
 ## [2026-11-23] ingest | 补充跨平台 UI 选型的维护成本试验
 
 - 在 [[software-engineering-laws-architecture]] 补充“跑通同一业务路径，再改同一个需求”的选型方法，用 Barista Notes 案例区分搭建、后续变更与逐端验证的成本；仅引用 .NET Blog 原文，明确单次实验的适用边界，并同步主题目录。
