@@ -1,12 +1,12 @@
 ---
 title: Software Engineering Laws — Architecture
 created: 2026-08-10
-updated: 2026-11-09
+updated: 2026-11-23
 type: concept
 tags: [research, architecture, decision, networking]
-sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md, docs:https://en.wikipedia.org/wiki/PACELC_theorem, docs:https://www.hyrumslaw.com/]
+sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md, docs:https://en.wikipedia.org/wiki/PACELC_theorem, docs:https://www.hyrumslaw.com/, docs:https://devblogs.microsoft.com/dotnet/ai-cross-platform-decision-matrix/]
 status: stable
-description: 用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则。
+description: 用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则，含跨平台 UI 选型的维护成本试验。
 volatility: low
 aliases: [se-laws-architecture, architecture-engineering-laws]
 ---
@@ -124,6 +124,12 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 3. 同时记录法则提示的风险、当前取舍及适用边界；若法则之间形成张力，以具体系统约束决定优先级。
 4. 回到 [来源总索引](../../raw/articles/laws-of-software-engineering/index.md) 与各 canonical 页面核对原始陈述，避免把经验观察升级为绝对规则。
 5. [推论] 评估跨平台 UI 框架时，可将“复杂性的去向”和“抽象泄漏”落到平台适配、插件边界与发布链路；[[flutter]] 提供一个按官方架构整理的具体实例。
+
+### 跨平台选型：跑通一条业务路径后，再改一次需求
+
+**评审方法**：比较共享 UI 和平台专属 UI 时，先用相同验收标准跑通一条真实业务路径，再给两种实现加同一个有代表性的后续需求。分开记录首次搭建，以及后续改动的实现、各端设备验收、缺陷排查和评审成本。共享业务逻辑可以复用；用户路径仍要逐端验证。用本项目的实测收益和团队的维护能力，决定是否扩大平台专属实现的范围。
+
+**案例**：David Ortinau 在 [.NET Blog（2026-11-20）](https://devblogs.microsoft.com/dotnet/ai-cross-platform-decision-matrix/) 比较了 Barista Notes 的 .NET MAUI 共享界面与共用业务核心的 iOS、Android 原生界面。加入同一个地图功能，原生方案和共享方案的实现代理分别用了 121.2 和 87.6 模型分钟，分别收到 19 和 13 条缺陷或技术反馈；其中一次列表导航问题只出现在 Android。这是单应用、单次功能变更的阶段性记录，适合参考试验设计；模型分钟不含完整验收成本，也不宜用作其他项目的估算系数。
 
 ## Relations
 

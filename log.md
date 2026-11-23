@@ -2,6 +2,10 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-23] ingest | 补充跨平台 UI 选型的维护成本试验
+
+- 在 [[software-engineering-laws-architecture]] 补充“跑通同一业务路径，再改同一个需求”的选型方法，用 Barista Notes 案例区分搭建、后续变更与逐端验证的成本；仅引用 .NET Blog 原文，明确单次实验的适用边界，并同步主题目录。
+
 ## [2026-11-23] ingest | 补充重复任务中的知识缺口反馈案例
 
 - 在 [[agent-experience-consolidation-loops]] 补充执行现场主动上报、维护者核对原始证据后按归属修正的案例；用营收报告区分取数指南、写作 Skill、业务口径与实时数据。仅引用 LangChain 原文，将营收报告标为说明性示例；同步主题目录。

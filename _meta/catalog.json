@@ -3754,7 +3754,7 @@
       "path": "concepts/software-engineering-laws/software-engineering-laws-architecture.md",
       "type": "concept",
       "title": "Software Engineering Laws — Architecture",
-      "description": "用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则。",
+      "description": "用于检索分布式权衡（CAP 与 PACELC）、复杂性演化、隐式接口兼容边界（Hyrum's Law）、抽象泄漏与架构范围控制的软件工程经验法则，含跨平台 UI 选型的维护成本试验。",
       "status": "stable",
       "tags": [
         "research",
@@ -3769,7 +3769,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-23",
       "relations": {
         "refines": [
           "software-engineering-laws-decision-map"

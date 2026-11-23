@@ -130,7 +130,7 @@ status: current
 - [竞争优势持续期与资本配置](../concepts/company-analysis/competitive-advantage-period-and-capital-allocation.md) — 公司分析方法卡：结合 Mauboussin 护城河评估、竞争优势持续期（CAP / ROIC 衰减率）与资本配置框架（零基配置、战略包与五类资金去向核查），评估超额回报持续时长与管理层配置质量
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
-- [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险
+- [Software Engineering Laws — Architecture](../concepts/software-engineering-laws/software-engineering-laws-architecture.md) — 软件工程 Architecture 法则地图：分布式取舍（CAP 与 PACELC）、隐式接口蒸发（Hyrum's Law）、抽象泄漏、复杂度分配与系统演化风险；附跨平台 UI 选型的维护成本试验
 - [Software Engineering Laws — Decisions](../concepts/software-engineering-laws/software-engineering-laws-decisions.md) — 软件工程 Decisions 法则地图：认知偏差（Wason 证伪实验与达克效应统计边界）、Lindy 帕累托失效率、奥卡姆剃刀与资源分配
 - [Software Engineering Laws — Design](../concepts/software-engineering-laws/software-engineering-laws-design.md) — 软件工程 Design 法则地图：知识唯一表示（DRY vs AHA）、Law of Demeter 五类调用边界、LSP 强行为子类型与 YAGNI 持续重构前提
 - [Software Engineering Laws — Planning](../concepts/software-engineering-laws/software-engineering-laws-planning.md) — 软件工程 Planning 法则地图：度量与代理指标失真（Gilb / Goodhart）、估算、期限、收尾成本与优化时机
