@@ -1,12 +1,12 @@
 ---
 title: AI Code Review Governance, Traceability, and Convergence
 created: 2026-11-02
-updated: 2026-11-20
+updated: 2026-11-24
 type: concept
 tags: [agent, ai-coding, workflow, governance, verification, evaluation]
-sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/, https://davisjam.github.io/model-based-agentic-software-engineering/book/se-handbook/software-engineering-handbook.pdf]
+sources: [raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, raw/articles/addyosmani-critical-thinking-when-agents-do-the-work-2026-11-03.md, concepts/hermes-ai-workflow-formalization-principles.md, concepts/agent-self-validation-loops.md, https://umbrex.com/resources/frameworks/operations-frameworks/littles-law/, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html, https://agility-at-scale.com/principles/littles-law-wip-calculation/, https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/, https://davisjam.github.io/model-based-agentic-software-engineering/book/se-handbook/software-engineering-handbook.pdf, docs:https://x.com/jexchan/status/2124822111445508234]
 status: stable
-description: 定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。
+description: 定义 AI 生成代码的分层审查、双向追溯、风险分级与审查收敛，含用变异测试抽查关键断言，以及基于 Little 定律与 Kingman 公式的审查容量边界。
 aliases: [ai-code-review-governance, code-review-convergence, agentic-code-review, orchestration-tax]
 volatility: medium
 review_by: 2027-03-02
@@ -59,6 +59,12 @@ Markus Eisele 在 O’Reilly Radar 的 [Code Review After Code Gets Cheap](https
 - 减少常规逐行检查以明确影响范围和可信检查为前提，不是默认免审；受控灰度或 A/B 发布也不能代替真实付款前的充分验证。
 - James C. Davis《The Software Engineering Handbook》（第一版，2026-11-19 修订，第 9 章）为教学与工程判断框架，用于区分主张层级、共同假设与后果分级，不是受控实证数据或统一发布门禁。
 - 本节只沉淀可检索的审查判断，不新增默认多 Agent 审查、必填 PR 模板、Skill、权限、发布门禁或运行时改动。
+
+### 用变异测试验证关键断言
+
+jexchan 整理的 [Matt Pocock 与 Robert C. Martin（Uncle Bob）访谈](https://x.com/jexchan/status/2124822111445508234)（第 01 节）记录了 Robert C. Martin 在个人项目中的做法：先用 CRAP 分析结合圈复杂度与测试覆盖率，找出优先检查的函数；再临时改变实现并重跑测试，检查测试能否发现这类错误。覆盖率说明代码是否被执行，变异测试检查测试能否识别某个具体的行为错误。
+
+[推论] 优先在高风险或反复回归的逻辑上做定向检查。以上面的虚构退款案例为例，临时把 `金额 > 100` 改为 `金额 >= 100`；如果测试仍然通过，就核对是否测试了恰好 100 的情形，以及断言是否观察到真正的审批要求。只对会改变约定行为的存活变异补断言；行为等价的变异不代表测试缺口。变异测试检查的是测试的检错能力，预期行为仍须对照需求。来源为个人实践的访谈整理；CRAP 阈值、提速倍数和多 Agent 角色配置不作为通用门禁。
 
 ## 3. 分层防线、风险分级审批与审查收敛：以回滚率约束人类注意力
 

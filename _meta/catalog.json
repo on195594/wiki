@@ -1344,7 +1344,7 @@
       "path": "concepts/ai-code-review-governance-and-convergence.md",
       "type": "concept",
       "title": "AI Code Review Governance, Traceability, and Convergence",
-      "description": "定义 AI 生成代码时代的分层审查、双向追溯、风险分级、基于排队论（Little 定律与 Kingman 公式）的审查容量边界，以及多 Agent 审查收敛规则。",
+      "description": "定义 AI 生成代码的分层审查、双向追溯、风险分级与审查收敛，含用变异测试抽查关键断言，以及基于 Little 定律与 Kingman 公式的审查容量边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1363,7 +1363,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"

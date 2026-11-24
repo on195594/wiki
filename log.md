@@ -2,6 +2,10 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-24] ingest | 补充用变异测试验证关键断言的方法
+
+- 在 [[ai-code-review-governance-and-convergence]] 的测试有效性一节补充复杂度与覆盖率筛查、定向变异测试及虚构退款边界示例。仅引用 jexchan 的公开访谈整理；个人项目的阈值、提速和角色配置不作通用门禁。同步主题目录，正式页数量与首页入口保持不变。
+
 ## [2026-11-24] improve | 落地 Agent 安全架构子页与跨页联动（P1–P2）：补齐 ASI05 沙箱隔离谱系、浏览器语义沙箱与多智能体安全衔接
 
 - **新建执行隔离与浏览器沙箱子页（P1）**：新增 [[agent-execution-sandboxing-and-browser-isolation]]（`verified_at: 2026-11-24`，`review_by: 2027-03-24`），单点维护 [AWS Builder Center EKS 沙箱实践](https://builder.aws.com/content/3ADDWTtyI2gevtzY9d2vzULAxzS/secure-agent-sandboxes-on-eks) 的三层内核隔离谱系（容器 vs. gVisor vs. Kata/Firecracker microVM、进程检查点与 microVM 快照、外部写入恢复边界、域名过滤与请求授权、代理层凭据注入），以及 [VPI-Bench（arXiv:2506.02456）](https://arxiv.org/abs/2506.02456) 视觉提示注入威胁模型与 [ceLLMate（arXiv:2512.12594v2）](https://arxiv.org/html/2512.12594v2) HTTP 层 `Agent Sitemap` 语义沙箱及其 WebSocket 和评测范围限制。
