@@ -1,7 +1,7 @@
 ---
 title: Agent 生产级 Harness 与云端运行时边界
 created: 2026-11-02
-updated: 2026-11-18
+updated: 2026-11-24
 type: concept
 tags: [agent, harness, lifecycle, deployment, orchestration, governance, verification, linux]
 sources: [raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, concepts/agent-development-lifecycle.md, https://en.wikipedia.org/wiki/Long-running_transaction, https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf, https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html, https://arxiv.org/html/2610.41453v1]
@@ -76,7 +76,7 @@ Yang Li 的 Tetral 架构叙述 [[tetral-next-scaling-problem-2026-09-06]] 为�
 
 ### 凭据隔离与 Tool Gate 授权分离
 
-Tetral 将模型与 MCP 凭据留在连接服务，由 Tool Gate 在执行前评估操作（参数值级策略拦截与 Confused Deputy 防御边界见 [[agent-skill-provider-governance-boundary]]），需审查的提议必须先记录决定，才能成为可调度工具调用。作者还提出以候选产物的对抗复核和人工接受代替无边界的多 Agent 聊天（这属于设计主张，不能从并行线程数量推断质量提升，编排边界见 [[subagent-orchestration-patterns]]）。
+Tetral 将模型与 MCP 凭据留在连接服务，由 Tool Gate 在执行前评估操作（参数值级策略拦截与 Confused Deputy 防御边界见 [[agent-skill-provider-governance-boundary]]；代码执行沙箱的内核隔离谱系、微虚拟机状态恢复、出口授权与代理层凭据注入详见 [[agent-execution-sandboxing-and-browser-isolation]]），需审查的提议必须先记录决定，才能成为可调度工具调用。作者还提出以候选产物的对抗复核和人工接受代替无边界的多 Agent 聊天（这属于设计主张，不能从并行线程数量推断质量提升，编排边界见 [[subagent-orchestration-patterns]]）。
 
 **[适用限制]** 原文是作者对个人 k3s 集群 Alpha 的描述，未证明持续多节点恢复、容量感知调度或端到端反压，滚动发布尚会中断进行中的轮次；不是已验证的生产标准架构，也不是单机或短任务应照搬的默认拓扑。
 
@@ -92,4 +92,4 @@ ABC Legal 的企业案例 [[claude-abc-legal-managed-agents-2026-08-17]] 展示�
 
 - refines: [[agent-development-lifecycle]]
 - depends_on: [[stateful-agent-environments-and-grounded-verification]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]]
-- related: [[agent-orchestration-production-tradeoffs]], [[hermes-model-specific-harness-profiles]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[google-sre-gemini-cli-incident-response]], [[agent-skill-provider-governance-boundary]]
+- related: [[agent-orchestration-production-tradeoffs]], [[hermes-model-specific-harness-profiles]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[google-sre-gemini-cli-incident-response]], [[agent-skill-provider-governance-boundary]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-execution-sandboxing-and-browser-isolation]]

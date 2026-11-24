@@ -2,6 +2,18 @@
 
 > Public repository maintenance history. This log records reusable repository changes, not personal runtime state, private sessions, local backups or task transcripts.
 
+## [2026-11-24] improve | 落地 Agent 安全架构子页与跨页联动（P1–P2）：补齐 ASI05 沙箱隔离谱系、浏览器语义沙箱与多智能体安全衔接
+
+- **新建执行隔离与浏览器沙箱子页（P1）**：新增 [[agent-execution-sandboxing-and-browser-isolation]]（`verified_at: 2026-11-24`，`review_by: 2027-03-24`），单点维护 [AWS Builder Center EKS 沙箱实践](https://builder.aws.com/content/3ADDWTtyI2gevtzY9d2vzULAxzS/secure-agent-sandboxes-on-eks) 的三层内核隔离谱系（容器 vs. gVisor vs. Kata/Firecracker microVM、进程检查点与 microVM 快照、外部写入恢复边界、域名过滤与请求授权、代理层凭据注入），以及 [VPI-Bench（arXiv:2506.02456）](https://arxiv.org/abs/2506.02456) 视觉提示注入威胁模型与 [ceLLMate（arXiv:2512.12594v2）](https://arxiv.org/html/2512.12594v2) HTTP 层 `Agent Sitemap` 语义沙箱及其 WebSocket 和评测范围限制。
+- **跨页联动与图谱补强（P2）**：在 [[agent-security-architecture-and-prompt-injection-defense]] 的总览与 `I_iso / S_gui` 裁决矩阵及 `## Relations` 回链至新子页；在 [[agent-production-harness-and-cloud-runtime-boundaries]] 凭据隔离节补齐指向安全主干页与新子页的引用及双向 `## Relations`；在 [[multiagent-systemic-failure-modes]] 将跨代理安全传播衔接至 `ASI07` 委托衰减、APC 组合闭包与 AgentWorm 断链门禁。
+- **索引与新鲜度纪律**：同步更新 `index.md` 安全任务入口与 `_meta/topic-index.md`（正式页计数 `137 → 138`）；存量页既有页面级 `verified_at` 与 `review_by` 保持不变；VPI-Bench 核对公开摘要与检索摘录，ceLLMate v2 核对评估和限制章节，不归档全文。
+
+## [2026-11-24] improve | 深化 Agent 安全架构主干页（P0）：补齐动态权限与双格 IFC、ASI07 委托授权传播与蠕虫防御及参数化裁决矩阵
+
+- **动态权限与信息流控制对照**：在 [[agent-security-architecture-and-prompt-injection-defense]] 新增 3.3 节，引入 [FIDES（arXiv:2505.23643）](https://arxiv.org/abs/2505.23643) 的机密性/完整性双格 IFC 与不可信变量选择性隐藏，以及 [Progent（arXiv:2504.11703）](https://arxiv.org/abs/2504.11703) 的 SMT 校验单调权限收紧（Monotonic Confinement），与 CaMeL 及 [[agent-skill-provider-governance-boundary]] 的 `ScopeGate` 形成横向边界对照。
+- **多智能体授权传播与蠕虫防御（`ASI07`）**：新增 4.3 节，纳入 [Authorization Propagation（arXiv:2605.05440）](https://arxiv.org/abs/2605.05440) 的传递委托/聚合推断/时效有效性三类子问题、[Bounded Agents / APC（arXiv:2608.15888）](https://arxiv.org/abs/2608.15888) 的委托链与组合闭包门禁，以及 [AgentWorm（arXiv:2603.15727）](https://arxiv.org/abs/2603.15727) 的跨重启配置劫持、自我复制传播与 Hermes Agent 跨框架迁移实证，补齐与 [[subagent-orchestration-patterns]] 的双向 `## Relations`。
+- **参数化安全裁决矩阵与索引同步**：新增 5.1 节 `[推论]` 五维安全裁决矩阵（`E_tri / M_mono / I_iso / S_gui / I_taint`），同步更新 `_meta/topic-index.md` 对应条目（正式页计数保持 `137` 不变）；本次新增 5 篇预印本仅核对公开 arXiv 摘要页、不归档全文，既有页面级 `verified_at` 与 `review_by` 保持不变。
+
 ## [2026-11-23] fix | 区分评测统计口径、财务口径与来源标识
 
 - [[production-ai-agent-evaluation-framework]] 明确 `pass^k` 以同一任务从相同初始状态独立重复运行计量；[[agent-failure-closed-loop-evaluation]] 按 Who&When 表 1 分开标注全日志法的责任 Agent 准确率、逐步法的错误步骤准确率及无任务答案真值的子组读数。

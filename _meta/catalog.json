@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 137,
+  "total_pages": 138,
   "pages": [
     {
       "path": "comparisons/agent-memory-architectures-and-evaluation-benchmarks.md",
@@ -424,6 +424,45 @@
       }
     },
     {
+      "path": "concepts/agent-execution-sandboxing-and-browser-isolation.md",
+      "type": "concept",
+      "title": "Agent Execution Sandboxing and Browser Isolation",
+      "description": "定义 AI Agent 代码执行隔离谱系（容器 / gVisor / Kata-Firecracker microVM、沙箱状态恢复、出口授权与代理层凭据注入）及浏览器/GUI Agent 视觉注入防御与 HTTP 语义沙箱边界。",
+      "status": "stable",
+      "tags": [
+        "agent",
+        "architecture",
+        "governance",
+        "risk-control",
+        "browser",
+        "linux",
+        "deployment",
+        "verification"
+      ],
+      "aliases": [
+        "agent-execution-sandboxing",
+        "browser-agent-isolation",
+        "agent-sandbox-isolation"
+      ],
+      "volatility": "medium",
+      "review_by": "2027-03-24",
+      "verified_at": "2026-11-24",
+      "updated": "2026-11-24",
+      "relations": {
+        "refines": [
+          "agent-security-architecture-and-prompt-injection-defense"
+        ],
+        "depends_on": [
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "typed-ai-agent-boundaries"
+        ],
+        "related": [
+          "agent-skill-provider-governance-boundary",
+          "stateful-agent-environments-and-grounded-verification"
+        ]
+      }
+    },
+    {
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
@@ -726,7 +765,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-18",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -743,7 +782,9 @@
           "subagent-orchestration-patterns",
           "chat-to-agent-session-routing",
           "google-sre-gemini-cli-incident-response",
-          "agent-skill-provider-governance-boundary"
+          "agent-skill-provider-governance-boundary",
+          "agent-security-architecture-and-prompt-injection-defense",
+          "agent-execution-sandboxing-and-browser-isolation"
         ]
       }
     },
@@ -828,7 +869,7 @@
       "path": "concepts/agent-security-architecture-and-prompt-injection-defense.md",
       "type": "concept",
       "title": "Agent Security Architecture and Prompt Injection Defense",
-      "description": "说明如何用 OWASP Agentic Top 10 与“致命三角”识别风险，并比较 CaMeL 与六类抗注入架构的适用边界，给出外发授权、MCP 工具供应链和持久记忆的防御门禁。",
+      "description": "说明如何用 OWASP Agentic Top 10 与“致命三角”识别风险，比较 CaMeL、FIDES、Progent 与六类抗注入架构边界，覆盖 MCP 供应链、持久记忆投毒、ASI07 多智能体委托授权传播与蠕虫防御，并给出 E_tri / M_mono / I_iso / S_gui / I_taint 参数化安全裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -846,13 +887,14 @@
       "volatility": "medium",
       "review_by": "2027-03-19",
       "verified_at": "2026-11-19",
-      "updated": "2026-11-20",
+      "updated": "2026-11-24",
       "relations": {
         "depends_on": [
           "agent-skill-provider-governance-boundary",
           "typed-ai-agent-boundaries"
         ],
         "related": [
+          "agent-execution-sandboxing-and-browser-isolation",
           "agent-pre-deploy-regression-and-trace-debugging",
           "agent-production-harness-and-cloud-runtime-boundaries",
           "agent-memory-reflection-planning-pipeline",
@@ -860,6 +902,7 @@
           "agent-memory-architectures-and-evaluation-benchmarks",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "multiagent-systemic-failure-modes",
+          "subagent-orchestration-patterns",
           "hermes-agent-workflow-layering-and-adoption-order"
         ]
       }
@@ -3437,7 +3480,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
