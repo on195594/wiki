@@ -792,7 +792,7 @@
       "path": "concepts/agent-research-evidence-gate.md",
       "type": "concept",
       "title": "Agent Research Evidence Gate",
-      "description": "结合 CRAG 三路纠偏检索、Self-RAG 反思批判令牌与有界回填停止状态机，定义研究型 Agent 在最终综合前必须通过的证据闸门及 I_ident / G_evid / F_rt / V_cov 裁决矩阵。",
+      "description": "结合 CRAG 三路纠偏、Self-RAG 批判维度、2025–2026 RL 搜索损失掩码与 LiveLedger / FoldAgent 过程停止门控，定义研究型 Agent 综合前的证据闸门及 I_ident / G_evid / F_rt / V_cov / L_ledger 裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -808,7 +808,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -816,13 +816,17 @@
         ],
         "depends_on": [
           "agent-self-validation-loops",
-          "llm-summary-identification-step"
+          "llm-summary-identification-step",
+          "hermes-retrieval-priority-and-answer-path",
+          "hermes-knowledge-freshness-and-claim-evidence"
         ],
         "related": [
           "typed-ai-agent-boundaries",
           "constrained-toolbox-evaluator-loop",
           "human-machine-scientific-discovery-verification-scarcity",
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "agentic-graphrag-pattern-selection",
+          "wiki-cross-source-evidence-navigation-benchmark"
         ]
       }
     },
@@ -1077,29 +1081,38 @@
       "path": "concepts/agentic-graphrag-pattern-selection.md",
       "type": "concept",
       "title": "Agentic GraphRAG：架构选型与适用边界",
-      "description": "按问题选择固定查询、纵向下钻或有界横向多跳，区分实体图谱与主题图谱的证据缺口，并判断哪些历史记录值得建模。",
+      "description": "按证据缺口选择扁平混合检索、纵向下钻或有界多跳图遍历，对照五类 GraphRAG 索引演进、任务交叉边界与枢纽爆炸抑制机制，并界定历史运行记录的构图边界。",
       "status": "stable",
       "tags": [
         "agent",
         "architecture",
         "knowledge-base",
         "context-engineering",
-        "memory"
+        "memory",
+        "evaluation",
+        "research"
       ],
       "aliases": [
         "agentic-graphrag",
         "hierarchical-graphrag",
         "multi-hop-graph-retrieval"
       ],
-      "volatility": "low",
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-11-20",
+      "volatility": "medium",
+      "review_by": "2027-03-24",
+      "verified_at": "2026-11-24",
+      "updated": "2026-11-24",
       "relations": {
-        "related": [
-          "hermes-knowledge-freshness-and-claim-evidence",
+        "refines": [
+          "llm-context-engineering-layer"
+        ],
+        "depends_on": [
           "hermes-retrieval-priority-and-answer-path",
+          "hermes-knowledge-freshness-and-claim-evidence"
+        ],
+        "related": [
           "agent-context-engineering",
+          "agent-research-evidence-gate",
+          "agent-skill-governance-and-reversible-state",
           "wiki-cross-source-evidence-navigation-benchmark"
         ]
       }
@@ -2903,7 +2916,7 @@
       "path": "concepts/hermes-retrieval-priority-and-answer-path.md",
       "type": "concept",
       "title": "AI Agent Retrieval Priority and Answer Path",
-      "description": "定义 AI Agent 回答问题时的检索优先级、Freshness Gate，以及按简单查找与跨源推理分流的 locate/expand 证据导航路径。",
+      "description": "定义 AI Agent 回答问题时的检索优先级、Freshness Gate，以及结合查询复杂度分流与枢纽度阻尼的 locate/expand 证据导航路径。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2920,7 +2933,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-24",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2931,7 +2944,9 @@
           "hermes-knowledge-freshness-and-claim-evidence",
           "hermes-wiki-lint-and-health-check-standards",
           "wiki-ingestion-workflow",
-          "agentic-graphrag-pattern-selection"
+          "agentic-graphrag-pattern-selection",
+          "wiki-cross-source-evidence-navigation-benchmark",
+          "agent-research-evidence-gate"
         ]
       }
     },
@@ -3247,13 +3262,14 @@
       "path": "concepts/llm-context-engineering-layer.md",
       "type": "concept",
       "title": "LLM Context Engineering Layer",
-      "description": "定义检索与 prompt 之间的上下文工程层，以及 Agentic RAG 的证据信任、语义漂移和未知候选处理边界。",
+      "description": "定义检索与 prompt 之间的上下文工程层，结合上下文化分块、两阶段重排与抗腐烂入窗截断、句子级保真裁剪，以及 Agentic RAG 的证据信任与语义漂移边界。",
       "status": "stable",
       "tags": [
         "llm",
         "agent",
         "workflow",
-        "research"
+        "research",
+        "context-engineering"
       ],
       "aliases": [
         "context-engineering-layer"
@@ -3261,7 +3277,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-17",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -3278,7 +3294,8 @@
           "agent-development-lifecycle",
           "agent-context-engineering",
           "agent-pre-deploy-regression-and-trace-debugging",
-          "deterministic-analytics-llm-reasoning-boundary"
+          "deterministic-analytics-llm-reasoning-boundary",
+          "agentic-graphrag-pattern-selection"
         ]
       }
     },
@@ -5056,7 +5073,7 @@
       "path": "queries/wiki-cross-source-evidence-navigation-benchmark.md",
       "type": "query",
       "title": "Wiki 跨源证据导航离线评测方案与拓扑基线",
-      "description": "保存 Q1–Q8 检索基线及 Q5/Q8 公开证据包与评分纠正，区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。",
+      "description": "保存 Q1–Q8 检索基线、Q5/Q8 公开证据包与评分纠正及同评分函数度阻尼消融协议（relations_damped），区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。",
       "status": "stable",
       "tags": [
         "agent",
@@ -5074,7 +5091,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-09",
+      "updated": "2026-11-24",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",
@@ -5112,7 +5129,8 @@
           "agent-knowledge-evolution-and-meta-skills",
           "document-parsing-structural-fidelity",
           "ai-agent-document-fidelity-risk",
-          "deterministic-analytics-llm-reasoning-boundary"
+          "deterministic-analytics-llm-reasoning-boundary",
+          "agentic-graphrag-pattern-selection"
         ]
       }
     },

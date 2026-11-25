@@ -1,15 +1,15 @@
 ---
 title: Wiki 跨源证据导航离线评测方案与拓扑基线
 created: 2026-11-02
-updated: 2026-11-09
+updated: 2026-11-24
 type: query
 tags: [agent, knowledge-base, evaluation, verification, architecture, workflow]
-sources: [repository:_meta/catalog.json, repository:_meta/retrieval-benchmark.json, repository:_meta/retrieval-benchmark-q5-q8.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md, raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md]
+sources: [repository:_meta/catalog.json, repository:_meta/retrieval-benchmark.json, repository:_meta/retrieval-benchmark-q5-q8.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, concepts/hermes-retrieval-priority-and-answer-path.md, concepts/agentic-graphrag-pattern-selection.md, concepts/agent-research-evidence-gate.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md, raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, https://arxiv.org/html/2502.14802v2, https://arxiv.org/html/2606.00610v1, https://arxiv.org/html/2602.07549v1]
 status: stable
 volatility: medium
 verified_at: 2026-11-06
 review_by: 2027-03-02
-description: 保存 Q1–Q8 检索基线及 Q5/Q8 公开证据包与评分纠正，区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。
+description: 保存 Q1–Q8 检索基线、Q5/Q8 公开证据包与评分纠正及同评分函数度阻尼消融协议（relations_damped），区分候选召回、引用支持、事实核验和仍未执行的自由检索端到端评测。
 aliases: [cross-source-evidence-benchmark, evidence-navigation-benchmark, wiki-evidence-navigation-eval]
 ---
 
@@ -201,6 +201,21 @@ PY
 - 回答 Q3/Q4/Q6 出现具体职责或测量口径留白：候选页命中不代表必要段落已经送入。下一次改动应首先针对失败问题的词项匹配和完整证据窗口，使用新保留题验证，避免只调到这 8 题通过。
 - 本轮固定证据包 Jaccard 是模型回答层的诊断值，不能外推为自由检索稳定性、事实正确率或生产收益；完整多跳 Agent 端到端评测仍为 **NOT_RUN**。保留现有 Freshness Gate 与逐段核证。
 
+### 下一阶段纯净消融协议：同评分函数下的度阻尼类型化展开（`relations_damped`，NOT_RUN）
+
+首轮实验中的 `relations` 组同时改动了“一跳关系候选池扩张”与“全文词项稀有度重排”，而 `catalog` 组仅按元数据排序，两者存在评分函数混杂。Q5 的 `relations` 正式页实测命中 `0/5`，但实际展开入口是 catalog 排名前二的自治等级页和重复测量统计功效页，不是第 3 节手选的两个编排页。后者的一跳体积只能说明枢纽页可能扩大候选池，不能解释这次零命中。复测须记录实际种子、各分支截断前的黄金页排名，区分黄金页未入池与入池后被挤出。参照 [[hermes-retrieval-priority-and-answer-path]] 的类型化边度阻尼算子与 [[agentic-graphrag-pattern-selection]] 中 [HippoRAG 2（ICML 2025, arXiv:2502.14802v2）](https://arxiv.org/html/2502.14802v2)、[MemGraphRAG（KDD 2026, arXiv:2606.00610v1）](https://arxiv.org/html/2606.00610v1) 的枢纽爆炸抑制机制，后续离线消融应在固定候选预算（4 页 / `9,000` UTF-8 字节）与**同一正文词项稀有度评分函数** $S_{\text{lex}}(q, v)$ 下对照以下四个分支：
+
+| 消融分支 | 候选池构建与边方向规则 | 候选排序与截断函数 | 隔离检验的单一假设 |
+| --- | --- | --- | --- |
+| `catalog_rerank` | 取 `catalog` 元数据匹配前 $M$ 页（零跳，不展开 `## Relations`） | 按正文词项稀有度 $S_{\text{lex}}(q, v)$ 重排取前 4 页 | 剥离“正文重排”相对纯 metadata 排序的基础增益 |
+| `relations_uniform` | 从 `catalog` 前 2 页展开一跳强类型边（出边 `depends_on / refines / conflicts_with` + 入边 `supersedes / conflicts_with`） | 无度惩罚，直接按 $S_{\text{lex}}(q, v)$ 重排取前 4 页 | 在同评分函数下测量无阻尼强类型边展开的净召回变化与枢纽噪声 |
+| `relations_damped` | 与 `relations_uniform` 使用完全相同的候选池，不强制保留任何候选页 | 按 $S_{\text{comb}}(q, v) = S_{\text{lex}}(q, v) \cdot \bigl(1 + \lambda \max_{u \xrightarrow{r} v} w_{\text{step}}(u \xrightarrow{r} v)\bigr)$ 排序，其中 $w_{\text{step}}(u \xrightarrow{r} v) = \omega(r) / \log_2(2 + \deg(v))$ | 检验对数度阻尼与关系语义权重能否压制 Q1/Q3/Q5/Q6 超级枢纽稀释（相对 `relations_uniform` 仅改变排序） |
+| `relations_damped_all` | 在 `relations_damped` 基础上额外纳入低权重 $\omega(\texttt{related})$ 横向边 | 同 `relations_damped`（满足 $\omega(\texttt{supersedes}) = \omega(\texttt{conflicts\_with}) > \omega(\texttt{depends\_on}) = \omega(\texttt{refines}) > \omega(\texttt{related})$） | 检验度阻尼能否在不拉低精确率的前提下恢复跨主题横向关联召回 |
+
+**统一预算与安全核验：** 四组均只对排序前 4 页计算候选召回，入包证据合计不超过 9,000 UTF-8 字节。对入选页生效的替代入边与双向冲突边，四组均在排名冻结后按同一 Freshness Gate 单独核验；额外读取的页数和字节数另报，不回填候选、不计入召回或证据包。若预算内证据有未解决的冲突，则标记待核验，不作确定性结论。
+
+**执行与归档边界：** 上述 `[推论]` 消融协议当前状态为 **NOT_RUN**，不修改 `_meta/scripts/wiki_retrieval_benchmark.py` 的现行默认配置，也不覆盖上文 2026-11-06 的 48 个历史回答及运行级来源指纹。未来执行时须固定新工作树 commit，并引入 Q1–Q8 之外的独立留出题集核验泛化性（2025–2026 外部预印本于 2026-11-24 在线核对公开 arXiv HTML，本页既有页面级 `verified_at: 2026-11-06` 保持不变）。
+
 ## 6. Q5/Q8 有界核验、评分纠正与补证路径（2026-11-09）
 
 本节是复用历史包的 **AI 来源与断言抽查**，不是独立人工裁决，也不是重新回答实验。结论：Q8 的 catalog/relations 包为确定性执行职责提供了更直接的证据；Q5 未显示 relations 的稳定优势。保留现有默认策略，自由检索端到端仍为 **NOT_RUN**。
@@ -243,12 +258,12 @@ python3 -m unittest discover -s _meta/scripts -p 'test_wiki_retrieval_benchmark.
 
 `_meta/retrieval-benchmark.json` 的 Q5/Q8 `claim_checks` 按断言给出当前正式页章节、可接受 raw 和解释边界。它们是复核/非盲补证清单，不是检索种子、强制黄金命中或答题提示；不注入 `prepare()`，不改 4 页/9,000 字节默认预算，不在历史包内补片段，不改写旧回答。
 
-- Q5 缺资源机制时定点回读 [[agent-resource-optimization]] 的模型分层章节；缺研究证据门时回读 [[agent-research-evidence-gate]] 的 `## Gate contract`，并确认原教程与本地加固边界。
+- Q5 缺资源机制时定点回读 [[agent-resource-optimization]] 的模型分层章节；缺研究证据门时回读 [[agent-research-evidence-gate]] 的 `## Gate contract`（含多约束逐字引文账本门禁 `L_ledger`，参见 [LiveLedger, arXiv:2602.07549v1](https://arxiv.org/html/2602.07549v1)），并确认原教程与本地加固边界。
 - Q8 先检查包中已有执行职责是否被回答使用；仍缺语义可靠性时回读 [[deterministic-analytics-llm-reasoning-boundary]] 的概率性分类章节及 MotherDuck 原始段落，再对实际表格逐值核对。必要信息仍缺则明确留白。
-- 任何后续补证回答均须作为新结果单独保存，不计入 2026-11-06 的 48 个回答。无需新增平台、调度器、常驻审查或付费模型运行。
+- 任何后续补证回答或第 5 节 `relations_damped` 消融运行均须作为新结果单独保存，不计入 2026-11-06 的 48 个回答。无需新增平台、调度器、常驻审查或付费模型运行。
 
 ## Relations
 
 - refines: [[hermes-knowledge-freshness-and-claim-evidence]], [[production-agent-evaluation-baselines]]
 - depends_on: [[hermes-retrieval-priority-and-answer-path]], [[production-ai-agent-evaluation-framework]]
-- related: [[agent-context-engineering]], [[agent-context-history-state-and-bounded-processing]], [[hermes-context-engineering-design-priorities]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-wiki-knowledge-freshness-improvement-plan]], [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-evaluation-rubric-calibration]], [[agent-self-validation-loops]], [[hermes-ai-workflow-formalization-principles]], [[hermes-python-engineering-capability-checklist]], [[ai-code-review-governance-and-convergence]], [[dijkstra-ai-programming-formalization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[hermes-context-layer-operating-rules]], [[agent-context-prompt-tools-and-examples]], [[typed-ai-agent-boundaries]], [[ai-agent-tool-selection-architecture]], [[agent-experience-consolidation-loops]], [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[document-parsing-structural-fidelity]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]]
+- related: [[agent-context-engineering]], [[agent-context-history-state-and-bounded-processing]], [[hermes-context-engineering-design-priorities]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-wiki-knowledge-freshness-improvement-plan]], [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]], [[repeated-measures-statistical-power-for-ai-evaluation]], [[agent-evaluation-rubric-calibration]], [[agent-self-validation-loops]], [[hermes-ai-workflow-formalization-principles]], [[hermes-python-engineering-capability-checklist]], [[ai-code-review-governance-and-convergence]], [[dijkstra-ai-programming-formalization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[hermes-context-layer-operating-rules]], [[agent-context-prompt-tools-and-examples]], [[typed-ai-agent-boundaries]], [[ai-agent-tool-selection-architecture]], [[agent-experience-consolidation-loops]], [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[document-parsing-structural-fidelity]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-graphrag-pattern-selection]]
