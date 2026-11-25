@@ -1,10 +1,19 @@
 ---
 title: AI Agent Workflow Layering and Adoption Order
 created: 2026-04-17
-updated: 2026-11-16
+updated: 2026-11-25
 type: concept
 tags: [agent, mcp, automation, workflow, configuration, decision]
-sources: [raw/articles/openai-codex-best-practices-2026-04-17.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, https://arxiv.org/abs/2402.01030, https://blog.cloudflare.com/code-mode/, https://blog.cloudflare.com/code-mode-mcp/, https://www.anthropic.com/research/advanced-tool-use, https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling]
+sources:
+  - raw/articles/openai-codex-best-practices-2026-04-17.md
+  - raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md
+  - https://arxiv.org/abs/2402.01030
+  - https://blog.cloudflare.com/code-mode/
+  - https://blog.cloudflare.com/code-mode-mcp/
+  - https://www.anthropic.com/research/advanced-tool-use
+  - https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling
+  - concepts/mcp-stateless-architecture-and-authorization-boundaries.md
+  - comparisons/agent-tool-and-interoperability-paradigms.md
 status: stable
 volatility: medium
 review_by: 2027-03-02
@@ -69,7 +78,7 @@ AI Agent 的外部实时能力由两部分组成：
 - MCP server / external integration
 - 本机与内建工具调用
 
-这层适合处理 repo 外数据、动态系统状态、外部平台动作和自动化执行接口。关键约束不是“能接多少”，而是是否真的减少手工往返、是否有稳定收益、是否会放大错误权限。
+这层适合处理 repo 外数据、动态系统状态、外部平台动作和自动化执行接口。关键约束不是“能接多少”，而是是否真的减少手工往返、是否有稳定收益、是否会放大错误权限（MCP 无状态传输与 OAuth 2.1 安全门禁由子页 [[mcp-stateless-architecture-and-authorization-boundaries]] 主维护；CLI、Skills、MCP、Code Mode 与 A2A 的六参数选型分界见 [[agent-tool-and-interoperability-paradigms]]）。
 
 ### 6. Programmatic execution layer: Code Mode
 
@@ -199,4 +208,4 @@ AI Agent 下一阶段更重要的是“层间路由正确”，不是“层数�
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]]
-- related: [[codex-agent-workflow-layering]], [[hermes-model-specific-harness-profiles]], [[deterministic-analytics-llm-reasoning-boundary]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]], [[ai-agent-tool-selection-architecture]], [[typed-ai-agent-boundaries]], [[ai-coding-assistant-context-budget-management]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- related: [[codex-agent-workflow-layering]], [[hermes-model-specific-harness-profiles]], [[deterministic-analytics-llm-reasoning-boundary]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]], [[ai-agent-tool-selection-architecture]], [[typed-ai-agent-boundaries]], [[ai-coding-assistant-context-budget-management]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[agent-tool-and-interoperability-paradigms]]

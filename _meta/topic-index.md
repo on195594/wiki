@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-25 | Indexed pages: 138
+> Last updated: 2026-11-25 | Indexed pages: 140
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -27,7 +27,7 @@ status: current
 - [Agent Execution Sandboxing and Browser Isolation](../concepts/agent-execution-sandboxing-and-browser-isolation.md) — Agent 安全架构子页：对照标准容器、gVisor 与 Kata/Firecracker microVM 的内核隔离与状态恢复边界、出口授权与代理层凭据注入（`ASI05`），以及视觉提示注入（VPI-Bench）与浏览器 HTTP 语义沙箱（ceLLMate）
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：把 Agent 视为带状态、工具、记忆和目标管理的执行系统，明确多步串联成功率的条件概率前提与检查点恢复边界，用负向工具约束、最小上下文、行为漂移治理和分层记忆降低生产风险
 - [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：结合 Lee & See 自动化适度依赖三维信任模型验证真实问题与信任边界；区分主动运行、通知和执行权限，按误扰与漏报验收提醒，含 `I_iso / M_ctx / T_tax / G_human` 委派与流水线裁决矩阵
-- [AI Agent Tool Selection Architecture](../concepts/ai-agent-tool-selection-architecture.md) — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，形式化四阶条件概率漏斗、Top-K 召回—精度损益不等式、分数间隔（Score Margin）回退判据与三代工具调用演进（全量 Schema → 动态搜索 → Code Mode 沙箱编排）边界
+- [AI Agent Tool Selection Architecture](../concepts/ai-agent-tool-selection-architecture.md) — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，形式化四阶条件概率漏斗、前缀缓存折扣损益（25–28 工具拐点）、生产者—消费者集合完备召回（COLT）、分层网关能力门槛、描述异味边界与三代工具调用演进
 - [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：结合 Bainbridge 自动化讽刺论断与 Parasuraman–Riley 误用/弃用分类，区分即时表现增益（$\Delta P_{\text{assist}}$）、撤除后技能保持（$\Delta S_{\text{retain}}$）与持续委派中的理解所有权
 - [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：结合 RLHF 语言模型迎合偏差实证（Sharma et al. ICLR 2024）与事前验尸反方角色锚定，在复杂创意、写作或方案编排前先澄清意图、挑战假设并区分受限知识源与开放网络核验边界
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：结合语法制导综合（SyGuS）与反例制导归纳综合（CEGIS）把创造型 Agent 拆成合法算子空间生成、可执行转换、客观 evaluator 与多重检验样本外防过拟合闭环
@@ -39,6 +39,7 @@ status: current
 - [Human-Machine Scientific Discovery and Verification Scarcity](../concepts/human-machine-scientific-discovery-verification-scarcity.md) — 人机科学发现中的验证稀缺：区分 de Bruijn 准则与 LCF 架构、形式推导与领域规约，以分层验证、范围化负面结果和专家评审约束知识准入
 - [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航（衔接安全架构、仓库代码智能与多智能体失效）及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、Outbox 与冲突政策：结合 Xerox PARC Bayou 的 Committed/Tentative 折叠投影方程（$\text{FoldL}(\text{Apply}, S_{\text{committed}}, O)$）与 CRDT 半格边界组织游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
+- [MCP 无状态架构与授权安全边界](../concepts/mcp-stateless-architecture-and-authorization-boundaries.md) — `mcp` 核心标签主维护页：定义 MCP 2026-07-28 逐请求无状态架构、单 `POST` Streamable HTTP、`server/discover` 双时代探测、MRTR（`InputRequiredResult`）、Elicitation 双模禁令、不可信工具注解悲观默认，以及 OAuth 2.1（RFC 9728 / 8707 / 9207 / CIMD）、严禁令牌透传与跨步状态句柄主体绑定门禁（`V_proto / A_aud / H_bind / T_trust`）
 - [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，校准 CUSUM 与告警 PPV，区分当前成功观测和尾部连续失败的健康检查
 - [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$/$\tau^2$-Bench 单双控终态比对、多轮次连续可靠率（$\text{pass}^k$）与 ABC 终态校验三准则（全合法解、无关状态双检、防侥幸复杂度），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
 - [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码（Outlines / Guided Generation）、分阶段语义分解、固定候选空间、typed tools、强类型沙箱能力绑定（Code Mode RPC Bindings）、dependency injection 与属性测试不变量检验把 LLM 不确定性收进可验证的工程边界
@@ -49,8 +50,8 @@ status: current
 - [Agent Context — System Prompt, Tools and Examples](../concepts/agent-context-prompt-tools-and-examples.md) — 上下文静态面：system prompt 作操作简报（受静态配额 $B_{\text{sys}}$ 约束）、窄工具面与四阶选择概率漏斗、可见不等于可用、以行为为主的示例
 - [Agent Context — History, State and Bounded Processing](../concepts/agent-context-history-state-and-bounded-processing.md) — 上下文动态面：结合 MemGPT 虚拟上下文分页区分输入转储、历史摘要与 `SKILL.state` 确定性状态折叠（受 $R_{\text{probe}}$ 与 $C_{\text{total}}$ 约束）、子代理交接及专用模型有界加工
 - [Agent Experience Consolidation Loops](../concepts/agent-experience-consolidation-loops.md) — Agent 经验固化闭环：从重复任务的现场反馈发现知识缺口，核对证据后更新对应知识；结合互补学习系统（CLS）、Sleep-Time Compute 离线重组织、记忆再巩固的工程类比（Reconsolidation）、CL-Bench 1.0 跨模型记忆行为对比与断链修复案例，含 `B_act / P_skill / G_promo / I_rev / I_taint / I_retract` 六项参数化治理矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化/元技能见子页；研究增益不当作默认执行授权
-- [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译（陈述性向产生式转化）与扇出效应（Fan Effect，$-\ln \text{fan}_j$）形式化使用漏斗与归因、生命周期状态机、可回滚 Skill 与持久知识分离及演化知识评估边界；区分失败回滚与证据撤回
-- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、灾难性遗忘、弹性权重巩固（EWC Fisher 矩阵二次惩罚）与再巩固的局部修订类比区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能；事实失效与证据撤回见治理子页
+- [Agent Skill Governance and Reversible Skill State](../concepts/agent-skill-governance-and-reversible-state.md) — Skill 治理：结合 ACT-R 知识编译与扇出效应（$-\ln \text{fan}_j$）、SkillsBench 模块粒度（1–3 紧凑模块最优）与禁止运行时自生成直接激活红线，形式化使用漏斗、生命周期状态机与可回滚状态分离
+- [Agent Knowledge Evolution and Meta-Skills](../concepts/agent-knowledge-evolution-and-meta-skills.md) — 知识演化与元技能：结合稳定性—可塑性困境、EWC 二次惩罚、检索式记忆条件性样本复杂度分离定理（arXiv:2604.27707v2）与再巩固类比区分外部知识复用 vs 权重学习，以及任务技能 vs 支持设计元技能（arXiv:2609.38143v2）
 - [Agentic GraphRAG：架构选型与适用边界](../concepts/agentic-graphrag-pattern-selection.md) — 按证据缺口选择扁平混合检索、纵向下钻或有界横向多跳：对照五类 GraphRAG 演进（MS GraphRAG / LazyGraphRAG / GraphRAG Zero / LightRAG / RAPTOR / HippoRAG 2 / LinearRAG / MemGraphRAG）、单跳 vs 规模化多跳交叉拐点（7B 阈值、`NULL` 拒答与数学符号边界）与枢纽爆炸（Hub Explosion）度阻尼抑制，界定历史记录构图边界
 - [AI Agent Document Fidelity Risk](../concepts/ai-agent-document-fidelity-risk.md) — 多轮委托文档的保真风险：结合微软 DELEGATE-52 一手论文（arXiv:2604.15597，52 领域仅 Python 普遍达标、短程 2 轮表现无法预测 20 轮退化、通用工具退回整文件重写恶化 6%）与 Lens 往返定律类比，区分尝试恢复与真逆函数、压力测试边界与生产工作流，采用小步窄工具编辑、结构 diff 与中间态审计
 - [Audience-Situation Content Briefs](../concepts/audience-situation-content-briefs.md) — 受众情境内容简报：结合 Ehrenberg-Bass 心智可得性理论（Romaniuk & Sharp，心智渗透率 $\text{MP}$ / 网络规模 $\text{NS}$ / 心智份额 $\text{SoM}$）、CEP 与 7W 框架从真实决策场景出发，消除边际关键词搜索量混杂
@@ -83,7 +84,7 @@ status: current
 - [AI Agent Python Engineering Capability Checklist](../concepts/hermes-python-engineering-capability-checklist.md) — AI Agent Python 工程检查清单：流式内存预算、资源清理、结构化并发、类型化解析、性能复测与最小设计边界。
 - [Loop Engineering for AI Agent Workflows](../concepts/loop-engineering-hermes-agent-workflow.md) — Loop Engineering 在 AI Agent 中的映射：以类型化信号、确定性 dispatcher、离散控制 Lyapunov 变体函数（$\Delta V_t < 0$ 与不动点熔断）及 `L_auto / E_first / V_loop / ρ_rev` 参数化裁决矩阵组织工作闭环；保留 active-layer 审批边界
 - [多智能体系统性失效模式](../concepts/multiagent-systemic-failure-modes.md) — 多智能体系统性失效模式：结合相关投票退化、受测 LLM 的同错一致率、内容审核中的分歧路由示例、MAST 14 类失效与跨代理安全传播，区分群体共识与独立证据
-- [Subagent Orchestration Patterns](../concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：结合 Nature Machine Intelligence 260 配置协作边界、角色优先上下文交接、Bernstein (1966) 并发读写不交条件（$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$）及同 Harness 子代理 vs 跨边界 A2A 不透明代理分工，按单 Agent 基线依次评估 inline tool、fan-out、pool 或 team
+- [Subagent Orchestration Patterns](../concepts/subagent-orchestration-patterns.md) — Subagent 编排模式：结合 Nature Machine Intelligence 260 配置协作边界、角色优先上下文交接、Bernstein (1966) 并发读写不交条件（$\mathcal{W}_i \cap \mathcal{W}_j = \emptyset$）及同 Harness 子代理 vs 跨边界 A2A v1.0.1（含 A2ABreak `contextId` 绑定与 RFC 8693 OBO 换票门禁）不透明代理分工
 - [Chat to Agent Session Routing](../concepts/chat-to-agent-session-routing.md) — 聊天平台到有状态 AI Agent 运行时的会话路由：容器键映射、回复目标不可变闭包与企业集成幂等接收器（Idempotent Receiver）去重边界
 
 ### 4. 评测、验证与知识治理 (Evaluation, Verification & Governance)
@@ -144,12 +145,13 @@ status: current
 
 ## Comparisons
 - [Agent 记忆写入范式与长期评测基准对照](../comparisons/agent-memory-architectures-and-evaluation-benchmarks.md) — 对照五类 Agent 记忆写入与状态演化范式（CRUD、A-MEM、双时态图、离线巩固与类型化溯源图 MoM/P-Mem）及其状态键/聚合键隔离边界，并汇总 LongMemEval v1/V2、MemoryArena、MemoryAgentBench 审计陷阱与控制面治理状态损坏评测
+- [Agent 工具与跨边界互操作范式对照](../comparisons/agent-tool-and-interoperability-paradigms.md) — 横向对照 CLI/Bash、精编 Agent Skills、扁平与分层网关无状态 MCP、Code Mode / PTC 沙箱编排及 A2A v1.0.1 跨代理任务委托；整合前缀缓存折算定律（25–28 工具拐点）、生产者工具集合完备召回、SkillsBench 自生成负迁移与 A2ABreak 状态机安全门禁，含 `N_tools / ΔC_net / |O_uncached| / R_set / B_trust / D_opaque` 六参数选型矩阵
 - [Dijkstra EWD667 vs 2026 AI Programming Article](../comparisons/dijkstra-ewd667-vs-ai-programming-article.md) — 对照 EWD667 原文与 2026 AI 编程文章：比较自然语言模糊性、窄接口、形式化契约、出处债务与认知风险，并区分原文论证和现代工程推论
 - [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（$T_{\text{pivot}}$）、`ScopeGate` 逐次参数校验与权威终态回读评估任意 Agent 的四阶段事故响应接入；来源案例不作为当前产品能力或排名证据
 - [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：结合行为投资组合理论（BPT-MA）区分核心安全底盘（`T / H / L / D / δ`）与主动趋势进攻（`1R / r / R_open / D_max`）的分工和冲突边界
 
 ## Queries
-- [Agent Architecture Primary-Paper Map](../queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题检索 ReAct、Toolformer、Generative Agents、Voyager 与 AutoGen 的机制和定量边界，区分内生自修正、训练条件与反馈可靠性
+- [Agent Architecture Primary-Paper Map](../queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题映射 2022–2023 第一代原语（ReAct、Toolformer、Generative Agents、Voyager、AutoGen）与 2024–2026 第二代生产原语（CodeAct、Sleep-time Compute、CaMeL/Progent、$\tau^2$-Bench、SkillsBench、COLT）的机制和定量边界
 - [Software Engineering Laws Decision Map](../queries/software-engineering-laws-decision-map.md) — 56 条软件工程法则的全量问题导向入口：按真实工程场景与 AI Agent 五维系统工程映射检索适用法则、形式化模型边界（Amdahl / Gustafson / PACELC / RFC 9413 / Brooks / LoD / LSP / Lindy）、跨类别张力和来源记录
 - [OKF Concepts for AI Agent Wiki Governance Assessment](../queries/okf-for-hermes-wiki-governance-assessment.md) — OKF v0.2/v0.3 规范与技能演进评估、采纳边界、全库 138 篇正式页知识对象增强现状、本地 catalog 与字段对照及企业 Catalog 规模化触发条件；不替代现有 Markdown wiki 架构
 - [Wiki 跨源证据导航离线评测方案与拓扑基线](../queries/wiki-cross-source-evidence-navigation-benchmark.md) — Q1–Q8 检索基线、Q5/Q8 公开证据与评分纠正及同评分函数度阻尼消融协议（`relations_damped`）；区分覆盖、引用支持与事实核验，自由检索端到端与度阻尼消融仍为待执行（NOT_RUN）

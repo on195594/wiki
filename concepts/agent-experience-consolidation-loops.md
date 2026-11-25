@@ -4,11 +4,38 @@ created: 2026-05-11
 updated: 2026-11-25
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
-sources: [raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md, raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md, raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md, raw/papers/arxiv-2608-27454-wikiskill.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf, https://pubmed.ncbi.nlm.nih.gov/7624455/, https://pubmed.ncbi.nlm.nih.gov/10963596/, https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/, https://arxiv.org/html/2611.21648v1, https://arxiv.org/html/2602.16313v1, https://arxiv.org/abs/2504.19413, https://arxiv.org/html/2502.12110v11, https://wal.sh/research/2026-agent-memory-systems/, https://arxiv.org/html/2410.10813v1, https://arxiv.org/html/2602.17692v2, https://arxiv.org/html/2608.28978v1, https://arxiv.org/abs/2606.24322, https://arxiv.org/html/2606.24322, https://arxiv.org/html/2609.25054v1, https://arxiv.org/abs/2610.30698, docs:https://www.langchain.com/blog/knowledge-factory]
+sources:
+  - raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md
+  - raw/articles/microsoft-research-evolib-evolving-knowledge-2026-07-30.md
+  - raw/articles/xudong-han-self-evolving-agent-alloomi-2026-08-13.md
+  - raw/articles/claude-warp-self-improving-agent-skills-2026-08-26.md
+  - raw/papers/arxiv-2608-27454-wikiskill.md
+  - raw/articles/anthropic-components-of-agent-memory-2026-11-07.md
+  - docs:https://arxiv.org/abs/2504.13171
+  - https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf
+  - https://pubmed.ncbi.nlm.nih.gov/7624455/
+  - https://pubmed.ncbi.nlm.nih.gov/10963596/
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/
+  - https://arxiv.org/html/2611.21648v1
+  - https://arxiv.org/abs/2602.16313
+  - https://arxiv.org/html/2602.16313v1
+  - https://arxiv.org/abs/2504.19413
+  - https://arxiv.org/html/2502.12110v11
+  - https://wal.sh/research/2026-agent-memory-systems/
+  - https://arxiv.org/abs/2410.10813
+  - https://arxiv.org/html/2410.10813v1
+  - https://arxiv.org/html/2602.17692v2
+  - https://arxiv.org/html/2608.28978v1
+  - https://arxiv.org/abs/2606.24322
+  - https://arxiv.org/html/2606.24322
+  - https://arxiv.org/html/2609.25054v1
+  - https://arxiv.org/abs/2610.30698
+  - docs:https://www.langchain.com/blog/knowledge-factory
 status: stable
 description: 定义 Agent 经验固化闭环：从现场缺口捕获到离线对账与分层路由，结合互补学习系统（CLS）、Sleep-Time Compute、记忆再巩固、CL-Bench 1.0 及六项治理裁决矩阵。
 volatility: medium
-review_by: 2026-12-13
+verified_at: 2026-11-25
+review_by: 2027-03-25
 aliases: [experience-consolidation-loop, agent-experience-consolidation]
 ---
 
@@ -40,7 +67,7 @@ Anthropic 发布的 Warp 案例 [[claude-warp-self-improving-agent-skills-2026-0
 
 Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-11-07]]（“Memory notes”“Dreaming can correct memory”“Thinking backward, looking forward”）补充了闭环的时间分工：执行时记录显著观察，使其能及时用于后续步骤；离线 dreaming 再回看原始记录，纠正笔记、组织知识表示或调整后续会话的注入内容。这里的 memory 是跨会话知识的总称，不只指宿主的默认 memory 工具，也不涉及模型权重更新。
 
-在认知与计算神经科学中，这一双阶段架构对应 James L. McClelland、Bruce L. McNaughton 与 Randall C. O'Reilly（1995, *Psychological Review*，[Why there are complementary learning systems in the hippocampus and neocortex](https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf)，[PubMed 7624455](https://pubmed.ncbi.nlm.nih.gov/7624455/)）提出的**互补学习系统（Complementary Learning Systems, CLS）**理论：海马体（Hippocampus）采用快速、稀疏、正交化的表征完成单次情景编码（Episodic Encoding），防止新旧经历互相覆盖；新皮层（Neocortex）则通过慢速、交错回放（Interleaved Replay）从多轮历史样本中逐步提取潜在语义结构与程序规律。若将单次特定轨迹直接以大步长写入共享知识层或模型参数，就会破坏既有结构（即灾难性干扰，见 [[agent-knowledge-evolution-and-meta-skills]]）。可与离线阶段对照的计算研究是 Kevin Lin、Charlie Snell 等（2025，Letta & UC Berkeley，[*Sleep-time Compute: Beyond Inference Scaling at Test-time*，arXiv:2504.13171](https://arxiv.org/abs/2504.13171)）提出的**离线睡眠计算（Sleep-time Compute）**：在交互间隙预先整理上下文与知识表示，可在 Stateful GSM-Symbolic 与 Stateful AIME 上将达到同等准确率的测试期推理计算降至约五分之一（或在多问题共享上下文的 Multi-Query 场景下将单次问题平均成本降至约 40%），论文还观察到收益与**未来查询相对当前上下文的可预测性（Query Predictability）**相关；测试期节省不等于包含离线预计算的总成本同幅下降。
+在认知与计算神经科学中，这一双阶段架构对应 James L. McClelland、Bruce L. McNaughton 与 Randall C. O'Reilly（1995, *Psychological Review*，[Why there are complementary learning systems in the hippocampus and neocortex](https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf)，[PubMed 7624455](https://pubmed.ncbi.nlm.nih.gov/7624455/)）提出的**互补学习系统（Complementary Learning Systems, CLS）**理论：海马体（Hippocampus）采用快速、稀疏、正交化的表征完成单次情景编码（Episodic Encoding），防止新旧经历互相覆盖；新皮层（Neocortex）则通过慢速、交错回放（Interleaved Replay）从多轮历史样本中逐步提取潜在语义结构与程序规律。若将单次特定轨迹直接以大步长写入共享知识层或模型参数，就会破坏既有结构（即灾难性干扰，见 [[agent-knowledge-evolution-and-meta-skills]]）。可与离线阶段对照的计算研究是 Kevin Lin、Charlie Snell 等（2025，Letta & UC Berkeley，[*Sleep-time Compute: Beyond Inference Scaling at Test-time*，arXiv:2504.13171](https://arxiv.org/abs/2504.13171)）提出的**离线睡眠计算（Sleep-time Compute）**：在交互间隙预先整理上下文与知识表示，可在 Stateful GSM-Symbolic 与 Stateful AIME 上将达到同等准确率的测试期推理计算降至约五分之一（约 `5×` 削减），或在多问题共享上下文的 Multi-Query GSM-Symbolic 场景（单上下文 10 个查询、测试期 token 单价按睡眠期 10 倍建模）下将单次问题平均成本降低 `2.5×`（即降至约 40%），论文还观察到收益与**未来查询相对当前上下文的可预测性（Query Predictability）**相关；测试期节省不等于包含离线预计算的总成本同幅下降。
 
 更进一步，已固化的长期记忆并非永久静态档案：Karim Nader、Glenn E. Schafe 与 Joseph E. LeDoux（2000，*Nature*，[*Fear memories require protein synthesis in the amygdala for reconsolidation after retrieval*](https://pubmed.ncbi.nlm.nih.gov/10963596/)；综述见 [Karim Nader, 2015, PMC4588064](https://pmc.ncbi.nlm.nih.gov/articles/PMC4588064/)）在大鼠恐惧条件化实验中发现，提取后的记忆可重新对蛋白质合成抑制敏感，支持**记忆再巩固（Memory Reconsolidation）**。这不等于所有检索都会使记忆失稳，也不证明再巩固必然纠正错误。**[推论]** 借此可为 AI Agent 设计三阶段维护流程：在线 `session / raw trajectory` 承担快速情景捕获职责；离线复盘、对账与门禁验证承担受查询可预测性约束的慢速交错整合职责；而在后续任务调用既有 `memory / skill / wiki` 遭遇执行报错、测试回归或用户纠正时，可触发受影响条目的证据复核与回归验证（对应 [[hermes-active-surface-lifecycle-governance]] 的 `Rebase`），不能跳过离线对账与反例检验直接把单次轨迹写成全局常驻指令。
 
@@ -60,7 +87,7 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 ### Reconcile notes against observations, not against another summary
 
-在月见山案例中，错误笔记将地标方向写反；离线核对 transcript 后，模型纠正笔记并抵达目标城市，未纠正的运行则继续绕路。这支持“回看原始记录可以纠正部分错误”，不证明 dreaming 普遍解决了记忆漂移。反证方面，Eric Zou（2026-10，[*Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory*，arXiv:2611.21648](https://arxiv.org/html/2611.21648v1)）在 Claude Opus 5.5 的 30 次运行（10 种条件 × 3 组历史，含不重写对照）中观察到：同一容量限制下，最终召回率在不重写时为 `14 ± 4%`，在干净记录上重写时为 `76 ± 5%`。模型通常能排除来自《白鲸》的无关文本，但当对话记录中混入似是而非的错误细节（Detail Corruption）时，离线重写会像人类“误导信息效应（Misinformation Effect）”一样将错误细节当作事实写入持久记忆（即便另一轮对话包含正确值），使对应问题正确率从 `75%` 降至 `40%`（40% 细节污染下整体召回降至 `60 ± 4%`）。该实验仅测试固定权重的单一模型（Claude Opus 5.5）与三组历史，不代表所有模型或经微调学习器的普遍表现。**[推论] 对账时必须区分环境/工具观察、模型当时的陈述和事后推断；日志里出现过的判断不自动成为事实。跨轮存在冲突值时，离线整合应保留冲突标记与出处指针，而不是由重写模型静默择一覆盖。** 变化后的当前状态仍需重新观察，不能只凭历史记录裁决。
+在月见山案例中，错误笔记将地标方向写反；离线核对 transcript 后，模型纠正笔记并抵达目标城市，未纠正的运行则继续绕路。这支持“回看原始记录可以纠正部分错误”，不证明 dreaming 普遍解决了记忆漂移。反证方面，Eric Zou（2026-10，论文页眉标注 `14 Oct 2026`、arXiv 编号前缀为 `2611`，[*Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory*，arXiv:2611.21648](https://arxiv.org/html/2611.21648v1)）在 Claude Opus 5.5 的 30 次运行（10 种条件 × 3 组历史，含不重写对照）中观察到：同一容量限制下，最终召回率在不重写时为 `14 ± 4%`，在干净记录上重写时为 `76 ± 5%`。模型通常能排除来自《白鲸》的无关文本，但当对话记录中混入似是而非的错误细节（Detail Corruption）时，离线重写会像人类“误导信息效应（Misinformation Effect）”一样将错误细节当作事实写入持久记忆（即便另一轮对话包含正确值），使对应问题正确率从 `75%` 降至 `40%`（40% 细节污染下整体召回降至 `60 ± 4%`）。该实验仅测试固定权重的单一模型（Claude Opus 5.5）与三组历史，不代表所有模型或经微调学习器的普遍表现。**[推论] 对账时必须区分环境/工具观察、模型当时的陈述和事后推断；日志里出现过的判断不自动成为事实。跨轮存在冲突值时，离线整合应保留冲突标记与出处指针，而不是由重写模型静默择一覆盖。** 变化后的当前状态仍需重新观察，不能只凭历史记录裁决。
 
 ### Organize for the task, and avoid shared-page write collisions
 
@@ -76,7 +103,7 @@ Anthropic 的第一方研究文章 [[anthropic-components-of-agent-memory-2026-1
 
 `[推论]` **离线巩固与状态写入护栏**：离线整理产物应以版本化快照或读时覆层（Overlay）形式输出并通过回归门禁后再生效，禁止直接原地覆写底层原始证据基底；对需要审计轨迹的场景，优先采用值导向双时态失效或类型化溯源图（保留被替代值与一等 `contested` 冲突态，见 [[hermes-memory-governance-notes]]），并严格隔离“状态覆写键”与“累加事件键”。
 
-以上关于 Anthropic 案例的部分核对该公开文章正文与提取图注，新增 2026 预印本核对公开 arXiv 摘要与 HTML 关键章节；均不表示独立复现实验，也不刷新本页其他存量来源的核验日期。
+**全页来源核验说明（2026-11-25）**：本页引用的 6 份仓库 `raw/` 快照与全部外部公开文献（含 CLS、记忆再巩固、Sleep-time Compute、Can an LLM dream?、MemoryArena v2、Mem0、A-MEM v11、wal.sh、LongMemEval v2、Agentic Unlearning v2、Selective Forgetting、TMA-NM、P-Mem、Governance-State Corruption 与 LangChain Knowledge Factory）已于 `2026-11-25` 完成页面级在线核对，但均不表示本地独立代码复现，且第 6 节提及的 `2026-05-11 / v0.13.0` 仍保留为历史快照记录。
 
 ## Core pattern
 
@@ -241,7 +268,7 @@ authorized session / project evidence → audited review
 | 参数符号 | 治理维度与数学定义 | 门禁裁决条件（Consolidation & Promotion Gate） | 违背时的典型退化模式与处置动作 |
 | :--- | :--- | :--- | :--- |
 | $B_{\text{act}}$ | **记忆基础激活与扇出信噪比（Activation & Fan Signal-to-Noise）**：<br>$A_i = \ln\!\left(\sum_{j=1}^{n} t_j^{-d}\right) + \sum_{j \in \mathcal{C}} W_j \big(S_{\max} - \ln(\text{fan}_j)\big)$ | 1. 常驻 `memory` 条目须具备跨任务高频激活（高 $n$、低衰减 $t_j$）且单句高密度；<br>2. 共享同一触发线索 $j$ 的候选条目数 $\text{fan}_j$ 受控，避免无界堆积 | **扇出稀释与常驻膨胀**：将一次性长篇反思或高度重叠条目塞入默认层，导致 $\ln(\text{fan}_j)$ 增大、检索精度暴跌；应合并同角色条目或下沉至按需检索的 `wiki` |
-| $P_{\text{skill}}$ | **技能漏斗的执行增益估计**：分别测量候选命中率、命中后实质使用率与外部验证成功率的有符号差值；乘积是诊断量，不是单个任务成功的概率。定义见 [[agent-skill-governance-and-reversible-state]] | 1. 另做启用与禁用 Skill 的端到端对照，不能只比较实际使用 Skill 的成功样本；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验，且区分被动回忆基准与行动耦合多会话闭环（见 [MemoryArena，arXiv:2602.16313](https://arxiv.org/html/2602.16313v1)） | **高命中低转化与负迁移**：把 `skill_view` 命中率或被动长上下文 QA 高分当作行动闭环成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
+| $P_{\text{skill}}$ | **技能漏斗的执行增益估计**：分别测量候选命中率、命中后实质使用率与外部验证成功率的有符号差值；乘积是诊断量，不是单个任务成功的概率。定义见 [[agent-skill-governance-and-reversible-state]] | 1. 另做启用与禁用 Skill 的端到端对照，不能只比较实际使用 Skill 的成功样本；<br>2. 跨 `Skill × model × harness × environment` 迁移前独立复验，且区分被动回忆基准与行动耦合多会话闭环（见 [MemoryArena，ICML 2026，arXiv:2602.16313 v2](https://arxiv.org/abs/2602.16313)） | **高命中低转化与负迁移**：把 `skill_view` 命中率或被动长上下文 QA 高分当作行动闭环成功率，或将小模型碎片化规则直接迁移至强模型引发遵循冲突；应隔离失败阶段并按目标环境重做 held-out 验证 |
 | $G_{\text{promo}}$ | **候选晋升净效用门禁（Promotion Net-Utility Gate）**：<br>$G_{\text{promo}}(s_{\text{cand}}) = \Delta \hat{\mu}_{\text{held-out}} - \lambda_{\text{neg}} R_{\text{regress}} - \lambda_{\text{cost}} \Delta C_{\text{token}} > 0$ | 1. 候选规则在冻结基线、原失败案例与相邻反向案例上无回归（$R_{\text{regress}} = 0$），可用配对置信下界 $\operatorname{LCB}_{1-\alpha}(\Delta M)$ 实例化（[[agent-closed-loop-learning-from-corrections-to-rules]]）；<br>2. 性能增益足以覆盖额外上下文 Token 与控制器开销 $\Delta C_{\text{token}}$；模型升级至 $M_{t+1}$ 时转为反向消融检验 $\Delta U(r_j \mid M_{t+1})$（[[hermes-active-surface-lifecycle-governance]]） | **单次痛点过拟合与库漂移（Library Drift）**：因单次失败盲目追加规则，导致邻近任务回归或 Token 预算被挤占；应拒绝晋升，保留为局部 fixture 或合并进既有 owner |
 | $I_{\text{rev}}$ | **可逆技能状态与持久证据分离不变量（Reversible-State Invariant）**：<br>$S_{k+1} = \text{Rollback}(S_k, s_{\text{cand}}),\; W_{k+1} = W_k \cup \{e_k, \text{reason}_k\}$ | 1. 候选 Skill $s_{\text{cand}}$ 验证回退时仅在上一活动状态 $S_k$ 仍满足来源授权与信任门禁时恢复，否则停用受影响部分；<br>2. 原始轨迹证据 $e_k$ 与被拒绝原因 $\text{reason}_k$ 在保留政策允许时存入证据/知识层 $W_{k+1}$ | **回滚失忆与重复无效搜索**：回滚失败 Skill 时一并删掉测试记录与拒绝理由，导致后续迭代重复探索同一死胡同；应严格分离活动指令层 $S_k$ 与证据/知识层 $W_k$ |
 | $I_{\text{taint}}$ | **写入期来源绑定与防溯源洗白不变量（Non-Malleable Origin Binding）**：<br>在完整性格 $\text{untrusted} \sqsubset \text{agent} \sqsubset \text{trusted}$ 上，未获真实可信印证或用户授权的变换 $\tau$ 不得提高记忆项 $x$ 的有效权限 $D(x)$，即 $D(\tau(x)) \sqsubseteq D(x)$ | 1. 写入期由监控层按已鉴权通道而非文本内容绑定来源权限（[TMA-NM，arXiv:2606.24322](https://arxiv.org/abs/2606.24322)），阻断自摘要、可信工具回显与伪造多源印证三条洗白通道；<br>2. 含不可信来源的离线 dreaming 或摘要产物不得自动提权进入可执行动作或默认规则层；用户确认仅授权一次具体动作，不给整个会话或记忆条目永久提权 | **来源洗白与隐式提权**：Agent 将外部网页/邮件内容改写成自己的笔记后丢失不可信标签，后续会话将其当作自身可信记忆触发高危操作；应强制保留不可变造的来源格标签并要求独立可信主体的印证达到策略阈值，或由用户单次授权该动作。该门禁不覆盖跨智能体共享记忆或纯回答偏置，信任基础设施失陷仍是残余风险 |
@@ -249,7 +276,7 @@ authorized session / project evidence → audited review
 
 `[推论]` **撤回与保留的边界**：事实过时但历史记录仍可信且获准保留时，按有效时间失效，不等同于撤回证据。权限撤回或有删除义务时，按适用政策处理源、派生内容及副本；隔离不等于删除，墓碑若获准保留也不应包含被撤回内容。依赖闭包失效可参考 [Agentic Unlearning](https://arxiv.org/html/2602.17692v2) 的记忆路径；[Selective Forgetting](https://arxiv.org/html/2608.28978v1) 研究的是基于评分的图剪枝，不验证此处的跨层撤回契约。
 
-`[推论]` **长期记忆回归与控制面完整性门禁**：离线巩固前后的回归评测除覆盖 [LongMemEval（ICLR 2025，arXiv:2410.10813）](https://arxiv.org/html/2410.10813v1) 的五项核心能力（IE / MR / TR / KU / ABS）外，还须同步检验**控制面治理状态完整性**（[Governance-State Corruption，arXiv:2610.30698](https://arxiv.org/abs/2610.30698) 在固定底层存储的配对故障实验中观察到 LongMemEval 下游面板的正确率下降数十个百分点），并区分对话回忆、长程环境轨迹经验与行动耦合闭环（完整基准对照与可达性审计规则见 [[agent-memory-architectures-and-evaluation-benchmarks]]）。可另设本地指标：分别统计“需要回答当前值时选中最新有效事实”和“缺少证据时正确拒答”的比例，并验证历史时点查询仍可返回当时有效的事实（参见 [[llm-summary-identification-step]]）。这些是本地回归判据，不是论文定义的指标。
+`[推论]` **长期记忆回归与控制面完整性门禁**：离线巩固前后的回归评测除覆盖 [LongMemEval（ICLR 2025，arXiv:2410.10813 v2）](https://arxiv.org/abs/2410.10813) 的五项核心能力（IE / MR / TR / KU / ABS）外，还须同步检验**控制面治理状态完整性**（[Governance-State Corruption，arXiv:2610.30698](https://arxiv.org/abs/2610.30698) 在固定底层存储的配对故障实验中观察到 LongMemEval 下游面板的正确率下降数十个百分点），并区分对话回忆、长程环境轨迹经验与行动耦合闭环（完整基准对照与可达性审计规则见 [[agent-memory-architectures-and-evaluation-benchmarks]]）。可另设本地指标：分别统计“需要回答当前值时选中最新有效事实”和“缺少证据时正确拒答”的比例，并验证历史时点查询仍可返回当时有效的事实（参见 [[llm-summary-identification-step]]）。这些是本地回归判据，不是论文定义的指标。
 
 ## Relations
 

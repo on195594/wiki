@@ -1,14 +1,31 @@
 ---
 title: Subagent Orchestration Patterns
 created: 2026-05-07
-updated: 2026-11-19
+updated: 2026-11-25
 type: concept
 tags: [agent, subagent, multi-agent, orchestration, workflow, governance]
-sources: [raw/articles/philschmid-subagent-patterns-2026-05-05.md, raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, docs:https://www.nature.com/articles/s42256-026-01268-y, docs:https://arxiv.org/abs/2512.08296, https://www.semanticscholar.org/paper/Analysis-of-Programs-for-Parallel-Processing-Bernstein/f262d0aee47c1f9a047750957c25d4ffb9579b21, docs:https://a2a-protocol.org/latest/specification/, https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year]
+sources:
+  - raw/articles/philschmid-subagent-patterns-2026-05-05.md
+  - raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md
+  - raw/articles/gptcentral-ultimate-guide-building-ai-agents-2026-06-05.md
+  - raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md
+  - raw/articles/langchain-paid-media-agent-2026-09-13.md
+  - raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md
+  - docs:https://www.nature.com/articles/s42256-026-01268-y
+  - docs:https://arxiv.org/abs/2512.08296
+  - https://www.semanticscholar.org/paper/Analysis-of-Programs-for-Parallel-Processing-Bernstein/f262d0aee47c1f9a047750957c25d4ffb9579b21
+  - docs:https://a2a-protocol.org/latest/specification/
+  - https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year
+  - https://a2a-protocol.org/latest/whats-new-v1/
+  - https://github.com/a2aproject/A2A/releases
+  - https://agent2agent.info/docs/reference/interoperability/
+  - https://arxiv.org/html/2609.10871v1
+  - concepts/mcp-stateless-architecture-and-authorization-boundaries.md
+  - comparisons/agent-tool-and-interoperability-paradigms.md
 status: stable
 volatility: medium
 review_by: 2027-03-02
-description: 分类 subagent 编排中的 inline、fan-out、pool、team 及跨边界 A2A 不透明代理协作模式，结合单 Agent 基线、角色上下文交接与 Bernstein 并发读写不交条件。
+description: 分类 subagent 编排中的 inline、fan-out、pool、team 及跨边界 A2A v1.0.1 不透明代理协作模式，结合单 Agent 基线、角色上下文交接、Bernstein 并发不交条件与 A2ABreak 委托隔离门禁。
 aliases: [subagent-patterns]
 verified_at: 2026-11-02
 ---
@@ -161,10 +178,10 @@ Failure mode:
 
 The four modes above assume subagents run inside one shared harness or trust domain. When collaboration crosses framework, service, or organizational boundaries, protocol architecture separates into two complementary open standards under the Linux Foundation ([A2A Protocol Specification](https://a2a-protocol.org/latest/specification/); [Linux Foundation A2A 2026 update](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year)):
 
-- **MCP（Agent ↔ Tool / Data）**：用于单一代理发现并调用结构化工具、资源与数据源，不负责跨不透明代理的多轮任务协商。
-- **A2A（Agent ↔ Opaque Agent）**：用于异构、不透明的外部代理之间通过标准化能力声明与任务生命周期交换消息和产物，而无需共享内部提示词、记忆或私有工具。
+- **MCP（Agent ↔ Tool / Data）**：用于单一代理发现并调用结构化工具、资源与数据源，不负责跨不透明代理的多轮任务协商（2026-07-28 无状态请求模型与 OAuth 2.1 边界见 [[mcp-stateless-architecture-and-authorization-boundaries]]）。
+- **A2A（Agent ↔ Opaque Agent）**：用于异构、不透明的外部代理之间通过标准化能力声明与任务生命周期交换消息和产物，而无需共享内部提示词、记忆或私有工具。[A2A v1.0](https://a2a-protocol.org/latest/whats-new-v1/)（及 [v1.0.1](https://github.com/a2aproject/A2A/releases)）将 `spec/a2a.proto` 确立为唯一规范事实源，统一多模态 `Part`（`text / raw / url / data`），在 `/.well-known/agent-card.json` 发布支持 RFC 8785 JCS + RFC 7515 JWS 签名的 `AgentCard`，并定义 9 态 `TASK_STATE_*` 状态机（含可恢复中断态 `TASK_STATE_INPUT_REQUIRED` 与 `TASK_STATE_AUTH_REQUIRED`；工程联调需显式携带 `A2A-Version: 1.0` 头，否则服务端会静默回退至不兼容的 `v0.3` 语义，见 [A2A Interop](https://agent2agent.info/docs/reference/interoperability/)）。
 
-**[推论]** 选型边界：凡同一信任域内可由受控子代理或窄工具完成的任务，优先停留在同 Harness 的 Inline / Fan-out 模式，不引入跨进程 A2A 通信开销；一旦接入跨边界外部代理，须将其返回视为不可信外部输入并纳入能力校验、权限隔离与防注入门禁（参见 [[agent-security-architecture-and-prompt-injection-defense]]）。
+**[推论] 选型与跨代理委托安全门禁**：凡同一信任域内可由受控子代理或窄工具完成的任务，优先停留在同 Harness 的 Inline / Fan-out 模式，不引入跨进程 A2A 通信开销（全维选型矩阵见 [[agent-tool-and-interoperability-paradigms]]）。一旦接入跨边界外部代理，针对形式化安全审计 [A2ABreak（ACSAC '26，arXiv:2609.10871v1）](https://arxiv.org/html/2609.10871v1) 在 37 态状态机中检出的 11 类符合规范却可被利用的漏洞，网关层必须强制补齐三条边界：（1）将 `contextId` 与发起主体身份强绑定，阻断跨客户端多轮上下文注入；（2）跨多跳委托链（`A → B → C`）强制采用 RFC 8693 OBO 令牌交换，同时保留原始用户 `sub` 与代理链 `act` 声明以收窄交集权限；（3）不将 `AgentCard` 的 JWS 域名签名等同于技能无投毒背书，将远端返回的 `Message` 与 `Artifact` 一律视为不可信外部输入（参见 [[agent-security-architecture-and-prompt-injection-defense]]）。
 
 ## Production trade-off layer
 
@@ -226,4 +243,4 @@ An earlier version cited a private search-workflow trial as validation. No publi
 ## Relations
 
 - depends_on: [[hermes-context-layer-operating-rules]], [[agent-context-engineering]]
-- related: [[agent-orchestration-production-tradeoffs]], [[agent-research-evidence-gate]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-security-architecture-and-prompt-injection-defense]]
+- related: [[agent-orchestration-production-tradeoffs]], [[agent-research-evidence-gate]], [[ai-coding-agent-workflow-types]], [[multiagent-systemic-failure-modes]], [[ai-assumption-challenger-before-execution]], [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-layer-routing-decision-checklist]], [[agent-self-validation-loops]], [[wiki-ingestion-workflow]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-security-architecture-and-prompt-injection-defense]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[agent-tool-and-interoperability-paradigms]]
