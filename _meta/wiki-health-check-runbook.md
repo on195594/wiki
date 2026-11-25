@@ -146,6 +146,7 @@ The local scan reported 0 violations and 15 non-blocking candidates across 13 tr
 | [losing-position-review-method.md](../queries/losing-position-review-method.md) | `personal-financial-record` | The first-person wording is a reusable self-check for making exceptions, not a report of a specific trade. |
 | [position-sizing-method.md](../queries/position-sizing-method.md) | `personal-financial-record` | The drawdown question and the sizing red flag are generic decision criteria, not observations about an account. |
 | [pre-trade-risk-checklist.md](../queries/pre-trade-risk-checklist.md) | `personal-financial-record` | The checklist asks whether exits and size were defined; it supplies neither a completed answer nor an order. |
+| [tactical-trading-execution-decision-map.md](../queries/tactical-trading-execution-decision-map.md) | `personal-financial-record` | The questions route hypothetical trading scenarios to general rules; they do not document a personal position or order. |
 
 [`public-content-reviewed.json`](public-content-reviewed.json) links that manual review to specific repository-relative paths and rules. Each digest covers all matched lines in order, with one original surrounding line on each side, even if that line is marked synthetic and not scanned for candidates. The scanner still reports these candidates. A change to a match or its immediate context, an added match, or a move to another path requires review again. The baseline cannot exempt blocking violations.
 

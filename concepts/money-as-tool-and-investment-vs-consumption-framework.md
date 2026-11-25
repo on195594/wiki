@@ -1,7 +1,7 @@
 ---
 title: Money as Tool and Investment-vs-Consumption Framework
 created: 2026-04-17
-updated: 2026-11-15
+updated: 2026-11-25
 type: concept
 tags: [investment, research, note]
 sources: [raw/articles/gvm-money-work-for-you-1-percent-investor-wisdom-2026-04-14.md, docs:https://www.newtraderu.com/2026/10/23/5-high-income-skills-worth-learning-according-to-charlie-munger/]
@@ -112,5 +112,4 @@ Steve Burns 在 New Trader U 的 [《5 High-Income Skills Worth Learning Accordi
 
 ## Relations
 
-- refines: [[ordinary-investor-investment-system]]
-- related: [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[investment-risk-control-framework]], [[wiki-ingestion-workflow]]
+- related: [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]], [[household-fund-layering-model]], [[investment-risk-control-framework]], [[wiki-ingestion-workflow]]

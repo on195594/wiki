@@ -1,10 +1,22 @@
 ---
 title: Keeping a Trading System Small and Executable
 created: 2026-04-17
-updated: 2026-11-15
+updated: 2026-11-25
 type: query
 tags: [investment, trading, architecture, governance]
-sources: [queries/trading-lessons-to-hard-rules.md, queries/repeat-mistake-detection-in-trading.md, queries/post-trade-review-loop.md, queries/pre-trade-risk-checklist.md, concepts/investment-risk-control-framework.md, raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.md, https://pubmed.ncbi.nlm.nih.gov/25164802/, https://constable.blog/wp-content/uploads/2021/12/2009-gigerenzer-brighton-homo-heuristicus.pdf, https://ideas.repec.org/a/oup/rfinst/v22y2009i5p1915-1953.html, https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf, https://www.quantt.co.uk/resources/deflated-sharpe-ratio]
+sources:
+  - queries/trading-lessons-to-hard-rules.md
+  - queries/repeat-mistake-detection-in-trading.md
+  - queries/post-trade-review-loop.md
+  - queries/pre-trade-risk-checklist.md
+  - queries/tactical-trading-execution-decision-map.md
+  - concepts/investment-risk-control-framework.md
+  - raw/articles/nvidia-financial-signal-discovery-multi-agent-2026-05-21.md
+  - https://pubmed.ncbi.nlm.nih.gov/25164802/
+  - https://constable.blog/wp-content/uploads/2021/12/2009-gigerenzer-brighton-homo-heuristicus.pdf
+  - https://ideas.repec.org/a/oup/rfinst/v22y2009i5p1915-1953.html
+  - https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf
+  - https://www.quantt.co.uk/resources/deflated-sharpe-ratio
 status: stable
 description: 回答如何控制交易系统规则数量：结合快省启发式（Fast-and-Frugal Heuristics）的偏差—方差权衡与样本外估计误差边界，让系统保持小、清楚且可执行。
 aliases: [how-i-should-keep-my-trading-system-small-and-executable]
@@ -185,22 +197,11 @@ First-person wording in checklists and questions is a reusable self-check script
 - 它和别的规则重复吗？
 - 它是在帮助执行，还是增加解释空间？
 
-## Quick checklist
-当你怀疑系统太大时，快速问自己：
-- 如果现在市场突然波动，我能立刻说出最重要的 3 条规则吗？
-- 这些规则真能阻止高代价错误吗？
-- 我最近是在增加执行力，还是增加说明书厚度？
-- 哪条规则如果删掉，系统反而会更清楚？
-
-只要最后两问开始变模糊，就该做减法。
-
-## Minimal version for immediate use
-当你想再加新规则时，先问三句：
-1. 这条规则真能挡住高代价错误吗？
-2. 它能在关键时刻被快速调用吗？
-3. 它是在补漏洞，还是只是在增加系统体积？
-
-三句里有一句答不清，就先别加。
+## Quick pruning gate
+新增规则或定期修剪交易系统时，逐项执行以下三步裁决：
+1. **高压可调用性**：盘中剧烈波动或时间受限时，核心主规则能否在数秒内无歧义复述并判定触发？无法快速判定的条文降级为背景说明或合并进上层门禁。
+2. **边际阻断净收益**：该规则拦截高代价重复错误的净保护收益，是否显著大于其新增的理解负担、临场开脱空间与样本外过拟合方差？
+3. **减法测试**：若将该规则直接移出主规则面（或并入 [[pre-trade-risk-checklist]] 单一闸门），系统整体约束力是否反而更清晰？若是，立即合并或退役。
 
 ## Takeaway
 一个真正可用的交易系统，不是最全面的系统，而是你在最差状态下仍能执行的系统。
@@ -213,4 +214,4 @@ First-person wording in checklists and questions is a reusable self-check script
 
 ## Relations
 - depends_on: [[trading-lessons-to-hard-rules]], [[repeat-mistake-detection-in-trading]], [[post-trade-review-loop]], [[pre-trade-risk-checklist]], [[investment-risk-control-framework]]
-- related: [[hermes-active-surface-lifecycle-governance]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[constrained-toolbox-evaluator-loop]]
+- related: [[tactical-trading-execution-decision-map]], [[hermes-active-surface-lifecycle-governance]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[constrained-toolbox-evaluator-loop]]

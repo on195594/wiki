@@ -1,7 +1,7 @@
 ---
 title: 价格隐含预期分析（反向估值）
 created: 2026-11-14
-updated: 2026-11-19
+updated: 2026-11-25
 type: concept
 tags: [investment, research]
 sources: [https://www.expectationsinvesting.com/about, https://www.expectationsinvesting.com/tutorials, https://www.expectationsinvesting.com/online-tutorial-8]
@@ -87,4 +87,5 @@ Michael Mauboussin 与 Alfred Rappaport《Expectations Investing》官方网站�
 
 ## Relations
 
-- related: [[company-analysis-decision-map]], [[competitive-advantage-period-and-capital-allocation]], [[balance-sheet-solvency-and-distress-risk]], [[cyclical-earnings-normalization]], [[growth-reinvestment-and-return-on-capital]], [[free-cash-flow-and-valuation-basis]], [[earnings-quality-and-cash-conversion]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]
+- depends_on: [[free-cash-flow-and-valuation-basis]], [[growth-reinvestment-and-return-on-capital]], [[competitive-advantage-period-and-capital-allocation]]
+- related: [[company-analysis-decision-map]], [[cyclical-earnings-normalization]], [[investment-risk-control-framework]]

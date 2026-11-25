@@ -1,7 +1,7 @@
 ---
 title: 竞争优势持续期与资本配置
 created: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-25
 type: concept
 tags: [investment, research]
 sources: [https://www.morganstanley.com/im/publication/insights/articles/article_measuringthemoat.pdf, https://www.morganstanley.com/content/dam/im/assets/publication/thought-leadership/consilient-observer/article_theneglectedvaluedriver_ltr.pdf, https://www.morganstanley.com/im/publication/insights/articles/article_capitalallocation.pdf, https://kpmg.com/us/en/board-leadership/articles/2026/oversight-capital-allocation-in-changing-investment-landscape.html]
@@ -9,6 +9,8 @@ status: stable
 description: 公司分析方法卡：结合 Mauboussin 护城河评估、竞争优势持续期（CAP）与资本配置框架，判断 ROIC 超额回报的幅度、持续时长与管理层资本配置质量。
 aliases: [竞争优势持续期, 护城河与资本配置, cap-and-capital-allocation]
 volatility: low
+review_by: 2027-11-19
+verified_at: 2026-11-19
 ---
 
 # 竞争优势持续期与资本配置
@@ -80,4 +82,5 @@ volatility: low
 
 ## Relations
 
-- related: [[company-analysis-decision-map]], [[earnings-quality-and-cash-conversion]], [[growth-reinvestment-and-return-on-capital]], [[price-implied-expectations-analysis]], [[free-cash-flow-and-valuation-basis]], [[balance-sheet-solvency-and-distress-risk]], [[ordinary-investor-investment-system]], [[investment-risk-control-framework]]
+- depends_on: [[growth-reinvestment-and-return-on-capital]], [[balance-sheet-solvency-and-distress-risk]]
+- related: [[company-analysis-decision-map]], [[free-cash-flow-and-valuation-basis]], [[price-implied-expectations-analysis]]

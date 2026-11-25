@@ -39,5 +39,8 @@
   },
   "queries/pre-trade-risk-checklist.md": {
     "personal-financial-record": "fa9b89b0858e9acc619d491b990f735c317ec871372fe569cea2fff85e63ed45"
+  },
+  "queries/tactical-trading-execution-decision-map.md": {
+    "personal-financial-record": "5145c410fd9ccd8a6fd22bcf4987b7b798da4ec15177a6f839f4dc0137543920"
   }
 }

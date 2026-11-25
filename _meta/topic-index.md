@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-25 | Indexed pages: 140
+> Last updated: 2026-11-25 | Indexed pages: 141
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -115,20 +115,20 @@ status: current
 - [Family Education Operating Model](../concepts/family-education-operating-model.md) — 家庭教育域的 operating model：以孩子适配、SDT 基本心理需要与有机整合理论（Deci & Ryan 2000，自主/胜任/归属与认同调节 vs 内摄调节）、发展性工作记忆边界（Gathercole 2004 / Sweller 1988）和家庭可持续为核心，含 `M / T_c / F_e / K` 强类型参数契约与双环熔断边界
 - [AI Agent LifeOS Executable Architecture](../concepts/hermes-lifeos-executable-architecture.md) — AI Agent 版 LifeOS 的可执行参考架构：结合 Simon 近可分解系统（快慢时间尺度解耦）与 Hora/Tempus 稳定中间形态寓言，按 Phase 0–5 渐进组织协调上下文与 `wiki / memory / skills / cron / MCP / profiles`
 - [AI Agent LifeOS Layer Boundary Contract](../concepts/hermes-lifeos-layer-boundary-contract.md) — AI Agent LifeOS 的层边界契约：结合 Lampson 保护域与访问控制矩阵（$\mathbf{A}[d,o]$）及 Plan 9 命名空间视图，区分领域分类（`wiki / skill`）与需独立验证的运行时状态和权限隔离（`profile`），含七层准入与越界裁决矩阵
-- [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
+- [Trend-Following Trading System (Summary of Leontraveller Public Notes)](../concepts/leontraveller-trading-and-investment-system.md) — Leontraveller 公开笔记中的交易系统观：不抄底、不和市场争辩，结合 52 周高点锚定动量（George & Hwang）、未实现资本利得悬顶（Grinblatt & Han $g_t$）、Kaminski & Lo (2014) 止损停止溢价有效域与每日重平衡杠杆方差损耗转向顺势、止损、控回撤与简单可执行规则
 - [LifeOS Overview](../concepts/lifeos-overview.md) — LifeOS 可配置总览模板：定义可选领域、系统层次、四大对象域 15 项强类型参数耦合矩阵与守恒不变量（周时间带宽、存量/流量转换式、撤除留存门禁与压力余量熔断）、公开/私有边界和 AI Agent 的可选执行角色
 - [Money as Tool and Investment-vs-Consumption Framework](../concepts/money-as-tool-and-investment-vs-consumption-framework.md) — 财富决策框架：区分投资与消费，以现金缓冲保留选择权，并检查自我投资的回报路径与失败承受能力
-- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、新增现金流低摩擦调仓、宽基底盘到个股基本面七卡路由边界与行为控制执行
-- [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配（Bucket Strategy）让教育基金按目标期限与回撤约束独立建模
+- [Ordinary Investor Investment System](../concepts/ordinary-investor-investment-system.md) — 普通人投资方法论：先搭建长期系统，再结合日历与阈值混合再平衡、Perold-Sharpe 恒定混合凹性与战略缓冲边界、126 年真实回报与股债相关性通胀切换、个股基本面七卡路由与行为控制执行
+- [Household Fund Layering Model](../concepts/household-fund-layering-model.md) — 财务与教育基金 operating model：把家庭安全层、配置层和目标层分开，结合三桶期限匹配、序列回报风险（SORR）现金拖累边界（Estrada 2019）与人力资本贝塔耦合（Bodie-Merton-Samuelson）独立建模
 - [Personal Growth Operating Model](../concepts/personal-growth-operating-model.md) — 个人成长域的 operating model：结合刻意练习解释力边界（Ericsson 1993 / Macnamara 2014）、认知负荷理论（Sweller 1988）、任务切换注意力残留（Leroy 2009）与单双环复盘（Argyris & Schön），含 `R / P / V` 强类型参数与 $\Delta S_{\text{retain}} > 0$ 撤除迁移验证契约
-- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / R_open / D_max / δ）
+- [Investment Risk Control Framework](../concepts/investment-risk-control-framework.md) — 投资风险控制框架：核心仓按配置与再平衡带宽，进攻仓按趋势、禁止摊平和止损；含分散化与共同变动原理、共同经营驱动及压力检查推论（1952 原论文全文待补核）、计划止损/组合波动/最大回撤的区别，以及回撤恢复双曲方程（$G = D/(1-D)$）、杠杆 ETF 二次方方差拖累（$-\frac{1}{2}k^2\sigma^2$）与参数化风控变量（r / G_max / R_cluster / R_open / D_max / δ）
 - [Work and Career Operating Model](../concepts/work-and-career-operating-model.md) — 工作与职业域的 operating model：结合人力资本分层（Becker 通用/企业特定与 Gibbons & Waldman 2004 任务特定）、探索—利用权衡（March 1991）与长工时边际产出非线性衰减（Pencavel 2015），兼顾 `B / E / C / S` 强类型参数与家庭兼容性
 - [周期利润正常化与低市盈率陷阱](../concepts/company-analysis/cyclical-earnings-normalization.md) — 公司分析方法卡：周期或商品类公司低市盈率时，用绝对利润、利润率或行业平均做正常化，并区分正常化商品价格与期货远期价格
-- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：用再投资率与新增资本回报估算经营利润增长，ROIC 的定义、研发资本化调整、会计失真与边际回报（ROIIC），以及“可持续增长悖论”、FCFROIC 与大盘股因子敞口实证边界
+- [增长、再投资与资本回报](../concepts/company-analysis/growth-reinvestment-and-return-on-capital.md) — 公司分析方法卡：用再投资率与新增资本回报估算经营利润增长，ROIC 的定义、研发与 `30%` 非研发 SG&A 组织资本调整（Peters & Taylor 2017 / Mauboussin 2022，FCF 恒等不变）、后租赁并表时代跨准则校准（IFRS 16 / ASC 842 / CAS 21）以及“可持续增长悖论”实证边界
 - [价格隐含预期分析（反向估值）](../concepts/company-analysis/price-implied-expectations-analysis.md) — 公司分析方法卡：从股价反推隐含的销售增长、利润率与投资要求（反向估值），再判断预期修正的方向
-- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则及应用指南），匹配现金流对象、折现率、中国报表利息/税费分类、SBC 稀释口径与高 ROIC 阶段性负 FCF 边界
-- [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — 公司分析方法卡：基于 Sloan (1996) 应计持续性全文与 Dechow–Dichev (2001/2002) 营运资本应计模型，同期间、同范围解释利润与经营现金流差异，区分正常投入、收付时点和待核查异常；含未来现金流的回归残差不作当期信号
-- [资产负债表、偿债能力与财务困境风险](../concepts/company-analysis/balance-sheet-solvency-and-distress-risk.md) — 公司分析方法卡：基于 Damodaran 困境估值截断风险模型（Going Concern DCF 与困境出售价值按对应情景概率加权）与 Altman Z / Z' / Z'' 适用口径边界，核查债务到期墙、下行利息保障与永久本金损失风险
+- [自由现金流与估值口径](../concepts/company-analysis/free-cash-flow-and-valuation-basis.md) — 公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings，对照 US GAAP、中国 CAS 与 2027 年生效的 IFRS 18 / IAS 7 现金流重分类及跨准则租赁本金错配，匹配折现率、SBC 稀释与高 ROIC 阶段性负 FCF 边界
+- [盈利质量与现金转化](../concepts/company-analysis/earnings-quality-and-cash-conversion.md) — 公司分析方法卡：基于 Sloan (1996) 应计持续性、Dechow–Dichev (2001/2002) 营运资本应计模型与反向保理/费用自然属性拆解新规（IAS 7.44H / ASU 2022-04 / DISE / IFRS 18），同期间、同范围解释利润与经营现金流差异
+- [资产负债表、偿债能力与财务困境风险](../concepts/company-analysis/balance-sheet-solvency-and-distress-risk.md) — 公司分析方法卡：基于 Damodaran 困境估值截断风险模型、Altman Z / Z' / Z'' 适用口径边界与反向保理隐性刚兑墙核查（IAS 7.44H / ASU 2022-04），检验债务到期墙、下行利息保障与永久本金损失风险
 - [竞争优势持续期与资本配置](../concepts/company-analysis/competitive-advantage-period-and-capital-allocation.md) — 公司分析方法卡：结合 Mauboussin 护城河评估、竞争优势持续期（CAP / ROIC 衰减率）与资本配置框架（零基配置、战略包与五类资金去向核查），评估超额回报持续时长与管理层配置质量
 
 ### 6. 软件工程基础法则 (Software Engineering Laws)
@@ -148,7 +148,7 @@ status: current
 - [Agent 工具与跨边界互操作范式对照](../comparisons/agent-tool-and-interoperability-paradigms.md) — 横向对照 CLI/Bash、精编 Agent Skills、扁平与分层网关无状态 MCP、Code Mode / PTC 沙箱编排及 A2A v1.0.1 跨代理任务委托；整合前缀缓存折算定律（25–28 工具拐点）、生产者工具集合完备召回、SkillsBench 自生成负迁移与 A2ABreak 状态机安全门禁，含 `N_tools / ΔC_net / |O_uncached| / R_set / B_trust / D_opaque` 六参数选型矩阵
 - [Dijkstra EWD667 vs 2026 AI Programming Article](../comparisons/dijkstra-ewd667-vs-ai-programming-article.md) — 对照 EWD667 原文与 2026 AI 编程文章：比较自然语言模糊性、窄接口、形式化契约、出处债务与认知风险，并区分原文论证和现代工程推论
 - [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（$T_{\text{pivot}}$）、`ScopeGate` 逐次参数校验与权威终态回读评估任意 Agent 的四阶段事故响应接入；来源案例不作为当前产品能力或排名证据
-- [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：结合行为投资组合理论（BPT-MA）区分核心安全底盘（`T / H / L / D / δ`）与主动趋势进攻（`1R / r / R_open / D_max`）的分工和冲突边界
+- [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：结合行为投资组合理论（BPT-MA）与 Perold-Sharpe 恒定混合凹性/趋势凸性对偶，区分核心安全底盘（`T / H / L / D / δ`）与主动趋势进攻（`1R / r / G_max / R_cluster / R_open / D_max`）的分工和冲突边界
 
 ## Queries
 - [Agent Architecture Primary-Paper Map](../queries/agent-architecture-primary-paper-map.md) — Agent 架构一手论文地图：按设计问题映射 2022–2023 第一代原语（ReAct、Toolformer、Generative Agents、Voyager、AutoGen）与 2024–2026 第二代生产原语（CodeAct、Sleep-time Compute、CaMeL/Progent、$\tau^2$-Bench、SkillsBench、COLT）的机制和定量边界
@@ -158,14 +158,15 @@ status: current
 - [AI Agent Layer Routing Edge Cases](../queries/hermes-layer-routing-edge-cases.md) — AI Agent 路由边界案例：结合正交职责分量与 `B_act / P_skill / G_promo` 门禁裁决 10 类易混淆场景，区分可选接入、执行契约与公开操作指南
 - [AI Agent Layer Routing Sample Cases](../queries/hermes-layer-routing-sample-cases.md) — AI Agent 路由样例：按职责和授权选择载体，环境记忆不替代当前核验
 - [Using AI Agent for AI Coding with Typed Boundaries](../queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md) — AI Agent 反熵编程主查询入口：整合比例规格契约、二阶段结构化提取、首次编辑经济性、窄工具与沙箱程序化编排（防 JSON 搬运工）、显式依赖、按风险选择的分层验证与重试预算、爆炸半径内有界清理、退出证据块与六条反合理化应对建议；流程由对应概念页主维护，示例不表示已经部署
-- [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：基于 BPT 心理账户防火墙与参数化门禁（`L / δ` vs `1R / R_open / D_max`），长期制度管底盘，主动纪律管进攻
+- [Combining Two Investment Frameworks](../queries/combining-two-investment-frameworks.md) — 分层组合两套教育性投资框架：基于 BPT 心理账户防火墙与参数化门禁（`L / δ` vs `1R / G_max / R_cluster / R_open / D_max`），长期制度管底盘，主动纪律管进攻
 - [公司基本面分析决策地图](../queries/company-analysis-decision-map.md) — 公司基本面分析总入口：按四步尽调顺序（质量与生存闸门 → 商业模式、周期与护城河校准 → 现金流口径与预期差 → 组合与风控接入）和具体问题路由七张公司分析方法卡，衔接长期配置与交易风控门禁
-- [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / R_open / D_max / δ），再决定是否出手
-- [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：结合 Barber & Odean 过度交易换手损耗实证与四条硬熔断门禁（`D_max / R_open / δ / 1R`），拦截进攻仓摊平亏损、情绪补仓、越权单或无退出计划交易
-- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：结合前景理论的参考点价值函数、处置效应与回本效应（Break-Even Effect），区分正常回撤、失效判断和伪装成再平衡的情绪补仓
-- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓防御赌场钱效应（House-Money Effect），可采用非递增顺势分层并按当前净值核算合并风险，不把浮盈或保本止损当作免费风险资本
-- [Position Sizing by Risk Budget](../queries/position-sizing-method.md) — 参数化仓位预算：基于 1R 单位风险、固定比例仓位公式、R 倍数与分数凯利边界计算规模，防范超仓与跳空风险
-- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：克服前景理论与赌场钱效应提供的行为偏差视角，用结构移动止损与固定 1R 分母平衡利润保护与趋势延续
+- [主动交易执行与复盘决策地图](../queries/tactical-trading-execution-decision-map.md) — 主动交易生命周期总入口：按四阶段闭环（账户分流与停手门禁 → 仓位核算与顺势分层 → 持仓处置效应纠偏与移动止损 → 盘后 R 倍数复盘与规则修剪）路由 11 篇战术查询页
+- [Investment Pre-Trade Risk Checklist](../queries/pre-trade-risk-checklist.md) — 通用交易前风险清单：先分清资金层、动作类型、退出计划与参数化风险门禁（1R / G_max / R_cluster / R_open / D_max / δ），再决定是否出手
+- [When Not to Trade](../queries/when-not-to-trade.md) — 停手条件：结合 Barber & Odean 过度交易换手损耗实证与硬熔断门禁（`D_max / R_open / R_cluster / G_max / δ / 1R`），拦截进攻仓摊平亏损、情绪补仓、越权单或无退出计划交易
+- [Reviewing a Losing Position](../queries/losing-position-review-method.md) — 亏损仓复盘方法：结合 Shefrin & Statman (1985) 与 Odean (1998) 处置效应一手实证（`PGR/PLR` 与 `+3.41` pp 收益差）、前景理论损失区凸性及回本效应，区分正常回撤与失效判断
+- [Scaling Into and Out of a Position](../queries/position-scaling-method.md) — 分批进出方法：核心仓按既定配置分阶段投入或再平衡；进攻仓结合 Grossman-Zhou 回撤缓冲与赌场钱效应防御，采用非递增顺势分层并按当前净值核算 `G_max / R_cluster / R_open` 合并风险
+- [Position Sizing by Risk Budget](../queries/position-sizing-method.md) — 参数化仓位预算：基于 1R 单位风险、固定比例公式、Thorp (2006) 连续分数凯利三定律与 Busseti-Ryu-Boyd 回撤约束模型核算规模，防范超仓与隔夜跳空风险
+- [Managing a Winning Position](../queries/winning-position-risk-management.md) — 盈利仓风险管理：结合 Shefrin-Statman / Odean 处置效应盈利侧实证与 Kaminski & Lo 止损序列相关边界，用结构移动止损与固定 1R 分母平衡利润保护与趋势延续
 - [Deciding Between Inaction and Action](../queries/inaction-vs-action-decision-framework.md) — 不行动与行动的裁决框架：结合行动偏误（Action Bias）与交易摩擦损耗，区分进攻仓条件化等待与止损/再平衡刚性执行
 - [Building a Post-Trade Review Loop](../queries/post-trade-review-loop.md) — 交易后复盘闭环：结合过程合规性与含零收益交易的 R 倍数样本分布，区分执行偏差与风险模型缺口，避免事后归因
 - [Detecting Repeat Trading Mistakes](../queries/repeat-mistake-detection-in-trading.md) — 重复错误识别：区分过程违背（Process Bug）与合规尾部亏损，按频次、触发情境与累计 R 拖累过滤小样本假阳性过拟合

@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 140,
+  "total_pages": 141,
   "pages": [
     {
       "path": "comparisons/agent-memory-architectures-and-evaluation-benchmarks.md",
@@ -152,7 +152,7 @@
       "path": "comparisons/leontraveller-vs-ordinary-investor-investment-system.md",
       "type": "comparison",
       "title": "Leontraveller vs Ordinary Investor Investment System",
-      "description": "结合行为投资组合理论（BPT-MA）比较 Leontraveller 主动交易系统与 Ordinary Investor 长期投资系统的心理账户分工、参数矩阵和冲突边界。",
+      "description": "结合行为投资组合理论（BPT-MA）与 Perold-Sharpe 恒定混合凹性/趋势凸性对偶，比较两套投资系统的心理账户分工、参数矩阵和冲突边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -166,7 +166,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "leontraveller-trading-and-investment-system",
@@ -1707,7 +1707,7 @@
       "path": "concepts/company-analysis/balance-sheet-solvency-and-distress-risk.md",
       "type": "concept",
       "title": "资产负债表、偿债能力与财务困境风险",
-      "description": "公司分析方法卡：基于 Damodaran 困境估值截断风险模型与 Altman Z-score 口径边界，核查债务结构、利息保障、再融资压力与永久本金损失风险。",
+      "description": "公司分析方法卡：基于 Damodaran 困境估值截断风险模型、Altman Z-score 口径边界与反向保理隐性负债核查（IAS 7.44H / ASU 2022-04），检验债务到期墙、利息保障与永久本金损失风险。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1720,17 +1720,17 @@
         "solvency-and-distress-risk"
       ],
       "volatility": "low",
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-11-19",
+      "review_by": "2027-11-19",
+      "verified_at": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "earnings-quality-and-cash-conversion"
+        ],
         "related": [
           "company-analysis-decision-map",
-          "earnings-quality-and-cash-conversion",
-          "free-cash-flow-and-valuation-basis",
           "cyclical-earnings-normalization",
-          "competitive-advantage-period-and-capital-allocation",
-          "ordinary-investor-investment-system",
+          "free-cash-flow-and-valuation-basis",
           "investment-risk-control-framework"
         ]
       }
@@ -1751,19 +1751,18 @@
         "cap-and-capital-allocation"
       ],
       "volatility": "low",
-      "review_by": null,
-      "verified_at": null,
-      "updated": "2026-11-19",
+      "review_by": "2027-11-19",
+      "verified_at": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "growth-reinvestment-and-return-on-capital",
+          "balance-sheet-solvency-and-distress-risk"
+        ],
         "related": [
           "company-analysis-decision-map",
-          "earnings-quality-and-cash-conversion",
-          "growth-reinvestment-and-return-on-capital",
-          "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
-          "balance-sheet-solvency-and-distress-risk",
-          "ordinary-investor-investment-system",
-          "investment-risk-control-framework"
+          "price-implied-expectations-analysis"
         ]
       }
     },
@@ -1784,17 +1783,15 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "earnings-quality-and-cash-conversion",
+          "balance-sheet-solvency-and-distress-risk"
+        ],
         "related": [
           "company-analysis-decision-map",
-          "balance-sheet-solvency-and-distress-risk",
-          "growth-reinvestment-and-return-on-capital",
-          "competitive-advantage-period-and-capital-allocation",
           "price-implied-expectations-analysis",
-          "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion",
-          "ordinary-investor-investment-system",
           "investment-risk-control-framework"
         ]
       }
@@ -1803,7 +1800,7 @@
       "path": "concepts/company-analysis/earnings-quality-and-cash-conversion.md",
       "type": "concept",
       "title": "盈利质量与现金转化",
-      "description": "公司分析方法卡：基于 Sloan (1996) 应计持续性与 Dechow–Dichev (2002) 营运资本应计模型，在同期间、同合并范围解释利润与经营现金流差异，区分正常投入、收付时点与待核查异常。",
+      "description": "公司分析方法卡：基于 Sloan (1996) 应计持续性、Dechow–Dichev (2002) 营运资本应计模型与反向保理/费用自然属性拆解新规（IAS 7.44H / ASU 2022-04 / DISE / IFRS 18），同口径解释利润与经营现金流差异。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1824,10 +1821,6 @@
           "balance-sheet-solvency-and-distress-risk",
           "free-cash-flow-and-valuation-basis",
           "growth-reinvestment-and-return-on-capital",
-          "competitive-advantage-period-and-capital-allocation",
-          "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis",
-          "ordinary-investor-investment-system",
           "investment-risk-control-framework"
         ]
       }
@@ -1836,7 +1829,7 @@
       "path": "concepts/company-analysis/free-cash-flow-and-valuation-basis.md",
       "type": "concept",
       "title": "自由现金流与估值口径",
-      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings（已核对巴菲特 1986/1992 股东信与第 31 号现金流量表准则），匹配现金流对象、折现率、股权激励稀释与高 ROIC 负 FCF 边界。",
+      "description": "公司分析方法卡：区分 CFO 减资本开支、FCFF、FCFE 与 owner earnings，对照 US GAAP、中国 CAS 与 2027 年生效的 IFRS 18 / IAS 7 现金流分类及跨准则租赁本金错配，匹配折现率、SBC 稀释与高 ROIC 负 FCF 边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1850,17 +1843,16 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-23",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "earnings-quality-and-cash-conversion",
+          "growth-reinvestment-and-return-on-capital"
+        ],
         "related": [
           "company-analysis-decision-map",
-          "earnings-quality-and-cash-conversion",
           "balance-sheet-solvency-and-distress-risk",
-          "growth-reinvestment-and-return-on-capital",
-          "competitive-advantage-period-and-capital-allocation",
-          "cyclical-earnings-normalization",
           "price-implied-expectations-analysis",
-          "ordinary-investor-investment-system",
           "investment-risk-control-framework"
         ]
       }
@@ -1869,7 +1861,7 @@
       "path": "concepts/company-analysis/growth-reinvestment-and-return-on-capital.md",
       "type": "concept",
       "title": "增长、再投资与资本回报",
-      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及 ROIC 的口径、研发资本化调整、常见失真与“可持续增长悖论”实证边界。",
+      "description": "公司分析方法卡：增长需要多少再投资、资本回报是否高于资本成本，以及 ROIC 的口径、研发与非研发 SG&A 组织资本调整、后租赁并表时代跨准则校准与“可持续增长悖论”实证边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -1882,18 +1874,16 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-23",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "earnings-quality-and-cash-conversion"
+        ],
         "related": [
           "company-analysis-decision-map",
           "competitive-advantage-period-and-capital-allocation",
-          "balance-sheet-solvency-and-distress-risk",
-          "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis",
           "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion",
-          "ordinary-investor-investment-system",
-          "investment-risk-control-framework"
+          "price-implied-expectations-analysis"
         ]
       }
     },
@@ -1914,17 +1904,16 @@
       "volatility": "low",
       "review_by": "2027-11-14",
       "verified_at": "2026-11-14",
-      "updated": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
+        "depends_on": [
+          "free-cash-flow-and-valuation-basis",
+          "growth-reinvestment-and-return-on-capital",
+          "competitive-advantage-period-and-capital-allocation"
+        ],
         "related": [
           "company-analysis-decision-map",
-          "competitive-advantage-period-and-capital-allocation",
-          "balance-sheet-solvency-and-distress-risk",
           "cyclical-earnings-normalization",
-          "growth-reinvestment-and-return-on-capital",
-          "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion",
-          "ordinary-investor-investment-system",
           "investment-risk-control-framework"
         ]
       }
@@ -3114,7 +3103,7 @@
       "path": "concepts/household-fund-layering-model.md",
       "type": "concept",
       "title": "Household Fund Layering Model",
-      "description": "提供家庭财务与教育目标资金的参数化分层、期限桶匹配（Bucket Strategy）和风险边界模板。",
+      "description": "提供家庭财务与教育目标资金的参数化分层、三桶期限匹配、序列回报风险（SORR）现金拖累边界及人力资本贝塔耦合模板。",
       "status": "stable",
       "tags": [
         "investment",
@@ -3127,15 +3116,15 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "lifeos-overview",
-          "investment-risk-control-framework",
           "money-as-tool-and-investment-vs-consumption-framework",
           "family-education-operating-model"
         ],
         "related": [
+          "investment-risk-control-framework",
           "ordinary-investor-investment-system",
           "combining-two-investment-frameworks",
           "leontraveller-vs-ordinary-investor-investment-system",
@@ -3186,7 +3175,7 @@
       "path": "concepts/investment-risk-control-framework.md",
       "type": "concept",
       "title": "Investment Risk Control Framework",
-      "description": "汇总可参数化的长期配置、主动交易、回撤恢复双曲方程、杠杆 ETF 二次方方差损耗边界与行为纪律运行规则。",
+      "description": "汇总可参数化的长期配置、主动交易、名义敞口与同驱动簇门禁（G_max / R_cluster）、回撤恢复双曲方程、杠杆 ETF 二次方方差损耗边界与行为纪律运行规则。",
       "status": "stable",
       "tags": [
         "investment",
@@ -3200,36 +3189,21 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
-          "leontraveller-trading-and-investment-system",
-          "ordinary-investor-investment-system"
+          "household-fund-layering-model",
+          "ordinary-investor-investment-system",
+          "leontraveller-trading-and-investment-system"
         ],
         "related": [
-          "combining-two-investment-frameworks",
-          "leontraveller-vs-ordinary-investor-investment-system",
           "money-as-tool-and-investment-vs-consumption-framework",
-          "household-fund-layering-model",
+          "leontraveller-vs-ordinary-investor-investment-system",
+          "combining-two-investment-frameworks",
           "company-analysis-decision-map",
-          "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion",
-          "balance-sheet-solvency-and-distress-risk",
-          "growth-reinvestment-and-return-on-capital",
-          "competitive-advantage-period-and-capital-allocation",
-          "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis",
-          "pre-trade-risk-checklist",
-          "when-not-to-trade",
-          "inaction-vs-action-decision-framework",
+          "tactical-trading-execution-decision-map",
           "position-sizing-method",
-          "position-scaling-method",
-          "losing-position-review-method",
-          "winning-position-risk-management",
-          "post-trade-review-loop",
-          "repeat-mistake-detection-in-trading",
-          "trading-lessons-to-hard-rules",
-          "minimal-executable-trading-system"
+          "pre-trade-risk-checklist"
         ]
       }
     },
@@ -3237,7 +3211,7 @@
       "path": "concepts/leontraveller-trading-and-investment-system.md",
       "type": "concept",
       "title": "Trend-Following Trading System (Summary of Leontraveller Public Notes)",
-      "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则，结合 52 周高点锚定动量、未实现资本利得悬顶（Capital Gains Overhang）与杠杆 ETF 方差损耗说明其理论边界。",
+      "description": "整理 Leontraveller 主动交易和投资系统中的仓位、纪律、风控和复盘规则，结合 52 周高点锚定动量、未实现资本利得悬顶、Kaminski & Lo (2014) 止损停止溢价有效域与杠杆 ETF 方差损耗说明其理论边界。",
       "status": "stable",
       "tags": [
         "investment",
@@ -3251,7 +3225,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -3261,12 +3235,8 @@
           "leontraveller-vs-ordinary-investor-investment-system",
           "investment-risk-control-framework",
           "combining-two-investment-frameworks",
-          "pre-trade-risk-checklist",
-          "when-not-to-trade",
-          "losing-position-review-method",
-          "position-scaling-method",
           "position-sizing-method",
-          "winning-position-risk-management",
+          "tactical-trading-execution-decision-map",
           "wiki-ingestion-workflow"
         ]
       }
@@ -3553,12 +3523,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
-        "refines": [
-          "ordinary-investor-investment-system"
-        ],
         "related": [
+          "ordinary-investor-investment-system",
           "leontraveller-trading-and-investment-system",
           "household-fund-layering-model",
           "investment-risk-control-framework",
@@ -3605,7 +3573,7 @@
       "path": "concepts/ordinary-investor-investment-system.md",
       "type": "concept",
       "title": "Ordinary Investor Investment System",
-      "description": "整理普通投资者适用的长期资产配置、日历与阈值混合再平衡、摩擦控制和制度化投资系统。",
+      "description": "整理普通投资者适用的长期资产配置、恒定混合再平衡凹性与战略缓冲边界、股债相关性通胀制度切换、摩擦控制和制度化投资系统。",
       "status": "stable",
       "tags": [
         "investment",
@@ -3620,25 +3588,17 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
         ],
         "related": [
-          "investment-risk-control-framework",
-          "leontraveller-trading-and-investment-system",
-          "combining-two-investment-frameworks",
           "household-fund-layering-model",
-          "company-analysis-decision-map",
-          "free-cash-flow-and-valuation-basis",
-          "earnings-quality-and-cash-conversion",
-          "balance-sheet-solvency-and-distress-risk",
-          "growth-reinvestment-and-return-on-capital",
-          "competitive-advantage-period-and-capital-allocation",
-          "cyclical-earnings-normalization",
-          "price-implied-expectations-analysis",
-          "wiki-ingestion-workflow"
+          "investment-risk-control-framework",
+          "leontraveller-vs-ordinary-investor-investment-system",
+          "combining-two-investment-frameworks",
+          "company-analysis-decision-map"
         ]
       }
     },
@@ -4489,7 +4449,7 @@
       "path": "queries/combining-two-investment-frameworks.md",
       "type": "query",
       "title": "Combining Two Investment Frameworks",
-      "description": "回答如何基于行为投资组合理论（BPT-MA）与参数化风控门禁（L / δ vs 1R / R_open / D_max）同时使用长期配置与主动交易框架而不混仓混规则。",
+      "description": "回答如何基于行为投资组合理论（BPT-MA）与参数化风控门禁（L / δ vs 1R / G_max / R_cluster / R_open / D_max）同时使用长期配置与主动交易框架而不混仓混规则。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4503,7 +4463,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "ordinary-investor-investment-system",
@@ -4512,6 +4472,7 @@
           "leontraveller-vs-ordinary-investor-investment-system"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "household-fund-layering-model",
           "pre-trade-risk-checklist",
           "when-not-to-trade",
@@ -4539,7 +4500,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-19",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "earnings-quality-and-cash-conversion",
@@ -4553,6 +4514,7 @@
         "related": [
           "ordinary-investor-investment-system",
           "investment-risk-control-framework",
+          "tactical-trading-execution-decision-map",
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "losing-position-review-method",
@@ -4767,7 +4729,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4777,6 +4739,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "losing-position-review-method",
           "post-trade-review-loop",
           "combining-two-investment-frameworks",
@@ -4788,7 +4751,7 @@
       "path": "queries/losing-position-review-method.md",
       "type": "query",
       "title": "Reviewing a Losing Position",
-      "description": "回答亏损仓位出现后如何区分正常波动、系统内亏损、前景理论损失区风险寻求、回本效应（Break-Even Effect）与结构失效。",
+      "description": "回答亏损仓位出现后如何结合 Shefrin & Statman (1985) 与 Odean (1998) 处置效应一手实证、前景理论损失区风险寻求及回本效应区分正常波动与结构失效。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4802,7 +4765,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4812,6 +4775,7 @@
           "leontraveller-trading-and-investment-system"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "position-sizing-method",
           "post-trade-review-loop"
         ]
@@ -4835,7 +4799,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "trading-lessons-to-hard-rules",
@@ -4845,6 +4809,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "hermes-active-surface-lifecycle-governance",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "constrained-toolbox-evaluator-loop"
@@ -4910,7 +4875,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4921,6 +4886,7 @@
           "leontraveller-trading-and-investment-system"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "winning-position-risk-management"
         ]
       }
@@ -4929,7 +4895,7 @@
       "path": "queries/position-sizing-method.md",
       "type": "query",
       "title": "Position Sizing by Risk Budget",
-      "description": "回答如何根据风险预算、1R 单位风险、固定比例公式与分数凯利边界决定单笔仓位大小。",
+      "description": "回答如何根据风险预算、1R 单位风险、固定比例公式、Thorp (2006) 连续分数凯利定律与回撤约束模型决定单笔仓位大小。",
       "status": "stable",
       "tags": [
         "investment",
@@ -4943,14 +4909,19 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system"
+        ],
+        "related": [
+          "tactical-trading-execution-decision-map",
           "pre-trade-risk-checklist",
           "when-not-to-trade",
           "position-scaling-method",
-          "investment-risk-control-framework",
-          "leontraveller-trading-and-investment-system"
+          "winning-position-risk-management",
+          "post-trade-review-loop"
         ]
       }
     },
@@ -4972,7 +4943,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -4982,6 +4953,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "position-sizing-method",
           "repeat-mistake-detection-in-trading",
           "trading-lessons-to-hard-rules",
@@ -4994,7 +4966,7 @@
       "path": "queries/pre-trade-risk-checklist.md",
       "type": "query",
       "title": "Investment Pre-Trade Risk Checklist",
-      "description": "提供下单前快速检查清单与参数化风险门禁（1R / R_open / D_max / δ），用于拦截情绪单、越权单和无退出计划交易。",
+      "description": "提供下单前快速检查清单与参数化风险门禁（1R / G_max / R_cluster / R_open / D_max / δ），用于拦截情绪单、越权单和无退出计划交易。",
       "status": "stable",
       "tags": [
         "investment",
@@ -5009,7 +4981,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "investment-risk-control-framework",
@@ -5018,6 +4990,7 @@
           "combining-two-investment-frameworks"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "position-sizing-method",
           "when-not-to-trade",
           "household-fund-layering-model",
@@ -5043,7 +5016,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "post-trade-review-loop",
@@ -5053,6 +5026,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "trading-lessons-to-hard-rules",
           "minimal-executable-trading-system",
           "agent-failure-closed-loop-evaluation",
@@ -5097,6 +5071,51 @@
       }
     },
     {
+      "path": "queries/tactical-trading-execution-decision-map.md",
+      "type": "query",
+      "title": "主动交易执行与复盘决策地图",
+      "description": "按四阶段交易生命周期（开仓前分流与停手门禁、仓位核算与顺势分层、持仓处置效应防御与止损有效域、盘后 R 倍数复盘与规则修剪）路由 11 篇主动交易查询页的总入口。",
+      "status": "stable",
+      "tags": [
+        "investment",
+        "trading",
+        "decision",
+        "risk-control",
+        "workflow"
+      ],
+      "aliases": [
+        "tactical-trading-decision-map",
+        "active-trading-execution-map",
+        "交易执行决策地图"
+      ],
+      "volatility": "low",
+      "review_by": "2027-11-25",
+      "verified_at": "2026-11-25",
+      "updated": "2026-11-25",
+      "relations": {
+        "depends_on": [
+          "investment-risk-control-framework",
+          "leontraveller-trading-and-investment-system",
+          "ordinary-investor-investment-system"
+        ],
+        "related": [
+          "company-analysis-decision-map",
+          "combining-two-investment-frameworks",
+          "pre-trade-risk-checklist",
+          "when-not-to-trade",
+          "inaction-vs-action-decision-framework",
+          "position-sizing-method",
+          "position-scaling-method",
+          "losing-position-review-method",
+          "winning-position-risk-management",
+          "post-trade-review-loop",
+          "repeat-mistake-detection-in-trading",
+          "trading-lessons-to-hard-rules",
+          "minimal-executable-trading-system"
+        ]
+      }
+    },
+    {
       "path": "queries/trading-lessons-to-hard-rules.md",
       "type": "query",
       "title": "Converting Trading Lessons into Hard Rules",
@@ -5114,7 +5133,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "repeat-mistake-detection-in-trading",
@@ -5124,6 +5143,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "minimal-executable-trading-system",
           "combining-two-investment-frameworks",
           "position-sizing-method",
@@ -5136,7 +5156,7 @@
       "path": "queries/when-not-to-trade.md",
       "type": "query",
       "title": "When Not to Trade",
-      "description": "回答哪些情境下默认不交易、不加仓或先暂停决策，结合个人投资者过度交易损耗实证与参数化熔断红线（D_max / R_open / δ / 1R）。",
+      "description": "回答哪些情境下默认不交易、不加仓或先暂停决策，结合个人投资者过度交易损耗实证与参数化熔断红线（D_max / R_open / R_cluster / G_max / δ / 1R）。",
       "status": "stable",
       "tags": [
         "investment",
@@ -5150,7 +5170,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "pre-trade-risk-checklist",
@@ -5159,6 +5179,7 @@
           "leontraveller-trading-and-investment-system"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "inaction-vs-action-decision-framework",
           "position-sizing-method"
         ]
@@ -5247,7 +5268,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "position-sizing-method",
@@ -5257,6 +5278,7 @@
           "investment-risk-control-framework"
         ],
         "related": [
+          "tactical-trading-execution-decision-map",
           "post-trade-review-loop"
         ]
       }
