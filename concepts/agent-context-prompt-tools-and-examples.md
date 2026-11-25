@@ -1,7 +1,7 @@
 ---
-title: "Agent Context: System Prompt, Tools and Examples"
+title: Agent Context — System Prompt, Tools and Examples
 created: 2026-10-17
-updated: 2026-11-12
+updated: 2026-11-25
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/machinelearningmastery-prompt-engineering-agentic-ai-2026-05-19.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/towardsdatascience-context-engineering-data-scientists-2026-08-30.md, raw/articles/langchain-paid-media-agent-2026-09-13.md, docs:https://impeccable.style/docs/, concepts/ai-agent-tool-selection-architecture.md, concepts/hermes-context-engineering-design-priorities.md]
@@ -13,7 +13,7 @@ aliases: [static-agent-context, prompt-tools-and-examples]
 verified_at: 2026-11-02
 ---
 
-# Agent Context: System Prompt, Tools and Examples
+# Agent Context — System Prompt, Tools and Examples
 
 ## Summary
 

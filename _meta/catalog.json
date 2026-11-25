@@ -265,7 +265,7 @@
     {
       "path": "concepts/agent-context-history-state-and-bounded-processing.md",
       "type": "concept",
-      "title": "\"Agent Context: History, State and Bounded Processing\"",
+      "title": "Agent Context — History, State and Bounded Processing",
       "description": "说明 Agent 消息历史与运行状态如何裁剪：结合 MemGPT 虚拟上下文分页、转储与摘要分工、SKILL.state 状态折叠契约、子代理交接，以及专用模型有界加工的恢复与总成本边界。",
       "status": "stable",
       "tags": [
@@ -281,7 +281,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -303,7 +303,7 @@
     {
       "path": "concepts/agent-context-prompt-tools-and-examples.md",
       "type": "concept",
-      "title": "\"Agent Context: System Prompt, Tools and Examples\"",
+      "title": "Agent Context — System Prompt, Tools and Examples",
       "description": "说明 Agent 静态上下文面的设计：system prompt 作为操作简报（受静态配额 B_sys 约束）、窄工具面与四阶工具选择概率漏斗、可见不等于可用的级联，以及以行为为主的示例。",
       "status": "stable",
       "tags": [
@@ -319,7 +319,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -466,7 +466,7 @@
       "path": "concepts/agent-experience-consolidation-loops.md",
       "type": "concept",
       "title": "Agent Experience Consolidation Loops",
-      "description": "定义 Agent 经验固化闭环，从任务现场发现知识缺口，到离线核对与分层更新；结合互补学习系统（CLS）、Sleep-Time Compute、记忆再巩固、CL-Bench 1.0 及 B_act / P_skill / G_promo / I_rev / I_taint / I_retract 六项治理裁决矩阵；写入范式与长期评测基准对照见独立对比页，Skill 治理与知识演化见子页。",
+      "description": "定义 Agent 经验固化闭环：从现场缺口捕获到离线对账与分层路由，结合互补学习系统（CLS）、Sleep-Time Compute、记忆再巩固、CL-Bench 1.0 及六项治理裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -485,7 +485,7 @@
       "volatility": "medium",
       "review_by": "2026-12-13",
       "verified_at": null,
-      "updated": "2026-11-23",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -834,7 +834,7 @@
       "path": "concepts/agent-resource-optimization.md",
       "type": "concept",
       "title": "Agent Resource Optimization",
-      "description": "说明预算与能力约束下的 Agent 运筹规划（ILP）、FrugalGPT/RouteLLM 跨模型路由、前缀 KV-Cache 经济学、单模型按步推理深度路由（ARES/TAB）及 C_cov / R_route / P_tool / M_margin / K_cache / E_effort 裁决矩阵。",
+      "description": "定义预算与能力约束下的 Agent 资源优化：结合整数规划（ILP）、跨模型路由、前缀 KV-Cache 经济学、按步推理深度路由与六参数裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -851,7 +851,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "agent-orchestration-production-tradeoffs",
@@ -873,7 +873,7 @@
       "path": "concepts/agent-security-architecture-and-prompt-injection-defense.md",
       "type": "concept",
       "title": "Agent Security Architecture and Prompt Injection Defense",
-      "description": "说明如何用 OWASP Agentic Top 10 与“致命三角”识别风险，比较 CaMeL、FIDES、Progent 与六类抗注入架构边界，覆盖 MCP 供应链、持久记忆投毒、ASI07 多智能体委托授权传播与蠕虫防御，并给出 E_tri / M_mono / I_iso / S_gui / I_taint 参数化安全裁决矩阵。",
+      "description": "结合 OWASP Agentic Top 10 与致命三角，比较 CaMeL/FIDES/Progent 抗注入边界，覆盖 MCP 供应链、记忆投毒、ASI07 委托传播及五维安全裁决矩阵。",
       "status": "stable",
       "tags": [
         "agent",
@@ -891,7 +891,7 @@
       "volatility": "medium",
       "review_by": "2027-03-19",
       "verified_at": "2026-11-19",
-      "updated": "2026-11-24",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "agent-skill-provider-governance-boundary",
@@ -1059,7 +1059,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -1216,7 +1216,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-18",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -1229,6 +1229,7 @@
           "production-ai-agent-evaluation-framework",
           "public-info-monitoring-automation-methodology",
           "agent-autonomy-ladder-for-hermes-workflows",
+          "ai-task-delegation-patterns-from-local-cloud-hybrid-llms",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-experience-consolidation-loops"
         ]
@@ -1770,7 +1771,7 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-23",
+      "updated": "2026-11-25",
       "relations": {
         "related": [
           "company-analysis-decision-map",
@@ -1902,7 +1903,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2695,7 +2696,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
@@ -2838,6 +2839,7 @@
       "status": "stable",
       "tags": [
         "agent",
+        "hermes",
         "harness",
         "model-profiles",
         "skills",
@@ -2852,7 +2854,7 @@
       "volatility": "high",
       "review_by": "2027-02-10",
       "verified_at": "2026-11-10",
-      "updated": "2026-11-20",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -2890,7 +2892,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-18",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -3007,7 +3009,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
@@ -3019,8 +3021,7 @@
         "related": [
           "hermes-retrieval-priority-and-answer-path",
           "hermes-knowledge-freshness-and-claim-evidence",
-          "okf-for-hermes-wiki-governance-assessment",
-          "wiki-health-check-runbook"
+          "okf-for-hermes-wiki-governance-assessment"
         ]
       }
     },
@@ -3277,7 +3278,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-24",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -4235,7 +4236,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-15",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "lifeos-overview",
@@ -4332,7 +4333,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "hermes-context-layer-operating-rules"
@@ -4347,8 +4348,7 @@
           "hermes-wiki-lint-and-health-check-standards",
           "okf-for-hermes-wiki-governance-assessment",
           "hermes-wiki-knowledge-freshness-improvement-plan",
-          "nimbus-docs",
-          "wiki-health-check-runbook"
+          "nimbus-docs"
         ]
       }
     },
@@ -4474,6 +4474,7 @@
       "status": "closed",
       "tags": [
         "agent",
+        "hermes",
         "research",
         "memory",
         "skills",
@@ -4489,7 +4490,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-12",
+      "updated": "2026-11-25",
       "relations": {
         "depends_on": [
           "agent-experience-consolidation-loops",
@@ -4778,7 +4779,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-25",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"

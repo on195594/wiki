@@ -1,7 +1,7 @@
 ---
 title: Agent Security Architecture and Prompt Injection Defense
 created: 2026-11-19
-updated: 2026-11-24
+updated: 2026-11-25
 type: concept
 tags: [agent, architecture, governance, risk-control, mcp, verification]
 sources: [https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/, https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/, https://arxiv.org/abs/2404.13208, https://arxiv.org/abs/2406.13352, https://arxiv.org/abs/2503.18813v2, https://arxiv.org/abs/2504.11703, https://arxiv.org/abs/2505.23643, https://arxiv.org/abs/2506.08837, https://arxiv.org/abs/2510.09023, https://arxiv.org/abs/2503.03704, https://arxiv.org/pdf/2609.13889, https://arxiv.org/abs/2605.29960, https://arxiv.org/abs/2606.24322, https://arxiv.org/abs/2605.05440, https://arxiv.org/abs/2608.15888, https://arxiv.org/abs/2603.15727, https://invariantlabs.ai/blog/mcp-security-notification, https://invariantlabs.ai/blog/introducing-mcp-scan, https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices, concepts/agent-skill-provider-governance-boundary.md, concepts/typed-ai-agent-boundaries.md]
@@ -9,7 +9,7 @@ status: stable
 volatility: medium
 verified_at: 2026-11-19
 review_by: 2027-03-19
-description: 说明如何用 OWASP Agentic Top 10 与“致命三角”识别风险，比较 CaMeL、FIDES、Progent 与六类抗注入架构边界，覆盖 MCP 供应链、持久记忆投毒、ASI07 多智能体委托授权传播与蠕虫防御，并给出 E_tri / M_mono / I_iso / S_gui / I_taint 参数化安全裁决矩阵。
+description: 结合 OWASP Agentic Top 10 与致命三角，比较 CaMeL/FIDES/Progent 抗注入边界，覆盖 MCP 供应链、记忆投毒、ASI07 委托传播及五维安全裁决矩阵。
 aliases: [agent-security-architecture, prompt-injection-defense, lethal-trifecta]
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: AI Agent Human Outcome Design Principle
 created: 2026-06-20
-updated: 2026-11-18
+updated: 2026-11-25
 type: concept
 tags: [agent, product, workflow, decision, governance, debugging]
-sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, docs:https://pubmed.ncbi.nlm.nih.gov/15151155/, raw/articles/langchain-building-proactive-agents-2026-11-17.md]
+sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md, docs:https://pubmed.ncbi.nlm.nih.gov/15151155/, https://arxiv.org/abs/2605.26128, raw/articles/langchain-building-proactive-agents-2026-11-17.md]
 status: stable
 description: 用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，并判断主动式 Agent 何时值得打断用户、如何检查误扰与漏报。
 aliases: [human-outcome-first-ai-agent-design, ai-automation-human-needs]
@@ -137,4 +137,4 @@ LangChain 的 Sydney Runkle 在 [[langchain-building-proactive-agents-2026-11-17
 ## Relations
 
 - depends_on: [[agentic-programming-system-engineering]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]]
-- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]], [[public-info-monitoring-automation-methodology]], [[agent-autonomy-ladder-for-hermes-workflows]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]]
+- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]], [[public-info-monitoring-automation-methodology]], [[agent-autonomy-ladder-for-hermes-workflows]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]]

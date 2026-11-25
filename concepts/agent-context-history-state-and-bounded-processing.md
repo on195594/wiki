@@ -1,7 +1,7 @@
 ---
-title: "Agent Context: History, State and Bounded Processing"
+title: Agent Context — History, State and Bounded Processing
 created: 2026-10-17
-updated: 2026-11-13
+updated: 2026-11-25
 type: concept
 tags: [agent, llm, context-engineering, workflow]
 sources: [raw/articles/langchain-context-engineering-deep-agents-remember.md, raw/papers/arxiv-2608-26263-skill-state.md, raw/articles/langchain-organizing-context-multi-agent-harness-2026-09-08.md, raw/articles/langchain-scaledown-deep-agents-2026-10-13.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-memory-skills-wiki-boundaries.md, https://arxiv.org/abs/2310.08560]
@@ -13,7 +13,7 @@ verified_at: 2026-11-02
 aliases: [agent-context-history-state, bounded-context-processing]
 ---
 
-# Agent Context: History, State and Bounded Processing
+# Agent Context — History, State and Bounded Processing
 
 ## Summary
 

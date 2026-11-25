@@ -1,10 +1,26 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-11-24
+updated: 2026-11-25
 type: concept
 tags: [llm, agent, workflow, research, context-engineering]
-sources: [raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md, raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md, raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md, https://arxiv.org/abs/2307.03172, https://aclanthology.org/2024.tacl-1.9/, https://en.wikipedia.org/wiki/Information_bottleneck_method, docs:https://www.anthropic.com/research/contextual-retrieval, https://arxiv.org/html/2409.04701v3, https://arxiv.org/html/2504.19754v1, https://arxiv.org/abs/2112.01488, https://arxiv.org/html/2508.16757v1, https://arxiv.org/abs/2505.14432, https://openreview.net/pdf?id=UtS1BwTilq, https://arxiv.org/html/2310.06839v2, https://arxiv.org/html/2501.16214v1, https://arxiv.org/html/2601.18886v1]
+sources:
+  - raw/articles/tds-rag-isnt-enough-context-engineering-2026-04-14.md
+  - raw/articles/thenewstack-building-trust-agentic-rag-2026-09-05.md
+  - raw/articles/nature-ontology-grounded-rag-semantic-drift-2026-10-16.md
+  - https://arxiv.org/abs/2307.03172
+  - https://aclanthology.org/2024.tacl-1.9/
+  - https://en.wikipedia.org/wiki/Information_bottleneck_method
+  - docs:https://www.anthropic.com/research/contextual-retrieval
+  - https://arxiv.org/html/2409.04701v3
+  - https://arxiv.org/html/2504.19754v1
+  - https://arxiv.org/abs/2112.01488
+  - https://arxiv.org/html/2508.16757v1
+  - https://arxiv.org/abs/2505.14432
+  - https://openreview.net/pdf?id=UtS1BwTilq
+  - https://arxiv.org/html/2310.06839v2
+  - https://arxiv.org/html/2501.16214v1
+  - https://arxiv.org/html/2601.18886v1
 status: stable
 description: 定义检索与 prompt 之间的上下文工程层，结合上下文化分块、两阶段重排与抗腐烂入窗截断、句子级保真裁剪，以及 Agentic RAG 的证据信任与语义漂移边界。
 aliases: [context-engineering-layer]

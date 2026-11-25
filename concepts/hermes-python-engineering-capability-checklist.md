@@ -1,10 +1,19 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-11-18
+updated: 2026-11-25
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation, pydantic]
-sources: [raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md, raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md, raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md, https://peps.python.org/pep-0343/, https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/, https://peps.python.org/pep-0654/, "https://docs.python.org/3.13/library/asyncio-task.html#task-groups", "https://docs.python.org/3.13/library/contextlib.html#contextlib.contextmanager", https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/]
+sources:
+  - raw/articles/machinelearningmastery-python-concepts-ai-engineer-2026-06-12.md
+  - raw/articles/realpython-python-performance-optimization-guide-2026-10-21.md
+  - raw/articles/kdnuggets-advanced-python-design-patterns-for-data-scientists.md
+  - https://peps.python.org/pep-0343/
+  - https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/
+  - https://peps.python.org/pep-0654/
+  - https://docs.python.org/3.13/library/asyncio-task.html#task-groups
+  - https://docs.python.org/3.13/library/contextlib.html#contextlib.contextmanager
+  - https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
 aliases: [agent-python-engineering-capability-checklist]
 status: stable
 description: 列出 AI Agent 执行 Python 工程任务时的流式输入、资源生命周期、结构化并发、类型化边界和性能检查项，并按真实变更压力选择最小设计边界。

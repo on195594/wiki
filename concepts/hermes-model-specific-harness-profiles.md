@@ -1,9 +1,9 @@
 ---
 title: AI Agent Model-Specific Harness Profiles
 created: 2026-04-30
-updated: 2026-11-20
+updated: 2026-11-25
 type: concept
-tags: [agent, harness, model-profiles, skills, context-engineering, verification]
+tags: [agent, hermes, harness, model-profiles, skills, context-engineering, verification]
 sources: [docs:https://docs.langchain.com/oss/python/deepagents/profiles, docs:https://hermes-agent.nousresearch.com/docs, docs:https://code.claude.com/docs/en/prompt-caching, raw/articles/langchain-tuning-deep-agents-different-models-2026-04-29.md, raw/articles/google-antigravity-custom-agents-2026-08-12.md, concepts/hermes-agent-workflow-layering-and-adoption-order.md, concepts/hermes-context-layer-operating-rules.md]
 status: stable
 volatility: high

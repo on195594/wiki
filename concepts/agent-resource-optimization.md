@@ -1,12 +1,26 @@
 ---
 title: Agent Resource Optimization
 created: 2026-05-21
-updated: 2026-11-20
+updated: 2026-11-25
 type: concept
 tags: [agent, llm, optimization, workflow, research, model-profiles]
-sources: [raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, https://arxiv.org/abs/2305.05176, https://arxiv.org/html/2406.18665v4, https://arxiv.org/html/2601.06007v2, "docs:https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing", https://arxiv.org/abs/2610.28577, https://arxiv.org/abs/2610.34817, https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus, docs:https://code.claude.com/docs/en/prompt-caching, https://arxiv.org/abs/2408.03314, https://arxiv.org/abs/2412.21187, https://arxiv.org/abs/2603.07915, https://arxiv.org/abs/2604.05164]
+sources:
+  - raw/articles/towardsdatascience-agent-planning-operations-research-2026-05-20.md
+  - raw/articles/langchain-model-router-in-harness-2026-10-01.md
+  - https://arxiv.org/abs/2305.05176
+  - https://arxiv.org/html/2406.18665v4
+  - https://arxiv.org/html/2601.06007v2
+  - docs:https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing
+  - https://arxiv.org/abs/2610.28577
+  - https://arxiv.org/abs/2610.34817
+  - https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
+  - docs:https://code.claude.com/docs/en/prompt-caching
+  - https://arxiv.org/abs/2408.03314
+  - https://arxiv.org/abs/2412.21187
+  - https://arxiv.org/abs/2603.07915
+  - https://arxiv.org/abs/2604.05164
 status: stable
-description: 说明预算与能力约束下的 Agent 运筹规划（ILP）、FrugalGPT/RouteLLM 跨模型路由、前缀 KV-Cache 经济学、单模型按步推理深度路由（ARES/TAB）及 C_cov / R_route / P_tool / M_margin / K_cache / E_effort 裁决矩阵。
+description: 定义预算与能力约束下的 Agent 资源优化：结合整数规划（ILP）、跨模型路由、前缀 KV-Cache 经济学、按步推理深度路由与六参数裁决矩阵。
 volatility: medium
 review_by: 2027-03-02
 verified_at: 2026-11-02

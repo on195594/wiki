@@ -1,10 +1,18 @@
 ---
 title: Work and Career Operating Model
 created: 2026-04-21
-updated: 2026-11-15
+updated: 2026-11-25
 type: concept
 tags: [lifeos, operating-model, workflow, decision, project]
-sources: [concepts/lifeos-overview.md, concepts/hermes-lifeos-executable-architecture.md, docs:https://academic.oup.com/ej/article-abstract/125/589/2052/5078088, docs:https://docs.iza.org/dp8129.pdf, docs:https://www.aeaweb.org/articles?id=10.1257/0002828041301579, docs:https://pubsonline.informs.org/doi/10.1287/orsc.2.1.71, docs:https://en.wikipedia.org/wiki/Human_capital, docs:https://en.wikipedia.org/wiki/Organizational_learning]
+sources:
+  - concepts/lifeos-overview.md
+  - concepts/hermes-lifeos-executable-architecture.md
+  - docs:https://academic.oup.com/ej/article-abstract/125/589/2052/5078088
+  - docs:https://docs.iza.org/dp8129.pdf
+  - docs:https://www.aeaweb.org/articles?id=10.1257/0002828041301579
+  - docs:https://pubsonline.informs.org/doi/10.1287/orsc.2.1.71
+  - docs:https://en.wikipedia.org/wiki/Human_capital
+  - docs:https://en.wikipedia.org/wiki/Organizational_learning
 status: stable
 description: 定义工作与职业在 LifeOS 中的目标、人力资本分层（通用/任务特定/企业特定）、探索—利用平衡与家庭约束协调模型。
 volatility: low

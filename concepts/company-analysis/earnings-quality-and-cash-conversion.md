@@ -1,10 +1,19 @@
 ---
 title: 盈利质量与现金转化
 created: 2026-11-14
-updated: 2026-11-23
+updated: 2026-11-25
 type: concept
 tags: [investment, research]
-sources: [https://www.cuhk.edu.hk/acy2/workshop/June2009Wasley/1996TAR).pdf, https://doi.org/10.2308/tar-9608042309, https://api.crossref.org/works/10.2308/tar-9608042309, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=277231, https://api.crossref.org/works/10.2139/ssrn.277231, https://doi.org/10.2308/accr.2002.77.s-1.35, https://api.crossref.org/works/10.2308/accr.2002.77.s-1.35, https://cas.xmu.edu.cn/info/2083/4954.htm, docs:https://zenodo.org/records/20650537]
+sources:
+  - https://www.cuhk.edu.hk/acy2/workshop/June2009Wasley/1996TAR%29.pdf
+  - https://doi.org/10.2308/tar-9608042309
+  - https://api.crossref.org/works/10.2308/tar-9608042309
+  - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=277231
+  - https://api.crossref.org/works/10.2139/ssrn.277231
+  - https://doi.org/10.2308/accr.2002.77.s-1.35
+  - https://api.crossref.org/works/10.2308/accr.2002.77.s-1.35
+  - https://cas.xmu.edu.cn/info/2083/4954.htm
+  - docs:https://zenodo.org/records/20650537
 status: stable
 description: 公司分析方法卡：基于 Sloan (1996) 应计持续性与 Dechow–Dichev (2002) 营运资本应计模型，在同期间、同合并范围解释利润与经营现金流差异，区分正常投入、收付时点与待核查异常。
 aliases: [利润现金转化, 应计质量, 盈利现金含量]

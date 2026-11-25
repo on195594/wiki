@@ -1,9 +1,9 @@
 ---
 title: Agent 经验固化能力评估：通用框架与历史案例
 created: 2026-05-11
-updated: 2026-11-12
+updated: 2026-11-25
 type: query
-tags: [agent, research, memory, skills, orchestration, cron, validation]
+tags: [agent, hermes, research, memory, skills, orchestration, cron, validation]
 sources: [concepts/agent-experience-consolidation-loops.md, concepts/production-ai-agent-evaluation-framework.md, raw/articles/venturebeat-anthropic-dreaming-ai-agents-2026-05-07.md, docs:https://hermes-agent.nousresearch.com/docs]
 status: closed
 description: 以通用职责、提供方式和验证程度评估 Agent 经验固化闭环，并将具体产品能力隔离为已关闭的版本历史案例。

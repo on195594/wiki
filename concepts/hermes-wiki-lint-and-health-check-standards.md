@@ -1,7 +1,7 @@
 ---
 title: Wiki Lint and Health Check Standards
 created: 2026-04-16
-updated: 2026-11-16
+updated: 2026-11-25
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, debugging]
 sources: [repository:SCHEMA.md, repository:_meta/wiki-health-check-runbook.md, repository:_meta/scripts/wiki_maintain.py, repository:_meta/scripts/wiki_health_check.py, repository:_meta/scripts/wiki_tag_audit.py, repository:_meta/scripts/wiki_catalog.py, repository:_meta/scripts/wiki_public_content_check.py]
@@ -81,4 +81,4 @@ AI Agent wiki 的健康检查不是“看看文件还在不在”，而是持续
 ## Relations
 - refines: [[hermes-wiki-page-writing-standards]]
 - depends_on: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]]
-- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-freshness-and-claim-evidence]], [[okf-for-hermes-wiki-governance-assessment]], [[wiki-health-check-runbook]]
+- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-knowledge-freshness-and-claim-evidence]], [[okf-for-hermes-wiki-governance-assessment]]
