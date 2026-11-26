@@ -180,8 +180,9 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 ## Applied AI Agent practice
 
 - [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]] 将本页原则转成使用 AI Agent 编程时的可选方法指南：先压 contract，再选择 execution lane，再用 typed output、窄工具、显式依赖和分层验证控制不确定性。
+- [[hermes-python-engineering-capability-checklist]] 维护本页原则在 Python 运行时与 Pydantic v2 中的具体检查项（`S_strict` 与 `C_cancel`）：涵盖嵌套子模型非递归 `strict=True` 基类约束、`extra='forbid'`、判别联合 $O(1)$ 工具分派、模块级单例 `TypeAdapter`，以及异步取消屏蔽清理与有界队列背压。
 - [[flutter-version-evolution-and-platform-boundaries]] 将类型化协议与客户端凭证隔离原则延伸至跨平台 UI 的原生互操作（Pigeon / FFI）与可选 AI 生态（GenUI / Genkit Dart）评估边界。
 
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[ai-agent-tool-selection-architecture]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-skill-provider-governance-boundary]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-self-validation-loops]]
+- related: [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[ai-agent-tool-selection-architecture]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-skill-provider-governance-boundary]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-self-validation-loops]], [[hermes-python-engineering-capability-checklist]]

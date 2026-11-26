@@ -4,7 +4,17 @@ created: 2026-06-10
 updated: 2026-11-26
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, closeout]
-sources: [raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md, raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, docs:https://www.langchain.com/blog/the-art-of-loop-engineering, https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b, https://people.orie.cornell.edu/pfrazier/pub/frazier_dp_weor.pdf, https://www.inf.u-szeged.hu/~akiss/pub/fulltext/hodovan2016modernizing.pdf, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html]
+sources:
+  - raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md
+  - raw/articles/addyosmani-loop-engineering-2026-06-08.md
+  - raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md
+  - raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md
+  - docs:https://www.langchain.com/blog/the-art-of-loop-engineering
+  - https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b
+  - https://people.orie.cornell.edu/pfrazier/pub/frazier_dp_weor.pdf
+  - https://www.inf.u-szeged.hu/~akiss/pub/fulltext/hodovan2016modernizing.pdf
+  - https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/single-server-queue-in-heavy-traffic/81C55BC00A68FE6D5385638AA0B0AF37
+  - https://academic.oup.com/jrsssb/article/24/2/383/7035157
 status: stable
 description: 定义 AI Agent 工作流中计划、执行、验证和修正的 loop engineering 方法，含离散控制 Lyapunov 变体收敛判据与 L_auto / E_first / V_loop / ρ_rev 参数化裁决矩阵。
 aliases: [loop-engineering, loop-engineering-agent-workflow]
@@ -178,7 +188,7 @@ LangChain 的《The Art of Loop Engineering》把 loop engineering 进一步拆�
 | $\mathbf{L}_{\text{auto}}$ | **阶段非对称自动化向量（Stage-Asymmetric LOA）**：<br>$\mathbf{L}_{\text{auto}} = (L_{\text{acq}}, L_{\text{anal}}, L_{\text{dec}}, L_{\text{act}}) \in \{1..10\}^4$（[Parasuraman et al. 2000](https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b)） | 1. 只读获取与分析阶段（$L_{\text{acq}}, L_{\text{anal}}$）可开启高自主度；<br>2. 跨越不可逆边界或缺少语义验证器时，$L_{\text{dec}}, L_{\text{act}}$ 须限制在受控菜单或人工审批（Level 3–5） | **虚假完成与越权破坏**：赋予生产写操作高 $L_{\text{act}}$ 却无语义验收（如克隆主页充当 SEO 新页面）；应按后果可逆性降级 $L_{\text{act}}$ 并补齐差异验证器 |
 | $E_{\text{first}}$ | **首次编辑净信息价值与 1-最小差分（First-Edit EVSI & 1-Minimal Patch）**：<br>$\text{NetEVSI}(a_{\text{read}} \mid \mathcal{I}_t) \le 0$；<br>$\forall \delta \in \Delta^*,\; \text{Pass}(P \oplus (\Delta^* \setminus \{\delta\})) = 0$（[Frazier 2011](https://people.orie.cornell.edu/pfrazier/pub/frazier_dp_weor.pdf)，[Zeller 1999](https://www.inf.u-szeged.hu/~akiss/pub/fulltext/hodovan2016modernizing.pdf)） | 1. 有明确故障锚点且本地验证廉价时，当继续泛搜索的 $\text{NetEVSI} \le 0$ 即停止探索；<br>2. 首次编辑严格限制在局部程序切片内并逼近 1-minimal 补丁 $\Delta^*$ | **过度探索与大补丁归因混杂**：编辑前通读几十个无关文件耗尽预算，或一次混入多处顺手重构导致测试失败无法定位；应回滚至最小可证伪假设重做 |
 | $V_{\text{loop}}$ | **循环 Lyapunov 变体与不动点熔断（Loop Potential & Cycle Breaker）**：<br>$\Delta V_t = V(s_{t+1}) - V(s_t) < 0$；<br>$h(s_t) \notin \mathcal{H}_t \land t < T_{\max}$ | 1. 由确定性 dispatcher 跟踪客观错误计数元组 $V(s_t)$ 与状态指纹 $\mathcal{H}_t$；<br>2. 出现状态重访（$h(s_t) \in \mathcal{H}_t$）或连续 $K_{\text{stall}}$ 轮 $\Delta V \ge 0$ 立即熔断 | **死循环振荡与目标漂移**：Agent 在两套错误方案间通宵互改逾 50 轮或篡改测试迁就错误代码；应强制熔断并退回父级重审架构假设 |
-| $\rho_{\text{rev}}$ | **人类审查网关有效利用率（Review Queue Utilization）**：<br>$\rho_{\text{rev}} = \frac{\lambda_{\text{gen}}(1 - p_{\text{filter}})}{\mu_{\text{rev}}} < 1$；<br>$W_q \propto \frac{\rho_{\text{rev}}}{1 - \rho_{\text{rev}}}\left(\frac{c_a^2 + c_s^2}{2}\right)\tau_{\text{rev}}$（[Kingman 1961](https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html)） | 1. 提高前置自验证过滤率 $p_{\text{filter}}$ 并用小步单意图 diff 压低审查耗时方差 $c_s^2$；<br>2. 以回滚率与事故率不上升为硬护栏，控制并发生成速率 $\lambda_{\text{gen}}$ 使 $\rho_{\text{rev}}$ 留有安全余量 | **编排税爆炸与审查走过场（Review Theater）**：并行生成速率逼近或超过人类可署名审查产能（$\rho_{\text{rev}} \to 1$），导致积压发散与草率合并；应缩减并发会话或收紧前置门禁 |
+| $\rho_{\text{rev}}$ | **人类审查网关有效利用率（Review Queue Utilization）**：<br>$\rho_{\text{rev}} = \frac{\lambda_{\text{gen}}(1 - p_{\text{filter}})}{\mu_{\text{rev}}} < 1$；<br>$W_q \propto \frac{\rho_{\text{rev}}}{1 - \rho_{\text{rev}}}\left(\frac{c_a^2 + c_s^2}{2}\right)\tau_{\text{rev}}$（[Kingman 1961](https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/single-server-queue-in-heavy-traffic/81C55BC00A68FE6D5385638AA0B0AF37)；[1962](https://academic.oup.com/jrsssb/article/24/2/383/7035157)，原文受出版社付费墙限制，公式与 $G/G/1$ 前提按摘要核对，详见 [[ai-code-review-governance-and-convergence]]） | 1. 提高前置自验证过滤率 $p_{\text{filter}}$ 并用小步单意图 diff 压低审查耗时方差 $c_s^2$；<br>2. 以回滚率与事故率不上升为硬护栏，控制并发生成速率 $\lambda_{\text{gen}}$ 使 $\rho_{\text{rev}}$ 留有安全余量 | **编排税爆炸与审查走过场（Review Theater）**：并行生成速率逼近或超过人类可署名审查产能（$\rho_{\text{rev}} \to 1$），导致积压发散与草率合并；应缩减并发会话或收紧前置门禁 |
 
 ## What not to promote
 

@@ -731,15 +731,17 @@
       "path": "concepts/agent-pre-deploy-regression-and-trace-debugging.md",
       "type": "concept",
       "title": "Agent 部署前结构回归与工具轨迹调试",
-      "description": "从生产评估主干页拆出工具调用六步调试证据链（结合 W3C Trace Context 跨服务传播与首个可证实异常的定位）、部署前七类结构回归探针矩阵，以及检索上下文敏感性与质量增益的区分清单。",
+      "description": "定义工具调用六步调试证据链、OpenTelemetry GenAI 语义约定与 MCP 带外追踪契约（T_otel）、部署前确定性零出站回放与 HTTP 200 静默截断混沌探针矩阵，以及检索上下文敏感性评估边界。",
       "status": "stable",
       "tags": [
         "agent",
+        "mcp",
         "evaluation",
         "validation",
         "debugging",
         "harness",
-        "workflow"
+        "workflow",
+        "monitoring"
       ],
       "aliases": [
         "agent-pre-deploy-regression",
@@ -765,7 +767,10 @@
           "multiagent-systemic-failure-modes",
           "agent-security-architecture-and-prompt-injection-defense",
           "agent-production-harness-and-cloud-runtime-boundaries",
-          "ai-coding-assistant-context-budget-management"
+          "ai-coding-assistant-context-budget-management",
+          "mcp-stateless-architecture-and-authorization-boundaries",
+          "production-agent-evaluation-baselines",
+          "agentic-programming-system-engineering"
         ]
       }
     },
@@ -773,7 +778,7 @@
       "path": "concepts/agent-production-harness-and-cloud-runtime-boundaries.md",
       "type": "concept",
       "title": "Agent 生产级 Harness 与云端运行时边界",
-      "description": "定义生产级 Agent Harness 的有状态执行边界、共享定义与薄宿主分层、云端长程运行时五窗口恢复（含单调代际隔离令牌 Fencing Tokens、Saga 语义补偿与模糊远程结果先取证后恢复），以及 Agent-as-Code 的 PR 控制面。",
+      "description": "定义生产级 Agent Harness 的有状态执行边界、事件溯源确定性重放与图超步检查点对照、跨版本钉扎与静默语义损坏防御、五窗口幂等对账恢复（D_replay / I_idem），以及 Agent-as-Code 的 PR 控制面。",
       "status": "stable",
       "tags": [
         "agent",
@@ -793,7 +798,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-24",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -812,7 +817,8 @@
           "google-sre-gemini-cli-incident-response",
           "agent-skill-provider-governance-boundary",
           "agent-security-architecture-and-prompt-injection-defense",
-          "agent-execution-sandboxing-and-browser-isolation"
+          "agent-execution-sandboxing-and-browser-isolation",
+          "agentic-programming-system-engineering"
         ]
       }
     },
@@ -1144,7 +1150,7 @@
       "path": "concepts/agentic-programming-system-engineering.md",
       "type": "concept",
       "title": "Agentic Programming as System Engineering",
-      "description": "定义把 Agentic programming 作为带状态、工具、边界和治理的软件系统来设计的原则。",
+      "description": "定义把 Agentic programming 作为确定性宿主控制面包裹有界随机推理算子的软件系统工程原则，并路由 D_replay / I_idem / T_otel / C_cancel / S_strict 五参数运行时契约。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1175,7 +1181,10 @@
           "hermes-context-layer-operating-rules",
           "subagent-orchestration-patterns",
           "agent-architecture-primary-paper-map",
-          "stateful-agent-environments-and-grounded-verification"
+          "stateful-agent-environments-and-grounded-verification",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "hermes-python-engineering-capability-checklist"
         ]
       }
     },
@@ -2832,7 +2841,7 @@
       "path": "concepts/hermes-python-engineering-capability-checklist.md",
       "type": "concept",
       "title": "AI Agent Python Engineering Capability Checklist",
-      "description": "列出 AI Agent 执行 Python 工程任务时的流式输入、资源生命周期、结构化并发、类型化边界和性能检查项，并按真实变更压力选择最小设计边界。",
+      "description": "列出 AI Agent 执行 Python 工程任务时的流式输入、边沿与电平触发取消清理、队列内存背压（C_cancel）、Pydantic v2 递归严格解析与判别联合（S_strict）、Python 3.14–3.15 自由线程 GIL 门禁及按变更压力选择最小设计边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2843,7 +2852,8 @@
         "optimization",
         "architecture",
         "validation",
-        "pydantic"
+        "pydantic",
+        "typed-boundary"
       ],
       "aliases": [
         "agent-python-engineering-capability-checklist"
@@ -4128,7 +4138,8 @@
           "agent-security-architecture-and-prompt-injection-defense",
           "agent-skill-provider-governance-boundary",
           "agent-production-harness-and-cloud-runtime-boundaries",
-          "agent-self-validation-loops"
+          "agent-self-validation-loops",
+          "hermes-python-engineering-capability-checklist"
         ]
       }
     },
@@ -4594,7 +4605,8 @@
           "ai-code-review-governance-and-convergence",
           "entropy-and-entropy-increase",
           "hermes-agent-workflow-layering-and-adoption-order",
-          "ai-agent-tool-selection-architecture"
+          "ai-agent-tool-selection-architecture",
+          "hermes-python-engineering-capability-checklist"
         ]
       }
     },

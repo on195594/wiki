@@ -9,6 +9,7 @@ description: 回答如何用 AI Agent 以类型化边界、仓库复杂度分流
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, validation, workflow]
 sources:
   - concepts/typed-ai-agent-boundaries.md
+  - concepts/hermes-python-engineering-capability-checklist.md
   - concepts/hermes-ai-workflow-formalization-principles.md
   - concepts/ai-coding-agent-workflow-types.md
   - concepts/ai-code-review-governance-and-convergence.md
@@ -90,7 +91,7 @@ AI Agent 任务要求可以这样写：
 如果 LLM 输出被程序消费，定义输出 schema 并校验类型与业务约束；JSON 解析成功不等于有效。优先复用现有校验能力，不为此默认新增 Pydantic。
 ```
 
-当单次调用必须同时承担“范围筛选 / 状态判断”和“深层嵌套对象提取”时（尤其在小模型或复杂数据管线中），主动评估拆分为两个窄契约：（1）先锁定候选范围，（2）再对已锁定对象提取明细字段（详见 [[typed-ai-agent-boundaries]]）。
+当单次调用必须同时承担“范围筛选 / 状态判断”和“深层嵌套对象提取”时（尤其在小模型或复杂数据管线中），主动评估拆分为两个窄契约：（1）先锁定候选范围，（2）再对已锁定对象提取明细字段（详见 [[typed-ai-agent-boundaries]]）。在 Python 项目中落地 Pydantic v2 严格解析、异步结构化并发或 Python 3.14–3.15 自由线程构建时，嵌套子模型非递归 `strict=True` 基类、`extra='forbid'`、判别联合 $O(1)$ 分派、单例 `TypeAdapter` 以及有界队列内存背压与取消清理检查项统一由 [[hermes-python-engineering-capability-checklist]] 主维护。
 
 ### 3.5 Apply First-Edit Economy to keep context focused
 
@@ -234,4 +235,4 @@ AI Agent 任务要求可以这样写：
 
 ## Relations
 - depends_on: [[typed-ai-agent-boundaries]], [[hermes-ai-workflow-formalization-principles]], [[ai-coding-agent-workflow-types]], [[hermes-context-layer-operating-rules]], [[first-edit-economy-for-coding-agents]], [[agent-self-validation-loops]]
-- related: [[loop-engineering-hermes-agent-workflow]], [[ai-code-review-governance-and-convergence]], [[entropy-and-entropy-increase]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]]
+- related: [[loop-engineering-hermes-agent-workflow]], [[ai-code-review-governance-and-convergence]], [[entropy-and-entropy-increase]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]], [[hermes-python-engineering-capability-checklist]]
