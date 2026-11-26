@@ -1,12 +1,27 @@
 ---
 title: Typed AI Agent Boundaries
 created: 2026-05-01
-updated: 2026-11-19
+updated: 2026-11-26
 type: concept
 tags: [agent, ai-coding, typed-boundary, structured-output, pydantic, governance]
-sources: [raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md, raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, concepts/dijkstra-ai-programming-formalization.md, concepts/hermes-ai-workflow-formalization-principles.md, https://arxiv.org/abs/2307.09702, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf, https://arxiv.org/abs/2402.01030, https://blog.cloudflare.com/code-mode/, https://www.anthropic.com/research/advanced-tool-use, https://arxiv.org/abs/2503.18813, https://arxiv.org/abs/2506.08837]
+sources:
+  - raw/articles/machinelearningmastery-pydantic-ai-agents-2026-04-29.md
+  - raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md
+  - raw/articles/kdnuggets-constraining-output-space-slm-narrow-automation-2026-08-13.md
+  - raw/articles/towardsdatascience-structured-output-local-llms-2026-08-09.md
+  - raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md
+  - concepts/dijkstra-ai-programming-formalization.md
+  - concepts/hermes-ai-workflow-formalization-principles.md
+  - https://arxiv.org/abs/2307.09702
+  - https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf
+  - https://arxiv.org/abs/2402.01030
+  - https://blog.cloudflare.com/code-mode/
+  - https://www.anthropic.com/research/advanced-tool-use
+  - https://arxiv.org/abs/2503.18813
+  - https://arxiv.org/abs/2506.08837
+  - https://arxiv.org/html/2510.20270v1
 status: stable
-description: 说明通过 typed input/output、FSM 约束解码、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。
+description: 说明通过 typed input/output、FSM 约束解码、规格冲突的显式返回类型、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。
 aliases: [typed-agent-boundaries]
 volatility: medium
 review_by: 2027-03-02
@@ -99,6 +114,7 @@ Pydantic AI 的 `RunContext` 模式把依赖作为运行时参数注入工具函
 - 程序员或 Agent 不只指定特定输入输出对（如 `f(2) == 4`），而是用代数性质形式化表达在任意合法输入 $x \in \mathcal{X}$ 下必须始终成立的**系统不变量（Invariants）**（如逆操作对称性 $f^{-1}(f(x)) = x$、幂等性 $g(g(x)) = g(x)$、单调性或保持数据守恒）。
 - 结合随机生成与**收缩（Shrinking）**机制：当测试引擎在大量随机生成的结构化测试用例中探测到违反不变量的样本时，自动执行贪婪搜索将其收缩为导致失败的**局部最小反例（minimal failing test case）**。
 - **[推论] 在 AI 编程中的应用**：对 Agent 生成的复杂数据转换、序列化或解析逻辑，强制其配套提供属性测试（例如使用 Python `hypothesis` 库）；利用收缩出的最小反例可直接阻断有缺陷的代码合入，并为上下文压缩提供极低噪声的精确调试用例。
+- **为规格冲突预留返回类型**：[*ImpossibleBench* §5.3](https://arxiv.org/html/2510.20270v1) 在 Conflicting-SWEbench 上允许 GPT-5 停止并上报冲突后，作弊率从 `54%` 降至 `9%`；测试只读是另一个实验。[推论] 把 `SpecificationConflict` 和 `MissingPrerequisite` 与 `PatchResult` 并列为合法返回类型。这样调用方能按 [[agent-self-validation-loops]] 的停止条件请求裁决，而不必把无法完成的任务伪装成补丁。
 
 ## What uncertainty this solves
 
@@ -168,4 +184,4 @@ AI Agent 现有规则“写完要验证”可以进一步细化为：agent 输�
 
 ## Relations
 - depends_on: [[dijkstra-ai-programming-formalization]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-coding-agent-workflow-types]], [[hermes-python-engineering-capability-checklist]], [[agent-context-engineering]], [[ai-coding-assistant-context-budget-management]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[constrained-toolbox-evaluator-loop]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[wiki-ingestion-workflow]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]], [[agent-security-architecture-and-prompt-injection-defense]], [[repository-level-code-intelligence-layer]]
+- related: [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[ai-agent-tool-selection-architecture]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]], [[agent-pre-deploy-regression-and-trace-debugging]], [[flutter-version-evolution-and-platform-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-skill-provider-governance-boundary]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-self-validation-loops]]

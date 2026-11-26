@@ -956,7 +956,7 @@
       "path": "concepts/agent-self-validation-loops.md",
       "type": "concept",
       "title": "Agent Self-Validation Loops",
-      "description": "定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改测试门禁及独立验证子代理。",
+      "description": "定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改进程外判分门禁、增量变异测试及独立验证子代理。",
       "status": "stable",
       "tags": [
         "agent",
@@ -973,35 +973,23 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-17",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
         ],
         "related": [
           "ai-code-review-governance-and-convergence",
-          "claude-code-practical-workflow-tips",
-          "agentic-content-pipeline-design-patterns",
-          "ai-coding-agent-workflow-types",
-          "first-edit-economy-for-coding-agents",
-          "typed-ai-agent-boundaries",
-          "ai-agent-document-fidelity-risk",
-          "hermes-context-layer-operating-rules",
-          "wiki-ingestion-workflow",
-          "constrained-toolbox-evaluator-loop",
-          "agent-architecture-primary-paper-map",
-          "stateful-agent-environments-and-grounded-verification",
-          "human-machine-scientific-discovery-verification-scarcity",
-          "google-sre-gemini-cli-incident-response",
-          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "loop-engineering-hermes-agent-workflow",
           "agent-failure-closed-loop-evaluation",
           "subagent-orchestration-patterns",
           "agent-production-harness-and-cloud-runtime-boundaries",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
-          "hermes-python-engineering-capability-checklist",
-          "agent-pre-deploy-regression-and-trace-debugging",
-          "agent-development-lifecycle",
-          "deterministic-analytics-llm-reasoning-boundary"
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "agent-architecture-primary-paper-map",
+          "stateful-agent-environments-and-grounded-verification",
+          "ai-agent-document-fidelity-risk",
+          "claude-code-practical-workflow-tips",
+          "agentic-content-pipeline-design-patterns"
         ]
       }
     },
@@ -1404,7 +1392,7 @@
       "path": "concepts/ai-code-review-governance-and-convergence.md",
       "type": "concept",
       "title": "AI Code Review Governance, Traceability, and Convergence",
-      "description": "定义 AI 生成代码的分层审查、双向追溯、风险分级与审查收敛，含用变异测试抽查关键断言，以及基于 Little 定律与 Kingman 公式的审查容量边界。",
+      "description": "定义 AI 生成代码的分层审查、Gotel/NASA 双向追溯、Google/Meta 增量变异测试与风险分级收敛，并以微软/Google 审查原典及 Little 定律、Kingman 重负载公式约束审查容量边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1423,7 +1411,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-24",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -1438,10 +1426,7 @@
           "ai-assumption-challenger-before-execution",
           "ai-coding-agent-workflow-types",
           "loop-engineering-hermes-agent-workflow",
-          "ai-assistance-cognitive-substitution-and-skill-formation",
-          "hermes-python-engineering-capability-checklist",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
-          "repository-level-code-intelligence-layer"
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -1449,7 +1434,7 @@
       "path": "concepts/ai-coding-agent-workflow-types.md",
       "type": "concept",
       "title": "AI Coding Agent Workflow Types",
-      "description": "分类 AI coding agent 的常见工作流类型，并结合 AI-Native SDLC 的阶段工件审计链（intent/spec/plan/diff）、单一事实源对齐与生产控制带闭环选择协作与验证方式。",
+      "description": "分类 AI coding agent 的四类交互模式，结合受控生产力 RCT（绿地提速 vs 成熟大仓减速与感知错觉）、2026 去污染基准边界及 AI-Native SDLC 阶段工件链选择协作方式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1465,7 +1450,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order",
@@ -1474,12 +1459,7 @@
         "related": [
           "ai-code-review-governance-and-convergence",
           "subagent-orchestration-patterns",
-          "claude-code-practical-workflow-tips",
-          "hermes-layer-routing-decision-checklist",
-          "wiki-ingestion-workflow",
           "first-edit-economy-for-coding-agents",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
-          "hermes-python-engineering-capability-checklist",
           "agent-development-lifecycle",
           "hermes-ai-workflow-formalization-principles",
           "agent-self-validation-loops"
@@ -2067,7 +2047,7 @@
       "path": "concepts/dijkstra-ai-programming-formalization.md",
       "type": "concept",
       "title": "Dijkstra on AI Programming Formalization",
-      "description": "整理 Dijkstra 思想对 AI 编程中规格化、形式化和自然语言边界的启发。",
+      "description": "整理 Dijkstra 思想对 AI 编程中规格化、形式化、pre-RS 意图追溯、规格投机缩放效应与变异测试近似验证边界的启发。",
       "status": "stable",
       "tags": [
         "llm",
@@ -2081,7 +2061,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-17",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2091,7 +2071,7 @@
           "dijkstra-ewd667-vs-ai-programming-article",
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "hermes-ai-workflow-formalization-principles",
-          "wiki-ingestion-workflow",
+          "ai-code-review-governance-and-convergence",
           "typed-ai-agent-boundaries",
           "hermes-python-engineering-capability-checklist"
         ]
@@ -2440,7 +2420,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "dijkstra-ai-programming-formalization"
@@ -2451,6 +2431,7 @@
         ],
         "related": [
           "ai-code-review-governance-and-convergence",
+          "ai-coding-agent-workflow-types",
           "typed-ai-agent-boundaries",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
@@ -2458,12 +2439,6 @@
           "subagent-orchestration-patterns",
           "loop-engineering-hermes-agent-workflow",
           "ai-assumption-challenger-before-execution",
-          "dijkstra-ewd667-vs-ai-programming-article",
-          "llm-summary-identification-step",
-          "hermes-knowledge-base-operating-flow",
-          "hermes-retrieval-priority-and-answer-path",
-          "deterministic-analytics-llm-reasoning-boundary",
-          "wiki-ingestion-workflow",
           "hermes-python-engineering-capability-checklist"
         ]
       }
@@ -3676,7 +3651,7 @@
       "path": "concepts/production-ai-agent-evaluation-framework.md",
       "type": "concept",
       "title": "Production AI Agent Evaluation Framework",
-      "description": "定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。",
+      "description": "定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含轨迹与任务结果关联及 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。",
       "status": "stable",
       "tags": [
         "agent",
@@ -3692,7 +3667,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-23",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map",
@@ -4188,7 +4163,7 @@
       "path": "concepts/typed-ai-agent-boundaries.md",
       "type": "concept",
       "title": "Typed AI Agent Boundaries",
-      "description": "说明通过 typed input/output、FSM 约束解码、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。",
+      "description": "说明通过 typed input/output、FSM 约束解码、规格冲突的显式返回类型、窄工具面、强类型沙箱能力绑定（Code Mode Bindings）、显式依赖注入和属性测试降低 AI Agent 不确定性的边界设计。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4204,7 +4179,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -4212,22 +4187,18 @@
         ],
         "related": [
           "ai-coding-agent-workflow-types",
-          "hermes-python-engineering-capability-checklist",
           "agent-context-engineering",
-          "ai-coding-assistant-context-budget-management",
-          "hermes-context-layer-operating-rules",
-          "hermes-layer-routing-decision-checklist",
+          "ai-agent-tool-selection-architecture",
           "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
           "ai-agent-document-fidelity-risk",
-          "constrained-toolbox-evaluator-loop",
           "deterministic-analytics-llm-reasoning-boundary",
           "agent-pre-deploy-regression-and-trace-debugging",
           "flutter-version-evolution-and-platform-boundaries",
-          "wiki-ingestion-workflow",
           "hermes-agent-workflow-layering-and-adoption-order",
-          "ai-agent-tool-selection-architecture",
           "agent-security-architecture-and-prompt-injection-defense",
-          "repository-level-code-intelligence-layer"
+          "agent-skill-provider-governance-boundary",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-self-validation-loops"
         ]
       }
     },
@@ -4672,7 +4643,7 @@
       "path": "queries/how-i-should-use-hermes-for-ai-coding-with-typed-boundaries.md",
       "type": "query",
       "title": "Using AI Agent for AI Coding with Typed Boundaries",
-      "description": "回答如何用 AI Agent 以类型化边界、分阶段结构化提取、首次编辑经济性、受控沙箱程序化编排（防 JSON 搬运工）、分层验证门禁和爆炸半径有界清理执行反熵 AI 编程任务。",
+      "description": "回答如何用 AI Agent 以类型化边界、仓库复杂度分流、首次编辑经济性、受控沙箱程序化编排（防 JSON 搬运工）、只读测试与冲突显式上报门禁及有界单意图清理执行反熵 AI 编程任务。",
       "status": "stable",
       "tags": [
         "agent",
@@ -4689,7 +4660,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "typed-ai-agent-boundaries",
@@ -4700,14 +4671,11 @@
           "agent-self-validation-loops"
         ],
         "related": [
-          "hermes-layer-routing-decision-checklist",
           "loop-engineering-hermes-agent-workflow",
           "ai-code-review-governance-and-convergence",
-          "hermes-python-engineering-capability-checklist",
           "entropy-and-entropy-increase",
           "hermes-agent-workflow-layering-and-adoption-order",
-          "ai-agent-tool-selection-architecture",
-          "ai-coding-assistant-context-budget-management"
+          "ai-agent-tool-selection-architecture"
         ]
       }
     },

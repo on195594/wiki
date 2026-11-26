@@ -1,12 +1,12 @@
 ---
 title: Production AI Agent Evaluation Framework
 created: 2026-05-15
-updated: 2026-11-23
+updated: 2026-11-26
 type: concept
 tags: [agent, evaluation, validation, monitoring, harness, workflow]
-sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, concepts/agent-evaluation-rubric-calibration.md]
+sources: [raw/articles/towardsdatascience-production-ai-agent-evaluation-harness-2026-05-13.md, raw/articles/machinelearningmastery-tool-selection-ai-agents-2026-07-06.md, raw/articles/kdnuggets-llm-latency-inference-cost-2026-07-18.md, raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/medium-kritnandan-prompt-engineering-ai-product-2026-08-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/rrsi-harness-search-regularization-2026-09.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, concepts/agent-evaluation-rubric-calibration.md, docs:https://www.langchain.com/blog/the-agent-lake]
 status: stable
-description: 定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。
+description: 定义生产级 AI Agent 的检索、生成、行为与运营四层评估框架，含轨迹与任务结果关联及 N_eff / J_judge / Δ_NI / C_amort 参数化评估与发布门禁裁决矩阵；工具轨迹六步调试与结构回归探针见子页。
 aliases: [agent-evaluation-framework]
 volatility: medium
 review_by: 2027-03-02
@@ -100,7 +100,14 @@ verified_at: 2026-11-02
 
 工程含义：可用的 Agent 还必须可负担、可观测、可调优。平均延迟和平均成本会隐藏长尾失败。
 
-生产观测字段、延迟/成本诊断顺序、控制层边界和外部经验阈值由 [[production-agent-evaluation-baselines]] 单独维护。本页只保留 Production layer 在四层框架中的位置。
+生产观测字段、延迟/成本诊断顺序、控制层边界和外部经验阈值由 [[production-agent-evaluation-baselines]] 单独维护。
+
+#### 生产评估：轨迹与任务结果的关联
+
+Sam Crowder 在 LangChain 的 [The Agent Lake](https://www.langchain.com/blog/the-agent-lake)（2026-11-24，*What is in the agent lake* 一节）将运行轨迹（trace，记录 Agent 做了什么）与任务结果（outcome，记录观察到的结果）分开。单轮点踩可关联一条轨迹，整段对话评分可关联一个会话（thread）；同一个会话可以促成多个 PR 合并，一个 PR 也可能由多个会话共同促成。
+
+- **[推论] 按指标对象计数，不按关联条数计数。** 结果独立记录，再关联到有关的轨迹或会话。例如按合并的 PR 数量统计时，同一 PR 即使关联两个会话也只计一次；若统计会话成功率，则明确定义哪些会话进入分母和什么算成功。关联本身不证明哪个会话造成了结果。
+- **[推论] 保留证据来源和观察范围。** 区分外部系统状态、用户反馈、人工标注和模型评分。仓库回读确认 PR 已合并，只证实这一外部状态；模型判断“任务已完成”是代理信号，不能和实测结果混作同一个成功率。未观察到结果应标为未知，不自动计作失败；能回读终态的场景参见 [[stateful-agent-environments-and-grounded-verification]]。
 
 ## 部署前结构回归与 RAG 决策敏感性边界（子页导航）
 

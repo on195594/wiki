@@ -1,7 +1,7 @@
 ---
 title: AI Agent Workflow Formalization Principles
 created: 2026-04-16
-updated: 2026-11-11
+updated: 2026-11-26
 type: concept
 tags: [agent, llm, workflow, decision, note, skills, governance]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/towardsdatascience-vibe-coding-spec-driven-development-2026-05-12.md, raw/articles/addyosmani-agent-skills-2026-05-03.md, raw/articles/langchain-interpreter-skills-2026-05-30.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/towardsdatascience-right-problem-agentic-ai-2026-09-03.md, docs:https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/, raw/articles/aymannadeem-plan-mode-is-dead-2026-09-24.md, raw/articles/thenewstack-kill-code-review-theater-2026-09-30.md, docs:https://www.oreilly.com/radar/code-review-after-code-gets-cheap/, raw/articles/claude-dev-solving-code-review-at-anthropic-2026-10-15.md, https://arxiv.org/abs/2307.09702, https://www.inf.unibz.it/~franconi/teaching/2006/kbdb/Codd72a.pdf, https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf]
@@ -72,7 +72,7 @@ AI Agent 映射：
 
 这是一条风险比例原则，不是“消除全部不确定性”的硬门禁，也不意味着默认增加多 Agent 审查。文章主要提供工程师经验案例与假设性推演，没有受控数据证明工时不增加或返工必然下降；其中“理想情况下不会花更多时间”不能转写成 AI Agent 的效果承诺或阈值。
 
-证据边界：原文是二手工程综述；ROPE、SWE-bench/SWT-Bench 和 DORA 数字在成为强制门禁或本地阈值前，需要回到原论文或官方报告核验。
+证据边界：原文是二手工程综述；编码基准的适用范围与受控生产力实验见 [[ai-coding-agent-workflow-types]]，DORA 交付稳定性指标的口径见 [[ai-code-review-governance-and-convergence]]。这些数字和 ROPE 估计均不能直接作为本地门禁阈值。
 
 ### 规划是过程，不必总有计划文档
 
@@ -223,4 +223,4 @@ LangChain 的 [[langchain-interpreter-skills-2026-05-30]] 对本页的增量价�
 
 - refines: [[dijkstra-ai-programming-formalization]]
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[ai-code-review-governance-and-convergence]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]], [[dijkstra-ewd667-vs-ai-programming-article]], [[llm-summary-identification-step]], [[hermes-knowledge-base-operating-flow]], [[hermes-retrieval-priority-and-answer-path]], [[deterministic-analytics-llm-reasoning-boundary]], [[wiki-ingestion-workflow]], [[hermes-python-engineering-capability-checklist]]
+- related: [[ai-code-review-governance-and-convergence]], [[ai-coding-agent-workflow-types]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]], [[hermes-python-engineering-capability-checklist]]

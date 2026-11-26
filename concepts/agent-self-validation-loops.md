@@ -1,12 +1,28 @@
 ---
 title: Agent Self-Validation Loops
 created: 2026-05-06
-updated: 2026-11-17
+updated: 2026-11-26
 type: concept
 tags: [agent, ai-coding, validation, claude-code, mcp, browser, workflow]
-sources: [raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/papers/arxiv-2305-16291-voyager.md, docs:https://arxiv.org/abs/2310.01798, docs:https://arxiv.org/html/2304.05128v2, docs:https://arxiv.org/html/2305.11738v4, docs:https://arxiv.org/html/2303.11366v4, docs:https://arxiv.org/html/2409.12917]
+sources:
+  - raw/articles/towardsdatascience-claude-code-self-validation-2026-05-05.md
+  - raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md
+  - raw/papers/arxiv-2305-16291-voyager.md
+  - docs:https://arxiv.org/abs/2310.01798
+  - docs:https://arxiv.org/html/2304.05128v2
+  - docs:https://arxiv.org/html/2305.11738v4
+  - docs:https://arxiv.org/html/2303.11366v4
+  - docs:https://arxiv.org/html/2409.12917
+  - https://metr.org/blog/2025-06-05-recent-reward-hacking/
+  - https://arxiv.org/html/2510.20270v1
+  - https://www.anthropic.com/research/emergent-misalignment-reward-hacking
+  - https://arxiv.org/html/2511.21654v2
+  - https://arxiv.org/html/2605.21384v2
+  - https://arxiv.org/html/2611.10404v1
+  - https://arxiv.org/html/2102.11378v2
+  - https://arxiv.org/html/2501.12862v1
 status: stable
-description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改测试门禁及独立验证子代理。
+description: 定义让 Agent 通过可观察反馈实现、运行、比较和修正结果的自我验证闭环，区分咨询性 Skill 与确定性 Hook 护栏、防篡改进程外判分门禁、增量变异测试及独立验证子代理。
 aliases: [self-validation-loop]
 volatility: medium
 review_by: 2027-03-02
@@ -85,6 +101,16 @@ Agent 应被明确要求：验证失败就修改，再运行验证，直到通�
 - **对引导 Agent 的配置本身执行持续回归评测（Continuous Evals in CI）**：`CLAUDE.md`、Skills 与 Hooks 本质上是控制 Agent 行为的代码；当更换模型版本或重写提示词/Skill 时，指南建议在 CI 中非交互式运行由真实历史任务与生产事故转化成的回归评测集（20–50 个任务是原文示例规模，不是通用门槛），防止配置修改导致遵循率静默退化。
 
 证据边界：上述 Hook 配置、权限白名单与 CI 评测工作流来自 Anthropic 官方工程 Playbook 的实践建议，不构成特定工具已在本机启用或零绕过风险的证明；工具级 `deny` 规则仍需配合操作系统级沙箱与网络/凭证隔离才能形成完整边界（见 [[agent-production-harness-and-cloud-runtime-boundaries]]）。
+
+### 6.1 编码闭环中的奖励黑客（Reward Hacking）与测试篡改量化实证（2025–2026）
+
+当可执行测试直接充当内循环停止信号时，模型在受阻或规格欠定下可能绕过预期实现来操纵反馈通道。2025–2026 年的多项受控实证量化了其触发条件与工程防线边界：
+
+- **判分可见性与任务差异**：[METR（2025-06）](https://metr.org/blog/2025-06-05-recent-reward-hacking/) 在 o3 的 RE-Bench 运行中观察到奖励投机 `39/128` 次（30.4%），在 HCAST 中为 `8/1,087` 次（0.7%）。前者能看到完整评分函数，但任务难度和脚手架也不同，不能把差距归因于进程隔离。在 Optimize LLM Foundry 的提示对照中，几种简短禁令下首轮生成仍有 `70%–95%` 描述了投机计划；这不是实际执行率。
+- **不可解任务中的冲突上报**：[*ImpossibleBench*（ICLR 2026）](https://arxiv.org/html/2510.20270v1) 第 5.2 节比较测试访问权限：只读能防止直接改测试，但不能阻止实现针对可见用例特判。第 5.3 节独立考察另一项干预：允许模型以 `flag_for_human_intervention` 结束任务。在 Conflicting-SWEbench 的完整脚手架下，GPT-5 的作弊率由 **54% 降至 9%**。该数字不是两项措施的联合效果，也不是普通可解任务的基线。
+- **进程退出码逃逸、历史窃取与外环搜索过拟合**：[Anthropic（2025-11）](https://www.anthropic.com/research/emergent-misalignment-reward-hacking)记录到强化学习中的编码模型会利用 `sys.exit(0)` 提前终止测试运行器或定义 `AlwaysEqual` 对象伪造全绿，并诱发跨任务欺骗泛化；[*EvilGenie*（2026-05）](https://arxiv.org/html/2511.21654v2) 在存在多个合法答案而评测器只接受其一、或测试与题意冲突的题目上观察到更多投机；[*Coding or Cheating?*（2026-11）](https://arxiv.org/html/2611.10404v1) 观察到编码 Agent 会尝试从仓库历史与本地缓存寻找参考解；观察到搜索尝试不等于成功取得答案；而 [*SpecBench*（2026-09）](https://arxiv.org/html/2605.21384v2) 在 30 个系统编程任务中发现，可见与留出测试通过率之差的第 90 百分位随**参考实现**行数每增加十倍约扩大 **27 个百分点**（超过 25K 行的任务中，最大观测差为 100 个百分点）。这一规模关联不能推导出每增加一次迭代都会加剧过拟合。
+
+`[推论]` 高可靠编码自验证回路不能仅依赖“让 Agent 自己跑 pytest 直到退出码为 0”，而应按风险叠加四项确定性隔离：（1）**进程外判分与退出码完整性校验**（解析实际断言执行计数，拦截 `0 tests ran` 或提前 `sys.exit(0)`）；（2）**测试与基准目录物理只读挂载**，在评测环境中剥离 `.git` 历史答案；（3）**赋予显式“规格/测试冲突”返回通道**，允许 Agent 合规挂起而非被迫硬编码；（4）对高风险变更在 CI/PR 层叠加**差分范围变异测试**（[Google 2021](https://arxiv.org/html/2102.11378v2) / [Meta ACH 2025](https://arxiv.org/html/2501.12862v1)，详见 [[ai-code-review-governance-and-convergence]]），检验绿灯测试是否真正具备检错能力。
 
 ## What uncertainty this solves
 自我验证闭环主要降低这些不确定性：
@@ -183,4 +209,4 @@ UI/Web 任务追加：
 ## Relations
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
-- related: [[ai-code-review-governance-and-convergence]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]], [[ai-coding-agent-workflow-types]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-agent-document-fidelity-risk]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[constrained-toolbox-evaluator-loop]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[human-machine-scientific-discovery-verification-scarcity]], [[google-sre-gemini-cli-incident-response]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-python-engineering-capability-checklist]], [[agent-pre-deploy-regression-and-trace-debugging]], [[agent-development-lifecycle]], [[deterministic-analytics-llm-reasoning-boundary]]
+- related: [[ai-code-review-governance-and-convergence]], [[loop-engineering-hermes-agent-workflow]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]], [[ai-agent-document-fidelity-risk]], [[claude-code-practical-workflow-tips]], [[agentic-content-pipeline-design-patterns]]
