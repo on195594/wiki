@@ -1,10 +1,10 @@
 ---
 title: Wiki Page Writing Standards
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-26
 type: concept
 tags: [agent, knowledge-base, workflow, configuration, note]
-sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, docs:https://diataxis.fr/]
+sources: [repository:SCHEMA.md, docs:https://diataxis.fr/]
 status: stable
 description: 定义 AI Agent wiki 正式页面的命名、frontmatter、结构、wikilinks、Relations 和质量检查规则。
 aliases: [page-writing-standards, wiki-writing-standards, agent-wiki-page-writing-standards]
@@ -170,6 +170,7 @@ AI Agent wiki 页面不是随手笔记，而是正式知识资产。
 - 健康检查规范见 [[hermes-wiki-lint-and-health-check-standards|Wiki Lint and Health Check Standards]]
 
 ## Relations
+
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[wiki-ingestion-workflow]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-wiki-lint-and-health-check-standards]], [[hermes-knowledge-freshness-and-claim-evidence]]
+- depends_on: [[hermes-memory-skills-wiki-boundaries]]
+- related: [[hermes-retrieval-priority-and-answer-path]], [[hermes-wiki-lint-and-health-check-standards]], [[wiki-ingestion-workflow]]

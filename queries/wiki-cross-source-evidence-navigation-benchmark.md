@@ -1,7 +1,7 @@
 ---
 title: Wiki 跨源证据导航离线评测方案与拓扑基线
 created: 2026-11-02
-updated: 2026-11-24
+updated: 2026-11-26
 type: query
 tags: [agent, knowledge-base, evaluation, verification, architecture, workflow]
 sources: [repository:_meta/catalog.json, repository:_meta/retrieval-benchmark.json, repository:_meta/retrieval-benchmark-q5-q8.json, concepts/hermes-knowledge-freshness-and-claim-evidence.md, concepts/production-agent-evaluation-baselines.md, concepts/production-ai-agent-evaluation-framework.md, concepts/hermes-retrieval-priority-and-answer-path.md, concepts/agentic-graphrag-pattern-selection.md, concepts/agent-research-evidence-gate.md, raw/articles/langchain-agent-memory-openwiki-graphs-2026-10-28.md, raw/articles/langchain-self-correcting-memory-openwiki-2026-08-26.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, raw/articles/machinelearningmastery-multi-agent-research-assistant-2026-05-21.md, raw/articles/langchain-model-router-in-harness-2026-10-01.md, raw/articles/llamaindex-markdown-is-all-you-need-2026-10-08.md, raw/articles/motherduck-jev-for-analytics-2026-09-29.md, raw/articles/venturebeat-frontier-ai-document-fidelity-risk-2026-05-13.md, raw/articles/towardsdatascience-hybrid-ai-deterministic-analytics-2026-05-22.md, https://arxiv.org/html/2502.14802v2, https://arxiv.org/html/2606.00610v1, https://arxiv.org/html/2602.07549v1]
@@ -44,22 +44,22 @@ aliases: [cross-source-evidence-benchmark, evidence-navigation-benchmark, wiki-e
 | **Q7：经验固化闭环 × Skill 可逆状态机 × 知识演化元技能** | [[agent-experience-consolidation-loops]] ↔ [[agent-skill-governance-and-reversible-state]] | 正式页：上述两页 + [[agent-knowledge-evolution-and-meta-skills]], [[hermes-memory-skills-wiki-boundaries]]<br>原始源：[[arxiv-2608-27454-wikiskill]], [[microsoft-research-evolib-evolving-knowledge-2026-07-30]], [[xudong-han-self-evolving-agent-alloomi-2026-08-13]] |
 | **Q8：文档解析结构保真 × 文档失真风险 × 确定性计算边界** | [[document-parsing-structural-fidelity]] ↔ [[ai-agent-document-fidelity-risk]] | 正式页：上述两页 + [[deterministic-analytics-llm-reasoning-boundary]], [[typed-ai-agent-boundaries]]<br>原始源：[[llamaindex-markdown-is-all-you-need-2026-10-08]], [[venturebeat-frontier-ai-document-fidelity-risk-2026-05-13]], [[motherduck-jev-for-analytics-2026-09-29]] |
 
-## 3. 静态图谱一跳双向可达性基线（2026-11-06 实测）
+## 3. 静态图谱一跳双向可达性基线（2026-11-26 实测）
 
 基于 `repository:_meta/catalog.json` 的显式 `## Relations` 边（含出边与 `wiki_reverse_lookup` 入边），对每个入口做 1 跳展开，**包含种子自身，并从图中排除本评测页及其关联边**，得到正式页集合 $P_A, P_B$，避免评测页的回链污染候选集合。$R_A, R_B$ 是这些正式页 frontmatter `sources` 中的直接 `raw/` 路径与非代码区原始源 wikilink 的并集，不递归扩展原始源。黄金集取第 2 节表格；集合指标（含召回率 $R$、精确率 $P$ 与一跳正式页 UTF-8 字节体积代理）按此口径重算如下。
 
-有效输入（各正式页的 Relations 与上述直接原始源集合，排除本页）规范化后的 SHA256 为 `d644e62fff8102efcbaf1ed3b9d2d00eddaf9ea858a446e6150680876f7bbbb8`。该指纹仅固定拓扑与直接原始源集合，不覆盖正文体积；新增 `size_input_sha256: 5d93018d315c79c7367ab5012e0081f8caa3e179c119a6d99f3ec469ec5e5dbf` 单独对正式页 UTF-8 字节数映射做指纹。正文或元数据变化后须重算体积及其指纹；两者均不代表模型问答评测通过。
+有效输入（各正式页的 Relations 与上述直接原始源集合，排除本页）规范化后的 SHA256 为 `41c9b0836a0adf5fae3651f35f43896f2dcd56b862afa06ecfba347bcd451638`。该指纹仅固定拓扑与直接原始源集合，不覆盖正文体积；`size_input_sha256: 83830b1588ef73f8ee2b268d2b6ae3529b04265cf5662ec659a195721d4759c7` 单独对正式页 UTF-8 字节数映射做指纹。正文或元数据变化后须重算体积及其指纹；两者均不代表模型问答评测通过。
 
-| 题号 | $|P_A|$ / $|P_B|$ | 正式页重合度 $J(P_A, P_B)$ | 黄金正式页召回 $R(P_A)/R(P_B)$ | 黄金正式页精确率 $P(P_A)/P(P_B)$ | $|R_A|$ / $|R_B|$ | 黄金原始源召回 $R(R_A)/R(R_B)$ | 黄金原始源精确率 $P(R_A)/P(R_B)$ | 原始源重合度 $J(R_A, R_B)$ | 一跳正式页体积代理（Seed A / B KiB） | 结构诊断结论 |
+| 题号 | 正式页数 A / B | 正式页重合度 $J(P_A, P_B)$ | 黄金正式页召回 $R(P_A)/R(P_B)$ | 黄金正式页精确率 $P(P_A)/P(P_B)$ | 原始源数 A / B | 黄金原始源召回 $R(R_A)/R(R_B)$ | 黄金原始源精确率 $P(R_A)/P(R_B)$ | 原始源重合度 $J(R_A, R_B)$ | 一跳正式页体积代理（Seed A / B KiB） | 结构诊断结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Q1** | 26 / 8 | 0.259 | 1.00 / 1.00 | 0.15 / 0.50 | 55 / 23 | 1.00 / 1.00 | 0.05 / 0.13 | 0.322 | 252.9 / 80.3 | 双入口一跳均 100% 覆盖黄金集；Seed B（状态子页）精确率显著高于高入度枢纽 Seed A（`0.50` vs `0.15`） |
-| **Q2** | 14 / 8 | 0.571 | 1.00 / 1.00 | 0.36 / 0.62 | 21 / 5 | 1.00 / 1.00 | 0.10 / 0.40 | 0.238 | 127.2 / 68.7 | 消除 `index` 同名原始源碰撞后，双入口一跳均 100% 覆盖黄金集，且历史计划入口（Seed B）原始源精确率达 `0.40` |
-| **Q3** | 32 / 7 | 0.182 | 1.00 / 1.00 | 0.16 / 0.71 | 68 / 20 | 1.00 / 1.00 | 0.04 / 0.15 | 0.275 | 300.6 / 63.0 | 统计功效页（Seed B）一跳黄金正式页精确率达 `0.71`（体积仅 `63.0 KiB`），而评估总框架（Seed A）因汇聚全库评估子页使候选池达 `300.6 KiB` |
-| **Q4** | 29 / 12 | 0.171 | 1.00 / 1.00 | 0.21 / 0.50 | 63 / 48 | 1.00 / 1.00 | 0.05 / 0.06 | 0.291 | 295.1 / 134.7 | Python 工程清单页（Seed B）一跳正式页精确率（`0.50`）与体积代理（`134.7 KiB`）均优于形式化总原则枢纽页（Seed A） |
-| **Q5** | 31 / 20 | 0.417 | 1.00 / 1.00 | 0.16 / 0.25 | 70 / 61 | 1.00 / 1.00 | 0.04 / 0.05 | 0.560 | 306.1 / 221.4 | 双入口均为高连接度编排核心页，一跳原始源重合度最高（`0.560`），但需靠 `locate` 二次筛选裁剪候选体积 |
-| **Q6** | 8 / 28 | 0.200 | 1.00 / 1.00 | 0.50 / 0.14 | 23 / 66 | 1.00 / 1.00 | 0.13 / 0.05 | 0.254 | 77.9 / 291.8 | 静态上下文子页（Seed A，`77.9 KiB`）比类型化边界枢纽页（Seed B，`291.8 KiB`）具有更高的一跳信噪比（`P(P)=0.50`） |
-| **Q7** | 18 / 9 | 0.286 | 1.00 / 1.00 | 0.22 / 0.44 | 34 / 13 | 1.00 / 1.00 | 0.09 / 0.23 | 0.306 | 168.8 / 76.4 | 经验固化主干页与两个子页形成完整三角互链；从子页（Seed B）进入可将一跳体积控制在 `76.4 KiB` |
-| **Q8** | 4 / 9 | 0.444 | 1.00 / 1.00 | 1.00 / 0.44 | 10 / 33 | 1.00 / 1.00 | 0.30 / 0.09 | 0.303 | 41.9 / 101.5 | 文档解析页（Seed A）一跳 4 页恰好全为黄金正式页（`P(P)=1.00`，`41.9 KiB`），全表 Q1–Q8 双入口一跳黄金召回率均为 `1.00 / 1.00` |
+| **Q1** | 26 / 10 | 0.333 | 1.00 / 1.00 | 0.15 / 0.40 | 58 / 29 | 1.00 / 1.00 | 0.05 / 0.10 | 0.381 | 371.9 / 143.6 | 状态子页（B）用较少候选页覆盖同一黄金集。 |
+| **Q2** | 15 / 8 | 0.533 | 1.00 / 1.00 | 0.33 / 0.62 | 25 / 6 | 1.00 / 1.00 | 0.08 / 0.33 | 0.240 | 230.2 / 93.3 | 历史计划入口（B）经双向关系可达全部黄金页；这不表示旧计划仍是现行规范。 |
+| **Q3** | 32 / 9 | 0.242 | 1.00 / 1.00 | 0.16 / 0.56 | 62 / 22 | 1.00 / 1.00 | 0.05 / 0.14 | 0.333 | 481.8 / 137.0 | 统计功效页（B）的一跳集合比评估总框架（A）小。 |
+| **Q4** | 26 / 14 | 0.290 | 1.00 / 1.00 | 0.23 / 0.43 | 60 / 54 | 1.00 / 1.00 | 0.05 / 0.06 | 0.373 | 422.2 / 242.8 | Python 工程清单入口（B）的候选体积小于形式化总原则入口（A）。 |
+| **Q5** | 36 / 20 | 0.366 | 1.00 / 1.00 | 0.14 / 0.25 | 76 / 60 | 1.00 / 1.00 | 0.04 / 0.05 | 0.511 | 624.9 / 344.3 | 两个入口均覆盖黄金集，但 A 引入 36 篇正式页，仍需二次筛选。 |
+| **Q6** | 10 / 36 | 0.150 | 1.00 / 1.00 | 0.40 / 0.11 | 28 / 74 | 1.00 / 1.00 | 0.11 / 0.04 | 0.244 | 159.0 / 595.1 | 静态工具上下文入口（A）的候选集比类型化边界入口（B）更集中。 |
+| **Q7** | 27 / 16 | 0.344 | 1.00 / 1.00 | 0.15 / 0.25 | 43 / 23 | 1.00 / 1.00 | 0.07 / 0.13 | 0.404 | 412.3 / 287.9 | Skill 状态机入口（B）的候选页少于经验固化入口（A）。 |
+| **Q8** | 4 / 9 | 0.444 | 1.00 / 1.00 | 1.00 / 0.44 | 12 / 37 | 1.00 / 1.00 | 0.25 / 0.08 | 0.324 | 74.7 / 162.1 | 文档解析入口（A）的 4 篇正式页均为黄金页，但其可达原始源并非全是黄金源。 |
 
 ### 复算命令
 

@@ -1,7 +1,7 @@
 ---
 title: Progressive Knowledge System Growth
 created: 2026-05-11
-updated: 2026-11-13
+updated: 2026-11-26
 type: concept
 tags: [knowledge-base, workflow, note]
 sources: [raw/articles/makeuseof-obsidian-perfect-vault-one-thing-2026-05-08.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, concepts/software-engineering-laws/software-engineering-laws-architecture.md]
@@ -85,5 +85,5 @@ aliases: [progressive-vault-growth, incremental-knowledge-growth]
 
 ## Relations
 
-- depends_on: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]]
+- depends_on: [[hermes-knowledge-architecture]], [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]], [[software-engineering-laws-architecture]]
 - related: [[hermes-context-layer-operating-rules]]

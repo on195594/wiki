@@ -1,7 +1,7 @@
 ---
 title: Agent Evaluation Rubric Calibration
 created: 2026-07-31
-updated: 2026-11-23
+updated: 2026-11-26
 type: concept
 tags: [agent, evaluation, validation, harness, workflow]
 sources: [raw/articles/langchain-similarweb-long-form-agent-report-evaluation-2026-07-29.md, raw/articles/motherduck-jev-analytics-use-cases-2026-10-06.md, raw/articles/langchain-human-insight-strategic-advantage-agents.md, https://arxiv.org/abs/2306.05685, https://arxiv.org/abs/2301.09633, https://arxiv.org/abs/2605.06939, https://machinelearningmastery.com/the-complete-guide-to-llm-evaluation/, https://arxiv.org/abs/2601.08654, https://arxiv.org/abs/2601.04171, https://arxiv.org/abs/2605.18261]
@@ -148,3 +148,4 @@ Machine Learning Mastery 的文章是方法教程，未给出自身系统性对�
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[agent-failure-closed-loop-evaluation]]
+- related: [[production-agent-evaluation-baselines]]

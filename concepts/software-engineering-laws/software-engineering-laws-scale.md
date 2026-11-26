@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Scale
 created: 2026-08-10
-updated: 2026-11-09
+updated: 2026-11-26
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/amdahls-law.md, raw/articles/laws-of-software-engineering/gustafsons-law.md, raw/articles/laws-of-software-engineering/metcalfes-law.md, docs:https://en.wikipedia.org/wiki/Amdahl%27s_law, docs:https://en.wikipedia.org/wiki/Gustafson%27s_law]
@@ -69,5 +69,4 @@ aliases: [se-laws-scale, scale-engineering-laws]
 
 ## Relations
 
-- refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]]

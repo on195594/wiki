@@ -1,7 +1,7 @@
 ---
 title: Stateful Agent Environments and Grounded Verification
 created: 2026-08-03
-updated: 2026-11-23
+updated: 2026-11-26
 type: concept
 tags: [agent, browser, evaluation, verification, workflow, research, linux]
 sources: [raw/articles/microsoft-research-echoverse-computer-use-agent-environments-2026-07-30.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, https://arxiv.org/abs/2406.12045, https://arxiv.org/html/2406.12045v1, https://arxiv.org/abs/2506.07982, https://github.com/amazon-agi/tau2-bench-verified, https://arxiv.org/abs/2507.02825]
@@ -104,4 +104,4 @@ Echoverse 的数字来自特定模型、合成环境和任务配置；真实 Web
 ## Relations
 
 - refines: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]]
-- related: [[agent-development-lifecycle]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[subagent-orchestration-patterns]], [[agent-failure-closed-loop-evaluation]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[public-info-monitoring-automation-methodology]], [[chat-to-agent-session-routing]], [[human-machine-scientific-discovery-verification-scarcity]]
+- related: [[agent-development-lifecycle]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[subagent-orchestration-patterns]], [[agent-failure-closed-loop-evaluation]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[public-info-monitoring-automation-methodology]], [[chat-to-agent-session-routing]], [[human-machine-scientific-discovery-verification-scarcity]], [[repeated-measures-statistical-power-for-ai-evaluation]]

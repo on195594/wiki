@@ -63,7 +63,7 @@
       "volatility": "medium",
       "review_by": "2027-03-25",
       "verified_at": "2026-11-25",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "mcp-stateless-architecture-and-authorization-boundaries",
@@ -73,9 +73,12 @@
         ],
         "related": [
           "hermes-agent-workflow-layering-and-adoption-order",
-          "agent-security-architecture-and-prompt-injection-defense",
           "agent-resource-optimization",
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "hermes-memory-skills-wiki-boundaries",
+          "agent-skill-provider-governance-boundary",
+          "ai-coding-assistant-context-budget-management",
+          "multiagent-systemic-failure-modes"
         ]
       }
     },
@@ -97,15 +100,15 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "dijkstra-ai-programming-formalization"
         ],
         "related": [
-          "hermes-knowledge-architecture",
-          "hermes-retrieval-priority-and-answer-path",
-          "wiki-ingestion-workflow"
+          "hermes-ai-workflow-formalization-principles",
+          "typed-ai-agent-boundaries",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -277,7 +280,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer",
@@ -286,7 +289,6 @@
         "related": [
           "agent-context-prompt-tools-and-examples",
           "agent-context-history-state-and-bounded-processing",
-          "agent-memory-reflection-planning-pipeline",
           "ai-coding-assistant-context-budget-management",
           "typed-ai-agent-boundaries",
           "agent-development-lifecycle",
@@ -294,10 +296,7 @@
           "codex-agent-workflow-layering",
           "hermes-memory-skills-wiki-boundaries",
           "hermes-context-layer-operating-rules",
-          "hermes-layer-routing-decision-checklist",
-          "ai-assumption-challenger-before-execution",
-          "wiki-ingestion-workflow",
-          "agentic-graphrag-pattern-selection"
+          "hermes-layer-routing-decision-checklist"
         ]
       }
     },
@@ -398,36 +397,25 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-18",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
-          "production-ai-agent-evaluation-framework",
           "agent-self-validation-loops",
           "hermes-layer-routing-decision-checklist"
         ],
         "related": [
+          "production-ai-agent-evaluation-framework",
           "agent-production-harness-and-cloud-runtime-boundaries",
           "agent-pre-deploy-regression-and-trace-debugging",
-          "hermes-context-layer-operating-rules",
           "local-first-sync-confirmed-mirror-outbox-conflict-policy",
           "agent-orchestration-production-tradeoffs",
           "subagent-orchestration-patterns",
           "hermes-model-specific-harness-profiles",
           "agent-experience-consolidation-loops",
           "hermes-knowledge-architecture",
-          "hermes-agent-workflow-layering-and-adoption-order",
           "typed-ai-agent-boundaries",
-          "wiki-ingestion-workflow",
           "agent-failure-closed-loop-evaluation",
           "agent-closed-loop-learning-from-corrections-to-rules",
-          "agentic-programming-system-engineering",
-          "ai-agent-human-outcome-design-principle",
-          "ai-coding-agent-workflow-types",
-          "agent-context-engineering",
-          "llm-context-engineering-layer",
-          "public-info-monitoring-automation-methodology",
-          "stateful-agent-environments-and-grounded-verification",
-          "agent-architecture-primary-paper-map",
           "hermes-active-surface-lifecycle-governance"
         ]
       }
@@ -452,13 +440,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-23",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
         ],
         "depends_on": [
           "agent-failure-closed-loop-evaluation"
+        ],
+        "related": [
+          "production-agent-evaluation-baselines"
         ]
       }
     },
@@ -524,7 +515,7 @@
       "volatility": "medium",
       "review_by": "2027-03-25",
       "verified_at": "2026-11-25",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -540,14 +531,9 @@
           "hermes-knowledge-freshness-and-claim-evidence",
           "hermes-memory-governance-notes",
           "hermes-active-surface-lifecycle-governance",
-          "agent-memory-reflection-planning-pipeline",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
-          "agent-harness-search-regularization",
           "subagent-orchestration-patterns",
-          "agent-orchestration-production-tradeoffs",
-          "agentic-content-pipeline-design-patterns",
-          "progressive-knowledge-system-growth",
           "hermes-agent-experience-consolidation-capability-assessment",
           "agent-security-architecture-and-prompt-injection-defense",
           "llm-summary-identification-step"
@@ -718,7 +704,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -736,7 +722,8 @@
           "constrained-toolbox-evaluator-loop",
           "public-info-monitoring-automation-methodology",
           "agent-architecture-primary-paper-map",
-          "multiagent-systemic-failure-modes"
+          "multiagent-systemic-failure-modes",
+          "stateful-agent-environments-and-grounded-verification"
         ]
       }
     },
@@ -761,7 +748,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-04",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -776,7 +763,9 @@
           "llm-context-engineering-layer",
           "agent-self-validation-loops",
           "multiagent-systemic-failure-modes",
-          "agent-security-architecture-and-prompt-injection-defense"
+          "agent-security-architecture-and-prompt-injection-defense",
+          "agent-production-harness-and-cloud-runtime-boundaries",
+          "ai-coding-assistant-context-budget-management"
         ]
       }
     },
@@ -1053,19 +1042,20 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
+        "refines": [
+          "hermes-skill-refactoring-methodology"
+        ],
         "depends_on": [
           "hermes-context-layer-operating-rules",
           "hermes-memory-skills-wiki-boundaries"
         ],
-        "refines": [
-          "hermes-skill-refactoring-methodology"
-        ],
         "related": [
           "typed-ai-agent-boundaries",
           "agent-security-architecture-and-prompt-injection-defense",
-          "mcp-stateless-architecture-and-authorization-boundaries"
+          "mcp-stateless-architecture-and-authorization-boundaries",
+          "agent-skill-governance-and-reversible-state"
         ]
       }
     },
@@ -1090,7 +1080,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -1104,7 +1094,9 @@
           "hermes-context-engineering-design-priorities",
           "wiki-ingestion-workflow",
           "subagent-orchestration-patterns",
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "agent-skill-governance-and-reversible-state",
+          "hermes-active-surface-lifecycle-governance"
         ]
       }
     },
@@ -1169,7 +1161,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "agent-context-engineering",
@@ -1182,7 +1174,8 @@
           "agent-failure-closed-loop-evaluation",
           "hermes-context-layer-operating-rules",
           "subagent-orchestration-patterns",
-          "agent-architecture-primary-paper-map"
+          "agent-architecture-primary-paper-map",
+          "stateful-agent-environments-and-grounded-verification"
         ]
       }
     },
@@ -1247,7 +1240,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -1262,7 +1255,10 @@
           "agent-autonomy-ladder-for-hermes-workflows",
           "ai-task-delegation-patterns-from-local-cloud-hybrid-llms",
           "agent-closed-loop-learning-from-corrections-to-rules",
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "agentic-content-pipeline-design-patterns",
+          "ai-assumption-challenger-before-execution",
+          "subagent-orchestration-patterns"
         ]
       }
     },
@@ -1372,7 +1368,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1384,7 +1380,8 @@
         "related": [
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "subagent-orchestration-patterns",
-          "audience-situation-content-briefs"
+          "audience-situation-content-briefs",
+          "software-engineering-laws-decisions"
         ]
       }
     },
@@ -1486,7 +1483,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "llm-context-engineering-layer",
@@ -1503,7 +1500,8 @@
           "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
           "hermes-agent-workflow-layering-and-adoption-order",
           "ai-agent-tool-selection-architecture",
-          "agent-resource-optimization"
+          "agent-resource-optimization",
+          "typed-ai-agent-boundaries"
         ]
       }
     },
@@ -1529,7 +1527,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "agent-autonomy-ladder-for-hermes-workflows"
@@ -1541,7 +1539,10 @@
         "related": [
           "ai-coding-assistant-context-budget-management",
           "codex-agent-workflow-layering",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "agent-resource-optimization",
+          "multiagent-systemic-failure-modes",
+          "typed-ai-agent-boundaries"
         ]
       }
     },
@@ -1733,7 +1734,7 @@
       "volatility": "low",
       "review_by": "2027-11-19",
       "verified_at": "2026-11-19",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "growth-reinvestment-and-return-on-capital",
@@ -1742,7 +1743,8 @@
         "related": [
           "company-analysis-decision-map",
           "free-cash-flow-and-valuation-basis",
-          "price-implied-expectations-analysis"
+          "price-implied-expectations-analysis",
+          "earnings-quality-and-cash-conversion"
         ]
       }
     },
@@ -1794,14 +1796,15 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "related": [
           "company-analysis-decision-map",
           "balance-sheet-solvency-and-distress-risk",
           "free-cash-flow-and-valuation-basis",
           "growth-reinvestment-and-return-on-capital",
-          "investment-risk-control-framework"
+          "investment-risk-control-framework",
+          "ordinary-investor-investment-system"
         ]
       }
     },
@@ -1823,7 +1826,7 @@
       "volatility": "low",
       "review_by": "2027-11-15",
       "verified_at": "2026-11-15",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "earnings-quality-and-cash-conversion",
@@ -1833,7 +1836,8 @@
           "company-analysis-decision-map",
           "balance-sheet-solvency-and-distress-risk",
           "price-implied-expectations-analysis",
-          "investment-risk-control-framework"
+          "investment-risk-control-framework",
+          "ordinary-investor-investment-system"
         ]
       }
     },
@@ -1918,7 +1922,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -1927,8 +1931,6 @@
         ],
         "related": [
           "lifeos-overview",
-          "hermes-lifeos-executable-architecture",
-          "system-governance-operating-model",
           "wiki-ingestion-workflow"
         ]
       }
@@ -2023,23 +2025,22 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-17",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
         ],
         "depends_on": [
-          "typed-ai-agent-boundaries",
-          "production-ai-agent-evaluation-framework"
+          "typed-ai-agent-boundaries"
         ],
         "related": [
+          "production-ai-agent-evaluation-framework",
           "constrained-toolbox-evaluator-loop",
-          "agent-self-validation-loops",
           "production-agent-evaluation-baselines",
           "llm-context-engineering-layer",
           "document-parsing-structural-fidelity",
-          "public-info-monitoring-automation-methodology",
-          "agent-pre-deploy-regression-and-trace-debugging"
+          "ai-agent-document-fidelity-risk",
+          "llm-summary-identification-step"
         ]
       }
     },
@@ -2063,17 +2064,13 @@
       "verified_at": null,
       "updated": "2026-11-26",
       "relations": {
-        "depends_on": [
-          "hermes-knowledge-architecture",
-          "hermes-retrieval-priority-and-answer-path"
-        ],
         "related": [
           "dijkstra-ewd667-vs-ai-programming-article",
-          "ai-assistance-cognitive-substitution-and-skill-formation",
           "hermes-ai-workflow-formalization-principles",
           "ai-code-review-governance-and-convergence",
           "typed-ai-agent-boundaries",
-          "hermes-python-engineering-capability-checklist"
+          "hermes-knowledge-architecture",
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -2128,17 +2125,16 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-09-21",
-      "updated": "2026-11-15",
+      "updated": "2026-11-26",
       "relations": {
         "related": [
+          "software-engineering-laws-decision-map",
           "software-engineering-laws-quality",
           "llm-engineering-knowledge-map",
           "typed-ai-agent-boundaries",
           "first-edit-economy-for-coding-agents",
+          "agent-self-validation-loops",
           "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
-        ],
-        "refines": [
-          "software-engineering-laws-decision-map"
         ]
       }
     },
@@ -2378,7 +2374,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-memory-skills-wiki-boundaries",
@@ -2386,10 +2382,7 @@
         ],
         "related": [
           "codex-agent-workflow-layering",
-          "hermes-model-specific-harness-profiles",
           "deterministic-analytics-llm-reasoning-boundary",
-          "hermes-retrieval-priority-and-answer-path",
-          "wiki-ingestion-workflow",
           "ai-agent-tool-selection-architecture",
           "typed-ai-agent-boundaries",
           "ai-coding-assistant-context-budget-management",
@@ -2432,14 +2425,12 @@
         "related": [
           "ai-code-review-governance-and-convergence",
           "ai-coding-agent-workflow-types",
-          "typed-ai-agent-boundaries",
           "agent-self-validation-loops",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "agent-failure-closed-loop-evaluation",
           "subagent-orchestration-patterns",
           "loop-engineering-hermes-agent-workflow",
-          "ai-assumption-challenger-before-execution",
-          "hermes-python-engineering-capability-checklist"
+          "ai-assumption-challenger-before-execution"
         ]
       }
     },
@@ -2461,18 +2452,13 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "llm-context-engineering-layer"
         ],
         "related": [
           "hermes-retrieval-priority-and-answer-path",
-          "hermes-knowledge-architecture",
-          "agent-context-engineering",
-          "agent-context-prompt-tools-and-examples",
-          "agent-context-history-state-and-bounded-processing",
-          "hermes-context-layer-operating-rules",
           "wiki-ingestion-workflow",
           "agent-resource-optimization"
         ]
@@ -2500,25 +2486,15 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-context-engineering-design-priorities",
-          "hermes-lifeos-executable-architecture",
           "hermes-layer-routing-decision-checklist",
           "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
-          "agent-context-engineering",
-          "agent-context-prompt-tools-and-examples",
-          "agent-context-history-state-and-bounded-processing",
-          "llm-context-engineering-layer",
-          "ai-assumption-challenger-before-execution",
           "subagent-orchestration-patterns",
-          "chat-to-agent-session-routing",
-          "hermes-active-surface-lifecycle-governance",
-          "hermes-model-specific-harness-profiles",
-          "hermes-knowledge-architecture",
           "hermes-retrieval-priority-and-answer-path",
           "agent-experience-consolidation-loops"
         ]
@@ -2544,21 +2520,17 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-26",
       "relations": {
-        "depends_on": [
-          "hermes-memory-skills-wiki-boundaries",
-          "wiki-ingestion-workflow",
-          "hermes-retrieval-priority-and-answer-path"
-        ],
         "related": [
           "hermes-knowledge-freshness-and-claim-evidence",
-          "okf-for-hermes-wiki-governance-assessment",
-          "agent-shared-wiki-index",
           "hermes-layer-routing-decision-checklist",
           "hermes-context-layer-operating-rules",
           "progressive-knowledge-system-growth",
-          "agent-experience-consolidation-loops"
+          "agent-experience-consolidation-loops",
+          "hermes-memory-skills-wiki-boundaries",
+          "wiki-ingestion-workflow",
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -2581,7 +2553,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2589,13 +2561,8 @@
           "wiki-ingestion-workflow"
         ],
         "related": [
-          "hermes-knowledge-freshness-and-claim-evidence",
           "hermes-wiki-lint-and-health-check-standards",
-          "hermes-memory-skills-wiki-boundaries",
-          "hermes-ai-workflow-formalization-principles",
-          "hermes-retrieval-priority-and-answer-path",
-          "google-sre-gemini-cli-incident-response",
-          "hermes-vs-google-sre-agentic-incident-response"
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -2667,7 +2634,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -2676,13 +2643,7 @@
           "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
-          "hermes-context-layer-operating-rules",
           "agent-experience-consolidation-loops",
-          "hermes-knowledge-architecture",
-          "hermes-memory-governance-notes",
-          "hermes-layer-routing-sample-cases",
-          "hermes-layer-routing-edge-cases",
-          "wiki-ingestion-workflow",
           "hermes-context-engineering-design-priorities"
         ]
       }
@@ -2708,22 +2669,18 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "companyos-to-lifeos-filesystem-philosophy",
           "hermes-knowledge-architecture",
-          "hermes-memory-skills-wiki-boundaries",
-          "hermes-layer-routing-edge-cases"
+          "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
           "lifeos-overview",
-          "system-governance-operating-model",
           "hermes-lifeos-layer-boundary-contract",
           "hermes-knowledge-base-operating-flow",
-          "work-and-career-operating-model",
-          "family-education-operating-model",
-          "personal-growth-operating-model"
+          "hermes-layer-routing-edge-cases"
         ]
       }
     },
@@ -2819,26 +2776,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
         ],
-        "depends_on": [
-          "wiki-ingestion-workflow",
-          "hermes-wiki-page-writing-standards"
-        ],
         "related": [
           "hermes-context-layer-operating-rules",
-          "agent-context-history-state-and-bounded-processing",
           "hermes-memory-governance-notes",
           "agent-experience-consolidation-loops",
-          "agent-memory-reflection-planning-pipeline",
-          "agent-skill-provider-governance-boundary",
-          "chat-to-agent-session-routing",
           "hermes-layer-routing-decision-checklist",
-          "hermes-layer-routing-sample-cases",
-          "hermes-layer-routing-edge-cases",
           "hermes-retrieval-priority-and-answer-path"
         ]
       }
@@ -2904,7 +2851,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-ai-workflow-formalization-principles"
@@ -2922,7 +2869,8 @@
           "software-engineering-laws-design",
           "production-agent-evaluation-baselines",
           "ai-coding-agent-workflow-types",
-          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries"
+          "how-i-should-use-hermes-for-ai-coding-with-typed-boundaries",
+          "loop-engineering-hermes-agent-workflow"
         ]
       }
     },
@@ -2947,7 +2895,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-24",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
@@ -2956,8 +2904,6 @@
         ],
         "related": [
           "hermes-knowledge-freshness-and-claim-evidence",
-          "hermes-wiki-lint-and-health-check-standards",
-          "wiki-ingestion-workflow",
           "agentic-graphrag-pattern-selection",
           "wiki-cross-source-evidence-navigation-benchmark",
           "agent-research-evidence-gate"
@@ -3021,7 +2967,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-wiki-page-writing-standards"
@@ -3031,9 +2977,7 @@
           "wiki-ingestion-workflow"
         ],
         "related": [
-          "hermes-retrieval-priority-and-answer-path",
-          "hermes-knowledge-freshness-and-claim-evidence",
-          "okf-for-hermes-wiki-governance-assessment"
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -3058,19 +3002,18 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
         ],
         "depends_on": [
-          "wiki-ingestion-workflow",
           "hermes-memory-skills-wiki-boundaries"
         ],
         "related": [
           "hermes-retrieval-priority-and-answer-path",
           "hermes-wiki-lint-and-health-check-standards",
-          "hermes-knowledge-freshness-and-claim-evidence"
+          "wiki-ingestion-workflow"
         ]
       }
     },
@@ -3164,7 +3107,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "household-fund-layering-model",
@@ -3178,7 +3121,9 @@
           "company-analysis-decision-map",
           "tactical-trading-execution-decision-map",
           "position-sizing-method",
-          "pre-trade-risk-checklist"
+          "pre-trade-risk-checklist",
+          "lifeos-overview",
+          "work-and-career-operating-model"
         ]
       }
     },
@@ -3271,25 +3216,19 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
         ],
-        "depends_on": [
-          "hermes-knowledge-architecture",
-          "hermes-retrieval-priority-and-answer-path"
-        ],
         "related": [
-          "hermes-knowledge-freshness-and-claim-evidence",
-          "wiki-ingestion-workflow",
           "agent-closed-loop-learning-from-corrections-to-rules",
           "production-ai-agent-evaluation-framework",
           "agent-development-lifecycle",
           "agent-context-engineering",
-          "agent-pre-deploy-regression-and-trace-debugging",
-          "deterministic-analytics-llm-reasoning-boundary",
-          "agentic-graphrag-pattern-selection"
+          "agentic-graphrag-pattern-selection",
+          "hermes-knowledge-architecture",
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -3312,12 +3251,8 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
-        "depends_on": [
-          "hermes-ai-workflow-formalization-principles",
-          "hermes-context-engineering-design-priorities"
-        ],
         "related": [
           "llm-context-engineering-layer",
           "production-ai-agent-evaluation-framework",
@@ -3326,10 +3261,7 @@
           "agent-security-architecture-and-prompt-injection-defense",
           "repository-level-code-intelligence-layer",
           "multiagent-systemic-failure-modes",
-          "software-engineering-laws-design",
-          "software-engineering-laws-planning",
-          "software-engineering-laws-scale",
-          "software-engineering-laws-teams"
+          "hermes-ai-workflow-formalization-principles"
         ]
       }
     },
@@ -3352,7 +3284,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "llm-engineering-knowledge-map"
@@ -3363,7 +3295,10 @@
           "hermes-ai-workflow-formalization-principles"
         ],
         "related": [
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "agent-research-evidence-gate",
+          "ai-agent-document-fidelity-risk",
+          "deterministic-analytics-llm-reasoning-boundary"
         ]
       }
     },
@@ -3421,7 +3356,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-11",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "agent-self-validation-loops",
@@ -3436,7 +3371,8 @@
           "deterministic-analytics-llm-reasoning-boundary",
           "ai-coding-agent-workflow-types",
           "hermes-context-layer-operating-rules",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "ai-code-review-governance-and-convergence"
         ]
       }
     },
@@ -3463,7 +3399,7 @@
       "volatility": "medium",
       "review_by": "2027-03-25",
       "verified_at": "2026-11-25",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-agent-workflow-layering-and-adoption-order"
@@ -3476,7 +3412,8 @@
           "agent-security-architecture-and-prompt-injection-defense",
           "ai-agent-tool-selection-architecture",
           "agent-execution-sandboxing-and-browser-isolation",
-          "agent-tool-and-interoperability-paradigms"
+          "agent-tool-and-interoperability-paradigms",
+          "agent-production-harness-and-cloud-runtime-boundaries"
         ]
       }
     },
@@ -3563,7 +3500,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "money-as-tool-and-investment-vs-consumption-framework"
@@ -3573,7 +3510,14 @@
           "investment-risk-control-framework",
           "leontraveller-vs-ordinary-investor-investment-system",
           "combining-two-investment-frameworks",
-          "company-analysis-decision-map"
+          "company-analysis-decision-map",
+          "balance-sheet-solvency-and-distress-risk",
+          "competitive-advantage-period-and-capital-allocation",
+          "cyclical-earnings-normalization",
+          "earnings-quality-and-cash-conversion",
+          "free-cash-flow-and-valuation-basis",
+          "growth-reinvestment-and-return-on-capital",
+          "price-implied-expectations-analysis"
         ]
       }
     },
@@ -3632,7 +3576,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-20",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -3643,7 +3587,8 @@
         "related": [
           "wiki-cross-source-evidence-navigation-benchmark",
           "agent-resource-optimization",
-          "agent-evaluation-rubric-calibration"
+          "agent-evaluation-rubric-calibration",
+          "repeated-measures-statistical-power-for-ai-evaluation"
         ]
       }
     },
@@ -3692,9 +3637,7 @@
           "llm-summary-identification-step",
           "typed-ai-agent-boundaries",
           "ai-agent-document-fidelity-risk",
-          "constrained-toolbox-evaluator-loop",
           "ai-agent-tool-selection-architecture",
-          "hermes-ai-workflow-formalization-principles",
           "agent-failure-closed-loop-evaluation",
           "llm-context-engineering-layer"
         ]
@@ -3718,12 +3661,13 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-13",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-knowledge-architecture",
           "wiki-ingestion-workflow",
-          "hermes-wiki-page-writing-standards"
+          "hermes-wiki-page-writing-standards",
+          "software-engineering-laws-architecture"
         ],
         "related": [
           "hermes-context-layer-operating-rules"
@@ -3821,7 +3765,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "ai-coding-assistant-context-budget-management",
@@ -3834,7 +3778,8 @@
           "first-edit-economy-for-coding-agents",
           "typed-ai-agent-boundaries",
           "ai-code-review-governance-and-convergence",
-          "hermes-active-surface-lifecycle-governance"
+          "hermes-active-surface-lifecycle-governance",
+          "agent-autonomy-ladder-for-hermes-workflows"
         ]
       }
     },
@@ -3857,12 +3802,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-23",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "llm-engineering-knowledge-map",
           "flutter"
         ]
@@ -3886,12 +3829,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "llm-engineering-knowledge-map",
           "flutter"
         ]
@@ -3915,12 +3856,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-10",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "agentic-programming-system-engineering"
         ]
       }
@@ -3943,14 +3882,11 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-23",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
-          "llm-engineering-knowledge-map",
-          "agent-harness-search-regularization"
+          "software-engineering-laws-decision-map",
+          "llm-engineering-knowledge-map"
         ]
       }
     },
@@ -3972,15 +3908,12 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "llm-engineering-knowledge-map",
-          "entropy-and-entropy-increase",
-          "flutter"
+          "entropy-and-entropy-increase"
         ]
       }
     },
@@ -4002,12 +3935,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "llm-engineering-knowledge-map"
         ]
       }
@@ -4030,12 +3961,10 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-09",
+      "updated": "2026-11-26",
       "relations": {
-        "refines": [
-          "software-engineering-laws-decision-map"
-        ],
         "related": [
+          "software-engineering-laws-decision-map",
           "llm-engineering-knowledge-map"
         ]
       }
@@ -4061,7 +3990,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-23",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework",
@@ -4075,7 +4004,8 @@
           "local-first-sync-confirmed-mirror-outbox-conflict-policy",
           "public-info-monitoring-automation-methodology",
           "chat-to-agent-session-routing",
-          "human-machine-scientific-discovery-verification-scarcity"
+          "human-machine-scientific-discovery-verification-scarcity",
+          "repeated-measures-statistical-power-for-ai-evaluation"
         ]
       }
     },
@@ -4221,19 +4151,17 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-19",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
         ],
         "depends_on": [
-          "hermes-wiki-page-writing-standards",
-          "hermes-retrieval-priority-and-answer-path",
-          "hermes-wiki-lint-and-health-check-standards"
+          "hermes-wiki-page-writing-standards"
         ],
         "related": [
-          "hermes-knowledge-base-operating-flow",
-          "hermes-knowledge-freshness-and-claim-evidence"
+          "hermes-knowledge-freshness-and-claim-evidence",
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -4392,19 +4320,16 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "agentic-programming-system-engineering"
         ],
         "related": [
-          "agent-development-lifecycle",
           "agent-memory-reflection-planning-pipeline",
           "agent-self-validation-loops",
           "ai-agent-tool-selection-architecture",
           "agent-orchestration-production-tradeoffs",
-          "production-ai-agent-evaluation-framework",
-          "llm-engineering-knowledge-map",
           "stateful-agent-environments-and-grounded-verification",
           "typed-ai-agent-boundaries",
           "hermes-memory-skills-wiki-boundaries",
@@ -4412,7 +4337,10 @@
           "agent-security-architecture-and-prompt-injection-defense",
           "agent-experience-consolidation-loops",
           "agent-skill-governance-and-reversible-state",
-          "agent-tool-and-interoperability-paradigms"
+          "agent-tool-and-interoperability-paradigms",
+          "hermes-knowledge-architecture",
+          "hermes-agent-workflow-layering-and-adoption-order",
+          "agent-failure-closed-loop-evaluation"
         ]
       }
     },
@@ -4553,16 +4481,13 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
           "hermes-layer-routing-sample-cases"
         ],
         "related": [
-          "hermes-agent-workflow-layering-and-adoption-order",
-          "hermes-memory-skills-wiki-boundaries",
-          "hermes-context-layer-operating-rules",
           "agent-experience-consolidation-loops"
         ]
       }
@@ -4588,17 +4513,11 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-26",
       "relations": {
         "depends_on": [
           "hermes-layer-routing-decision-checklist",
           "hermes-memory-skills-wiki-boundaries"
-        ],
-        "related": [
-          "hermes-agent-workflow-layering-and-adoption-order",
-          "hermes-retrieval-priority-and-answer-path",
-          "hermes-layer-routing-edge-cases",
-          "hermes-context-layer-operating-rules"
         ]
       }
     },
@@ -4806,7 +4725,7 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-knowledge-architecture"
@@ -4821,7 +4740,8 @@
           "agent-shared-wiki-index",
           "hermes-knowledge-freshness-and-claim-evidence",
           "agent-context-engineering",
-          "progressive-knowledge-system-growth"
+          "progressive-knowledge-system-growth",
+          "hermes-retrieval-priority-and-answer-path"
         ]
       }
     },
@@ -5175,7 +5095,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-06",
-      "updated": "2026-11-24",
+      "updated": "2026-11-26",
       "relations": {
         "refines": [
           "hermes-knowledge-freshness-and-claim-evidence",

@@ -1,7 +1,7 @@
 ---
 title: MCP 无状态架构与授权安全边界
 created: 2026-11-25
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, mcp, tool, architecture, governance, risk-control, verification]
 sources:
@@ -123,4 +123,4 @@ aliases: [mcp-stateless-architecture, mcp-authorization-boundaries, model-contex
 
 - refines: [[hermes-agent-workflow-layering-and-adoption-order]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-skill-provider-governance-boundary]]
-- related: [[agent-security-architecture-and-prompt-injection-defense]], [[ai-agent-tool-selection-architecture]], [[agent-execution-sandboxing-and-browser-isolation]], [[agent-tool-and-interoperability-paradigms]]
+- related: [[agent-security-architecture-and-prompt-injection-defense]], [[ai-agent-tool-selection-architecture]], [[agent-execution-sandboxing-and-browser-isolation]], [[agent-tool-and-interoperability-paradigms]], [[agent-production-harness-and-cloud-runtime-boundaries]]

@@ -1,7 +1,7 @@
 ---
 title: Dijkstra EWD667 vs 2026 AI Programming Article
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-26
 type: comparison
 tags: [comparison, llm, workflow, research]
 sources: [raw/articles/dijkstra-ewd667-natural-language-programming-1978.md, raw/articles/arixzone-dijkstra-ai-programming-2026-03-31.md, raw/articles/kdnuggets-specification-engineering-2026-08-10.md, raw/articles/thenewstack-codeplain-spec-driven-regenerative-code-2026-06-26.md, docs:https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html, docs:http://www.cs.toronto.edu/~chechik/courses05/csc410/readings/dijkstra.pdf]
@@ -112,4 +112,4 @@ Dijkstra 原文没有预见 LLM，但他的逻辑并未被推翻。
 ## Relations
 
 - refines: [[dijkstra-ai-programming-formalization]]
-- related: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]]
+- related: [[hermes-ai-workflow-formalization-principles]], [[typed-ai-agent-boundaries]], [[ai-assistance-cognitive-substitution-and-skill-formation]]

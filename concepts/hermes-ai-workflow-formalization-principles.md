@@ -223,4 +223,4 @@ LangChain 的 [[langchain-interpreter-skills-2026-05-30]] 对本页的增量价�
 
 - refines: [[dijkstra-ai-programming-formalization]]
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[ai-code-review-governance-and-convergence]], [[ai-coding-agent-workflow-types]], [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]], [[hermes-python-engineering-capability-checklist]]
+- related: [[ai-code-review-governance-and-convergence]], [[ai-coding-agent-workflow-types]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-failure-closed-loop-evaluation]], [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]], [[ai-assumption-challenger-before-execution]]

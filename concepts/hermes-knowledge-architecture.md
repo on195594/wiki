@@ -1,7 +1,7 @@
 ---
 title: Human and AI Agent Shared Knowledge Architecture
 created: 2026-04-16
-updated: 2026-11-16
+updated: 2026-11-26
 type: concept
 tags: [agent, knowledge-base, mcp, workflow, configuration]
 sources: [repository:SCHEMA.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/machinelearningmastery-llm-spoc-extraction-2026-09-29.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://arxiv.org/abs/2504.13171, docs:https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf]
@@ -197,5 +197,5 @@ $$Q^* = \frac{D \cdot T_{\text{doc}} \cdot M_{\text{write}}}{T_{\text{rag}} - (T
 - 让 AI Agent 不是“知道 wiki 在哪里”，而是“可以直接调用 wiki 能力”
 
 ## Relations
-- depends_on: [[hermes-memory-skills-wiki-boundaries]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[okf-for-hermes-wiki-governance-assessment]], [[agent-shared-wiki-index]], [[hermes-layer-routing-decision-checklist]], [[hermes-context-layer-operating-rules]], [[progressive-knowledge-system-growth]], [[agent-experience-consolidation-loops]]
+
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-layer-routing-decision-checklist]], [[hermes-context-layer-operating-rules]], [[progressive-knowledge-system-growth]], [[agent-experience-consolidation-loops]], [[hermes-memory-skills-wiki-boundaries]], [[wiki-ingestion-workflow]], [[hermes-retrieval-priority-and-answer-path]]

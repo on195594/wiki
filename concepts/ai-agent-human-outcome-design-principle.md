@@ -1,7 +1,7 @@
 ---
 title: AI Agent Human Outcome Design Principle
 created: 2026-06-20
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, product, workflow, decision, governance, debugging]
 sources: [raw/articles/forbes-ai-implementation-startup-founders-human-needs-2026-06-16.md, concepts/agentic-programming-system-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, concepts/ai-task-delegation-patterns-from-local-cloud-hybrid-llms.md, docs:https://pubmed.ncbi.nlm.nih.gov/15151155/, https://arxiv.org/abs/2605.26128, raw/articles/langchain-building-proactive-agents-2026-11-17.md]
@@ -137,4 +137,4 @@ LangChain 的 Sydney Runkle 在 [[langchain-building-proactive-agents-2026-11-17
 ## Relations
 
 - depends_on: [[agentic-programming-system-engineering]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]]
-- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]], [[public-info-monitoring-automation-methodology]], [[agent-autonomy-ladder-for-hermes-workflows]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]]
+- related: [[agent-context-engineering]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[production-ai-agent-evaluation-framework]], [[public-info-monitoring-automation-methodology]], [[agent-autonomy-ladder-for-hermes-workflows]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-experience-consolidation-loops]], [[agentic-content-pipeline-design-patterns]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]]

@@ -1,7 +1,7 @@
 ---
 title: AI Agent Workflow Layering and Adoption Order
 created: 2026-04-17
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, mcp, automation, workflow, configuration, decision]
 sources:
@@ -12,8 +12,6 @@ sources:
   - https://blog.cloudflare.com/code-mode-mcp/
   - https://www.anthropic.com/research/advanced-tool-use
   - https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling
-  - concepts/mcp-stateless-architecture-and-authorization-boundaries.md
-  - comparisons/agent-tool-and-interoperability-paradigms.md
 status: stable
 volatility: medium
 review_by: 2027-03-02
@@ -208,4 +206,4 @@ AI Agent 下一阶段更重要的是“层间路由正确”，不是“层数�
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-knowledge-architecture]]
-- related: [[codex-agent-workflow-layering]], [[hermes-model-specific-harness-profiles]], [[deterministic-analytics-llm-reasoning-boundary]], [[hermes-retrieval-priority-and-answer-path]], [[wiki-ingestion-workflow]], [[ai-agent-tool-selection-architecture]], [[typed-ai-agent-boundaries]], [[ai-coding-assistant-context-budget-management]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[agent-tool-and-interoperability-paradigms]]
+- related: [[codex-agent-workflow-layering]], [[deterministic-analytics-llm-reasoning-boundary]], [[ai-agent-tool-selection-architecture]], [[typed-ai-agent-boundaries]], [[ai-coding-assistant-context-budget-management]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[agent-tool-and-interoperability-paradigms]]

@@ -1,7 +1,7 @@
 ---
 title: Entropy and Entropy Increase
 created: 2026-09-21
-updated: 2026-11-15
+updated: 2026-11-26
 type: concept
 tags: [research, ai-coding, architecture]
 sources:
@@ -91,8 +91,7 @@ Gibbs 熵与 Shannon 熵都使用 `-Σ p_i log p_i` 的形式，但不能只凭�
 
 ## Relations
 
-- related: [[software-engineering-laws-quality]], [[llm-engineering-knowledge-map]], [[typed-ai-agent-boundaries]], [[first-edit-economy-for-coding-agents]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
-- refines: [[software-engineering-laws-decision-map]]
+- related: [[software-engineering-laws-decision-map]], [[software-engineering-laws-quality]], [[llm-engineering-knowledge-map]], [[typed-ai-agent-boundaries]], [[first-edit-economy-for-coding-agents]], [[agent-self-validation-loops]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
 
 ## Sources
 

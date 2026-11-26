@@ -1,10 +1,10 @@
 ---
 title: Wiki Ingestion Workflow
 created: 2026-04-16
-updated: 2026-11-19
+updated: 2026-11-26
 type: concept
 tags: [knowledge-base, workflow, research, automation]
-sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, concepts/hermes-wiki-lint-and-health-check-standards.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, docs:https://www.cs.cornell.edu/~shmat/courses/cs6434/fellegi-sunter.pdf, docs:https://en.wikipedia.org/wiki/Record_linkage, docs:https://en.wikipedia.org/wiki/Belief_revision]
+sources: [repository:SCHEMA.md, concepts/hermes-wiki-page-writing-standards.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, docs:https://www.cs.cornell.edu/~shmat/courses/cs6434/fellegi-sunter.pdf, docs:https://en.wikipedia.org/wiki/Record_linkage, docs:https://en.wikipedia.org/wiki/Belief_revision]
 status: stable
 description: 定义外部材料入库流程：审查公开边界与再发布依据，再按许可归档或只保存来源链接，提炼正式页面并验证。
 aliases: [wiki-ingestion, knowledge-ingestion]
@@ -100,6 +100,7 @@ verified_at: 2026-11-02
 独立 AI 审查不是普通摄取的默认步骤。只在 Schema/治理规则变更、跨层推广、高风险事实、多来源冲突或确定性检查不足时触发；其他情况由现有 health check、Git diff 和父级事实核验收口。
 
 ## Relations
+
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[hermes-wiki-page-writing-standards]], [[hermes-retrieval-priority-and-answer-path]], [[hermes-wiki-lint-and-health-check-standards]]
-- related: [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]]
+- depends_on: [[hermes-wiki-page-writing-standards]]
+- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-retrieval-priority-and-answer-path]]

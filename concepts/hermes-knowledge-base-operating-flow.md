@@ -1,7 +1,7 @@
 ---
 title: Shared Wiki Operating Flow
 created: 2026-04-16
-updated: 2026-11-16
+updated: 2026-11-26
 type: concept
 tags: [agent, knowledge-base, workflow, note]
 sources: [repository:SCHEMA.md, concepts/wiki-ingestion-workflow.md, concepts/hermes-knowledge-architecture.md, raw/articles/towardsdatascience-persistent-knowledge-layer-2026-08-16.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md]
@@ -125,4 +125,4 @@ memory、skills、历史检索等只在宿主支持且已获授权时使用，�
 ## Relations
 
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-wiki-page-writing-standards]], [[wiki-ingestion-workflow]]
-- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-wiki-lint-and-health-check-standards]], [[hermes-memory-skills-wiki-boundaries]], [[hermes-ai-workflow-formalization-principles]], [[hermes-retrieval-priority-and-answer-path]], [[google-sre-gemini-cli-incident-response]], [[hermes-vs-google-sre-agentic-incident-response]]
+- related: [[hermes-wiki-lint-and-health-check-standards]], [[hermes-retrieval-priority-and-answer-path]]

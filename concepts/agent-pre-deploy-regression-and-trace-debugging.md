@@ -1,7 +1,7 @@
 ---
 title: Agent 部署前结构回归与工具轨迹调试
 created: 2026-11-04
-updated: 2026-11-19
+updated: 2026-11-26
 type: concept
 tags: [agent, evaluation, validation, debugging, harness, workflow]
 sources: [raw/articles/towardsdatascience-tool-calling-agent-debugging-2026-08-06.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/nature-rag-multi-agent-structural-health-monitoring-2026-10-15.md, concepts/production-ai-agent-evaluation-framework.md, https://www.w3.org/TR/trace-context/, https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/, https://arxiv.org/abs/2406.13352, https://arxiv.org/abs/2510.09023]
@@ -96,4 +96,4 @@ review_by: 2027-03-02
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-failure-closed-loop-evaluation]], [[deterministic-analytics-llm-reasoning-boundary]]
-- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]], [[agent-security-architecture-and-prompt-injection-defense]]
+- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[ai-coding-assistant-context-budget-management]]

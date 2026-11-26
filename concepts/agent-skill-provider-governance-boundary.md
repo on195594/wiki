@@ -1,7 +1,7 @@
 ---
 title: Agent Skill Provider Governance Boundary
 created: 2026-05-25
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, skills, governance, architecture]
 sources:
@@ -122,6 +122,6 @@ David Mellafe Zuvic（2026，[*Capability Gates Are Not Authorization: Confused-
 
 ## Relations
 
-- depends_on: [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]]
 - refines: [[hermes-skill-refactoring-methodology]]
-- related: [[typed-ai-agent-boundaries]], [[agent-security-architecture-and-prompt-injection-defense]], [[mcp-stateless-architecture-and-authorization-boundaries]]
+- depends_on: [[hermes-context-layer-operating-rules]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[typed-ai-agent-boundaries]], [[agent-security-architecture-and-prompt-injection-defense]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[agent-skill-governance-and-reversible-state]]

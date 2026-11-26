@@ -1,7 +1,7 @@
 ---
 title: LLM Context Engineering Layer
 created: 2026-04-16
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [llm, agent, workflow, research, context-engineering]
 sources:
@@ -168,5 +168,4 @@ RAG 解决“找到信息”，context engineering 解决“让模型在有限�
 ## Relations
 
 - refines: [[llm-engineering-knowledge-map]]
-- depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[hermes-knowledge-freshness-and-claim-evidence]], [[wiki-ingestion-workflow]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]], [[agent-pre-deploy-regression-and-trace-debugging]], [[deterministic-analytics-llm-reasoning-boundary]], [[agentic-graphrag-pattern-selection]]
+- related: [[agent-closed-loop-learning-from-corrections-to-rules]], [[production-ai-agent-evaluation-framework]], [[agent-development-lifecycle]], [[agent-context-engineering]], [[agentic-graphrag-pattern-selection]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

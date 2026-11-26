@@ -1,7 +1,7 @@
 ---
 title: Agentic Programming as System Engineering
 created: 2026-05-21
-updated: 2026-11-11
+updated: 2026-11-26
 type: concept
 tags: [agent, ai-coding, architecture, tool, context-engineering, governance, debugging]
 sources: [raw/articles/machinelearningmastery-agentic-programming-roadmap-2026-05-20.md, raw/articles/towardsdatascience-most-ai-agents-built-backwards-2026-05-27.md, raw/papers/arxiv-2210-03629-react.md, concepts/agent-context-engineering.md, concepts/typed-ai-agent-boundaries.md, concepts/agent-development-lifecycle.md, https://arxiv.org/abs/2406.12045, https://en.wikipedia.org/wiki/Long-running_transaction]
@@ -116,5 +116,6 @@ ReAct ([[arxiv-2210-03629-react]]) provides primary evidence for interleaving la
 - 不因为文章强调生产 Agent，就绕过 AI Agent 的 active-layer 审批边界。
 
 ## Relations
+
 - depends_on: [[agent-context-engineering]], [[typed-ai-agent-boundaries]], [[agent-development-lifecycle]]
-- related: [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-failure-closed-loop-evaluation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[agent-architecture-primary-paper-map]]
+- related: [[production-ai-agent-evaluation-framework]], [[agent-orchestration-production-tradeoffs]], [[agent-failure-closed-loop-evaluation]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[agent-architecture-primary-paper-map]], [[stateful-agent-environments-and-grounded-verification]]

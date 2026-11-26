@@ -1,7 +1,7 @@
 ---
 title: Agentic Content Pipeline Design Patterns
 created: 2026-04-30
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, claude-code, workflow, skills, content-engineering, mcp]
 sources: [raw/articles/ahrefs-content-engineering-claude-code-2026-04-28.md, docs:https://www.langchain.com/blog/design-agent, docs:https://github.com/langchain-ai/design-agent, docs:https://github.com/anthropics/skills/tree/main/skills/skill-creator]
@@ -118,7 +118,7 @@ Ahrefs 案例中的完整流程只有在本地完成并验证为可复用流程�
 ## Relations
 
 - refines: [[hermes-agent-workflow-layering-and-adoption-order]]
-- related: [[hermes-ai-workflow-formalization-principles]], [[nimbus-docs]], [[claude-code-practical-workflow-tips]], [[audience-situation-content-briefs]], [[hermes-context-layer-operating-rules]], [[hermes-context-engineering-design-priorities]], [[wiki-ingestion-workflow]], [[subagent-orchestration-patterns]], [[agent-experience-consolidation-loops]]
+- related: [[hermes-ai-workflow-formalization-principles]], [[nimbus-docs]], [[claude-code-practical-workflow-tips]], [[audience-situation-content-briefs]], [[hermes-context-layer-operating-rules]], [[hermes-context-engineering-design-priorities]], [[wiki-ingestion-workflow]], [[subagent-orchestration-patterns]], [[agent-experience-consolidation-loops]], [[agent-skill-governance-and-reversible-state]], [[hermes-active-surface-lifecycle-governance]]
 
 ## Related
 

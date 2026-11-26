@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Quality
 created: 2026-08-10
-updated: 2026-11-09
+updated: 2026-11-26
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/boy-scout-rule.md, raw/articles/laws-of-software-engineering/broken-windows-theory.md, raw/articles/laws-of-software-engineering/kernighans-law.md, raw/articles/laws-of-software-engineering/lehmans-laws.md, raw/articles/laws-of-software-engineering/linuss-law.md, raw/articles/laws-of-software-engineering/murphys-law.md, raw/articles/laws-of-software-engineering/pesticide-paradox.md, raw/articles/laws-of-software-engineering/postels-law.md, raw/articles/laws-of-software-engineering/sturgeons-law.md, raw/articles/laws-of-software-engineering/technical-debt.md, raw/articles/laws-of-software-engineering/testing-pyramid.md, docs:https://www.rfc-editor.org/info/rfc9413/]
@@ -144,5 +144,4 @@ aliases: [se-laws-quality, quality-engineering-laws]
 
 ## Relations
 
-- refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]], [[entropy-and-entropy-increase]], [[flutter]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]], [[entropy-and-entropy-increase]]

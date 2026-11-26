@@ -1,7 +1,7 @@
 ---
 title: AI Coding Assistant Context Budget Management
 created: 2026-05-09
-updated: 2026-11-20
+updated: 2026-11-26
 type: concept
 tags: [ai-coding, agent, context-engineering, optimization, claude-code]
 sources: [raw/articles/analyticsvidhya-claude-code-token-saving-2026-05-08.md, raw/articles/microsoft-developer-ai-coding-agents-use-technology-2026-05-27.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, raw/articles/x-lanlance-code-mode-json-plumbing-2026-08-24.md, https://aider.chat/2023/10/22/repomap.html, https://arxiv.org/abs/2407.01489, https://blog.cloudflare.com/code-mode/, https://blog.cloudflare.com/code-mode-mcp/, https://www.anthropic.com/research/advanced-tool-use, https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus, docs:https://code.claude.com/docs/en/prompt-caching, https://arxiv.org/abs/2610.28577]
@@ -161,4 +161,4 @@ Verification:
 ## Relations
 
 - refines: [[llm-context-engineering-layer]], [[hermes-context-engineering-design-priorities]]
-- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[loop-engineering-hermes-agent-workflow]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]], [[agent-resource-optimization]]
+- related: [[claude-code-practical-workflow-tips]], [[repository-level-code-intelligence-layer]], [[agent-context-engineering]], [[hermes-context-layer-operating-rules]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[loop-engineering-hermes-agent-workflow]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[hermes-agent-workflow-layering-and-adoption-order]], [[ai-agent-tool-selection-architecture]], [[agent-resource-optimization]], [[typed-ai-agent-boundaries]]

@@ -1,7 +1,7 @@
 ---
 title: AI Agent Layer Routing Sample Cases
 created: 2026-04-17
-updated: 2026-11-12
+updated: 2026-11-26
 type: query
 tags: [agent, workflow, decision, configuration, automation, mcp]
 sources: [concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/memory, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/skills, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/cron, docs:https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp]
@@ -138,5 +138,5 @@ verified_at: 2026-11-02
 - API/CLI/连接器或 `MCP` 管能力接入，SOP 或 `skill` 管做事方法，`cron` 管调度，`memory` 管短小稳定事实，`wiki` 管正式知识资产；分不清时，宁可先留在 session，也不要急着污染长期层。
 
 ## Relations
+
 - depends_on: [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[hermes-agent-workflow-layering-and-adoption-order]], [[hermes-retrieval-priority-and-answer-path]], [[hermes-layer-routing-edge-cases]], [[hermes-context-layer-operating-rules]]

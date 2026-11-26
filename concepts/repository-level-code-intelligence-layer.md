@@ -1,7 +1,7 @@
 ---
 title: Repository-Level Code Intelligence Layer
 created: 2026-05-17
-updated: 2026-11-19
+updated: 2026-11-26
 type: concept
 tags: [ai-coding, architecture, workflow, context-engineering, agent, project]
 sources: [raw/articles/marktechpost-repowise-repository-code-intelligence-2026-05-15.md, raw/articles/towardsdatascience-context-compiler-coding-agents-2026-08-01.md, https://arxiv.org/abs/2407.01489, https://aider.chat/2023/10/22/repomap.html, https://aider.chat/docs/repomap.html, https://sourcegraph.com/blog/announcing-scip, https://arxiv.org/abs/2404.05427, https://arxiv.org/abs/2503.09089, https://arxiv.org/abs/2506.15655, https://arxiv.org/abs/2602.11988, https://arxiv.org/abs/2601.20404, https://thomas-zimmermann.com/publications/files/zimmermann-icse-2004.pdf]
@@ -219,4 +219,4 @@ Repowise 文章的示例只覆盖较小的 Python 项目 `itsdangerous`；Contex
 ## Relations
 
 - refines: [[ai-coding-assistant-context-budget-management]], [[codex-agent-workflow-layering]], [[claude-code-practical-workflow-tips]]
-- related: [[llm-engineering-knowledge-map]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-code-review-governance-and-convergence]], [[hermes-active-surface-lifecycle-governance]]
+- related: [[llm-engineering-knowledge-map]], [[subagent-orchestration-patterns]], [[first-edit-economy-for-coding-agents]], [[typed-ai-agent-boundaries]], [[ai-code-review-governance-and-convergence]], [[hermes-active-surface-lifecycle-governance]], [[agent-autonomy-ladder-for-hermes-workflows]]

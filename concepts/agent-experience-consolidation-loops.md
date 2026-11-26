@@ -1,7 +1,7 @@
 ---
 title: Agent Experience Consolidation Loops
 created: 2026-05-11
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, memory, skills, knowledge-base, validation, workflow, multi-agent, closeout]
 sources:
@@ -161,7 +161,6 @@ Harrison Chase 的 [《How to build a knowledge factory》](https://www.langchai
 - **cron candidate report**：周期性提醒或只读复盘报告
 - **runtime automation**：已验证、可回滚、低噪音的稳定流程
 
-
 ### 3a-3e. Deeper topics (split into sub-pages)
 
 经验转成 artifact 之后的两类深入问题已拆为子页，本页保留主干闭环。
@@ -281,4 +280,4 @@ authorized session / project evidence → audited review
 ## Relations
 
 - depends_on: [[hermes-memory-skills-wiki-boundaries]], [[hermes-context-layer-operating-rules]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-memory-architectures-and-evaluation-benchmarks]], [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-governance-notes]], [[hermes-active-surface-lifecycle-governance]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agent-harness-search-regularization]], [[subagent-orchestration-patterns]], [[agent-orchestration-production-tradeoffs]], [[agentic-content-pipeline-design-patterns]], [[progressive-knowledge-system-growth]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-security-architecture-and-prompt-injection-defense]], [[llm-summary-identification-step]]
+- related: [[agent-memory-architectures-and-evaluation-benchmarks]], [[agent-skill-governance-and-reversible-state]], [[agent-knowledge-evolution-and-meta-skills]], [[hermes-knowledge-architecture]], [[hermes-knowledge-base-operating-flow]], [[hermes-knowledge-freshness-and-claim-evidence]], [[hermes-memory-governance-notes]], [[hermes-active-surface-lifecycle-governance]], [[agent-self-validation-loops]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[subagent-orchestration-patterns]], [[hermes-agent-experience-consolidation-capability-assessment]], [[agent-security-architecture-and-prompt-injection-defense]], [[llm-summary-identification-step]]

@@ -1,7 +1,7 @@
 ---
 title: Ordinary Investor Investment System
 created: 2026-04-16
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [investment, risk-control, operating-model, research, note]
 sources:
@@ -209,4 +209,4 @@ verified_at: 2026-11-02
 ## Relations
 
 - depends_on: [[money-as-tool-and-investment-vs-consumption-framework]]
-- related: [[household-fund-layering-model]], [[investment-risk-control-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[combining-two-investment-frameworks]], [[company-analysis-decision-map]]
+- related: [[household-fund-layering-model]], [[investment-risk-control-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[combining-two-investment-frameworks]], [[company-analysis-decision-map]], [[balance-sheet-solvency-and-distress-risk]], [[competitive-advantage-period-and-capital-allocation]], [[cyclical-earnings-normalization]], [[earnings-quality-and-cash-conversion]], [[free-cash-flow-and-valuation-basis]], [[growth-reinvestment-and-return-on-capital]], [[price-implied-expectations-analysis]]

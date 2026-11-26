@@ -28,7 +28,7 @@ volatility: low
 # Dijkstra on AI Programming Formalization
 
 ## Summary
-这篇文章（[[arixzone-dijkstra-ai-programming-2026-03-31]]）对照 Edsger W. Dijkstra 1978 年的经典手稿 [[dijkstra-ewd667-natural-language-programming-1978]]（[EWD667 原文转录](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html)），给出一个核心结论：AI 编程并没有推翻 Dijkstra 对“自然语言编程”的批判，反而再次证明了形式化约束与窄接口（Narrow Interfaces）的重要性。
+这篇文章（[[arixzone-dijkstra-ai-programming-2026-03-31]]）对照 Edsger W. Dijkstra 1978 年的经典手稿 [[dijkstra-ewd667-natural-language-programming-1978]]（[EWD667 原文转录](https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html)，两篇文献的逐项对照见 [[dijkstra-ewd667-vs-ai-programming-article]]），给出一个核心结论：AI 编程并没有推翻 Dijkstra 对“自然语言编程”的批判，反而再次证明了形式化约束与窄接口（Narrow Interfaces）的重要性。
 真正可持续的 AI 编程模式不是让自然语言取代规格、类型、测试和接口，而是将 LLM 作为从模糊自然语言意图到可验证形式化契约（前置/后置条件谓词、类型签名、可执行测试与规约文档）的启发式编译器。
 
 ## Core thesis
@@ -110,5 +110,4 @@ AI 可以协助草拟形式化产物，但不替代形式化；是否降低总�
 
 ## Relations
 
-- depends_on: [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]
-- related: [[dijkstra-ewd667-vs-ai-programming-article]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[hermes-ai-workflow-formalization-principles]], [[ai-code-review-governance-and-convergence]], [[typed-ai-agent-boundaries]], [[hermes-python-engineering-capability-checklist]]
+- related: [[dijkstra-ewd667-vs-ai-programming-article]], [[hermes-ai-workflow-formalization-principles]], [[ai-code-review-governance-and-convergence]], [[typed-ai-agent-boundaries]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]]

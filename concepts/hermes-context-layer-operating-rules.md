@@ -1,10 +1,10 @@
 ---
 title: AI Agent Context Layer Operating Rules
 created: 2026-04-29
-updated: 2026-11-12
+updated: 2026-11-26
 type: concept
 tags: [agent, lifeos, context-engineering, knowledge-base, workflow, governance, project]
-sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-lifeos-executable-architecture.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://arxiv.org/abs/2310.08560]
+sources: [raw/articles/machinelearningmastery-effective-context-engineering-ai-agents-2026-04-28.md, raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/papers/arxiv-2608-26263-skill-state.md, concepts/hermes-context-engineering-design-priorities.md, concepts/hermes-layer-routing-decision-checklist.md, concepts/hermes-memory-skills-wiki-boundaries.md, docs:https://hermes-agent.nousresearch.com/docs, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, https://arxiv.org/abs/2310.08560]
 status: stable
 description: 定义 AI Agent context layer 在检索、压缩、路由和执行前装配中的操作规则，结合 MemGPT 虚拟上下文分层与参数化预算/探针契约（B_ctx / U_blk / R_probe）。
 aliases: [context-layer-rules, agent-context-layer-operating-rules]
@@ -157,5 +157,6 @@ Machine Learning Mastery 文章的处理结果：
 - 若未来多次需要执行上下文审计，再提炼为专门 skill；当前不提前创建。
 
 ## Relations
-- depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-lifeos-executable-architecture]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
-- related: [[agent-context-engineering]], [[agent-context-prompt-tools-and-examples]], [[agent-context-history-state-and-bounded-processing]], [[llm-context-engineering-layer]], [[ai-assumption-challenger-before-execution]], [[subagent-orchestration-patterns]], [[chat-to-agent-session-routing]], [[hermes-active-surface-lifecycle-governance]], [[hermes-model-specific-harness-profiles]], [[hermes-knowledge-architecture]], [[hermes-retrieval-priority-and-answer-path]], [[agent-experience-consolidation-loops]]
+
+- depends_on: [[hermes-context-engineering-design-priorities]], [[hermes-layer-routing-decision-checklist]], [[hermes-memory-skills-wiki-boundaries]]
+- related: [[subagent-orchestration-patterns]], [[hermes-retrieval-priority-and-answer-path]], [[agent-experience-consolidation-loops]]

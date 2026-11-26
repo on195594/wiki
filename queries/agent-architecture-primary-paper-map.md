@@ -1,7 +1,7 @@
 ---
 title: Agent Architecture Primary-Paper Map
 created: 2026-08-15
-updated: 2026-11-25
+updated: 2026-11-26
 type: query
 tags: [agent, research, architecture, decision]
 sources:
@@ -99,4 +99,4 @@ AutoGen shows that roles and message patterns can modularize applications, while
 ## Relations
 
 - refines: [[agentic-programming-system-engineering]]
-- related: [[agent-development-lifecycle]], [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[ai-agent-tool-selection-architecture]], [[agent-orchestration-production-tradeoffs]], [[production-ai-agent-evaluation-framework]], [[llm-engineering-knowledge-map]], [[stateful-agent-environments-and-grounded-verification]], [[typed-ai-agent-boundaries]], [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-experience-consolidation-loops]], [[agent-skill-governance-and-reversible-state]], [[agent-tool-and-interoperability-paradigms]]
+- related: [[agent-memory-reflection-planning-pipeline]], [[agent-self-validation-loops]], [[ai-agent-tool-selection-architecture]], [[agent-orchestration-production-tradeoffs]], [[stateful-agent-environments-and-grounded-verification]], [[typed-ai-agent-boundaries]], [[hermes-memory-skills-wiki-boundaries]], [[subagent-orchestration-patterns]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-experience-consolidation-loops]], [[agent-skill-governance-and-reversible-state]], [[agent-tool-and-interoperability-paradigms]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[agent-failure-closed-loop-evaluation]]

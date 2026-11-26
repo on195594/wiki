@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Design
 created: 2026-08-10
-updated: 2026-11-10
+updated: 2026-11-26
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/dry-principle.md, raw/articles/laws-of-software-engineering/kiss-principle.md, raw/articles/laws-of-software-engineering/law-of-demeter.md, raw/articles/laws-of-software-engineering/principle-of-least-astonishment.md, raw/articles/laws-of-software-engineering/solid-principles.md, raw/articles/laws-of-software-engineering/yagni.md, docs:https://en.wikipedia.org/wiki/Don%27t_repeat_yourself, docs:https://en.wikipedia.org/wiki/Law_of_Demeter, docs:https://en.wikipedia.org/wiki/Liskov_substitution_principle, docs:https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it]
@@ -99,5 +99,4 @@ aliases: [se-laws-design, design-engineering-laws]
 
 ## Relations
 
-- refines: [[software-engineering-laws-decision-map]]
-- related: [[agentic-programming-system-engineering]]
+- related: [[software-engineering-laws-decision-map]], [[agentic-programming-system-engineering]]

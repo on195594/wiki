@@ -1,7 +1,7 @@
 ---
 title: Agent Orchestration Production Tradeoffs
 created: 2026-05-07
-updated: 2026-11-19
+updated: 2026-11-26
 type: concept
 tags: [agent, multi-agent, orchestration, architecture, evaluation, workflow, governance]
 sources: [raw/articles/alphasignal-agent-orchestration-patterns-2026-05-05.md, raw/papers/arxiv-2308-08155-autogen.md, raw/articles/vercel-best-workflow-engine-programming-language-2026-08-27.md, raw/articles/nature-capable-language-models-can-outgrow-the-benefits-of-collaboration-2026.md, https://www.nature.com/articles/s42256-026-01268-y, https://arxiv.org/abs/2512.08296, https://arxiv.org/abs/2406.12045, https://en.wikipedia.org/wiki/Jury_theorem, https://arxiv.org/abs/2503.13657, https://en.wikipedia.org/wiki/Long-running_transaction]
@@ -224,4 +224,4 @@ Cron jobs should default to sequential or narrow pipeline designs. Fan-out or re
 
 - refines: [[subagent-orchestration-patterns]]
 - depends_on: [[hermes-context-layer-operating-rules]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[agent-self-validation-loops]], [[ai-coding-agent-workflow-types]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[production-ai-agent-evaluation-framework]], [[constrained-toolbox-evaluator-loop]], [[public-info-monitoring-automation-methodology]], [[agent-architecture-primary-paper-map]], [[multiagent-systemic-failure-modes]]
+- related: [[agent-self-validation-loops]], [[ai-coding-agent-workflow-types]], [[agent-resource-optimization]], [[agent-research-evidence-gate]], [[production-ai-agent-evaluation-framework]], [[constrained-toolbox-evaluator-loop]], [[public-info-monitoring-automation-methodology]], [[agent-architecture-primary-paper-map]], [[multiagent-systemic-failure-modes]], [[stateful-agent-environments-and-grounded-verification]]

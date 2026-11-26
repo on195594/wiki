@@ -1,7 +1,7 @@
 ---
 title: Loop Engineering for AI Agent Workflows
 created: 2026-06-10
-updated: 2026-11-11
+updated: 2026-11-26
 type: concept
 tags: [agent, ai-coding, workflow, automation, subagent, orchestration, closeout]
 sources: [raw/articles/builderio-agentic-software-factory-one-bug-2026-09-29.md, raw/articles/addyosmani-loop-engineering-2026-06-08.md, raw/articles/towardsdatascience-rag-workflow-loop-dispatcher-2026-08-14.md, raw/articles/github-copilot-cost-efficient-coding-2026-09-02.md, docs:https://www.langchain.com/blog/the-art-of-loop-engineering, https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b, https://people.orie.cornell.edu/pfrazier/pub/frazier_dp_weor.pdf, https://www.inf.u-szeged.hu/~akiss/pub/fulltext/hodovan2016modernizing.pdf, https://agilelaws.com/iterative-delivery-and-flow/kingmans-formula.html]
@@ -190,4 +190,4 @@ LangChain 的《The Art of Loop Engineering》把 loop engineering 进一步拆�
 ## Relations
 
 - depends_on: [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]], [[hermes-lifeos-layer-boundary-contract]]
-- related: [[agent-autonomy-ladder-for-hermes-workflows]], [[first-edit-economy-for-coding-agents]], [[subagent-orchestration-patterns]], [[agent-context-engineering]], [[deterministic-analytics-llm-reasoning-boundary]], [[ai-coding-agent-workflow-types]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]]
+- related: [[agent-autonomy-ladder-for-hermes-workflows]], [[first-edit-economy-for-coding-agents]], [[subagent-orchestration-patterns]], [[agent-context-engineering]], [[deterministic-analytics-llm-reasoning-boundary]], [[ai-coding-agent-workflow-types]], [[hermes-context-layer-operating-rules]], [[wiki-ingestion-workflow]], [[ai-code-review-governance-and-convergence]]

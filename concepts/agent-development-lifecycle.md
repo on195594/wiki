@@ -1,7 +1,7 @@
 ---
 title: Agent Development Lifecycle
 created: 2026-05-11
-updated: 2026-11-18
+updated: 2026-11-26
 type: concept
 tags: [agent, lifecycle, evaluation, deployment, monitoring, governance, devops]
 sources: [raw/articles/langchain-agent-development-lifecycle-2026-05-09.md, raw/articles/machinelearningmastery-agent-regression-tests-2026-08-17.md, raw/articles/claude-abc-legal-managed-agents-2026-08-17.md, raw/articles/anthropic-ai-native-sdlc-playbook-2026-08-21.md, raw/articles/microsoft-devblogs-agent-harness-production-ready-2026-08-27.md, raw/articles/thenewstack-agent-context-development-lifecycle-2026-08-31.md, raw/articles/stencil-the-harness-playbook-2026-09-05.md, raw/articles/tetral-next-scaling-problem-2026-09-06.md, docs:https://commandline.microsoft.com/new-agentic-software-delivery-primitives/, https://papers.nips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf]
@@ -211,5 +211,5 @@ AI Agent 映射：
 
 ## Relations
 
-- depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
-- related: [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-pre-deploy-regression-and-trace-debugging]], [[hermes-context-layer-operating-rules]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[hermes-agent-workflow-layering-and-adoption-order]], [[typed-ai-agent-boundaries]], [[wiki-ingestion-workflow]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[agentic-programming-system-engineering]], [[ai-agent-human-outcome-design-principle]], [[ai-coding-agent-workflow-types]], [[agent-context-engineering]], [[llm-context-engineering-layer]], [[public-info-monitoring-automation-methodology]], [[stateful-agent-environments-and-grounded-verification]], [[agent-architecture-primary-paper-map]], [[hermes-active-surface-lifecycle-governance]]
+- depends_on: [[agent-self-validation-loops]], [[hermes-layer-routing-decision-checklist]]
+- related: [[production-ai-agent-evaluation-framework]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[agent-pre-deploy-regression-and-trace-debugging]], [[local-first-sync-confirmed-mirror-outbox-conflict-policy]], [[agent-orchestration-production-tradeoffs]], [[subagent-orchestration-patterns]], [[hermes-model-specific-harness-profiles]], [[agent-experience-consolidation-loops]], [[hermes-knowledge-architecture]], [[typed-ai-agent-boundaries]], [[agent-failure-closed-loop-evaluation]], [[agent-closed-loop-learning-from-corrections-to-rules]], [[hermes-active-surface-lifecycle-governance]]

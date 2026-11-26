@@ -1,7 +1,7 @@
 ---
 title: AI Agent Memory Skills Wiki Boundaries
 created: 2026-04-16
-updated: 2026-11-13
+updated: 2026-11-26
 type: concept
 tags: [agent, knowledge-base, workflow, configuration]
 sources: [raw/articles/machinelearningmastery-ai-agent-memory-strategy-decision-tree-2026-07-11.md, raw/articles/anthropic-components-of-agent-memory-2026-11-07.md, docs:https://en.wikipedia.org/wiki/Episodic_memory, docs:https://en.wikipedia.org/wiki/Semantic_memory, docs:https://en.wikipedia.org/wiki/Larry_Squire, https://andymatuschak.org/prompts/Bjork1992.pdf]
@@ -192,6 +192,6 @@ Machine Learning Mastery 的 [[machinelearningmastery-ai-agent-memory-strategy-d
 - 原因：这是正式知识资产，适合长期查阅和扩展
 
 ## Relations
+
 - refines: [[hermes-knowledge-architecture]]
-- depends_on: [[wiki-ingestion-workflow]], [[hermes-wiki-page-writing-standards]]
-- related: [[hermes-context-layer-operating-rules]], [[agent-context-history-state-and-bounded-processing]], [[hermes-memory-governance-notes]], [[agent-experience-consolidation-loops]], [[agent-memory-reflection-planning-pipeline]], [[agent-skill-provider-governance-boundary]], [[chat-to-agent-session-routing]], [[hermes-layer-routing-decision-checklist]], [[hermes-layer-routing-sample-cases]], [[hermes-layer-routing-edge-cases]], [[hermes-retrieval-priority-and-answer-path]]
+- related: [[hermes-context-layer-operating-rules]], [[hermes-memory-governance-notes]], [[agent-experience-consolidation-loops]], [[hermes-layer-routing-decision-checklist]], [[hermes-retrieval-priority-and-answer-path]]

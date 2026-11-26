@@ -1,7 +1,7 @@
 ---
 title: AI Task Delegation Patterns from Local-Cloud Hybrid LLMs
 created: 2026-07-03
-updated: 2026-11-13
+updated: 2026-11-26
 type: concept
 tags: [agent, orchestration, subagent, decision, workflow, llm]
 sources: [raw/articles/towardsdatascience-local-cloud-llm-hybrid-patterns-2026-07-02.md, concepts/agent-autonomy-ladder-for-hermes-workflows.md, concepts/subagent-orchestration-patterns.md, concepts/agent-context-engineering.md, docs:https://arxiv.org/abs/2605.26128]
@@ -167,4 +167,4 @@ AI Agent 先给可用草稿 / plan / patch
 
 - refines: [[agent-autonomy-ladder-for-hermes-workflows]]
 - depends_on: [[subagent-orchestration-patterns]], [[agent-context-engineering]]
-- related: [[ai-coding-assistant-context-budget-management]], [[codex-agent-workflow-layering]], [[wiki-ingestion-workflow]]
+- related: [[ai-coding-assistant-context-budget-management]], [[codex-agent-workflow-layering]], [[wiki-ingestion-workflow]], [[agent-resource-optimization]], [[multiagent-systemic-failure-modes]], [[typed-ai-agent-boundaries]]

@@ -1,7 +1,7 @@
 ---
 title: Investment Risk Control Framework
 created: 2026-04-17
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [investment, governance, risk-control]
 sources:
@@ -223,5 +223,6 @@ $$
 - 能把配置和交易分开处理
 
 ## Relations
+
 - depends_on: [[household-fund-layering-model]], [[ordinary-investor-investment-system]], [[leontraveller-trading-and-investment-system]]
-- related: [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[combining-two-investment-frameworks]], [[company-analysis-decision-map]], [[tactical-trading-execution-decision-map]], [[position-sizing-method]], [[pre-trade-risk-checklist]]
+- related: [[money-as-tool-and-investment-vs-consumption-framework]], [[leontraveller-vs-ordinary-investor-investment-system]], [[combining-two-investment-frameworks]], [[company-analysis-decision-map]], [[tactical-trading-execution-decision-map]], [[position-sizing-method]], [[pre-trade-risk-checklist]], [[lifeos-overview]], [[work-and-career-operating-model]]

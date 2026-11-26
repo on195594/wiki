@@ -1,7 +1,7 @@
 ---
 title: CompanyOS to LifeOS Filesystem Philosophy
 created: 2026-04-16
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [lifeos, agent, workflow, research, note]
 sources: [raw/articles/yibie-companyos-lifeos-filesystem-philosophy-2026-02-12.md, https://sparsenotes.com/posts/2026/08/papers/unix-time-sharing-system/, https://9p.io/sys/doc/names.html, https://p9f.org/sys/doc/9.html, https://www.infraculture.org/2020-09-10-text-notes-architecture-of-complexity/, https://cosmonic.com/docs/platform-concepts/principle-of-least-authority/]
@@ -134,4 +134,4 @@ $$S_{t+1} = \operatorname{Apply}\!\big(S_t,\; \Delta_{\text{file}}(p, \text{op})
 ## Relations
 
 - depends_on: [[hermes-knowledge-architecture]], [[hermes-ai-workflow-formalization-principles]], [[hermes-knowledge-base-operating-flow]]
-- related: [[lifeos-overview]], [[hermes-lifeos-executable-architecture]], [[system-governance-operating-model]], [[wiki-ingestion-workflow]]
+- related: [[lifeos-overview]], [[wiki-ingestion-workflow]]

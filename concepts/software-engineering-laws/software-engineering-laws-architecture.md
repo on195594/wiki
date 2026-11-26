@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Architecture
 created: 2026-08-10
-updated: 2026-11-23
+updated: 2026-11-26
 type: concept
 tags: [research, architecture, decision, networking]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md, docs:https://en.wikipedia.org/wiki/PACELC_theorem, docs:https://www.hyrumslaw.com/, docs:https://devblogs.microsoft.com/dotnet/ai-cross-platform-decision-matrix/]
@@ -133,5 +133,4 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 
 ## Relations
 
-- refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]], [[flutter]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]], [[flutter]]

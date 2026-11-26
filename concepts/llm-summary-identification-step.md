@@ -1,7 +1,7 @@
 ---
 title: LLM Summary Identification Step
 created: 2026-05-16
-updated: 2026-11-16
+updated: 2026-11-26
 type: concept
 tags: [llm, workflow, validation, risk-control, architecture]
 sources: [raw/articles/towardsdatascience-llm-summarizers-identification-step-2026-05-10.md, https://www.cemmap.ac.uk/wp-content/legacy/forms/manskipaper.pdf, https://theeffectbook.net/ch-PartialIdentification.html, https://arxiv.org/abs/1705.08500]
@@ -186,4 +186,4 @@ LLM 摘要常见失败是跳过 identification，直接 estimation：模板需�
 
 - refines: [[llm-engineering-knowledge-map]]
 - depends_on: [[production-ai-agent-evaluation-framework]], [[agent-self-validation-loops]], [[hermes-ai-workflow-formalization-principles]]
-- related: [[wiki-ingestion-workflow]]
+- related: [[wiki-ingestion-workflow]], [[agent-research-evidence-gate]], [[ai-agent-document-fidelity-risk]], [[deterministic-analytics-llm-reasoning-boundary]]

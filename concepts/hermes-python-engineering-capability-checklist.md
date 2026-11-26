@@ -1,7 +1,7 @@
 ---
 title: AI Agent Python Engineering Capability Checklist
 created: 2026-06-16
-updated: 2026-11-25
+updated: 2026-11-26
 type: concept
 tags: [agent, tool, ai-coding, workflow, governance, optimization, architecture, validation, pydantic]
 sources:
@@ -272,4 +272,4 @@ AI Agent 映射：
 
 - refines: [[hermes-ai-workflow-formalization-principles]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-self-validation-loops]], [[dijkstra-ai-programming-formalization]]
-- related: [[ai-code-review-governance-and-convergence]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[production-agent-evaluation-baselines]], [[ai-coding-agent-workflow-types]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]]
+- related: [[ai-code-review-governance-and-convergence]], [[agentic-programming-system-engineering]], [[agent-context-engineering]], [[software-engineering-laws-planning]], [[software-engineering-laws-design]], [[production-agent-evaluation-baselines]], [[ai-coding-agent-workflow-types]], [[how-i-should-use-hermes-for-ai-coding-with-typed-boundaries]], [[loop-engineering-hermes-agent-workflow]]

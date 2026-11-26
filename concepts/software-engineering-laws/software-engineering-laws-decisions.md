@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Decisions
 created: 2026-08-10
-updated: 2026-11-10
+updated: 2026-11-26
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/confirmation-bias.md, raw/articles/laws-of-software-engineering/cunninghams-law.md, raw/articles/laws-of-software-engineering/dunning-kruger-effect.md, raw/articles/laws-of-software-engineering/first-principles-thinking.md, raw/articles/laws-of-software-engineering/hanlons-razor.md, raw/articles/laws-of-software-engineering/hype-cycle-amaras-law.md, raw/articles/laws-of-software-engineering/inversion.md, raw/articles/laws-of-software-engineering/lindy-effect.md, raw/articles/laws-of-software-engineering/map-is-not-the-territory.md, raw/articles/laws-of-software-engineering/occams-razor.md, raw/articles/laws-of-software-engineering/pareto-principle.md, raw/articles/laws-of-software-engineering/sunk-cost-fallacy.md, docs:https://en.wikipedia.org/wiki/Confirmation_bias, docs:https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect, docs:https://en.wikipedia.org/wiki/Lindy_effect, docs:https://en.wikipedia.org/wiki/Occam%27s_razor]
@@ -149,5 +149,4 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 ## Relations
 
-- refines: [[software-engineering-laws-decision-map]]
-- related: [[llm-engineering-knowledge-map]], [[flutter]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]], [[flutter]]
