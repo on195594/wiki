@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Decisions
 created: 2026-08-10
-updated: 2026-11-26
+updated: 2026-11-27
 type: concept
 tags: [research, architecture, decision]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/confirmation-bias.md, raw/articles/laws-of-software-engineering/cunninghams-law.md, raw/articles/laws-of-software-engineering/dunning-kruger-effect.md, raw/articles/laws-of-software-engineering/first-principles-thinking.md, raw/articles/laws-of-software-engineering/hanlons-razor.md, raw/articles/laws-of-software-engineering/hype-cycle-amaras-law.md, raw/articles/laws-of-software-engineering/inversion.md, raw/articles/laws-of-software-engineering/lindy-effect.md, raw/articles/laws-of-software-engineering/map-is-not-the-territory.md, raw/articles/laws-of-software-engineering/occams-razor.md, raw/articles/laws-of-software-engineering/pareto-principle.md, raw/articles/laws-of-software-engineering/sunk-cost-fallacy.md, docs:https://en.wikipedia.org/wiki/Confirmation_bias, docs:https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect, docs:https://en.wikipedia.org/wiki/Lindy_effect, docs:https://en.wikipedia.org/wiki/Occam%27s_razor]
@@ -95,7 +95,7 @@ aliases: [se-laws-decisions, decision-engineering-laws]
   $$\mathbb{E}[T - t \mid T > t] = p \cdot t$$
   则其生存函数服从指数为 $\epsilon = 1 + \frac{1}{p}$ 的帕累托分布（Pareto distribution），且瞬时失效率（Hazard Rate）随存续时间 $t$ 单调递减：
   $$\Phi(t) = \Pr(T > t) = \left(\frac{c}{t}\right)^{\epsilon}, \quad h(t) = -\frac{\Phi'(t)}{\Phi(t)} = \frac{\epsilon}{t} = \frac{1 + p}{p \cdot t}$$
-- **适用与评审问题**：[综合] 候选技术属于无固定自然寿命的非易腐协议/原语，还是受硬件代际或厂商平台绑定限制的易腐实现？其基础概念、协议或技能是否比短期流行封装更可能持续？选择新方案的收益是否足以抵消成熟度差异（例如评估跨平台 UI 框架 [[flutter]] 时区分底层渲染/语言原语与易变的三方插件）？
+- **适用与评审问题**：[综合] 候选技术属于无固定自然寿命的非易腐协议/原语，还是受硬件代际或厂商平台绑定限制的易腐实现？其基础概念、协议或技能是否比短期流行封装更可能持续？选择新方案的收益是否足以抵消成熟度差异（例如评估跨平台 UI 框架时区分底层渲染/语言原语与易变的三方插件及打包工具链）？
 - **误用与限制**：递减失效率仅适用于无内置淘汰期限的非易腐技术或思想；长期存续只是抗脆弱性的统计信号，不保证在范式转移或安全边界失效时永久存续。
 - **来源**：[[lindy-effect]]；[canonical URL](https://lawsofsoftwareengineering.com/laws/lindy-effect/)；[Lindy effect (Wikipedia)](https://en.wikipedia.org/wiki/Lindy_effect)
 
@@ -149,4 +149,4 @@ aliases: [se-laws-decisions, decision-engineering-laws]
 
 ## Relations
 
-- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]], [[flutter]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]]

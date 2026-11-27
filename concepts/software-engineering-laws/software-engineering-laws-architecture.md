@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Laws — Architecture
 created: 2026-08-10
-updated: 2026-11-26
+updated: 2026-11-27
 type: concept
 tags: [research, architecture, decision, networking]
 sources: [raw/articles/laws-of-software-engineering/index.md, raw/articles/laws-of-software-engineering/cap-theorem.md, raw/articles/laws-of-software-engineering/fallacies-of-distributed-computing.md, raw/articles/laws-of-software-engineering/galls-law.md, raw/articles/laws-of-software-engineering/hyrums-law.md, raw/articles/laws-of-software-engineering/law-of-leaky-abstractions.md, raw/articles/laws-of-software-engineering/law-of-unintended-consequences.md, raw/articles/laws-of-software-engineering/second-system-effect.md, raw/articles/laws-of-software-engineering/teslers-law.md, raw/articles/laws-of-software-engineering/zawinskis-law.md, docs:https://en.wikipedia.org/wiki/PACELC_theorem, docs:https://www.hyrumslaw.com/, docs:https://devblogs.microsoft.com/dotnet/ai-cross-platform-decision-matrix/]
@@ -123,7 +123,7 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 2. 将每条“适用与评审问题”转成当前方案的可回答问题，并用需求、故障模型、兼容性调查或运行数据支撑答案。
 3. 同时记录法则提示的风险、当前取舍及适用边界；若法则之间形成张力，以具体系统约束决定优先级。
 4. 回到 [来源总索引](../../raw/articles/laws-of-software-engineering/index.md) 与各 canonical 页面核对原始陈述，避免把经验观察升级为绝对规则。
-5. [推论] 评估跨平台 UI 框架时，可将“复杂性的去向”和“抽象泄漏”落到平台适配、插件边界与发布链路；[[flutter]] 提供一个按官方架构整理的具体实例。
+5. [推论] 评估跨平台 UI 框架时，可将“复杂性的去向”和“抽象泄漏”落到平台适配、插件边界与发布链路，并结合下节跨平台维护成本试验在真实业务纵切上检验；具体框架与工具链的当前版本细节交由实时官方文档检索核对。
 
 ### 跨平台选型：跑通一条业务路径后，再改一次需求
 
@@ -133,4 +133,4 @@ aliases: [se-laws-architecture, architecture-engineering-laws]
 
 ## Relations
 
-- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]], [[flutter]]
+- related: [[software-engineering-laws-decision-map]], [[llm-engineering-knowledge-map]]

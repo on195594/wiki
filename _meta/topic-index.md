@@ -10,10 +10,9 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-27 | Indexed pages: 141
+> Last updated: 2026-11-27 | Indexed pages: 139
 
 ## Entities
-- [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
 - [Nimbus 文档站点框架](../entities/nimbus-docs.md) — 基于 Astro 7 的文档站点方案：仓库可编辑文件、Agent 可读端点、`nimbus-docs check --fix/--json` 校验、多平台服务器适配器、公开边界及采用限制
 
 ## Concepts
@@ -26,10 +25,10 @@ status: current
 - [Agent Security Architecture and Prompt Injection Defense](../concepts/agent-security-architecture-and-prompt-injection-defense.md) — 用 OWASP Agentic Top 10（2026）与“致命三角”识别风险，比较 CaMeL、FIDES（双格 IFC）、Progent（SMT 单调权限收紧）与六类架构模式边界，覆盖外发授权、MCP 工具供应链、持久记忆投毒与 `ASI07` 多智能体委托授权传播（APC）/ AgentWorm 蠕虫防御，含 `E_tri / M_mono / I_iso / S_gui / I_taint` 五项参数化安全裁决矩阵
 - [Agent Execution Sandboxing and Browser Isolation](../concepts/agent-execution-sandboxing-and-browser-isolation.md) — Agent 安全架构子页：对照标准容器、gVisor 与 Kata/Firecracker microVM 的内核隔离与状态恢复边界、出口授权与代理层凭据注入（`ASI05`），以及视觉提示注入（VPI-Bench）与浏览器 HTTP 语义沙箱（ceLLMate）
 - [Agentic Programming as System Engineering](../concepts/agentic-programming-system-engineering.md) — Agentic programming 的系统工程边界：以确定性宿主状态机包裹有界随机推理算子，明确多步串联成功率的条件概率前提、枢轴与检查点恢复边界，并路由 `D_replay / I_idem / T_otel / C_cancel / S_strict` 五参数运行时契约
-- [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：结合 Lee & See 自动化适度依赖三维信任模型验证真实问题与信任边界；区分主动运行、通知和执行权限，按误扰与漏报验收提醒，含 `I_iso / M_ctx / T_tax / G_human` 委派与流水线裁决矩阵
+- [AI Agent Human Outcome Design Principle](../concepts/ai-agent-human-outcome-design-principle.md) — AI Agent 项目设计的人类结果优先原则：结合 Lee & See 三维信任校准模型、Horvitz 混合主动期望效用、子任务边界中断延迟与速度代偿压力代价及 2025–2026 主动式 Agent 基准（ProactiveBench / PRISM / TGL / Pro-Memory），含 `I_iso / M_ctx / T_tax / G_human / U_interrupt` 五参数裁决矩阵
 - [AI Agent Tool Selection Architecture](../concepts/ai-agent-tool-selection-architecture.md) — AI Agent 工具选择架构：分离资源发现、工具可用性、候选集缩减、具体选择和失败回退，形式化四阶条件概率漏斗、前缀缓存折扣损益（25–28 工具拐点）、生产者—消费者集合完备召回（COLT）、分层网关能力门槛、描述异味边界与三代工具调用演进
-- [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：结合 Bainbridge 自动化讽刺论断与 Parasuraman–Riley 误用/弃用分类，区分即时表现增益（$\Delta P_{\text{assist}}$）、撤除后技能保持（$\Delta S_{\text{retain}}$）与持续委派中的理解所有权
-- [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：结合 RLHF 语言模型迎合偏差实证（Sharma et al. ICLR 2024）与事前验尸反方角色锚定，在复杂创意、写作或方案编排前先澄清意图、挑战假设并区分受限知识源与开放网络核验边界
+- [AI Assistance, Cognitive Substitution, and Skill Formation](../concepts/ai-assistance-cognitive-substitution-and-skill-formation.md) — AI 辅助与能力形成：结合 Bainbridge 自动化讽刺、Parasuraman–Riley 误用/弃用分类与 2023–2026 课堂/编程 RCT、三系统认知投降及监督悖论一手实证，区分即时表现增益（$\Delta P_{\text{assist}}$）、撤除后技能保持（$\Delta S_{\text{retain}}$）与持续委派中的按需理解重建
+- [AI Assumption Challenger Before Execution](../concepts/ai-assumption-challenger-before-execution.md) — AI 执行前假设挑战者：结合事前验尸前瞻性后见之明原典、RLHF 迎合与多轮倒戈/面子迎合实证（FlipFlop / Truth Decay / SYCON-Bench / ELEPHANT）、权重更新纠缠边界及新会话隔离契约（`C_challenge`），在复杂方案执行前实施第三人称反迎合压力测试
 - [Constrained Toolbox Evaluator Loop](../concepts/constrained-toolbox-evaluator-loop.md) — 受限工具箱评估闭环：结合语法制导综合（SyGuS）与反例制导归纳综合（CEGIS）把创造型 Agent 拆成合法算子空间生成、可执行转换、客观 evaluator 与多重检验样本外防过拟合闭环
 - [Deterministic Analytics and LLM Reasoning Boundary](../concepts/deterministic-analytics-llm-reasoning-boundary.md) — 确定性分析与语义推理边界：分开候选筛选、概率性分类与可复现计算；形式化二阶段“规则初筛 + 置信度路由”三类误差分解（漏召回、封闭集强迫归因、条件一致率幸存者偏差）、多受众配置驱动语义层、含可加性前提的度量与比率重聚纪律及输入缺口披露，不把类型、模型共识、落表标签或透明融合当作真实性证明
 - [Dijkstra on AI Programming Formalization](../concepts/dijkstra-ai-programming-formalization.md) — Dijkstra 对自然语言编程的批判与 AI 编程：区分 EWD667 窄接口定性论证、最弱前置条件、SpecBench 规格残差缩放效应、Gotel pre-RS 意图追溯与差分变异近似验证边界
@@ -66,7 +65,7 @@ status: current
 - [Repository-Level Code Intelligence Layer](../concepts/repository-level-code-intelligence-layer.md) — 仓库级代码智能层：区分词法、句法 AST（Tree-sitter / RepoMap）与编译器语义索引（LSP / SCIP），对比 Agentless / AutoCodeRover（AST+SBFL）/ LocAgent（异构图）/ cAST（结构分块）定位范式，结合版本共变耦合（ROSE）、`AGENTS.md` 2026 正反实证与 `R_loc / P_sym / H_ctx / C_co` 参数化门禁装配低噪音上下文
 
 ### 3. 工作流编排与代码工程 (Workflows, Orchestration & Coding)
-- [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 实施阶段非对称授权与语义验收
+- [Agent Autonomy Ladder for AI Agent Workflows](../concepts/agent-autonomy-ladder-for-hermes-workflows.md) — AI Agent 工作流中的 Agent 自主度阶梯：结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA）、2025 用户角色五级自主度证书与 Anthropic 百万级工具调用生产遥测，按确定性 workflow、编排 workflow、受限 reactive loop 和 bounded multi-agent 实施阶段非对称授权与语义验收
 - [Agent Memory–Reflection–Planning Pipeline](../concepts/agent-memory-reflection-planning-pipeline.md) — Agent 记忆–反思–规划流水线：将经历处理为事件流、三因子归一化检索（$\gamma^{\Delta t}$ 新近度、重要性、余弦相关性）、累积重要性阈值反思推断与分层计划，对比单次间隔指数衰减与 ACT-R 全历史幂律激活的适用边界，区分应用事件存储与 AI Agent 默认 memory；用 LongMemEval 检验知识更新、时序推理与无证据拒答
 - [Agent Orchestration Production Tradeoffs](../concepts/agent-orchestration-production-tradeoffs.md) — Agent 编排的生产取舍：对照 Finance Agent 集中式与 PlanCraft 独立式的单 Agent 基线，区分错误放大实测、约 `45%` 的拟合经验规则与工具协调成本趋势；含 `pass^k / c_err / T_pivot / C_coord` 裁决矩阵
 - [Agentic Content Pipeline Design Patterns](../concepts/agentic-content-pipeline-design-patterns.md) — Agentic 内容生产模式：专家判断、窄职责技能链（含 `skill-creator` 有/无引导消融裁剪 $\Delta Q$）、真实数据源、低成本中间产物与前置人类方向；视觉设计案例补充条件性门禁和模型升级后的规则复查
@@ -76,7 +75,6 @@ status: current
 - [Claude Code Practical Workflow Tips](../concepts/claude-code-practical-workflow-tips.md) — Claude Code 的实用工作流要点：侧问（`/btw`）、目标循环（`/goal`）、浏览器与指令审计（`/chrome`、`/doctor prompt-audit`、`/autofix-pr`）、会话内循环调度（`/loop` / `/proactive`）与 Cloud/Desktop 持久任务区分、多目录与规则加载边界（`--add-dir`、`claudeMdExcludes`）及跨设备/后台并行接续（`/teleport`、`/remote-control`、`/background`、`/batch`）
 - [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、`AGENTS.md`（含 `## Code Review Rules`）、`config.toml` / `requirements.toml`、skill（`agents/openai.yaml` 与非破坏性启停）、MCP 与 automation 各司其职
 - [First-edit Economy for Coding Agents](../concepts/first-edit-economy-for-coding-agents.md) — Coding agent 的首次编辑经济性：结合样本信息期望价值（EVSI）最优停止判据与 Delta Debugging（`ddmin`）1-最小差分原则，在有明确锚点和便宜验证时减少宽泛探索、小步编辑并立即验证
-- [Flutter 版本演进、平台编译与可选 AI 生态边界](../concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 计划于 2026-12-02 切换为只读（含 Flutter 3.47.8 eMudhra CA 密钥拦截公告）、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界；补充 iOS Add-to-App 迁移与 SDK 停发公告
 - [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — 受控 Agent 接入生产事故响应：结合 SLO 多窗口燃烧率告警、MTTM 四阶段延迟分解、云故障变更致因实证与 60 秒窗口因果退化边界、多模态遥测算子下推（`Q_push` / Drain / OTel）及人机协同“自动化惊奇”/暗债怪圈防御，用闭集 Playbook、枢轴审批与结构化复盘实现止血闭环
 - [AI Agent Workflow Layering and Adoption Order](../concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode / CodeAct 程序化执行（含多步中间载荷压缩损益判据）、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，含 `C_spec / D_fsm / A_add / P_prop` 参数化类型契约与验证裁决模型，代码审查分层与收敛治理见子页

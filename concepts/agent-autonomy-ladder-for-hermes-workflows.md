@@ -1,12 +1,25 @@
 ---
 title: Agent Autonomy Ladder for AI Agent Workflows
 created: 2026-07-01
-updated: 2026-11-13
+updated: 2026-11-27
 type: concept
 tags: [agent, workflow, orchestration, multi-agent, subagent, governance]
-sources: [raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md, raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md, concepts/subagent-orchestration-patterns.md, concepts/loop-engineering-hermes-agent-workflow.md, https://doi.org/10.1109/3468.844354, https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b]
+sources:
+  - raw/articles/machinelearningmastery-agentic-workflow-vs-autonomous-agent-2026-07-01.md
+  - raw/articles/searchengineland-use-claude-for-seo-2026-08-28.md
+  - concepts/subagent-orchestration-patterns.md
+  - concepts/loop-engineering-hermes-agent-workflow.md
+  - concepts/ai-agent-human-outcome-design-principle.md
+  - concepts/ai-assistance-cognitive-substitution-and-skill-formation.md
+  - concepts/agent-production-harness-and-cloud-runtime-boundaries.md
+  - https://doi.org/10.1109/3468.844354
+  - https://ieeexplore.ieee.org/document/844354
+  - https://arxiv.org/html/2506.12469v2
+  - https://knightcolumbia.org/content/levels-of-autonomy-for-ai-agents-1
+  - https://arxiv.org/html/2502.02649v3
+  - https://www.anthropic.com/research/measuring-agent-autonomy
 status: stable
-description: 结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），用确定性工作流、编排工作流、受限反应式代理和多代理编排判断 AI Agent 任务的控制流自主权与阶段非对称授权。
+description: 结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA）、2025 用户角色五级自主度证书与 Anthropic 百万级工具调用生产遥测，划分 AI Agent 控制流自主度轨道、阶段非对称授权与动态监督边界。
 aliases: [agent-autonomy-ladder, agent-autonomy-ladder-for-agent-workflows]
 volatility: medium
 review_by: 2027-03-02
@@ -33,7 +46,7 @@ AI Agent 不应把“是否使用 agent”当成二元选择。更稳定的问�
 
 ### 理论根基：Parasuraman–Sheridan–Wickens 四阶段×十级自动化模型（LOA）
 
-在人因工程与系统控制理论中，上述“控制流归属与混合架构”对应 Raja Parasuraman、Thomas B. Sheridan 与 Christopher D. Wickens（2000，*IEEE Transactions on Systems, Man, and Cybernetics - Part A* 30(3): 286–297，*A Model for Types and Levels of Human Interaction with Automation*，[DOI 10.1109/3468.844354](https://doi.org/10.1109/3468.844354)，[Semantic Scholar](https://www.semanticscholar.org/paper/A-model-for-types-and-levels-of-human-interaction-Parasuraman-Sheridan/14ae6f2231e09e226b99002aa04b5c70f3c59f2b)）提出的经典框架：自动化不是单一标量，而是可在四个信息处理阶段上分别取值的自主度组合。原文的十级量表（Sheridan 量表）主要刻画决策与动作阶段，信息获取与分析阶段以“低—高”连续谱描述；本页为工程记账统一记作 $\mathbf{L}_{\text{auto}} = (L_{\text{acq}}, L_{\text{anal}}, L_{\text{dec}}, L_{\text{act}}) \in \{1, \dots, 10\}^4$，这是 `[推论]` 层面的约定，不是原文定义：
+在人因工程与系统控制理论中，上述“控制流归属与混合架构”对应 Raja Parasuraman、Thomas B. Sheridan 与 Christopher D. Wickens（2000，*IEEE Transactions on Systems, Man, and Cybernetics - Part A* 30(3): 286–297，*A Model for Types and Levels of Human Interaction with Automation*，[DOI 10.1109/3468.844354](https://doi.org/10.1109/3468.844354)，[IEEE Xplore 官方记录](https://ieeexplore.ieee.org/document/844354)；原文全文受出版商付费墙限制，四阶段定义与两层判据经官方摘要及权威人因综述核对）提出的经典框架：自动化不是单一标量，而是可在四个信息处理阶段上分别取值的自主度组合。原文的十级量表（Sheridan 量表）主要刻画决策与动作阶段，信息获取与分析阶段以“低—高”连续谱描述；本页为工程记账统一记作 $\mathbf{L}_{\text{auto}} = (L_{\text{acq}}, L_{\text{anal}}, L_{\text{dec}}, L_{\text{act}}) \in \{1, \dots, 10\}^4$，这是 `[推论]` 层面的约定，不是原文定义：
 
 1. **信息获取（Information Acquisition，$L_{\text{acq}}$）**：感知、检索、读取日志、代码或文档；
 2. **信息分析（Information Analysis，$L_{\text{anal}}$）**：工作记忆加工、相关性汇总、根因推断与候选构造；
@@ -42,7 +55,18 @@ AI Agent 不应把“是否使用 agent”当成二元选择。更稳定的问�
 
 原文给出的评估判据分两层：首要判据是**人类绩效后果**（心理负荷、情境意识、自满/过度信任与技能退化）；次要判据是**自动化可靠性**与**决策/动作后果代价**。“可逆性”不是原文的独立判据，本页把它作为后果代价的工程代理 `[推论]`。
 
-**[推论] 阶段非对称授权（Asymmetric Stage Autonomy）**：将 LOA 模型映射到 AI Agent 工作流，最关键的工程原则是**把只读认知阶段与写状态执行阶段解耦授权**——在信息获取（$L_{\text{acq}}$）与信息分析（$L_{\text{anal}}$）阶段可赋予较高自主度（Level 7–9，允许 Agent 自动检索上下文、聚合跨文件调用链、运行只读测试诊断），但在决策选择（$L_{\text{dec}}$）与外部动作执行（$L_{\text{act}}$）阶段，只要操作跨越不可逆枢轴边界（如生产部署、外部发信、数据库变更或 active 配置修改），就必须将 $L_{\text{dec}}, L_{\text{act}}$ 压回 Level 3–5（收窄候选并由人类或确定性门禁批准后执行，见 [[loop-engineering-hermes-agent-workflow]] 中的 `L_auto` 裁决矩阵）。
+**[推论] 阶段非对称授权（Asymmetric Stage Autonomy）**：将 LOA 模型映射到 AI Agent 工作流，最关键的工程原则是**把只读认知阶段与写状态执行阶段解耦授权**——在信息获取（$L_{\text{acq}}$）与信息分析（$L_{\text{anal}}$）阶段可赋予较高自主度（Level 7–9，允许 Agent 自动检索上下文、聚合跨文件调用链、运行只读测试诊断），但在决策选择（$L_{\text{dec}}$）与外部动作执行（$L_{\text{act}}$）阶段，只要操作跨越不可逆枢轴边界（如生产部署、外部发信、数据库变更或 active 配置修改，见 [[agent-production-harness-and-cloud-runtime-boundaries]]），就必须将 $L_{\text{dec}}, L_{\text{act}}$ 压回 Level 3–5（收窄候选并由人类或确定性门禁批准后执行，见 [[loop-engineering-hermes-agent-workflow]] 中的 `L_auto` 裁决矩阵）。
+
+### 2025–2026 Agent 自主度证书与百万级生产工具调用遥测
+
+针对现代基础模型 Agent 的开放动作空间与多步长尾风险，近期治理框架与大规模线上遥测进一步细化了静态审批之外的运行边界：
+
+1. **按人类监督角色划分的 L1–L5 分级与环境绑定“自主度证书”**：K. J. Kevin Feng、David W. McDonald 与 Amy X. Zhang（2025，[arXiv:2506.12469v2](https://arxiv.org/html/2506.12469v2)，[Knight First Amendment Institute 正式刊文](https://knightcolumbia.org/content/levels-of-autonomy-for-ai-agents-1)）指出，不应将自主度误认为模型内在能力属性，而应按人类在回路中的职责定义为五级设计决策——**L1 操作员（Operator）**、**L2 协作者（Collaborator）**、**L3 顾问（Consultant）**、**L4 审批者（Approver）**与 **L5 观察者（Observer）**，并提出**环境绑定的自主度证书（Environment-bound Autonomy Certificates）**：证书不授予裸模型权重，而是严格绑定“特定任务域 + 工具集与沙箱拓扑 + 外部护栏配置”决定允许运行的最高自主度上限。Margaret Mitchell 等（2025，[*Fully Autonomous AI Agents Should Not be Developed*，arXiv:2502.02649v3](https://arxiv.org/html/2502.02649v3)）进一步从复合安全风险与问责断裂论证：脱离外部工具限权、确定性护栏与人类升级停止路径的无约束 L5 完全自主代理不应在开放环境中部署。
+2. **Anthropic 百万级线上工具调用遥测与“放权—中断”监督迁移**：Miles McCain 等（2026-02-18，Anthropic，[*Measuring AI agent autonomy in practice*](https://www.anthropic.com/research/measuring-agent-autonomy)）分析了约 50 万次 Claude Code 交互与 **`998,481` 次 Public API 真实工具调用**，揭示了评测能力与生产部署之间的结构性鸿沟：
+   - **部署悬置（Deployment Overhang）与动作风险高度右偏**：METR 的离线基准估计 Claude Opus 4.5 以 `50%` 成功率完成的任务跨度接近 **`5 小时`**，按人类完成同类任务的耗时标定。线上 Claude Code 的中位自主轮次为 **`45 秒`**，最长自主运行的 `p99.9` 在 2025 年 10 月至 2026 年 1 月间从 `< 25 分钟` 增至 **`> 45 分钟`**。前者度量任务难度，后者度量实际运行时长，不可直接比较为同一种时长。Public API 工具调用主要集中在软件工程（约 `50%`），高风险不可逆动作极少（仅 **`0.8%`** 看似不可逆；注：原文报告的“约 `80%` 调用具备某种护栏、`67%–87%` 包含人工介入”因隐私聚类对含防护会话过采样，被作者明确界定为**乐观上界估计**而非精确总体比例）。
+   - **高熟练用户的监督模式迁移（事前逐动作审批 → 运行中异常监控与主动打断）**：随着用户经验从新手（`< 50` 次会话）增长到资深（`750` 次会话），开启全自动放行（Auto-approve）的会话比例从约 **`20%` 升至 `> 40%`**，但人工**主动打断（Active Interrupt）率反而从 `5%` 升至约 `9%`**（人类打断主因：`32%` 补充缺失上下文或纠偏方向、`17%` 嫌慢或冗余）。与此同时，模型在复杂任务中主动停机请求澄清的频率超过简单任务的 **`2×`**（主动停机主因：`35%` 提供多方案由人拍板、`21%` 汇报测试/诊断阻塞、`13%` 澄清歧义），高风险金融、网络安全与生产部署仍普遍停留在高频人工把关区间。
+
+`[推论]` 生产遥测印证了本页与 [[ai-assistance-cognitive-substitution-and-skill-formation]]、[[ai-agent-human-outcome-design-principle]] 的共同边界：随着低风险只读与沙箱重构步骤逐步放开自动执行，系统可靠性愈发依赖**可随时挂起/回滚的执行边界、模型遇歧义主动停机汇报（而非猜测硬闯，避免 MAST `FM-2.2`）以及低摩擦的运行中异常打断机制**，而非一味追求更长的无人值守轮次。
 
 ## AI Agent autonomy lanes
 
@@ -149,4 +173,4 @@ P2 需要单独审批、备份、diff、验证和回滚。
 
 - refines: [[subagent-orchestration-patterns]], [[loop-engineering-hermes-agent-workflow]]
 - depends_on: [[hermes-context-layer-operating-rules]]
-- related: [[agent-self-validation-loops]], [[agent-context-engineering]], [[ai-coding-agent-workflow-types]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[hermes-layer-routing-decision-checklist]]
+- related: [[agent-self-validation-loops]], [[agent-context-engineering]], [[ai-coding-agent-workflow-types]], [[ai-task-delegation-patterns-from-local-cloud-hybrid-llms]], [[hermes-layer-routing-decision-checklist]], [[ai-agent-human-outcome-design-principle]], [[ai-assistance-cognitive-substitution-and-skill-formation]], [[agent-production-harness-and-cloud-runtime-boundaries]]

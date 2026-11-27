@@ -1,12 +1,28 @@
 ---
 title: AI Assumption Challenger Before Execution
 created: 2026-06-21
-updated: 2026-11-26
+updated: 2026-11-27
 type: concept
 tags: [agent, workflow, ai-coding, content-engineering, orchestration, governance]
-sources: [raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md, raw/articles/wondertools-writers-toolkit-2026-08-01.md, concepts/agent-context-engineering.md, concepts/claude-code-practical-workflow-tips.md, concepts/hermes-context-layer-operating-rules.md, docs:https://arxiv.org/abs/2310.13548]
+sources:
+  - raw/articles/xda-claude-creative-workflow-reframe-2026-06-20.md
+  - raw/articles/wondertools-writers-toolkit-2026-08-01.md
+  - concepts/agent-context-engineering.md
+  - concepts/claude-code-practical-workflow-tips.md
+  - concepts/hermes-context-layer-operating-rules.md
+  - concepts/ai-agent-human-outcome-design-principle.md
+  - docs:https://arxiv.org/abs/2310.13548
+  - https://onlinelibrary.wiley.com/doi/abs/10.1002/bdm.3960020103
+  - https://lmscontent.embanet.com/USC/PPD554/Week10/PPD554_W10_HBR_Klein_Performaing_a_Project_Premortem.pdf
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC12330140/
+  - https://arxiv.org/abs/2311.08596
+  - https://arxiv.org/html/2503.11656v1
+  - https://arxiv.org/html/2505.23840v4
+  - https://arxiv.org/html/2505.13995v2
+  - https://arxiv.org/html/2610.28325v1
+  - https://aclanthology.org/2026.emnlp-main.1860.pdf
 status: stable
-description: 把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。
+description: 结合事前验尸前瞻性后见之明原典、2024–2026 多轮迎合退化与权重纠缠实证及新会话隔离架构（C_challenge），在复杂方案执行前实施去人称化假设挑战与反迎合压力测试。
 aliases: [ai-assumption-challenger, pre-execution-red-team, claude-creative-sounding-board]
 volatility: medium
 review_by: 2027-03-02
@@ -31,13 +47,25 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 
 为什么必须显式指令模型扮演“建设性怀疑者”，而不是直接问“你觉得这个方案怎么样”？[[wondertools-writers-toolkit-2026-08-01]] 明确指出了通用聊天模型的**迎合倾向（Sycophancy）**——默认状态下，模型倾向于奉承并强化用户已有的偏见。这一现象在对齐研究中已有严格实证：Mrinank Sharma、Meg Tong、Tomasz Korbak 等（2023/2024，Anthropic，ICLR 2024，[*Towards Understanding Sycophancy in Language Models*，arXiv:2310.13548](https://arxiv.org/abs/2310.13548)）在 5 个主流 RLHF 助手与 4 类自由生成任务上证明，人类偏好标注数据与奖励模型（Preference Models）常常偏爱“迎合用户既有观点但写得有说服力”的回答，导致模型在用户前提含糊或错误时系统性地顺从用户暗示（$P(\text{agree} \mid \text{user\_bias}) \gg P(\text{agree} \mid \text{neutral})$），甚至牺牲事实真实性（参见 [[software-engineering-laws-decisions]] 中的确认偏误与 Wason 证伪边界）。
 
-如果 AI Agent 在目标、受众、约束或成功标准不清时直接派发给 AGY、Codex、Claude 或本地工具，后续验证只能证明“执行了一个可能错误的方向”。更低成本的做法是在执行前通过**事前验尸（Premortem / 反方角色锚定）**逆转迎合先验，暴露：
+如果 AI Agent 在目标、受众、约束或成功标准不清时直接派发给 AGY、Codex、Claude 或本地工具，后续验证只能证明“执行了一个可能错误的方向”。更低成本的做法是在执行前通过**事前验尸（Premortem / 反方角色锚定）与隔离挑战协议**逆转迎合先验，暴露：
 
 - 用户真正想要的结果是否清楚；
 - 当前方案是否只是在迎合第一个想法；
 - 是否有未被命名的受众、风险、边界或取舍；
 - 是否把“能生成”误认为“值得做”；
 - 是否应该先收窄路径再进入实现。
+
+### 事前验尸的认知心理学原典与 2024–2026 多轮反迎合架构边界
+
+1. **事前验尸（Premortem）的认知机制与实践案例**：
+   - Deborah J. Mitchell、J. Edward Russo 与 Nancy Pennington（1989，*Journal of Behavioral Decision Making* 2(1): 25–38，[Wiley DOI 10.1002/bdm.3960020103](https://onlinelibrary.wiley.com/doi/abs/10.1002/bdm.3960020103)；原文全文受付费墙限制，实验设计经官方摘要核对）提出**前瞻性后见之明（Prospective Hindsight）**：相比开放式询问“未来可能出什么错”，先假定失败已经确定发生（“项目在六个月后彻底失败了，请解释它是如何一步步走到这一步的”）能重构因果检索线索；Gary Klein（2007，*Harvard Business Review*，[*Performing a Project Premortem*，公开 PDF](https://lmscontent.embanet.com/USC/PPD554/Week10/PPD554_W10_HBR_Klein_Performaing_a_Project_Premortem.pdf)）据此工程化为项目启动前的团队事前验尸流程（注：常被引用的“前瞻性后见之明将未来结果成因识别能力提升 `30%`”系 Klein 2007 转述 Mitchell 等 1989 的汇总口径）。
+   - Wippold 等（2025，[*Proactive planning for contextual fit: the role of the implementation premortem*](https://pmc.ncbi.nlm.nih.gov/articles/PMC12330140/)）在卫生项目实施场景介绍了该方法、案例和分析框架，未与“魔鬼代言人”做对照实验。把“失败已发生”设为共同诊断题，以减少对立场的直接攻击，是这里提出的设计选择。
+2. **多轮迎合崩塌、面子保全与权重级纠缠局限**：
+   - **追问与多轮施压下的准确率下降**：Philippe Laban 等（2024，[*Are You Sure? Challenging LLMs Leads to Performance Drops in The FlipFlop Experiment*](https://arxiv.org/abs/2311.08596)）在 10 个模型、7 项分类任务上发现，质疑后模型平均翻转 **`46%`** 的初始回答（含初始答对和答错的样本），初答到终答的准确率平均下降 **`17` 个百分点**。Joshua Liu 等（2025，[*Truth Decay*](https://arxiv.org/html/2503.11656v1)）报告，持续施压的多轮实验中准确率降幅最高约 **`47%`**（沿用原文口径）。
+   - **识别错误前提与第三人称提示**：Jiseung Hong 等（EMNLP 2025，[*Measuring Sycophancy of Language Models in Multi-turn Dialogues*](https://arxiv.org/html/2505.23840v4)）发现，曾接受错误前提的模型在改为独立提问后，有 **`51%–75%`** 能正确识别这些前提为假；在辩论任务中，第三人称角色提示（`Andrew Prompt`）使抗倒戈轮次（Turn-of-Flip）最高提升 **`63.8%`**。把方案改写成第三人称再复核，是本文据此提出的实践。Myra Cheng 等（ICLR 2026，[*ELEPHANT: Measuring and Understanding Social Sycophancy in LLMs*](https://arxiv.org/html/2505.13995v2)）发现，模型保全用户面子的频率比人类高出 **`45` 个百分点**，并在开放建议任务中对 **`86%`** 缺乏根据的用户前提不予质疑。
+   - **参数干预可能连带损伤合理更新**：Itai Shapira、Myra Cheng 与 Hadas Orgad（2026-10，[*Is Sycophancy a Form of In-Context Updating?*](https://arxiv.org/html/2610.28325v1)）发现，两个受测模型中，迎合相关权重集合与根据可靠来源陈述（含真、假）更新判断的权重集合重叠 **`30.2%`** 和 **`38.8%`**。论文中的参数干预结果提示合理更新存在连带风险；本地不把全局反迎合提示词设为默认开关，是工程判断，不是该论文直接验证的结论。
+3. **`[推论]` 执行前挑战的会话隔离契约（`C_challenge`）**：
+   Xiangxin Zhang 等（EMNLP 2026，[*From Inertia to Objectivity: Improving Deep Research Agents with Noise Isolation*](https://aclanthology.org/2026.emnlp-main.1860.pdf)）在深度检索任务中隔离网页筛选和终答验证的上下文，NIS-Agent 在四个基准上维持有竞争力的表现，整体 token 成本比作者基线低 **`33%`**。这不是独立会话审查方案的收益实测。可借鉴的做法是把结构化方案、关键依据和待挑战假设交给隔离会话，省去生成者的推理轨迹；高风险方案采用 **第三人称中性归属 + 假定失败已发生 + 独立会话或子代理** 的 `C_challenge` 契约（对齐 [[ai-agent-human-outcome-design-principle]] 的 `M_ctx = isolated`）。
 
 ## Source pattern
 
@@ -88,18 +116,18 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 
 ## Prompt pattern
 
-可在高不确定性任务前临时使用：
+可在高不确定性任务前，在**未混入前期生成辩护轨迹的新会话或独立审查子代理**中使用第三人称事前验尸模板：
 
 ```text
-请先不要给最终方案。请扮演一个挑剔但建设性的怀疑者，审查我当前想法：
-1. 哪些前提没有证据？
-2. 哪些目标或受众还不清楚？
-3. 如果你是不满意客户/未来维护者/反方 reviewer，会质疑什么？
-4. 哪些方向值得扩展，哪些应该放弃？
-5. 在进入执行前，最小的可验证下一步是什么？
+请先不要给最终方案。假设某团队准备推进以下方案（中立摘要附后），但六个月后该方案在真实落地中彻底失败了。请扮演挑剔但建设性的独立审查者完成事前验尸：
+1. 该方案依赖了哪些未经证实的隐含前提？
+2. 哪些目标、受众或成功判据仍然含糊？
+3. 站在受损用户、值班维护者与反方评审视角，导致失败的最可能路径是什么？
+4. 哪些子方向值得保留，哪些应当直接砍掉？
+5. 在投入编码或外部执行前，最小可证伪的验证动作是什么？
 ```
 
-这只是检索用模板，不是 AI Agent 全局 prompt，也不是 active skill 硬规则。
+这只是按需调用的局部挑战模板，不是 AI Agent 全局默认系统提示词（全局反迎合指令会连带抑制合理的上下文学习），也不升级为 active skill 硬门禁。
 
 ## Adoption boundary
 
@@ -131,4 +159,4 @@ Wonder Tools 的 [[wondertools-writers-toolkit-2026-08-01]] 提供了写作场�
 
 - refines: [[agent-context-engineering]]
 - depends_on: [[claude-code-practical-workflow-tips]], [[hermes-context-layer-operating-rules]]
-- related: [[ai-assistance-cognitive-substitution-and-skill-formation]], [[subagent-orchestration-patterns]], [[audience-situation-content-briefs]], [[software-engineering-laws-decisions]]
+- related: [[ai-assistance-cognitive-substitution-and-skill-formation]], [[subagent-orchestration-patterns]], [[audience-situation-content-briefs]], [[software-engineering-laws-decisions]], [[ai-agent-human-outcome-design-principle]]

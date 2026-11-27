@@ -1,7 +1,7 @@
 ---
 title: Wiki health check runbook
 created: 2026-05-11
-updated: 2026-11-20
+updated: 2026-11-27
 type: meta
 status: current
 ---
@@ -94,7 +94,7 @@ Review high-impact operational claims first, then frequently reused methods. Res
 - **Pending:** preserve the deadline and explain the unresolved claim next to it. Under the retrieval Freshness Gate it cannot silently regain current-fact eligibility.
 - **Retired:** correct the current entry point and explain the replacement or historical scope; `closed` alone does not prove that a replacement exists.
 
-The two initial scoped-note examples are the [OKF assessment](../queries/okf-for-hermes-wiki-governance-assessment.md#scoped-verification-note) and [Flutter dependency transition](../concepts/flutter-version-evolution-and-platform-boundaries.md#scoped-verification-note). The latter confirms a published plan, retains the 2026-12-02 local deadline, and requires checking the actual transition; it is intentionally still visible in the approaching-deadline report. No human sign-off or SDK migration is inferred from these AI checks. Record reusable corrections in the normal log, not a separate personal task ledger.
+The active in-tree scoped-note example is the [OKF assessment](../queries/okf-for-hermes-wiki-governance-assessment.md#scoped-verification-note) (the second initial pilot, `concepts/flutter-version-evolution-and-platform-boundaries.md`, was retired on 2026-11-27 in favor of live official-documentation lookup). When a note tracks an announced future cutoff date, confirming the published plan retains that local deadline in the approaching-deadline report until the actual transition is verified. No human sign-off or SDK migration is inferred from these AI checks. Record reusable corrections in the normal log, not a separate personal task ledger.
 
 ## Bounded retrieval benchmark
 

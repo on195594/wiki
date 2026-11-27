@@ -1,7 +1,7 @@
 {
   "format": "okf-bundle-catalog",
   "version": "0.2",
-  "total_pages": 141,
+  "total_pages": 139,
   "pages": [
     {
       "path": "comparisons/agent-memory-architectures-and-evaluation-benchmarks.md",
@@ -193,7 +193,7 @@
       "path": "concepts/agent-autonomy-ladder-for-hermes-workflows.md",
       "type": "concept",
       "title": "Agent Autonomy Ladder for AI Agent Workflows",
-      "description": "结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA），用确定性工作流、编排工作流、受限反应式代理和多代理编排判断 AI Agent 任务的控制流自主权与阶段非对称授权。",
+      "description": "结合 Parasuraman–Sheridan–Wickens 四阶段十级自动化模型（LOA）、2025 用户角色五级自主度证书与 Anthropic 百万级工具调用生产遥测，划分 AI Agent 控制流自主度轨道、阶段非对称授权与动态监督边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -210,7 +210,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-13",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns",
@@ -224,7 +224,10 @@
           "agent-context-engineering",
           "ai-coding-agent-workflow-types",
           "ai-task-delegation-patterns-from-local-cloud-hybrid-llms",
-          "hermes-layer-routing-decision-checklist"
+          "hermes-layer-routing-decision-checklist",
+          "ai-agent-human-outcome-design-principle",
+          "ai-assistance-cognitive-substitution-and-skill-formation",
+          "agent-production-harness-and-cloud-runtime-boundaries"
         ]
       }
     },
@@ -711,7 +714,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -807,7 +810,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "agent-development-lifecycle"
@@ -827,7 +830,8 @@
           "agent-skill-provider-governance-boundary",
           "agent-security-architecture-and-prompt-injection-defense",
           "agent-execution-sandboxing-and-browser-isolation",
-          "agentic-programming-system-engineering"
+          "agentic-programming-system-engineering",
+          "agent-autonomy-ladder-for-hermes-workflows"
         ]
       }
     },
@@ -1242,7 +1246,7 @@
       "path": "concepts/ai-agent-human-outcome-design-principle.md",
       "type": "concept",
       "title": "AI Agent Human Outcome Design Principle",
-      "description": "用真实问题、可衡量结果和人类信任边界约束 AI Agent 项目设计，并判断主动式 Agent 何时值得打断用户、如何检查误扰与漏报。",
+      "description": "用真实问题、可衡量结果和 Lee & See 三维信任边界约束 AI Agent 项目设计，结合 Horvitz 混合主动期望效用、任务边界中断成本与 2025–2026 主动式 Agent 基准校准打断门禁（含 I_iso / M_ctx / T_tax / G_human / U_interrupt 裁决矩阵）。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1259,7 +1263,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "agentic-programming-system-engineering",
@@ -1330,9 +1334,10 @@
       "path": "concepts/ai-assistance-cognitive-substitution-and-skill-formation.md",
       "type": "concept",
       "title": "AI Assistance, Cognitive Substitution, and Skill Formation",
-      "description": "结合 Bainbridge 自动化讽刺（Ironies of Automation）与 Parasuraman & Riley 误用/弃用分类，区分 AI 辅助的即时表现、独立能力与持续委派中的理解所有权，以撤除测试和按需重建判断能力形成及责任边界。",
+      "description": "结合 Bainbridge 自动化讽刺、Parasuraman–Riley 误用/弃用分类与 2023–2026 技能形成/认知投降/监督悖论一手实证，区分即时辅助表现、撤除后独立能力与持续委派中的按需理解重建及责任边界。",
       "status": "stable",
       "tags": [
+        "agent",
         "llm",
         "research",
         "workflow",
@@ -1347,7 +1352,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-15",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "ai-assumption-challenger-before-execution",
@@ -1361,7 +1366,8 @@
           "production-ai-agent-evaluation-framework",
           "coping-skill-application-and-imaginal-exposure",
           "ai-code-review-governance-and-convergence",
-          "agent-self-validation-loops"
+          "agent-self-validation-loops",
+          "agent-autonomy-ladder-for-hermes-workflows"
         ]
       }
     },
@@ -1369,7 +1375,7 @@
       "path": "concepts/ai-assumption-challenger-before-execution.md",
       "type": "concept",
       "title": "AI Assumption Challenger Before Execution",
-      "description": "把 AI 放在复杂创意、写作与方案执行前的假设挑战、意图澄清和反迎合压力测试阶段，而不是直接进入生成或实现。",
+      "description": "结合事前验尸前瞻性后见之明原典、2024–2026 多轮迎合退化与权重纠缠实证及新会话隔离架构（C_challenge），在复杂方案执行前实施去人称化假设挑战与反迎合压力测试。",
       "status": "stable",
       "tags": [
         "agent",
@@ -1387,7 +1393,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "agent-context-engineering"
@@ -1400,7 +1406,8 @@
           "ai-assistance-cognitive-substitution-and-skill-formation",
           "subagent-orchestration-patterns",
           "audience-situation-content-briefs",
-          "software-engineering-laws-decisions"
+          "software-engineering-laws-decisions",
+          "ai-agent-human-outcome-design-principle"
         ]
       }
     },
@@ -2253,43 +2260,6 @@
         ],
         "related": [
           "agent-harness-search-regularization"
-        ]
-      }
-    },
-    {
-      "path": "concepts/flutter-version-evolution-and-platform-boundaries.md",
-      "type": "concept",
-      "title": "Flutter 版本演进、平台编译与可选 AI 生态边界",
-      "description": "从 Flutter 实体页拆出独立设计系统包、SwiftPM 默认集成与 CocoaPods 只读期限、WebAssembly 编译与 wasmAllowList 浏览器门控、原生 FFI 绑定、实验桌面多窗口，以及 GenUI/Genkit Dart 可选 AI 生态的版本与采用边界。",
-      "status": "stable",
-      "tags": [
-        "product",
-        "architecture",
-        "tool",
-        "deployment",
-        "validation"
-      ],
-      "aliases": [
-        "flutter-version-boundaries",
-        "flutter-platform-compilation",
-        "flutter-3-47-migration-boundaries"
-      ],
-      "volatility": "high",
-      "review_by": "2027-02-05",
-      "verified_at": "2026-11-06",
-      "updated": "2026-11-25",
-      "relations": {
-        "refines": [
-          "flutter"
-        ],
-        "depends_on": [
-          "typed-ai-agent-boundaries",
-          "hermes-retrieval-priority-and-answer-path"
-        ],
-        "related": [
-          "software-engineering-laws-architecture",
-          "software-engineering-laws-quality",
-          "software-engineering-laws-decisions"
         ]
       }
     },
@@ -3489,7 +3459,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-24",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "subagent-orchestration-patterns"
@@ -3828,12 +3798,11 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "related": [
           "software-engineering-laws-decision-map",
-          "llm-engineering-knowledge-map",
-          "flutter"
+          "llm-engineering-knowledge-map"
         ]
       }
     },
@@ -3855,12 +3824,11 @@
       "volatility": "low",
       "review_by": null,
       "verified_at": null,
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "related": [
           "software-engineering-laws-decision-map",
-          "llm-engineering-knowledge-map",
-          "flutter"
+          "llm-engineering-knowledge-map"
         ]
       }
     },
@@ -4135,7 +4103,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "dijkstra-ai-programming-formalization",
@@ -4149,7 +4117,6 @@
           "ai-agent-document-fidelity-risk",
           "deterministic-analytics-llm-reasoning-boundary",
           "agent-pre-deploy-regression-and-trace-debugging",
-          "flutter-version-evolution-and-platform-boundaries",
           "hermes-agent-workflow-layering-and-adoption-order",
           "agent-security-architecture-and-prompt-injection-defense",
           "agent-skill-provider-governance-boundary",
@@ -4224,40 +4191,6 @@
           "personal-growth-operating-model",
           "system-governance-operating-model",
           "ai-assistance-cognitive-substitution-and-skill-formation"
-        ]
-      }
-    },
-    {
-      "path": "entities/flutter.md",
-      "type": "entity",
-      "title": "Flutter Open-Source UI Framework",
-      "description": "Flutter 的分层架构、Impeller 渲染矩阵、适用边界、问题导向选型入口与真实纵切验收；设计系统独立包、SwiftPM、Wasm、FFI、桌面多窗口与 AI 生态版本边界见子页。",
-      "status": "current",
-      "tags": [
-        "product",
-        "architecture",
-        "tool"
-      ],
-      "aliases": [
-        "flutter-sdk",
-        "flutter-framework",
-        "google-flutter"
-      ],
-      "volatility": "high",
-      "review_by": "2027-02-05",
-      "verified_at": "2026-11-06",
-      "updated": "2026-11-06",
-      "relations": {
-        "depends_on": [
-          "typed-ai-agent-boundaries",
-          "hermes-retrieval-priority-and-answer-path"
-        ],
-        "related": [
-          "flutter-version-evolution-and-platform-boundaries",
-          "software-engineering-laws-architecture",
-          "software-engineering-laws-quality",
-          "software-engineering-laws-decisions",
-          "wiki-ingestion-workflow"
         ]
       }
     },
