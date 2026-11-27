@@ -1,7 +1,7 @@
 ---
 title: Wiki Topic Index
 created: 2026-11-06
-updated: 2026-11-26
+updated: 2026-11-27
 type: meta
 status: current
 ---
@@ -10,7 +10,7 @@ status: current
 
 [返回任务导航](../index.md)。本页集中维护正式知识页的分类清单与摘要；具体结论、适用范围和证据以正文为准。
 
-> Last updated: 2026-11-26 | Indexed pages: 141
+> Last updated: 2026-11-27 | Indexed pages: 141
 
 ## Entities
 - [Flutter Open-Source UI Framework](../entities/flutter.md) — 跨平台 UI 开发选型：问题导向决策入口、真实纵切验收、Impeller 默认与回退矩阵、Apple 最低版本与 `UIScene` 边界；独立设计包、SwiftPM、Wasm、FFI、实验多窗口与可选 AI 生态的版本边界见子页
@@ -40,7 +40,7 @@ status: current
 - [LLM Engineering Knowledge Map](../concepts/llm-engineering-knowledge-map.md) — LLM 工程知识地图：系统分层导航（衔接安全架构、仓库代码智能与多智能体失效）及 AI Engineer Notebooks 的评测、RAG、工具循环、架构对照与交付练习入口；教程描述不等于实验验证
 - [Local-First 同步中的确认镜像、Outbox 与冲突政策](../concepts/local-first-sync-confirmed-mirror-outbox-conflict-policy.md) — Local-First 同步中的确认镜像、Outbox 与冲突政策：结合 Xerox PARC Bayou 的 Committed/Tentative 折叠投影方程（$\text{FoldL}(\text{Apply}, S_{\text{committed}}, O)$）与 CRDT 半格边界组织游标、幂等与显式冲突政策；仅在真实离线和恢复需求下采用
 - [MCP 无状态架构与授权安全边界](../concepts/mcp-stateless-architecture-and-authorization-boundaries.md) — `mcp` 核心标签主维护页：定义 MCP 2026-07-28 逐请求无状态架构、单 `POST` Streamable HTTP、`server/discover` 双时代探测、MRTR（`InputRequiredResult`）、Elicitation 双模禁令、不可信工具注解悲观默认，以及 OAuth 2.1（RFC 9728 / 8707 / 9207 / CIMD）、严禁令牌透传与跨步状态句柄主体绑定门禁（`V_proto / A_aud / H_bind / T_trust`）
-- [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，校准 CUSUM 与告警 PPV，区分当前成功观测和尾部连续失败的健康检查
+- [Public Info Monitoring Automation Methodology](../concepts/public-info-monitoring-automation-methodology.md) — 只读公共信息监控：逐对象维护可空 LKG 基线，按事件选择去重/迟滞，锚定 Page (1954) CUSUM（ARL 权衡）与 Axelsson (2000) 低基率告警 PPV 原典，结合故障域解耦（防怪圈）与退化趋势可见性执行健康检查
 - [Stateful Agent Environments and Grounded Verification](../concepts/stateful-agent-environments-and-grounded-verification.md) — 有状态 Agent 评测单元：结合环境、任务与验证器，融汇 $\tau$/$\tau^2$-Bench 单双控终态比对、多轮次连续可靠率（$\text{pass}^k$）与 ABC 终态校验三准则（全合法解、无关状态双检、防侥幸复杂度），从权威 session/run/job 状态核验恢复、取消、清理和外部副作用
 - [Typed AI Agent Boundaries](../concepts/typed-ai-agent-boundaries.md) — 用 FSM 语法约束解码、分阶段语义分解、契约冲突的显式返回类型（ImpossibleBench）、窄工具面、强类型沙箱能力绑定（Code Mode RPC Bindings）、显式依赖注入与属性测试把 LLM 不确定性收进可验证的工程边界
 
@@ -77,7 +77,7 @@ status: current
 - [Codex Agent Workflow Layering](../concepts/codex-agent-workflow-layering.md) — Codex 的分层 agent 工作流：prompt、planning、`AGENTS.md`（含 `## Code Review Rules`）、`config.toml` / `requirements.toml`、skill（`agents/openai.yaml` 与非破坏性启停）、MCP 与 automation 各司其职
 - [First-edit Economy for Coding Agents](../concepts/first-edit-economy-for-coding-agents.md) — Coding agent 的首次编辑经济性：结合样本信息期望价值（EVSI）最优停止判据与 Delta Debugging（`ddmin`）1-最小差分原则，在有明确锚点和便宜验证时减少宽泛探索、小步编辑并立即验证
 - [Flutter 版本演进、平台编译与可选 AI 生态边界](../concepts/flutter-version-evolution-and-platform-boundaries.md) — Flutter 版本演进子页：独立设计包（`material_ui` / `cupertino_ui`）、SwiftPM 默认集成与 CocoaPods 计划于 2026-12-02 切换为只读（含 Flutter 3.47.8 eMudhra CA 密钥拦截公告）、Wasm 编译与 `wasmAllowList` 浏览器门控（含 Flutter 3.50 文档更新）、原生 FFI 绑定、实验桌面多窗口及 GenUI/Genkit Dart 边界；补充 iOS Add-to-App 迁移与 SDK 停发公告
-- [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — Google SRE 如何把 Gemini CLI 接入事故响应：结合 SLO 多窗口燃烧率告警（`1h+5m` / `6h+30m` 与门）、$\text{MTTM} = T_{\text{detect}} + T_{\text{triage}} + T_{\text{approve}} + T_{\text{exec}}$ 延迟分解与错误预算消耗保护，用闭集 playbook、枢轴审批与权威终态回读实现人机协作止血
+- [Google SRE Gemini CLI Incident Response Pattern](../concepts/google-sre-gemini-cli-incident-response.md) — 受控 Agent 接入生产事故响应：结合 SLO 多窗口燃烧率告警、MTTM 四阶段延迟分解、云故障变更致因实证与 60 秒窗口因果退化边界、多模态遥测算子下推（`Q_push` / Drain / OTel）及人机协同“自动化惊奇”/暗债怪圈防御，用闭集 Playbook、枢轴审批与结构化复盘实现止血闭环
 - [AI Agent Workflow Layering and Adoption Order](../concepts/hermes-agent-workflow-layering-and-adoption-order.md) — AI Agent 分层工作流：指令、知识、skills、MCP/tools、Code Mode / CodeAct 程序化执行（含多步中间载荷压缩损益判据）、验证与 cron 的职责和落地顺序
 - [AI Agent Workflow Formalization Principles](../concepts/hermes-ai-workflow-formalization-principles.md) — AI Agent 的规格与规划按风险留痕；将自然语言意图收敛为可验证结构、窄接口、可执行技能与确定性路由，含 `C_spec / D_fsm / A_add / P_prop` 参数化类型契约与验证裁决模型，代码审查分层与收敛治理见子页
 - [AI Code Review Governance, Traceability, and Convergence](../concepts/ai-code-review-governance-and-convergence.md) — AI 生成代码的审查治理：锚定微软/Google 代码审查原典、DORA 2024–2026 验证税与 2026 AI PR 实证，结合 Gotel/NASA 双向追溯、Google 差分变异与 Meta ACH/JiTTesting 检验关键断言，并用 Little 定律与 Kingman 重负载公式约束审查容量
@@ -147,7 +147,7 @@ status: current
 - [Agent 记忆写入范式与长期评测基准对照](../comparisons/agent-memory-architectures-and-evaluation-benchmarks.md) — 对照五类 Agent 记忆写入与状态演化范式（CRUD、A-MEM、双时态图、离线巩固与类型化溯源图 MoM/P-Mem）及其状态键/聚合键隔离边界，并汇总 LongMemEval v1/V2、MemoryArena、MemoryAgentBench 审计陷阱与控制面治理状态损坏评测
 - [Agent 工具与跨边界互操作范式对照](../comparisons/agent-tool-and-interoperability-paradigms.md) — 横向对照 CLI/Bash、精编 Agent Skills、扁平与分层网关无状态 MCP、Code Mode / PTC 沙箱编排及 A2A v1.0.1 跨代理任务委托；整合前缀缓存折算定律（25–28 工具拐点）、生产者工具集合完备召回、SkillsBench 自生成负迁移与 A2ABreak 状态机安全门禁，含 `N_tools / ΔC_net / |O_uncached| / R_set / B_trust / D_opaque` 六参数选型矩阵
 - [Dijkstra EWD667 vs 2026 AI Programming Article](../comparisons/dijkstra-ewd667-vs-ai-programming-article.md) — 对照 EWD667 原文与 2026 AI 编程文章：比较自然语言模糊性、窄接口、形式化契约、出处债务与认知风险，并区分原文论证和现代工程推论
-- [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（$T_{\text{pivot}}$）、`ScopeGate` 逐次参数校验与权威终态回读评估任意 Agent 的四阶段事故响应接入；来源案例不作为当前产品能力或排名证据
+- [Agent 事故响应接入：职责与安全边界](../comparisons/hermes-vs-google-sre-agentic-incident-response.md) — 对照 2025–2026 有状态 SRE 实证基准（AIOpsLab / ITBench / OpenRCA 2.0 / STRATUS / SREGym / R2Act / SRE-Marathon / Incident-Arena）与可观测性/K8s MCP 真实安全漏洞（`CVE-2025-66404` / `CVE-2026-15583` / `CVE-2026-61459`），以 `Q_push / I_log / R_undo / G_soak` 四阶段裁决矩阵评估任意 Agent 的事故响应准入边界
 - [Leontraveller vs Ordinary Investor Investment System](../comparisons/leontraveller-vs-ordinary-investor-investment-system.md) — 对照两套投资框架：结合行为投资组合理论（BPT-MA）与 Perold-Sharpe 恒定混合凹性/趋势凸性对偶，区分核心安全底盘（`T / H / L / D / δ`）与主动趋势进攻（`1R / r / G_max / R_cluster / R_open / D_max`）的分工和冲突边界
 
 ## Queries

@@ -1,7 +1,7 @@
 ---
 title: Agent 部署前结构回归与工具轨迹调试
 created: 2026-11-04
-updated: 2026-11-26
+updated: 2026-11-27
 type: concept
 tags: [agent, mcp, evaluation, validation, debugging, harness, workflow, monitoring]
 sources:
@@ -120,7 +120,7 @@ review_by: 2027-03-02
 
 ### 证据与晋升边界
 
-[[machinelearningmastery-agent-regression-tests-2026-08-17]] 本身是实践者清单，没有提供可运行测试代码或生产故障率分布；2026 年各混沌基准的失效率数值受限于各自的注入强度与任务集。`[推论]` 在 AI Agent 中，本矩阵只作为 [[agent-development-lifecycle]] 的 Test → Deploy 知识检查入口：只有某一探针捕获真实本地失败或目标系统确有对应外部写入/MCP 依赖时，才通过 [[agent-failure-closed-loop-evaluation]] 沉淀“原失败案例 + 一个相邻反例”的确定性 fixture、evaluator 或 smoke；不得因外部文章或基准默认开启全量载荷采集、创建独立重型评测平台或直接修改 active runtime。
+[[machinelearningmastery-agent-regression-tests-2026-08-17]] 本身是实践者清单，没有提供可运行测试代码或生产故障率分布；2026 年各混沌基准的失效率数值受限于各自的注入强度与任务集。`[推论]` 在 AI Agent 中，本矩阵只作为 [[agent-development-lifecycle]] 的 Test → Deploy 知识检查入口：只有某一探针捕获真实本地失败或目标系统确有对应外部写入/MCP 依赖时，才通过 [[agent-failure-closed-loop-evaluation]] 沉淀“原失败案例 + 一个相邻反例”的确定性 fixture、evaluator 或 smoke；不得因外部文章或基准默认开启全量载荷采集、创建独立重型评测平台或直接修改 active runtime。当排障对象延伸至线上生产事故响应时，GB 级多模态遥测算子下推（`Q_push`）、枢轴止血与持续负载浸泡回读（`G_soak`）分别由 [[google-sre-gemini-cli-incident-response]] 与 [[hermes-vs-google-sre-agentic-incident-response]] 主维护。
 
 ## 3. RAG 决策敏感性不等于质量增益
 
@@ -141,4 +141,4 @@ review_by: 2027-03-02
 
 - refines: [[production-ai-agent-evaluation-framework]]
 - depends_on: [[typed-ai-agent-boundaries]], [[agent-failure-closed-loop-evaluation]], [[deterministic-analytics-llm-reasoning-boundary]]
-- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[ai-coding-assistant-context-budget-management]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[production-agent-evaluation-baselines]], [[agentic-programming-system-engineering]]
+- related: [[agent-development-lifecycle]], [[llm-context-engineering-layer]], [[agent-self-validation-loops]], [[multiagent-systemic-failure-modes]], [[agent-security-architecture-and-prompt-injection-defense]], [[agent-production-harness-and-cloud-runtime-boundaries]], [[ai-coding-assistant-context-budget-management]], [[mcp-stateless-architecture-and-authorization-boundaries]], [[production-agent-evaluation-baselines]], [[agentic-programming-system-engineering]], [[google-sre-gemini-cli-incident-response]], [[hermes-vs-google-sre-agentic-incident-response]]

@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 created: 2026-04-16
-updated: 2026-11-25
+updated: 2026-11-27
 type: meta
 status: current
 description: 面向人类与 AI Agent 的公开长期知识库入口，覆盖智能体架构、上下文工程、评测验证、安全治理、软件工程法则与投资/LifeOS 方法论；检索知识、核验时效或沉淀复用结论时从此路由。
@@ -12,7 +12,7 @@ description: 面向人类与 AI Agent 的公开长期知识库入口，覆盖智
 > 可跨用户、跨项目复用的公开知识目录。
 > 这里记录正式知识页面，不记录个人运行状态、私有会话或任务台账。
 > 使用知识前按 [AI Agent Retrieval Priority and Answer Path](concepts/hermes-retrieval-priority-and-answer-path.md) 执行 Freshness Gate；摄取分类见 [Wiki Ingestion Workflow](concepts/wiki-ingestion-workflow.md)。
-> Last updated: 2026-11-25
+> Last updated: 2026-11-27
 
 ## 按任务进入
 
@@ -34,7 +34,7 @@ description: 面向人类与 AI Agent 的公开长期知识库入口，覆盖智
 | 设计与评测 Agent 记忆与经验固化 | [经验固化闭环](concepts/agent-experience-consolidation-loops.md) · [记忆架构与评测基准对照](comparisons/agent-memory-architectures-and-evaluation-benchmarks.md) |
 | 评估 Agent 安全与防提示注入边界 | [安全架构与提示注入防御](concepts/agent-security-architecture-and-prompt-injection-defense.md) · [执行沙箱与浏览器隔离](concepts/agent-execution-sandboxing-and-browser-isolation.md) · [Skill Provider 治理边界](concepts/agent-skill-provider-governance-boundary.md) |
 | 查工具配置与能力边界 | [Claude Code 工作流](concepts/claude-code-practical-workflow-tips.md) · [Codex 工作流分层](concepts/codex-agent-workflow-layering.md)；具体命令先核对页面的局部证据与官方文档 |
-| 排查生产事故 | [SRE 事故响应模式](concepts/google-sre-gemini-cli-incident-response.md)：方法参考，执行仍以目标项目 runbook 为准 |
+| 排查生产事故与设计只读监控 | [SRE 事故响应模式](concepts/google-sre-gemini-cli-incident-response.md) · [Agent 事故响应接入与安全边界](comparisons/hermes-vs-google-sre-agentic-incident-response.md) · [公开信息监控自动化方法](concepts/public-info-monitoring-automation-methodology.md)；执行仍以目标项目 runbook 与审批制度为准 |
 | 构建投资风控与评估企业基本面 | [投资风险控制框架](concepts/investment-risk-control-framework.md) · [普通人长期投资系统](concepts/ordinary-investor-investment-system.md) · [公司基本面分析决策地图](queries/company-analysis-decision-map.md) · [主动交易执行与复盘决策地图](queries/tactical-trading-execution-decision-map.md) |
 | 规划个人成长、职业跃迁、家庭教育与资金协同（LifeOS） | [LifeOS 总览](concepts/lifeos-overview.md) · [工作与职业模型](concepts/work-and-career-operating-model.md) · [家庭教育模型](concepts/family-education-operating-model.md) · [个人成长模型](concepts/personal-growth-operating-model.md) |
 | 查看治理与变更 | [Schema](SCHEMA.md) · [变更日志](log.md) |

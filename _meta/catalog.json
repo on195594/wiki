@@ -116,7 +116,7 @@
       "path": "comparisons/hermes-vs-google-sre-agentic-incident-response.md",
       "type": "comparison",
       "title": "Agent 事故响应接入：职责与安全边界",
-      "description": "结合 LOA 阶段非对称授权、闭集 Playbook、Saga 枢轴事务（T_pivot）与 ScopeGate 逐次参数校验，从目标、工具、动作、权限与权威回读评估任意 Agent 的事故响应接入边界。",
+      "description": "结合 2025–2026 有状态 SRE 实证基准断崖、基础设施 MCP 真实漏洞（I_log）、事务性不退化回退（R_undo）与持续浸泡门禁（G_soak），评估任意 Agent 接入生产事故响应的职责与安全边界。",
       "status": "stable",
       "tags": [
         "agent",
@@ -124,29 +124,36 @@
         "workflow",
         "tool",
         "comparison",
-        "devops"
+        "devops",
+        "evaluation",
+        "risk-control"
       ],
       "aliases": [
-        "agent-incident-response-adoption"
+        "agent-incident-response-adoption",
+        "sre-agent-benchmarks-and-safety"
       ],
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "google-sre-gemini-cli-incident-response",
           "agent-production-harness-and-cloud-runtime-boundaries",
           "agent-autonomy-ladder-for-hermes-workflows",
-          "hermes-knowledge-architecture",
-          "hermes-knowledge-base-operating-flow"
+          "agent-security-architecture-and-prompt-injection-defense"
         ],
         "related": [
           "typed-ai-agent-boundaries",
           "agent-skill-provider-governance-boundary",
           "stateful-agent-environments-and-grounded-verification",
+          "agent-pre-deploy-regression-and-trace-debugging",
           "public-info-monitoring-automation-methodology",
           "agent-failure-closed-loop-evaluation",
+          "agent-self-validation-loops",
+          "agent-experience-consolidation-loops",
+          "hermes-knowledge-architecture",
+          "hermes-knowledge-base-operating-flow",
           "wiki-ingestion-workflow"
         ]
       }
@@ -750,7 +757,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-04",
-      "updated": "2026-11-26",
+      "updated": "2026-11-27",
       "relations": {
         "refines": [
           "production-ai-agent-evaluation-framework"
@@ -770,7 +777,9 @@
           "ai-coding-assistant-context-budget-management",
           "mcp-stateless-architecture-and-authorization-boundaries",
           "production-agent-evaluation-baselines",
-          "agentic-programming-system-engineering"
+          "agentic-programming-system-engineering",
+          "google-sre-gemini-cli-incident-response",
+          "hermes-vs-google-sre-agentic-incident-response"
         ]
       }
     },
@@ -925,7 +934,7 @@
       "volatility": "medium",
       "review_by": "2027-03-19",
       "verified_at": "2026-11-19",
-      "updated": "2026-11-25",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "agent-skill-provider-governance-boundary",
@@ -943,7 +952,8 @@
           "subagent-orchestration-patterns",
           "hermes-agent-workflow-layering-and-adoption-order",
           "mcp-stateless-architecture-and-authorization-boundaries",
-          "agent-tool-and-interoperability-paradigms"
+          "agent-tool-and-interoperability-paradigms",
+          "hermes-vs-google-sre-agentic-incident-response"
         ]
       }
     },
@@ -2287,7 +2297,7 @@
       "path": "concepts/google-sre-gemini-cli-incident-response.md",
       "type": "concept",
       "title": "Google SRE Gemini CLI Incident Response Pattern",
-      "description": "结合 Google SRE 官方手册的多窗口错误预算燃烧率告警（Burn Rate）、MTTM 四阶段延迟分解、闭集缓解动作（Generic Mitigations）与无责复盘，总结受控 CLI Agent 接入生产事故响应的工程模式。",
+      "description": "结合 Google SRE 错误预算燃烧率、MTTM 延迟分解、云故障变更致因实证、遥测算子下推（Q_push）与人机协同自动化惊奇防御，定义受控 Agent 接入生产事故响应的工程模式。",
       "status": "stable",
       "tags": [
         "agent",
@@ -2295,7 +2305,8 @@
         "workflow",
         "tool",
         "research",
-        "devops"
+        "devops",
+        "monitoring"
       ],
       "aliases": [
         "gemini-cli-incident-response",
@@ -2304,20 +2315,22 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-16",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "agent-autonomy-ladder-for-hermes-workflows",
           "typed-ai-agent-boundaries",
-          "hermes-knowledge-base-operating-flow",
-          "wiki-ingestion-workflow"
+          "deterministic-analytics-llm-reasoning-boundary"
         ],
         "related": [
           "hermes-vs-google-sre-agentic-incident-response",
           "agent-production-harness-and-cloud-runtime-boundaries",
+          "agent-pre-deploy-regression-and-trace-debugging",
+          "agent-security-architecture-and-prompt-injection-defense",
           "agent-skill-provider-governance-boundary",
           "public-info-monitoring-automation-methodology",
-          "stateful-agent-environments-and-grounded-verification"
+          "stateful-agent-environments-and-grounded-verification",
+          "ai-assistance-cognitive-substitution-and-skill-formation"
         ]
       }
     },
@@ -3706,7 +3719,7 @@
       "volatility": "medium",
       "review_by": "2027-03-02",
       "verified_at": "2026-11-02",
-      "updated": "2026-11-12",
+      "updated": "2026-11-27",
       "relations": {
         "depends_on": [
           "agent-development-lifecycle",
@@ -3716,7 +3729,10 @@
         "related": [
           "hermes-context-layer-operating-rules",
           "hermes-layer-routing-decision-checklist",
-          "wiki-ingestion-workflow"
+          "wiki-ingestion-workflow",
+          "ai-agent-human-outcome-design-principle",
+          "google-sre-gemini-cli-incident-response",
+          "hermes-vs-google-sre-agentic-incident-response"
         ]
       }
     },
